@@ -11,7 +11,7 @@ const PublicLayout = ({children}) => {
 
         <aside className="sidebar">
           <ul>
-            <li><Link to="/">User List</Link> </li>
+            <li><Link to="/">User List </Link> </li>
           </ul>
         </aside>
 
