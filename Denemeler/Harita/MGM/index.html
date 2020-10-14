@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet"
+        href="https://js.arcgis.com/4.16/esri/themes/light/main.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+        crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://js.arcgis.com/4.16/dojo/dojo.js"></script>
+  <script src="main.js"></script>
+
+</head>
+<body>
+    <div id="viewDiv" class="shadow-lg rounded mb-5"></div>
+    <div class="menu shadow-lg rounded mb-5">
+      <form>
+        <div class="form-group">
+          <label for="extent">Extent</label>
+          <input class="form-control" id="extent" type="text" placeholder="Readonly input here…" value="" readonly>
+        </div>
+        <div class="form-group">
+          <label for="layer_value">Select the Layer Value</label>
+          <select class="form-control" id="layer_value">
+            <option value="t2">t2_0</option>
+            <option value="s2">s2_0</option>
+            <option value="c2">c2_o</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="src_epsg">Source EPSG</label>
+          <input type="number" class="form-control" id="src_epsg" placeholder="Enter Source EPSG Code">
+        </div>
+        <div class="form-group">
+          <label for="trgt_epsg">Target EPSG</label>
+          <input type="number" class="form-control" id="trgt_epsg" placeholder="Enter Target EPSG Code">
+        </div>
+        <div class="form-group">
+          <label for="no_data">NoData Value</label>
+          <input type="number" class="form-control" id="no_data" placeholder="Enter NoData Value">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+
+
+
+
+</body>
+</html>
