@@ -1,0 +1,1692 @@
+<%- include("partials/admin_header"); -%>
+
+<div class="div-alert">
+
+</div>
+
+
+<!--Admin main page-->
+<div class="jumbotron">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><span style="font-size: 1.3em; color: #fff9f8;"><i class="fas fa-home"></i></span></a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="false"><span style="font-size: 1.3em; color: #fff9f8;"><i class="fas fa-users"></i></span></a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-layers-tab" data-toggle="pill" href="#pills-layers" role="tab" aria-controls="pills-layers" aria-selected="false"><span style="font-size: 1.3em; color: #fff9f8;"><i class="fas fa-layer-group"></i></span></a>
+    </li>
+    <li class="nav-item ml-auto" role="presentation">
+      <a class="nav-link" id="pills-back-tab" href="/" role="tab"><span style="font-size: 1.3em; color: #fff9f8;"><i class="fas fa-globe-americas"></i></span></a>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+      <div class="accordion" id="main-menu">
+
+        <!--GeoServer menu-->
+        <div class="card">
+
+          <div class="card-header" id="geoserverProperties">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left" type="button" id="edit-geoserver" data-toggle="collapse" data-target="#geoserverContent" aria-expanded="true" aria-controls="geoserverContent">
+                GeoServer Properties
+              </button>
+            </h2>
+          </div>
+          <div id="geoserverContent" class="collapse" data-parent="#main-menu">
+            <div class="card-body">
+
+              <form>
+                <div class="form-group">
+                  <label for="geoserverAddress">GeoServer Address</label>
+                  <input type="text" class="form-control" id="geoserverAddress" placeholder="http://localhost:8080/geoserver">
+                </div>
+
+                <div class="form-group">
+                  <label for="geoserverUser">Admin User</label>
+                  <input type="text" class="form-control" id="geoserverUser">
+                </div>
+
+                <div class="form-group">
+                  <label for="geoserverPassword">Admin Password</label>
+                  <input type="password" class="form-control" id="geoserverPassword">
+                </div>
+
+                <button type="button" class="btn btn-warning mb-2" id="validateGeoserver">Validate</button>
+
+                <div class="form-group">
+                  <label for="geoserverWorkspaces">Workspace</label>
+                  <select class="form-control" id="geoserverWorkspaces">
+
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="geoserverDatastores">Datastores</label>
+                  <select class="form-control" id="geoserverDatastores">
+
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-2" id="geoserverSave">Save Configuration</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <!--Address Layers Menu-->
+        <div class="card">
+
+          <div class="card-header" id="addressLayerProperties">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left collapsed" id="edit-address-layers-button" type="button" data-toggle="collapse" data-target="#address-layers-menu" aria-expanded="false" aria-controls="address-layers-menu">
+                Edit Address Layers
+              </button>
+            </h2>
+          </div>
+
+          <div id="address-layers-menu" class="collapse" data-parent="#main-menu">
+            <div class="card-body">
+
+              <ul class="list-group-address-layers">
+
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <!--Map Extent Properties menu-->
+        <div class="card">
+          <div class="card-header" id="mapExtentProperties">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#mapExtentContent" aria-expanded="true" aria-controls="mapExtentContent">
+                Edit Map Extent
+              </button>
+            </h2>
+          </div>
+          <div id="mapExtentContent" class="collapse" data-parent="#main-menu">
+            <div class="card-body">
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <!--Map Highlight Properties menu-->
+        <div class="card">
+
+          <div class="card-header" id="mapHighlightProperties">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left" type="button" id="edit-highlight" data-toggle="collapse" data-target="#mapHighlightContent" aria-expanded="true" aria-controls="mapHighlightContent">
+                Edit Map Highlight
+              </button>
+            </h2>
+          </div>
+          <div id="mapHighlightContent" class="collapse" data-parent="#main-menu">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
+      <!--Users Tab - List users-->
+      <ul class="list-group-users">
+
+      </ul>
+
+    </div>
+    <div class="tab-pane fade" id="pills-layers" role="tabpanel" aria-labelledby="pills-layers-tab">
+      <!--Layers Tab - List layers-->
+      <ul class="list-group-layers">
+
+      </ul>
+
+      <button type="button" class="btn pull-right new-layer-button" data-toggle="modal" data-target="#modal-new-layer" id="new-layer">New Layer</button>
+
+      <div class="modal fade" id="modal-new-layer" tabindex="-1" aria-labelledby="modal-new-layer" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalid">Layer Properties</h5>
+            </div>
+            <div class="modal-body">
+              <form class="create-layer">
+
+                <div class="accordion" id="layerPropertiesAccordion">
+
+                  <!--Layer Geometry Properties menu-->
+                  <div class="card">
+                    <div class="card-header" id="layerProperties">
+                      <h2 class="mb-0">
+                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#layerPropertiesContent" aria-expanded="false" aria-controls="layerPropertiesContent">
+                          Layer Geometry Properties
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="layerPropertiesContent" class="collapse" data-parent="#layerPropertiesAccordion">
+                      <div class="card-body">
+
+                        <div class="form-group row">
+                          <label for="layername" class="col-sm-5 col-form-label">Layer Name</label>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control" id="layername" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="geoservername" class="col-sm-5 col-form-label">Geoserver Name</label>
+                          <div class="col-sm-7">
+                            <select class="custom-select my-1 mr-sm-2" id="geoservername">
+
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="strokecolor" class="col-sm-5 col-form-label">Stroke Color</label>
+                          <div class="col-sm-7">
+                            <input type="color" class="form-control" id="strokecolor" value="#000000">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="strokewidth" class="col-sm-5 col-form-label">Stroke Width</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="strokewidth" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fillcolor" class="col-sm-5 col-form-label">Fill Color</label>
+                          <div class="col-sm-7">
+                            <input type="color" class="form-control" id="fillcolor" value="#000000">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="opacity" class="col-sm-5 col-form-label">Opacity</label>
+                          <div class="col-sm-7">
+                            <input type="range" class="form-control" id="opacity" value="" min="0" max="1" step="0.1">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="minzoom" class="col-sm-5 col-form-label">Min Zoom Level</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="minzoom" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="maxzoom" class="col-sm-5 col-form-label">Max Zoom Level</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="maxzoom" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="pointradius" class="col-sm-5 col-form-label">Point Radius</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="pointradius">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--Layer Font Properties menu-->
+                  <div class="card">
+                    <div class="card-header" id="layerFontProperties">
+                      <h2 class="mb-0">
+                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#layerPropertiesFontContent" aria-expanded="true" aria-controls="layerPropertiesFontContent">
+                          Layer Font Properties
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="layerPropertiesFontContent" class="collapse" data-parent="#layerPropertiesAccordion">
+                      <div class="card-body">
+
+                        <div class="form-group row">
+                          <label for="fontlabelfield" class="col-sm-5 col-form-label">Layer Label Field</label>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control" id="fontlabelfield" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontfamily" class="col-sm-5 col-form-label">Font Family</label>
+                          <div class="col-sm-7">
+                            <input type="text" class="form-control" id="fontfamily" value="Calibri,sans-serif">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontfillcolor" class="col-sm-5 col-form-label">Font Fill Color</label>
+                          <div class="col-sm-7">
+                            <input type="color" class="form-control" id="fontfillcolor" value="#000000">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontstrokecolor" class="col-sm-5 col-form-label">Font Stroke Color</label>
+                          <div class="col-sm-7">
+                            <input type="color" class="form-control" id="fontstrokecolor" value="#000000">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontstrokewidth" class="col-sm-5 col-form-label">Font Stroke Width</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="fontstrokewidth" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontweight" class="col-sm-5 col-form-label">Bold?</label>
+                          <div class="col-sm-7">
+                            <select class="custom-select my-1 mr-sm-2" id="fontweight">
+                              <option value="bold">Yes</option>
+                              <option value="" selected>No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontsize" class="col-sm-5 col-form-label">Font Size</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="fontsize" value="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontplacement" class="col-sm-5 col-form-label">Font Placement</label>
+                          <div class="col-sm-7">
+                            <select class="custom-select my-1 mr-sm-2 form-control" id="fontplacement">
+                              <option class="point" value="point" selected>Point/Polygon</option>
+                              <option class="line" value="line">Line</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="fontoffsety" class="col-sm-5 col-form-label">Font OffsetY</label>
+                          <div class="col-sm-7">
+                            <input type="number" class="form-control" id="fontoffsety" value="">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" id="layer-create-button">Create Layer</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  // Alert function
+  function createAutoClosingAlert(message, selector, delay) {
+    const alertMessage = (message) => {
+      return          `
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+      ${message}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>`
+    };
+    $(".div-alert").append(alertMessage(message));
+    const alert = $(selector).alert();
+    window.setTimeout(function() { alert.alert('close') }, delay);
+  }
+
+  //DOM elements
+  const backdrop = "<div class=\"modal-backdrop fade show\"></div>";
+
+  const userPropertiesPermissions = (permissionID, permissionName) => {
+    return `
+            <li class="permissionList list-group-item-${permissionID}">${permissionName}
+              <a class="btn delete-permission-btn"><span style="font-size: 1em; color: #000000;"><i class="fas fa-minus-circle" id="fa-minus-circle-${permissionID}" data-toggle="modal" data-target="#modal-permission-delete"></i></span></a>
+            </li>
+          `
+  }
+
+  const userPropertiesModal = () => {
+    return `
+    <div class="modal fade" id="user-modal" tabindex="-1" aria-labelledby="user-modal-title" aria-hidden="true" style="z-index: 1400;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="user-modal-title">User Properties</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form">
+                                <div class="form-group row">
+                                    <label for="email-input" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="email-input" value="" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="permission-input" class="col-sm-2 col-form-label">Permissions</label>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 1.3em; color: #000000;"><i class="fas fa-wrench" data-toggle="modal" data-target="#user-modal-add-permission"></i></span>
+
+                                        <div class="modal fade" id="user-modal-add-permission" role="dialog" style="z-index: 1600;">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="user-modal-add-perm">Add layer permissions</h5>
+                                                    </div>
+                                                    <div class="modal-body" id="user-perm-modal-body">
+                                                        <select class="custom-select" id="user-add-permission" multiple>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary add-perm-close">Close</button>
+                                                        <button type="submit" class="btn btn-primary add-perm">Save Changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <ul class="permission-list-group">
+
+                                        </ul>
+                                        <div class="modal fade" id="modal-permission-delete" tabindex="-1" aria-labelledby="modal-delete-perm" aria-hidden="true" style="z-index: 1600;">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modal-delete-perm">Delete Permission</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to delete the permission?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary del-perm-close">Close</button>
+                                                        <button type="submit" class="btn btn-danger del-perm" id="permission-delete-button">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="admin-input" class="col-sm-2 col-form-label">Admin</label>
+                                    <div class="col-sm-10">
+                                        <select class="custom-select my-1 mr-sm-2" id="admin-input">
+                                            <option class="yes" value="true">Yes</option>
+                                            <option class="no" value="false">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary update-user" id="user-save-button">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+  }
+
+  const layerUpdateModal = () => {
+    return `
+        <div class="modal fade layer-update" id="layer-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Layer Properties</h5>
+                  </div>
+                  <div class="modal-body">
+                    <form id="form-layer-update">
+                       <div class="accordion" id="layerPropertiesUpdateAccordion">
+
+                         <div class="card">
+                                        <div class="card-header" id="layerPropertiesUpdate">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#layerPropertiesContentUpdate" aria-expanded="false" aria-controls="layerPropertiesContentUpdate">
+                                                    Layer Geometry Properties
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="layerPropertiesContentUpdate" class="collapse" data-parent="#layerPropertiesUpdateAccordion">
+                                            <div class="card-body">
+
+                      <div class="form-group row">
+                        <label for="layername-input" class="col-sm-5 col-form-label">Layer Name</label>
+                        <div class="col-sm-7">
+                          <input type="text" class="form-control" id="layername-input">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="geoservername-input" class="col-sm-5 col-form-label">Geoserver Name</label>
+                        <div class="col-sm-7">
+                          <select class="custom-select my-1 mr-sm-2" id="geoservername-input">
+
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="strokecolor-input" class="col-sm-5 col-form-labell">Stroke Color</label>
+                        <div class="col-sm-7">
+                          <input type="color" class="form-control" id="strokecolor-input">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="strokewidth-input" class="col-sm-5 col-form-label">Stroke Width</label>
+                        <div class="col-sm-7">
+                          <input type="number" class="form-control" id="strokewidth-input">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="fillcolor-input" class="col-sm-5 col-form-label">Fill Color</label>
+                        <div class="col-sm-7">
+                          <input type="color" class="form-control" id="fillcolor-input">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="opacity-input" class="col-sm-5 col-form-label">Opacity</label>
+                        <div class="col-sm-7">
+                          <input type="range" class="form-control" id="opacity-input" min="0" max="1" step="0.1">
+                        </div>
+                      </div>
+
+                    <div class="form-group row">
+                        <label for="minzoom-input" class="col-sm-5 col-form-label">Min Zoom Level</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="minzoom-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="maxzoom-input" class="col-sm-5 col-form-label">Max Zoom Level</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="maxzoom-input">
+                        </div>
+                    </div>
+
+                      <div class="form-group row">
+                        <label for="pointradius-input" class="col-sm-5 col-form-label">Point Radius</label>
+                        <div class="col-sm-7">
+                          <input type="number" class="form-control" id="pointradius-input">
+                        </div>
+                      </div>
+
+                </div>
+                </div>
+                          </div>
+                         <div class="card">
+                                        <div class="card-header" id="layerPropertiesFontUpdate">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#layerPropertiesFontContentUpdate" aria-expanded="false" aria-controls="layerPropertiesFontContent">
+                                                    Layer Font Properties
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="layerPropertiesFontContentUpdate" class="collapse" data-parent="#layerPropertiesUpdateAccordion">
+                                            <div class="card-body">
+
+                                                <div class="form-group row">
+                                                    <label for="fontlabelfield-input" class="col-sm-5 col-form-label">Layer Label Field</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" id="fontlabelfield-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontfamily-input" class="col-sm-5 col-form-label">Font Family</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" class="form-control" id="fontfamily-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontfillcolor-input" class="col-sm-5 col-form-label">Font Fill Color</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="color" class="form-control" id="fontfillcolor-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontstrokecolor-input" class="col-sm-5 col-form-label">Font Stroke Color</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="color" class="form-control" id="fontstrokecolor-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontstrokewidth-input" class="col-sm-5 col-form-label">Font Stroke Width</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="number" class="form-control" id="fontstrokewidth-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontweight-input" class="col-sm-5 col-form-label">Bold?</label>
+                                                    <div class="col-sm-7">
+                                                        <select class="custom-select my-1 mr-sm-2" id="fontweight-input">
+                                                            <option value="bold">Yes</option>
+                                                            <option value="">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontsize-input" class="col-sm-5 col-form-label">Font Size</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="number" class="form-control" id="fontsize-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontplacement-input" class="col-sm-5 col-form-label">Font Placement</label>
+                                                    <div class="col-sm-7">
+                                                        <select class="custom-select my-1 mr-sm-2 form-control" id="fontplacement-input">
+                                                            <option class="point" value="point">Point/Polygon</option>
+                                                            <option class="line" value="line">Line</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="fontoffsety-input" class="col-sm-5 col-form-label">Font OffsetY</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="number" class="form-control" id="fontoffsety-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                          </div>
+                       </div>
+
+
+                       </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary update-layer" id="layer-save-button">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>`
+  }
+
+  const layerDeleteModal = () => {
+    return `
+                        <div class="modal fade modal-layer-delete" id="modal-layer-delete" aria-hidden="true">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modal-delete-title">Delete layer</h5>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure you want to delete the layer?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger delete-layer-confirm" id="layer-delete-button">Delete</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`
+  }
+
+  const generateLayersList = (layer) => {
+    const html = `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          ${layer.lyrName}
+          <span>
+            <span style="font-size: 1.5em; color: Black;"><i class="fas fa-trash-alt delete-layer" id="delete-button-${layer._id}"></i></span>
+            <span style="font-size: 1.5em; color: Black;"><i class="fas fa-edit edit-layer" id="layer-edit-button-${layer._id}"></i></span>
+          </span>
+        </li>
+`
+    return html
+  };
+
+  const generateAddressLayersList = (layer) => {
+    const html = `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          ${layer.lyrName}
+          <span>
+            <span style="font-size: 1.5em; color: Black;"><i class="fas fa-edit edit-address-layer" id="address-layer-edit-button-${layer._id}"></i></span>
+          </span>
+        </li>
+`
+    return html
+  };
+
+  // Update GeoServer
+  $(document).on("click", "#validateGeoserver", async function(event) {
+    const geoserverAddress = document.querySelector("#geoserverAddress");
+    const geoserverUser = document.querySelector("#geoserverUser");
+    const geoserverPassword = document.querySelector("#geoserverPassword");
+    const geoserverWorkspace = document.querySelector("#geoserverWorkspaces");
+    const geoserverDatastore = document.querySelector("#geoserverDatastores");
+
+    // Request headers
+    const geoserverHeaders = new Headers({
+      "Authorization": 'Basic ' + btoa($(geoserverUser).val() + ":" + $(geoserverPassword).val())
+    });
+
+    // Request options
+    const geoserverRequestOptions = {
+      method: "GET",
+      headers: geoserverHeaders
+    };
+
+    const resWorkspace = await fetch(`${$(geoserverAddress).val()}/rest/workspaces`, geoserverRequestOptions);
+
+    // If error
+    if (!resWorkspace.ok) {
+      createAutoClosingAlert("User is not authorized!", "#alert", 3000);
+    } else {
+      // No error
+      const responseWorkspace = await resWorkspace.json();
+      const workspaces = responseWorkspace.workspaces;
+      const arrayWorkspaces = workspaces.workspace
+
+      $(geoserverWorkspace).empty();
+
+      arrayWorkspaces.forEach((ws) => {
+        $(geoserverWorkspace).append(`<option value=${ws.name}>${ws.name}</option>`)
+      })
+
+      $(geoserverWorkspace).prepend("<option disabled>Select a workspace</option>");
+      $(geoserverWorkspace).find('option:contains("Select")').attr("selected",true);
+
+      $(geoserverWorkspace).on("change", async () => {
+        const resDatastore = await fetch(`${$(geoserverAddress).val()}/rest/workspaces/${$(geoserverWorkspace).val()}/datastores`, geoserverRequestOptions);
+
+        // If error
+        if (!resDatastore.ok) {
+          createAutoClosingAlert("User is not authorized!", "#alert", 3000);
+        } else {
+          // No error
+          const responseDatastore = await resDatastore.json();
+          const datastores = responseDatastore.dataStores;
+          const arrayDatastores = datastores.dataStore
+
+          $(geoserverDatastore).empty();
+
+          arrayDatastores.forEach((ds) => {
+            $(geoserverDatastore).append(`<option value=${ds.name}>${ds.name}</option>`)
+          })
+
+          $(geoserverDatastore).prepend("<option disabled>Select a datastore</option>");
+          $(geoserverDatastore).find('option:contains("Select")').attr("selected", true);
+        }
+      })
+    }
+
+    $("#geoserverSave").click(async function(event) {
+      event.preventDefault()
+      try {
+        const req = await fetch("/maps");
+        const maps = await req.json();
+
+        const res = await fetch(`/admin/map/${maps[0]._id}`, {
+          method: "PUT",
+          body: JSON.stringify({
+            geoserver:
+                    {
+                      geoserverAddress: $(geoserverAddress).val(),
+                      geoserverUser: $(geoserverUser).val(),
+                      geoserverPassword: $(geoserverPassword).val(),
+                      geoserverWorkspace: $(geoserverWorkspace).val(),
+                      geoserverDatastore: $(geoserverDatastore).val()
+                    }
+          }),
+          headers: {"Content-Type": "application/json"}
+        })
+        const resMap = await res.json();
+        console.log(resMap);
+        if (res.status === 200) {
+          createAutoClosingAlert("Map preferences is updated successfully!", "#alert", 3000);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    })
+  });
+
+  // Get layers from Geoserver
+  const getGeoserverLayers = async () => {
+    const req = await fetch("/maps");
+    const maps = await req.json();
+
+    const geoserverAddress = maps[0].geoserver.geoserverAddress;
+    const geoserverUser = maps[0].geoserver.geoserverUser;
+    const geoserverPassword = maps[0].geoserver.geoserverPassword;
+    const geoserverWorkspace = maps[0].geoserver.geoserverWorkspace;
+
+    // Request headers
+    const geoserverHeaders = new Headers({
+      "Authorization": 'Basic ' + btoa(geoserverUser + ":" + geoserverPassword)
+    });
+
+    // Request options
+    const geoserverRequestOptions = {
+      method: "GET",
+      headers: geoserverHeaders
+    };
+
+    const resLayers = await fetch(`${geoserverAddress}/rest/workspaces/${geoserverWorkspace}/layers`, geoserverRequestOptions);
+
+    // If error
+    if (!resLayers.ok) {
+      createAutoClosingAlert("Could not fetch the layers!", "#alert", 3000);
+    } else {
+      // No error
+      const responseLayers = await resLayers.json();
+      const geoserverLayers = responseLayers.layers;
+      return geoserverLayers.layer
+    }
+  }
+
+  const highlightForm = () => {
+    return `
+            <div class="card-body" id="highlight-body">
+              <form id="highlightForm">
+                <div class="form-group row">
+                  <label for="hl-strokecolor-input" class="col-sm-5 col-form-label">Stroke Color</label>
+                  <div class="col-sm-7">
+                    <input type="color" class="form-control" id="hl-strokecolor-input">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="hl-strokewidth-input" class="col-sm-5 col-form-label">Stroke Width</label>
+                  <div class="col-sm-7">
+                    <input type="number" class="form-control" id="hl-strokewidth-input">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="hl-strokeopacity-input" class="col-sm-5 col-form-label">Stroke Opacity</label>
+                  <div class="col-sm-7">
+                    <input type="range" class="form-control" id="hl-strokeopacity-input" value="" min="0" max="1" step="0.1">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="hl-fillcolor-input" class="col-sm-5 col-form-label">Fill Color</label>
+                  <div class="col-sm-7">
+                    <input type="color" class="form-control" id="hl-fillcolor-input">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="hl-fillopacity-input" class="col-sm-5 col-form-label">Fill Opacity</label>
+                  <div class="col-sm-7">
+                    <input type="range" class="form-control" id="hl-fillopacity-input" value="" min="0" max="1" step="0.1">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="hl-pointradius-input" class="col-sm-5 col-form-label">Point Radius</label>
+                  <div class="col-sm-7">
+                    <input type="number" class="form-control" id="hl-pointradius-input">
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-primary update-highlight" id="highlight-save-button">Save changes</button>
+              </form>
+            </div>`
+  }
+
+  // Update highlight
+  $(document).on("click", "#edit-highlight", async function(event) {
+    $("#mapHighlightContent #highlight-body").remove();
+    $("#mapHighlightContent").append(highlightForm())
+    const req = await fetch("/maps");
+    const maps = await req.json();
+
+    // Highlight stroke color
+    $("#hl-strokecolor-input").val(maps[0].highlight.strokeColor);
+
+    // Highlight stroke width
+    $("#hl-strokewidth-input").val(maps[0].highlight.strokeWidth);
+
+    // Highlight stroke opacity
+    $("#hl-strokeopacity-input").val(maps[0].highlight.strokeOpacity);
+
+    // Highlight fill color
+    $("#hl-fillcolor-input").val(maps[0].highlight.fillColor);
+
+    // Highlight fill opacity
+    $("#hl-fillopacity-input").val(maps[0].highlight.fillOpacity);
+
+    // Highlight point radius
+    $("#hl-pointradius-input").val(maps[0].highlight.radius);
+
+    $("#highlight-save-button").click(async function(event) {
+      try {
+        const strokeColor = $("#hl-strokecolor-input").val();
+        const strokeWidth = $("#hl-strokewidth-input").val();
+        const strokeOpacity = $("#hl-strokeopacity-input").val();
+        const fillColor = $("#hl-fillcolor-input").val();
+        const fillOpacity = $("#hl-fillopacity-input").val()
+        const radius =  $("#hl-pointradius-input").val();
+
+        const res = await fetch(`/admin/map/${maps[0]._id}`, {
+            method: "PUT",
+            body: JSON.stringify({highlight: {strokeColor, strokeWidth, strokeOpacity, fillColor, fillOpacity, radius}
+            }),
+            headers: {"Content-Type": "application/json"}
+          })
+        const updatedHighlight = await res.json();
+        if (res.status === 200) {
+          createAutoClosingAlert("Highlight is updated successfully!", "#alert", 3000);
+          $("#mapHighlightContent #highlight-body").remove();
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    })
+  });
+
+  // Users page
+  $("#pills-users-tab").click(async function(event) {
+    let userID = ""
+    event.preventDefault();
+    try {
+      const res = await fetch("/admin/users");
+      const users = await res.json();
+
+      $(".list-group-users").empty();
+
+      users.forEach((user) => {
+        const html = `
+        <li class="list-group-item d-flex align-items-center">
+          ${user.email}  ${(user.admin) ? "<span class='badge badge-primary badge-pill ml-3'>admin</span>" : ""}
+          <span class="edit-user ml-auto p-0">
+            <span style="font-size: 1.5em; color: Black;"><i class="fas fa-user-edit" id="user-edit-button-${user._id}"></i></span>
+          </span>
+        </li>`
+
+        $(".list-group-users").append(html);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  // Edit users
+  $(document).on("click", ".fa-user-edit", async function(event) {
+    $("#pills-users").append(userPropertiesModal());
+    $("#user-modal").modal("show");
+    event.preventDefault();
+
+    const res = await fetch("/admin/users");
+    const users = await res.json();
+
+    const res_ = await fetch("/admin/layers");
+    const layers = await res_.json();
+
+    function userProperties(userID) {
+      return users.find(({_id}) => _id === userID);
+    }
+
+    const userID = this.id.split("-")[3];
+    console.log(event.target.id);
+    console.log(userID);
+
+    // User properties email
+    $("#user-modal #email-input").val(userProperties(userID).email);
+
+    // User properties admin
+    userProperties(userID).admin ? $("#admin-input option[value=true]").prop("selected", "selected") : $("#admin-input option[value=false]").prop("selected", "selected");
+
+    // User properties permissions
+    $(".permission-list-group").empty();
+
+    const newList = layers.map((o) => {
+      let obj = {};
+      if (userProperties(userID).permission.includes(o._id)) {
+        obj[o.lyrName] = o._id
+      }
+      return obj
+    }).filter(item => {
+      return Object.keys(item).length !== 0
+    });
+
+    newList.forEach((perm) => {
+      const permissionID = Object.values(perm)[0];
+      const permissionName = Object.keys(perm)[0];
+      $(".permission-list-group").append(userPropertiesPermissions(permissionID, permissionName));
+    });
+
+    // Update user function
+    const updateUser = async (update, userIDEdited) => {
+      try {
+        const res = await fetch(`/admin/user/${userIDEdited}`, {
+          method: "PUT",
+          body: JSON.stringify(update),
+          headers: {"Content-Type": "application/json"}
+        })
+        const updatedUser = await res.json();
+        if (res.status === 200) {
+          createAutoClosingAlert("User is updated successfully!", "#alert", 3000);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    // Update admin
+    $("#user-save-button").click(async function(event) {
+      event.preventDefault();
+      const newUserAdmin = $("#admin-input").val();
+      await updateUser({admin: newUserAdmin}, userID);
+      $("#user-modal").modal("hide");
+      $("body .modal-backdrop").remove();
+
+      const res = await fetch("/admin/users");
+      const users = await res.json();
+
+      $(".list-group-users").empty();
+
+      users.forEach((user) => {
+        const html = `
+              <li class="list-group-item d-flex align-items-center">
+                ${user.email}  ${(user.admin) ? "<span class='badge badge-primary badge-pill ml-3'>admin</span>" : ""}
+                <span class="edit-user ml-auto p-0">
+                <span style="font-size: 1.5em; color: Black;"><i class="fas fa-user-edit" id="user-edit-button-${user._id}" data-toggle="modal" data-target="#user-modal"></i></span>
+               </span>
+              </li>`
+
+        $(".list-group-users").append(html);
+      });
+      $("#pills-users #user-modal").remove();
+    })
+
+    // Delete layer permissions menu
+    $(".fa-minus-circle").click(function() {
+      $("#user-modal").append(backdrop);
+      const permissionDelete = this.id.split("-")[3];
+
+      // Close delete layer permission
+      $(".del-perm-close").click(function() {
+        $("#modal-permission-delete").modal('hide');
+      })
+
+      $("#modal-permission-delete").on('hide.bs.modal', function () {
+        $("#user-modal .modal-backdrop").remove();
+      })
+
+      // Delete layer permissions
+      $(".del-perm").click(async function(event) {
+        event.preventDefault();
+        const users = await fetch(`/admin/user/${userID}`);
+        const user = await users.json();
+        let userPermissions;
+        userPermissions = user.permission;
+
+        const newUserPermissions = userPermissions.filter((item) => {
+          return item !== permissionDelete;
+        });
+
+        await updateUser({permission: newUserPermissions}, userID);
+
+        $(".permission-list-group").find(`.list-group-item-${permissionDelete}`).remove();
+
+        const res = await fetch("/admin/layers");
+        const layers = await res.json();
+
+        const newList = layers.map((o) => {
+          let obj = {};
+          if (newUserPermissions.includes(o._id)) {
+            obj[o.lyrName] = o._id
+          }
+          return obj
+        }).filter(item => {
+          return Object.keys(item).length !== 0
+        });
+
+        $(".permission-list-group").empty();
+
+        newList.forEach((perm) => {
+          const permissionID = Object.values(perm)[0];
+          const permissionName = Object.keys(perm)[0];
+          $(".permission-list-group").append(userPropertiesPermissions(permissionID, permissionName));
+        });
+
+        $("#modal-permission-delete").modal('hide');
+        $("#user-modal .modal-backdrop").remove();
+      });
+    });
+
+    // Add new permission menu
+    $(".fa-wrench").click(async function() {
+      $("#user-modal").append(backdrop);
+      const res = await fetch("/admin/layers");
+      const layers = await res.json();
+
+      // Empty layer permission list
+      $("#user-add-permission").empty();
+
+      // Populate layer permission list
+      layers.forEach((layer) => {
+        $("#user-add-permission").append(`
+              <option value=${layer._id}>${layer.lyrName}</option>
+             `)
+      });
+
+      $(".add-perm").click(async function(event) {
+        event.preventDefault()
+        await updateUser({permission: $("#user-add-permission").val()}, userID);
+        const user_ = await fetch(`/admin/user/${userID}`);
+        const user = await user_.json();
+        const userPermissions = user.permission
+        console.log(userPermissions);
+
+        const newList = layers.map((o) => {
+          let obj = {};
+          if (userPermissions.includes(o._id)) {
+            obj[o.lyrName] = o._id
+          }
+          return obj
+        }).filter(item => {
+          return Object.keys(item).length !== 0
+        });
+
+        // Empty user permission list
+        $(".permission-list-group").empty();
+
+        newList.forEach((perm) => {
+          const permissionID = Object.values(perm)[0];
+          const permissionName = Object.keys(perm)[0];
+          $(".permission-list-group").append(userPropertiesPermissions(permissionID, permissionName));
+        });
+
+        $("#user-modal-add-permission").modal("hide");
+      })
+
+      // Close modal
+      $(".add-perm-close").click(function() {
+        $("#user-modal-add-permission").modal("hide");
+      })
+
+      // On close modal...
+      $("#user-modal-add-permission").on('hide.bs.modal', function () {
+        $("#user-modal .modal-backdrop").remove();
+      })
+    })
+  })
+
+  // Address layers page
+  $("#edit-address-layers-button").click(async function(event) {
+    try {
+      const res = await fetch("/addressLayers");
+      const addressLayers = await res.json();
+
+      $(".list-group-address-layers").empty();
+
+      addressLayers.forEach((layer, index) => {
+        $(".list-group-address-layers").append(generateAddressLayersList(layer, index));
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  // Address layer update modal
+  $(document).on("click", ".edit-address-layer", async function(event) {
+    $("#pills-home").append(layerUpdateModal());
+
+    const geoserverComboBox = document.querySelector("#geoservername-input");
+    const geoserverLayers = await getGeoserverLayers();
+
+    $(geoserverComboBox).empty();
+
+    geoserverLayers.forEach((lyr) => {
+      $(geoserverComboBox).append(`<option value=${lyr.name}>${lyr.name}</option>`)
+    })
+
+    $("#layer-modal").modal("show");
+
+    const res_ = await fetch("/addressLayers");
+    const addressLayers = await res_.json();
+
+    function addressLayerProperties(layerID) {
+      return addressLayers.find(({_id}) => _id === layerID);
+    }
+
+    const layerID = this.id.split("-")[4];
+
+    // Address layer properties layer name
+    $("#layer-modal #layername-input").val(addressLayerProperties(layerID).lyrName);
+
+    // Address layer properties layer geoserver name
+    $("#layer-modal #geoservername-input").val(addressLayerProperties(layerID).lyrGeoServerName);
+
+    // Address layer properties layer stroke color
+    $("#layer-modal #strokecolor-input").val(addressLayerProperties(layerID).lyrStrokeColor);
+
+    // Address layer properties layer stroke width
+    $("#layer-modal #strokewidth-input").val(addressLayerProperties(layerID).lyrStrokeWidth);
+
+    // Address layer properties layer fill color
+    $("#layer-modal #fillcolor-input").val(addressLayerProperties(layerID).lyrFillColor);
+
+    // Address layer properties layer opacity
+    $("#layer-modal #opacity-input").val(addressLayerProperties(layerID).lyrOpacity);
+
+    // Address layer properties layer min zoom
+    $("#layer-modal #minzoom-input").val(addressLayerProperties(layerID).lyrMinZoom);
+
+    // Address layer properties layer max zoom
+    $("#layer-modal #maxzoom-input").val(addressLayerProperties(layerID).lyrMaxZoom);
+
+    // Address layer properties point radius
+    $("#layer-modal #pointradius-input").val(addressLayerProperties(layerID).lyrPointRadius);
+
+    // Address layer properties label field
+    $("#layer-modal #fontlabelfield-input").val(addressLayerProperties(layerID).lyrLabelField);
+
+    // Address layer properties font family
+    $("#layer-modal #fontfamily-input").val(addressLayerProperties(layerID).lyrFontFamily);
+
+    // Address layer properties font fill color
+    $("#layer-modal #fontfillcolor-input").val(addressLayerProperties(layerID).lyrFontFillColor);
+
+    // Address layer properties font stroke color
+    $("#layer-modal #fontstrokecolor-input").val(addressLayerProperties(layerID).lyrFontStrokeColor);
+
+    // Address layer properties font stroke width
+    $("#layer-modal #fontstrokewidth-input").val(addressLayerProperties(layerID).lyrFontStrokeWidth);
+
+    // Address layer properties font weight
+    addressLayerProperties(layerID).lyrFontBold ? $("#layer-modal #fontweight-input option[value=bold]").prop("selected", "selected") : $("#layer-modal #fontweight-input option[value='']").prop("selected", "selected")
+
+    // Address layer properties font size
+    $("#layer-modal #fontsize-input").val(addressLayerProperties(layerID).lyrFontSize);
+
+    // Address layer properties font placement
+    $("#layer-modal #fontplacement-input").val(addressLayerProperties(layerID).lyrFontPlacement);
+
+    // Address layer properties font offsetY
+    $("#layer-modal #fontoffsety-input").val(addressLayerProperties(layerID).lyrFontOffsetY);
+
+    // Address layer update modal button
+    $(".update-layer").click(async function (event) {
+      event.preventDefault();
+      try {
+        const lyrName = $("#layer-modal #layername-input").val();
+        const lyrGeoServerName = $("#layer-modal #geoservername-input").val();
+        const lyrStrokeColor = $("#layer-modal #strokecolor-input").val();
+        const lyrStrokeWidth =  $("#layer-modal #strokewidth-input").val();
+        const lyrFillColor = $("#layer-modal #fillcolor-input").val();
+        const lyrOpacity = $("#layer-modal #opacity-input").val();
+        const lyrMinZoom = $("#layer-modal #minzoom-input").val();
+        const lyrMaxZoom = $("#layer-modal #maxzoom-input").val();
+        const lyrPointRadius = $("#layer-modal #pointradius-input").val();
+        const lyrLabelField = $("#layer-modal #fontlabelfield-input").val();
+        const lyrFontFamily = $("#layer-modal #fontfamily-input").val();
+        const lyrFontFillColor = $("#layer-modal #fontfillcolor-input").val();
+        const lyrFontStrokeColor = $("#layer-modal #fontstrokecolor-input").val();
+        const lyrFontStrokeWidth = $("#layer-modal #fontstrokewidth-input").val();
+        const lyrFontBold = $("#layer-modal #fontweight-input").val();
+        const lyrFontSize = $("#layer-modal #fontsize-input").val();
+        const lyrFontPlacement = $("#layer-modal #fontplacement-input").val();
+        const lyrFontOffsetY = $("#layer-modal #fontoffsety-input").val();
+
+        const req = await fetch("/maps");
+        const maps = await req.json();
+
+        const geoserverAddress = maps[0].geoserver.geoserverAddress;
+        const geoserverUser = maps[0].geoserver.geoserverUser;
+        const geoserverPassword = maps[0].geoserver.geoserverPassword;
+        const geoserverWorkspace = maps[0].geoserver.geoserverWorkspace;
+        const geoserverDatastore = maps[0].geoserver.geoserverDatastore;
+
+        // Request headers
+        const geoserverHeaders = new Headers({
+          "Authorization": 'Basic ' + btoa(geoserverUser + ":" + geoserverPassword)
+        });
+
+        // Request options
+        const geoserverRequestOptions = {
+          method: "GET",
+          headers: geoserverHeaders
+        };
+
+        const resLayer = await fetch(`${geoserverAddress}/rest/workspaces/${geoserverWorkspace}/datastores/${geoserverDatastore}/featuretypes/${lyrGeoServerName}.json`, geoserverRequestOptions);
+
+        // If error
+        if (!resLayer.ok) {
+          createAutoClosingAlert("Could not fetch the layers!", "#alert", 3000);
+        } else {
+          // No error
+          const responseLayer = await resLayer.json();
+          const featureType = responseLayer.featureType;
+          const attributes = featureType.attributes;
+          const lyrFields = attributes.attribute;
+
+          console.log(lyrFields);
+
+          const res = await fetch(`/admin/addressLayer/${layerID}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              lyrName, lyrGeoServerName, lyrStrokeColor,
+              lyrStrokeWidth, lyrFillColor, lyrOpacity,
+              lyrMinZoom, lyrMaxZoom, lyrPointRadius,
+              lyrFields, lyrLabelField, lyrFontFamily,
+              lyrFontFillColor, lyrFontStrokeColor, lyrFontStrokeWidth,
+              lyrFontBold, lyrFontSize, lyrFontPlacement,
+              lyrFontOffsetY
+            }),
+            headers: {"Content-Type": "application/json"}
+          })
+          const updatedLayer = await res.json();
+          console.log(updatedLayer);
+
+          if (res.status === 200) {
+            try {
+              createAutoClosingAlert("Layer is updated successfully!", "#alert", 3000);
+              $(".layer-update").modal("hide");
+              $("body .modal-backdrop").remove();
+
+              const res = await fetch("/admin/layers");
+              const layers = await res.json();
+
+              $(".list-group-layers").empty();
+
+              layers.forEach((layer, index) => {
+                $(".list-group-layers").append(generateLayersList(layer, index));
+              });
+
+              $("#pills-layers #layer-modal").remove();
+            } catch (e) {
+              console.log(e);
+            }
+          }
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    // Layer update close button
+    $("#layer-modal").on('hidden.bs.modal', function (e) {
+      $("#pills-home #layer-modal").remove();
+    })
+  })
+
+  // Layers page
+  $("#pills-layers-tab").click(async function(event) {
+    try {
+      const res = await fetch("/admin/layers");
+      const layers = await res.json();
+
+      $(".list-group-layers").empty();
+
+      layers.forEach((layer, index) => {
+        $(".list-group-layers").append(generateLayersList(layer, index));
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  // Layer delete
+  $(document).on("click", ".delete-layer", async function(event) {
+    event.preventDefault();
+    const layerID = this.id.split("-")[2];
+    $("#pills-layers").append(layerDeleteModal());
+    $("#modal-layer-delete").modal("show");
+
+    // Layer delete modal
+    $(".delete-layer-confirm").click(async function(event) {
+      try {
+        const res = await fetch(`/admin/layer/${layerID}`, {
+          method: "DELETE"
+        })
+
+        if (res.status === 200) {
+          createAutoClosingAlert("Layer is deleted successfully!", "#alert", 3000);
+          $("#pills-layers #modal-layer-delete").remove();
+          try {
+            const res = await fetch("/admin/layers");
+            const layers = await res.json();
+
+            $(".list-group-layers").empty();
+
+            layers.forEach((layer, index) => {
+              $(".list-group-layers").append(generateLayersList(layer, index));
+            });
+          } catch (e) {
+            console.log(e);
+          }
+          $("body .modal-backdrop").remove();
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  })
+
+  // Layer update modal
+  $(document).on("click", ".edit-layer", async function(event) {
+    $("#pills-layers").append(layerUpdateModal());
+
+    const geoserverComboBox = document.querySelector("#geoservername-input");
+    const geoserverLayers = await getGeoserverLayers();
+
+    $(geoserverComboBox).empty();
+
+    geoserverLayers.forEach((lyr) => {
+      $(geoserverComboBox).append(`<option value=${lyr.name}>${lyr.name}</option>`)
+    })
+
+    $("#layer-modal").modal("show");
+
+    const res_ = await fetch("/admin/layers");
+    const layers = await res_.json();
+
+    function layerProperties(layerID) {
+      return layers.find(({_id}) => _id === layerID);
+    }
+
+    const layerID = this.id.split("-")[3];
+
+    // Layer properties layer name
+    $("#layer-modal #layername-input").val(layerProperties(layerID).lyrName);
+
+    // Layer properties layer geoserver name
+    $("#layer-modal #geoservername-input").val(layerProperties(layerID).lyrGeoServerName);
+
+    // Layer properties layer stroke color
+    $("#layer-modal #strokecolor-input").val(layerProperties(layerID).lyrStrokeColor);
+
+    // Layer properties layer stroke width
+    $("#layer-modal #strokewidth-input").val(layerProperties(layerID).lyrStrokeWidth);
+
+    // Layer properties layer fill color
+    $("#layer-modal #fillcolor-input").val(layerProperties(layerID).lyrFillColor);
+
+    // Layer properties layer opacity
+    $("#layer-modal #opacity-input").val(layerProperties(layerID).lyrOpacity);
+
+    // Layer properties layer min zoom
+    $("#layer-modal #minzoom-input").val(layerProperties(layerID).lyrMinZoom);
+
+    // Layer properties layer max zoom
+    $("#layer-modal #maxzoom-input").val(layerProperties(layerID).lyrMaxZoom);
+
+    // Layer properties point radius
+    $("#layer-modal #pointradius-input").val(layerProperties(layerID).lyrPointRadius);
+
+    // Layer properties label field
+    $("#layer-modal #fontlabelfield-input").val(layerProperties(layerID).lyrLabelField);
+
+    // Layer properties font family
+    $("#layer-modal #fontfamily-input").val(layerProperties(layerID).lyrFontFamily);
+
+    // Layer properties font fill color
+    $("#layer-modal #fontfillcolor-input").val(layerProperties(layerID).lyrFontFillColor);
+
+    // Layer properties font stroke color
+    $("#layer-modal #fontstrokecolor-input").val(layerProperties(layerID).lyrFontStrokeColor);
+
+    // Layer properties font stroke width
+    $("#layer-modal #fontstrokewidth-input").val(layerProperties(layerID).lyrFontStrokeWidth);
+
+    // Layer properties font weight
+    layerProperties(layerID).lyrFontBold ? $("#layer-modal #fontweight-input option[value=bold]").prop("selected", "selected") : $("#layer-modal #fontweight-input option[value='']").prop("selected", "selected")
+
+    // Layer properties font size
+    $("#layer-modal #fontsize-input").val(layerProperties(layerID).lyrFontSize);
+
+    // Layer properties font placement
+    $("#layer-modal #fontplacement-input").val(layerProperties(layerID).lyrFontPlacement);
+
+    // Layer properties font offsetY
+    $("#layer-modal #fontoffsety-input").val(layerProperties(layerID).lyrFontOffsetY);
+
+    // Layer update modal button
+    $(".update-layer").click(async function (event) {
+      event.preventDefault();
+      try {
+        const lyrName = $("#layer-modal #layername-input").val();
+        const lyrGeoServerName = $("#layer-modal #geoservername-input option:selected").val();
+        const lyrStrokeColor = $("#layer-modal #strokecolor-input").val();
+        const lyrStrokeWidth =  $("#layer-modal #strokewidth-input").val();
+        const lyrFillColor = $("#layer-modal #fillcolor-input").val();
+        const lyrOpacity = $("#layer-modal #opacity-input").val();
+        const lyrMinZoom = $("#layer-modal #minzoom-input").val();
+        const lyrMaxZoom = $("#layer-modal #maxzoom-input").val();
+        const lyrPointRadius = $("#layer-modal #pointradius-input").val();
+        const lyrLabelField = $("#layer-modal #fontlabelfield-input").val();
+        const lyrFontFamily = $("#layer-modal #fontfamily-input").val();
+        const lyrFontFillColor = $("#layer-modal #fontfillcolor-input").val();
+        const lyrFontStrokeColor = $("#layer-modal #fontstrokecolor-input").val();
+        const lyrFontStrokeWidth = $("#layer-modal #fontstrokewidth-input").val();
+        const lyrFontBold = $("#layer-modal #fontweight-input").val();
+        const lyrFontSize = $("#layer-modal #fontsize-input").val();
+        const lyrFontPlacement = $("#layer-modal #fontplacement-input").val();
+        const lyrFontOffsetY = $("#layer-modal #fontoffsety-input").val();
+
+        const req = await fetch("/maps");
+        const maps = await req.json();
+
+        const geoserverAddress = maps[0].geoserver.geoserverAddress;
+        const geoserverUser = maps[0].geoserver.geoserverUser;
+        const geoserverPassword = maps[0].geoserver.geoserverPassword;
+        const geoserverWorkspace = maps[0].geoserver.geoserverWorkspace;
+        const geoserverDatastore = maps[0].geoserver.geoserverDatastore;
+
+        // Request headers
+        const geoserverHeaders = new Headers({
+          "Authorization": 'Basic ' + btoa(geoserverUser + ":" + geoserverPassword)
+        });
+
+        // Request options
+        const geoserverRequestOptions = {
+          method: "GET",
+          headers: geoserverHeaders
+        };
+
+        const resLayer = await fetch(`${geoserverAddress}/rest/workspaces/${geoserverWorkspace}/datastores/${geoserverDatastore}/featuretypes/${lyrGeoServerName}.json`, geoserverRequestOptions);
+
+        if (!resLayer.ok) {
+          createAutoClosingAlert("Could not fetch the layers!", "#alert", 3000);
+        } else {
+          // No error
+          const responseLayer = await resLayer.json();
+          const featureType = responseLayer.featureType;
+          const attributes = featureType.attributes;
+          const lyrFields = attributes.attribute;
+
+          const res = await fetch(`/admin/layer/${layerID}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              lyrName, lyrGeoServerName, lyrStrokeColor,
+              lyrStrokeWidth, lyrFillColor, lyrOpacity,
+              lyrMinZoom, lyrMaxZoom, lyrPointRadius,
+              lyrFields, lyrLabelField, lyrFontFamily,
+              lyrFontFillColor, lyrFontStrokeColor, lyrFontStrokeWidth,
+              lyrFontBold, lyrFontSize, lyrFontPlacement,
+              lyrFontOffsetY
+            }),
+            headers: {"Content-Type": "application/json"}
+          })
+          const updatedLayer = await res.json();
+          console.log(updatedLayer);
+
+          if (res.status === 200) {
+            try {
+              createAutoClosingAlert("Layer is updated successfully!", "#alert", 3000);
+              $(".layer-update").modal("hide");
+              $("body .modal-backdrop").remove();
+
+              const res = await fetch("/admin/layers");
+              const layers = await res.json();
+
+              $(".list-group-layers").empty();
+
+              layers.forEach((layer, index) => {
+                $(".list-group-layers").append(generateLayersList(layer, index));
+              });
+
+              $("#pills-layers #layer-modal").remove();
+            } catch (e) {
+              console.log(e);
+            }
+          }
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    // Layer update close button
+    $("#layer-modal").on('hidden.bs.modal', function (e) {
+      $("#pills-layers #layer-modal").remove();
+    })
+  })
+
+  // New layer modal filling the geoserver layer combobox
+  $(document).on("click", "#new-layer", async function(event) {
+    const geoserverComboBox = document.querySelector("#geoservername");
+    const geoserverLayers = await getGeoserverLayers();
+
+    $(geoserverComboBox).empty();
+
+    geoserverLayers.forEach((lyr) => {
+      $(geoserverComboBox).append(`<option value=${lyr.name}>${lyr.name}</option>`)
+    })
+
+    $(geoserverComboBox).prepend("<option disabled>Select a layer name</option>");
+    $(geoserverComboBox).find('option:contains("Select")').attr("selected", true);
+  })
+
+  // New layer modal
+  $("#layer-create-button").click(async function(event) {
+    event.preventDefault();
+    try {
+      const lyrName = $("#layername").val();
+      const lyrGeoServerName = $("#geoservername option:selected").val();
+      const lyrStrokeColor = $("#strokecolor").val();
+      const lyrStrokeWidth = $("#strokewidth").val();
+      const lyrFillColor = $("#fillcolor").val();
+      const lyrOpacity = $("#opacity").val();
+      const lyrMinZoom = $("#minzoom").val();
+      const lyrMaxZoom = $("#maxzoom").val();
+      const lyrPointRadius = $("#pointradius").val();
+      const lyrLabelField = $("#fontlabelfield").val();
+      const lyrFontFamily = $("#fontfamily").val();
+      const lyrFontFillColor = $("#fontfillcolor").val();
+      const lyrFontStrokeColor = $("#fontstrokecolor").val();
+      const lyrFontStrokeWidth = $("#fontstrokewidth").val();
+      const lyrFontBold = $("#fontweight option:selected").val();
+      const lyrFontSize = $("#fontsize").val();
+      const lyrFontPlacement = $("#fontplacement option:selected").val();
+      const lyrFontOffsetY = $("#fontoffsety").val();
+
+      const req = await fetch("/maps");
+      const maps = await req.json();
+
+      const geoserverAddress = maps[0].geoserver.geoserverAddress;
+      const geoserverUser = maps[0].geoserver.geoserverUser;
+      const geoserverPassword = maps[0].geoserver.geoserverPassword;
+      const geoserverWorkspace = maps[0].geoserver.geoserverWorkspace;
+      const geoserverDatastore = maps[0].geoserver.geoserverDatastore;
+
+      // Request headers
+      const geoserverHeaders = new Headers({
+        "Authorization": 'Basic ' + btoa(geoserverUser + ":" + geoserverPassword)
+      });
+
+      // Request options
+      const geoserverRequestOptions = {
+        method: "GET",
+        headers: geoserverHeaders
+      };
+
+      const resLayer = await fetch(`${geoserverAddress}/rest/workspaces/${geoserverWorkspace}/datastores/${geoserverDatastore}/featuretypes/${lyrGeoServerName}.json`, geoserverRequestOptions);
+
+      // If error
+      if (!resLayer.ok) {
+        createAutoClosingAlert("Could not fetch the layers!", "#alert", 3000);
+      } else {
+        // No error
+        const responseLayer = await resLayer.json();
+        const featureType = responseLayer.featureType;
+        const attributes = featureType.attributes;
+        const lyrFields = attributes.attribute;
+
+        const res = await fetch("/admin/layer", {
+          method: "POST",
+          body: JSON.stringify({
+            lyrName, lyrGeoServerName, lyrStrokeColor,
+            lyrStrokeWidth, lyrFillColor, lyrOpacity,
+            lyrMinZoom, lyrMaxZoom, lyrPointRadius,
+            lyrFields, lyrLabelField, lyrFontFamily,
+            lyrFontFillColor, lyrFontStrokeColor, lyrFontStrokeWidth,
+            lyrFontBold, lyrFontSize, lyrFontPlacement,
+            lyrFontOffsetY
+          }),
+          headers: {"Content-Type": "application/json"}
+        })
+        const createdLayer = await res.json();
+        console.log(createdLayer);
+
+        if (res.status === 200) {
+          console.log(res);
+          createAutoClosingAlert("Layer is created successfully!", "#alert", 3000);
+          $("#modal-new-layer").modal("hide");
+
+          $(".list-group-layers").empty();
+
+          const resLayers = await fetch("/admin/layers");
+          const layers = await resLayers.json();
+
+          layers.forEach((layer, index) => {
+            $(".list-group-layers").append(generateLayersList(layer, index));
+          });
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+</script>
+
+<%- include("partials/footer"); -%>

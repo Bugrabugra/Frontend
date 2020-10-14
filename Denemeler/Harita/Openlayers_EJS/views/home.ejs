@@ -1,0 +1,154 @@
+<%- include('partials/map_header'); -%>
+
+<div class="grid-container">
+
+  <div class="grid-1">
+    <div class="sidebar">
+      <div class="sign-container">
+
+        <!--Login menu-->
+        <!--Checks if the logged in user is an admin or not-->
+        <% if (user) { %>
+          <p class="welcome">Welcome, <%= user.email %></p>
+          <% if (user.admin) {%>
+            <li class="admin"><a class="btn btn-info" href="/admin"><i class="fas fa-user-cog"></i> Admin</a></li>
+          <% } %>
+          <li class="logout"><a class="btn btn-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+        <% } else { %>
+          <li class="login"><a class="btn btn-success" href="/login"><i class="fas fa-sign-in-alt"></i> Log in</a></li>
+          <li class="signup"><a class="btn btn-primary" href="/signup"><i class="fas fa-user-plus"></i> Sign up</a></li>
+        <% } %>
+      </div>
+
+      <div class="accordion" id="accordionExample">
+
+        <!--Layer manager menu-->
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Layer Manager
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body mainmenu-card-body" id="layer-manager">
+
+
+            </div>
+          </div>
+        </div>
+
+        <!--Address Query menu-->
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                Address Query
+              </button>
+            </h2>
+          </div>
+
+
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body mainmenu-card-body">
+              <form>
+                <div class="form-group">
+                  <!--City combobox-->
+                  <label for="exampleFormControlSelect1">City</label>
+                  <select class="form-control city" id="exampleFormControlSelect1">
+                    <option value="0" class="defaultCombo" selected disabled>Select a city</option>
+                  </select>
+
+                  <!--District combobox-->
+                  <label for="exampleFormControlSelect2">District</label>
+                  <select class="form-control district" id="exampleFormControlSelect2">
+                    <option value="0" class="defaultCombo" selected disabled>Select a district</option>
+                  </select>
+
+                  <!--Neighborhood combobox-->
+                  <label for="exampleFormControlSelect3">Neighborhood</label>
+                  <select class="form-control neighborhood" id="exampleFormControlSelect3">
+                    <option value="0" class="defaultCombo" selected disabled>Select a neighborhood</option>
+                  </select>
+
+                  <!--Street combobox-->
+                  <label for="exampleFormControlSelect4">Street</label>
+                  <select class="form-control street" id="exampleFormControlSelect4">
+                    <option value="0" class="defaultCombo" selected disabled>Select a street</option>
+                  </select>
+
+                  <!--Door combobox-->
+                  <label for="exampleFormControlSelect5">Door</label>
+                  <select class="form-control door" id="exampleFormControlSelect5">
+                    <option value="0" class="defaultCombo" selected disabled>Select a door number</option>
+                  </select>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <!--Parcel Query menu-->
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Parcel Query
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body mainmenu-card-body">
+              <form>
+                <div class="form-group">
+                  <!--District combobox-->
+                  <label for="parcel-district">District</label>
+                  <select class="form-control parcel-district">
+                    <option value="0" class="defaultCombo" selected disabled>Select a district</option>
+                  </select>
+
+                  <!--Neighborhood combobox-->
+                  <label for="parcel-neighborhood">Neighborhood</label>
+                  <select class="form-control parcel-neighborhood">
+                    <option value="0" class="defaultCombo" selected disabled>Select a neighborhood</option>
+                  </select>
+
+                  <!--Block inputbox-->
+                  <label for="block">Block</label>
+                  <input class="form-control" type="text" placeholder="Block" id="block">
+
+                  <!--Parcel inputbox-->
+                  <label for="parcel">Parcel</label>
+                  <input class="form-control" type="text" placeholder="Parcel" id="parcel">
+
+                  <!--Find parcel button-->
+                  <button class="btn btn-primary find-parcel" type="button">Find Parcel</button>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div id="map"></div>
+
+    <div class="accordion" id="info-accordion">
+    </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="map.js"></script>
+
+<%- include('partials/footer'); -%>

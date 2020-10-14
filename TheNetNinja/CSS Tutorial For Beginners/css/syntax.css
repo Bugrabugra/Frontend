@@ -1,0 +1,20 @@
+.button {
+  display: block;
+  width: 100px;
+  padding: 12px;
+  border: 1px solid #77aaaa;
+  font-family: Arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  background: #aadddd;
+  background: -webkit-linear-gradient(top, #aadddd 0%, #77aaaa 100%);
+}
+
+.button:hover {
+  background: #77aaaa;
+  background: -webkit-linear-gradient(bottom, #aadddd 0%, #77aaaa 100%);
+}

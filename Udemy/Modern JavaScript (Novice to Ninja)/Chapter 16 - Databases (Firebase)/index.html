@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <title>Databases</title>
+  </head>
+  <body>
+    <div class="container my-5">
+      <h2>Recipes</h2>
+      <ul>
+
+      </ul>
+      <form>
+        <label for="recipe">Add a new recipe:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="recipe" required>
+          <div class="input-group-append">
+            <input type="submit" value="add" class="btn btn-outline-secondary">
+          </div>
+        </div>
+      </form>
+      <button>Unsubscribe from changes</button>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBeeywmqUZxuvl8gjwFhInyJq7NGCi3geM",
+        authDomain: "udemy-modern-javascript-63af1.firebaseapp.com",
+        databaseURL: "https://udemy-modern-javascript-63af1.firebaseio.com",
+        projectId: "udemy-modern-javascript-63af1",
+        storageBucket: "udemy-modern-javascript-63af1.appspot.com",
+        messagingSenderId: "385812457676",
+        appId: "1:385812457676:web:9ee628545553df5a9afa69"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+    <script src="134%20-%20Unsubscribing.js"></script>
+  </body>
+</html>
