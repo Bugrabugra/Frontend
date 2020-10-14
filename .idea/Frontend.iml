@@ -11,5 +11,10 @@
     <orderEntry type="module" module-name="openlayers" />
     <orderEntry type="module" module-name="openlayers" />
     <orderEntry type="module" module-name="openlayers" />
+    <orderEntry type="library" name="@babel/standalone" level="application" />
+    <orderEntry type="library" name="bulma" level="application" />
+    <orderEntry type="library" name="materialize" level="application" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="react-dom" level="application" />
   </component>
 </module>
