@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Using CSS Grid</title>
+    <style>
+      body{
+        color: #fff;
+        font-family: 'Nunito Semibold', "Bungee Inline", sans-serif;
+        text-align: center;
+      }
+      #content{
+        display: grid;
+        /*grid-template-columns: 30% 20% 50%;*/
+        /*grid-template-columns: 1fr 2fr 1fr;*/
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(10, minmax(200px, auto));
+        grid-gap: 10px;
+        /*grid-auto-rows: minmax(200px, auto);*/
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      #content div{
+        background: #3bbced;
+        padding: 30px;
+      }
+      #content div:nth-child(even){
+        background: #777;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="content">
+
+      <div>1</div>
+      <div>2</div>
+      <div>3
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut cum, dolorem doloribus fuga fugiat
+             impedit iste iusto molestias nesciunt pariatur perspiciatis quam quis repudiandae sapiente ut vel veritatis
+             vitae?
+        </div></div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+
+    </div>
+
+  </body>
+</html>

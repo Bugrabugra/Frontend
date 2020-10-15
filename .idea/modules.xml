@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Frontend.iml" filepath="$PROJECT_DIR$/.idea/Frontend.iml" />
-      <module fileurl="file://$USER_HOME$/Documents/GitHub/openlayers/.idea/openlayers.iml" filepath="$USER_HOME$/Documents/GitHub/openlayers/.idea/openlayers.iml" />
     </modules>
   </component>
 </project>
