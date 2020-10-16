@@ -1,45 +1,47 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="UTF-8">
-        <title>OAuth Tutorials</title>
+        <meta charset="utf-8">
+        <title>Login</title>
         <style>
-            body {
+            body{
                 font-family: arial;
                 margin: 0;
             }
-
-            nav {
+            nav{
                 background: #ff5353;
                 padding: 20px 10px;
             }
-
-            nav ul {
+            nav ul{
                 max-width: 960px;
                 margin: 0 auto;
                 padding: 0;
             }
-
-            nav li {
+            nav li{
                 list-style-type: none;
                 display: inline-block;
                 margin: 0 10px 0 0;
             }
-
-            nav a {
+            nav a{
                 color: #fff;
                 font-size: 18px;
-                background: rgba(255, 255, 255, 0.2);
+                background: rgba(255,255,255,0.2);
                 text-decoration: none;
                 padding: 10px;
                 display: block;
             }
-
-            main, header {
+            main, header{
                 max-width: 960px;
                 margin: 30px auto;
                 padding: 0 10px;
                 color: #333;
+            }
+            .google-btn{
+                color: #fff;
+                text-decoration: none;
+                font-size: 18px;
+                padding: 10px;
+                background: #ff5353;
             }
         </style>
     </head>
@@ -47,22 +49,19 @@
         <nav>
             <ul>
                 <% if (user) { %>
-                <li><a href="/auth/logout">Logout</a></li>
+                    <li><a href="/auth/logout">Logout</a></li>
                 <% } else { %>
-                <li><a href="/auth/login">Login</a></li>
+                    <li><a href="/auth/login">Login</a></li>
                 <% } %>
                 <li><a href="/">Homepage</a></li>
                 <li><a href="/profile">Profile</a></li>
             </ul>
         </nav>
-
         <header>
-            <h1>Net Ninja OAuth Tutorials</h1>
-            <h2>Homepage</h2>
+            <h1>Welcome to your profile <%=user.username%></h1>
         </header>
-
         <main>
-            <p>Probably the best OAuth tutorials on the planet</p>
+            <img src="<%= user.thumbnail %>">
         </main>
     </body>
 </html>
