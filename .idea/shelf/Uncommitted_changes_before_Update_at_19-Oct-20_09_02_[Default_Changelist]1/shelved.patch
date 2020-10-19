@@ -1,0 +1,132 @@
+Index: .idea/Frontend.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"WEB_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/Denemeler/Openlayers/.cache\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/Denemeler/PostgreSQL/.cache\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"module\" module-name=\"openlayers\" />\r\n    <orderEntry type=\"module\" module-name=\"openlayers\" />\r\n    <orderEntry type=\"module\" module-name=\"openlayers\" />\r\n    <orderEntry type=\"module\" module-name=\"openlayers\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/Frontend.iml	(revision 2793bbc2dd6d796f80f75affa56592bcacd178a3)
++++ .idea/Frontend.iml	(date 1602717043671)
+@@ -11,5 +11,10 @@
+     <orderEntry type="module" module-name="openlayers" />
+     <orderEntry type="module" module-name="openlayers" />
+     <orderEntry type="module" module-name="openlayers" />
++    <orderEntry type="library" name="@babel/standalone" level="application" />
++    <orderEntry type="library" name="bulma" level="application" />
++    <orderEntry type="library" name="materialize" level="application" />
++    <orderEntry type="library" name="react" level="application" />
++    <orderEntry type="library" name="react-dom" level="application" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/Frontend.iml\" filepath=\"$PROJECT_DIR$/.idea/Frontend.iml\" />\r\n      <module fileurl=\"file://$USER_HOME$/Documents/GitHub/openlayers/.idea/openlayers.iml\" filepath=\"$USER_HOME$/Documents/GitHub/openlayers/.idea/openlayers.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision 2793bbc2dd6d796f80f75affa56592bcacd178a3)
++++ .idea/modules.xml	(date 1602717043707)
+@@ -3,7 +3,7 @@
+   <component name="ProjectModuleManager">
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/.idea/Frontend.iml" filepath="$PROJECT_DIR$/.idea/Frontend.iml" />
+-      <module fileurl="file://$USER_HOME$/Documents/GitHub/openlayers/.idea/openlayers.iml" filepath="$USER_HOME$/Documents/GitHub/openlayers/.idea/openlayers.iml" />
++      <module fileurl="file://$PROJECT_DIR$/../openlayers/.idea/openlayers.iml" filepath="$PROJECT_DIR$/../openlayers/.idea/openlayers.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: ../openlayers/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../openlayers/.idea/vcs.xml	(revision fd1fb94e23b5de98c2356137b450d02dcda83f0c)
++++ ../openlayers/.idea/vcs.xml	(date 1602706043510)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: ../openlayers/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"862f1907-35ad-41a0-9644-9f4d0cadae3c\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1hpFnm2hpgOlDNZGIDAHwkxWz29\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showExcludedFiles\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"862f1907-35ad-41a0-9644-9f4d0cadae3c\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1600700295515</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1600700295515</updated>\r\n      <workItem from=\"1600700297745\" duration=\"63000\" />\r\n      <workItem from=\"1600753691604\" duration=\"28000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"1\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"184\" y=\"86\" key=\"MergeDialog\" timestamp=\"1600700350637\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"184\" y=\"86\" key=\"MergeDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1600700350637\" />\r\n    <state x=\"672\" y=\"247\" key=\"MultipleFileMergeDialog\" timestamp=\"1600700350637\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"672\" y=\"247\" key=\"MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1600700350637\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../openlayers/.idea/workspace.xml	(revision fd1fb94e23b5de98c2356137b450d02dcda83f0c)
++++ ../openlayers/.idea/workspace.xml	(date 1602706043494)
+@@ -1,7 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="862f1907-35ad-41a0-9644-9f4d0cadae3c" name="Default Changelist" comment="" />
++    <list default="true" id="862f1907-35ad-41a0-9644-9f4d0cadae3c" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/../Frontend/.idea/Frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.idea/Frontend.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../Frontend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/.idea/vcs.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -14,13 +17,13 @@
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showExcludedFiles" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
++    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Frontend" />
+     <property name="nodejs_package_manager_path" value="npm" />
+   </component>
+   <component name="SvnConfiguration">
+@@ -35,13 +38,18 @@
+       <updated>1600700295515</updated>
+       <workItem from="1600700297745" duration="63000" />
+       <workItem from="1600753691604" duration="28000" />
++      <workItem from="1602706015535" duration="28000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="1" />
++    <option name="version" value="2" />
+   </component>
+   <component name="WindowStateProjectService">
++    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602706028523">
++      <screen x="0" y="0" width="1920" height="1040" />
++    </state>
++    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602706028523" />
+     <state x="184" y="86" key="MergeDialog" timestamp="1600700350637">
+       <screen x="0" y="0" width="1920" height="1040" />
+     </state>
+Index: ../openlayers/.idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/openlayers.iml\" filepath=\"$PROJECT_DIR$/.idea/openlayers.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../openlayers/.idea/modules.xml	(revision fd1fb94e23b5de98c2356137b450d02dcda83f0c)
++++ ../openlayers/.idea/modules.xml	(date 1602706043525)
+@@ -2,6 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
++      <module fileurl="file://$PROJECT_DIR$/../Frontend/.idea/Frontend.iml" filepath="$PROJECT_DIR$/../Frontend/.idea/Frontend.iml" />
+       <module fileurl="file://$PROJECT_DIR$/.idea/openlayers.iml" filepath="$PROJECT_DIR$/.idea/openlayers.iml" />
+     </modules>
+   </component>
