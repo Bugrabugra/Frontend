@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/Denemeler/Openlayers/.cache" />
       <excludeFolder url="file://$MODULE_DIR$/Denemeler/PostgreSQL/.cache" />
+      <excludeFolder url="file://$MODULE_DIR$/TheNetNinja/Vue Js 2 Tutorial/vuejs-playlist/27 - project/node_modules/vue/src/platforms" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
