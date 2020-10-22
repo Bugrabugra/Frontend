@@ -3,6 +3,7 @@
     <!--<add-blog></add-blog>-->
     <!--<show-blogs></show-blogs>-->
     <!--<list-blogs></list-blogs>-->
+    <app-header></app-header>
     <router-view></router-view>
   </div>
 </template>
@@ -11,13 +12,15 @@
   import addBlog from "./components/addBlog";
   import showBlogs from "./components/showBlogs";
   import listBlogs from "./components/listBlogs";
+  import header from "./components/header";
 
 
   export default {
     components: {
       "add-blog": addBlog,
       "show-blogs": showBlogs,
-      "list-blogs": listBlogs
+      "list-blogs": listBlogs,
+      "app-header": header
     },
     data () {
       return {
@@ -31,8 +34,8 @@
 </script>
 
 <style scoped>
-  body {
+  * {
     margin: 0;
-    font-family: "Nunito SemiBold", sans-serif;
+    font-family: "JetBrains Mono", sans-serif;
   }
 </style>

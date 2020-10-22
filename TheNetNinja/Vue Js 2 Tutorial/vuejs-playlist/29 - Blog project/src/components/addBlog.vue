@@ -66,12 +66,8 @@
     methods: {
       post() {
         this.$http.post(
-          "https://jsonplaceholder.typicode.com/posts",
-          {
-            title: this.blog.title,
-            body: this.blog.content,
-            userId: 1
-          }
+          "https://net-ninja-vue-74938.firebaseio.com/posts.json",
+          this.blog
         ).then(data => {
           console.log(data);
           this.submitted = true;
