@@ -16,5 +16,6 @@
     <orderEntry type="library" name="react-dom" level="application" />
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="module" module-name="openlayers" />
+    <orderEntry type="module" module-name="openlayers" />
   </component>
 </module>
