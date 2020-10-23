@@ -2,20 +2,50 @@
   <div id="product-list-one">
     <h2>Product List One</h2>
     <ul>
-      <li v-for="product in products">
+      <li v-for="product in saleProducts">
         <span class="name">{{product.name}}</span>
         <span class="price">{{product.price}}</span>
       </li>
     </ul>
+
+    <button v-on:click="reducePriceAction(4)">Reduce Price</button>
   </div>
 </template>
 
 <script>
+  import {mapActions} from "vuex";
+  import {mapGetters} from "vuex";
+
+
   export default {
     computed: {
       products() {
         return this.$store.state.products;
-      }
+      },
+      ...mapGetters([
+        "saleProducts"
+      ]),
+      // saleProducts() {
+      //   return this.$store.getters.saleProducts
+      // }
+    },
+    methods: {
+      ...mapActions([
+        "reducePriceAction"
+      ])
+      // reducePriceMethod(amount) {
+      //   // Store değiştirme yöntemleri
+      //   // 1- Doğrudan store'a müdahale ettik
+      //   // this.$store.state.products.forEach(product => {
+      //   //   product.price -= 1;
+      //   // })
+      //
+      //   // 2- Doğrudan mutation'ı çağırdık.
+      //   // this.$store.commit("reducePrice");
+      //
+      //   // 3- Doğrudan action'ı çağırdık (doğrusu bu)
+      //   this.$store.dispatch("reducePriceAction", amount);
+      // }
     }
   }
 </script>
