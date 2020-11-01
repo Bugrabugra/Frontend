@@ -18,9 +18,7 @@
 
   export default {
     name: "ShoppingCart",
-    data() {
-      return {}
-    },
+
     computed: {
       ...mapGetters("cart", {
         products: "cartProducts",
