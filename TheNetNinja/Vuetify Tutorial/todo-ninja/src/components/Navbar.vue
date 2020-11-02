@@ -1,19 +1,42 @@
 <template>
   <nav>
-    <v-toolbar flat app>
-      <v-app-bar-nav-icon class="grey--text" v-on:click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar flat app>
       <v-toolbar-title class="text-uppercase grey--text">
+        <v-app-bar-nav-icon class="grey--text" v-on:click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <span class="font-weight-light">Todo</span>
         <span>Ninja</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat class="grey--text">
+      <v-btn class="grey--text">
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
-    </v-toolbar>
+    </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer" class="primary">
+    <v-navigation-drawer
+        app
+        persistent
+        width="300"
+        hide-overlay
+        v-bind:mini-variant.sync="mini"
+        fixed
+        v-model="drawer"
+        class="primary"
+    >
+      <v-layout column align-center>
+        <v-flex class="mt-5">
+          <v-layout justify-center>
+            <v-avatar size="100">
+              <img src="/avatar-1.png" alt="none">
+            </v-avatar>
+          </v-layout>
+
+          <p class="white--text headline mt-1">
+            The Net Ninja
+          </p>
+        </v-flex>
+      </v-layout>
+
       <v-list>
         <v-list-item v-for="link in links" v-bind:key="link.text" router v-bind:to="link.route">
           <v-list-item-action>
@@ -35,6 +58,7 @@
     data() {
       return {
         drawer: false,
+        mini: false,
         links: [
           {icon: "mdi-view-dashboard", text: "Dashboard", route: "/"},
           {icon: "mdi-folder", text: "My Projects", route: "/projects"},
