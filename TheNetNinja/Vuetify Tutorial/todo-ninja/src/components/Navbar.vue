@@ -1,5 +1,10 @@
 <template>
   <nav>
+    <v-snackbar v-model="snackbar" timeout="3000" top color="success">
+      <span>Awesome! You added a new project</span>
+      <v-btn text color="white" v-on:click="snackbar = false">Close</v-btn>
+    </v-snackbar>
+
     <v-app-bar flat app>
       <v-toolbar-title class="text-uppercase grey--text">
         <v-app-bar-nav-icon class="grey--text" v-on:click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -56,7 +61,7 @@
         </v-flex>
 
         <v-flex class="mt-4 mb-3">
-          <Popup/>
+          <Popup v-on:eventProjectAdded="snackbar = true"/>
         </v-flex>
 
       </v-layout>
@@ -87,6 +92,7 @@
       return {
         drawer: false,
         mini: false,
+        snackbar: false,
         links: [
           {icon: "mdi-view-dashboard", text: "Dashboard", route: "/"},
           {icon: "mdi-folder", text: "My Projects", route: "/projects"},

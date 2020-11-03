@@ -20,7 +20,7 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn text class="success mx-0 mt-3" v-on:click="submit">
+          <v-btn v-bind:loading="loading" text class="success mx-0 mt-3" v-on:click="submit">
             <span>Add project</span>
             <v-icon>mdi-plus-circle-outline</v-icon>
           </v-btn>
@@ -32,6 +32,7 @@
 
 <script>
   import * as dayjs from 'dayjs';
+  import db from "../firestore/init";
   const advancedFormat = require('dayjs/plugin/advancedFormat')
   dayjs.extend(advancedFormat)
 
@@ -48,14 +49,30 @@
         rules: {
           short: v => v.length >= 3 || "Minimum length is 3 characters",
           long: v => v.length >= 10 || "Minimum length is 10 characters",
-        }
+        },
+        loading: false
       }
     },
 
     methods: {
       submit() {
         if (this.$refs.form.validate()) {
-          console.log(this.title, this.content)
+          this.loading = true;
+          const project = {
+            title: this.title,
+            content: this.content,
+            due: this.formattedDate,
+            person: "The Net Ninja",
+            status: "ongoing"
+          }
+
+          // Write to firestore
+          db.collection("projects").add(project)
+            .then(() => {
+              this.loading = false;
+              this.dialog = false;
+              this.$emit("eventProjectAdded")
+            })
         }
       }
     },
