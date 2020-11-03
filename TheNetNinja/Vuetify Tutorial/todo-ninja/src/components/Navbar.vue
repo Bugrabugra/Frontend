@@ -7,7 +7,26 @@
         <span>Ninja</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="grey--text">
+
+      <!--Dropdown menu-->
+      <div class="text-center">
+        <v-menu offset-y>
+          <template v-slot:activator="{on}">
+            <v-btn text color="grey" v-on="on">
+              <v-icon left>mdi-chevron-down</v-icon>
+              <span>Menu</span>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item v-for="(link, index) in links" v-bind:key="index" router v-bind:to="link.route">
+              <v-list-item-title>{{link.text}}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+
+      <v-btn text class="grey--text">
         <span>Sign Out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
@@ -35,6 +54,11 @@
             The Net Ninja
           </p>
         </v-flex>
+
+        <v-flex class="mt-4 mb-3">
+          <Popup/>
+        </v-flex>
+
       </v-layout>
 
       <v-list>
@@ -53,8 +77,12 @@
 </template>
 
 <script>
+  import Popup from "./Popup";
+
+
   export default {
     name: "Navbar",
+
     data() {
       return {
         drawer: false,
@@ -65,6 +93,10 @@
           {icon: "mdi-account", text: "Team", route: "/team"}
         ]
       }
+    },
+
+    components: {
+      "Popup": Popup
     }
   }
 </script>
