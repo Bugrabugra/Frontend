@@ -1,9 +1,8 @@
 <template>
   <div id="container">
-    <div id="mapContainer">
+    <div id="mapContainer" style="height:100vh">
 
     </div>
-
   </div>
   </template>
 
@@ -16,25 +15,36 @@
   export default {
     name: "Map",
 
+    data() {
+      return {
+        countries: {},
+        myMap: {}
+      }
+    },
+
     methods: {
       initMap() {
-        const map = L.map('mapContainer').setView([0, 0], 2);
+        this.myMap = L.map('mapContainer').setView([0, 0], 2);
 
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         // }).addTo(map);
 
-        const countries = new FeatureLayer({
+        this.countries = new FeatureLayer({
           url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries_(Generalized)/FeatureServer/0',
           simplifyFactor: 1
         });
 
-        // countries.addTo(map);
+        this.countries.addTo(this.myMap);
+      },
 
-        countries.query().where("COUNTRY='Brazil'").run(function(error, featureCollection){
+      findCountry(country) {
+        this.countries.query().where(`COUNTRY='${country}'`).run(function(error, featureCollection){
+          console.log(featureCollection);
           const featureGeoJSON = L.geoJSON(featureCollection);
-          featureGeoJSON.addTo(map);
-          map.fitBounds(featureGeoJSON.getBounds())
+          console.log(featureGeoJSON);
+          featureGeoJSON.addTo(this.myMap);
+          this.myMap.fitBounds(featureGeoJSON.getBounds())
         });
       }
     },
@@ -46,8 +56,5 @@
 </script>
 
 <style scoped>
-  #mapContainer {
-    width: 99vw;
-    height: 98vh;
-  }
+
 </style>
