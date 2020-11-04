@@ -29,7 +29,7 @@
 
     methods: {
       passProp(payload) {
-        this.$refs.refMap.findCountry(payload);
+        this.$refs.refMap.findCountry(payload, this.$refs.refMap.myMap);
       }
     }
   }
