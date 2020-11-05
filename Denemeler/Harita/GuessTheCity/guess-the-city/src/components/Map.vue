@@ -2,7 +2,7 @@
   <div id="container">
 
     <!--Popup result-->
-    <v-dialog persistent v-model="popupResult" width="350" style="z-index: 2">
+    <v-dialog v-if="valueCountdown === 0 || clickedCountry !== ''" persistent v-model="popupResult" width="350" style="z-index: 2">
       <v-card>
         <v-card-title class="headline grey" style="justify-content: center">
           Result
@@ -10,11 +10,11 @@
 
         <v-card-text class="mt-4" style="font-size: large">
           <div style="text-align: center">
-            <span v-if="clickedCountry === ''">You failed to click in {{timeLimit / 1000}} seconds! =(</span>
+            <span v-if="clickedCountry === '' && valueCountdown === 0">You failed to click in {{timeLimit / 1000}} seconds! =(</span>
             <span v-else>
               You clicked to:
               <br>
-              <span style="font-weight: bolder">{{clickedCountry}}</span>.
+              <span style="font-weight: bolder">{{clickedCountry}}</span>
                 <br> <p></p>
               <span v-if="correctCountry === clickedCountry">And it is correct! =)</span>
               <span v-else>However the correct answer was: <br>
@@ -47,7 +47,7 @@
           <div style="text-align: center">
             Find:
             <br>
-            <span style="font-weight: bolder">{{correctCountry}}</span>.
+            <span style="font-weight: bolder">{{correctCountry}}</span>
           </div>
         </v-card-text>
       </v-card>
@@ -68,19 +68,19 @@
     <!--Map-->
     <div id="mapContainer" style="height:100vh; z-index: 1">
       <!--Countdown-->
-      <v-container v-model="popupCountdown" style="opacity: 1">
+      <v-container v-model="popupCountdown">
         <v-progress-linear
-          absolute
-          bottom
-          persistent
-          color="orange accent-4"
-          height="20"
-          class="ma-auto"
-          background-color="#fff"
-          v-bind:value="(valueCountdown / (timeLimit / 1000)) * 100"
+            absolute
+            bottom
+            persistent
+            color="orange accent-4"
+            height="30"
+            class="ma-auto"
+            background-color="#fff"
+            v-bind:value="(valueCountdown / (timeLimit / 1000)) * 100"
         >
           <template>
-            <strong>{{Math.ceil(valueCountdown)}}</strong>
+            <strong style="font-size: 20px; font-family: Consolas">{{Math.ceil(valueCountdown)}}</strong>
           </template>
         </v-progress-linear>
       </v-container>
@@ -113,7 +113,7 @@
         correctCountry: "",
         clickedCountry: "",
         loading: false,
-        timeLimit: 5000,
+        timeLimit: 10000,
         valueCountdown: null
       }
     },
@@ -149,13 +149,13 @@
 
       clickCountry(e) {
         this.loading = true;
-        this.countries.query()["intersects"](e.latlng).run((error, featureCollection) => {
+        this.countries.query()["intersects"](e.latlng).run(async (error, featureCollection) => {
           if (error) {
             console.log("no country")
             this.loading = false;
           } else {
             this.loading = false;
-            this.clickedCountry = featureCollection.features[0].properties["COUNTRY"];
+            this.clickedCountry = await featureCollection.features[0].properties["COUNTRY"];
             if (this.clickedCountry) {
               this.popupResult = true;
             }
@@ -183,8 +183,7 @@
         this.popupCountdown = true;
 
         const timer = () => {
-          if (this.valueCountdown !== 1 && this.popupQuestion !== true && this.popupResult !== true) {
-            console.log(this.valueCountdown, this.popupQuestion)
+          if (this.valueCountdown !== 0 && this.popupQuestion !== true && this.popupResult !== true) {
             this.valueCountdown -= 1;
           } else {
             this.popupCountdown = false;
@@ -207,6 +206,21 @@
       this.initMap();
       this.generateRandomCountry()
       this.popupResult = false;
+    },
+
+    watch: {
+      popupResult(visible) {
+        if (visible) {
+          console.log("**********************************");
+          console.log("popupResult: ", this.popupResult),
+          console.log("popupQuestion: ", this.popupQuestion),
+          console.log("popupCountdown: ", this.popupCountdown),
+          console.log("correctCountry: ", this.correctCountry),
+          console.log("clickedCountry: ", this.clickedCountry),
+          console.log("loading: ", this.loading),
+          console.log("valueCountdown: ", this.valueCountdown)
+        }
+      }
     }
   }
 </script>

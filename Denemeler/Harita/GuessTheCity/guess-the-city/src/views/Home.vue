@@ -2,12 +2,12 @@
   <div class="home">
     <v-row no-gutters>
       <!--Menu-->
-      <v-col cols="2">
-        <Menu v-on:eventCountrySearch="passProp"/>
-      </v-col>
+      <!--<v-col cols="2">-->
+      <!--  <Menu v-on:eventCountrySearch="passProp"/>-->
+      <!--</v-col>-->
 
       <!--Map-->
-      <v-col cols="10">
+      <v-col cols="12">
         <Map ref="referenceMap"/>
       </v-col>
     </v-row>
@@ -16,7 +16,7 @@
 
 <script>
   import Map from "../components/Map";
-  import Menu from "../components/Menu";
+  // import Menu from "../components/Menu";
 
 
   export default {
@@ -24,13 +24,13 @@
 
     components: {
       "Map": Map,
-      "Menu": Menu
+      // "Menu": Menu
     },
 
     methods: {
-      passProp(payload) {
-        this.$refs.referenceMap.zoomToCountry(payload);
-      }
+      // passProp(payload) {
+      //   this.$refs.referenceMap.zoomToCountry(payload);
+      // }
     }
   }
 </script>
