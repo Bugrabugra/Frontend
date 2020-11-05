@@ -8,7 +8,7 @@
 
       <!--Map-->
       <v-col cols="10">
-        <Map ref="refMap"/>
+        <Map ref="referenceMap"/>
       </v-col>
     </v-row>
   </div>
@@ -29,7 +29,7 @@
 
     methods: {
       passProp(payload) {
-        this.$refs.refMap.findCountry(payload, this.$refs.refMap.myMap);
+        this.$refs.referenceMap.zoomToCountry(payload);
       }
     }
   }
