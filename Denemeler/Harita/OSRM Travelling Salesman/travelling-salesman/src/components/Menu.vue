@@ -44,7 +44,15 @@
       </v-stepper-step>
 
       <v-stepper-content step="2">
-        <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
+        <v-card color="grey lighten-3" class="mb-12" height="200px">
+          <v-card-text v-if="result">
+            <div>Sorgu sonucu: {{result.code}}</div>
+            <div>Yolculuk</div>
+            <!--<div>Toplam mesafe: {{result.trips[0].distance}}</div>-->
+            <!--<div>Toplam süre: {{result.trips[0].duration}}</div>-->
+          </v-card-text>
+
+        </v-card>
         <v-btn color="yellow lighten-1" class="ma-2" v-on:click="solve">Çöz</v-btn>
         <v-btn v-if="solved" color="green lighten-2" v-on:click="e6 = 3" class="ma-2">Devam</v-btn>
         <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">İptal</v-btn>
@@ -76,26 +84,18 @@
   export default {
     name: "Menu",
 
-    props: ["coordinates"],
+    props: ["coordinates", "Result"],
 
     data() {
       return {
         e6: 1,
         coordinate: [],
-        solved: false
+        solved: false,
+        result: {}
       }
     },
 
     methods: {
-      // deleteCoordinate(item) {
-      //   this.coordinate = item;
-      //   this.coordinateList = this.coordinates.filter(coor => {
-      //     return coor !== this.coordinate;
-      //   })
-      //
-      //   // this.$emit("eventDeleteCoordinate", this.coordinate);
-      // },
-
       shortenCoordinate(coordinate) {
         return Number.parseFloat(coordinate).toFixed(4);
       },
@@ -104,6 +104,14 @@
         this.$emit("eventSolve");
       }
     },
+
+    watch: {
+      Result() {
+        this.solved = true;
+        this.result = this.Result;
+        console.log(this.result)
+      }
+    }
 
   }
 </script>

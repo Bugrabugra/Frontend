@@ -5,6 +5,7 @@
         <v-col cols="3">
           <Menu
               v-bind:coordinates="arrayCoordinates"
+              v-bind:Result="solveResult"
               v-on:eventSolve="startSolve"
           />
         </v-col>
@@ -13,6 +14,7 @@
           <Map
               v-on:eventCoordinateAdded="updateCoordinates"
               v-bind:eventSolve="solve"
+              v-on:eventSolved="actionSolved"
           />
         </v-col>
 
@@ -38,7 +40,8 @@
       return {
         arrayCoordinates: [],
         coordinatesToBeDeleted: [],
-        solve: false
+        solve: false,
+        solveResult: {}
       }
     },
 
@@ -53,6 +56,10 @@
       // }
       startSolve() {
         this.solve = true;
+      },
+
+      actionSolved(payload) {
+        this.solveResult = payload;
       }
     }
   }
