@@ -8,7 +8,7 @@
 
       <v-stepper-content step="1">
         <!--<v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>-->
-        <v-expansion-panels style="max-height: 300px; overflow-x: hidden;">
+        <v-expansion-panels style="max-height: 300px; overflow-x: hidden;" class="mb-4">
           <v-expansion-panel
               readonly
               v-for="(coordinatePair,i) in coordinates"
@@ -26,17 +26,11 @@
                   <b> Enlem:</b> {{shortenCoordinate(coordinatePair[1])}}
                 </div>
               </v-container>
-
-              <!--<template v-slot:actions>-->
-              <!--  <v-icon color="grey" class="pr-2">-->
-              <!--    mdi-trash-can-outline-->
-              <!--  </v-icon>-->
-              <!--</template>-->
             </v-expansion-panel-header>
           </v-expansion-panel>
         </v-expansion-panels>
 
-        <v-btn color="green lighten-2" v-on:click="e6 = 2" class="ma-2">Devam</v-btn>
+        <v-btn v-if="coordinates.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2">Devam</v-btn>
       </v-stepper-content>
 
       <v-stepper-step v-bind:complete="e6 > 2" step="2">
@@ -44,18 +38,27 @@
       </v-stepper-step>
 
       <v-stepper-content step="2">
-        <v-card color="grey lighten-3" class="mb-12" height="200px">
-          <v-card-text v-if="result">
-            <div>Sorgu sonucu: {{result.code}}</div>
-            <div>Yolculuk</div>
-            <!--<div>Toplam mesafe: {{result.trips[0].distance}}</div>-->
-            <!--<div>Toplam süre: {{result.trips[0].duration}}</div>-->
+        <v-card color="grey lighten-3" class="mb-4" height="150px">
+          <v-card-text style="font-size: 1em">
+            <div><b>Sorgu sonucu:</b> {{result.code}}</div>
+            <div v-if="result.trips"><b>Toplam mesafe:</b> {{result.trips[0].distance}}</div>
+            <div v-if="result.trips"><b>Toplam süre:</b> {{result.trips[0].duration}}</div>
+            <div v-if="result.trips"><b>Segment sayısı:</b> {{result.trips[0].legs.length}}</div>
+            <div v-if="result.trips"><b>Ağırlık:</b> {{result.trips[0].weight}}</div>
+            <v-progress-linear
+                :active="loading"
+                :indeterminate="loading"
+                absolute
+                bottom
+                color="deep-purple accent-4"
+            ></v-progress-linear>
           </v-card-text>
 
         </v-card>
-        <v-btn color="yellow lighten-1" class="ma-2" v-on:click="solve">Çöz</v-btn>
+
+        <v-btn v-if="!solved" color="yellow lighten-1" class="ma-2" v-on:click="solve">Çöz</v-btn>
         <v-btn v-if="solved" color="green lighten-2" v-on:click="e6 = 3" class="ma-2">Devam</v-btn>
-        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">İptal</v-btn>
+        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
       </v-stepper-content>
 
       <v-stepper-step v-bind:complete="e6 > 3" step="3">
@@ -63,24 +66,34 @@
       </v-stepper-step>
 
       <v-stepper-content step="3">
-        <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
+        <v-card color="grey lighten-3" class="mb-4">
+          <v-card-text>
+            <v-treeview
+                v-if="result.waypoints"
+                dense
+                :items="fillWaypoints"
+            ></v-treeview>
+          </v-card-text>
+        </v-card>
         <v-btn color="green lighten-2" v-on:click="e6 = 4" class="ma-2">Devam</v-btn>
-        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">İptal</v-btn>
+        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
       </v-stepper-content>
 
       <v-stepper-step step="4">
         Sonuçları dışarı aktarabilirsiniz
       </v-stepper-step>
       <v-stepper-content step="4">
-        <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-        <v-btn block color="blue lighten-3" v-on:click="e6 = 1" class="ma-2">Dışarı aktar</v-btn>
-        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">İptal</v-btn>
+        <v-btn color="blue lighten-3" v-on:click="exportFile" class="ma-2">Dışarı aktar</v-btn>
+        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
       </v-stepper-content>
     </v-stepper>
   </div>
 </template>
 
 <script>
+  import {saveAs} from "file-saver";
+
+
   export default {
     name: "Menu",
 
@@ -91,7 +104,9 @@
         e6: 1,
         coordinate: [],
         solved: false,
-        result: {}
+        result: {},
+        loading: false,
+        waypoints: []
       }
     },
 
@@ -102,17 +117,50 @@
 
       solve() {
         this.$emit("eventSolve");
+        this.loading = true;
+      },
+
+      exportFile() {
+        const fileName = "result.json";
+        // Create a blob of the data
+        const fileToSave = new Blob([JSON.stringify(this.result)], {
+          type: 'application/json',
+          name: fileName
+        });
+
+        // Save the file
+        saveAs(fileToSave, fileName);
       }
     },
 
     watch: {
       Result() {
         this.solved = true;
+        this.loading = false;
         this.result = this.Result;
+        this.fillWaypoints;
         console.log(this.result)
       }
-    }
+    },
 
+    computed: {
+      fillWaypoints() {
+        let counter = 0;
+        this.result.waypoints.forEach((wp, index) => {
+          this.waypoints.push({
+            id: counter++,
+            name: `Güzergah-${index+1}`,
+            children: [
+              {
+                id: counter++,
+                name: wp.name ? wp.name : "*Bilinmiyor*"
+              }
+            ]
+          })
+        })
+        return this.waypoints;
+      }
+    }
   }
 </script>
 

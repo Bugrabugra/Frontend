@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "file-saver": "^2.0.2",
+    "firebase": "^8.0.1",
     "ol": "^6.4.3",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11"

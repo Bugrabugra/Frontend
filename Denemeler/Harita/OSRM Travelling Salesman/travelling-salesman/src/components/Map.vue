@@ -34,7 +34,7 @@
           route: new Style({
             stroke: new Stroke({
               width: 6,
-              color: [40, 40, 40, 0.8]
+              color: [0, 181, 207, 0.8]
             })
           }),
           icon: new Style({
@@ -61,8 +61,8 @@
             })
           ],
           view: new View({
-            center: [0, 0],
-            zoom: 0
+            center: [3226072.3324407726, 5011270.775279443],
+            zoom: 10
           })
         });
 
