@@ -4,17 +4,19 @@
       <v-row no-gutters>
         <v-col cols="3">
           <Menu
+              v-on:eventSolve="startSolve"
+              v-on:eventStartAnimation="startAnimation"
               v-bind:coordinates="arrayCoordinates"
               v-bind:Result="solveResult"
-              v-on:eventSolve="startSolve"
           />
         </v-col>
 
         <v-col cols="9">
           <Map
               v-on:eventCoordinateAdded="updateCoordinates"
-              v-bind:eventSolve="solve"
               v-on:eventSolved="actionSolved"
+              v-bind:eventSolve="solve"
+              v-bind:animation="animat"
           />
         </v-col>
 
@@ -41,7 +43,8 @@
         arrayCoordinates: [],
         coordinatesToBeDeleted: [],
         solve: false,
-        solveResult: {}
+        solveResult: {},
+        animat: {}
       }
     },
 
@@ -60,6 +63,14 @@
 
       actionSolved(payload) {
         this.solveResult = payload;
+      },
+
+      startAnimation(payload) {
+        if (payload) {
+          this.animat = {speed: "fast"};
+        } else {
+          this.animat = {speed: "slow"};
+        }
       }
     }
   }

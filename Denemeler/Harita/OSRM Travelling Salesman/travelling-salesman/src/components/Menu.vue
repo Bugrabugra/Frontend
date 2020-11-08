@@ -75,7 +75,15 @@
             ></v-treeview>
           </v-card-text>
         </v-card>
+        <v-switch
+            class="ml-4"
+            color="orange"
+            v-model="switch_"
+            dense
+            v-bind:label="`Hızlı animasyon?`"
+        ></v-switch>
         <v-btn color="green lighten-2" v-on:click="e6 = 4" class="ma-2">Devam</v-btn>
+        <v-btn color="orange lighten-2" v-on:click="startAnimation" class="ma-2">Oynat</v-btn>
         <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
       </v-stepper-content>
 
@@ -106,7 +114,8 @@
         solved: false,
         result: {},
         loading: false,
-        waypoints: []
+        waypoints: [],
+        switch_: false
       }
     },
 
@@ -130,6 +139,10 @@
 
         // Save the file
         saveAs(fileToSave, fileName);
+      },
+
+      startAnimation() {
+        this.$emit("eventStartAnimation", this.switch_);
       }
     },
 

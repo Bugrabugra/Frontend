@@ -12,12 +12,13 @@
   import {fromLonLat} from "ol/proj";
   import VectorSource from 'ol/source/Vector';
   import VectorLayer from 'ol/layer/Vector';
-  import {Style, Stroke, Icon} from 'ol/style';
+  import {Style, Stroke, Icon, Circle, Fill} from 'ol/style';
   import {transform} from 'ol/proj';
   import Feature from "ol/Feature";
   import Point from "ol/geom/Point";
   import myIcon from "../../public/red-map-pin-with-shadow.png"
   import Polyline from "ol/format/Polyline";
+  import {getVectorContext} from 'ol/render';
 
 
   export default {
@@ -45,11 +46,18 @@
             })
           })
         },
-        queryString: ""
+        queryString: "",
+        animationSpeed: 5,
+        animating: false,
+        speed: null,
+        now: null,
+        routeLength: 0,
+        geoMarker: null,
+        routeCoords: null
       }
     },
 
-    props: ["coordDel", "eventSolve"],
+    props: ["coordDel", "eventSolve", "animation"],
 
     methods: {
       initMap() {
@@ -130,16 +138,91 @@
                   dataProjection: 'EPSG:4326',
                   featureProjection: 'EPSG:3857'
                 });
+                _this.routeCoords = route.getCoordinates();
+                _this.routeLength = _this.routeCoords.length;
+
+                _this.geoMarker = (new Feature(
+                  {
+                    type: 'geoMarker',
+                    geometry: new Point(_this.routeCoords[0]),
+                  }
+                ));
+
                 const feature = new Feature({
                   type: 'route',
                   geometry: route
                 });
                 feature.setStyle(_this.styles.route);
                 _this.vectorSource.addFeature(feature);
+                _this.vectorSource.addFeature(_this.geoMarker);
+
+                // _this.startAnimation();
               }
             });
           });
         });
+      },
+
+      moveFeature(event) {
+        const styles = {
+          'geoMarker': new Style({
+            image: new Circle({
+              radius: 7,
+              fill: new Fill({color: 'black'}),
+              stroke: new Stroke({
+                color: 'white',
+                width: 2,
+              }),
+            }),
+          }),
+        };
+
+        const vectorContext = getVectorContext(event);
+        const frameState = event.frameState;
+
+        if (this.animating) {
+          const elapsedTime = frameState.time - this.now;
+          // here the trick to increase speed is to jump some indexes
+          // on lineString coordinates
+          const index = Math.round((this.speed * elapsedTime) / 1000);
+
+          if (index >= this.routeLength) {
+            this.stopAnimation(true);
+            return;
+          }
+
+          const currentPoint = new Point(this.routeCoords[index]);
+          const feature = new Feature(currentPoint);
+          vectorContext.drawFeature(feature, styles.geoMarker);
+        }
+        // tell OpenLayers to continue the postrender animation
+        this.map.render();
+      },
+
+      startAnimation() {
+        if (this.animating) {
+          this.stopAnimation(false);
+        } else {
+          this.animating = true;
+          this.now = new Date().getTime();
+          this.speed = this.animationSpeed;
+          // hide geoMarker
+          this.geoMarker.setStyle(null);
+          // just in case you pan somewhere else
+          this.vectorLayer.on('postrender', this.moveFeature);
+          this.map.render();
+        }
+      },
+
+      stopAnimation(ended) {
+        this.animating = false;
+
+        // if animation cancelled set the marker at the beginning
+        const coord = ended ? this.routeCoords[this.routeLength - 1] : this.routeCoords[0];
+        const geometry = this.geoMarker.getGeometry();
+        geometry.setCoordinates(coord);
+        //remove listener
+        this.vectorLayer.un('postrender', this.moveFeature);
       },
 
       async asyncForEach(array, callback) {
@@ -171,6 +254,16 @@
 
       eventSolve() {
         this.solve();
+      },
+
+      animation() {
+        if (this.animation.speed === "fast") {
+          this.animationSpeed = 20;
+          this.startAnimation();
+        } else {
+          this.animationSpeed = 5;
+          this.startAnimation();
+        }
       }
     },
 
