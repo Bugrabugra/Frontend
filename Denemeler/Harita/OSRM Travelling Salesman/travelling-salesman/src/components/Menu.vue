@@ -1,5 +1,10 @@
 <template>
   <div class="menu">
+    <v-content class="ml-4">
+      <h1>Akıllı Şehir Teknolojileri</h1>
+      <h2>Atık Optimizasyonu</h2>
+    </v-content>
+
     <v-stepper v-model="e6" vertical>
       <v-stepper-step v-bind:complete="e6 > 1" step="1">
         Harita üzerinde durakları seçiniz
@@ -30,7 +35,7 @@
           </v-expansion-panel>
         </v-expansion-panels>
 
-        <v-btn v-if="coordinates.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2">Devam</v-btn>
+        <v-btn v-if="coordinates.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
       </v-stepper-content>
 
       <v-stepper-step v-bind:complete="e6 > 2" step="2">
@@ -56,9 +61,9 @@
 
         </v-card>
 
-        <v-btn v-if="!solved" color="yellow lighten-1" class="ma-2" v-on:click="solve">Çöz</v-btn>
-        <v-btn v-if="solved" color="green lighten-2" v-on:click="e6 = 3" class="ma-2">Devam</v-btn>
-        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
+        <v-btn v-if="!solved" color="yellow lighten-1" class="ma-2" v-on:click="solve"><span class="pr-1"><v-icon>mdi-cogs</v-icon></span>Çöz</v-btn>
+        <v-btn v-if="solved" color="green lighten-2" v-on:click="e6 = 3" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
+        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2"><span><v-icon>mdi-chevron-left</v-icon></span>Geri</v-btn>
       </v-stepper-content>
 
       <v-stepper-step v-bind:complete="e6 > 3" step="3">
@@ -82,17 +87,17 @@
             dense
             v-bind:label="`Hızlı animasyon?`"
         ></v-switch>
-        <v-btn color="green lighten-2" v-on:click="e6 = 4" class="ma-2">Devam</v-btn>
-        <v-btn color="orange lighten-2" v-on:click="startAnimation" class="ma-2">Oynat</v-btn>
-        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
+        <v-btn color="green lighten-2" v-on:click="e6 = 4" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
+        <v-btn color="orange lighten-2" v-on:click="startAnimation" class="ma-2"><span><v-icon>mdi-play</v-icon></span>Oynat</v-btn>
+        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2"><span><v-icon>mdi-chevron-left</v-icon></span>Geri</v-btn>
       </v-stepper-content>
 
       <v-stepper-step step="4">
         Sonuçları dışarı aktarabilirsiniz
       </v-stepper-step>
       <v-stepper-content step="4">
-        <v-btn color="blue lighten-3" v-on:click="exportFile" class="ma-2">Dışarı aktar</v-btn>
-        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2">Geri</v-btn>
+        <v-btn color="blue lighten-3" v-on:click="exportFile" class="ma-2"><span class="pr-1"><v-icon>mdi-export</v-icon></span>Dışarı aktar</v-btn>
+        <v-btn color="pink lighten-2" v-on:click="e6--" class="ma-2"><span><v-icon>mdi-chevron-left</v-icon></span>Geri</v-btn>
       </v-stepper-content>
     </v-stepper>
   </div>
