@@ -31,6 +31,7 @@
         urlOSRMNearest: '//router.project-osrm.org/nearest/v1/driving/',
         urlOSRMTrip: '//router.project-osrm.org/trip/v1/driving/',
         vectorSource: new VectorSource(),
+        vectorSource2: new VectorSource(),
         styles: {
           route: new Style({
             stroke: new Stroke({
@@ -87,6 +88,7 @@
 
         this.map.on("click", this.clickOnMap);
         this.map.addLayer(this.vectorLayer);
+        this.map.addLayer(this.vectorLayerSegments);
       },
 
       async clickOnMap(e) {
@@ -146,6 +148,7 @@
               console.log(json)
               _this.$emit("eventSolved", json);
 
+              // Route
               const route = new Polyline({
                 factor: 1e5
               }).readGeometry(json.trips[0].geometry, {
@@ -170,7 +173,17 @@
               _this.vectorSource.addFeature(feature);
               _this.vectorSource.addFeature(_this.geoMarker);
 
-              // _this.startAnimation();
+              // Legs
+              json.trips[0].legs.forEach(leg => {
+                leg.steps.forEach(step => {
+                  console.log(step.name)
+                })
+              })
+              // const leg = new Polyline({
+              //   factor: 1e5
+              // }).readGeometry(json.)
+
+
             }
           });
           });
@@ -262,6 +275,12 @@
       vectorLayer() {
         return new VectorLayer({
           source: this.vectorSource
+        })
+      },
+
+      vectorLayerSegments() {
+        return new VectorLayer({
+          source: this.vectorSource2
         })
       }
     }

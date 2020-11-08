@@ -1,9 +1,9 @@
 <template>
   <div class="menu">
-    <v-content class="ml-4">
+    <v-main class="ml-4">
       <h1>Akıllı Şehir Teknolojileri</h1>
       <h2>Atık Optimizasyonu</h2>
-    </v-content>
+    </v-main>
 
     <v-stepper v-model="e6" vertical>
       <v-stepper-step v-bind:complete="e6 > 1" step="1">
@@ -19,8 +19,12 @@
               v-for="(coordinatesName, i) in coordinatesNames"
               :key="i"
           >
-            <v-expansion-panel-header color="grey lighten-3" class="pa-1">
+            <v-expansion-panel-header hide-actions color="grey lighten-3" class="pa-1">
               <v-container class="pa-0 ma-0">
+                <div>
+                  <v-icon color="grey">mdi-routes</v-icon>
+                  <b> Sokak:</b> {{coordinatesName.nearestName}}
+                </div>
                 <div>
                   <v-icon color="grey">mdi-longitude</v-icon>
                   <b> Boylam:</b> {{shortenCoordinate(coordinatesName.nearestCoordinates[0])}}
@@ -29,10 +33,6 @@
                 <div>
                   <v-icon color="grey">mdi-latitude</v-icon>
                   <b> Enlem:</b> {{shortenCoordinate(coordinatesName.nearestCoordinates[1])}}
-                </div>
-                <div>
-                  <v-icon color="grey">mdi-routes</v-icon>
-                  <b> Sokak:</b> {{coordinatesName.nearestName}}
                 </div>
               </v-container>
             </v-expansion-panel-header>
@@ -152,6 +152,15 @@
 
       startAnimation() {
         this.$emit("eventStartAnimation", this.switch_);
+      },
+
+      fillSteps(array) {
+        const childrenArray = [];
+        let _id = 1000;
+        array.steps.forEach(step => {
+          childrenArray.push({id: _id++, name: step.name ? step.name : "*Bilinmiyor*"})
+        })
+        return childrenArray;
       }
     },
 
@@ -167,20 +176,22 @@
     computed: {
       fillWaypoints() {
         let counter = 0;
-        this.result.waypoints.forEach((wp, index) => {
+        this.result.trips[0].legs.forEach((leg, index) => {
           this.waypoints.push({
             id: counter++,
             name: `Güzergah-${index+1}`,
             children: [
               {
                 id: counter++,
-                name: wp.name ? wp.name : "*Bilinmiyor*"
+                name: leg.summary ? leg.summary : "*Bilinmiyor*",
+                children: this.fillSteps(leg)
               }
             ]
           })
         })
+        console.log(this.waypoints)
         return this.waypoints;
-      }
+      },
     }
   }
 </script>
