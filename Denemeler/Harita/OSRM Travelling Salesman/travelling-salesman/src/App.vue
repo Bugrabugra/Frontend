@@ -6,7 +6,7 @@
           <Menu
               v-on:eventSolve="startSolve"
               v-on:eventStartAnimation="startAnimation"
-              v-bind:coordinates="arrayCoordinates"
+              v-bind:coordinatesNames="arrayCoordName"
               v-bind:Result="solveResult"
           />
         </v-col>
@@ -40,7 +40,7 @@
 
     data() {
       return {
-        arrayCoordinates: [],
+        arrayCoordName: [],
         coordinatesToBeDeleted: [],
         solve: false,
         solveResult: {},
@@ -50,7 +50,7 @@
 
     methods: {
       updateCoordinates(payload) {
-        this.arrayCoordinates = payload;
+        this.arrayCoordName = payload;
       },
 
       // deleteCoordinate(coordinate) {

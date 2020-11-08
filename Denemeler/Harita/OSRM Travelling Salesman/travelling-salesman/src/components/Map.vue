@@ -16,7 +16,7 @@
   import {transform} from 'ol/proj';
   import Feature from "ol/Feature";
   import Point from "ol/geom/Point";
-  import myIcon from "../../public/red-map-pin-with-shadow.png"
+  import Pin from "../../public/red-map-pin-with-shadow.png";
   import Polyline from "ol/format/Polyline";
   import {getVectorContext} from 'ol/render';
 
@@ -26,7 +26,7 @@
 
     data() {
       return {
-        arrayCoordinates: [],
+        arrayCoordName: [],
         map: {},
         urlOSRMNearest: '//router.project-osrm.org/nearest/v1/driving/',
         urlOSRMTrip: '//router.project-osrm.org/trip/v1/driving/',
@@ -38,12 +38,23 @@
               color: [0, 181, 207, 0.8]
             })
           }),
-          icon: new Style({
+          iconPin: new Style({
             image: new Icon({
               anchor: [0, 0],
-              src: myIcon,
+              src: Pin,
               scale: 0.1
             })
+          }),
+
+          iconTruck: new Style({
+            image: new Circle({
+              radius: 12,
+              fill: new Fill({color: 'black'}),
+              stroke: new Stroke({
+                color: 'white',
+                width: 2,
+              }),
+            }),
           })
         },
         queryString: "",
@@ -79,10 +90,10 @@
       },
 
       async clickOnMap(e) {
-        this.arrayCoordinates.push(e.coordinate);
         await this.getNearest(e.coordinate)
-          .then((coordStreet) => {
-            this.createFeature(coordStreet);
+          .then((nearestResult) => {
+            this.createFeature(nearestResult.nearestCoordinates);
+            this.arrayCoordName.push(nearestResult);
           })
       },
 
@@ -91,7 +102,7 @@
           type: 'place',
           geometry: new Point(fromLonLat(coord))
         });
-        feature.setStyle(this.styles.icon);
+        feature.setStyle(this.styles.iconPin);
         this.vectorSource.addFeature(feature);
       },
 
@@ -105,7 +116,10 @@
             return response.json();
           }).then(function(json) {
             if (json.code === 'Ok') {
-              resolve(json.waypoints[0].location);
+              resolve({
+                nearestCoordinates: json.waypoints[0].location,
+                nearestName: json.waypoints[0].name
+              });
             } else {
               reject();
             }
@@ -121,62 +135,48 @@
 
       solve() {
         const _this = this;
-        this.generateQueryString().then(res => {
-          new Promise(function() {
-            //make sure the coord is on street
-            fetch(_this.urlOSRMTrip + `${res}?source=first&destination=last`).then(function(response) {
-              // Convert to JSON
-              return response.json();
-            }).then(function(json) {
-              if (json.code === 'Ok') {
-                // Emit the event
-                _this.$emit("eventSolved", json);
+        new Promise(function() {
+          //make sure the coord is on street
+          fetch(_this.urlOSRMTrip + `${_this.generateQueryString()}?source=first&destination=last&steps=true`).then(function(response) {
+            // Convert to JSON
+            return response.json();
+          }).then(function(json) {
+            if (json.code === 'Ok') {
+              // Emit the event
+              console.log(json)
+              _this.$emit("eventSolved", json);
 
-                const route = new Polyline({
-                  factor: 1e5
-                }).readGeometry(json.trips[0].geometry, {
-                  dataProjection: 'EPSG:4326',
-                  featureProjection: 'EPSG:3857'
-                });
-                _this.routeCoords = route.getCoordinates();
-                _this.routeLength = _this.routeCoords.length;
+              const route = new Polyline({
+                factor: 1e5
+              }).readGeometry(json.trips[0].geometry, {
+                dataProjection: 'EPSG:4326',
+                featureProjection: 'EPSG:3857'
+              });
+              _this.routeCoords = route.getCoordinates();
+              _this.routeLength = _this.routeCoords.length;
 
-                _this.geoMarker = (new Feature(
-                  {
-                    type: 'geoMarker',
-                    geometry: new Point(_this.routeCoords[0]),
-                  }
-                ));
+              _this.geoMarker = (new Feature(
+                {
+                  type: 'geoMarker',
+                  geometry: new Point(_this.routeCoords[0]),
+                }
+              ));
 
-                const feature = new Feature({
-                  type: 'route',
-                  geometry: route
-                });
-                feature.setStyle(_this.styles.route);
-                _this.vectorSource.addFeature(feature);
-                _this.vectorSource.addFeature(_this.geoMarker);
+              const feature = new Feature({
+                type: 'route',
+                geometry: route
+              });
+              feature.setStyle(_this.styles.route);
+              _this.vectorSource.addFeature(feature);
+              _this.vectorSource.addFeature(_this.geoMarker);
 
-                // _this.startAnimation();
-              }
-            });
+              // _this.startAnimation();
+            }
           });
-        });
+          });
       },
 
       moveFeature(event) {
-        const styles = {
-          'geoMarker': new Style({
-            image: new Circle({
-              radius: 7,
-              fill: new Fill({color: 'black'}),
-              stroke: new Stroke({
-                color: 'white',
-                width: 2,
-              }),
-            }),
-          }),
-        };
-
         const vectorContext = getVectorContext(event);
         const frameState = event.frameState;
 
@@ -193,7 +193,7 @@
 
           const currentPoint = new Point(this.routeCoords[index]);
           const feature = new Feature(currentPoint);
-          vectorContext.drawFeature(feature, styles.geoMarker);
+          vectorContext.drawFeature(feature, this.styles.iconTruck);
         }
         // tell OpenLayers to continue the postrender animation
         this.map.render();
@@ -225,18 +225,9 @@
         this.vectorLayer.un('postrender', this.moveFeature);
       },
 
-      async asyncForEach(array, callback) {
-        for (let index = 0; index < array.length; index++) {
-          await callback(array[index], index, array);
-        }
-      },
-
-      async generateQueryString() {
-        await this.asyncForEach(this.arrayCoordinates, async (item) => {
-          await this.getNearest(item)
-            .then((coordStreet) => {
-              this.queryString += `${coordStreet[0]},${coordStreet[1]};`
-            })
+      generateQueryString() {
+        this.arrayCoordName.forEach(item => {
+          this.queryString += `${item.nearestCoordinates[0]},${item.nearestCoordinates[1]};`
         })
         return this.queryString.slice(0, -1);
       },
@@ -248,8 +239,8 @@
     },
 
     watch: {
-      arrayCoordinates() {
-        this.$emit("eventCoordinateAdded", this.arrayCoordinates);
+      arrayCoordName() {
+        this.$emit("eventCoordinateAdded", this.arrayCoordName);
       },
 
       eventSolve() {

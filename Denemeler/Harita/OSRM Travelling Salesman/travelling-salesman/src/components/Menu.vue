@@ -16,26 +16,30 @@
         <v-expansion-panels style="max-height: 300px; overflow-x: hidden;" class="mb-4">
           <v-expansion-panel
               readonly
-              v-for="(coordinatePair,i) in coordinates"
+              v-for="(coordinatesName, i) in coordinatesNames"
               :key="i"
           >
             <v-expansion-panel-header color="grey lighten-3" class="pa-1">
               <v-container class="pa-0 ma-0">
                 <div>
                   <v-icon color="grey">mdi-longitude</v-icon>
-                  <b> Boylam:</b> {{shortenCoordinate(coordinatePair[0])}}
+                  <b> Boylam:</b> {{shortenCoordinate(coordinatesName.nearestCoordinates[0])}}
                 </div>
                 <p style="margin: 0; padding: 0;"></p>
                 <div>
                   <v-icon color="grey">mdi-latitude</v-icon>
-                  <b> Enlem:</b> {{shortenCoordinate(coordinatePair[1])}}
+                  <b> Enlem:</b> {{shortenCoordinate(coordinatesName.nearestCoordinates[1])}}
+                </div>
+                <div>
+                  <v-icon color="grey">mdi-routes</v-icon>
+                  <b> Sokak:</b> {{coordinatesName.nearestName}}
                 </div>
               </v-container>
             </v-expansion-panel-header>
           </v-expansion-panel>
         </v-expansion-panels>
 
-        <v-btn v-if="coordinates.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
+        <v-btn v-if="coordinatesNames.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
       </v-stepper-content>
 
       <v-stepper-step v-bind:complete="e6 > 2" step="2">
@@ -110,7 +114,7 @@
   export default {
     name: "Menu",
 
-    props: ["coordinates", "Result"],
+    props: ["coordinatesNames", "Result"],
 
     data() {
       return {
@@ -157,7 +161,6 @@
         this.loading = false;
         this.result = this.Result;
         this.fillWaypoints;
-        console.log(this.result)
       }
     },
 
