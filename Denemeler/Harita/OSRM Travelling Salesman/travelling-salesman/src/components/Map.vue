@@ -12,7 +12,7 @@
   import {fromLonLat} from "ol/proj";
   import VectorSource from 'ol/source/Vector';
   import VectorLayer from 'ol/layer/Vector';
-  import {Style, Stroke, Icon, Circle, Fill} from 'ol/style';
+  import {Style, Stroke, Icon, Circle, Fill, Text} from 'ol/style';
   import {transform} from 'ol/proj';
   import Feature from "ol/Feature";
   import Point from "ol/geom/Point";
@@ -35,7 +35,7 @@
         styles: {
           route: new Style({
             stroke: new Stroke({
-              width: 6,
+              width: 1,
               color: [0, 181, 207, 0.8]
             })
           }),
@@ -56,7 +56,7 @@
                 width: 2,
               }),
             }),
-          })
+          }),
         },
         queryString: "",
         animationSpeed: 5,
@@ -65,7 +65,8 @@
         now: null,
         routeLength: 0,
         geoMarker: null,
-        routeCoords: null
+        routeCoords: null,
+        stepCounter: 1
       }
     },
 
@@ -145,7 +146,6 @@
           }).then(function(json) {
             if (json.code === 'Ok') {
               // Emit the event
-              console.log(json)
               _this.$emit("eventSolved", json);
 
               // Route
@@ -169,6 +169,7 @@
                 type: 'route',
                 geometry: route
               });
+
               feature.setStyle(_this.styles.route);
               _this.vectorSource.addFeature(feature);
               _this.vectorSource.addFeature(_this.geoMarker);
@@ -176,13 +177,29 @@
               // Legs
               json.trips[0].legs.forEach(leg => {
                 leg.steps.forEach(step => {
-                  console.log(step.name)
+                  const steps = new Polyline({
+                    factor: 1e5
+                  }).readGeometry(step.geometry, {
+                    dataProjection: 'EPSG:4326',
+                    featureProjection: 'EPSG:3857'
+                  })
+
+                  const featureSteps = new Feature({
+                    type: "step",
+                    geometry: steps,
+                    label: `${_this.stepCounter++}`
+                  });
+
+                  featureSteps.setStyle(_this.styleFunction(featureSteps))
+                  _this.vectorSource2.addFeature(featureSteps);
+                  const extent = _this.vectorSource2.getExtent();
+                  _this.map.getView().fit(extent, _this.map.getSize());
+                  _this.map.getView().animate({
+                    zoom: _this.map.getView().getZoom() - 1,
+                    duration: 500
+                  })
                 })
               })
-              // const leg = new Polyline({
-              //   factor: 1e5
-              // }).readGeometry(json.)
-
 
             }
           });
@@ -245,6 +262,31 @@
         return this.queryString.slice(0, -1);
       },
 
+      styleFunction(feature) {
+        return [
+          new Style({
+            fill: new Fill({
+              color: 'rgba(255,255,255,0.4)'
+            }),
+            stroke: new Stroke({
+              color: '#6e33cc',
+              width: 5
+            }),
+            text: new Text({
+              placement: 'line',
+              offsetY: -10,
+              font: 'bold 24px Calibri,sans-serif',
+              fill: new Fill({color: '#d23a6f'}),
+              stroke: new Stroke({
+                color: '#2a2020', width: 2
+              }),
+              // get the text from the feature - `this` is ol.Feature
+              text: feature.get('label')
+            })
+          })
+        ];
+      }
+
     },
 
     mounted() {
@@ -280,7 +322,12 @@
 
       vectorLayerSegments() {
         return new VectorLayer({
-          source: this.vectorSource2
+          declutter: true,
+          source: this.vectorSource2,
+          style: function (feature) {
+            this.styles.step.getText().setText(feature.get('label'));
+            return this.styles.step;
+          }
         })
       }
     }

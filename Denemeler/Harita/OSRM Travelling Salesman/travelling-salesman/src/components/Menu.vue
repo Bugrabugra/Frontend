@@ -27,12 +27,12 @@
                 </div>
                 <div>
                   <v-icon color="grey">mdi-longitude</v-icon>
-                  <b> Boylam:</b> {{shortenCoordinate(coordinatesName.nearestCoordinates[0])}}
+                  <b> Boylam:</b> {{shortenNumber(coordinatesName.nearestCoordinates[0], 4)}}
                 </div>
                 <p style="margin: 0; padding: 0;"></p>
                 <div>
                   <v-icon color="grey">mdi-latitude</v-icon>
-                  <b> Enlem:</b> {{shortenCoordinate(coordinatesName.nearestCoordinates[1])}}
+                  <b> Enlem:</b> {{shortenNumber(coordinatesName.nearestCoordinates[1], 4)}}
                 </div>
               </v-container>
             </v-expansion-panel-header>
@@ -50,8 +50,8 @@
         <v-card color="grey lighten-3" class="mb-4" height="150px">
           <v-card-text style="font-size: 1em">
             <div><b>Sorgu sonucu:</b> {{result.code}}</div>
-            <div v-if="result.trips"><b>Toplam mesafe:</b> {{result.trips[0].distance}}</div>
-            <div v-if="result.trips"><b>Toplam süre:</b> {{result.trips[0].duration}}</div>
+            <div v-if="result.trips"><b>Toplam mesafe:</b> {{shortenNumber(result.trips[0].distance / 1000, 2)}} km</div>
+            <div v-if="result.trips"><b>Toplam süre:</b> {{shortenNumber(result.trips[0].duration / 60, 2)}} dakika</div>
             <div v-if="result.trips"><b>Segment sayısı:</b> {{result.trips[0].legs.length}}</div>
             <div v-if="result.trips"><b>Ağırlık:</b> {{result.trips[0].weight}}</div>
             <v-progress-linear
@@ -76,7 +76,7 @@
 
       <v-stepper-content step="3">
         <v-card color="grey lighten-3" class="mb-4">
-          <v-card-text>
+          <v-card-text style="max-height: 300px; overflow-x: hidden;">
             <v-treeview
                 v-if="result.waypoints"
                 dense
@@ -124,13 +124,14 @@
         result: {},
         loading: false,
         waypoints: [],
-        switch_: false
+        switch_: false,
+        stepCounter: 1
       }
     },
 
     methods: {
-      shortenCoordinate(coordinate) {
-        return Number.parseFloat(coordinate).toFixed(4);
+      shortenNumber(val, digits) {
+        return Number.parseFloat(val).toFixed(digits);
       },
 
       solve() {
@@ -158,7 +159,7 @@
         const childrenArray = [];
         let _id = 1000;
         array.steps.forEach(step => {
-          childrenArray.push({id: _id++, name: step.name ? step.name : "*Bilinmiyor*"})
+          childrenArray.push({id: _id++, name: step.name ? `${this.stepCounter++}- ${step.name}` : `${this.stepCounter++}- *Bilinmiyor*`})
         })
         return childrenArray;
       }
@@ -189,7 +190,6 @@
             ]
           })
         })
-        console.log(this.waypoints)
         return this.waypoints;
       },
     }

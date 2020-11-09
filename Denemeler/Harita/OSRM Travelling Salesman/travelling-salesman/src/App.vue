@@ -53,10 +53,6 @@
         this.arrayCoordName = payload;
       },
 
-      // deleteCoordinate(coordinate) {
-      //   console.log("Deleting coordinate: ", coordinate);
-      //   this.coordinatesToBeDeleted = coordinate
-      // }
       startSolve() {
         this.solve = true;
       },
