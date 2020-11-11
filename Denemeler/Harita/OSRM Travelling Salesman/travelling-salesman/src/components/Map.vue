@@ -203,7 +203,7 @@
 
             }
           });
-          });
+        });
       },
 
       moveFeature(event) {
