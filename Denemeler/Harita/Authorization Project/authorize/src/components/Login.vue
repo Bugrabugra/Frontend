@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div id="mapContainer" style="text-align: center; margin: 0 auto; height: 50vh; width: 50%; justify-content: center">
+    <div style="text-align: center; margin: 0 auto; height: 50vh; width: 50%; justify-content: center">
       <h1>Vekil Sunucu Giriş Sayfası</h1>
       <form style="width: 25%; text-align: center; margin: 30px auto;">
         <div class="form-group">
@@ -58,18 +58,18 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  h3 {
+    margin: 40px 0 0;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a {
+    color: #42b983;
+  }
 </style>
