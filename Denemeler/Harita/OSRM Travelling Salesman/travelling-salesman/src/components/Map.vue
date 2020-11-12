@@ -20,13 +20,14 @@
   import Polyline from "ol/format/Polyline";
   import {getVectorContext} from 'ol/render';
 
+  import {mapActions, mapState} from "vuex";
+
 
   export default {
     name: "Main",
 
     data() {
       return {
-        arrayCoordName: [],
         map: {},
         urlOSRMNearest: '//router.project-osrm.org/nearest/v1/driving/',
         urlOSRMTrip: '//router.project-osrm.org/trip/v1/driving/',
@@ -59,7 +60,6 @@
           }),
         },
         queryString: "",
-        animationSpeed: 5,
         animating: false,
         speed: null,
         now: null,
@@ -70,9 +70,11 @@
       }
     },
 
-    props: ["coordDel", "eventSolve", "animation"],
-
     methods: {
+      ...mapActions([
+        "aAddArrayCoordName",
+        "aSendSolveResult"
+      ]),
       initMap() {
         this.map = new Map({
           target: 'mapContainer',
@@ -96,7 +98,7 @@
         await this.getNearest(e.coordinate)
           .then((nearestResult) => {
             this.createFeature(nearestResult.nearestCoordinates);
-            this.arrayCoordName.push(nearestResult);
+            this.aAddArrayCoordName(nearestResult)
           })
       },
 
@@ -146,7 +148,7 @@
           }).then(function(json) {
             if (json.code === 'Ok') {
               // Emit the event
-              _this.$emit("eventSolved", json);
+              _this.aSendSolveResult(json);
 
               // Route
               const route = new Polyline({
@@ -235,7 +237,6 @@
         } else {
           this.animating = true;
           this.now = new Date().getTime();
-          this.speed = this.animationSpeed;
           // hide geoMarker
           this.geoMarker.setStyle(null);
           // just in case you pan somewhere else
@@ -294,26 +295,30 @@
     },
 
     watch: {
-      arrayCoordName() {
-        this.$emit("eventCoordinateAdded", this.arrayCoordName);
-      },
-
-      eventSolve() {
+      startSolve() {
         this.solve();
       },
 
       animation() {
-        if (this.animation.speed === "fast") {
-          this.animationSpeed = 20;
-          this.startAnimation();
-        } else {
-          this.animationSpeed = 5;
-          this.startAnimation();
+        if (this.animation.state === "start") {
+          if(this.animation.speed){
+            this.speed = 20;
+            this.startAnimation();
+          } else {
+            this.speed = 5;
+            this.startAnimation();
+          }
         }
       }
     },
 
     computed: {
+      ...mapState([
+        "arrayCoordName",
+        "startSolve",
+        "animation"
+      ]),
+
       vectorLayer() {
         return new VectorLayer({
           source: this.vectorSource

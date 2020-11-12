@@ -12,11 +12,10 @@
       </v-stepper-step>
 
       <v-stepper-content step="1">
-        <!--<v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>-->
         <v-expansion-panels style="max-height: 300px; overflow-x: hidden;" class="mb-4">
           <v-expansion-panel
               readonly
-              v-for="(coordinatesName, i) in coordinatesNames"
+              v-for="(coordinatesName, i) in arrayCoordName"
               :key="i"
           >
             <v-expansion-panel-header hide-actions color="grey lighten-3" class="pa-1">
@@ -39,7 +38,7 @@
           </v-expansion-panel>
         </v-expansion-panels>
 
-        <v-btn v-if="coordinatesNames.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
+        <v-btn v-if="arrayCoordName.length > 1" color="green lighten-2" v-on:click="e6 = 2" class="ma-2"><span><v-icon>mdi-chevron-right</v-icon></span>Devam</v-btn>
       </v-stepper-content>
 
       <v-stepper-step v-bind:complete="e6 > 2" step="2">
@@ -109,17 +108,15 @@
 
 <script>
   import {saveAs} from "file-saver";
+  import {mapState, mapActions} from "vuex";
 
 
   export default {
     name: "Menu",
 
-    props: ["coordinatesNames", "Result"],
-
     data() {
       return {
         e6: 1,
-        coordinate: [],
         solved: false,
         result: {},
         loading: false,
@@ -130,12 +127,17 @@
     },
 
     methods: {
+      ...mapActions([
+        "aStartSolve",
+        "aStartAnimate"
+      ]),
+
       shortenNumber(val, digits) {
         return Number.parseFloat(val).toFixed(digits);
       },
 
       solve() {
-        this.$emit("eventSolve");
+        this.aStartSolve();
         this.loading = true;
       },
 
@@ -152,7 +154,7 @@
       },
 
       startAnimation() {
-        this.$emit("eventStartAnimation", this.switch_);
+        this.aStartAnimate({state: "start", speed: this.switch_});
       },
 
       fillSteps(array) {
@@ -166,15 +168,20 @@
     },
 
     watch: {
-      Result() {
+      solveResult() {
+        this.result = this.solveResult;
         this.solved = true;
         this.loading = false;
-        this.result = this.Result;
         this.fillWaypoints;
-      }
+      },
     },
 
     computed: {
+      ...mapState([
+        "arrayCoordName",
+        "solveResult"
+      ]),
+
       fillWaypoints() {
         let counter = 0;
         this.result.trips[0].legs.forEach((leg, index) => {
