@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firestore Pagination</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container"></div>
+  <div class="loading">Loading reviews...</div>
+
+  <div class="load-more">
+    <button>Load more</button>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyARHfmyxPlzVvV53DevV4DS0LfPeh2uENE",
+      authDomain: "ninja-pagination-scroll.firebaseapp.com",
+      databaseURL: "https://ninja-pagination-scroll.firebaseio.com",
+      projectId: "ninja-pagination-scroll",
+      storageBucket: "ninja-pagination-scroll.appspot.com",
+      messagingSenderId: "943891152405",
+      appId: "1:943891152405:web:a114d528846043b3f2d81c"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
