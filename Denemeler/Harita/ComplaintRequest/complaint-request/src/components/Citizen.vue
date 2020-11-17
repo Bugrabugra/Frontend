@@ -1,8 +1,7 @@
 <template>
-  <div class="map">
-    <div class="google-map" id="map">
+  <div id="app">
+    <div id="map" ref="map"></div>
 
-    </div>
   </div>
 </template>
 
@@ -11,36 +10,33 @@
     name: "Citizen",
     data() {
       return {
-        lat: 53,
-        lng: -2
+        map: null
       }
     },
+
     methods: {
-      renderMap() {
-        new google.maps.Map(document.getElementById("map"), {
-          center: {lat: this.lat, lng: this.lng},
-          zoom: 6,
-          maxZoom: 15,
-          minZoom: 3,
-          streetViewControl: false
-        });
+      getMap(callback) {
+        let vm = this;
+        function checkForMap() {
+          if (vm.map) callback(vm.map)
+          else setTimeout(checkForMap, 200)
+        }
+        checkForMap();
       }
     },
+
     mounted() {
-      this.renderMap();
+      this.map = new window.google.maps.Map(this.$refs["map"], {
+        center: {lat: -25.344, lng: 131},
+        zoom: 4
+      })
     }
   }
 </script>
 
 <style scoped>
-  .google-map {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  #map {
+    height: 600px;
+    background: green;
   }
 </style>
