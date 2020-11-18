@@ -96,9 +96,8 @@
             const result = await res.json();
             await this.aChangeCitizen(result);
             await this.$router.push({
-              name: "Citizen"
+              name: "Citizen", params: result
             });
-            console.log(result);
           })();
 
         } else if (this.cLoginType === 'Kurum') {
@@ -113,7 +112,6 @@
             })
             const result = await res.json();
             this.aChangeClerk(result);
-            console.log(result);
           })();
         }
       }

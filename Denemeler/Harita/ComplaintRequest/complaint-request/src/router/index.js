@@ -15,7 +15,8 @@ const routes = [
   {
     path: "/citizen",
     name: "Citizen",
-    component: Citizen
+    component: Citizen,
+    props: true
   }
 
 ]
