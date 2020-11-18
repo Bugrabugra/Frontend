@@ -17,15 +17,20 @@ const pool = new Pool({
 })
 
 app.post('/citizen/new', async(req, res) => {
+  const district = req.body.district;
+  const neighborhood = req.body.neighborhood;
+  const street = req.body.street;
+  const door = req.body.door;
   const topic = req.body.topic;
   const description = req.body.description;
   const type = req.body.type;
+  const branch = req.body.branch;
   const date = req.body.date;
   const coordinates = req.body.coordinates;
   const id_user = req.body.id_user;
 
   const client = await pool.connect();
-  const query = await client.query(`INSERT INTO public.istek_sikayetler (konu, aciklama, turu, tarih, id_muhatap, durumu, geometry) VALUES ('${topic}', '${description}', '${type}', '${date}', ${id_user}, 'Yeni', ST_SetSRID(
+  const query = await client.query(`INSERT INTO public.istek_sikayetler (ilce, mahalle, sokak, kapi, konu, aciklama, turu, alani, tarih, id_muhatap, durumu, geometry) VALUES ('${district}', '${neighborhood}', '${street}', '${door}', '${topic}', '${description}', '${type}', '${branch}', '${date}', ${id_user}, 'Yeni', ST_SetSRID(
         ST_MakePoint(${coordinates[1]}::double precision, ${coordinates[0]}::double precision), 4326))` , (err, response) => {
     client.release();
     res.send(response);
@@ -38,7 +43,6 @@ app.get('/citizen/:id', async(req, res) => {
   const query = await client.query(`SELECT * FROM public.istek_sikayetler where id_muhatap = ${userID}` , (err, response) => {
     client.release();
     res.send(response);
-    console.log(response)
   });
 })
 

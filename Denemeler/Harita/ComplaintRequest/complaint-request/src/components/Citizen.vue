@@ -54,6 +54,42 @@
                         ></v-text-field>
                       </v-col>
 
+                      <!--İlçe-->
+                      <v-col cols="12" md="12">
+                        <v-text-field
+                            v-bind:value="cDistrict"
+                            prepend-icon="mdi-alpha-i-circle-outline"
+                            label="İlçe"
+                        ></v-text-field>
+                      </v-col>
+
+                      <!--Mahalle-->
+                      <v-col cols="12" md="12">
+                        <v-text-field
+                            v-bind:value="cNeighborhood"
+                            prepend-icon="mdi-alpha-m-circle-outline"
+                            label="Mahalle"
+                        ></v-text-field>
+                      </v-col>
+
+                      <!--Sokak-->
+                      <v-col cols="12" md="12">
+                        <v-text-field
+                            v-bind:value="cStreet"
+                            prepend-icon="mdi-alpha-s-circle-outline"
+                            label="Sokak"
+                        ></v-text-field>
+                      </v-col>
+
+                      <!--Kapı-->
+                      <v-col cols="12" md="12">
+                        <v-text-field
+                            v-bind:value="cDoor"
+                            prepend-icon="mdi-alpha-k-circle-outline"
+                            label="Kapı"
+                        ></v-text-field>
+                      </v-col>
+
                       <!--Başlık-->
                       <v-col cols="12" md="12">
                         <v-text-field
@@ -82,10 +118,22 @@
                       <v-col cols="12" md="12">
                         <v-select
                             prepend-icon="mdi-comment-question-outline"
-                            v-model="selected"
-                            v-bind:items="selectItems"
+                            v-model="selectedType"
+                            v-bind:items="selectTypeItems"
                             :rules="[rules.required]"
                             label="Türü"
+                            required
+                        ></v-select>
+                      </v-col>
+
+                      <!--Alan-->
+                      <v-col cols="12" md="12">
+                        <v-select
+                            prepend-icon="mdi-format-list-bulleted-type"
+                            v-model="selectedBranch"
+                            v-bind:items="selectBranchItems"
+                            :rules="[rules.required]"
+                            label="Sorun çeşidi"
                             required
                         ></v-select>
                       </v-col>
@@ -116,6 +164,7 @@
                         >
                           <template v-slot:activator="{ on, attrs }">
                             <v-text-field
+                                v-bind:rules="[rules.required]"
                                 v-model="date"
                                 label="Tarih"
                                 prepend-icon="mdi-calendar"
@@ -131,8 +180,25 @@
                       </v-col>
                     </v-row>
 
-                    <!--Düğme-->
-                    <v-btn v-if="valid" v-on:click="submit" color="green">Kaydet</v-btn>
+                    <!--Kaydet Düğmesi-->
+                    <v-btn
+                        v-if="valid"
+                        v-on:click="submit"
+                        color="green"
+                        v-bind:disabled="submitted"
+                    >
+                      Kaydet<v-icon v-if="submitted">mdi-check-bold</v-icon>
+                    </v-btn>
+
+                    <!--Yeni Düğmesi-->
+                    <v-btn
+                        class="ml-2"
+                        v-if="submitted"
+                        v-on:click="emptyFields"
+                        color="blue"
+                    >
+                      Yeni<v-icon>mdi-autorenew</v-icon>
+                    </v-btn>
 
                   </v-container>
                 </v-form>
@@ -152,7 +218,7 @@
                 >
                   <template v-slot:item.durumu="{item}">
                     <v-chip text-color="black" v-bind:color="getSituationColor(item.durumu)">
-                      {{ item.durumu }}
+                      {{item.durumu}}
                     </v-chip>
                   </template>
                   <template v-slot:item.tarih="{item}">
@@ -183,11 +249,18 @@
         map: null,
         tab: null,
         coordinates: {lat: null, lng: null},
+        district: "",
+        neighborhood: "",
+        street: "",
+        door: "",
         valid: false,
         topic: "",
         description: "",
-        selected: "",
-        selectItems: ["İstek", "Şikayet"],
+        selectedType: "",
+        selectTypeItems: ["İstek", "Şikayet"],
+        selectedBranch: "",
+        selectBranchItems: ["Asfalt çalışması", "Direk onarımı", "Park ekipmanları", "Sokak hayvanları"],
+        submitted: false,
         date: null,
         rules: {
           required: value => !!value || 'Bu alan zorunludur.',
@@ -197,15 +270,16 @@
         archivedItems: [],
         headers: [
           {
-            text: 'Konu',
-            align: 'start',
+            text: "Konu",
+            align: "start",
             sortable: false,
-            value: 'konu',
+            value: "konu",
           },
-          {text: 'Açıklama', value: 'aciklama'},
-          {text: 'Türü', value: 'turu'},
-          {text: 'Tarih', value: "tarih"},
-          {text: 'Durumu', value: 'durumu'},
+          {text: "Açıklama", value: "aciklama"},
+          {text: "Türü", value: "turu"},
+          {text: "Alanı", value: "alani"},
+          {text: "Tarih", value: "tarih"},
+          {text: "Durumu", value: "durumu"},
         ],
       }
     },
@@ -221,6 +295,22 @@
 
       cDate() {
         return dayjs(this.date).format("DD-MM-YYYY");
+      },
+
+      cDoor() {
+        return this.door;
+      },
+
+      cStreet() {
+        return this.street;
+      },
+
+      cNeighborhood() {
+        return this.neighborhood;
+      },
+
+      cDistrict() {
+        return this.district;
       }
     },
 
@@ -235,22 +325,32 @@
                 'Accept': 'application/json'
               },
               body: JSON.stringify({
+                district: this.district,
+                neighborhood: this.neighborhood,
+                street: this.street,
+                door: this.door,
                 topic: this.topic,
                 description: this.description,
-                type: this.selected,
+                type: this.selectedType,
+                branch: this.selectedBranch,
                 date: this.cDate,
                 coordinates: [this.cCoordinates.lat, this.cCoordinates.lng],
                 id_user: this.$route.params.id
               }),
             })
-            const result = await res.json();
-            console.log(result);
+            if (res.status === 200) {
+              this.submitted = true;
+              const result = await res.json();
+              console.log(result);
+            }
           })();
         }
       },
 
       initMap() {
+        let geocoder;
         setTimeout(() => {
+          geocoder = new window.google.maps.Geocoder();
           this.map = new window.google.maps.Map(this.$refs["map"], {
             center: {lat: 40.984220, lng: 29.132068},
             zoom: 16
@@ -260,6 +360,19 @@
             if (e) {
               this.coordinates.lat = e.latLng.lat();
               this.coordinates.lng = e.latLng.lng();
+
+              (async () => {
+                await geocoder.geocode({location: this.coordinates}, (results, status) => {
+                  if (status === "OK") {
+                    console.log(results);
+                    this.addressLookup(results);
+                  } else {
+                    window.alert("Geocoder failed due to: " + status);
+                  }
+                });
+              })();
+
+
             }
           });
         }, 500)
@@ -289,6 +402,35 @@
 
       changeDate(item) {
         return dayjs(item).format("DD-MM-YYYY");
+      },
+
+      emptyFields() {
+        this.coordinates = {lat: null, lng: null};
+        this.district = "";
+        this.neighborhood = "";
+        this.street = "";
+        this.door = "";
+        this.valid = false;
+        this.topic = "";
+        this.description = "";
+        this.selectedType = "";
+        this.selectedBranch = "";
+        this.submitted = false;
+        this.date = null;
+      },
+
+      addressLookup(addressArray) {
+        addressArray[0].address_components.forEach(addressComponent => {
+          if (addressComponent["types"].includes("street_number")) {
+            addressComponent.long_name ? this.door = addressComponent.long_name : this.door = "-";
+          } else if (addressComponent["types"].includes("route")) {
+            addressComponent.long_name ? this.street = addressComponent.long_name : this.street = "-";
+          } else if (addressComponent["types"].includes("administrative_area_level_4")) {
+            addressComponent.long_name ? this.neighborhood = addressComponent.long_name : this.neighborhood = "-";
+          } else if (addressComponent["types"].includes("administrative_area_level_2")) {
+            addressComponent.long_name ? this.district = addressComponent.long_name : this.district = "-";
+          }
+        })
       }
     },
 
