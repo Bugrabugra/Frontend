@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-main>
     <v-container fluid pa-0>
       <v-row align="center" justify="center" style="height: 100vh">
         <v-col cols="12" class="fill-height d-flex flex-column justify-center align-center">
@@ -21,7 +21,6 @@
                      v-model="user"
                   ></v-text-field>
                   <v-text-field
-                      type="password"
                       label="Şifre:"
                       v-model="pass"
                   ></v-text-field>
@@ -32,20 +31,26 @@
                       v-model="user"
                   ></v-text-field>
                   <v-text-field
-                      type="password"
                       label="Şifre:"
                       v-model="pass"
                   ></v-text-field>
                 </v-container>
-              </v-form>
 
-              <v-btn v-on:click="login" v-if="cLoginType && user && pass" color="purple lighten-4"><v-icon>mdi-login-variant</v-icon>Giriş</v-btn>
+                <v-btn
+                    block
+                    v-on:click="login"
+                    v-if="cLoginType && user && pass"
+                    color="purple lighten-4"
+                ><v-icon>mdi-login-variant</v-icon>
+                  Giriş
+                </v-btn>
+              </v-form>
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-  </v-app>
+  </v-main>
 
 </template>
 
@@ -85,7 +90,6 @@
       login() {
         this.aLogin({user: this.user, pass: this.pass})
           .then((response) => {
-            console.log(response);
             if (this.$store.state.loginType === "citizen") {
               this.$router.push({name: "Citizen", params: response.data.user});
             } else if (this.$store.state.loginType === "state") {

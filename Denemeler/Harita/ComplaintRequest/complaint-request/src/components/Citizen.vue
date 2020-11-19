@@ -286,6 +286,7 @@
           {text: "Alanı", value: "alani"},
           {text: "Tarih", value: "tarih"},
           {text: "Durumu", value: "durumu"},
+          {text: "Kurum Açıklama", value: "kurum_aciklama"}
         ],
       }
     },

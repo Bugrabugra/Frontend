@@ -90,8 +90,9 @@ app.get('/items', async(req, res) => {
 app.put('/items/:id', async(req, res) => {
   const itemID = req.params.id;
   const situation = req.body.situation;
+  const stateDescription = req.body.stateDescription;
   const client = await pool.connect();
-  const query = await client.query(`UPDATE public.istek_sikayetler SET durumu = '${situation}' WHERE id = ${itemID}` , (err, response) => {
+  const query = await client.query(`UPDATE public.istek_sikayetler SET durumu = '${situation}', kurum_aciklama = '${stateDescription}' WHERE id = ${itemID}` , (err, response) => {
     client.release();
     console.log(response)
     res.send(response);
