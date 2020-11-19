@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+const jwt = require("jsonwebtoken");
 
 const app = express();
 const port = 3000;
@@ -48,23 +49,52 @@ app.get('/citizen/:id', async(req, res) => {
 
 app.post('/citizen', async(req, res) => {
   const identityNumber = req.body.user;
-  const nameSurname = req.body.pass;
+  const password = req.body.pass;
 
   const client = await pool.connect();
-  const query = await client.query(`SELECT * FROM public.muhatap where tc = '${identityNumber}' and adsoyad = '${nameSurname}'` , (err, response) => {
+  const query = await client.query(`SELECT * FROM public.muhatap where tc = '${identityNumber}' and sifre = '${password}'` , (err, response) => {
     client.release();
-    res.send(response.rows[0]);
+    const token = jwt.sign(
+      {id: response.rows[0].id},
+      "citizen",
+      {expiresIn: 60}
+      );
+    res.send({auth: true, token: token, user: response.rows[0]});
   });
 })
 
 app.post('/state', async(req, res) => {
-  const user = req.body.user;
-  const pass = req.body.pass;
+  const email = req.body.user;
+  const password = req.body.pass;
 
   const client = await pool.connect();
-  const query = await client.query(`SELECT * FROM public.personel where eposta = '${user}' and sifre = '${pass}'` , (err, response) => {
+  const query = await client.query(`SELECT * FROM public.personel where eposta = '${email}' and sifre = '${password}'` , (err, response) => {
     client.release();
-    res.send(response.rows[0]);
+    const token = jwt.sign(
+      {id: response.rows[0].id},
+      response.rows[0].yonetici ? "admin" : "clerk",
+      {expiresIn: 60}
+    )
+    res.send({auth: true, token: token, user: response.rows[0]});
+  });
+})
+
+app.get('/items', async(req, res) => {
+  const client = await pool.connect();
+  const query = await client.query(`SELECT * FROM public.istek_sikayetler` , (err, response) => {
+    client.release();
+    res.send(response.rows);
+  });
+})
+
+app.put('/items/:id', async(req, res) => {
+  const itemID = req.params.id;
+  const situation = req.body.situation;
+  const client = await pool.connect();
+  const query = await client.query(`UPDATE public.istek_sikayetler SET durumu = '${situation}' WHERE id = ${itemID}` , (err, response) => {
+    client.release();
+    console.log(response)
+    res.send(response);
   });
 })
 

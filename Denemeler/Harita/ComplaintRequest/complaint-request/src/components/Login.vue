@@ -7,30 +7,32 @@
 
           <v-card elevation="8" style="position:absolute;">
             <v-card-title class="justify-center pa-2">
-              {{cLoginType}} Giriş
+              {{cLoginType ? (cLoginType === "citizen" ? "Vatandaş " : "Kurum ") : ""}}Giriş
             </v-card-title>
             <hr>
             <v-card-text>
-              <v-btn v-on:click="emptyFieldsLogin('Vatandaş')" active-class="active" color="light-green" class="ma-2"><v-icon>mdi-account-outline</v-icon>Vatandaş</v-btn>
-              <v-btn v-on:click="emptyFieldsLogin('Kurum')" active-class="active" color="blue" class="ma-2"><v-icon>mdi-home-variant-outline</v-icon>Kurum</v-btn>
+              <v-btn v-on:click="emptyFieldsLogin('citizen')" active-class="active" color="light-green" class="ma-2"><v-icon>mdi-account-outline</v-icon>Vatandaş</v-btn>
+              <v-btn v-on:click="emptyFieldsLogin('state')" active-class="active" color="blue" class="ma-2"><v-icon>mdi-home-variant-outline</v-icon>Kurum</v-btn>
 
               <v-form>
-                <v-container v-if="cLoginType === 'Vatandaş'">
+                <v-container v-if="cLoginType === 'citizen'">
                   <v-text-field
                      label="T.C. Kimlik No:"
                      v-model="user"
                   ></v-text-field>
                   <v-text-field
-                      label="Ad Soyad:"
+                      type="password"
+                      label="Şifre:"
                       v-model="pass"
                   ></v-text-field>
                 </v-container>
-                <v-container v-else-if="cLoginType === 'Kurum'">
+                <v-container v-else-if="cLoginType === 'state'">
                   <v-text-field
                       label="E-posta:"
                       v-model="user"
                   ></v-text-field>
                   <v-text-field
+                      type="password"
                       label="Şifre:"
                       v-model="pass"
                   ></v-text-field>
@@ -49,6 +51,7 @@
 
 <script>
   import {mapActions} from "vuex";
+  import jwt from "jsonwebtoken";
 
   export default {
     name: "Login",
@@ -69,8 +72,8 @@
     methods: {
       ...mapActions([
         "aChangeLoginType",
-        "aChangeCitizen",
-        "aChangeClerk"
+        "aLogin",
+        "aLogout"
       ]),
 
       emptyFieldsLogin(loginType) {
@@ -80,41 +83,65 @@
       },
 
       login() {
-        const user = this.user;
-        const pass = this.pass;
+        this.aLogin({user: this.user, pass: this.pass})
+          .then((response) => {
+            console.log(response);
+            if (this.$store.state.loginType === "citizen") {
+              this.$router.push({name: "Citizen", params: response.data.user});
+            } else if (this.$store.state.loginType === "state") {
+              jwt.verify(response.data.token, "clerk", (error, decoded) => {
+                if (decoded) {
+                  this.$router.push({name: "Clerk", params: response.data.user});
+                } else {
+                  jwt.verify(response.data.token, "admin", (error, decoded) => {
+                    if (decoded) {
+                      this.$router.push({name: "Admin", params: response.data.user});
+                    } else {
+                      alert("Yanlış kullanıcı adı / şifre");
+                    }
+                  })
+                }
+              });
+            }
+        }).catch(error => {
+          console.log(error);
+        })
+      },
 
-        if (this.cLoginType === 'Vatandaş') {
-          (async () => {
-            const res = await fetch("http://localhost:3000/citizen", {
-              method: "POST",
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({user: user, pass: pass}),
-            })
-            const result = await res.json();
-            await this.aChangeCitizen(result);
-            await this.$router.push({
-              name: "Citizen", params: result
-            });
-          })();
+      // login() {
+      //   this.aLogin({user: this.user, pass: this.pass})
+      //     .then((response) => {
+      //       console.log(response);
+      //       if (this.$store.state.loginType === "citizen") {
+      //         jwt.verify(response.data.token, "citizen", (error, decoded) => {
+      //           if (decoded) {
+      //             this.$router.push({name: "Citizen", params: response.data.user});
+      //           } else {
+      //             alert("Yanlış kullanıcı adı / şifre");
+      //           }
+      //         });
+      //
+      //       } else if (this.$store.state.loginType === "state") {
+      //         jwt.verify(response.data.token, "clerk", (error, decoded) => {
+      //           if (decoded) {
+      //             this.$router.push({name: "Clerk", params: response.data.user});
+      //           } else {
+      //             jwt.verify(response.data.token, "admin", (error, decoded) => {
+      //               if (decoded) {
+      //                 this.$router.push({name: "Admin", params: response.data.user});
+      //               } else {
+      //                 alert("Yanlış kullanıcı adı / şifre");
+      //               }
+      //             })
+      //           }
+      //         });
+      //       }
+      //     }).catch(error => {
+      //     console.log(error);
+      //   })
+      // }
 
-        } else if (this.cLoginType === 'Kurum') {
-          (async () => {
-            const res = await fetch("http://localhost:3000/state", {
-              method: "POST",
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({user: user, pass: pass}),
-            })
-            const result = await res.json();
-            this.aChangeClerk(result);
-          })();
-        }
-      }
+
     }
   }
 </script>
