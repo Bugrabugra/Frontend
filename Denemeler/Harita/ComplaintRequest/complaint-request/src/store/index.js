@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import router from "../router/index";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     loginType: "",
-    citizen: {},
-    clerk: {},
     status: "",
     token: localStorage.getItem("token") || "",
     user: {}
@@ -23,7 +22,7 @@ export default new Vuex.Store({
       state.status = "loading";
     },
 
-    mAuthSuccess(state, token, user){
+    mAuthSuccess(state, {token, user}){
       state.status = "success"
       state.token = token
       state.user = user
@@ -56,7 +55,7 @@ export default new Vuex.Store({
           const user = response.data.user;
           localStorage.setItem("token", token);
           axios.defaults.headers.common["Authorization"] = token;
-          context.commit("mAuthSuccess", token, user);
+          context.commit("mAuthSuccess", {token, user});
           resolve(response);
         }).catch(error => {
           context.commit("mAuthError");
@@ -72,7 +71,15 @@ export default new Vuex.Store({
         localStorage.removeItem("token");
         delete axios.defaults.headers.common["Authorization"];
         resolve();
+      }).then(() => {
+        router.push("/");
       })
     },
+  },
+
+  getters: {
+    gUser(state) {
+      return state.user.adsoyad;
+    }
   }
 })

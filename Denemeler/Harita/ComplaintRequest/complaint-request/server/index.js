@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const jwt = require("jsonwebtoken");
+const escape = require("pg-escape");
 
 const app = express();
 const port = 3000;
@@ -92,9 +93,9 @@ app.put('/items/:id', async(req, res) => {
   const situation = req.body.situation;
   const stateDescription = req.body.stateDescription;
   const client = await pool.connect();
-  const query = await client.query(`UPDATE public.istek_sikayetler SET durumu = '${situation}', kurum_aciklama = '${stateDescription}' WHERE id = ${itemID}` , (err, response) => {
+  const query = await client.query(`UPDATE public.istek_sikayetler SET durumu = '${situation}', kurum_aciklama = ($1) WHERE id = ${itemID}`, [`${stateDescription}`] , (err, response) => {
     client.release();
-    console.log(response)
+    console.log(`UPDATE public.istek_sikayetler SET durumu = '${situation}', kurum_aciklama = ($1) WHERE id = ${itemID}`, [`${stateDescription}`])
     res.send(response);
   });
 })

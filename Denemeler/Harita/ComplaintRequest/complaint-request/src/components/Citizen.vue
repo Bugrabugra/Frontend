@@ -171,7 +171,7 @@
                             </v-col>
 
                             <!--Açıklama-->
-                            <v-col cols="12" md="12">
+                            <v-col cols="6" md="6">
                               <v-textarea
                                   prepend-icon="mdi-text-subject"
                                   v-model="description"
@@ -214,6 +214,7 @@
                   <v-card flat color="orange lighten-5">
                     <v-card-text>
                       <v-data-table
+                          dense
                           height="35vh"
                           no-data-text="-"
                           :headers="headers"
@@ -221,15 +222,48 @@
                           :items-per-page="10"
                           class="elevation-1"
                       >
+                        <!--Durumu-->
                         <template v-slot:item.durumu="{item}">
                           <v-chip text-color="black" v-bind:color="getSituationColor(item.durumu)">
                             {{item.durumu}}
                           </v-chip>
                         </template>
+
+                        <!--Tarih-->
                         <template v-slot:item.tarih="{item}">
                           {{changeDate(item.tarih)}}
-                          <!--{{item.tarih}}-->
                         </template>
+
+                        <!--Açıklama-->
+                        <template v-slot:item.aciklama="{item}">
+                          <v-textarea
+                              readonly
+                              disabled
+                              rows="3"
+                              v-if="item.aciklama"
+                              color="black"
+                              style="width: 80%;"
+                              :value="item.aciklama"
+                          >
+                          </v-textarea>
+                        </template>
+
+                        <!--Kurum açıklama-->
+                        <template v-slot:item.kurum_aciklama="{item}">
+                          <v-textarea
+                              disabled
+                              rows="3"
+                              readonly
+                              v-if="item.kurum_aciklama"
+                              color="black"
+                              style="width: 80%;"
+                              v-bind:value="item.kurum_aciklama"
+                          >
+                            {{item.kurum_aciklama}}
+                          </v-textarea>
+                        </template>
+
+
                       </v-data-table>
                     </v-card-text>
                   </v-card>
@@ -281,6 +315,10 @@
             sortable: false,
             value: "konu",
           },
+          {text: "İlçesi", value: "ilce"},
+          {text: "Mahallesi", value: "mahalle"},
+          {text: "Sokağı", value: "sokak"},
+          {text: "Kapısı", value: "kapi"},
           {text: "Açıklama", value: "aciklama"},
           {text: "Türü", value: "turu"},
           {text: "Alanı", value: "alani"},
@@ -378,8 +416,6 @@
                   }
                 });
               })();
-
-
             }
           });
         }, 500)
@@ -401,7 +437,7 @@
       },
 
       getSituationColor(situation) {
-        if (situation === "Yeni") return 'yellow'
+        if (situation === "Yeni") return '#f6c908'
         else if (situation === "İşlemde") return 'orange'
         else if (situation === "Çözüldü") return 'green'
         else if (situation === "İptal") return 'red'

@@ -44,6 +44,7 @@
                 ><v-icon>mdi-login-variant</v-icon>
                   Giriş
                 </v-btn>
+
               </v-form>
             </v-card-text>
           </v-card>
@@ -110,42 +111,7 @@
         }).catch(error => {
           console.log(error);
         })
-      },
-
-      // login() {
-      //   this.aLogin({user: this.user, pass: this.pass})
-      //     .then((response) => {
-      //       console.log(response);
-      //       if (this.$store.state.loginType === "citizen") {
-      //         jwt.verify(response.data.token, "citizen", (error, decoded) => {
-      //           if (decoded) {
-      //             this.$router.push({name: "Citizen", params: response.data.user});
-      //           } else {
-      //             alert("Yanlış kullanıcı adı / şifre");
-      //           }
-      //         });
-      //
-      //       } else if (this.$store.state.loginType === "state") {
-      //         jwt.verify(response.data.token, "clerk", (error, decoded) => {
-      //           if (decoded) {
-      //             this.$router.push({name: "Clerk", params: response.data.user});
-      //           } else {
-      //             jwt.verify(response.data.token, "admin", (error, decoded) => {
-      //               if (decoded) {
-      //                 this.$router.push({name: "Admin", params: response.data.user});
-      //               } else {
-      //                 alert("Yanlış kullanıcı adı / şifre");
-      //               }
-      //             })
-      //           }
-      //         });
-      //       }
-      //     }).catch(error => {
-      //     console.log(error);
-      //   })
-      // }
-
-
+      }
     }
   }
 </script>
