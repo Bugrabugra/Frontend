@@ -1,289 +1,301 @@
 <template>
-  <v-app id="app">
-    <v-container class="pa-0">
-      <v-row>
-        <v-col>
-          <div id="map" ref="map" style="height: 40vh;"></div>
-          <v-container style="padding: 0;">
-            <v-card>
-              <v-tabs
-                  v-model="tab"
-                  color="white darken-2"
-                  centered
-                  grow
-                  icons-and-text
-                  slider-size="3"
-              >
-                <v-tabs-slider color="black"></v-tabs-slider>
+  <v-container class="pa-0">
+    <Navbar></Navbar>
+    <v-row class="ma-0">
+      <v-col class="pa-0">
+        <div id="map" ref="map" style="height: 40vh;"></div>
+        <v-container style="padding: 0;">
+          <v-card class="pa-0">
+            <v-tabs
+                v-model="tab"
+                color="white darken-2"
+                centered
+                grow
+                icons-and-text
+                slider-size="8"
+            >
+              <v-tabs-slider color="pink accent-2"></v-tabs-slider>
 
-                <v-tab href="#tab-1" style="background-color: #00bfff;">
-                  Yeni İstek & Şikayet
-                  <v-icon>mdi-frequently-asked-questions</v-icon>
-                </v-tab>
+              <v-tab href="#tab-1" style="background-color: #00bfff;">
+                Yeni İstek & Şikayet
+                <v-icon>mdi-frequently-asked-questions</v-icon>
+              </v-tab>
 
-                <v-tab href="#tab-2" style="background-color: #ff8e03">
-                  Önceki İstek & Şikayetlerim
-                  <v-icon>mdi-archive</v-icon>
-                </v-tab>
-              </v-tabs>
+              <v-tab href="#tab-2" style="background-color: #ff8e03" v-on:click="getOldItems">
+                Önceki İstek & Şikayetlerim
+                <v-icon>mdi-archive</v-icon>
+              </v-tab>
+            </v-tabs>
 
-              <v-tabs-items v-model="tab">
-                <v-tab-item value="tab-1">
-                  <v-card flat color="blue lighten-5">
-                    <v-card-text>
-                      <v-form v-model="valid" style="background-color: white">
-                        <v-container>
-                          <v-row>
+            <v-tabs-items v-model="tab">
+              <v-tab-item value="tab-1">
+                <v-card flat>
+                  <v-card-text class="pa-2">
+                    <v-form v-model="valid">
+                      <v-container>
+                        <v-row>
 
-                            <!--Kullanıcı-->
-                            <v-col cols="4" md="2">
-                              <v-text-field
-                                  v-bind:value="`${this.$route.params.adsoyad}`"
-                                  readonly
-                                  prepend-icon="mdi-account-outline"
-                                  label="Oluşturan"
-                              ></v-text-field>
-                            </v-col>
+                          <!--User-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="`${this.$route.params.adsoyad}`"
+                                readonly
+                                prepend-icon="mdi-account-outline"
+                                label="Oluşturan"
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--Koordinatlar-->
-                            <v-col cols="4" md="2">
-                              <v-text-field
-                                  v-bind:value="`Enlem: ${cCoordinates.lat ? cCoordinates.lat : '-'} - Boylam: ${cCoordinates.lng ? cCoordinates.lng : '-'}`"
-                                  readonly
-                                  prepend-icon="mdi-map-marker-outline"
-                                  :rules="[rules.required]"
-                                  label="Koordinatlar"
-                                  required
-                              ></v-text-field>
-                            </v-col>
+                          <!--Coordinates-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="`Enlem: ${cCoordinates.lat ? cCoordinates.lat : '-'} - Boylam: ${cCoordinates.lng ? cCoordinates.lng : '-'}`"
+                                readonly
+                                prepend-icon="mdi-map-marker-outline"
+                                :rules="[rules.required]"
+                                label="Koordinatlar"
+                                required
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--İlçe-->
-                            <v-col cols="4" md="2">
-                              <v-text-field
-                                  v-bind:value="cDistrict"
-                                  prepend-icon="mdi-alpha-i-circle-outline"
-                                  label="İlçe"
-                              ></v-text-field>
-                            </v-col>
+                          <!--District-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="cDistrict"
+                                prepend-icon="mdi-alpha-i-circle-outline"
+                                label="İlçe"
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--Mahalle-->
-                            <v-col cols="4" md="2">
-                              <v-text-field
-                                  v-bind:value="cNeighborhood"
-                                  prepend-icon="mdi-alpha-m-circle-outline"
-                                  label="Mahalle"
-                              ></v-text-field>
-                            </v-col>
+                          <!--Neighborhood-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="cNeighborhood"
+                                prepend-icon="mdi-alpha-m-circle-outline"
+                                label="Mahalle"
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--Sokak-->
-                            <v-col cols="4" md="2">
-                              <v-text-field
-                                  v-bind:value="cStreet"
-                                  prepend-icon="mdi-alpha-s-circle-outline"
-                                  label="Sokak"
-                              ></v-text-field>
-                            </v-col>
+                          <!--Street-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="cStreet"
+                                prepend-icon="mdi-alpha-s-circle-outline"
+                                label="Sokak"
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--Kapı-->
-                            <v-col cols="4" md="2">
-                              <v-text-field
-                                  v-bind:value="cDoor"
-                                  prepend-icon="mdi-alpha-k-circle-outline"
-                                  label="Kapı"
-                              ></v-text-field>
-                            </v-col>
+                          <!--Door-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="cDoor"
+                                prepend-icon="mdi-alpha-k-circle-outline"
+                                label="Kapı"
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--Başlık-->
-                            <v-col cols="4" md="4" sm="6">
-                              <v-text-field
-                                  prepend-icon="mdi-text-short"
-                                  v-model="topic"
-                                  :rules="[rules.counterTopic, rules.required]"
-                                  :counter="100"
-                                  label="Konusu"
-                                  required
-                              ></v-text-field>
-                            </v-col>
+                          <!--Topic-->
+                          <v-col cols="4" md="4" sm="6">
+                            <v-text-field
+                                prepend-icon="mdi-text-short"
+                                v-model="topic"
+                                :rules="[rules.counterTopic, rules.required]"
+                                :counter="100"
+                                label="Konusu"
+                                required
+                            ></v-text-field>
+                          </v-col>
 
-                            <!--Tür-->
-                            <v-col cols="4" md="2" sm="6">
-                              <v-select
-                                  prepend-icon="mdi-comment-question-outline"
-                                  v-model="selectedType"
-                                  v-bind:items="selectTypeItems"
-                                  :rules="[rules.required]"
-                                  label="Türü"
-                                  required
-                              ></v-select>
-                            </v-col>
+                          <!--Type-->
+                          <v-col cols="4" md="2" sm="6">
+                            <v-select
+                                prepend-icon="mdi-comment-question-outline"
+                                v-model="selectedType"
+                                v-bind:items="selectTypeItems"
+                                :rules="[rules.required]"
+                                label="Türü"
+                                required
+                            ></v-select>
+                          </v-col>
 
-                            <!--Alan-->
-                            <v-col cols="4" md="2">
-                              <v-select
-                                  prepend-icon="mdi-format-list-bulleted-type"
-                                  v-model="selectedBranch"
-                                  v-bind:items="selectBranchItems"
-                                  :rules="[rules.required]"
-                                  label="Sorun çeşidi"
-                                  required
-                              ></v-select>
-                            </v-col>
+                          <!--Branch-->
+                          <v-col cols="4" md="2">
+                            <v-select
+                                prepend-icon="mdi-format-list-bulleted-type"
+                                v-model="selectedBranch"
+                                v-bind:items="selectBranchItems"
+                                :rules="[rules.required]"
+                                label="Sorun çeşidi"
+                                required
+                            ></v-select>
+                          </v-col>
 
-                            <!--Fotoğraf-->
-                            <v-col cols="4" md="2">
-                              <v-file-input
-                                  prepend-icon="mdi-camera-outline"
-                                  accept="image/*"
-                                  hint="Lütfen 2mb'tan büyük resim eklemeyiniz"
-                                  persistent-hint
-                                  clearable
-                                  label="Fotoğraf"
-                                  show-size
-                                  small-chips
-                                  truncate-length="15"
-                              ></v-file-input>
-                            </v-col>
+                          <!--Image-->
+                          <v-col cols="4" md="2">
+                            <v-file-input
+                                prepend-icon="mdi-camera-outline"
+                                accept="image/*"
+                                hint="Lütfen 2mb'tan büyük resim eklemeyiniz"
+                                persistent-hint
+                                clearable
+                                label="Fotoğraf"
+                                show-size
+                                small-chips
+                                truncate-length="15"
+                            ></v-file-input>
+                          </v-col>
 
-                            <!--Tarih-->
-                            <v-col cols="4" md="2">
-                              <v-menu
-                                  v-bind:close-on-content-click="true"
-                                  nudge-right="40"
-                                  transition="scale-transition"
-                                  offset-y
-                                  min-width="290px"
-                              >
-                                <template v-slot:activator="{ on, attrs }">
-                                  <v-text-field
-                                      v-bind:rules="[rules.required]"
-                                      v-model="date"
-                                      label="Tarih"
-                                      prepend-icon="mdi-calendar"
-                                      readonly
-                                      v-bind="attrs"
-                                      v-on="on"
-                                  ></v-text-field>
-                                </template>
-                                <v-date-picker
+                          <!--Date-->
+                          <v-col cols="4" md="2">
+                            <v-menu
+                                v-bind:close-on-content-click="true"
+                                nudge-right="40"
+                                transition="scale-transition"
+                                offset-y
+                                min-width="290px"
+                            >
+                              <template v-slot:activator="{ on, attrs }">
+                                <v-text-field
+                                    v-bind:rules="[rules.required]"
                                     v-model="date"
-                                ></v-date-picker>
-                              </v-menu>
-                            </v-col>
+                                    label="Tarih"
+                                    prepend-icon="mdi-calendar"
+                                    readonly
+                                    v-bind="attrs"
+                                    v-on="on"
+                                ></v-text-field>
+                              </template>
+                              <v-date-picker
+                                  v-model="date"
+                              ></v-date-picker>
+                            </v-menu>
+                          </v-col>
 
-                            <!--Açıklama-->
-                            <v-col cols="6" md="6">
-                              <v-textarea
-                                  prepend-icon="mdi-text-subject"
-                                  v-model="description"
-                                  :rules="[rules.counterDescription, rules.required]"
-                                  :counter="200"
-                                  label="Açıklama"
-                                  required
-                              ></v-textarea>
-                            </v-col>
+                          <!--Description-->
+                          <v-col cols="6" md="6">
+                            <v-textarea
+                                prepend-icon="mdi-text-subject"
+                                v-model="description"
+                                :rules="[rules.counterDescription, rules.required]"
+                                :counter="200"
+                                label="Açıklama"
+                                required
+                            ></v-textarea>
+                          </v-col>
 
-                          </v-row>
+                        </v-row>
 
-                          <!--Kaydet Düğmesi-->
-                          <v-btn
-                              v-if="valid"
-                              v-on:click="submit"
-                              color="green"
-                              v-bind:disabled="submitted"
-                          >
-                            Kaydet<v-icon v-if="submitted">mdi-check-bold</v-icon>
-                          </v-btn>
+                        <!--Save button-->
+                        <v-btn
+                            v-if="valid"
+                            v-on:click="submit"
+                            color="green"
+                            v-bind:disabled="submitted"
+                        >
+                          Kaydet<v-icon v-if="submitted">mdi-check-bold</v-icon>
+                        </v-btn>
 
-                          <!--Yeni Düğmesi-->
-                          <v-btn
-                              class="ml-2"
-                              v-if="submitted"
-                              v-on:click="emptyFields"
-                              color="blue"
-                          >
-                            Yeni<v-icon>mdi-autorenew</v-icon>
-                          </v-btn>
+                        <!--New button-->
+                        <v-btn
+                            class="ml-2"
+                            v-if="submitted"
+                            v-on:click="emptyFields"
+                            color="blue"
+                        >
+                          Yeni<v-icon>mdi-autorenew</v-icon>
+                        </v-btn>
 
-                        </v-container>
-                      </v-form>
-                    </v-card-text>
-                  </v-card>
-                </v-tab-item>
+                      </v-container>
+                    </v-form>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
 
-                <v-tab-item value="tab-2">
-                  <v-card flat color="orange lighten-5">
-                    <v-card-text>
-                      <v-data-table
-                          dense
-                          height="35vh"
-                          no-data-text="-"
-                          :headers="headers"
-                          :items="cArchivedItems"
-                          :items-per-page="10"
-                          class="elevation-1"
-                      >
-                        <!--Durumu-->
-                        <template v-slot:item.durumu="{item}">
-                          <v-chip text-color="black" v-bind:color="getSituationColor(item.durumu)">
-                            {{item.durumu}}
-                          </v-chip>
-                        </template>
+              <v-tab-item value="tab-2">
+                <v-card flat>
+                  <v-card-text class="pa-2">
+                    <v-data-table
+                        :footer-props="{itemsPerPageText: 'Sayfada gösterilecek satır sayısı'}"
+                        fixed-header
+                        dense
+                        height="35vh"
+                        no-data-text="-"
+                        :headers="headers"
+                        :items="cArchivedItems"
+                        :items-per-page="10"
+                        class="elevation-1"
+                    >
+                      <!--Situation-->
+                      <template v-slot:item.durumu="{item}">
+                        <v-chip text-color="black" v-bind:color="getSituationColor(item.durumu)">
+                          {{item.durumu}}
+                        </v-chip>
+                      </template>
 
-                        <!--Tarih-->
-                        <template v-slot:item.tarih="{item}">
-                          {{changeDate(item.tarih)}}
-                        </template>
+                      <!--Date-->
+                      <template v-slot:item.tarih="{item}">
+                        {{changeDate(item.tarih)}}
+                      </template>
 
-                        <!--Açıklama-->
-                        <template v-slot:item.aciklama="{item}">
-                          <v-textarea
-                              readonly
-                              disabled
-                              rows="3"
-                              v-if="item.aciklama"
-                              color="black"
-                              style="width: 80%;"
-                              :value="item.aciklama"
-                          >
-                          </v-textarea>
-                        </template>
+                      <!--Description-->
+                      <template v-slot:item.aciklama="{item}">
+                        <v-textarea
+                            readonly
+                            rows="3"
+                            v-if="item.aciklama"
+                            color="black"
+                            style="width: 100%; font-size: 15px;"
+                            :value="item.aciklama"
+                        >
+                        </v-textarea>
+                      </template>
 
-                        <!--Kurum açıklama-->
-                        <template v-slot:item.kurum_aciklama="{item}">
-                          <v-textarea
-                              disabled
-                              rows="3"
-                              readonly
-                              v-if="item.kurum_aciklama"
-                              color="black"
-                              style="width: 80%;"
-                              v-bind:value="item.kurum_aciklama"
-                          >
-                            {{item.kurum_aciklama}}
-                          </v-textarea>
-                        </template>
+                      <!--State description-->
+                      <template v-slot:item.kurum_aciklama="{item}">
+                        <v-textarea
+                            rows="3"
+                            readonly
+                            v-if="item.kurum_aciklama"
+                            color="black"
+                            style="width: 100%; font-size: 15px;"
+                            v-bind:value="item.kurum_aciklama"
+                        >
+                          {{item.kurum_aciklama}}
+                        </v-textarea>
+                      </template>
 
+                      <!--Topic-->
+                      <template v-slot:item.konu="{item}">
+                        <v-textarea
+                            rows="3"
+                            readonly
+                            v-if="item.konu"
+                            color="black"
+                            style="width: 100%; font-size: 15px;"
+                            v-bind:value="item.konu"
+                        >
+                        </v-textarea>
+                      </template>
 
-                      </v-data-table>
-                    </v-card-text>
-                  </v-card>
-                </v-tab-item>
-              </v-tabs-items>
-            </v-card>
-          </v-container>
-        </v-col>
-      </v-row>
-
-    </v-container>
-  </v-app>
+                    </v-data-table>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-card>
+        </v-container>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
   import dayjs from "dayjs";
+  import Navbar from "./Navbar";
 
 
   export default {
     name: "Citizen",
+    components: {Navbar},
     data() {
       return {
         map: null,
@@ -299,7 +311,15 @@
         selectedType: "",
         selectTypeItems: ["İstek", "Şikayet"],
         selectedBranch: "",
-        selectBranchItems: ["Asfalt çalışması", "Direk onarımı", "Park ekipmanları", "Sokak hayvanları"],
+        selectBranchItems: [
+          "Asfalt çalışması",
+          "Çöp & Temizlik",
+          "Onarım",
+          "Park ekipmanları",
+          "Sağlıksız işyeri",
+          "Sokak hayvanları",
+          "Yardıma muhtaç insanlar",
+        ],
         submitted: false,
         date: null,
         rules: {
@@ -315,10 +335,10 @@
             sortable: false,
             value: "konu",
           },
-          {text: "İlçesi", value: "ilce"},
-          {text: "Mahallesi", value: "mahalle"},
-          {text: "Sokağı", value: "sokak"},
-          {text: "Kapısı", value: "kapi"},
+          // {text: "İlçesi", value: "ilce"},
+          // {text: "Mahallesi", value: "mahalle"},
+          // {text: "Sokağı", value: "sokak"},
+          // {text: "Kapısı", value: "kapi"},
           {text: "Açıklama", value: "aciklama"},
           {text: "Türü", value: "turu"},
           {text: "Alanı", value: "alani"},

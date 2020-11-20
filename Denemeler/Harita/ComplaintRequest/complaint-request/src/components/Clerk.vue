@@ -16,7 +16,6 @@
     <v-data-table
         :footer-props="{itemsPerPageText: 'Sayfada gösterilecek satır sayısı'}"
         fixed-header
-        dark
         no-data-text="-"
         dense
         :search="search"
@@ -37,7 +36,7 @@
         >
           <!--Update button-->
           <v-btn
-              color="blue"
+              color="blue lighten-3"
               small
           >Güncelleme
           </v-btn>
@@ -70,7 +69,7 @@
             readonly
             v-if="item.konu"
             color="black"
-            style="width: 90%;"
+            style="width: 90%; font-size: 15px;"
             v-bind:value="item.konu"
         >
         </v-textarea>
@@ -83,7 +82,7 @@
             readonly
             v-if="item.aciklama"
             color="black"
-            style="width: 100%;"
+            style="width: 100%; font-size: 15px;"
             v-bind:value="item.aciklama"
         >
         </v-textarea>
