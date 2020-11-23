@@ -1,7 +1,8 @@
 <template>
   <v-app-bar
-      color="grey">
-    <h2 style="color: white">Hoş geldiniz Sn. {{gUser}}</h2>
+      color="grey"
+  >
+    <p style="color: #454444; font-size: 2em; font-weight: bold;">Hoş geldiniz Sn. {{gUser}}</p>
     <v-spacer></v-spacer>
 
     <v-btn v-on:click="aLogout">

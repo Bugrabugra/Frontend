@@ -32,11 +32,12 @@ app.post('/citizen/new', async(req, res) => {
   const id_user = req.body.id_user;
 
   const client = await pool.connect();
-  const query = await client.query(`INSERT INTO public.istek_sikayetler (ilce, mahalle, sokak, kapi, konu, aciklama, turu, alani, tarih, id_muhatap, durumu, geometry) VALUES ('${district}', '${neighborhood}', '${street}', '${door}', '${topic}', '${description}', '${type}', '${branch}', '${date}', ${id_user}, 'Yeni', ST_SetSRID(
+  const query = await client.query(`INSERT INTO public.istek_sikayetler (ilce, mahalle, sokak, kapi, konu, aciklama, turu, alani, tarih, id_muhatap, durumu, latlong, geometry) VALUES ('${district}', '${neighborhood}', '${street}', '${door}', '${topic}', '${description}', '${type}', '${branch}', '${date}', ${id_user}, 'Yeni', '${coordinates[0]},${coordinates[1]}', ST_SetSRID(
         ST_MakePoint(${coordinates[1]}::double precision, ${coordinates[0]}::double precision), 4326))` , (err, response) => {
     client.release();
     res.send(response);
   });
+
 })
 
 app.get('/citizen/:id', async(req, res) => {

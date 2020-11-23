@@ -1,10 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "../store/index";
-import Citizen from "../components/Citizen";
 import Login from "../components/Login";
-import Clerk from "../components/Clerk";
-import Admin from "../components/Admin";
 import jwt from "jsonwebtoken";
 
 
@@ -19,7 +16,7 @@ const routes = [
   {
     path: "/citizen",
     name: "Citizen",
-    component: Citizen,
+    component: () => import(/* webpackChunkName: "contact" */ "../components/Citizen"),
     props: true,
     meta: {
       requiresAuth: true
@@ -28,7 +25,7 @@ const routes = [
   {
     path: "/clerk",
     name: "Clerk",
-    component: Clerk,
+    component: () => import(/* webpackChunkName: "contact" */ "../components/Clerk"),
     props: true,
     meta: {
       requiresClerkAuth: true
@@ -37,7 +34,7 @@ const routes = [
   {
     path: "/admin",
     name: "Admin",
-    component: Admin,
+    component: () => import(/* webpackChunkName: "contact" */ "../components/Admin"),
     props: true,
     meta: {
       requiresAdminAuth: true

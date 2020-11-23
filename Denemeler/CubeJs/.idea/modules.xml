@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CubeJs.iml" filepath="$PROJECT_DIR$/.idea/CubeJs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Harita/ComplaintRequest/complaint-request/.idea/complaint-request.iml" filepath="$PROJECT_DIR$/../Harita/ComplaintRequest/complaint-request/.idea/complaint-request.iml" />
+    </modules>
+  </component>
+</project>

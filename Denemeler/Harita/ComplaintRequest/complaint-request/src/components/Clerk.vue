@@ -1,10 +1,12 @@
 <template>
-  <v-container style="background-color: #95d3ec;" class="pa-0">
+  <v-container style="background-color: #95d3ec;" class="pa-0 elevation-20">
     <Navbar></Navbar>
+    <div id="map" ref="map" style="height: 40vh;"></div>
+
     <!--Arama barı-->
     <v-text-field
         hide-details
-        style="font-size: 30px; font-weight: bolder;"
+        style="font-size: 30px; font-weight: bolder; border: 2px solid black;"
         height="60px"
         filled
         v-model="search"
@@ -14,6 +16,7 @@
     ></v-text-field>
 
     <v-data-table
+        @click:row="zoomToItem"
         :footer-props="{itemsPerPageText: 'Sayfada gösterilecek satır sayısı'}"
         fixed-header
         no-data-text="-"
@@ -131,14 +134,15 @@
     data() {
       return {
         items: [],
+        map: null,
         search: "",
         combo: ['Yeni', 'İşlemde', 'Çözüldü', 'İptal'],
         headers: [
           {text: "Konu", align: "start", value: "konu"},
-          {text: "İlçesi", value: "ilce"},
-          {text: "Mahallesi", value: "mahalle"},
-          {text: "Sokağı", value: "sokak"},
-          {text: "Kapısı", value: "kapi"},
+          {text: "İlçe", value: "ilce"},
+          {text: "Mahalle", value: "mahalle"},
+          {text: "Sokak", value: "sokak"},
+          {text: "Kapı", value: "kapi"},
           {text: "Açıklama", value: "aciklama"},
           {text: "Türü", value: "turu"},
           {text: "Alanı", value: "alani"},
@@ -151,6 +155,78 @@
     },
 
     methods: {
+      initMap() {
+        setTimeout(() => {
+          this.map = new window.google.maps.Map(this.$refs["map"], {
+            center: {lat: 40.984220, lng: 29.132068},
+            zoom: 16
+          })
+
+          const _this = this;
+          const eqfeed_callback = function (results) {
+            for (let i = 0; i < results.length; i++) {
+              if (results[i].durumu === "Yeni" || results[i].durumu === "İşlemde") {
+                let coords = "";
+                if (results[i].latlong) {
+                  coords = results[i].latlong.split(",");
+                }
+                const latLng = new window.google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
+                let marker;
+                let url = "";
+                if (results[i].alani === "Asfalt çalışması") {
+                  url = "https://drive.google.com/uc?export=download&id=1LLggWYfEL7rhNJyfJcXW1ltWfIpVkzLS"
+                } else if (results[i].alani === "Çöp & Temizlik") {
+                  url = "https://drive.google.com/uc?export=download&id=1G9QP3i3yOClqGoDKmviEoXSUW05wichs"
+                } else if (results[i].alani === "Onarım") {
+                  url = "https://drive.google.com/uc?export=download&id=13DDUL2w7qxHf2v2kE_r0spOFkD4vBdxW"
+                } else if (results[i].alani === "Park ekipmanları") {
+                  url = "https://drive.google.com/uc?export=download&id=1fmGRlFx_tvDOGc1LrYHPyRTnL9bQmK1g"
+                } else if (results[i].alani === "Sağlıksız işyeri") {
+                  url = "https://drive.google.com/uc?export=download&id=1iel0ZRjnP9ZL5QVCYQSJ36Pct3FABh3O"
+                } else if (results[i].alani === "Sokak hayvanları") {
+                  url = "https://drive.google.com/uc?export=download&id=1jEoOhXHL4lLfsBSdSL6nYCrxnhUPbG0F"
+                } else if (results[i].alani === "Yardıma muhtaç insanlar") {
+                  url = "https://drive.google.com/uc?export=download&id=1sZHhE2y9iOlAVZNxczW6cAQoFf3OiTp-"
+                }
+                marker = new window.google.maps.Marker({
+                  position: latLng,
+                  map: _this.map,
+                  animation: window.google.maps.Animation.DROP,
+                  icon: {
+                    url: url
+                  },
+                  title: `${results[i].konu}`
+                })
+
+                const contentString =
+                  `
+                  <h3>${results[i].konu}</h3>
+                  <p><h4>İlçe: </h4>${results[i].ilce}</p>
+                  <p><h4>Mahalle: </h4>${results[i].mahalle}</p>
+                  <p><h4>Sokak: </h4>${results[i].sokak}</p>
+                  <p><h4>Kapı: </h4>${results[i].kapi}</p>
+                  <p><h4>Açıklama: </h4>${results[i].aciklama}</p>
+                  <p><h4>Türü: </h4>${results[i].turu}</p>
+                  <p><h4>Alanı: </h4>${results[i].alani}</p>
+                  <p><h4>Tarih: </h4>${_this.changeDate(results[i].tarih)}</p>
+                  <p><h4>Durumu: </h4>${results[i].durumu}</p>
+                  `;
+
+                const infoWindow = new window.google.maps.InfoWindow({
+                  content: contentString,
+                });
+
+                marker.addListener("click", () => {
+                  infoWindow.open(_this.map, marker)
+                })
+              }
+            }
+          };
+
+          eqfeed_callback(this.items);
+        }, 1000)
+      },
+
       getItems() {
         (async () => {
           const res = await fetch("http://localhost:3000/items");
@@ -186,10 +262,18 @@
           }
         })();
       },
+
+      zoomToItem(e) {
+        const coords = e.latlong.split(",");
+        const latLng = new window.google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
+        this.map.setZoom(17);
+        this.map.panTo(latLng);
+      }
     },
 
     mounted() {
       this.getItems();
+      this.initMap();
     }
   }
 </script>

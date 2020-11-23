@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0">
+  <v-container class="pa-0 elevation-20">
     <Navbar></Navbar>
     <v-row class="ma-0">
       <v-col class="pa-0">
@@ -14,7 +14,7 @@
                 icons-and-text
                 slider-size="8"
             >
-              <v-tabs-slider color="pink accent-2"></v-tabs-slider>
+              <v-tabs-slider color="purple"></v-tabs-slider>
 
               <v-tab href="#tab-1" style="background-color: #00bfff;">
                 Yeni İstek & Şikayet
