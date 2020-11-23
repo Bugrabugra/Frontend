@@ -2,7 +2,7 @@
   <v-app-bar
       color="grey"
   >
-    <p style="color: #454444; font-size: 2em; font-weight: bold;">Hoş geldiniz Sn. {{gUser}}</p>
+    <p style="color: #454444; font-size: 2em; font-weight: bold; margin-top: 10px;">Hoş geldiniz Sn. {{gUser}}</p>
     <v-spacer></v-spacer>
 
     <v-btn v-on:click="aLogout">

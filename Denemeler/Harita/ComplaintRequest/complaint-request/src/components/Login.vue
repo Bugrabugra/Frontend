@@ -17,22 +17,24 @@
               <v-form>
                 <v-container v-if="cLoginType === 'citizen'">
                   <v-text-field
-                     label="T.C. Kimlik No:"
+                     label="T.C. Kimlik No"
                      v-model="user"
                   ></v-text-field>
                   <v-text-field
-                      label="Şifre:"
+                      label="Şifre"
                       v-model="pass"
+                      :type="'password'"
                   ></v-text-field>
                 </v-container>
                 <v-container v-else-if="cLoginType === 'state'">
                   <v-text-field
-                      label="E-posta:"
+                      label="E-posta"
                       v-model="user"
                   ></v-text-field>
                   <v-text-field
-                      label="Şifre:"
+                      label="Şifre"
                       v-model="pass"
+                      :type="'password'"
                   ></v-text-field>
                 </v-container>
 

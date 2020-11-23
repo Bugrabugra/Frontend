@@ -4,7 +4,7 @@
     <v-row class="ma-0">
       <v-col class="pa-0">
         <div id="map" ref="map" style="height: 40vh;"></div>
-        <v-container style="padding: 0;">
+        <v-container class="pa-0">
           <v-card class="pa-0">
             <v-tabs
                 v-model="tab"
@@ -32,21 +32,11 @@
                 <v-card flat>
                   <v-card-text class="pa-2">
                     <v-form v-model="valid">
-                      <v-container>
+                      <v-container class="pa-0">
                         <v-row>
 
-                          <!--User-->
-                          <v-col cols="4" md="2">
-                            <v-text-field
-                                v-bind:value="`${this.$route.params.adsoyad}`"
-                                readonly
-                                prepend-icon="mdi-account-outline"
-                                label="Oluşturan"
-                            ></v-text-field>
-                          </v-col>
-
                           <!--Coordinates-->
-                          <v-col cols="4" md="2">
+                          <v-col cols="6" md="4">
                             <v-text-field
                                 v-bind:value="`Enlem: ${cCoordinates.lat ? cCoordinates.lat : '-'} - Boylam: ${cCoordinates.lng ? cCoordinates.lng : '-'}`"
                                 readonly
@@ -130,19 +120,19 @@
                           </v-col>
 
                           <!--Image-->
-                          <v-col cols="4" md="2">
-                            <v-file-input
-                                prepend-icon="mdi-camera-outline"
-                                accept="image/*"
-                                hint="Lütfen 2mb'tan büyük resim eklemeyiniz"
-                                persistent-hint
-                                clearable
-                                label="Fotoğraf"
-                                show-size
-                                small-chips
-                                truncate-length="15"
-                            ></v-file-input>
-                          </v-col>
+                          <!--<v-col cols="4" md="2">-->
+                          <!--  <v-file-input-->
+                          <!--      prepend-icon="mdi-camera-outline"-->
+                          <!--      accept="image/*"-->
+                          <!--      hint="Lütfen 2mb'tan büyük resim eklemeyiniz"-->
+                          <!--      persistent-hint-->
+                          <!--      clearable-->
+                          <!--      label="Fotoğraf"-->
+                          <!--      show-size-->
+                          <!--      small-chips-->
+                          <!--      truncate-length="15"-->
+                          <!--  ></v-file-input>-->
+                          <!--</v-col>-->
 
                           <!--Date-->
                           <v-col cols="4" md="2">
@@ -168,6 +158,16 @@
                                   v-model="date"
                               ></v-date-picker>
                             </v-menu>
+                          </v-col>
+
+                          <!--User-->
+                          <v-col cols="4" md="2">
+                            <v-text-field
+                                v-bind:value="`${this.$route.params.adsoyad}`"
+                                readonly
+                                prepend-icon="mdi-account-outline"
+                                label="Oluşturan"
+                            ></v-text-field>
                           </v-col>
 
                           <!--Description-->
