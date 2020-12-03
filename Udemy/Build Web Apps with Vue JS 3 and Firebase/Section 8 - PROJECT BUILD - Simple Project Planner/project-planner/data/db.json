@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Create new homepage banner",
       "details": "Lorem ipsum",
-      "complete": false
+      "complete": true
     },
     {
       "id": 2,
@@ -15,7 +15,7 @@
     {
       "title": "Adjust CORS options",
       "details": "And test them",
-      "complete": true,
+      "complete": false,
       "id": 3
     }
   ]
