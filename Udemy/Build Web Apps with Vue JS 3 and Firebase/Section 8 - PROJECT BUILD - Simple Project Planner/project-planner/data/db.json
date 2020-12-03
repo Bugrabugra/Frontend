@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Create new homepage banner",
+      "details": "Lorem ipsum",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "title": "Make marketing emails",
+      "details": "User outlook",
+      "complete": true
+    },
+    {
+      "title": "Adjust CORS options",
+      "details": "And test them",
+      "complete": true,
+      "id": 3
+    }
+  ]
+}
