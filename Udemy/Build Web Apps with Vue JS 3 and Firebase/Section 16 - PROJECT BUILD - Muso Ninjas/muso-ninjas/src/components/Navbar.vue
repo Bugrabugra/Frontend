@@ -4,9 +4,16 @@
       <img src="@/assets/ninja.png">
       <h1><router-link :to="{name: 'Home'}">Muso Ninjas</router-link></h1>
       <div class="links">
-        <button v-if="user" @click="handleClick">Log Out</button>
-        <router-link v-if="!user" class="btn" :to="{name: 'Signup'}">Sign Up</router-link>
-        <router-link v-if="!user" class="btn" :to="{name: 'Login'}">Log In</router-link>
+        <div v-if="user">
+          <router-link :to="{name: 'CreatePlaylist'}">Create Playlist</router-link>
+          <router-link :to="{name: 'UserPlaylists'}">My Playlists</router-link>
+          <span>Hi there {{user.displayName}}</span>
+          <button @click="handleClick">Log Out</button>
+        </div>
+        <div v-else>
+          <router-link class="btn" :to="{name: 'Signup'}">Sign Up</router-link>
+          <router-link class="btn" :to="{name: 'Login'}">Log In</router-link>
+        </div>
       </div>
     </nav>
   </div>
@@ -65,5 +72,13 @@
   nav .links a, button {
     margin-left: 16px;
     font-size: 14px;
+  }
+
+  span {
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 1px solid #eee;
   }
 </style>
