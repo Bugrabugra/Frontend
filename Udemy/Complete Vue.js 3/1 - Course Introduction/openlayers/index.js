@@ -15,7 +15,6 @@ import {Circle, Fill, Style, Icon} from 'ol/style';
 //
 // useGeographic();
 
-
 var place = [-62.8417, 140.6421];
 
 var point = new Point(place);
