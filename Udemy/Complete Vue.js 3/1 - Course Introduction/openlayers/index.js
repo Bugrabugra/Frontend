@@ -44,6 +44,15 @@ const source = new XYZ({
   crossOrigin: "",
 });
 
+const map = new Map({
+  view: new View({
+    extent: [-20037508.34, -20037508.34, 20037508.34, 20037508.34],
+    center: [0, 0],
+    zoom: 5,
+    maxZoom: 9
+  }),
+  target: document.getElementById("map"),
+});
 
 const raster = new RasterSource({
   sources: [source],
@@ -56,36 +65,23 @@ const raster = new RasterSource({
       pixel[2] = 0;
     }
 
-    if (pixel[0] === 124 && pixel[1] === 8 && pixel[2] === 0) {
-      // max temperature pixel.- set yellow.
-      pixel[0] = 0;
-      pixel[1] = 0; //255
-      pixel[2] = 0;
-    }
+    // if (pixel[0] === 124 && pixel[1] === 8 && pixel[2] === 0) {
+    //   // max temperature pixel.- set yellow.
+    //   pixel[0] = 0;
+    //   pixel[1] = 0; //255
+    //   pixel[2] = 0;
+    // }
+
     return pixel;
   }
 });
 
 const imageLayer = new ImageLayer({ source: raster });
-
-
-
-const tileLayer = new TileLayer({ source: source });
-// map.addLayer(tileLayer);
-
-const map = new Map({
-  view: new View({
-    extent: [-20037508.34, -20037508.34, 20037508.34, 20037508.34],
-    center: [0, 0],
-    zoom: 5,
-    maxZoom: 9
-  }),
-  target: document.getElementById("map"),
-  layers: [tileLayer]
-});
+// const tileLayer = new TileLayer({ source: source });
 
 map.addLayer(imageLayer);
-map.addLayer(vectorLayer);
+// map.addLayer(vectorLayer);
+
 
 
 
