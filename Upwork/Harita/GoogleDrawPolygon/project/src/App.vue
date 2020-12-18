@@ -12,16 +12,13 @@
 <script>
   import EditMap from "./views/EditMap";
   import ViewMap from "./views/ViewMap";
+
+
   export default {
-  name: 'App',
+    name: 'App',
+    components: {ViewMap, EditMap},
+    methods: {
 
-  components: {
-    ViewMap,
-    EditMap,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+    }
+  };
 </script>
