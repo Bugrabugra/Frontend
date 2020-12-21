@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AppBar.iml" filepath="$PROJECT_DIR$/.idea/AppBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Udemy/Complete Vue.js 3/1 - Course Introduction/openlayers/.idea/openlayers.iml" filepath="$PROJECT_DIR$/../../../Udemy/Complete Vue.js 3/1 - Course Introduction/openlayers/.idea/openlayers.iml" />
+    </modules>
+  </component>
+</project>

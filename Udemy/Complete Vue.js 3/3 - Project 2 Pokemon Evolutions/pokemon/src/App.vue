@@ -1,5 +1,6 @@
 <template>
   <PokemonCards
+      style="position:relative; top: 30px;"
       :pokemons="starters"
       :selected-id="selectedId"
       @pokemonClicked="fetchEvolutions"
