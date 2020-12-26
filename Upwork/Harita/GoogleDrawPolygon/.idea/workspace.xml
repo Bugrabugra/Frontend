@@ -1,11 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project_field/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/server/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/assets/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/components/EditField.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/components/EditTerritory.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/plugins/vuetify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_field/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1mCczswjPMfBohQpTzNmAHFQ7Bp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_field/src/components" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Harita\GoogleDrawPolygon\project_field\src\components" />
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Harita\GoogleDrawPolygon" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="" />
+      <created>1609001279016</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609001279016</updated>
+      <workItem from="1609001280306" duration="5916000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
