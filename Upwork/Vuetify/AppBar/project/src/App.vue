@@ -1,25 +1,38 @@
 <template>
   <v-app>
     <v-container>
-      <v-card class="overflow-hidden" rounded>
+      <v-card  class="overflow-hidden" rounded>
 
-        <v-btn
-            @click="drawer = true"
-            icon
-            dark
-            style="position:absolute; top: 5px; left: 5px; z-index: 2;"
-        >
-          <v-icon
-              class="hamburger"
-              color="#fff"
-              style="position:relative; z-index: 2; cursor:pointer;"
-          >
-            mdi-reorder-horizontal
-          </v-icon>
+        <!--Hamburger-->
+        <v-btn @click="drawer = true" icon dark style="position:absolute; top: 5px; left: 5px">
+          <v-icon color="#fff" style="position:relative; z-index: 2; cursor:pointer;">mdi-reorder-horizontal</v-icon>
         </v-btn>
 
+        <v-spacer></v-spacer>
+
+        <!--Magnify-->
+        <v-btn icon dark style="position:absolute; top: 5px; right: 10px; z-index: 2;">
+          <v-icon color="#fff" style="position:relative; z-index: 2; cursor:pointer;">mdi-magnify</v-icon>
+        </v-btn>
+
+        <!--Heart-->
+        <v-btn icon dark style="position:absolute; top: 5px; right: 50px; z-index: 2;">
+          <v-icon color="#fff" style="position:relative; z-index: 2; cursor:pointer;">mdi-heart</v-icon>
+        </v-btn>
+
+        <!--Heart-->
+        <v-btn icon dark style="position:absolute; top: 5px; right: 90px; z-index: 2;">
+          <v-icon color="#fff" style="position:relative; z-index: 2; cursor:pointer;">mdi-account</v-icon>
+        </v-btn>
+
+        <v-text-field
+            background-color="white"
+            style="position:absolute; top: -10px; right: 130px; z-index: 2;"
+            label="Regular"
+            rounded
+        ></v-text-field>
+
         <v-app-bar
-            ref="appbar"
             height="50px"
             absolute
             hide-on-scroll
@@ -32,6 +45,7 @@
             fade-img-on-scroll
             scroll-threshold="500"
         >
+
           <template v-slot:img="{ props }">
             <v-img
                 v-bind="props"
@@ -40,7 +54,10 @@
           </template>
 
           <template v-slot:extension>
-            <v-tabs align-with-title>
+            <v-tabs
+                align-with-title
+                class="pl-16"
+            >
               <v-tab>Tab 1</v-tab>
               <v-tab>Tab 2</v-tab>
               <v-tab>Tab 5</v-tab>
@@ -49,7 +66,6 @@
           </template>
 
           <!--<v-app-bar-nav-icon></v-app-bar-nav-icon>-->
-
 
         </v-app-bar>
         <v-sheet
@@ -109,6 +125,9 @@ export default {
   }),
 
   methods: {
+    test() {
+      alert("hey")
+    }
 
   },
 
@@ -123,7 +142,3 @@ export default {
   }
 };
 </script>
-
-<style>
-
-</style>
