@@ -19,32 +19,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project_field/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/server/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/components/EditField.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/components/EditTerritory.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/plugins/vuetify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_field/vue.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" afterDir="false" />
+    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="26122020 - Upwork">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Bugra.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_field/src/components/EditField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/components/EditField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -61,6 +52,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_field/src/components" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -70,6 +62,20 @@
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Harita\GoogleDrawPolygon\project_field\src\components" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Harita\GoogleDrawPolygon" />
     </key>
+  </component>
+  <component name="RunManager" selected="Node.js.ccc.js">
+    <configuration name="ccc.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/project_field/server/ccc.js" working-dir="$PROJECT_DIR$/project_field/server">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/project_field/public/test.js" working-dir="$PROJECT_DIR$/project_field/public">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.ccc.js" />
+        <item itemvalue="Node.js.test.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -81,8 +87,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609001279016</updated>
-      <workItem from="1609001280306" duration="5916000" />
+      <workItem from="1609001280306" duration="5981000" />
+      <workItem from="1609067055642" duration="1279000" />
+      <workItem from="1609072023939" duration="2688000" />
+      <workItem from="1609134279419" duration="26511000" />
     </task>
+    <task id="LOCAL-00001" summary="26122020 - Upwork">
+      <created>1609008158745</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609008158745</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,5 +115,32 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="26122020 - Upwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="26122020 - Upwork" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1223" height="281" key="GridCell.Tab.0.bottom" timestamp="1609145353610">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1223" height="281" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353610" />
+    <state width="1223" height="281" key="GridCell.Tab.0.center" timestamp="1609145353609">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1223" height="281" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353609" />
+    <state width="1223" height="281" key="GridCell.Tab.0.left" timestamp="1609145353609">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1223" height="281" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353609" />
+    <state width="1223" height="281" key="GridCell.Tab.0.right" timestamp="1609145353609">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1223" height="281" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353609" />
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609008164518">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609008164518" />
   </component>
 </project>

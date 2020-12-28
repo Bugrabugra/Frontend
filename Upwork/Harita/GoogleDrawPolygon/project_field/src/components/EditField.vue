@@ -72,6 +72,51 @@
             ></v-text-field>
           </v-col>
 
+          <v-col cols="5" class="ma-0 pb-0">
+            <v-text-field
+                v-model="row"
+                label="Row Count"
+                outlined
+                required
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="5" class="ma-0 pb-0">
+            <v-text-field
+                v-model="column"
+                label="Column Count"
+                outlined
+                required
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="5" class="ma-0 pb-0">
+            <v-text-field
+                v-model="gapHeight"
+                label="Gap Height"
+                outlined
+                required
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="5" class="ma-0 pb-0">
+            <v-text-field
+                v-model="gapWidth"
+                label="Gap Width"
+                outlined
+                required
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="5" class="ma-0 pb-0">
+            <v-text-field
+                v-model="angle"
+                label="Angle"
+                outlined
+                required
+            ></v-text-field>
+          </v-col>
+
           <v-col cols="2">
             <v-btn
                 :disabled="!isValidPlace"
@@ -99,8 +144,13 @@
         seedType: "",
         lon: "",
         lat: "",
-        width: "",
-        height: ""
+        width: 0,
+        height: 0,
+        row: 0,
+        column: 0,
+        gapWidth: 0,
+        gapHeight: 0,
+        angle: 0
       }
     },
 
@@ -136,7 +186,12 @@
             lat: this.lat,
             lon: this.lon,
             width: this.width,
-            height: this.height
+            height: this.height,
+            row: this.row,
+            column: this.column,
+            gapWidth: this.gapWidth,
+            gapHeight: this.gapHeight,
+            angle: this.angle
           }
         )
       },
