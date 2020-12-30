@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="26122020 - Upwork">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Bugra.xml" afterDir="false" />
+    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="28122020 - Upwork">
+      <change beforePath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_field/src/components/EditField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/components/EditField.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" afterDir="false" />
@@ -34,6 +35,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -54,22 +56,35 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_field/src/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Vuetify/BitGol-main" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Vuetify\BitGol-main\src\components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Harita\GoogleDrawPolygon\project_field\src\components" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Upwork\Harita\GoogleDrawPolygon" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.ccc.js">
+  <component name="RunManager" selected="JavaScript Debug.Vue.js Debug">
+    <configuration name="Vue.js Debug" type="JavascriptDebugType" uri="http://localhost:8080" useFirstLineBreakpoints="true">
+      <method v="2" />
+    </configuration>
     <configuration name="ccc.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/project_field/server/ccc.js" working-dir="$PROJECT_DIR$/project_field/server">
       <method v="2" />
     </configuration>
     <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/project_field/public/test.js" working-dir="$PROJECT_DIR$/project_field/public">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Vue.js Debug" />
+      <item itemvalue="Node.js.ccc.js" />
+      <item itemvalue="Node.js.test.js" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.ccc.js" />
@@ -90,7 +105,11 @@
       <workItem from="1609001280306" duration="5981000" />
       <workItem from="1609067055642" duration="1279000" />
       <workItem from="1609072023939" duration="2688000" />
-      <workItem from="1609134279419" duration="26511000" />
+      <workItem from="1609134279419" duration="26563000" />
+      <workItem from="1609170380741" duration="8512000" />
+      <workItem from="1609220512705" duration="7300000" />
+      <workItem from="1609257584076" duration="6822000" />
+      <workItem from="1609310678066" duration="9273000" />
     </task>
     <task id="LOCAL-00001" summary="26122020 - Upwork">
       <created>1609008158745</created>
@@ -99,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609008158745</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="28122020 - Upwork">
+      <created>1609165392583</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609165392584</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,28 +145,73 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="26122020 - Upwork" />
-    <option name="LAST_COMMIT_MESSAGE" value="26122020 - Upwork" />
+    <MESSAGE value="28122020 - Upwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="28122020 - Upwork" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1223" height="281" key="GridCell.Tab.0.bottom" timestamp="1609145353610">
+    <state x="313" y="182" key="#ccc.js" timestamp="1609221310273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1223" height="281" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353610" />
-    <state width="1223" height="281" key="GridCell.Tab.0.center" timestamp="1609145353609">
+    <state x="313" y="182" key="#ccc.js/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609221310273" />
+    <state x="58" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609221445997">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1223" height="281" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353609" />
-    <state width="1223" height="281" key="GridCell.Tab.0.left" timestamp="1609145353609">
+    <state x="58" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609221445997" />
+    <state x="384" y="276" key="FileChooserDialogImpl" timestamp="1609276326001">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1223" height="281" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353609" />
-    <state width="1223" height="281" key="GridCell.Tab.0.right" timestamp="1609145353609">
+    <state x="384" y="276" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609276326001" />
+    <state width="1170" height="279" key="GridCell.Tab.0.bottom" timestamp="1609278957296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1223" height="281" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609145353609" />
-    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609008164518">
+    <state width="1170" height="279" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609278957296" />
+    <state width="1170" height="279" key="GridCell.Tab.0.center" timestamp="1609278957296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609008164518" />
+    <state width="1170" height="279" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609278957296" />
+    <state width="1170" height="279" key="GridCell.Tab.0.left" timestamp="1609278957296">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="279" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609278957295" />
+    <state width="1170" height="279" key="GridCell.Tab.0.right" timestamp="1609278957296">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="279" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609278957296" />
+    <state width="1170" height="203" key="GridCell.Tab.1.bottom" timestamp="1609254738367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738367" />
+    <state width="1170" height="203" key="GridCell.Tab.1.center" timestamp="1609254738367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738367" />
+    <state width="1170" height="203" key="GridCell.Tab.1.left" timestamp="1609254738367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738367" />
+    <state width="1170" height="203" key="GridCell.Tab.1.right" timestamp="1609254738367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738367" />
+    <state width="1170" height="203" key="GridCell.Tab.2.bottom" timestamp="1609254738370">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.2.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738370" />
+    <state width="1170" height="203" key="GridCell.Tab.2.center" timestamp="1609254738369">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.2.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738369" />
+    <state width="1170" height="203" key="GridCell.Tab.2.left" timestamp="1609254738368">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.2.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738368" />
+    <state width="1170" height="203" key="GridCell.Tab.2.right" timestamp="1609254738369">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1170" height="203" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738369" />
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609165397190">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609165397190" />
   </component>
 </project>

@@ -32,7 +32,9 @@
         drawingManager: null,
         geometry: null,
         territories: [],
-        fields: []
+        fields: [],
+        lat: null,
+        lng: null
       }
     },
 
@@ -41,7 +43,6 @@
     },
 
     methods: {
-      // This example creates a simple polygon representing the Bermuda Triangle.
       initMap() {
         const _this = this;
         setTimeout(() => {
@@ -73,7 +74,9 @@
         }, 1000)
       },
 
+      // Gets all Land Boundaries from the server
       getTerritories() {
+        const _this = this;
         (async () => {
           const res = await fetch(`http://localhost:3000/territories`, {
             method: "GET",
@@ -86,23 +89,30 @@
             this.territories = await res.json();
 
             this.territories.forEach(territory => {
-              const feature = {
-                geometry: new window.google.maps.Data.Polygon([window.google.maps.geometry.encoding.decodePath(territory.geometry)]),
-              }
-              let color = "#FF0000";
-
-              let data = new window.google.maps.Data();
-              data.add(feature)
-              data.setMap(this.map);
-
-              data.setStyle(function(feature) {
-                return /** @type {!google.maps.Data.StyleOptions} */ ({
-                  fillColor: color,
-                  strokeColor: "#323131",
-                  strokeWeight: 2,
-                  editable: true
-                });
+              const landBoundaries = new window.google.maps.Polygon({
+                paths: window.google.maps.geometry.encoding.decodePath(territory.geometry),
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                clickable: true,
+                map: this.map,
+                editable: true
               });
+
+              // Adding all Land boundaries en event to be able to click at their
+              // vertecies and getting the coordinates.
+              window.google.maps.event.addListener(landBoundaries, "click", function(event) {
+                // event.vertex returns the ID of the vertex
+                if (event.vertex >= 0) {
+                  _this.lat = landBoundaries.getPath().getArray()[event.vertex].lat();
+                  _this.lng = landBoundaries.getPath().getArray()[event.vertex].lng()
+                  console.log(_this.lat, _this.lng);
+                } else {
+                  console.log("Non-vertex click. Please click at vertecies")
+                }
+              })
             })
           }
         })();
@@ -183,13 +193,24 @@
         })();
       },
 
+      // ****************************
+      // This is the main code block
+      // ****************************
+
       placeField(payload) {
         console.log(payload);
 
         // Destructuring the EditField payload
         let {
-          lat: startingLatitude, lon: startingLongitude,
-          width, height, row, column, gapWidth, gapHeight, angle
+          lat: startingLatitude, // if user clicked a Land Boundary vertex, use that coordinates else this coordinates
+          lon: startingLongitude,
+          width, // meters
+          height, // meters
+          row, // integer
+          column, // integer
+          gapWidth, // meters
+          gapHeight, // meters
+          angle // degree
         } = payload;
 
         width = parseFloat(width);
@@ -200,26 +221,36 @@
         gapHeight = parseFloat(gapHeight);
         angle = parseFloat(angle);
 
-        // console.log("lat: ", startingLatitude);
-        // console.log("lon: ", startingLongitude);
-        // console.log("width: ", width);
-        // console.log("height: ", height);
+        console.log("lat: ", startingLatitude);
+        console.log("lon: ", startingLongitude);
+        console.log("width: ", width);
+        console.log("height: ", height);
         console.log("row: ", row);
         console.log("column: ", column);
-        // console.log("gapWidth: ", gapWidth);
-        // console.log("gapHeight: ", gapHeight);
-        // console.log("angle: ", angle);
-        //
-        // console.log("width: ", ((column * width) + ((column + 1) * gapWidth)));
-        // console.log("height: ", ((row * height) + ((row + 1) * gapHeight)));
-        // console.log(((column * width) + ((column + 1) * gapWidth)))
-        // console.log(((row * height) + ((row + 1) * gapHeight)))
-        // console.log(((row * height) + ((row + 1) * gapHeight)))
+        console.log("gapWidth: ", gapWidth);
+        console.log("gapHeight: ", gapHeight);
+        console.log("angle: ", angle);
+        console.log("width: ", ((column * width) + ((column + 1) * gapWidth)));
+        console.log("height: ", ((row * height) + ((row + 1) * gapHeight)));
+        console.log(((column * width) + ((column + 1) * gapWidth)))
+        console.log(((row * height) + ((row + 1) * gapHeight)))
+        console.log(((row * height) + ((row + 1) * gapHeight)))
+
         // Spherical
         const spherical = window.google.maps.geometry.spherical;
 
         // Field set boundaries coordinates
-        const startingCoordinatesBottomLeft = new window.google.maps.LatLng(startingLatitude, startingLongitude);
+        let startingCoordinatesBottomLeft;
+
+        // If user clicked Land Boundary vertex point
+        if (this.lat && this.lng) {
+          console.log("Land boundary vertex has been used!");
+          startingCoordinatesBottomLeft = new window.google.maps.LatLng(this.lat, this.lng);
+        } else {
+          // If user entered latitude/longitude at user form
+          console.log("Input form latitude/longitude has been used!");
+          startingCoordinatesBottomLeft = new window.google.maps.LatLng(startingLatitude, startingLongitude);
+        }
 
         const startingCoordinatesBottomRight = spherical.computeOffset(
           startingCoordinatesBottomLeft,
@@ -251,13 +282,14 @@
         
         arrayBoundaryCoordinates.forEach(coordinate => {
           this.territories.forEach(territory => {
-            const landBoundaries = new google.maps.Polygon({
+            const landBoundaries = new window.google.maps.Polygon({
               paths: window.google.maps.geometry.encoding.decodePath(territory.geometry),
               strokeColor: '#FF0000',
               strokeOpacity: 0.8,
               strokeWeight: 2,
               fillColor: '#FF0000',
-              fillOpacity: 0.35
+              fillOpacity: 0.35,
+              clickable: true
             });
 
             if (window.google.maps.geometry.poly.containsLocation(coordinate, landBoundaries)) {
@@ -270,7 +302,7 @@
           if (controlCoordinateInsideBoundary.length === 4) {
             console.log(controlCoordinateInsideBoundary);
 
-            //Marker for Field set boundaries coordinates
+            // Marker for Field set outer boundaries coordinates
             // Left bottom
             new window.google.maps.Marker({
               position: startingCoordinatesBottomLeft,
@@ -299,7 +331,7 @@
               title: "TopLeft",
             });
 
-            const boundaryAllFields = new google.maps.Polygon({
+            const boundaryOuter = new google.maps.Polygon({
               paths: [
                 startingCoordinatesBottomLeft,
                 startingCoordinatesBottomRight,
@@ -314,11 +346,12 @@
               map: this.map,
             });
 
-            // First polygons left bottom coordinates
+            // Distance between starting lat/long to First field polygon's left bottom coordinates
             const disStartToLeftBot = Math.hypot(parseFloat(gapHeight), parseFloat(gapWidth));
+            // Angle
             const angleStartToLeftBot = this.degrees(gapHeight, gapWidth);
 
-            // First polygon's coordinates
+            // First field polygon's other coordinates
             const coordBottomLeft = spherical.computeOffset(startingCoordinatesBottomLeft, disStartToLeftBot, (angle + 90 - parseFloat(angleStartToLeftBot)));
             const coordBottomRight = spherical.computeOffset(coordBottomLeft, width, angle + 90);
             const coordTopLeft = spherical.computeOffset(coordBottomLeft, height, angle);
@@ -339,42 +372,45 @@
             }
 
             arrayMain = arrayPolygons;
-            console.log(arrayMain);
+            console.log("First row: ", arrayPolygons);
 
             // Creating polygons for row count
-            for (let r = 1; r < row; r++) {
               arrayPolygons.forEach(polygon => {
-                const botLeft = spherical.computeOffset(polygon[0], (r * (height + gapHeight)), angle);
-                const botRight = spherical.computeOffset(polygon[1], (r * (height + gapHeight)), angle);
-                const topRight = spherical.computeOffset(polygon[2], (r * (height + gapHeight)), angle);
-                const topLeft = spherical.computeOffset(polygon[3], (r * (height + gapHeight)), angle);
+                for (let r = 1; r < row; r++) {
+                  console.log("r: ", r);
+                  console.log(`Polygon:  ${r} --> ${polygon}`);
+                  const botLeft = spherical.computeOffset(polygon[0], (r * (height + gapHeight)), angle);
+                  const botRight = spherical.computeOffset(polygon[1], (r * (height + gapHeight)), angle);
+                  const topRight = spherical.computeOffset(polygon[2], (r * (height + gapHeight)), angle);
+                  const topLeft = spherical.computeOffset(polygon[3], (r * (height + gapHeight)), angle);
 
-                arrayMain.push([botLeft, botRight, topRight, topLeft])
+                  arrayMain.push([botLeft, botRight, topRight, topLeft])
+                }
               })
-            }
 
-            console.log(arrayMain)
+            console.log("All polygons: ", arrayMain)
 
-            if (arrayMain.length === (row * column)) {
-              arrayMain.forEach(pathPolygon => {
-                const polygon = new google.maps.Polygon({
-                  paths: pathPolygon,
-                  strokeColor: "#FF0000",
-                  strokeOpacity: 0.8,
-                  strokeWeight: 2,
-                  fillColor: "#FF0000",
-                  fillOpacity: 0.35,
-                  editable: true,
-                  map: this.map,
-                  zIndex: 999
-                });
+            // Drawing fields to map
+            arrayMain.forEach(pathPolygon => {
+              const polygon = new google.maps.Polygon({
+                paths: pathPolygon,
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+                editable: true,
+                map: this.map,
+                zIndex: 999,
+                draggable: true,
+              });
 
-                polygon.addListener("click", () => {
-                    console.log("Clicked");
-                  }
-                )
-              })
-            }
+              // Adding event listener to field polygons
+              polygon.addListener("click", () => {
+                  console.log("Clicked");
+                }
+              )
+            })
           }
         }, 1000)
       },

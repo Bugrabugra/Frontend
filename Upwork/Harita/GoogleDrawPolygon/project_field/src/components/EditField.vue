@@ -162,7 +162,7 @@
       },
 
       isValidPlace() {
-        if (this.lat && this.lon && this.width && this.height) {
+        if (this.width && this.height) {
           return true
         }
       }
