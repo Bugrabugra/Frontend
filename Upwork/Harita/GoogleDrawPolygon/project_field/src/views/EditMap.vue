@@ -43,6 +43,7 @@
     },
 
     methods: {
+      // No need
       initMap() {
         const _this = this;
         setTimeout(() => {
@@ -75,6 +76,7 @@
       },
 
       // Gets all Land Boundaries from the server
+      // No need
       getTerritories() {
         const _this = this;
         (async () => {
@@ -118,6 +120,7 @@
         })();
       },
 
+      // No need
       getFields() {
         (async () => {
           const res = await fetch(`http://localhost:3000/fields`, {
@@ -153,6 +156,7 @@
         })();
       },
 
+      // No need
       saveTerritory(payload) {
         payload = {...payload, geometry: this.geometry};
         console.log(payload);
@@ -173,6 +177,7 @@
         })();
       },
 
+      // No need
       saveField(payload) {
         payload = {...payload, geometry: this.geometry};
         console.log(payload);
@@ -193,9 +198,10 @@
         })();
       },
 
-      // ****************************
-      // This is the main code block
-      // ****************************
+      // **************************************************
+      // This is the main code block for the project
+      // By Bugra Otken - 31 Dec 2020 bugraotken@gmail.com
+      // **************************************************
 
       placeField(payload) {
         console.log(payload);
@@ -299,6 +305,7 @@
         })
 
         setTimeout(() => {
+          // Change this value of 4 to other X values to say "at least X points must be inside the land boundary"
           if (controlCoordinateInsideBoundary.length === 4) {
             console.log(controlCoordinateInsideBoundary);
 

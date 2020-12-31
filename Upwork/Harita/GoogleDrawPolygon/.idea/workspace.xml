@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="28122020 - Upwork">
-      <change beforePath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GoogleDrawPolygon.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="30122020 - Upwork">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_field/src/components/EditField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/components/EditField.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +106,9 @@
       <workItem from="1609170380741" duration="8512000" />
       <workItem from="1609220512705" duration="7300000" />
       <workItem from="1609257584076" duration="6822000" />
-      <workItem from="1609310678066" duration="9273000" />
+      <workItem from="1609310678066" duration="9393000" />
+      <workItem from="1609348090890" duration="600000" />
+      <workItem from="1609393654808" duration="2064000" />
     </task>
     <task id="LOCAL-00001" summary="26122020 - Upwork">
       <created>1609008158745</created>
@@ -125,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609165392584</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="30122020 - Upwork">
+      <created>1609332796863</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609332796863</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +152,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="26122020 - Upwork" />
     <MESSAGE value="28122020 - Upwork" />
-    <option name="LAST_COMMIT_MESSAGE" value="28122020 - Upwork" />
+    <MESSAGE value="30122020 - Upwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="30122020 - Upwork" />
   </component>
   <component name="WindowStateProjectService">
     <state x="313" y="182" key="#ccc.js" timestamp="1609221310273">
@@ -209,9 +216,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1170" height="203" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738369" />
-    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609165397190">
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609332861802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609165397190" />
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609332861802" />
   </component>
 </project>
