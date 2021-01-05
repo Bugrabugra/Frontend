@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="30122020 - Upwork">
+    <list default="true" id="2def0a63-7d4b-459f-842c-f45307d20d33" name="Default Changelist" comment="31122020 - Upwork">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project_field/src/views/EditMap.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Vuetify/BitGol-main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Udemy/Complete Vue.js 3" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -108,7 +107,9 @@
       <workItem from="1609257584076" duration="6822000" />
       <workItem from="1609310678066" duration="9393000" />
       <workItem from="1609348090890" duration="600000" />
-      <workItem from="1609393654808" duration="2064000" />
+      <workItem from="1609393654808" duration="2099000" />
+      <workItem from="1609403426969" duration="633000" />
+      <workItem from="1609738542846" duration="622000" />
     </task>
     <task id="LOCAL-00001" summary="26122020 - Upwork">
       <created>1609008158745</created>
@@ -131,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609332796863</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="31122020 - Upwork">
+      <created>1609395743851</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609395743851</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +161,8 @@
     <MESSAGE value="26122020 - Upwork" />
     <MESSAGE value="28122020 - Upwork" />
     <MESSAGE value="30122020 - Upwork" />
-    <option name="LAST_COMMIT_MESSAGE" value="30122020 - Upwork" />
+    <MESSAGE value="31122020 - Upwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="31122020 - Upwork" />
   </component>
   <component name="WindowStateProjectService">
     <state x="313" y="182" key="#ccc.js" timestamp="1609221310273">
@@ -164,10 +173,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="58" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609221445997" />
-    <state x="384" y="276" key="FileChooserDialogImpl" timestamp="1609276326001">
+    <state x="384" y="276" key="FileChooserDialogImpl" timestamp="1609739745253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="384" y="276" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609276326001" />
+    <state x="384" y="276" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609739745253" />
     <state width="1170" height="279" key="GridCell.Tab.0.bottom" timestamp="1609278957296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -216,9 +225,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1170" height="203" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609254738369" />
-    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609332861802">
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2" timestamp="1609395746474">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609332861802" />
+    <state x="222" y="243" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609395746474" />
   </component>
 </project>
