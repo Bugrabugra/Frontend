@@ -1,11 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be532e24-39ab-4615-ab2b-da8560b54dfd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Nav.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/classes/order.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/classes/order_item.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/classes/product.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/components/ImageUpload.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/components/Paginator.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/orders/OrderItems.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/orders/Orders.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/products/Products.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/products/ProductsCreate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/products/ProductsEdit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/profile/Profile.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/store/UserModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/CheckAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/CheckAccount.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/admin/oauth_access_tokens.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/admin/oauth_access_tokens.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/admin/products.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/admin/products.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/admin/users.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/admin/users.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ib_buffer_pool" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ib_logfile0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ibdata1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ibtmp1" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/ibtmp1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/mysql/innodb_index_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.dbdata/mysql/innodb_table_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/classes/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/classes/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/public/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/public/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/Secure.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/Secure.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/components/Menu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/components/Menu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/components/Nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/components/Nav.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/dashboard/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/dashboard/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/users/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/secure/users/Users.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Udemy/Vue 3 and Nuxt.js - Different Ways of Creating Vue Apps/vue-admin/src/store/index.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1mpF7lD5MujNlWy2p9PtfeiqTYU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be532e24-39ab-4615-ab2b-da8560b54dfd" name="Default Changelist" comment="" />
+      <created>1610182460120</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610182460120</updated>
+      <workItem from="1610182461522" duration="4046000" />
+      <workItem from="1610344745770" duration="599000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

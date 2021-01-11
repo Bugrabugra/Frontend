@@ -4,7 +4,7 @@
 
     <ul class="navbar-nav px-3">
       <li>
-        <router-link to="/profile" class="p-2 text-white">{{user?.first_name}} {{user?.last_name}}</router-link>
+        <router-link to="/profile" class="p-2 text-white">{{user.name}}</router-link>
         <a class="p-2 text-white" href="javascript:void(0)" @click="logout">Sign out</a>
       </li>
     </ul>
@@ -13,21 +13,30 @@
 
 <script>
   import {useRouter} from "vue-router";
+  import {useStore} from "vuex";
+  import {computed} from "vue";
+  import axios from "axios";
 
 
   export default {
     name: "Nav",
-    props: ["user"],
+
     setup() {
       const router = useRouter();
+      const store = useStore();
 
-      const logout = () => {
-        localStorage.clear();
+      const user = computed(() => {
+        return store.state.User.user;
+      })
+
+      const logout = async () => {
+        await axios.post("logout", {})
         router.push("/login");
       }
 
       return {
-        logout
+        logout,
+        user
       }
     }
   }

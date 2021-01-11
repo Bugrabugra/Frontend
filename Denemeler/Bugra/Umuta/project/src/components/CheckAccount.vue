@@ -4,7 +4,7 @@
       <v-row justify="center">
         <v-col cols="8">
           <v-sheet
-              color="blue-grey lighten-4"
+              color="orange"
               elevation="4"
               rounded
           >
@@ -180,6 +180,11 @@
     props: {
 
     },
+
+    mounted() {
+
+    },
+
     data() {
       return {
         isFormValid: false,
