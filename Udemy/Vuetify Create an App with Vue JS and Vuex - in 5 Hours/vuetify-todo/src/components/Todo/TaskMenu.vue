@@ -6,9 +6,10 @@
     >
       <template v-slot:activator="{on, attrs}">
         <v-btn
-            icon
+            color="primary"
             v-bind="attrs"
             v-on="on"
+            icon
         >
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
@@ -46,7 +47,6 @@
         @close="dialogs.edit = false"
         :task="task"
     />
-
   </div>
 </template>
 
@@ -94,6 +94,17 @@
             icon: "mdi-delete",
             click() {
               this.dialogs.delete = true;
+            }
+          },
+          {
+            title: "Sort",
+            icon: "mdi-drag-horizontal-variant",
+            click() {
+              if (!this.$store.state.search) {
+                this.$store.commit("toggleSorting")
+              } else {
+                this.$store.commit("showSnackbar", "Can't sort while searching!")
+              }
             }
           }
         ]

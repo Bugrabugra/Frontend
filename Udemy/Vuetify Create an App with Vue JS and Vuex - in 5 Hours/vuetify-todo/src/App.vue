@@ -2,20 +2,22 @@
   <v-app id="inspire">
     <v-navigation-drawer
         v-model="drawer"
+        :mobile-breakpoint="768"
         app
     >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">
-            Vuetify Todo
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Best Todo Ever!
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
+      <v-img
+          class="pa-4"
+          src="astronomy.jpg"
+          height="128"
+          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+      >
+        <v-avatar size="50" class="mb-2">
+          <img src="vesikalık_k.png" alt="Bugra"/>
+        </v-avatar>
 
-      <v-divider></v-divider>
+        <div class="white--text text-subtitle-1 font-weight-bold">Buğra Otken</div>
+        <div class="white--text text-subtitle-2">bugraotken</div>
+      </v-img>
 
       <v-list
           dense
@@ -44,24 +46,36 @@
         color="primary"
         dark
         src="astronomy.jpg"
+        :height="$route.path === '/' ? 220 : 140"
     >
       <template v-slot:img="{ props }">
         <v-img
             v-bind="props"
-            gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+            gradient="to top right, rgba(19,84,122,.9), rgba(128,208,199,.9)"
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-container class="pa-0 header-container pt-2">
+        <v-row>
+          <v-app-bar-nav-icon @click="drawer = !drawer"/>
+          <v-spacer/>
+          <Search/>
+        </v-row>
 
-      <v-app-bar-title>Vuetify Todo</v-app-bar-title>
+        <v-row>
+          <v-toolbar-title class="ml-4 mb-4 text-h4">{{$store.state.appTitle}}</v-toolbar-title>
+        </v-row>
 
-      <v-spacer></v-spacer>
+        <v-row>
+          <LiveDateTime/>
+        </v-row>
 
-      <Search/>
+        <v-row class="mt-2" v-if="$route.path === '/'">
+          <FieldAddTask/>
+        </v-row>
 
+      </v-container>
     </v-app-bar>
-
     <v-main>
       <router-view></router-view>
       <Snackbar/>
@@ -72,18 +86,34 @@
 <script>
   import Snackbar from "./components/Shared/Snackbar";
   import Search from "./components/Tools/Search";
+  import LiveDateTime from "./components/Tools/LiveDateTime";
+  import FieldAddTask from "./components/Todo/FieldAddTask";
 
 
   export default {
     components: {
+      FieldAddTask,
+      LiveDateTime,
       Search,
-      Snackbar},
+      Snackbar
+    },
+
     data: () => ({
       drawer: null,
+
       items: [
         {title: 'Todo', icon: 'mdi-format-list-checks', to: "/"},
         {title: 'About', icon: 'mdi-help-box', to: "/about"},
       ],
     }),
+
+    mounted() {
+      this.$store.dispatch("getTasks")
+    }
   }
 </script>
+
+<style lang="sass">
+  .header-container
+    max-width: none !important
+</style>
