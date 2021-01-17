@@ -1,16 +1,22 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-data-table
-            :headers="headers"
-            :items="currencies"
-            :items-per-page="5"
-            class="elevation-1"
-        ></v-data-table>
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-data-table
+      :headers="headers"
+      :items="ownedCurrencies"
+      class="elevation-1"
+      hide-default-footer
+  >
+    <template v-slot:item.currencyValue="{item}" v-if="prices">
+      <v-chip>
+        {{getCurrencyPrice(item.ownedCurrencyName)}}
+      </v-chip>
+    </template>
+
+    <template v-slot:item.ownedCurrencyValue="{item}" v-if="prices">
+      <v-chip>
+        {{item.ownedCurrencyName === 'TRY' ? '-' : getCurrencyPrice(item.ownedCurrencyName) * item.ownedCount}}
+      </v-chip>
+    </template>
+  </v-data-table>
 </template>
 
 <script>
@@ -23,24 +29,21 @@
     data() {
       return {
         client: null,
-        currentBTCTRY: null,
+        prices: null,
+        ownedCurrencies: [],
         updateInterval: 5000,
         headers: [
           {
-            text: 'Crypto Paralar',
+            text: 'Crypto paralar',
             align: 'start',
             sortable: false,
-            value: 'name',
+            value: 'ownedCurrencyName',
           },
-          { text: 'Anlık Değer', value: 'currentValue' },
+          {text: 'Sahip olunan miktar', value: 'ownedCount'},
+          {text: 'Birim fiyat', value: 'currencyValue'},
+          {text: 'Anlık değer', value: 'ownedCurrencyValue'}
         ],
 
-        currencies: [
-          {
-            name: "BTC/TRY",
-            currentValue: null,
-          },
-        ],
       }
     },
 
@@ -57,22 +60,33 @@
       getPrices() {
         setInterval(async () => {
           const response = await this.client.prices();
-          this.currentBTCTRY = response.BTCTRY;
-          console.log(this.currentBTCTRY);
-          this.currencies[0].currentValue = this.currentBTCTRY;
+          this.prices = response;
         }, this.updateInterval)
+      },
+
+      getCurrencyPrice(currencyName) {
+        if (currencyName !== "TRY") {
+          return this.prices[String(currencyName) + "TRY"]
+        } else {
+          return "-"
+        }
       },
 
       async getAccountInfo() {
         const response = await this.client.accountInfo();
-        console.log(response);
+        const accountAssets = response.data.accountAssets;
+        accountAssets.forEach(accountAsset => {
+          if (accountAsset.free !== "0") {
+            this.ownedCurrencies.push({ownedCurrencyName: accountAsset.asset, ownedCount: accountAsset.free});
+          }
+        })
       }
     },
 
     created() {
       this.setClient();
-      this.getPrices();
       this.getAccountInfo();
+      this.getPrices();
     }
   }
 </script>
