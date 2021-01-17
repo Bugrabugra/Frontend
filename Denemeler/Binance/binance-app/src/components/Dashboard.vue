@@ -29,6 +29,7 @@
     data() {
       return {
         client: null,
+        client2: null,
         prices: null,
         ownedCurrencies: [],
         updateInterval: 5000,
@@ -52,6 +53,12 @@
         this.client = Binance({
           apiKey: process.env.VUE_APP_TRBINANCE_API_KEY,
           apiSecret: process.env.VUE_APP_TRBINANCE_SECRET_KEY,
+          getTime: () => Date.now(),
+        })
+
+        this.client2 = Binance({
+          apiKey: process.env.VUE_APP_BINANCE_API_KEY,
+          apiSecret: process.env.VUE_APP_BINANCE_SECRET_KEY,
           getTime: () => Date.now(),
         })
         console.log("Client was set!");
@@ -80,6 +87,12 @@
             this.ownedCurrencies.push({ownedCurrencyName: accountAsset.asset, ownedCount: accountAsset.free});
           }
         })
+
+        console.log(
+          await this.client2.allOrders({
+            symbol: 'BTCTRY',
+          }),
+        )
       }
     },
 
