@@ -1,9 +1,22 @@
 .slider {
+  $this: &;
+
   cursor: pointer;
   width: 100%;
   display: flex;
   align-items: center;
   height: 24px;
+
+  &--dragging {
+    #{$this}__handle,
+    #{$this}__fill {
+      transition: none;
+    }
+  }
+
+  &__fill, &__handle {
+    transition: transform .2s ease-in-out;
+  }
 
   &__bar {
     position: relative;
@@ -13,10 +26,10 @@
   }
 
   &__handle {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background-color: #000;
+    background-color: #fff;
     position: absolute;
     left: 0;
     top: calc(50% - 8px);
@@ -26,6 +39,6 @@
   &__fill {
     height: 100%;
     width: 100%;
-    background-color: pink;
+    background-color: dodgerblue;
   }
 }

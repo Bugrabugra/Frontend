@@ -5,6 +5,13 @@
   align-items: center;
   height: 24px;
 }
+.slider--dragging .slider__handle,
+.slider--dragging .slider__fill {
+  transition: none;
+}
+.slider__fill, .slider__handle {
+  transition: transform 0.2s ease-in-out;
+}
 .slider__bar {
   position: relative;
   width: 100%;
@@ -12,10 +19,10 @@
   background-color: #ccc;
 }
 .slider__handle {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background-color: #000;
+  background-color: #fff;
   position: absolute;
   left: 0;
   top: calc(50% - 8px);
@@ -24,5 +31,5 @@
 .slider__fill {
   height: 100%;
   width: 100%;
-  background-color: pink;
+  background-color: dodgerblue;
 }

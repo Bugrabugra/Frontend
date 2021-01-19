@@ -1,5 +1,5 @@
 <template>
-  <div class="slider" @mousedown="onSliderMouseDown">
+  <div :class="classes" @mousedown="onSliderMouseDown" @click="onSliderClick">
     <div class="slider__bar" ref="bar">
       <div class="slider__handle" :style="handleStyle" ref="handle"/>
       <div class="slider__fill" :style="fillStyle"/>
@@ -42,6 +42,14 @@
     },
 
     computed: {
+      classes() {
+        return {
+          slider: true,
+          "slider--dragging": this.isDragging,
+          "slider--disabled": this.disabled
+        }
+      },
+
       delta() {
         return this.value / this.max;
       },
@@ -85,7 +93,7 @@
         }, 100)
       },
 
-      onDocumentMouseUp(e) {
+      onDocumentMouseUp() {
         if (this.disabled) return;
         if (this.dragTimeout) {
           clearTimeout(this.dragTimeout);
@@ -94,7 +102,10 @@
           this.isDragging = false;
           this.$emit("dragend");
         }
+      },
 
+      onSliderClick(e) {
+        if (this.disabled) return;
         this.calculate(e);
       },
 
@@ -119,6 +130,12 @@
       window.addEventListener("resize", this.onWindowResize);
       document.addEventListener("mouseup", this.onDocumentMouseUp);
       document.addEventListener("mousemove", this.onDocumentMouseMove);
+    },
+
+    beforeDestroy() {
+      window.removeEventListener("resize", this.onWindowResize);
+      document.removeEventListener("mouseup", this.onDocumentMouseUp);
+      document.removeEventListener("mousemove", this.onDocumentMouseMove);
     }
   }
 </script>

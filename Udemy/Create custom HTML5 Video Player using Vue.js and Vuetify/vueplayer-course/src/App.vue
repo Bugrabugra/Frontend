@@ -5,23 +5,21 @@
           class="d-flex align-center mx-auto fill-height"
           :style="{width: '60%'}"
       >
-        <!--<Player/>-->
-        <Slider v-model="value"/>
+        <Player/>
       </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-  // import Player from "./components/Player";
-  import Slider from "./components/Slider/Slider";
+  import Player from "./components/Player";
+
   
   export default {
     name: "App",
   
     components: {
-      Slider,
-      // Player
+      Player
     },
 
     data() {
