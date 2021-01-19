@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <Dashboard/>
+      <Dashboard class="ma-10"/>
     </v-main>
   </v-app>
 </template>
