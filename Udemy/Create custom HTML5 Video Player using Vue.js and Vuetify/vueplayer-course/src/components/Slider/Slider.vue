@@ -3,6 +3,7 @@
     <div class="slider__bar" ref="bar">
       <div class="slider__handle" :style="handleStyle" ref="handle"/>
       <div class="slider__fill" :style="fillStyle"/>
+      <slot name="bar"/>
     </div>
   </div>
 </template>

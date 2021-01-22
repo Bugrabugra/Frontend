@@ -5,7 +5,10 @@
           class="d-flex align-center mx-auto fill-height"
           :style="{width: '60%'}"
       >
-        <Player/>
+        <Player :source="{src, type: 'video/mp4'}"/>
+        <button @click="src = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'">
+          Change Source
+        </button>
       </div>
     </v-main>
   </v-app>
@@ -24,7 +27,7 @@
 
     data() {
       return {
-        value: 0.5
+        src: require("@/assets/video.mp4")
       }
     },
 

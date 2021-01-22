@@ -22,7 +22,7 @@
     position: relative;
     width: 100%;
     height: 4px;
-    background-color: #ccc;
+    background-color: rgba(#fff, 0.2);
   }
 
   &__handle {
@@ -37,8 +37,11 @@
   }
 
   &__fill {
+    position: relative;;
     height: 100%;
     width: 100%;
     background-color: dodgerblue;
+    z-index: 1;
+    transform: scaleX(0);
   }
 }

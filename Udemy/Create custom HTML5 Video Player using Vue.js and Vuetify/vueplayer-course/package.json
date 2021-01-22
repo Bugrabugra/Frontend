@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "hh-mm-ss": "^1.2.0",
     "lerp": "^1.0.3",
     "lodash": "^4.17.20",
+    "screenfull": "^5.1.0",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11"
   },
