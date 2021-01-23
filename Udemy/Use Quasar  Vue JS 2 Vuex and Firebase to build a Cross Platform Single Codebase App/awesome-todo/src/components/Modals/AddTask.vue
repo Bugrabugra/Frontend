@@ -1,37 +1,42 @@
 <template>
   <q-card>
-    <q-card-section class="row">
-      <div class="text-h6">Add Task</div>
-      <q-space/>
-      <q-btn
-        v-close-popup
-        icon="close"
-        flat
-        round
-        dense
-      />
+    <ModalHeader>Add Modal</ModalHeader>
+    <q-form @submit.prevent="submitForm">
+      <q-card-section>
+        <!--Name-->
+        <ModalTaskName ref="modalTaskName" :name.sync="taskToSubmit.name"/>
 
-    </q-card-section>
+        <!--Date-->
+        <ModalDueDate :dueDate.sync="taskToSubmit.dueDate"/>
 
-    <q-card-section>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequatur cum dolor doloribus, eos error fugiat molestiae natus possimus quaerat quam quasi quibusdam repellat repudiandae rerum soluta sunt ullam.
-    </q-card-section>
+        <!--Time-->
+        <ModalDueTime :dueDate="taskToSubmit.dueDate" :dueTime.sync="taskToSubmit.dueTime"/>
+      </q-card-section>
 
-    <q-card-actions align="right">
-      <q-btn
-        flat
-        label="Save"
-        color="primary"
-        v-close-popup
-      ></q-btn>
-    </q-card-actions>
+      <!--Buttons-->
+      <ModalButtons/>
+
+    </q-form>
   </q-card>
 </template>
 
 <script>
+  import {mapActions} from "vuex";
+  import ModalHeader from "components/Modals/Shared/ModalHeader";
+  import ModalTaskName from "components/Modals/Shared/ModalTaskName";
+  import ModalDueDate from "components/Modals/Shared/ModalDueDate";
+  import ModalDueTime from "components/Modals/Shared/ModalDueTime";
+  import ModalButtons from "components/Modals/Shared/ModalButtons";
+
+
   export default {
     name: "AddTask",
-
+    components: {
+      ModalButtons,
+      ModalDueTime,
+      ModalDueDate,
+      ModalTaskName,
+      ModalHeader},
     data() {
       return {
         taskToSubmit: {
@@ -40,6 +45,22 @@
           dueTime: "",
           completed: false
         }
+      }
+    },
+
+    methods: {
+      ...mapActions("tasks", ["addTask"]),
+
+      submitForm() {
+        this.$refs.modalTaskName.$refs.name.validate();
+        if (!this.$refs.modalTaskName.$refs.name.hasError) {
+          this.submitTask();
+        }
+      },
+
+      submitTask() {
+        this.addTask(this.taskToSubmit);
+        this.$emit("close");
       }
     }
   }

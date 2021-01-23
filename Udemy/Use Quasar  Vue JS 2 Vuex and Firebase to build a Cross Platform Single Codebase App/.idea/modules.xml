@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../Upwork/Vuetify/Test/.idea/Test.iml" filepath="$PROJECT_DIR$/../../Upwork/Vuetify/Test/.idea/Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Use Quasar  Vue JS 2 Vuex and Firebase to build a Cross Platform Single Codebase App.iml" filepath="$PROJECT_DIR$/.idea/Use Quasar  Vue JS 2 Vuex and Firebase to build a Cross Platform Single Codebase App.iml" />
     </modules>
   </component>
