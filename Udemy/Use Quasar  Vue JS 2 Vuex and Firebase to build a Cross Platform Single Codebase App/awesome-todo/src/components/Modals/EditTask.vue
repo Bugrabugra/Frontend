@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <ModalHeader>Add Task</ModalHeader>
+    <ModalHeader>Edit Task</ModalHeader>
     <q-form @submit.prevent="submitForm">
       <q-card-section>
         <!--Name-->
@@ -30,7 +30,7 @@
 
 
   export default {
-    name: "AddTask",
+    name: "EditTask",
 
     components: {
       ModalButtons,
@@ -40,19 +40,16 @@
       ModalHeader
     },
 
+    props: ["task", "id"],
+
     data() {
       return {
-        taskToSubmit: {
-          name: "",
-          dueDate: "",
-          dueTime: "",
-          completed: false
-        }
+        taskToSubmit: {}
       }
     },
 
     methods: {
-      ...mapActions("tasks", ["addTask"]),
+      ...mapActions("tasks", ["updateTask"]),
 
       submitForm() {
         this.$refs.modalTaskName.$refs.name.validate();
@@ -62,9 +59,16 @@
       },
 
       submitTask() {
-        this.addTask(this.taskToSubmit);
+        this.updateTask({
+          id: this.id,
+          updates: this.taskToSubmit
+        })
         this.$emit("close");
       }
+    },
+
+    mounted() {
+      this.taskToSubmit = Object.assign({}, this.task);
     }
   }
 </script>
