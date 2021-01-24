@@ -1,8 +1,8 @@
 <template>
   <v-app>
+    <Drawer/>
     <TopBar/>
     <v-main>
-      <Drawer/>
       <Layout/>
     </v-main>
     <Footer/>
