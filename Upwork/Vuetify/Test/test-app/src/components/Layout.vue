@@ -1,6 +1,10 @@
 <template>
-  <v-container>
-    <router-view/>
+  <v-container fill-height fluid class="pa-0 ma-0">
+    <v-row justify="center" align="center">
+      <v-col cols="8">
+        <router-view/>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

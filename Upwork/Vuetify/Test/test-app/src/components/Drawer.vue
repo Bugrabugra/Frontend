@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer clipped permanent stateless>
+  <v-navigation-drawer app clipped permanent stateless>
     <v-list nav dense>
       <v-list-item-group active-class="deep-purple--text text--accent-4">
         <v-list-item v-for="item in items" :key="item.title" :to="item.to">
