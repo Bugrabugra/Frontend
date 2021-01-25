@@ -1,26 +1,44 @@
 <template>
-  <q-page class="q-pa-md">
+  <q-page>
+    <div class="q-pa-md absolute full-width full-height column">
+      <div class="row q-mb-lg">
+        <!--Search-->
+        <Search/>
 
-    <!--No tasks-->
-    <NoTasks v-if="!Object.keys(tasksTodo).length"/>
+        <!--Sort-->
+        <Sort/>
+      </div>
 
-    <!--Not completed-->
-    <TasksTodo v-else :tasksTodo="tasksTodo"/>
+      <!--No tasks message-->
+      <p
+        v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length"
+      >No search results</p>
 
-    <!--Completed-->
-    <TasksCompleted
-      v-if="Object.keys(tasksCompleted).length"
-      :tasksCompleted="tasksCompleted"
-    />
+      <q-scroll-area class="q-scroll-area-tasks">
+        <!--No tasks-->
+        <NoTasks v-if="!Object.keys(tasksTodo).length && !search && !settings.showTasksInOneList"/>
 
-    <div class="absolute-bottom text-center q-mb-lg">
-      <q-btn
-        @click="showAddTask = true"
-        color="primary"
-        size="24px"
-        icon="add"
-        round
-      />
+        <!--Not completed-->
+        <TasksTodo v-if="Object.keys(tasksTodo).length" :tasksTodo="tasksTodo"/>
+
+        <!--Completed-->
+        <TasksCompleted
+          v-if="Object.keys(tasksCompleted).length"
+          :tasksCompleted="tasksCompleted"
+          class="q-mb-xl"
+        />
+      </q-scroll-area>
+
+      <div class="absolute-bottom text-center q-mb-lg no-pointer-events">
+        <q-btn
+          @click="showAddTask = true"
+          class="all-pointer-events"
+          color="primary"
+          size="24px"
+          icon="add"
+          round
+        />
+      </div>
     </div>
 
     <q-dialog v-model="showAddTask">
@@ -31,17 +49,21 @@
 </template>
 
 <script>
-  import {mapGetters} from "vuex";
-  import AddTask from "components/Modals/AddTask";
+  import {mapGetters, mapState} from "vuex";
+  import AddTask from "components/Tasks/Modals/AddTask";
   import TasksTodo from "components/Tasks/TasksTodo";
   import TasksCompleted from "components/Tasks/TasksCompleted";
   import NoTasks from "components/Tasks/NoTasks";
+  import Search from "components/Tasks/Tools/Search";
+  import Sort from "components/Tasks/Tools/Sort";
 
 
   export default {
     name: "PageTodo",
 
     components: {
+      Sort,
+      Search,
       NoTasks,
       TasksCompleted,
       TasksTodo,
@@ -55,7 +77,9 @@
     },
 
     computed: {
-      ...mapGetters("tasks", ["tasksTodo", "tasksCompleted"])
+      ...mapGetters("tasks", ["tasksTodo", "tasksCompleted"]),
+      ...mapGetters("settings", ["settings"]),
+      ...mapState("tasks", ["search"])
     },
 
     mounted() {
@@ -67,5 +91,8 @@
 </script>
 
 <style>
-
+  .q-scroll-area-tasks {
+    display: flex;
+    flex-grow: 1;
+  }
 </style>

@@ -1,15 +1,21 @@
 <template>
-  <q-item @click="updateTask({id: id, updates: {completed: !task.completed}})"
-          :class="!task.completed ? 'bg-orange-3' : 'bg-green-3'"
-          clickable
-          v-ripple>
+  <q-item
+    @click="updateTask({id: id, updates: {completed: !task.completed}})"
+    :class="!task.completed ? 'bg-orange-3' : 'bg-green-3'"
+    v-touch-hold:1000.mouse="showEditTaskModal"
+    clickable
+    v-ripple
+  >
     <q-item-section side top>
       <q-checkbox :value="task.completed"
                   class="no-pointer-events"/>
     </q-item-section>
 
     <q-item-section>
-      <q-item-label :class="{'text-strikethrough' : task.completed}">{{task.name}}</q-item-label>
+      <q-item-label
+        :class="{'text-strikethrough' : task.completed}"
+        v-html="$options.filters.searchHighlight(task.name, search)"
+      />
     </q-item-section>
 
     <q-item-section v-if="task.dueDate" side>
@@ -18,14 +24,15 @@
           <q-icon
             size="18px"
             name="event"
-            class="q-mr-xs"/>
+            class="q-mr-xs"
+          />
         </div>
         <div class="column">
           <q-item-label caption class="row justify-end">
-            {{task.dueDate}}
+            {{task.dueDate | niceDate}}
           </q-item-label>
           <q-item-label caption class="row justify-end">
-            <small>{{task.dueTime}}</small>
+            <small>{{taskDueTime}}</small>
           </q-item-label>
         </div>
       </div>
@@ -35,21 +42,23 @@
     <q-item-section side>
       <div class="row">
         <q-btn
-          @click.stop="showEditTask = true"
+          @click.stop="showEditTaskModal"
+          color="primary"
+          icon="edit"
           flat
           dense
           round
-          color="primary"
-          icon="edit">
+        >
         </q-btn>
 
         <q-btn
           @click.stop="promptToDelete(id)"
+          color="red"
+          icon="delete"
           flat
           dense
           round
-          color="red"
-          icon="delete">
+        >
         </q-btn>
       </div>
     </q-item-section>
@@ -62,8 +71,10 @@
 </template>
 
 <script>
-  import {mapActions} from "vuex";
-  import EditTask from "components/Modals/EditTask";
+  import {mapActions, mapState, mapGetters} from "vuex";
+  import EditTask from "components/Tasks/Modals/EditTask";
+  import {date} from "quasar";
+  const {formatDate} = date;
 
 
   export default {
@@ -74,6 +85,37 @@
     data() {
       return {
         showEditTask: false
+      }
+    },
+
+    computed: {
+      ...mapState("tasks", ["search"]),
+      ...mapGetters("settings", ["settings"]),
+
+      taskDueTime() {
+        if (this.settings.show12HourTimeFormat) {
+          return date.formatDate(this.task.dueDate + " " + this.task.dueTime, "h:mmA")
+        }
+        return this.task.dueTime;
+      }
+    },
+
+    filters: {
+      niceDate(value) {
+        return formatDate(value, "D-MMM");
+      },
+
+      searchHighlight(value, search) {
+        if (search) {
+          let searchRegEx = new RegExp(search, "ig");
+          return value.replace(
+            searchRegEx,
+            match => {
+              return "<span class='bg-yellow-6'>" + match + "</span>"
+            }
+          );
+        }
+       return value;
       }
     },
 
@@ -96,6 +138,10 @@
         }).onOk(() => {
           this.deleteTask(id);
         })
+      },
+
+      showEditTaskModal() {
+        this.showEditTask = true;
       }
     }
   }

@@ -88,17 +88,21 @@ module.exports = function (/* ctx */) {
       // you can manually specify Quasar components/directives to be available everywhere:
       //
       // components: [],
-      // directives: [],
+      directives: [
+        "TouchHold"
+      ],
 
       // Quasar plugins
       plugins: [
-        "Dialog"
+        "Notify",
+        "Dialog",
+        "LocalStorage"
       ]
     },
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+    animations: ["zoomIn", "zoomOut"],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
