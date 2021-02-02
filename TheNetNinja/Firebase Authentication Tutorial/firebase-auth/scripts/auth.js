@@ -1,0 +1,59 @@
+// Listen for auth status changes
+auth.onAuthStateChanged(user => {
+  if (user) {
+    // Get data
+    db.collection("guides").get().then(snapshot => {
+      setupGuides(snapshot.docs);
+    })
+  } else {
+    setupGuides([])
+  }
+})
+
+// Signup
+const signupForm = document.querySelector("#signup-form");
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Get user info
+  const email = signupForm["signup-email"].value;
+  const password = signupForm["signup-password"].value;
+
+  // Sign up the user
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      // Close the register modal and reset the form
+      const modal = document.querySelector("#modal-signup");
+      M.Modal.getInstance(modal).close();
+      signupForm.reset();
+    })
+})
+
+// Logout
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  // Log the user out
+  auth.signOut().then(() => {});
+})
+
+// Login
+const loginForm = document.querySelector("#login-form");
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Get user info
+  const email = loginForm["login-email"].value;
+  const password = loginForm["login-password"].value;
+
+  // Log the user in
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      // Close the login modal and reset the form
+      const modal = document.querySelector("#modal-login");
+      M.Modal.getInstance(modal).close();
+      signupForm.reset();
+    })
+})
+
