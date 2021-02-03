@@ -56,9 +56,9 @@
         quantity: 0,
         quoteOrderQty: 0,
         marketBuyPrice: 0,
-        marketBuyQuantity: 11.0000000000000,
+        marketBuyQuantity: 0,
         marketSellPrice: 0,
-        marketSellQuantity: 11.0000000000,
+        marketSellQuantity: 0,
         startMs: null,
         endMs: null,
         duration: 0,
@@ -119,7 +119,10 @@
       },
 
       async buyMARKET() {
-        const crypto = `${this.cryptoName}BTC`;
+        console.log(this.cryptoName.toUpperCase());
+        window.open(`https://www.binance.com/en/trade/${this.cryptoName.toUpperCase()}_BTC`)
+
+        const crypto = `${this.cryptoName.toUpperCase()}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
           side: "BUY",
@@ -135,7 +138,7 @@
       },
 
       async sellMARKET() {
-        const crypto = `${this.cryptoName}BTC`;
+        const crypto = `${this.cryptoName.toUpperCase()}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
           side: "SELL",
