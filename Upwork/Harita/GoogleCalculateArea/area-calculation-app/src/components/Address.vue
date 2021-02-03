@@ -4,18 +4,22 @@
         :search-input.sync="address"
         :items="foundAddresses"
         item-text="description"
-        item-value="reference"
         v-model="selected"
-        @input="showSelected"
-        dense
+        @change="showSelected"
+        @click:clear="clearList"
         label="Address"
+        return-object
+        no-filter
+        clearable
+        dense
     ></v-autocomplete>
 
     <div>
       <p class="font-weight-black">
-        {{location.name}}
+        {{this.selected.description}}
       </p>
     </div>
+
   </v-container>
 </template>
 
@@ -31,7 +35,8 @@
         address: "",
         foundAddresses: [],
         selected: "",
-        location: ""
+        location: "",
+        selectedLongAddress: ""
       }
     },
 
@@ -45,24 +50,31 @@
 
     methods: {
       async searchAddress() {
-        const result = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.address}&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`);
-        this.foundAddresses = await result.data.predictions;
+        if (this.address) {
+          const result = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.address}&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`);
+          this.foundAddresses = await result.data.predictions;
+        }
       },
 
       async showSelected() {
-        const result = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${this.selected}&fields=name,geometry&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`)
+        console.log(this.selected)
+        if (this.selected !== null) {
+          const result = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${this.selected.place_id}&fields=name,geometry&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`)
 
-        const name = result.data.result.name;
-        const coordinates = result.data.result.geometry.location
+          const name = result.data.result.name;
+          const coordinates = result.data.result.geometry.location;
 
-        this.location = {name: name, coordinates: coordinates};
+          this.location = {name: name, coordinates: coordinates};
+          this.selectedLongAddress = this.selected.description;
 
-        await this.$store.dispatch("setLocation", this.location);
+          await this.$store.dispatch("setLongAddress", this.selectedLongAddress)
+          await this.$store.dispatch("setLocation", this.location);
+        }
+      },
+
+      clearList() {
+
       }
     }
   }
 </script>
-
-<style scoped>
-
-</style>

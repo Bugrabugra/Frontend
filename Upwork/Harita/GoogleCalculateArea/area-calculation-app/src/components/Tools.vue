@@ -34,27 +34,40 @@
 
     <v-row align="center" justify="center">
       <v-col cols="12">
-        <v-btn @click="capture" color="#173c00" dark block>
-          <v-icon class="pr-2">
-            mdi-file-export
-          </v-icon>
-          Save View
-        </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <div v-on="on">
+                <v-btn v-on="on" @click="openReportDialog" color="#173c00" :disabled="!enableSendReport" dark block>
+                  <v-icon class="pr-2">
+                    mdi-file-export
+                  </v-icon>
+                  Send Report
+                </v-btn>
+              </div>
+            </template>
+            <span>You must draw at least 1 area</span>
+            <hr>
+            <span>And search an address</span>
+
+          </v-tooltip>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  import html2canvas from 'html2canvas';
-
-
   export default {
     name: "Tools",
 
     data() {
       return {
         drawActive: false
+      }
+    },
+
+    computed: {
+      enableSendReport() {
+        return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
       }
     },
 
@@ -67,15 +80,8 @@
         this.drawActive = false;
       },
 
-      capture() {
-        html2canvas(document.getElementById("toPDF"),{
-          onrendered:function(canvas){
-            var img=canvas.toDataURL("image/png");
-            var doc = new jsPDF('l', 'cm');
-            doc.addImage(img,'PNG',2,2);
-            doc.save('reporte.pdf');
-          }
-        });
+      openReportDialog() {
+        this.$store.dispatch("showReportDialog", true);
       }
     }
   }

@@ -46,8 +46,13 @@
         this.polygons.forEach(polygon => {
           total += polygon.area;
         })
-
         return total;
+      }
+    },
+
+    watch: {
+      polygonsTotalArea() {
+        this.$store.dispatch("setTotalArea", this.polygonsTotalArea);
       }
     },
 
@@ -64,7 +69,7 @@
 
     filters: {
       round(value) {
-        return value.toFixed(3)
+        return value.toFixed(0)
       }
     }
   }

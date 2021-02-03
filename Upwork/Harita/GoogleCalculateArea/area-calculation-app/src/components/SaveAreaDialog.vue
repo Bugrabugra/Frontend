@@ -3,7 +3,7 @@
     <v-dialog
         v-model="dialog"
         persistent
-        max-width="400px"
+        max-width="300px"
     >
       <v-card>
         <v-card-text class="ma-0 pa-0">
@@ -15,6 +15,7 @@
                     label="Enter Area Name"
                     outlined
                     clearable
+                    autofocus
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -24,7 +25,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-              color="#173c00"
+              color="#3f3114"
               @click="hideDialog"
               class="white--text"
           >
@@ -45,7 +46,7 @@
 
 <script>
   export default {
-    name: "Dialog",
+    name: "SaveAreaDialog",
 
     data() {
       return {
@@ -55,7 +56,7 @@
 
     methods: {
       hideDialog() {
-        this.$store.dispatch("showDialog", false);
+        this.$store.dispatch("showSaveAreaDialog", false);
         this.polygonName = "";
       },
 
@@ -74,7 +75,7 @@
 
     computed: {
       dialog() {
-        return this.$store.state.dialog;
+        return this.$store.state.saveAreaDialog;
       }
     }
   }

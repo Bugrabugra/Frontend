@@ -1,19 +1,23 @@
 <template>
   <v-container class="pa-0 ma-0">
     <div>
+      <SaveAreaDialog/>
+      <SendReportDialog/>
       <div id="map" style="height: 100vh;"></div>
     </div>
   </v-container>
 </template>
 
 <script>
+  import SaveAreaDialog from "./SaveAreaDialog";
+  import SendReportDialog from "./SendReportDialog";
+
+
   export default {
     name: 'Map',
-
     components: {
-
-    },
-
+      SendReportDialog,
+      SaveAreaDialog},
     data() {
       return {
         map: null,
@@ -45,9 +49,9 @@
               ],
             },
             polygonOptions: {
-              fillColor: "#8bd5ce",
+              fillColor: "#bf2424",
               fillOpacity: 0.3,
-              strokeColor: "#dae5e5"
+              strokeColor: "#e02525"
             }
           });
 
@@ -67,7 +71,7 @@
 
           // Show dialog when drawing is finished
           window.google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
-            _this.$store.dispatch("showDialog", true);
+            _this.$store.dispatch("showSaveAreaDialog", true);
             polygon.setMap(null);
 
             this.geometry = window.google.maps.geometry.encoding.encodePath(polygon.getPath());

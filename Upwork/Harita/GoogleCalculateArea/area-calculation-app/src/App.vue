@@ -1,6 +1,5 @@
 <template>
   <v-app id="toPDF">
-    <Dialog/>
     <Drawer/>
     <v-main>
       <Map/>
@@ -11,7 +10,7 @@
 <script>
   import Map from "./components/Map";
   import Drawer from "./components/Drawer";
-  import Dialog from "./components/Dialog";
+  import Dialog from "./components/SaveAreaDialog";
 
 
   export default {

@@ -8,11 +8,17 @@ export default new Vuex.Store({
     map: null,
     drawPolygon: false,
     drawingManager: null,
-    dialog: false,
+    saveAreaDialog: false,
+    showReportDialog: false,
     polygonName: null,
     polygonGeometry: null,
     polygons: [],
-    location: null
+    location: null,
+    longAddress: null,
+    totalArea: null,
+    customerName: null,
+    customerSurname: null,
+    customerEmail: null
   },
 
   mutations: {
@@ -28,8 +34,8 @@ export default new Vuex.Store({
       state.drawingManager = payload;
     },
 
-    showDialog(state, payload) {
-      state.dialog = payload;
+    showSaveAreaDialog(state, payload) {
+      state.saveAreaDialog = payload;
     },
 
     setPolygonGeometry(state, payload) {
@@ -83,7 +89,42 @@ export default new Vuex.Store({
         map: state.map,
         label: state.location.name,
       });
+    },
 
+    setLongAddress(state, payload) {
+      state.longAddress = payload;
+    },
+
+    setTotalArea(state, payload) {
+      state.totalArea = payload;
+    },
+
+    saveCustomerInfos(state, payload) {
+      state.customerName = payload.customerName;
+      state.customerSurname = payload.customerSurname;
+      state.customerEmail = payload.customerEmail;
+    },
+
+    sendReport(state) {
+      const longAddress = state.longAddress;
+      const polygons = state.polygons.length;
+      const totalArea = state.totalArea;
+      const customerName = state.customerName;
+      const customerSurname = state.customerSurname;
+      const customerEmail = state.customerEmail;
+
+      console.log({
+        customerName: customerName,
+        customerSurname: customerSurname,
+        customerEmail: customerEmail,
+        longAddress: longAddress,
+        polygons: polygons,
+        totalArea: totalArea
+      })
+    },
+
+    showReportDialog(state, payload) {
+      state.showReportDialog = payload;
     }
   },
 
@@ -100,8 +141,8 @@ export default new Vuex.Store({
       commit("setDrawingManager", payload);
     },
 
-    showDialog({commit}, payload) {
-      commit("showDialog", payload);
+    showSaveAreaDialog({commit}, payload) {
+      commit("showSaveAreaDialog", payload);
     },
 
     setPolygonGeometry({commit}, payload) {
@@ -126,6 +167,26 @@ export default new Vuex.Store({
 
     setLocation({commit}, payload) {
       commit("setLocation", payload);
+    },
+
+    setTotalArea({commit}, payload) {
+      commit("setTotalArea", payload);
+    },
+
+    setLongAddress({commit}, payload) {
+      commit("setLongAddress", payload);
+    },
+
+    sendReport({commit}) {
+      commit("sendReport");
+    },
+
+    showReportDialog({commit}, payload) {
+      commit("showReportDialog", payload);
+    },
+
+    saveCustomerInfos({commit}, payload) {
+      commit("saveCustomerInfos", payload);
     }
   }
 })
