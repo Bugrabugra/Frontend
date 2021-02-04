@@ -10,7 +10,7 @@ export const loadedGoogleMapsAPI = new Promise( (resolve,reject) => {
   let GMap = document.createElement('script');
 
   GMap.setAttribute('src',
-    `https://maps.googleapis.com/maps/api/js?key=${process.env.VUE_APP_G_API_KEY}&callback=GoogleMapsInit&libraries=drawing,geometry`);
+    `https://maps.googleapis.com/maps/api/js?key=${process.env.VUE_APP_G_API_KEY}&callback=GoogleMapsInit&libraries=drawing,geometry,places`);
 
   document.body.appendChild(GMap);
 });
