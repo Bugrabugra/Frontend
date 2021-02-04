@@ -131,14 +131,12 @@ export default new Vuex.Store({
       }
 
       const polygonsStringify = encodeURIComponent(JSON.stringify(polygons));
-      console.log(polygonsStringify)
-      console.log(polygons)
 
       let formData = new FormData();
-      formData.append("contact_name", customerName);
-      formData.append("contact_email", customerEmail);
+      formData.append("your-name", customerName);
+      formData.append("your-email", customerEmail);
       formData.append("phone_number", customerPhone);
-      formData.append("address", longAddress);
+      formData.append("your-subject", longAddress);
       formData.append("polygons", polygonsStringify);
       formData.append("area_square_feet", totalArea);
 
@@ -149,8 +147,6 @@ export default new Vuex.Store({
         ).then(response => {
         console.log(response);
       })
-
-      console.log(postObject)
     },
 
     showReportDialog(state, payload) {

@@ -10,6 +10,7 @@
 <script>
   import SaveAreaDialog from "./SaveAreaDialog";
   import SendReportDialog from "./SendReportDialog";
+  import {loadedGoogleMapsAPI} from "../main";
 
 
   export default {
@@ -27,7 +28,9 @@
     },
 
     mounted() {
-      this.initMap();
+      loadedGoogleMapsAPI.then(()=>{
+        this.initMap();
+      });
     },
 
     methods: {

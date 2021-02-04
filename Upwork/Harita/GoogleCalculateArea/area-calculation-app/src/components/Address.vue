@@ -51,14 +51,14 @@
     methods: {
       async searchAddress() {
         if (this.address) {
-          const result = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.address}&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`);
+          const result = await axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.address}&key=${process.env.VUE_APP_G_API_KEY}`);
           this.foundAddresses = await result.data.predictions;
         }
       },
 
       async showSelected() {
         if (this.selected !== null) {
-          const result = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${this.selected.place_id}&fields=name,geometry&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`)
+          const result = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${this.selected.place_id}&fields=name,geometry&key=${process.env.VUE_APP_G_API_KEY}`)
 
           const name = result.data.result.name;
           const coordinates = result.data.result.geometry.location;
