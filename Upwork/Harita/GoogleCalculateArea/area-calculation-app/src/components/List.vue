@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <h3 class="font-weight-medium">Polygons List</h3>
     <v-list style="max-height: 400px; overflow-y: auto" id="list">
       <v-list-item
           v-for="polygon in polygons"
@@ -10,7 +9,7 @@
         <v-list-item-content class="pa-0 ma-0">
           <v-list-item-title class="pl-2" style="font-weight: bold">{{polygon.name}}</v-list-item-title>
           <v-list-item-subtitle class="pl-2">
-            {{polygon.area | round}} m2
+            {{parseInt(polygon.area).toLocaleString()}} ft²
           </v-list-item-subtitle>
         </v-list-item-content>
 
@@ -19,19 +18,22 @@
             <v-icon>mdi-delete</v-icon>
           </v-btn>
 
-          <v-btn @click="zoomPolygon(polygon.geometry)" icon plain>
-            <v-icon>mdi-magnify-plus</v-icon>
-          </v-btn>
+          <!--<v-btn @click="zoomPolygon(polygon.geometry)" icon plain>-->
+          <!--  <v-icon>mdi-magnify-plus</v-icon>-->
+          <!--</v-btn>-->
         </v-list-item-icon>
       </v-list-item>
     </v-list>
 
-    <h4 v-if="polygons.length" class="font-weight-medium">Total: {{polygonsTotalArea | round}} m2</h4>
+    <h4 v-if="polygons.length" class="font-weight-medium">Total: {{polygonsTotalArea}} ft²</h4>
 
   </v-container>
 </template>
 
 <script>
+  // const convert = require('convert-units');
+
+
   export default {
     name: "List",
 
@@ -44,9 +46,9 @@
         let total = 0;
 
         this.polygons.forEach(polygon => {
-          total += polygon.area;
+          total += parseInt(polygon.area);
         })
-        return total;
+        return total.toLocaleString();
       }
     },
 
@@ -62,15 +64,9 @@
         this.$store.dispatch("drawPolygons");
       },
 
-      zoomPolygon(geometry) {
-        this.$store.dispatch("zoomPolygon", geometry);
-      }
-    },
-
-    filters: {
-      round(value) {
-        return value.toFixed(0)
-      }
+      // zoomPolygon(geometry) {
+      //   this.$store.dispatch("zoomPolygon", geometry);
+      // }
     }
   }
 </script>

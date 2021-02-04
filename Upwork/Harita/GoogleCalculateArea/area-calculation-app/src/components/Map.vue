@@ -1,10 +1,9 @@
 <template>
-  <v-container class="pa-0 ma-0">
-    <div>
-      <SaveAreaDialog/>
-      <SendReportDialog/>
-      <div id="map" style="height: 100vh;"></div>
-    </div>
+  <v-container class="ma-0 pa-0" style="height: 100%;">
+    <div id="map" style="height: 100% !important;"></div>
+    <SaveAreaDialog/>
+    <SendReportDialog/>
+
   </v-container>
 </template>
 
@@ -15,9 +14,12 @@
 
   export default {
     name: 'Map',
+
     components: {
       SendReportDialog,
-      SaveAreaDialog},
+      SaveAreaDialog
+    },
+
     data() {
       return {
         map: null,
@@ -98,8 +100,3 @@
     }
   }
 </script>
-
-
-<style scoped>
-
-</style>

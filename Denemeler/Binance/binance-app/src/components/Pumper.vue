@@ -11,7 +11,7 @@
                   <!--<v-btn height="90px" color="light-green accent-3" class="mb-6" @click="check" style="width: 100%">Check</v-btn>-->
                 </v-col>
                 <v-col cols="8">
-                  <v-text-field @input="start" @keydown.enter="check" style="font-size: 40px" outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
+                  <v-text-field @input="start" style="font-size: 40px" outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
                 </v-col>
               </v-row>
 
@@ -31,6 +31,7 @@
               <!--<v-btn color="orange" class="mb-6" @click="buyMARKET" style="width: 100%">Buy Market</v-btn>-->
               <!--<v-btn color="blue" class="mb-6" @click="check" style="width: 100%">Check</v-btn>-->
               <!--<v-btn color="orange" class="mb-6" @click="buyLIMIT" style="width: 100%">But Limit</v-btn>-->
+              <v-btn color="blue" class="mb-6" @click="exchangeInfo" style="width: 100%">Exchange Info</v-btn>
 
             </v-container>
           </v-form>
@@ -76,7 +77,7 @@
         console.log("Client was set!");
       },
 
-      check() {
+      checkPrice() {
         console.log(this.cryptoName);
         this.getCurrencyPrice(this.cryptoName);
       },
@@ -131,8 +132,9 @@
         })
         if (response) {
           this.end();
+          const commission = response.fills[0].commission;
           this.marketBuyPrice = response.fills[0].price;
-          this.marketBuyQuantity = response.fills[0].qty;
+          this.marketBuyQuantity = response.fills[0].qty - commission;
           console.log(response);
         }
       },
@@ -147,9 +149,21 @@
         })
         if (response) {
           this.end();
-          this.marketSellPrice = response.fills[0].price
+          this.marketSellPrice = response.fills[0].price;
           this.marketSellQuantity = response.fills[0].qty;
           console.log(response);
+        }
+      },
+
+      async exchangeInfo() {
+        const crypto = `${this.cryptoName.toUpperCase()}BTC`;
+        const response = await this.clientEN.exchangeInfo({
+          symbol: crypto
+        })
+        if (response) {
+          console.log(response.symbols.filter(sym => {
+            return sym.symbol === crypto;
+          })[0]);
         }
       },
     },

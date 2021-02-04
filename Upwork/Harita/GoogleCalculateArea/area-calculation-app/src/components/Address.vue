@@ -5,7 +5,7 @@
         :items="foundAddresses"
         item-text="description"
         v-model="selected"
-        @change="showSelected"
+        @input="showSelected"
         @click:clear="clearList"
         label="Address"
         return-object
@@ -16,7 +16,7 @@
 
     <div>
       <p class="font-weight-black">
-        {{this.selected.description}}
+        {{this.selected ? selectedLongAddress : selectedLongAddress}}
       </p>
     </div>
 
@@ -42,7 +42,7 @@
 
     watch: {
       address() {
-        if (this.address) {
+        if (this.address !== null) {
           this.searchAddress();
         }
       }
@@ -57,7 +57,6 @@
       },
 
       async showSelected() {
-        console.log(this.selected)
         if (this.selected !== null) {
           const result = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${this.selected.place_id}&fields=name,geometry&key=AIzaSyAFlUfBZOnqaEaGUjlqvriDBgnredJzj2A`)
 
@@ -69,12 +68,15 @@
 
           await this.$store.dispatch("setLongAddress", this.selectedLongAddress)
           await this.$store.dispatch("setLocation", this.location);
+
+          this.selected = null;
         }
       },
 
       clearList() {
-
-      }
+        this.selected = null;
+        this.foundAddresses = [];
+      },
     }
   }
 </script>

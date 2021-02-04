@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
+import axios from "axios";
 
 export default new Vuex.Store({
   state: {
@@ -17,7 +19,7 @@ export default new Vuex.Store({
     longAddress: null,
     totalArea: null,
     customerName: null,
-    customerSurname: null,
+    customerPhone: null,
     customerEmail: null
   },
 
@@ -101,26 +103,42 @@ export default new Vuex.Store({
 
     saveCustomerInfos(state, payload) {
       state.customerName = payload.customerName;
-      state.customerSurname = payload.customerSurname;
       state.customerEmail = payload.customerEmail;
+      state.customerPhone = payload.customerPhone;
     },
 
     sendReport(state) {
       const longAddress = state.longAddress;
-      const polygons = state.polygons.length;
+      const polygons = state.polygons;
       const totalArea = state.totalArea;
       const customerName = state.customerName;
-      const customerSurname = state.customerSurname;
       const customerEmail = state.customerEmail;
+      const customerPhone = state.customerPhone;
 
-      console.log({
-        customerName: customerName,
-        customerSurname: customerSurname,
-        customerEmail: customerEmail,
-        longAddress: longAddress,
+      const postObject = {
+        contact_name: customerName,
+        contact_email: customerEmail,
+        phone_number: customerPhone,
+        address: longAddress,
         polygons: polygons,
-        totalArea: totalArea
+        area_square_feet: totalArea
+      }
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+
+      axios.post(
+        "https://petes17.sg-host.com/wp-json/contact-form-7/v1/contact-forms/499/feedback",
+        postObject,
+        config
+        ).then(response => {
+        console.log(response);
       })
+
+      console.log(postObject)
     },
 
     showReportDialog(state, payload) {

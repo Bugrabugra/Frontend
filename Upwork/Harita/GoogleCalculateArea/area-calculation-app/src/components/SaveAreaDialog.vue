@@ -45,6 +45,9 @@
 </template>
 
 <script>
+  const convert = require('convert-units');
+
+
   export default {
     name: "SaveAreaDialog",
 
@@ -65,8 +68,10 @@
         const geometry = this.$store.state.polygonGeometry;
         const decodedGeometry = window.google.maps.geometry.encoding.decodePath(geometry);
         const area = window.google.maps.geometry.spherical.computeArea(decodedGeometry);
+        console.log(area)
+        const roundedSquareFeetArea = convert(area).from("m2").to("ft2").toFixed(0);
 
-        this.$store.dispatch("addPolygon", {name, area, geometry});
+        this.$store.dispatch("addPolygon", {name: name, area: roundedSquareFeetArea, geometry: geometry});
         this.hideDialog();
 
         this.$store.dispatch("drawPolygons");

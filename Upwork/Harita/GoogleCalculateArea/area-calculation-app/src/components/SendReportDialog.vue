@@ -9,23 +9,29 @@
         <v-card-text class="ma-0 pa-0">
           <v-container fluid>
             <v-row>
-              <v-col cols="6">
+              <v-col cols="12">
                 <v-text-field
                     v-model="customerName"
+                    :counter="100"
+                    :rules="nameRules"
                     label="Name"
                     prepend-inner-icon="mdi-account"
-                    hide-details
                     outlined
                     clearable
                     autofocus
                 ></v-text-field>
               </v-col>
 
-              <v-col cols="6">
+            </v-row>
+
+            <v-row>
+              <v-col>
                 <v-text-field
-                    v-model="customerSurname"
-                    label="Surname"
-                    hide-details
+                    v-model="customerEmail"
+                    :counter="100"
+                    :rules="emailRules"
+                    label="Email"
+                    prepend-inner-icon="mdi-email"
                     outlined
                     clearable
                 ></v-text-field>
@@ -35,36 +41,13 @@
             <v-row>
               <v-col>
                 <v-text-field
-                    v-model="customerEmail"
-                    label="Email"
-                    prepend-inner-icon="mdi-email"
-                    hide-details
+                    v-model="customerPhone"
+                    :counter="14"
+                    :rules="phoneRules"
+                    label="Phone Number"
+                    prepend-inner-icon="mdi-phone"
                     outlined
                     clearable
-                ></v-text-field>
-              </v-col>
-            </v-row>
-
-            <v-row>
-              <v-col cols="6">
-                <v-text-field
-                    v-model="totalPolygons"
-                    label="Total polygons being sent"
-                    prepend-inner-icon="mdi-texture-box"
-                    hide-details
-                    outlined
-                    disabled
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="6">
-                <v-text-field
-                    v-model="totalArea"
-                    label="Total Area"
-                    prepend-inner-icon="mdi-sigma"
-                    hide-details
-                    outlined
-                    disabled
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -115,8 +98,20 @@
     data() {
       return {
         customerName: "",
-        customerSurname: "",
         customerEmail: "",
+        customerPhone: "",
+        nameRules: [
+          v => !!v || 'Name is required',
+          v => (v && v.length <= 100) || 'Name must be less than 100 characters',
+        ],
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        ],
+        phoneRules: [
+          v => !!v || 'Phone number is required',
+          v => /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(v) || 'Phone number must be valid',
+        ]
       }
     },
 
@@ -125,19 +120,9 @@
         return this.$store.state.showReportDialog;
       },
 
-      totalPolygons() {
-        return this.$store.state.polygons.length;
-      },
-
       address() {
         return this.$store.state.longAddress;
       },
-
-      totalArea() {
-        if (this.$store.state.totalArea) {
-          return `${this.$store.state.totalArea.toFixed(0)} m2`;
-        }
-      }
     },
 
     methods: {
@@ -148,8 +133,8 @@
       setCustomerInfos() {
         const payload = {
           customerName: this.customerName,
-          customerSurname: this.customerSurname,
-          customerEmail: this.customerEmail
+          customerEmail: this.customerEmail,
+          customerPhone: this.customerPhone
         }
 
         this.$store.dispatch("saveCustomerInfos", payload);
