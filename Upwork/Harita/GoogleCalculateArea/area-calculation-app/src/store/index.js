@@ -130,9 +130,21 @@ export default new Vuex.Store({
         }
       }
 
+      const polygonsStringify = encodeURIComponent(JSON.stringify(polygons));
+      console.log(polygonsStringify)
+      console.log(polygons)
+
+      let formData = new FormData();
+      formData.append("contact_name", customerName);
+      formData.append("contact_email", customerEmail);
+      formData.append("phone_number", customerPhone);
+      formData.append("address", longAddress);
+      formData.append("polygons", polygonsStringify);
+      formData.append("area_square_feet", totalArea);
+
       axios.post(
         "https://petes17.sg-host.com/wp-json/contact-form-7/v1/contact-forms/499/feedback",
-        postObject,
+        formData,
         config
         ).then(response => {
         console.log(response);

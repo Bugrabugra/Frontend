@@ -25,7 +25,7 @@
       </v-list-item>
     </v-list>
 
-    <h4 v-if="polygons.length" class="font-weight-medium">Total: {{polygonsTotalArea}} ft²</h4>
+    <h4 v-if="polygons.length" class="font-weight-medium">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
 
   </v-container>
 </template>
@@ -48,7 +48,7 @@
         this.polygons.forEach(polygon => {
           total += parseInt(polygon.area);
         })
-        return total.toLocaleString();
+        return total;
       }
     },
 
