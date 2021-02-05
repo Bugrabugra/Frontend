@@ -7,7 +7,12 @@
             <v-container>
               <v-row justify="center" align="center">
                 <v-col cols="4">
-                  <v-btn height="90px" color="light-green accent-3" class="mb-6" @click="buyMARKET" style="width: 100%">Buy Market</v-btn>
+                  <v-btn height="90px" color="light-green accent-3" class="mb-6" @click="buyMARKET" style="width: 100%">
+                    <v-icon v-if="buySuccessful">
+                      mdi-check-circle
+                    </v-icon>
+                    Buy Market
+                  </v-btn>
                   <!--<v-btn height="90px" color="light-green accent-3" class="mb-6" @click="check" style="width: 100%">Check</v-btn>-->
                 </v-col>
                 <v-col cols="8">
@@ -63,7 +68,8 @@
         startMs: null,
         endMs: null,
         duration: 0,
-        clientEN: null
+        clientEN: null,
+        buySuccessful: false
       }
     },
 
@@ -135,6 +141,9 @@
           const commission = response.fills[0].commission;
           this.marketBuyPrice = response.fills[0].price;
           this.marketBuyQuantity = response.fills[0].qty - commission;
+          if (this.marketBuyQuantity) {
+            this.buySuccessful = true;
+          }
           console.log(response);
         }
       },
@@ -163,6 +172,8 @@
         if (response) {
           console.log(response.symbols.filter(sym => {
             return sym.symbol === crypto;
+          })[0].filters.filter(filter => {
+            return filter.filterType === "LOT_SIZE"
           })[0]);
         }
       },
