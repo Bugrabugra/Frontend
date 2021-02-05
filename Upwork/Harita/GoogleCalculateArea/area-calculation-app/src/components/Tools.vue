@@ -2,39 +2,54 @@
   <v-container fluid>
     <v-row align="center" justify="center">
       <v-col>
-        <v-btn
-            v-show="!drawActive"
-            @click="startDraw"
-            color="#173c00"
-            style="width: 100%"
-            class="white--text"
-            id="draw"
-        >
-          <v-icon class="pr-2">
-            mdi-pencil-plus
-          </v-icon>
-          Draw New Area
-        </v-btn>
+        <v-tooltip right>
+          <template v-slot:activator="{ on }">
+            <div v-on="on">
+              <v-btn
+                  v-show="!$store.state.drawPolygon"
+                  @click="toggleDraw"
+                  color="#173c00"
+                  style="width: 100%"
+                  class="white--text"
+                  id="draw"
+              >
+                <v-icon class="pr-2">
+                  mdi-pencil-plus
+                </v-icon>
+                Draw New Area
+              </v-btn>
+            </div>
+          </template>
+          <span>Right click to cancel drawing</span>
+        </v-tooltip>
 
-        <v-btn
-            v-show="drawActive"
-            color="#173c00"
-            @click="stopDraw"
-            style="width: 100%"
-            class="white--text"
-            id="not-draw"
-        >
-          <v-icon class="pr-2">
-            mdi-close-circle
-          </v-icon>
-          Cancel New Area
-        </v-btn>
+        <v-tooltip right>
+          <template v-slot:activator="{ on }">
+            <div v-on="on">
+              <v-btn
+                  v-show="$store.state.drawPolygon"
+                  color="#173c00"
+                  @click="toggleDraw"
+                  style="width: 100%"
+                  class="white--text"
+                  id="not-draw"
+              >
+                <v-icon class="pr-2">
+                  mdi-close-circle
+                </v-icon>
+                Cancel New Area
+              </v-btn>
+            </div>
+          </template>
+          <span>Right click to cancel drawing</span>
+        </v-tooltip>
+
       </v-col>
     </v-row>
 
     <v-row align="center" justify="center">
       <v-col cols="12">
-          <v-tooltip bottom>
+          <v-tooltip right>
             <template v-slot:activator="{ on }">
               <div v-on="on">
                 <v-btn v-on="on" @click="openReportDialog" color="#173c00" :disabled="!enableSendReport" dark block>
@@ -72,12 +87,8 @@
     },
 
     methods: {
-      startDraw() {
-        this.drawActive = true;
-      },
-
-      stopDraw() {
-        this.drawActive = false;
+      toggleDraw() {
+        this.$store.dispatch("startDraw");
       },
 
       openReportDialog() {

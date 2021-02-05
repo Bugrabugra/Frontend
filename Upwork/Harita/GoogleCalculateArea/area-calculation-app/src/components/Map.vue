@@ -71,7 +71,24 @@
 
           // Stop drawing
           window.google.maps.event.addDomListener(document.getElementById('not-draw'), 'click', function() {
-            drawingManager.setDrawingMode(null);
+            _this.$store.state.drawingManager.setDrawingMode(null);
+          });
+
+          // Stop drawing on right click
+          _this.map.addListener('rightclick', function (e) {
+            if (_this.$store.state.drawPolygon) {
+              let zoom;
+              let extent;
+              zoom = _this.map.getZoom();
+              extent = _this.map.getBounds();
+
+              _this.$store.state.drawingManager.setDrawingMode(null);
+              _this.map.setZoom(zoom);
+              _this.map.panToBounds(extent);
+              _this.$store.dispatch("startDraw");
+              _this.$store.dispatch("showSaveAreaDialog", false);
+
+            }
           });
 
           // Show dialog when drawing is finished
