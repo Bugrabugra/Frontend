@@ -20,7 +20,23 @@
                 </v-col>
               </v-row>
 
-              <v-btn height="70px" color="orange" class="mb-6" @click="sellMARKET" style="width: 100%">Sell Market</v-btn>
+              <v-row>
+                <v-col cols="10">
+                  <v-btn height="70px" color="orange" class="mb-6" @click="sellMARKET" style="width: 100%">
+                    <v-icon v-if="sellSuccessful">
+                      mdi-check-circle
+                    </v-icon>
+                    Sell Market
+                  </v-btn>
+                </v-col>
+
+                <v-col cols="2">
+                  <v-btn height="70px" color="purple" class="mb-6" @click="openWebPage" style="width: 100%">
+                    Page
+                  </v-btn>
+                </v-col>
+              </v-row>
+
 
               <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity"></v-text-field>
               <!--<v-text-field dark v-model="sellingRatio" label="Selling Ratio"></v-text-field>-->
@@ -31,6 +47,7 @@
               <v-text-field dark v-model="marketBuyQuantity" label="Market Buy Quantity"></v-text-field>
               <v-text-field dark v-model="marketSellPrice" label="Market Sell Price" disabled></v-text-field>
               <v-text-field dark v-model="marketSellQuantity" label="Market Sell Quantity"></v-text-field>
+              <v-text-field dark v-model="totalSell" label="Total Sell"></v-text-field>
               <v-text-field dark v-model="duration" label="Duration" disabled></v-text-field>
 
               <!--<v-btn color="orange" class="mb-6" @click="buyMARKET" style="width: 100%">Buy Market</v-btn>-->
@@ -69,7 +86,9 @@
         endMs: null,
         duration: 0,
         clientEN: null,
-        buySuccessful: false
+        buySuccessful: false,
+        sellSuccessful: false,
+        totalSell: 0
       }
     },
 
@@ -89,6 +108,7 @@
       },
 
       start() {
+        this.buyMARKET()
         console.log("started");
         this.startMs = dayjs();
       },
@@ -127,9 +147,7 @@
 
       async buyMARKET() {
         console.log(this.cryptoName.toUpperCase());
-        window.open(`https://www.binance.com/en/trade/${this.cryptoName.toUpperCase()}_BTC`)
-
-        const crypto = `${this.cryptoName.toUpperCase()}BTC`;
+        const crypto = `${this.cryptoName.toUpperCase().trim()}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
           side: "BUY",
@@ -149,17 +167,21 @@
       },
 
       async sellMARKET() {
-        const crypto = `${this.cryptoName.toUpperCase()}BTC`;
+        const crypto = `${this.cryptoName.toUpperCase().trim()}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
           side: "SELL",
           type: "MARKET",
-          quantity: this.marketBuyQuantity,
+          quantity: Math.floor(this.marketBuyQuantity),
         })
         if (response) {
           this.end();
           this.marketSellPrice = response.fills[0].price;
           this.marketSellQuantity = response.fills[0].qty;
+          if (this.marketSellQuantity) {
+            this.sellSuccessful = true;
+            this.totalSell = (this.marketSellPrice * this.marketSellQuantity).toFixed(3);
+          }
           console.log(response);
         }
       },
@@ -177,6 +199,10 @@
           })[0]);
         }
       },
+
+      openWebPage() {
+        window.open(`https://www.binance.com/en/trade/${this.cryptoName.toUpperCase()}_BTC`)
+      }
     },
 
     mounted() {
