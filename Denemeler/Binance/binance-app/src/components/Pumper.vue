@@ -1,11 +1,13 @@
 <template>
   <v-container>
     <v-row justify="center" align="center" class="mx-auto">
-      <v-col cols="8">
+      <v-col cols="8" style="min-width: 500px">
         <v-card color="#20B3B3" rounded elevation="8">
           <v-form class="ma-4" ref="form">
             <v-container>
               <v-row justify="center" align="center">
+
+                <!--Buy button-->
                 <v-col cols="4">
                   <v-btn height="90px" color="light-green accent-3" class="mb-6" @click="buyMARKET" style="width: 100%">
                     <v-icon v-if="buySuccessful">
@@ -13,15 +15,17 @@
                     </v-icon>
                     Buy Market
                   </v-btn>
-                  <!--<v-btn height="90px" color="light-green accent-3" class="mb-6" @click="check" style="width: 100%">Check</v-btn>-->
                 </v-col>
+
+                <!--Crypto name-->
                 <v-col cols="8">
                   <v-text-field @input="start" style="font-size: 40px" outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
                 </v-col>
               </v-row>
 
               <v-row>
-                <v-col cols="10">
+                <!--Sell button-->
+                <v-col cols="9">
                   <v-btn height="70px" color="orange" class="mb-6" @click="sellMARKET" style="width: 100%">
                     <v-icon v-if="sellSuccessful">
                       mdi-check-circle
@@ -30,30 +34,67 @@
                   </v-btn>
                 </v-col>
 
-                <v-col cols="2">
-                  <v-btn height="70px" color="purple" class="mb-6" @click="openWebPage" style="width: 100%">
+                <!--Web page button-->
+                <v-col cols="3">
+                  <v-btn height="70px" color="purple lighten-3" class="mb-6" @click="openWebPage" style="width: 100%">
                     Page
                   </v-btn>
                 </v-col>
               </v-row>
 
+              <v-row>
+                <!--Quote order quantity input-->
+                <v-col cols="6">
+                  <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity"></v-text-field>
+                </v-col>
 
-              <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity"></v-text-field>
-              <!--<v-text-field dark v-model="sellingRatio" label="Selling Ratio"></v-text-field>-->
-              <!--<v-text-field dark v-model="price" label="Price"></v-text-field>-->
-              <!--<v-text-field dark v-model="quantity" label="Quantity"></v-text-field>-->
-              <!--<v-text-field dark v-model="currentValue" label="Current Value" disabled></v-text-field>-->
-              <v-text-field dark v-model="marketBuyPrice" label="Market Buy Price" disabled></v-text-field>
-              <v-text-field dark v-model="marketBuyQuantity" label="Market Buy Quantity"></v-text-field>
-              <v-text-field dark v-model="marketSellPrice" label="Market Sell Price" disabled></v-text-field>
-              <v-text-field dark v-model="marketSellQuantity" label="Market Sell Quantity"></v-text-field>
-              <v-text-field dark v-model="totalSell" label="Total Sell"></v-text-field>
-              <v-text-field dark v-model="duration" label="Duration" disabled></v-text-field>
+                <!--Total sell text field-->
+                <v-col cols="6">
+                  <v-text-field dark v-model="totalSell" label="Total Sell" disabled></v-text-field>
+                </v-col>
+              </v-row>
 
-              <!--<v-btn color="orange" class="mb-6" @click="buyMARKET" style="width: 100%">Buy Market</v-btn>-->
-              <!--<v-btn color="blue" class="mb-6" @click="check" style="width: 100%">Check</v-btn>-->
-              <!--<v-btn color="orange" class="mb-6" @click="buyLIMIT" style="width: 100%">But Limit</v-btn>-->
+              <v-row>
+                <!--Market buy quantity text field-->
+                <v-col cols="6">
+                  <v-text-field dark v-model="marketBuyQuantity" label="Market Buy Quantity"></v-text-field>
+                </v-col>
+
+                <!--Market buy price text field-->
+                <v-col cols="6">
+                  <v-text-field dark v-model="marketBuyPrice" label="Market Buy Price" disabled></v-text-field>
+                </v-col>
+              </v-row>
+
+              <v-row>
+                <!--Market sell quantity text field-->
+                <v-col>
+                  <v-text-field dark v-model="marketSellQuantity" label="Market Sell Quantity"></v-text-field>
+                </v-col>
+
+                <!--Market sell price text field-->
+                <v-col>
+                  <v-text-field dark v-model="marketSellPrice" label="Market Sell Price" disabled></v-text-field>
+                </v-col>
+              </v-row>
+
+              <!--Duration text field-->
+              <v-row>
+                <v-col cols="6">
+                  <v-text-field dark v-model="duration" label="Duration" disabled></v-text-field>
+                </v-col>
+
+                <!--Current value text field-->
+                <v-col cols="6">
+                  <v-text-field dark v-model="currentValue" label="Current Price" disabled></v-text-field>
+                </v-col>
+              </v-row>
+
+              <!--Exchange button-->
               <v-btn color="blue" class="mb-6" @click="exchangeInfo" style="width: 100%">Exchange Info</v-btn>
+
+              <!--Check price button-->
+              <v-btn color="blue" class="mb-6" @click="checkPrice" style="width: 100%">Check Price</v-btn>
 
             </v-container>
           </v-form>
@@ -72,8 +113,8 @@
     name: "Pumper",
     data() {
       return {
+        clientEN: null,
         cryptoName: "",
-        sellingRatio: 0,
         currentValue: 0,
         price: 0,
         quantity: 0,
@@ -85,10 +126,15 @@
         startMs: null,
         endMs: null,
         duration: 0,
-        clientEN: null,
         buySuccessful: false,
         sellSuccessful: false,
         totalSell: 0
+      }
+    },
+
+    computed: {
+      currencyUpperCaseTrimmed() {
+        return this.cryptoName.toUpperCase().trim();
       }
     },
 
@@ -102,17 +148,20 @@
         console.log("Client was set!");
       },
 
+      // Runs getCurrencyPrice
       checkPrice() {
         console.log(this.cryptoName);
-        this.getCurrencyPrice(this.cryptoName);
+        this.getCurrencyPrice(this.currencyUpperCaseTrimmed);
       },
 
+      // Start timer
       start() {
         this.buyMARKET()
         console.log("started");
         this.startMs = dayjs();
       },
 
+      // Stop timer
       end() {
         console.log("ended");
         this.endMs = dayjs();
@@ -120,6 +169,7 @@
         console.log(this.duration)
       },
 
+      // Get currency's current price
       async getCurrencyPrice(currencyName) {
         const crypto = `${currencyName}BTC`;
         const response = await this.clientEN.prices({symbol: `${crypto}`})
@@ -130,6 +180,7 @@
         }
       },
 
+      // But limit
       async buyLIMIT(currencyName) {
         const crypto = `${this.cryptoName}BTC`;
         const response = await this.clientEN.order({
@@ -145,9 +196,10 @@
         }
       },
 
+      // Buy market
       async buyMARKET() {
         console.log(this.cryptoName.toUpperCase());
-        const crypto = `${this.cryptoName.toUpperCase().trim()}BTC`;
+        const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
           side: "BUY",
@@ -167,7 +219,7 @@
       },
 
       async sellMARKET() {
-        const crypto = `${this.cryptoName.toUpperCase().trim()}BTC`;
+        const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
           side: "SELL",
@@ -187,7 +239,7 @@
       },
 
       async exchangeInfo() {
-        const crypto = `${this.cryptoName.toUpperCase()}BTC`;
+        const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
         const response = await this.clientEN.exchangeInfo({
           symbol: crypto
         })
@@ -201,7 +253,7 @@
       },
 
       openWebPage() {
-        window.open(`https://www.binance.com/en/trade/${this.cryptoName.toUpperCase()}_BTC`)
+        window.open(`https://www.binance.com/en/trade/${this.currencyUpperCaseTrimmed}_BTC`)
       }
     },
 
