@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <Drawer/>
     <v-main>
+      <Drawer/>
       <Map/>
     </v-main>
   </v-app>
@@ -10,14 +10,12 @@
 <script>
   import Map from "./components/Map";
   import Drawer from "./components/Drawer";
-  import Dialog from "./components/SaveAreaDialog";
 
 
   export default {
     name: 'App',
 
     components: {
-      Dialog,
       Drawer,
       Map
     },
