@@ -212,6 +212,7 @@
           quoteOrderQty: this.quoteOrderQty,
         })
         if (response) {
+          console.log(response)
           this.end();
           const commission = response.fills[0].commission;
           this.marketBuyPrice = response.fills[0].price;
