@@ -123,7 +123,6 @@
                 this.pastSellOrders[currency] = item.quoteQty;
               }
             })
-
           }
         }
         console.log()

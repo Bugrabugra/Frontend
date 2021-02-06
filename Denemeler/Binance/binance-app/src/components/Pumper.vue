@@ -45,7 +45,7 @@
               <v-row>
                 <!--Quote order quantity input-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity"></v-text-field>
+                  <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity" background-color="red lighten-3" outlined></v-text-field>
                 </v-col>
 
                 <!--Total sell text field-->
@@ -91,10 +91,10 @@
               </v-row>
 
               <!--Exchange button-->
-              <v-btn color="blue" class="mb-6" @click="exchangeInfo" style="width: 100%">Exchange Info</v-btn>
+              <v-btn color="blue darken-2" class="mb-6" @click="exchangeInfo" style="width: 100%">Exchange Info</v-btn>
 
               <!--Check price button-->
-              <v-btn color="blue" class="mb-6" @click="checkPrice" style="width: 100%">Check Price</v-btn>
+              <v-btn color="blue darken-2" class="mb-6" @click="checkPrice" style="width: 100%">Check Price</v-btn>
 
             </v-container>
           </v-form>
@@ -128,13 +128,18 @@
         duration: 0,
         buySuccessful: false,
         sellSuccessful: false,
-        totalSell: 0
+        totalSell: 0,
+        clipboard: "",
       }
     },
 
     computed: {
       currencyUpperCaseTrimmed() {
         return this.cryptoName.toUpperCase().trim();
+      },
+
+      resultRatio() {
+        return (this.totalSell * 100 / this.quoteOrderQty).toFixed(0);
       }
     },
 
@@ -180,7 +185,7 @@
         }
       },
 
-      // But limit
+      // Buy limit
       async buyLIMIT(currencyName) {
         const crypto = `${this.cryptoName}BTC`;
         const response = await this.clientEN.order({
@@ -198,7 +203,7 @@
 
       // Buy market
       async buyMARKET() {
-        console.log(this.cryptoName.toUpperCase());
+        console.log(this.currencyUpperCaseTrimmed);
         const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
         const response = await this.clientEN.order({
           symbol: crypto,
@@ -254,6 +259,19 @@
 
       openWebPage() {
         window.open(`https://www.binance.com/en/trade/${this.currencyUpperCaseTrimmed}_BTC`)
+      },
+
+      // Reading Windows clipboard to paste into page. You have to click
+      // page in order to automatically paste
+      readFromClipboard() {
+        setInterval(() => {
+          navigator.clipboard.readText().then(res => {
+            this.clipboard = res;
+            this.cryptoName = this.clipboard;
+          }).catch(err => {
+            // console.log(err)
+          })
+        }, 50)
       }
     },
 
@@ -262,7 +280,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>
