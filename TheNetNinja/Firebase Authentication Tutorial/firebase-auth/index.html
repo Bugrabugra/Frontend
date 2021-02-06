@@ -28,7 +28,7 @@
             </a>
           </li>
 
-          <li class="logged-in" style="display: none;">
+          <li class="admin" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-create">
               Create Guide
             </a>
@@ -50,6 +50,12 @@
       </div>
     </nav>
 
+    <!--ADMIN ACTIONS-->
+    <form class="center-align admin-actions admin" style="margin: 40px auto; max-width: 300px; display: none;">
+      <input type="email" placeholder="User email" id="admin-email" required>
+      <button class="btn-small yellow darken-2 z-depth-0">Make admin</button>
+    </form>
+
     <!-- SIGN UP MODAL -->
     <div id="modal-signup" class="modal">
       <div class="modal-content">
@@ -63,7 +69,13 @@
             <input type="password" id="signup-password" required />
             <label for="signup-password">Choose password</label>
           </div>
+
+          <div class="input-field">
+            <input type="text" id="signup-bio" required />
+            <label for="signup-bio">One Line Bio</label>
+          </div>
           <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+          <p class="error pink-text center-align"></p>
         </form>
       </div>
     </div>
@@ -82,6 +94,7 @@
             <label for="login-password">Your password</label>
           </div>
           <button class="btn yellow darken-2 z-depth-0">Login</button>
+          <p class="error pink-text center-align"></p>
         </form>
       </div>
     </div>
@@ -123,6 +136,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-functions.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -140,6 +154,7 @@
       // Make auth and firestore references
       const auth = firebase.auth();
       const db = firebase.firestore();
+      const functions = firebase.functions();
     </script>
 
     <!-- Compiled and minified JavaScript -->
