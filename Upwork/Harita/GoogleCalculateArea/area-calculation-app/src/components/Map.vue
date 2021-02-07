@@ -87,7 +87,6 @@
               _this.map.panToBounds(extent);
               _this.$store.dispatch("startDraw");
               _this.$store.dispatch("showSaveAreaDialog", false);
-
             }
           });
 

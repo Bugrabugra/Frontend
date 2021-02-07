@@ -33,6 +33,10 @@ export default new Vuex.Store({
       state.data = payload;
     },
 
+    setPolygons(state, payload) {
+      state.polygons = payload;
+    },
+
     drawPolygons(state) {
       state.map.data.forEach(feature => {
         // If you want, check here for some constraints.
@@ -66,6 +70,10 @@ export default new Vuex.Store({
 
     updateData({commit}, payload) {
       commit("updateData", payload);
+    },
+
+    setPolygons({commit}, payload) {
+      commit("setPolygons", payload);
     },
 
     drawPolygons({commit}) {

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "convert-units": "^2.3.4",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vuetify": "^2.4.0",

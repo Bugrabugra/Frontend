@@ -2,7 +2,7 @@
   <v-textarea
       background-color="white"
       name="input-7-4"
-      label="Outlined textarea"
+      label="Please paste the URL here"
       v-model="data"
       hide-details
       outlined
@@ -22,7 +22,6 @@
     watch: {
       data() {
         this.$store.dispatch("updateData", this.data);
-        console.log(this.$store.state.data);
       }
     }
   }
