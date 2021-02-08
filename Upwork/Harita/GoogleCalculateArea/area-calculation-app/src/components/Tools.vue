@@ -16,7 +16,7 @@
                 <v-icon class="pr-2">
                   mdi-pencil-plus
                 </v-icon>
-                Draw New Area
+                {{mini ? "" : "Draw New Area"}}
               </v-btn>
             </div>
           </template>
@@ -37,7 +37,7 @@
                 <v-icon class="pr-2">
                   mdi-close-circle
                 </v-icon>
-                Cancel New Area
+                {{mini ? "" : "Draw New Area"}}
               </v-btn>
             </div>
           </template>
@@ -52,11 +52,18 @@
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <div v-on="on">
-                <v-btn v-on="on" @click="openReportDialog" color="#173c00" :disabled="!enableSendReport" dark block>
+                <v-btn
+                    v-on="on"
+                    @click="openReportDialog"
+                    color="#173c00"
+                    :disabled="!enableSendReport"
+                    dark
+                    block
+                >
                   <v-icon class="pr-2">
-                    mdi-file-export
+                    mdi-currency-usd
                   </v-icon>
-                  Request Estimate
+                  {{mini ? "" : "Request Estimate"}}
                 </v-btn>
               </div>
             </template>
@@ -83,6 +90,17 @@
     computed: {
       enableSendReport() {
         return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
+      },
+
+      mini() {
+        if (
+          this.$vuetify.breakpoint.name === "md" ||
+          this.$vuetify.breakpoint.name === "sm" ||
+          this.$vuetify.breakpoint.name === "xs"
+        ) {
+          return true
+          // this.mini = true;
+        }
       }
     },
 

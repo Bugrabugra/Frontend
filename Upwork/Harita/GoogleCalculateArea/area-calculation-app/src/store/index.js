@@ -115,15 +115,6 @@ export default new Vuex.Store({
       const customerEmail = state.customerEmail;
       const customerPhone = state.customerPhone;
 
-      const postObject = {
-        contact_name: customerName,
-        contact_email: customerEmail,
-        phone_number: customerPhone,
-        address: longAddress,
-        polygons: polygons,
-        area_square_feet: totalArea
-      }
-
       const config = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -148,6 +139,7 @@ export default new Vuex.Store({
         config
         ).then(response => {
         console.log(response);
+        state.showReportDialog = false;
       })
     },
 

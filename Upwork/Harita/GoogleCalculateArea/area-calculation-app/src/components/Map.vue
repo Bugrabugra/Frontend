@@ -56,7 +56,8 @@
             polygonOptions: {
               fillColor: "#bf2424",
               fillOpacity: 0.3,
-              strokeColor: "#e02525"
+              strokeColor: "#e02525",
+              editable: true
             }
           });
 
@@ -64,7 +65,7 @@
 
           drawingManager.setMap(this.$store.state.map);
 
-          // Star drawing
+          // Start drawing
           window.google.maps.event.addDomListener(document.getElementById('draw'), 'click', function() {
             _this.$store.state.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
           });
@@ -75,7 +76,7 @@
           });
 
           // Stop drawing on right click
-          _this.map.addListener('rightclick', function (e) {
+          _this.map.addListener('rightclick', (e) => {
             if (_this.$store.state.drawPolygon) {
               let zoom;
               let extent;
