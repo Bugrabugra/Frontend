@@ -115,15 +115,6 @@ export default new Vuex.Store({
       const customerEmail = state.customerEmail;
       const customerPhone = state.customerPhone;
 
-      const postObject = {
-        contact_name: customerName,
-        contact_email: customerEmail,
-        phone_number: customerPhone,
-        address: longAddress,
-        polygons: polygons,
-        area_square_feet: totalArea
-      }
-
       const config = {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -140,12 +131,15 @@ export default new Vuex.Store({
       formData.append("polygons", polygonsStringify);
       formData.append("area_square_feet", totalArea);
 
+      console.log(formData);
+
       axios.post(
         "https://petes17.sg-host.com/wp-json/contact-form-7/v1/contact-forms/499/feedback",
         formData,
         config
         ).then(response => {
         console.log(response);
+        state.showReportDialog = false;
       })
     },
 

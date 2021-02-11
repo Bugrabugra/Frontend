@@ -137,10 +137,6 @@
       currencyUpperCaseTrimmed() {
         return this.cryptoName.toUpperCase().trim();
       },
-
-      resultRatio() {
-        return (this.totalSell * 100 / this.quoteOrderQty).toFixed(0);
-      }
     },
 
     methods: {
@@ -238,7 +234,7 @@
           this.marketSellQuantity = response.fills[0].qty;
           if (this.marketSellQuantity) {
             this.sellSuccessful = true;
-            this.totalSell = (this.marketSellPrice * this.marketSellQuantity).toFixed(3);
+            this.totalSell = (this.marketSellPrice * this.marketSellQuantity).toFixed(9);
           }
           console.log(response);
         }

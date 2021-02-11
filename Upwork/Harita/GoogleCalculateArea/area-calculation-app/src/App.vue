@@ -1,8 +1,9 @@
 <template>
-  <v-app id="toPDF">
-    <Drawer/>
+  <v-app>
+    <Drawer v-if="!mini"/>
     <v-main>
       <Map/>
+      <DrawerMini v-if="mini"/>
     </v-main>
   </v-app>
 </template>
@@ -11,16 +12,41 @@
   import Map from "./components/Map";
   import Drawer from "./components/Drawer";
   import Dialog from "./components/SaveAreaDialog";
+  import DrawerMini from "./components/DrawerMini";
 
 
   export default {
     name: 'App',
 
     components: {
+      DrawerMini,
       Dialog,
       Drawer,
       Map
     },
+
+    data() {
+      return {
+        // mini: false
+      }
+    },
+
+    computed: {
+      mini() {
+        if (
+          this.$vuetify.breakpoint.name === "md" ||
+          this.$vuetify.breakpoint.name === "sm" ||
+          this.$vuetify.breakpoint.name === "xs"
+        ) {
+          return true
+          // this.mini = true;
+        }
+      }
+    },
+
+    mounted() {
+
+    }
 
   };
 </script>
