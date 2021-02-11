@@ -1,11 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="103eda51-511f-48fc-aee8-d709a1bd6f25" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Eloquent JavaScript/Chapter 6 - The Secret Life of Objects/6.1 - Encapsulation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Eloquent JavaScript/Chapter 6 - The Secret Life of Objects/6.2 - Methods.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Eloquent JavaScript/Chapter 6 - The Secret Life of Objects/6.3 - Prototypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/.idea/PWA Tutorial for Beginners.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/.idea/dictionaries/Bugra.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/.idea/pwa-tutorial.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/css/materialize.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/dish.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-144x144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-152x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-192x192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-384x384.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-512x512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-72x72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/img/icons/icon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/js/materialize.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/js/ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/pages/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/pages/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../TheNetNinja/PWA Tutorial for Beginners/pwa-tutorial/sw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/.idea/dictionaries/Bugra.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Eloquent JavaScript/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Eloquent JavaScript/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Eloquent JavaScript/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Eloquent JavaScript/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/components/Todos.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/components/Todos.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Contact.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/dist.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Map.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SaveAreaDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SaveAreaDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SendReportDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SendReportDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Tools.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Tools.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/admin_dist.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Drawer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Drawer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Map.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/TextArea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/ParserTextArea.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1oL81nX7OkMHeZBFE0HIDtUshYo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="103eda51-511f-48fc-aee8-d709a1bd6f25" name="Default Changelist" comment="" />
+      <created>1613054297227</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613054297227</updated>
+      <workItem from="1613054298403" duration="336000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
   </component>
 </project>

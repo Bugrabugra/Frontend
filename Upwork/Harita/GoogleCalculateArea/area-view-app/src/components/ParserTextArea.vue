@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: "TextArea",
+    name: "ParserTextArea",
 
     data() {
       return {
@@ -26,7 +26,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

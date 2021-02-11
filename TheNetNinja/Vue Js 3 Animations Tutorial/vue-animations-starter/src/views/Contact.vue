@@ -11,20 +11,21 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+  import {ref} from 'vue'
 
-export default {
-  setup() {
-    const icons = ref([
-      { name: 'alternate_email', text: 'by email'},
-      { name: 'local_phone', text: 'by phone'},
-      { name: 'local_post_office', text: 'by post'},
-      { name: 'local_fire_department', text: 'by smoke signal'},
-    ])
 
-    return { icons }
+  export default {
+    setup() {
+      const icons = ref([
+        {name: 'alternate_email', text: 'by email'},
+        {name: 'local_phone', text: 'by phone'},
+        {name: 'local_post_office', text: 'by post'},
+        {name: 'local_fire_department', text: 'by smoke signal'},
+      ])
+
+      return {icons}
+    }
   }
-}
 </script>
 
 <style>
@@ -36,12 +37,13 @@ export default {
     max-width: 400px;
     margin: 60px auto;
   }
+
   .contact li {
     list-style-type: none;
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     line-height: 1.5em;
   }

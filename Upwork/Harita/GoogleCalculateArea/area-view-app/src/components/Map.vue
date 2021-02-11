@@ -1,5 +1,6 @@
 <template>
   <v-container class="pa-0" style="height: 100%;">
+    <!--Map container-->
     <div id="map" style="height: 100% !important;"></div>
   </v-container>
 </template>
@@ -10,10 +11,6 @@
 
   export default {
     name: 'Map',
-
-    components: {
-
-    },
 
     data() {
       return {
@@ -33,7 +30,7 @@
         setTimeout(() => {
           this.map = new window.google.maps.Map(document.getElementById("map"), {
             zoom: 5,
-            center: { lat: 24.886, lng: -70.268 },
+            center: { lat: 36.833, lng: -99.903 },
             mapTypeId: "satellite",
           });
 

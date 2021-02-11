@@ -3,14 +3,20 @@
     <v-container fluid>
       <v-row justify="center" align="center">
         <v-col>
-          <TextArea/>
+          <!--Text area-->
+          <ParserTextArea/>
         </v-col>
       </v-row>
 
+      <!--Total area-->
       <h4 v-if="totalArea" class="font-weight-medium my-3"><v-icon>mdi-sigma</v-icon>Total: {{totalArea}} ft²</h4>
+
+      <!--Not array error-->
+      <h4 v-if="error" class="red--text font-weight-medium my-3">{{error}}</h4>
 
       <v-row justify="center" align="center">
         <v-col >
+          <!--Parse button-->
           <v-btn style="width: 100%" color="#173c00" @click="parseURL" :disabled="viewed" dark>View</v-btn>
         </v-col>
       </v-row>
@@ -20,7 +26,7 @@
 </template>
 
 <script>
-  import TextArea from "./TextArea";
+  import ParserTextArea from "./ParserTextArea";
   const convert = require('convert-units');
 
 
@@ -28,14 +34,15 @@
     name: "Drawer",
 
     components: {
-      TextArea,
+      ParserTextArea,
     },
 
     data() {
       return {
         totalArea: null,
         viewed: false,
-        buttonName: ""
+        buttonName: "",
+        error: ""
       }
     },
 
@@ -43,58 +50,77 @@
       parseURL() {
         if (this.$store.state.data) {
           if (!this.viewed) {
-            const decodedURL = JSON.parse(decodeURIComponent(this.$store.state.data));
 
-            decodedURL.forEach(polygon => {
-              const decodedGeometry = window.google.maps.geometry.encoding.decodePath(polygon.geometry);
+            try {
+              const decodedURL = JSON.parse(decodeURIComponent(this.$store.state.data));
 
-              const poly = new window.google.maps.Polygon({
-                paths: decodedGeometry,
-                strokeColor: "#f5f104",
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: "#e58109",
-                fillOpacity: 0.35,
-                label: polygon.name
-              });
+              if (!Array.isArray(JSON.parse(decodeURIComponent(this.$store.state.data)))) {
+                console.log("error")
+                this.error = "It is not an array!"
+                return
+              }
 
-              poly.setMap(this.$store.state.map);
+              decodedURL.forEach(polygon => {
+                const decodedGeometry = window.google.maps.geometry.encoding.decodePath(polygon.geometry);
 
-              let bounds = new window.google.maps.LatLngBounds;
-              decodedGeometry.forEach(function(latLng) {
-                bounds.extend(latLng);
-              });
+                // Viewing the parsed polygons
+                const poly = new window.google.maps.Polygon({
+                  paths: decodedGeometry,
+                  strokeColor: "#f5f104",
+                  strokeOpacity: 0.8,
+                  strokeWeight: 2,
+                  fillColor: "#e58109",
+                  fillOpacity: 0.35,
+                  label: polygon.name
+                });
 
-              this.$store.state.map.fitBounds(bounds);
+                poly.setMap(this.$store.state.map);
 
-              const area = window.google.maps.geometry.spherical.computeArea(decodedGeometry);
-              const roundedSquareFeetArea = convert(area).from("m2").to("ft2").toFixed(0);
+                let bounds = new window.google.maps.LatLngBounds;
+                decodedGeometry.forEach(function(latLng) {
+                  bounds.extend(latLng);
+                });
 
-              this.totalArea += parseInt(roundedSquareFeetArea);
+                this.$store.state.map.fitBounds(bounds);
 
-              const infoWindow = new google.maps.InfoWindow();
+                const area = window.google.maps.geometry.spherical.computeArea(decodedGeometry);
+                const roundedSquareFeetArea = convert(area).from("m2").to("ft2").toFixed(0);
 
-              window.google.maps.event.addListener(poly, 'mouseover', (e) => {
-                poly.setOptions({fillColor: "#00FF00"});
-                infoWindow.setContent(`${polygon.name} - ${roundedSquareFeetArea} ft²`);
-                const latLng = e.latLng;
-                infoWindow.setPosition(latLng);
-                infoWindow.open(this.$store.state.map);
-              });
+                this.totalArea += parseInt(roundedSquareFeetArea);
 
-              window.google.maps.event.addListener(poly, 'mouseout', (e) => {
-                poly.setOptions({fillColor: "#e58109"});
-                infoWindow.setPosition(null);
-              });
-            })
+                // Mouse over info bubble
+                const infoWindow = new google.maps.InfoWindow();
 
-            this.viewed = true;
+                // Mouse over highlight property
+                window.google.maps.event.addListener(poly, 'mouseover', (e) => {
+                  poly.setOptions({fillColor: "#00FF00"});
+                  infoWindow.setContent(`${polygon.name} - ${roundedSquareFeetArea} ft²`);
+                  const latLng = e.latLng;
+                  infoWindow.setPosition(latLng);
+                  infoWindow.open(this.$store.state.map);
+                });
+
+                // Mouse out highlight property
+                window.google.maps.event.addListener(poly, 'mouseout', (e) => {
+                  poly.setOptions({fillColor: "#e58109"});
+                  infoWindow.setPosition(null);
+                });
+              })
+
+              // If the link was parsed once, it disables the button
+              this.viewed = true;
+              this.error = "";
+
+            } catch (e) {
+              this.error = e.message;
+            }
+
+
+
+
           } else {
 
           }
-
-
-
         }
       }
     }

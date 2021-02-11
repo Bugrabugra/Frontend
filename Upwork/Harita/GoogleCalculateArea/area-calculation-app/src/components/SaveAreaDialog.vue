@@ -9,6 +9,7 @@
         <v-card-text class="ma-0 pa-0">
           <v-container>
             <v-row>
+              <!--Area name-->
               <v-col cols="12">
                 <v-text-field
                     v-model="polygonName"
@@ -24,6 +25,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
+          <!--Close button-->
           <v-btn
               color="#3f3114"
               @click="hideDialog"
@@ -31,6 +33,8 @@
           >
             Close
           </v-btn>
+
+          <!--Save button-->
           <v-btn
               color="#173c00"
               @click="savePolygon"
@@ -68,7 +72,8 @@
         const geometry = this.$store.state.polygonGeometry;
         const decodedGeometry = window.google.maps.geometry.encoding.decodePath(geometry);
         const area = window.google.maps.geometry.spherical.computeArea(decodedGeometry);
-        console.log(area)
+
+        // Converting square meter to square feet
         const roundedSquareFeetArea = convert(area).from("m2").to("ft2").toFixed(0);
 
         this.$store.dispatch("addPolygon", {name: name, area: roundedSquareFeetArea, geometry: geometry});
@@ -85,7 +90,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

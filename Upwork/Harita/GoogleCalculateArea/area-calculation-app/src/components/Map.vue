@@ -1,7 +1,12 @@
 <template>
   <v-container class="ma-0 pa-0" style="height: 100%;">
+    <!--Map container-->
     <div id="map" style="height: 100% !important;"></div>
+
+    <!--The dialog that appears when you complete a polygon-->
     <SaveAreaDialog/>
+
+    <!--The dialog that appears when you press estimate button-->
     <SendReportDialog/>
 
   </v-container>
@@ -28,6 +33,7 @@
     },
 
     mounted() {
+      // Initializing the Google Maps API when the page is created
       loadedGoogleMapsAPI.then(()=>{
         this.initMap();
       });
@@ -39,7 +45,8 @@
         setTimeout(() => {
           this.map = new window.google.maps.Map(document.getElementById("map"), {
             zoom: 5,
-            center: { lat: 24.886, lng: -70.268 },
+            center: { lat: 36.833, lng: -99.903 },
+            // You can switch on Google Map types here
             mapTypeId: "satellite",
           });
 
@@ -53,6 +60,7 @@
                 window.google.maps.drawing.OverlayType.POLYGON,
               ],
             },
+            // Sketched polygons properties
             polygonOptions: {
               fillColor: "#bf2424",
               fillOpacity: 0.3,
@@ -107,6 +115,7 @@
 
             _this.$store.state.map.fitBounds(bounds)
 
+            // Finished polygons style property
             const featureStyling = function(feature) {
               return {
                 fillColor: '#00cc00'

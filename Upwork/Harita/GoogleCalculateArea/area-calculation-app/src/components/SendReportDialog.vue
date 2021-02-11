@@ -9,6 +9,7 @@
         <v-card-text class="ma-0 pa-0">
           <v-container fluid>
             <v-row>
+              <!--Customer name-->
               <v-col cols="12">
                 <v-text-field
                     v-model="customerName"
@@ -21,10 +22,10 @@
                     autofocus
                 ></v-text-field>
               </v-col>
-
             </v-row>
 
             <v-row>
+              <!--Customer email-->
               <v-col>
                 <v-text-field
                     v-model="customerEmail"
@@ -39,6 +40,7 @@
             </v-row>
 
             <v-row>
+              <!--Customer phone number-->
               <v-col>
                 <v-text-field
                     v-model="customerPhone"
@@ -53,6 +55,7 @@
             </v-row>
 
             <v-row>
+              <!--Customer address-->
               <v-col cols="12">
                 <v-text-field
                     v-model="address"
@@ -70,6 +73,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
+          <!--Close button-->
           <v-btn
               color="#3f3114"
               @click="hideDialog"
@@ -77,6 +81,8 @@
           >
             Close
           </v-btn>
+
+          <!--Send button-->
           <v-btn
               color="#173c00"
               @click="sendReport"
@@ -100,6 +106,7 @@
         customerName: "",
         customerEmail: "",
         customerPhone: "",
+        // Here are the email, name and number rules
         nameRules: [
           v => !!v || 'Name is required',
           v => (v && v.length <= 100) || 'Name must be less than 100 characters',
@@ -147,7 +154,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

@@ -2,9 +2,12 @@
   <v-container fluid>
     <v-row align="center" justify="center">
       <v-col>
+        <!--Tooltip for draw-->
         <v-tooltip right>
           <template v-slot:activator="{ on }">
             <div v-on="on">
+
+              <!--Draw button-->
               <v-btn
                   v-show="!$store.state.drawPolygon"
                   @click="toggleDraw"
@@ -20,12 +23,16 @@
               </v-btn>
             </div>
           </template>
+          <!--Tooltip message-->
           <span>Right click to cancel drawing</span>
         </v-tooltip>
 
+        <!--Tooltip for draw (cancel mode)-->
         <v-tooltip right>
           <template v-slot:activator="{ on }">
             <div v-on="on">
+
+              <!--Draw button-->
               <v-btn
                   v-show="$store.state.drawPolygon"
                   color="#173c00"
@@ -41,6 +48,7 @@
               </v-btn>
             </div>
           </template>
+          <!--Tooltip message-->
           <span>Right click to cancel drawing</span>
         </v-tooltip>
 
@@ -49,9 +57,11 @@
 
     <v-row align="center" justify="center">
       <v-col cols="12">
+        <!--Tooltip for estimate button-->
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <div v-on="on">
+                <!--Estimate button-->
                 <v-btn
                     v-on="on"
                     @click="openReportDialog"
@@ -67,6 +77,7 @@
                 </v-btn>
               </div>
             </template>
+            <!--Tooltip message-->
             <span>You must draw at least 1 area</span>
             <hr>
             <span>And search an address</span>
@@ -92,14 +103,14 @@
         return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
       },
 
+      // Checking if the page was loaded in mobile device
       mini() {
         if (
           this.$vuetify.breakpoint.name === "md" ||
           this.$vuetify.breakpoint.name === "sm" ||
           this.$vuetify.breakpoint.name === "xs"
         ) {
-          return true
-          // this.mini = true;
+          return true;
         }
       }
     },
@@ -115,7 +126,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>
