@@ -1,8 +1,34 @@
 <template>
   <v-container style="margin: auto 0;">
+    <v-dialog
+        elevation="4"
+        v-model="dialog"
+        width="300"
+        dark
+    >
+      <v-card elevation="10">
+        <v-card-title>
+          {{productName}} başarıyla eklendi!
+        </v-card-title>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+
+          <v-btn
+              color="primary"
+              @click="closeDialog"
+              block
+          >
+            Kapat
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-row justify="center" align="center">
-      <v-col cols="8">
-        <v-card class="mx-auto">
+      <v-col cols="10">
+        <v-card dark class="mx-auto">
           <v-form>
             <v-container>
               <v-row>
@@ -38,7 +64,7 @@
     data() {
       return {
         productName: "",
-
+        dialog: false
       }
     },
 
@@ -49,7 +75,14 @@
           .add({
             name: this.productName,
             situation: "Etiket onaylandı"
-          })
+          }).then(() => {
+            this.dialog = true;
+        })
+      },
+
+      closeDialog() {
+        this.dialog = false;
+        this.productName = "";
       }
     }
   }
