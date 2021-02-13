@@ -8,7 +8,16 @@
     >
       <v-card elevation="10">
         <v-card-title>
-          {{productName}} başarıyla eklendi!
+          <v-container>
+            <v-row justify="center">
+              {{productName}}
+            </v-row>
+
+            <v-row justify="center">
+              başarıyla eklendi!
+            </v-row>
+          </v-container>
+
         </v-card-title>
 
         <v-divider></v-divider>
@@ -70,8 +79,7 @@
 
     methods: {
       submit() {
-        db
-          .collection("products")
+        db.collection("products")
           .add({
             name: this.productName,
             situation: "Etiket onaylandı"
@@ -83,6 +91,7 @@
       closeDialog() {
         this.dialog = false;
         this.productName = "";
+        this.$router.push("/products");
       }
     }
   }

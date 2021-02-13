@@ -1,6 +1,5 @@
 <template>
   <v-container style="margin: auto 0;">
-
     <v-dialog
         elevation="4"
         v-model="dialog"
@@ -30,14 +29,14 @@
               @click="closeDialog"
               block
           >
-            Kapat
+            KAPAT
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
     <v-row justify="center" align="center">
-      <v-col cols="6">
+      <v-col cols="12">
         <v-card
             elevation="10"
             class="mx-auto"
@@ -65,7 +64,7 @@
 
                 <v-col cols="12">
                   <v-btn @click.prevent="login" color="primary" block>
-                    Giriş
+                    GİRİŞ
                   </v-btn>
                 </v-col>
 
@@ -101,6 +100,7 @@
           .then(res => {
             if (res.user.email) {
               this.dialog = true;
+              this.$store.dispatch("setUser", res.user.email)
             }
           })
       },

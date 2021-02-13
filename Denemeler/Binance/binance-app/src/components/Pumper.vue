@@ -18,8 +18,13 @@
                 </v-col>
 
                 <!--Crypto name-->
-                <v-col cols="8">
+                <v-col cols="5">
                   <v-text-field @input="start" style="font-size: 40px" outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
+                </v-col>
+
+                <!--Ratio-->
+                <v-col cols="3">
+                  <v-text-field style="font-size: 40px" outlined dark height="100px" v-model="ratio" label="Ratio"></v-text-field>
                 </v-col>
               </v-row>
 
@@ -130,6 +135,7 @@
         sellSuccessful: false,
         totalSell: 0,
         clipboard: "",
+        ratio: 0
       }
     },
 
@@ -151,7 +157,6 @@
 
       // Runs getCurrencyPrice
       checkPrice() {
-        console.log(this.cryptoName);
         this.getCurrencyPrice(this.currencyUpperCaseTrimmed);
       },
 
@@ -176,8 +181,9 @@
         const response = await this.clientEN.prices({symbol: `${crypto}`})
         if (response) {
           this.currentValue = response[crypto];
+          this.ratio = (((parseFloat(this.currentValue) * 100) / parseFloat(this.marketBuyPrice)) - 100).toFixed(2);
           this.end();
-          console.log(response);
+          console.log(this.ratio)
         }
       },
 
@@ -199,6 +205,12 @@
 
       // Buy market
       async buyMARKET() {
+
+        // Calculate ratio
+        setInterval(() => {
+          this.checkPrice(this.currencyUpperCaseTrimmed);
+        }, 100)
+
         console.log(this.currencyUpperCaseTrimmed);
         const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
         const response = await this.clientEN.order({
@@ -248,8 +260,6 @@
         if (response) {
           console.log(response.symbols.filter(sym => {
             return sym.symbol === crypto;
-          })[0].filters.filter(filter => {
-            return filter.filterType === "LOT_SIZE"
           })[0]);
         }
       },

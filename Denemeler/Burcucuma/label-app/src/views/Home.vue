@@ -10,7 +10,6 @@
     name: 'Home',
     components: {
       Login
-
     }
   }
 </script>

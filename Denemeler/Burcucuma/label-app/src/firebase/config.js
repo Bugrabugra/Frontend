@@ -5,12 +5,12 @@ import "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDRPmNC569TkazM9JjtC9PBdsP0a08JFDs",
-  authDomain: "eskitadinda-etiket.firebaseapp.com",
-  projectId: "eskitadinda-etiket",
-  storageBucket: "eskitadinda-etiket.appspot.com",
-  messagingSenderId: "387729109910",
-  appId: "1:387729109910:web:3148b952ddeb30c50123b7"
+  apiKey: "AIzaSyB9C3hqlpqNASRR4rqSxDMmVc0t8hSjsyw",
+  authDomain: "etiket-uygulamasi-et.firebaseapp.com",
+  projectId: "etiket-uygulamasi-et",
+  storageBucket: "etiket-uygulamasi-et.appspot.com",
+  messagingSenderId: "379015362685",
+  appId: "1:379015362685:web:46e0e5adf17db482369914"
 };
 
 // Initialize Firebase
