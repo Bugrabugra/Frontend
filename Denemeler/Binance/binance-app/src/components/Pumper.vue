@@ -18,12 +18,12 @@
                 </v-col>
 
                 <!--Crypto name-->
-                <v-col cols="5">
+                <v-col :cols="toggleRatio ? 5 : 8">
                   <v-text-field @input="start" style="font-size: 40px" outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
                 </v-col>
 
                 <!--Ratio-->
-                <v-col cols="3">
+                <v-col v-if="toggleRatio" cols="3">
                   <v-text-field style="font-size: 40px" outlined dark height="100px" v-model="ratio" label="Ratio"></v-text-field>
                 </v-col>
               </v-row>
@@ -95,6 +95,12 @@
                 </v-col>
               </v-row>
 
+              <!--Ratio toggle-->
+              <v-switch
+                  v-model="toggleRatio"
+                  :label="`Ratio on: ${toggleRatio.toString()}`"
+              ></v-switch>
+
               <!--Exchange button-->
               <v-btn color="blue darken-2" class="mb-6" @click="exchangeInfo" style="width: 100%">Exchange Info</v-btn>
 
@@ -135,7 +141,8 @@
         sellSuccessful: false,
         totalSell: 0,
         clipboard: "",
-        ratio: 0
+        ratio: 0,
+        toggleRatio: false
       }
     },
 
@@ -205,11 +212,12 @@
 
       // Buy market
       async buyMARKET() {
-
-        // Calculate ratio
-        // setInterval(() => {
-        //   this.checkPrice(this.currencyUpperCaseTrimmed);
-        // }, 100)
+        if (this.toggleRatio) {
+          // Calculate ratio
+          setInterval(() => {
+            this.checkPrice(this.currencyUpperCaseTrimmed);
+          }, 100)
+        }
 
         console.log(this.currencyUpperCaseTrimmed);
         const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
