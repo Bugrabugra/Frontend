@@ -207,9 +207,9 @@
       async buyMARKET() {
 
         // Calculate ratio
-        setInterval(() => {
-          this.checkPrice(this.currencyUpperCaseTrimmed);
-        }, 100)
+        // setInterval(() => {
+        //   this.checkPrice(this.currencyUpperCaseTrimmed);
+        // }, 100)
 
         console.log(this.currencyUpperCaseTrimmed);
         const crypto = `${this.currencyUpperCaseTrimmed}BTC`;
@@ -260,7 +260,7 @@
         if (response) {
           console.log(response.symbols.filter(sym => {
             return sym.symbol === crypto;
-          })[0]);
+          })[0].filters);
         }
       },
 
