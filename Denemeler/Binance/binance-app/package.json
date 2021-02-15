@@ -10,6 +10,7 @@
     "binance-api-node": "^0.10.19",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.4",
+    "trading-indicator": "^1.0.4-beta",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"

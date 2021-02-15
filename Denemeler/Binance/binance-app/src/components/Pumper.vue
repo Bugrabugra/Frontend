@@ -107,6 +107,9 @@
               <!--Check price button-->
               <v-btn color="blue darken-2" class="mb-6" @click="checkPrice" style="width: 100%">Check Price</v-btn>
 
+              <!--Check alert-->
+              <v-btn color="blue darken-2" class="mb-6" @click="alert" style="width: 100%">Check Alert</v-btn>
+
             </v-container>
           </v-form>
         </v-card>
@@ -118,7 +121,8 @@
 <script>
   import * as dayjs from 'dayjs'
   import Binance from "binance-api-node";
-
+  const ema = require("trading-indicator").ema;
+  const alerts = require('trading-indicator').alerts;
 
   export default {
     name: "Pumper",
@@ -142,7 +146,8 @@
         totalSell: 0,
         clipboard: "",
         ratio: 0,
-        toggleRatio: false
+        toggleRatio: false,
+        allBTCSymbols: []
       }
     },
 
@@ -169,17 +174,21 @@
 
       // Start timer
       start() {
-        this.buyMARKET()
-        console.log("started");
-        this.startMs = dayjs();
+        if (this.quoteOrderQty) {
+          this.buyMARKET()
+          console.log("started");
+          this.startMs = dayjs();
+        }
       },
 
       // Stop timer
       end() {
-        console.log("ended");
-        this.endMs = dayjs();
-        this.duration = `${this.endMs.diff(this.startMs, "millisecond")} milliseconds`
-        console.log(this.duration)
+        if (this.quoteOrderQty) {
+          console.log("ended");
+          this.endMs = dayjs();
+          this.duration = `${this.endMs.diff(this.startMs, "millisecond")} milliseconds`
+          console.log(this.duration)
+        }
       },
 
       // Get currency's current price
@@ -188,9 +197,12 @@
         const response = await this.clientEN.prices({symbol: `${crypto}`})
         if (response) {
           this.currentValue = response[crypto];
-          this.ratio = (((parseFloat(this.currentValue) * 100) / parseFloat(this.marketBuyPrice)) - 100).toFixed(2);
           this.end();
-          console.log(this.ratio)
+
+          if (this.toggleRatio) {
+            this.ratio = (((parseFloat(this.currentValue) * 100) / parseFloat(this.marketBuyPrice)) - 100).toFixed(2);
+            console.log(this.ratio)
+          }
         }
       },
 
@@ -287,6 +299,64 @@
             // console.log(err)
           })
         }, 50)
+      },
+
+      async getAllSymbolsPrice() {
+        const response = await this.clientEN.prices();
+        if (response) {
+          this.allBTCSymbols = Object.keys(response).filter(symbol => {
+            if (symbol.endsWith("BTC")) {
+              return symbol
+            }
+          }).map(symbol => {
+            return `${symbol.split("BTC")[0]}/BTC`
+          })
+        }
+      },
+
+      async alert() {
+        const goldenCross = await alerts.goldenCross(
+          7,
+          99,
+          "binance",
+          `${this.cryptoName}/BTC`,
+          "4h",
+          false
+        )
+
+        const priceCrossEMA = await alerts.priceCrossEMA(
+          7,
+          "binance",
+          `${this.cryptoName}/BTC`,
+          "4h",
+          false
+        )
+
+        console.log("goldenCross: ", goldenCross);
+        console.log("priceCrossEMA: ", priceCrossEMA);
+
+        // await this.getAllSymbolsPrice();
+        //
+        // const littleArray = this.allBTCSymbols.slice(1, 10);
+        //
+        // async function asyncForEach(array, callback) {
+        //   for (let index = 0; index < array.length; index++) {
+        //     await callback(array[index], index, array);
+        //   }
+        // }
+        //
+        // await asyncForEach(this.allBTCSymbols, async symbol => {
+        //   const result = await alerts.priceCrossEMA(
+        //     7,
+        //     "binance",
+        //     symbol,
+        //     "4h",
+        //     false
+        //   )
+        //
+        //   console.log(`${symbol} : cross: ${result.cross} - direction: ${result.direction}`);
+        // })
+
       }
     },
 
