@@ -2,7 +2,6 @@
   <v-app style="background-color: #013e3e">
     <v-main>
       <Pumper/>
-      <!--<Dashboard class="ma-10"/>-->
     </v-main>
   </v-app>
 </template>
