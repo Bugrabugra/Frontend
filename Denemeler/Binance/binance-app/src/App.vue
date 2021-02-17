@@ -7,18 +7,18 @@
 </template>
 
 <script>
-// import Dashboard from './components/Dashboard';
+  import Pumper from "./components/Pumper";
 
-import Pumper from "./components/Pumper";
-export default {
-  name: 'App',
 
-  components: {
-    Pumper,
-  },
+  export default {
+    name: 'App',
 
-  data: () => ({
-    //
-  }),
-};
+    components: {
+      Pumper,
+    },
+
+    data: () => ({
+      //
+    }),
+  };
 </script>
