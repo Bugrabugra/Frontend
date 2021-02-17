@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "binance-api-node": "^0.10.28",
+    "binance-api-node": "^0.10.29",
     "core-js": "^3.8.3",
     "dayjs": "^1.10.4",
     "trading-indicator": "^1.0.4-beta",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-plugin-vuex": "^4.5.11",
     "@vue/cli-service": "^4.5.11",
     "sass": "^1.32.7",
     "sass-loader": "^11.0.1",
