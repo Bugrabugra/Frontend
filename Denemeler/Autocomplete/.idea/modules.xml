@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GoogleCalculateArea.iml" filepath="$PROJECT_DIR$/.idea/GoogleCalculateArea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Autocomplete.iml" filepath="$PROJECT_DIR$/.idea/Autocomplete.iml" />
     </modules>
   </component>
 </project>

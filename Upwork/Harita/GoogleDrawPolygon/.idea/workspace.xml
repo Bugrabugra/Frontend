@@ -52,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Udemy/Complete Vue.js 3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -110,6 +110,7 @@
       <workItem from="1609393654808" duration="2099000" />
       <workItem from="1609403426969" duration="633000" />
       <workItem from="1609738542846" duration="622000" />
+      <workItem from="1613542575392" duration="618000" />
     </task>
     <task id="LOCAL-00001" summary="26122020 - Upwork">
       <created>1609008158745</created>
