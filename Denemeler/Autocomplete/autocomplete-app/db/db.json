@@ -1,0 +1,7 @@
+{
+  "results": [
+    {"id": 1, "value": "new_york", "text": "New York"},
+    {"id": 2, "value": "new_orleans", "text": "New Orleans"},
+    {"id": 3, "value": "washington", "text": "Washington"}
+  ]
+}
