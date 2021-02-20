@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply my-12 bg-gray-200
+}
+
+.container {
+  @apply w-full mx-auto px-4
+}
+
+@screen md {
+  .container {
+    @apply w-8/12;
+  }
+}
+
+@screen lg {
+  .container {
+    @apply w-6/12;
+  }
+}
