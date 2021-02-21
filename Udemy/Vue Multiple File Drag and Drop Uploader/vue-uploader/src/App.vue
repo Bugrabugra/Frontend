@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <Uploader
-        :options="{baseURL: 'http://vue-uploader.test:8000/api'}"
+        :options="{baseURL: 'http://localhost:8000/api', maxConcurrentUploads: 1}"
         :handlers="{'video/mp4': {endpoint: 'uploads/video'}}"
     />
   </div>

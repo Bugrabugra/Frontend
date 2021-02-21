@@ -3,9 +3,16 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+
+    rotate: {
+      "-90": "-90deg"
+    }
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-transforms")({
+    })
+  ],
 }
