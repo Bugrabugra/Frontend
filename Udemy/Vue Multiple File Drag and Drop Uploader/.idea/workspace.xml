@@ -19,21 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3768d65-b22a-40aa-9411-aa901f37e7c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vue-uploader-api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue-uploader-api/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue-uploader-api/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue-uploader/src/uploader/components/UploaderProgress.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue-uploader/src/uploader/states.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Denemeler/Binance/binance-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Denemeler/Binance/binance-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Denemeler/Binance/binance-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Denemeler/Binance/binance-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/src/uploader/components/Uploader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/src/uploader/components/Uploader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/src/uploader/components/UploaderFile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/src/uploader/components/UploaderFile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/src/uploader/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/src/uploader/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-uploader/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-uploader/tailwind.config.js" afterDir="false" />
+    <list default="true" id="e3768d65-b22a-40aa-9411-aa901f37e7c7" name="Default Changelist" comment="21022021 - Drag drop uploader Vue">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +75,17 @@
       <option name="presentableId" value="Default" />
       <updated>1613861947611</updated>
       <workItem from="1613861949240" duration="605000" />
-      <workItem from="1613894702463" duration="11598000" />
+      <workItem from="1613894702463" duration="11765000" />
+      <workItem from="1613925698929" duration="127000" />
     </task>
+    <task id="LOCAL-00001" summary="21022021 - Drag drop uploader Vue">
+      <created>1613917321913</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1613917321913</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,27 +101,32 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="21022021 - Drag drop uploader Vue" />
+    <option name="LAST_COMMIT_MESSAGE" value="21022021 - Drag drop uploader Vue" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1036" height="279" key="GridCell.Tab.0.bottom" timestamp="1613904447478">
+    <state width="1036" height="279" key="GridCell.Tab.0.bottom" timestamp="1613917463635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1036" height="279" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613904447478" />
-    <state width="1036" height="279" key="GridCell.Tab.0.center" timestamp="1613904447478">
+    <state width="1036" height="279" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613917463635" />
+    <state width="1036" height="279" key="GridCell.Tab.0.center" timestamp="1613917463634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1036" height="279" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613904447478" />
-    <state width="1036" height="279" key="GridCell.Tab.0.left" timestamp="1613904447477">
+    <state width="1036" height="279" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613917463634" />
+    <state width="1036" height="279" key="GridCell.Tab.0.left" timestamp="1613917463634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1036" height="279" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613904447477" />
-    <state width="1036" height="279" key="GridCell.Tab.0.right" timestamp="1613904447478">
+    <state width="1036" height="279" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613917463634" />
+    <state width="1036" height="279" key="GridCell.Tab.0.right" timestamp="1613917463634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1036" height="279" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613904447478" />
+    <state width="1036" height="279" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613917463634" />
     <state x="38" y="164" key="SettingsEditor" timestamp="1613912181758">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -134,5 +135,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613914575816" />
+    <state x="129" y="252" key="Vcs.Push.Dialog.v2" timestamp="1613917329755">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="129" y="252" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613917329755" />
   </component>
 </project>
