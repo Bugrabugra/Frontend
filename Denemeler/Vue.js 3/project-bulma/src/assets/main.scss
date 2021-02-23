@@ -1,0 +1,22 @@
+@charset "utf-8";
+// Customizations Here (Optional)
+
+// Bulma Import
+@import '~bulma';
+
+$body-background-color: #17474b;
+$table-row-hover-background-color: #c64545;
+$table-cell-border: 1px solid #1d0101;
+
+
+// Import only what you need from Bulma
+@import "./node_modules/bulma/sass/utilities/_all.sass";
+@import "./node_modules/bulma/sass/base/_all.sass";
+@import "./node_modules/bulma/sass/elements/button.sass";
+@import "./node_modules/bulma/sass/elements/container.sass";
+@import "./node_modules/bulma/sass/elements/title.sass";
+@import "./node_modules/bulma/sass/form/_all.sass";
+@import "./node_modules/bulma/sass/components/navbar.sass";
+@import "./node_modules/bulma/sass/layout/hero.sass";
+@import "./node_modules/bulma/sass/layout/section.sass";
+@import "./node_modules/bulma/sass/elements/table.sass";
