@@ -1,6 +1,6 @@
 <template>
   <div class="columns is-centered">
-    <div class="column is-4 mt-6">
+    <div class="column is-4 mt-3">
       <table class="table is-bordered is-narrow is-hoverable is-fullwidth">
         <thead>
         <tr>
@@ -11,7 +11,7 @@
         </thead>
 
         <tbody>
-        <tr v-for="name in names" :key="name.id">
+        <tr v-for="name in filteredNames" :key="name.id">
           <th>{{name.id}}</th>
           <td>
             <input v-if="editing === name.id" v-model="name.name" class="input is-info border" type="text">
@@ -30,14 +30,26 @@
 </template>
 
 <script>
-  import {ref} from "vue";
+  import {ref, reactive, watch, computed} from "vue";
 
 
   export default {
     name: "Table",
 
-    setup() {
-      const names = ref([{id: 1, name: "Buğra"}, {id: 2, name: "Burcu"}]);
+    props: {
+      newData: {
+        type: String,
+        default: ""
+      },
+
+      searchText: {
+        type: String,
+        default: ""
+      }
+    },
+
+    setup(props) {
+      const rows = reactive([{id: 1, name: "Buğra"}, {id: 2, name: "Burcu"}]);
       const editing = ref(0);
 
       const toggleEditing = (id) => {
@@ -50,7 +62,22 @@
         }
       };
 
-      return {names, editing, toggleEditing}
+      const filteredNames = computed(() => {
+        if (props.searchText.value !== "") {
+          return rows.filter(row => {
+            return row.name.toLowerCase().includes(props.searchText.toLowerCase());
+          })
+        } else {
+          return rows.value;
+        }
+      })
+
+      watch(() => props.newData, (newValue, oldValue) => {
+        const lastId = rows[rows.length - 1].id;
+        rows.push({id: lastId + 1, name: newValue})
+      })
+
+      return {rows, editing, toggleEditing, filteredNames}
     }
   }
 </script>
