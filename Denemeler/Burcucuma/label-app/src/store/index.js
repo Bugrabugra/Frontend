@@ -16,7 +16,8 @@ export default new Vuex.Store({
     user: null,
     deleteDialog: false,
     deletingProduct: null,
-    lastSituation: ""
+    lastSituation: "",
+    errorDialog: false
   },
 
   mutations: {
@@ -75,17 +76,19 @@ export default new Vuex.Store({
 
     setSituation(state, payload) {
       state.lastSituation = payload.product.situation;
-      
-      db.collection("products")
-        .doc(payload.product.id)
-        .update({
-          situation: payload.value
-        })
-        .then(() => {
-          emailjs.send("service_6j6cewd","template_tovhdmn",{
-            message: `${payload.product.name} adlı ürünün durumu: ${state.lastSituation} ==> ${payload.value} olarak değiştirilmiştir.` ,
+
+        db.collection("products")
+          .doc(payload.product.id)
+          .update({
+            situation: payload.value
+          })
+          .then(() => {
+            if (payload.value === "1 - Etiketler geldi" || payload.value === "4 - Ürün paketleri etiketlendi") {
+              emailjs.send("service_6j6cewd","template_tovhdmn",{
+                message: `${payload.product.name} adlı ürünün durumu: ${state.lastSituation} ==> ${payload.value} olarak değiştirilmiştir.` ,
+              });
+            }
           });
-        });
     },
 
     setUser(state, payload) {
@@ -95,6 +98,10 @@ export default new Vuex.Store({
     deleteDialog(state, payload) {
       state.deleteDialog = payload.open;
       state.deletingProduct = payload.product;
+    },
+
+    errorDialog(state, payload) {
+      state.errorDialog = payload;
     }
   },
 
@@ -127,8 +134,12 @@ export default new Vuex.Store({
       commit("getSituations");
     },
 
-    setSituation({commit}, payload) {
-      commit("setSituation", payload);
+    setSituation(context, payload) {
+      if (parseInt(payload.value[0]) - parseInt(payload.product.situation[0]) !== 1) {
+        context.commit("errorDialog", true);
+      } else {
+        context.commit("setSituation", payload);
+      }
     },
 
     setUser({commit}, payload) {
@@ -137,6 +148,10 @@ export default new Vuex.Store({
 
     deleteDialog({commit}, payload) {
       commit("deleteDialog", payload);
+    },
+
+    errorDialog({commit}, payload) {
+      commit("errorDialog", payload);
     }
   },
 

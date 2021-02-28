@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <DeleteDialog/>
+    <SituationError/>
     <v-row justify="center" align="center" >
       <v-col cols="12">
         <v-card
@@ -9,14 +10,21 @@
             tile
             dark
         >
+          <!--Header-->
           <v-card-title style="background-color: #393737; color: white;">Ürünler ve Etiket Durumları ({{$store.state.products ? $store.state.products.length : 0}} Ürün)</v-card-title>
 
+          <!--Login button-->
           <v-btn v-if="!currentUser" class="ml-2 mt-1" @click="$router.push('/')">GİRİŞ</v-btn>
+
+          <!--Current user-->
           <v-text-field class="ml-2 mt-1" v-else v-text="currentUser"></v-text-field>
+
+         <!--Add product button-->
           <v-btn v-if="currentUser === 'selviburcuozturk@gmail.com'" color="green" class="ml-2 mt-1" @click="$router.push('/addproduct')">ÜRÜN EKLE</v-btn>
 
+          <!--Search bar-->
           <v-text-field
-              class="ma-2"
+              class="ma-2 pt-2"
               label="Ürün Adı Ara"
               v-model="search"
               outlined
@@ -26,6 +34,7 @@
 
           <v-divider/>
 
+          <!--Products list-->
           <v-list style="max-height: 500px; overflow-y: auto">
             <v-list-item
                 v-for="(product, i) in filteredProducts"
@@ -42,6 +51,8 @@
                   <v-container class="ma-0 pa-0">
                     <v-row no-gutters>
                       <v-col cols="12">
+
+                        <!--Current situation-->
                         <v-text-field
                             label="Mevcut durumu"
                             v-model="product.situation"
@@ -52,6 +63,8 @@
                     </v-row>
                     <v-row no-gutters>
                       <v-col cols="10">
+
+                        <!--Situation change-->
                         <v-select
                             label="Durumunu değiştir"
                             :items="filteredSituations"
@@ -59,10 +72,13 @@
                             @change="setSituation(product, $event)"
                             class="mb-2"
                             hide-details
+                            dense
                         />
                       </v-col>
 
-                      <v-col class="pl-6" cols="2" v-if="currentUser === 'selviburcuozturk@gmail.com'">
+                      <v-col class="pl-2" cols="2" v-if="currentUser === 'selviburcuozturk@gmail.com'">
+
+                        <!--Delete button-->
                         <v-btn
                             class="pl-4"
                             @click="openDeleteDialog(product)"
@@ -88,12 +104,15 @@
 
 <script>
   import DeleteDialog from "./DeleteDialog";
+  import SituationError from "./SituationError";
 
 
   export default {
     name: "ListProduct",
 
-    components: {DeleteDialog},
+    components: {
+      SituationError,
+      DeleteDialog},
 
     data() {
       return {
@@ -122,6 +141,8 @@
       filteredSituations() {
         return this.$store.state.situations.filter(situation => {
           return situation.users.includes(this.currentUser);
+        }).sort((a, b) => {
+          return parseInt(a.step) - parseInt(b.step)
         })
       }
     },

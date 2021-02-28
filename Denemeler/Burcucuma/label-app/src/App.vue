@@ -16,9 +16,5 @@
     components: {
       Home
     },
-
-    data: () => ({
-      //
-    }),
-};
+  };
 </script>

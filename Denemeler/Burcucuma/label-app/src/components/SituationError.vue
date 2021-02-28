@@ -1,16 +1,17 @@
 <template>
   <v-dialog
       elevation="4"
-      v-model="$store.state.deleteDialog"
+      v-model="$store.state.errorDialog"
       width="400"
       dark
       persistent
   >
-    <v-card elevation="10" outlined height="120">
+    <v-card elevation="10" outlined height="160">
       <v-card-title>
         <v-container>
           <v-row justify="center">
-            Kayıt silinecektir?
+            <span>İşlem sırası hatalıdır.</span>
+            <span>Lütfen sıradaki işlemi seçiniz.</span>
           </v-row>
         </v-container>
       </v-card-title>
@@ -25,17 +26,7 @@
                 @click="closeDialog"
                 block
             >
-              İPTAL
-            </v-btn>
-          </v-col>
-
-          <v-col>
-            <v-btn
-                color="red"
-                @click="deleteProduct"
-                block
-            >
-              SİL
+              KAPAT
             </v-btn>
           </v-col>
         </v-row>
@@ -47,23 +38,12 @@
 
 <script>
   export default {
-    name: "DeleteDialog",
-
-    data() {
-      return {
-
-      }
-    },
+    name: "SituationError",
 
     methods: {
       closeDialog() {
-        this.$store.dispatch("deleteDialog", false);
+        this.$store.dispatch("errorDialog", false);
       },
-
-      deleteProduct() {
-        this.$store.dispatch("deleteProduct");
-        this.$store.dispatch("deleteDialog", false);
-      }
     }
   }
 </script>

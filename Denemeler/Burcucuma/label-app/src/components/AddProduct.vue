@@ -82,7 +82,7 @@
         db.collection("products")
           .add({
             name: this.productName,
-            situation: "Etiket onaylandı"
+            situation: "0 - Etiket onaylandı"
           }).then(() => {
             this.dialog = true;
         })
@@ -96,7 +96,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

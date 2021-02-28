@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c616a89a-a697-4800-857d-8251b852d300" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1kMmVljAHpNThRicqLfu62w61tR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c616a89a-a697-4800-857d-8251b852d300" name="Default Changelist" comment="" />
+      <created>1605518860539</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605518860539</updated>
+      <workItem from="1605518861811" duration="12758000" />
+      <workItem from="1605591783769" duration="334000" />
+    </task>
+    <task id="LOCAL-00001" summary="16112020 - Acedemind Vue.js">
+      <created>1605534276181</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605534276182</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="16112020 - Acedemind Vue.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="16112020 - Acedemind Vue.js" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="828" y="431" key="#ESLint" timestamp="1605520121580">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="431" key="#ESLint/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605520121580" />
+    <state x="690" y="300" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1605533252262">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="300" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605533252262" />
+    <state x="321" y="90" key="CommitChangelistDialog2" timestamp="1605534274371">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="321" y="90" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605534274371" />
+    <state width="1353" height="279" key="GridCell.Tab.0.bottom" timestamp="1605534291623">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1353" height="279" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605534291623" />
+    <state width="1353" height="279" key="GridCell.Tab.0.center" timestamp="1605534291623">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1353" height="279" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605534291623" />
+    <state width="1353" height="279" key="GridCell.Tab.0.left" timestamp="1605534291622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1353" height="279" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605534291622" />
+    <state width="1353" height="279" key="GridCell.Tab.0.right" timestamp="1605534291623">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1353" height="279" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605534291623" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1605533308224">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605533308224" />
+    <state x="287" y="245" key="Vcs.Push.Dialog.v2" timestamp="1605534278106">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="287" y="245" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605534278106" />
+  </component>
+</project>
