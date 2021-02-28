@@ -62,12 +62,12 @@
                         />
                       </v-col>
 
-                      <v-col cols="2" v-if="currentUser === 'selviburcuozturk@gmail.com'">
+                      <v-col class="pl-6" cols="2" v-if="currentUser === 'selviburcuozturk@gmail.com'">
                         <v-btn
-                            class="pl-2"
+                            class="pl-4"
                             @click="openDeleteDialog(product)"
                             color="red"
-                            icon
+                            block
                         >
                           <v-icon>mdi-delete</v-icon>
                         </v-btn>
