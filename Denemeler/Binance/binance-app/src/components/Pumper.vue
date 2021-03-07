@@ -5,11 +5,11 @@
         <v-card color="#20B3B3" rounded elevation="8">
           <v-form class="ma-4" ref="form">
             <v-container>
-              <v-row justify="center" align="center">
+              <v-row justify="center" align="center" dense>
 
                 <!--Buy button-->
                 <v-col cols="4">
-                  <v-btn height="90px" color="light-green accent-3" class="mb-6" @click="buyMARKET" style="width: 100%">
+                  <v-btn height="90px" color="light-green accent-3" class="mb-2" @click="buyMARKET" style="width: 100%">
                     <v-icon v-if="buySuccessful">
                       mdi-check-circle
                     </v-icon>
@@ -19,19 +19,19 @@
 
                 <!--Crypto name-->
                 <v-col :cols="toggleRatio ? 5 : 8">
-                  <v-text-field @input="start" style="font-size: 40px" outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
+                  <v-text-field @input="start" class="mb-2" style="font-size: 40px" hide-details outlined dark height="100px" v-model="cryptoName" label="Crypto Name"></v-text-field>
                 </v-col>
 
                 <!--Ratio-->
                 <v-col v-if="toggleRatio" cols="3">
-                  <v-text-field style="font-size: 40px" outlined dark height="100px" v-model="ratio" label="Ratio"></v-text-field>
+                  <v-text-field style="font-size: 40px" class="mb-2" outlined hide-details outlined dark height="100px" v-model="ratio" label="Ratio"></v-text-field>
                 </v-col>
               </v-row>
 
-              <v-row>
+              <v-row dense>
                 <!--Sell button-->
                 <v-col cols="9">
-                  <v-btn height="70px" color="orange" class="mb-6" @click="sellMARKET" style="width: 100%">
+                  <v-btn height="70px" color="orange" class="mb-1" @click="sellMARKET" style="width: 100%">
                     <v-icon v-if="sellSuccessful">
                       mdi-check-circle
                     </v-icon>
@@ -41,57 +41,57 @@
 
                 <!--Web page button-->
                 <v-col cols="3">
-                  <v-btn height="70px" color="purple lighten-3" class="mb-6" @click="openWebPage" style="width: 100%">
+                  <v-btn height="70px" color="purple lighten-3" class="mb-1" @click="openWebPage" style="width: 100%">
                     Page
                   </v-btn>
                 </v-col>
               </v-row>
 
-              <v-row>
+              <v-row dense>
                 <!--Quote order quantity input-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity" background-color="red lighten-3" outlined></v-text-field>
+                  <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity" hide-details background-color="red lighten-3" outlined></v-text-field>
                 </v-col>
 
                 <!--Total sell text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="totalSell" label="Total Sell" disabled></v-text-field>
+                  <v-text-field dark v-model="totalSell" label="Total Sell" hide-details outlined readonly></v-text-field>
                 </v-col>
               </v-row>
 
-              <v-row>
+              <v-row dense>
                 <!--Market buy quantity text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="marketBuyQuantity" label="Market Buy Quantity"></v-text-field>
+                  <v-text-field dark v-model="marketBuyQuantity" hide-details outlined readonly label="Market Buy Quantity"></v-text-field>
                 </v-col>
 
                 <!--Market buy price text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="marketBuyPrice" label="Market Buy Price" disabled></v-text-field>
+                  <v-text-field dark v-model="marketBuyPrice" hide-details outlined readonly label="Market Buy Price"></v-text-field>
                 </v-col>
               </v-row>
 
-              <v-row>
+              <v-row dense>
                 <!--Market sell quantity text field-->
                 <v-col>
-                  <v-text-field dark v-model="marketSellQuantity" label="Market Sell Quantity"></v-text-field>
+                  <v-text-field dark v-model="marketSellQuantity" hide-details outlined readonly label="Market Sell Quantity"></v-text-field>
                 </v-col>
 
                 <!--Market sell price text field-->
                 <v-col>
-                  <v-text-field dark v-model="marketSellPrice" label="Market Sell Price" disabled></v-text-field>
+                  <v-text-field dark v-model="marketSellPrice" hide-details outlined readonly label="Market Sell Price"></v-text-field>
                 </v-col>
               </v-row>
 
               <!--Duration text field-->
-              <v-row>
+              <v-row dense>
                 <v-col cols="6">
-                  <v-text-field dark v-model="duration" label="Duration" disabled></v-text-field>
+                  <v-text-field dark v-model="duration" label="Duration" hide-details outlined readonly></v-text-field>
                 </v-col>
 
                 <!--Current value text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="currentValue" label="Current Price" disabled></v-text-field>
+                  <v-text-field dark v-model="currentValue" label="Current Price" outlined hide-details readonly></v-text-field>
                 </v-col>
               </v-row>
 
