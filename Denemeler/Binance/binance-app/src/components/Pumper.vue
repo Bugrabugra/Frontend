@@ -24,7 +24,7 @@
 
                 <!--Ratio-->
                 <v-col v-if="toggleRatio" cols="3">
-                  <v-text-field style="font-size: 40px" class="mb-2" outlined hide-details outlined dark height="100px" v-model="ratio" label="Ratio"></v-text-field>
+                  <v-text-field style="font-size: 40px" class="mb-2" hide-details outlined dark height="100px" v-model="ratio" label="Ratio"></v-text-field>
                 </v-col>
               </v-row>
 
@@ -107,9 +107,6 @@
               <!--Check price button-->
               <v-btn color="blue darken-2" class="mb-6" @click="checkPrice" style="width: 100%">Check Price</v-btn>
 
-              <!--Check alert-->
-              <v-btn color="blue darken-2" class="mb-6" @click="alert" style="width: 100%">Check Alert</v-btn>
-
             </v-container>
           </v-form>
         </v-card>
@@ -121,8 +118,7 @@
 <script>
   import * as dayjs from 'dayjs'
   import Binance from "binance-api-node";
-  const ema = require("trading-indicator").ema;
-  const alerts = require('trading-indicator').alerts;
+
 
   export default {
     name: "Pumper",
@@ -242,13 +238,16 @@
         if (response) {
           console.log(response)
           this.end();
-          const commission = response.fills[0].commission;
-          this.marketBuyPrice = response.fills[0].price;
-          this.marketBuyQuantity = response.fills[0].qty - commission;
+
+          this.marketBuyPrice = (parseFloat(response.cummulativeQuoteQty) / parseFloat(response.executedQty)).toFixed(10);
+          this.marketBuyQuantity = response.executedQty;
+
+          console.log("Executed Quantity: ", this.marketBuyQuantity);
+          console.log("Executed Price: ", parseFloat(this.marketBuyPrice).toFixed(10));
+
           if (this.marketBuyQuantity) {
             this.buySuccessful = true;
           }
-          console.log(response);
         }
       },
 
@@ -261,14 +260,19 @@
           quantity: Math.floor(this.marketBuyQuantity),
         })
         if (response) {
+          console.log(response);
           this.end();
-          this.marketSellPrice = response.fills[0].price;
-          this.marketSellQuantity = response.fills[0].qty;
+
+          this.marketSellPrice = (parseFloat(response.cummulativeQuoteQty) / parseFloat(response.executedQty)).toFixed(10);
+          this.marketSellQuantity = response.executedQty;
+
+          console.log("Executed Quantity: ", this.marketSellQuantity);
+          console.log("Executed Price: ", parseFloat(this.marketSellPrice).toFixed(10));
+
           if (this.marketSellQuantity) {
             this.sellSuccessful = true;
-            this.totalSell = (this.marketSellPrice * this.marketSellQuantity).toFixed(9);
+            this.totalSell = parseFloat(response.cummulativeQuoteQty);
           }
-          console.log(response);
         }
       },
 
@@ -285,20 +289,7 @@
       },
 
       openWebPage() {
-        window.open(`https://www.binance.com/en/trade/${this.currencyUpperCaseTrimmed}_BTC`)
-      },
-
-      // Reading Windows clipboard to paste into page. You have to click
-      // page in order to automatically paste
-      readFromClipboard() {
-        setInterval(() => {
-          navigator.clipboard.readText().then(res => {
-            this.clipboard = res;
-            this.cryptoName = this.clipboard;
-          }).catch(err => {
-            // console.log(err)
-          })
-        }, 50)
+        window.open(`https://www.binance.com/en/trade/${this.currencyUpperCaseTrimmed}_BTC?layout=pro`)
       },
 
       async getAllSymbolsPrice() {
@@ -313,51 +304,6 @@
           })
         }
       },
-
-      async alert() {
-        const goldenCross = await alerts.goldenCross(
-          7,
-          99,
-          "binance",
-          `${this.cryptoName}/BTC`,
-          "4h",
-          false
-        )
-
-        const priceCrossEMA = await alerts.priceCrossEMA(
-          7,
-          "binance",
-          `${this.cryptoName}/BTC`,
-          "4h",
-          false
-        )
-
-        console.log("goldenCross: ", goldenCross);
-        console.log("priceCrossEMA: ", priceCrossEMA);
-
-        // await this.getAllSymbolsPrice();
-        //
-        // const littleArray = this.allBTCSymbols.slice(1, 10);
-        //
-        // async function asyncForEach(array, callback) {
-        //   for (let index = 0; index < array.length; index++) {
-        //     await callback(array[index], index, array);
-        //   }
-        // }
-        //
-        // await asyncForEach(this.allBTCSymbols, async symbol => {
-        //   const result = await alerts.priceCrossEMA(
-        //     7,
-        //     "binance",
-        //     symbol,
-        //     "4h",
-        //     false
-        //   )
-        //
-        //   console.log(`${symbol} : cross: ${result.cross} - direction: ${result.direction}`);
-        // })
-
-      }
     },
 
     mounted() {
