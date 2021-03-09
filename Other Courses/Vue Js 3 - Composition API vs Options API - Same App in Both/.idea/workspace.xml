@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f8589c05-f2ec-4fb5-b342-1aede74ab5c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/.idea/Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/.postcssrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/public/icons/favicon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/public/icons/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/public/icons/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/public/icons/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/quasar.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src-electron/electron-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src-electron/icons/icon.icns" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src-electron/icons/icon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src-electron/icons/linux-512x512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src-electron/main-process/electron-main.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src-electron/main-process/electron-main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/assets/quasar-logo-full.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/boot/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/boot/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/components/EssentialLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/css/app.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/css/quasar.variables.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/index.template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/layouts/MainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/pages/Error404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/pages/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/router/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Create a Weather App for Android - iOS - Mac - Windows in 30 MINUTES/quasar-weather/src/statics/skyline.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Vue Js 3 - Composition API vs Options API - Same App in Both.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Bugra.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/.browserslistrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/components/HelloWorld.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/views/Composition.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue-options-vs-composition/src/views/Options.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1pWBR8MX6QGuURkoOiQwreBkvkp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f8589c05-f2ec-4fb5-b342-1aede74ab5c4" name="Default Changelist" comment="" />
+      <created>1615288954634</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615288954634</updated>
+      <workItem from="1615288956253" duration="4424000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
