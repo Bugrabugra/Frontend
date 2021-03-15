@@ -108,7 +108,9 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </q-page-container>
 
   </q-layout>
@@ -126,9 +128,6 @@
 </script>
 
 <style lang="sass">
-  .q-layout,
-  .q-drawer
-    background-color: #4a5c6f
   .header-icon
     position: absolute
     bottom: 0
