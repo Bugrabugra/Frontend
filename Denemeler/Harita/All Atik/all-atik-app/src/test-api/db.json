@@ -24,7 +24,7 @@
     },
     {
       "id": 2,
-      "containerName": "Ataşehir 3521",
+      "containerName": "Ataşehir 3503",
       "districtID": 23,
       "districtName": "Ataşehir",
       "neighborhoodID": 12,
@@ -39,8 +39,8 @@
       "battery": 71,
       "fireRisk": false,
       "device": "La1883412",
-      "lastCollection": 1615875653147,
-      "lastUpdate": 1615875896627,
+      "lastCollection": 1615579603000,
+      "lastUpdate": 1610298283000,
       "latitude": 40.98429167943395,
       "longitude": 29.134790376175534
     },
@@ -59,12 +59,12 @@
       "typeName": "Metal Galvaniz",
       "fullness": null,
       "battery": null,
-      "fireRisk": false,
+      "fireRisk": null,
       "device": null,
       "lastCollection": null,
       "lastUpdate": null,
-      "latitude": 40.98242516636997,
-      "longitude": 29.107777072546952
+      "latitude": 40.98269157803779,
+      "longitude": 29.13378928300927
     },
     {
       "id": 4,
@@ -83,10 +83,10 @@
       "battery": 21,
       "fireRisk": true,
       "device": "Po1312",
-      "lastCollection": 1615872683147,
-      "lastUpdate": 1615875690627,
-      "latitude": 40.97992983726426,
-      "longitude": 29.150607252570946
+      "lastCollection": 1612699463000,
+      "lastUpdate": 1612879403000,
+      "latitude": 40.98454405005027,
+      "longitude": 29.130757886384735
     }
   ]
 }
