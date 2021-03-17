@@ -87,6 +87,28 @@
       "lastUpdate": 1612879403000,
       "latitude": 40.98454405005027,
       "longitude": 29.130757886384735
+    },
+    {
+      "id": 5,
+      "containerName": "Ataşehir 3610",
+      "districtID": 23,
+      "districtName": "Ataşehir",
+      "neighborhoodID": 12,
+      "neighborhoodName": "Atatürk",
+      "streetID": 14,
+      "streetName": "Bilgi",
+      "zoneID": 12,
+      "zoneName": "Uydukent 3",
+      "typeID": 2,
+      "typeName": "Metal Galvaniz",
+      "fullness": 53,
+      "battery": 7,
+      "fireRisk": true,
+      "device": "Bo1972",
+      "lastCollection": 1612699463000,
+      "lastUpdate": 1612879403000,
+      "latitude": 40.98687844433551,
+      "longitude": 29.13128788498474
     }
   ]
 }

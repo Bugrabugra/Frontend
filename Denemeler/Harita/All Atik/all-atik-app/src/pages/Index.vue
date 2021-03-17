@@ -1,8 +1,16 @@
 <template>
   <q-page-container>
-    <q-page class="flex flex-center">
-      <Map style="position:relative;"/>
-      <SideMenu style="position:absolute; right: 50px;"/>
+    <q-page>
+      <div class="row">
+       <div class="col col=10">
+         <Map/>
+       </div>
+
+        <div class="col col-2">
+          <SideMenu/>
+        </div>
+
+      </div>
     </q-page>
   </q-page-container>
 </template>
@@ -14,8 +22,10 @@
 
   export default {
     name: 'PageIndex',
+
     components: {
       SideMenu,
-      Map}
+      Map
+    }
   }
 </script>

@@ -7,6 +7,7 @@
 <script>
   import {loadedGoogleMapsAPI} from "boot/google-map";
   import {api} from "boot/axios";
+  import MarkerClusterer from '@googlemaps/markerclustererplus';
 
 
   export default {
@@ -14,7 +15,19 @@
     data() {
       return {
         map: null,
-        drawingManager: null
+        drawingManager: null,
+        markers: [],
+        markerCluster: null
+      }
+    },
+
+    computed: {
+      filterChanged() {
+        return this.$store.getters.filterChanged;
+      },
+
+      startDrawingContainers() {
+        return this.$store.getters.startDrawingContainers;
       }
     },
 
@@ -22,7 +35,7 @@
       initMap() {
         setTimeout(() => {
           this.map = new window.google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
+            zoom: 8,
             center: { lat: 40.98390570573965, lng: 29.13268504720865 },
             mapId: "b15068e07cf8d4c6",
           });
@@ -45,22 +58,21 @@
           // });
         }, 0)
 
-        this.getContainers();
-      },
-
-      getContainers() {
-        api.get("/containers")
-          .then(response => {
-            this.$store.dispatch("setContainers", response.data);
-            this.drawContainers();
-          }).catch(error => {
-          console.log("Error on getting containers! ", error);
-        })
+        this.$store.dispatch("getContainers");
       },
 
       drawContainers() {
-        this.$store.getters.getContainers.forEach(container => {
-          console.log(container.fullness)
+        if (this.markerCluster) {
+          this.markerCluster.clearMarkers();
+        }
+
+        for (let i = 0; i < this.markers.length; i++) {
+          this.markers[i].setMap(null);
+        }
+
+        this.markers = [];
+
+        this.markers = this.$store.getters.getContainers.map(container => {
           const fullness = () => {
             if (container.fullness === null) {
               return "grey"
@@ -73,9 +85,16 @@
             }
           };
 
+          const svgIconChooser = () => {
+            if (container.typeID === 12715) {
+              return "M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z"
+            } else {
+              return "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+            }
+          }
+
           const svgMarker = {
-            path:
-              "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z",
+            path: svgIconChooser(),
             fillColor: fullness(),
             fillOpacity: 1,
             strokeWeight: 0.5,
@@ -95,7 +114,8 @@
             title: container.containerName,
             icon: svgMarker,
             animation: window.google.maps.Animation.DROP,
-            clickable: true
+            clickable: true,
+            draggable: true
           });
 
           marker.setMap(this.map);
@@ -103,7 +123,35 @@
           marker.addListener("click", () => {
             this.$store.dispatch("getContainer", container);
           })
-        })
+
+          marker.addListener("dragend", (evt) => {
+            console.log(`Marker dropped: Current Lat: ' + ${evt.latLng.lat().toFixed(3)} + ' Current Lng: ' + ${evt.latLng.lng().toFixed(3)}`)
+          })
+
+          return marker;
+        });
+
+        this.markerCluster = new MarkerClusterer(this.map, this.markers, {
+          imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+        });
+
+        this.$q.loading.hide();
+        this.$store.dispatch("changeFilter", false);
+        this.$store.dispatch("startDrawingContainers", false);
+      }
+    },
+
+    watch: {
+      filterChanged() {
+        if (this.filterChanged) {
+          this.drawContainers();
+        }
+      },
+
+      startDrawingContainers() {
+        if (this.startDrawingContainers) {
+          this.drawContainers();
+        }
       }
     },
 
