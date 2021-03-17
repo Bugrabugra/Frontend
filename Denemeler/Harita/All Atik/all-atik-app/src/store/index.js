@@ -11,7 +11,14 @@ export default function () {
       containers: [],
       clickedContainer: null,
       filterChanged: false,
-      startDrawingContainers: false
+      queryParameterArray: [],
+      queryParameterObject: {
+        neighborhoodID: 0,
+        streetID: 0,
+        regionID: 0,
+        containerType: "",
+        fullness: ""
+      }
     },
 
     getters: {
@@ -27,8 +34,12 @@ export default function () {
         return state.filterChanged;
       },
 
-      startDrawingContainers(state) {
-        return state.startDrawingContainers;
+      getQueryParameters(state) {
+        return Object.keys(state.queryParameterObject).map(key => {
+          if (state.queryParameterObject[key]) {
+            return `${key}=${state.queryParameterObject[key]}`
+          }
+        }).join("&");
       }
     },
 
@@ -45,8 +56,8 @@ export default function () {
         state.filterChanged = payload;
       },
 
-      startDrawingContainers(state, payload) {
-        state.startDrawingContainers = payload;
+      updateQueryParameter(state, payload) {
+        state.queryParameterObject[payload.query] = payload.value;
       }
     },
 
@@ -61,7 +72,7 @@ export default function () {
           .then(response => {
             commit("setContainers", []);
             commit("setContainers", response.data);
-            commit("startDrawingContainers", true);
+            commit("changeFilter", true);
           }).catch(error => {
           console.log("Error on getting containers! ", error);
         })
@@ -79,8 +90,8 @@ export default function () {
         commit("changeFilter", payload);
       },
 
-      startDrawingContainers({commit}, payload) {
-        commit("startDrawingContainers", payload);
+      updateQueryParameter({commit}, payload) {
+        commit("updateQueryParameter", payload);
       }
     }
   })

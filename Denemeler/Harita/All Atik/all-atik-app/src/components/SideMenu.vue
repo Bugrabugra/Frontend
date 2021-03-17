@@ -303,7 +303,7 @@
         countGreen: 0,
         countYellow: 0,
         countRed: 0,
-        countGrey: 0
+        countGrey: 0,
       }
     },
 
@@ -350,6 +350,18 @@
     },
 
     methods: {
+      queryContainers() {
+        api.get(this.$store.getters.getQueryParameters ? `/containers?${this.$store.getters.getQueryParameters}` : `/containers`)
+          .then(response => {
+            this.$store.dispatch("setContainers", response.data)
+              .then(() => {
+                this.clearFullness();
+                this.populateFullness();
+                this.$store.dispatch("changeFilter", true);
+              });
+          })
+      },
+
       checkValue(value) {
         if (value !== null) {
           return "black"
@@ -392,50 +404,40 @@
           })
       },
 
+      updateFilter(query, value) {
+        this.$store.dispatch(
+          "updateQueryParameter",
+          {
+            query: query,
+            value: value
+          }
+        )
+      },
 
       selectNeighborhood() {
         if (this.selectedNeighborhood) {
+          this.updateFilter("neighborhoodID", this.selectedNeighborhood.id)
           this.selectedStreet = "";
-          api.get(`/containers?neighborhoodID=${this.selectedNeighborhood.id}`)
-            .then(response => {
-              this.$store.dispatch("setContainers", response.data)
-                .then(() => {
-                  this.clearFullness();
-                  this.populateFullness();
-                  this.$store.dispatch("changeFilter", true);
-                });
-            })
-
+          this.queryContainers();
           this.populateStreets();
         }
       },
 
       clearNeighborhood() {
-        this.$store.dispatch("getContainers")
-          .then(() => {
-            this.$store.dispatch("startDrawingContainers", true);
-          })
+        this.updateFilter("neighborhoodID", 0)
+        this.queryContainers();
       },
 
       selectStreet() {
         if (this.selectedStreet) {
-          api.get(`/containers?neighborhoodID=${this.selectedNeighborhood.id}&streetID=${this.selectedStreet.id}`)
-            .then(response => {
-              this.$store.dispatch("setContainers", response.data)
-                .then(() => {
-                  this.clearFullness();
-                  this.populateFullness();
-                  this.$store.dispatch("changeFilter", true);
-                });
-            })
+          this.updateFilter("streetID", this.selectedStreet.id)
+          this.queryContainers();
         }
       },
 
       clearStreet() {
-        this.$store.dispatch("getContainers")
-          .then(() => {
-            this.$store.dispatch("startDrawingContainers", true);
-          })
+        this.updateFilter("streetID", 0)
+        this.queryContainers();
       },
 
       clearFullness() {

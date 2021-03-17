@@ -24,10 +24,6 @@
     computed: {
       filterChanged() {
         return this.$store.getters.filterChanged;
-      },
-
-      startDrawingContainers() {
-        return this.$store.getters.startDrawingContainers;
       }
     },
 
@@ -137,19 +133,12 @@
 
         this.$q.loading.hide();
         this.$store.dispatch("changeFilter", false);
-        this.$store.dispatch("startDrawingContainers", false);
       }
     },
 
     watch: {
       filterChanged() {
         if (this.filterChanged) {
-          this.drawContainers();
-        }
-      },
-
-      startDrawingContainers() {
-        if (this.startDrawingContainers) {
           this.drawContainers();
         }
       }
