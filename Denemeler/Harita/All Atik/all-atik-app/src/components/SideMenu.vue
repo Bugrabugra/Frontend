@@ -7,8 +7,8 @@
           Konteyner Adet: <span v-if="$store.getters.getContainers">{{containersCount}}</span>
         </q-toolbar-title>
 
-        <q-btn flat round dense icon="menu" @click="toggleSideMenu" />
-        <!--TODO butona basınca kapansın-->
+        <!--<q-btn flat round dense icon="menu"/>-->
+
       </q-toolbar>
 
       <!--Menu-->
@@ -30,14 +30,14 @@
               <div class="row q-mb-sm">
                 <div class="col-6">
               <span>
-                <q-icon style="color: #6AA454" size="md" name="delete"/>
+                <q-icon @click="handleIconFullness($event)" class="green" style="color: #6AA454; cursor:pointer;" size="md" name="delete"/>
                 % 0-50 : <strong>{{countGreen}}</strong>
               </span>
                 </div>
 
                 <div class="col-6">
               <span>
-                <q-icon style="color: #ef4343" size="md" name="delete"/>
+                <q-icon @click="handleIconFullness($event)" class="red" style="color: #ef4343; cursor:pointer;" size="md" name="delete"/>
                 % 75-100 : <strong>{{countRed}}</strong>
               </span>
                 </div>
@@ -47,14 +47,14 @@
               <div class="row">
                 <div class="col-6">
               <span>
-                <q-icon style="color: #fdc740" size="md" name="delete"/>
+                <q-icon @click="handleIconFullness($event)" class="yellow" style="color: #fdc740; cursor:pointer;" size="md" name="delete"/>
                 % 50-75 : <strong>{{countYellow}}</strong>
               </span>
                 </div>
 
                 <div class="col-6">
               <span>
-                <q-icon color="grey" size="md" name="delete"/>
+                <q-icon @click="handleIconFullness($event)" class="grey" style="cursor:pointer;" color="grey" size="md" name="delete"/>
                 Veri Yok : <strong>{{countGrey}}</strong>
               </span>
                 </div>
@@ -67,7 +67,7 @@
         <!--Filtreler-->
         <q-expansion-item
           group="group"
-          icon="search"
+          icon="filter_alt"
           label="Filtre"
           expand-separator
           default-opened
@@ -85,7 +85,7 @@
                 :options="neighborhoods"
                 label="Mahalle"
                 class="q-mb-xs"
-                :disable="selectedRegion !== null"
+                :disable="selectedZone !== null"
                 option-label="name"
                 filled
                 dense
@@ -112,9 +112,12 @@
 
               <!--Bölge-->
               <q-select
-                v-model="selectedRegion"
-                :options="regions"
+                @input="selectZone"
+                @clear="clearZone"
+                v-model="selectedZone"
+                :options="zones"
                 label="Bölge"
+                option-label="name"
                 class="q-mb-xs q-mb-sm"
                 :disable="selectedNeighborhood !== null"
                 filled
@@ -127,9 +130,12 @@
 
               <!--Konteyner tipi-->
               <q-select
+                @input="selectContainerType"
+                @clear="clearContainerType"
                 v-model="selectedContainerType"
                 :options="containerType"
                 label="Konteyner Tipi"
+                option-label="name"
                 class="q-mb-xs q-mb-sm"
                 filled
                 dense
@@ -138,9 +144,12 @@
 
               <!--Doluluk-->
               <q-select
+                @input="selectFullness"
+                @clear="clearFullness"
                 v-model="selectedFullness"
                 :options="fullness"
                 label="Doluluk"
+                option-label="name"
                 filled
                 dense
                 clearable
@@ -167,7 +176,7 @@
               <div class="row q-mb-md">
                 <div class="col-6">
                   <div class="text-weight-bold">ID</div>
-                  <div v-if="$store.getters.getContainer">
+                  <div class="q-mr-xs" v-if="$store.getters.getContainer">
                     {{selectedContainer.id}}
                   </div>
                 </div>
@@ -183,7 +192,7 @@
               <div class="row q-mb-md">
                 <div class="col-6">
                   <div class="text-weight-bold">Mahalle</div>
-                  <div v-if="$store.getters.getContainer">
+                  <div class="q-mr-xs" v-if="$store.getters.getContainer">
                     {{selectedContainer.neighborhoodName}}
                   </div>
                 </div>
@@ -199,7 +208,7 @@
               <div class="row q-mb-md">
                 <div class="col-6">
                   <div class="text-weight-bold">Bölge</div>
-                  <div v-if="$store.getters.getContainer">
+                  <div class="q-mr-xs" v-if="$store.getters.getContainer">
                     {{selectedContainer.zoneName}}
                   </div>
                 </div>
@@ -271,6 +280,15 @@
                   </div>
                 </div>
               </div>
+
+              <div class="row justify-center">
+                <q-btn
+                  :disable="!this.$store.getters.getContainer"
+                  @click="updateGeometry"
+                  label="Geometri Düzenle"
+                  :color="!this.$store.getters.getContainer ? 'grey-5' : 'purple-3'"
+                />
+              </div>
             </q-card-section>
           </q-card>
         </q-expansion-item>
@@ -294,12 +312,20 @@
         selectedNeighborhood: null,
         streets: [],
         selectedStreet: null,
-        regions: [],
-        selectedRegion: null,
-        containerType: ["Metal", "Galvaniz"],
+        zones: [],
+        selectedZone: null,
+        containerType: [
+          {name: "Metal", value: 1},
+          {name: "Galvaniz", value: 2}
+        ],
         selectedContainerType: null,
         selectedFullness: null,
-        fullness: ["% 0-50", "% 50-75", "% 75-100", "Veri yok"],
+        fullness: [
+          {name: "% 0-50", value: "0-50"},
+          {name: "% 50-75", value: "50-75"},
+          {name: "% 75-100", value: "75-100"},
+          {name: "Veri yok", value: null},
+        ],
         countGreen: 0,
         countYellow: 0,
         countRed: 0,
@@ -309,11 +335,11 @@
 
     computed: {
       containersCount() {
-        return this.$store.getters.getContainers.length
+        return this.$store.getters.getContainers.length;
       },
 
       selectedContainer() {
-        return this.$store.getters.getContainer
+        return this.$store.getters.getContainer.container;
       },
 
       getFullness() {
@@ -321,11 +347,11 @@
 
         if (fullness === null) {
           return "grey"
-        } else if (fullness >= 0 && fullness <= 50) {
+        } else if (fullness >= 0 && fullness < 50) {
           return "green"
-        } else if (fullness > 50 && fullness <= 75) {
+        } else if (fullness >= 50 && fullness < 75) {
           return "orange"
-        } else if (fullness > 75 && fullness <= 100) {
+        } else if (fullness >= 75 && fullness <= 100) {
           return "red"
         }
       },
@@ -335,11 +361,11 @@
 
         if (battery === null) {
           return "grey"
-        } else if (battery >= 0 && battery <= 50) {
+        } else if (battery >= 0 && battery < 50) {
           return "red"
-        } else if (battery > 50 && battery <= 75) {
+        } else if (battery >= 50 && battery < 75) {
           return "orange"
-        } else if (battery > 75 && battery <= 100) {
+        } else if (battery >= 75 && battery <= 100) {
           return "green"
         }
       },
@@ -355,7 +381,7 @@
           .then(response => {
             this.$store.dispatch("setContainers", response.data)
               .then(() => {
-                this.clearFullness();
+                this.clearFullnessValues();
                 this.populateFullness();
                 this.$store.dispatch("changeFilter", true);
               });
@@ -370,19 +396,25 @@
         }
       },
 
-      toggleSideMenu() {
-        this.sideMenu = !this.sideMenu;
+      updateFilter(query, value) {
+        this.$store.dispatch(
+          "updateQueryParameter",
+          {
+            query: query,
+            value: value
+          }
+        )
       },
 
       populateFullness() {
         this.$store.getters.getContainers.forEach(container => {
           if (container.fullness === null) {
             this.countGrey++;
-          } else if (container.fullness >= 0 && container.fullness <= 50) {
+          } else if (container.fullness >= 0 && container.fullness < 50) {
             this.countGreen++;
-          } else if (container.fullness > 50 && container.fullness <= 75) {
+          } else if (container.fullness >= 50 && container.fullness < 75) {
             this.countYellow++;
-          } else if (container.fullness > 75 && container.fullness <= 100) {
+          } else if (container.fullness >= 75 && container.fullness <= 100) {
             this.countRed++;
           }
         })
@@ -404,20 +436,18 @@
           })
       },
 
-      updateFilter(query, value) {
-        this.$store.dispatch(
-          "updateQueryParameter",
-          {
-            query: query,
-            value: value
-          }
-        )
+      populateZones() {
+        api.get(`/zones`)
+          .then(response => {
+            this.zones = [];
+            this.zones = response.data;
+          })
       },
 
       selectNeighborhood() {
         if (this.selectedNeighborhood) {
           this.updateFilter("neighborhoodID", this.selectedNeighborhood.id)
-          this.selectedStreet = "";
+          this.selectedStreet = null;
           this.queryContainers();
           this.populateStreets();
         }
@@ -440,13 +470,70 @@
         this.queryContainers();
       },
 
+      selectZone() {
+        if (this.selectedZone) {
+          this.updateFilter("zoneID", this.selectedZone.id)
+          this.selectedStreet = null;
+          this.selectedNeighborhood = null;
+          this.queryContainers();
+        }
+      },
+
+      clearZone() {
+        this.updateFilter("zoneID", 0)
+        this.queryContainers();
+      },
+
+      selectContainerType() {
+        if (this.selectedContainerType) {
+          this.updateFilter("typeID", this.selectedContainerType.value)
+          this.queryContainers();
+        }
+      },
+
+      clearContainerType() {
+        this.updateFilter("typeID", 0)
+        this.queryContainers();
+      },
+
+      handleIconFullness(event) {
+        const classList = Array.from(event.target.classList);
+        if (classList.includes("green")) {
+          this.selectedFullness = {name: '% 0-50', value: '0-50'};
+        } else if (classList.includes("yellow")) {
+          this.selectedFullness = {name: '% 50-75', value: '50-75'};
+        } else if (classList.includes("red")) {
+          this.selectedFullness = {name: '% 75-100', value: '75-100'};
+        } else {
+          this.selectedFullness = {name: "Veri yok", value: null};
+        }
+
+
+        this.selectFullness();
+      },
+
+      selectFullness() {
+        if (this.selectedFullness) {
+          this.updateFilter("fullness", this.selectedFullness.value)
+          this.queryContainers();
+        }
+      },
+
       clearFullness() {
+        this.updateFilter("fullness", null)
+        this.queryContainers();
+      },
+
+      clearFullnessValues() {
         this.countGreen = 0;
         this.countYellow = 0;
         this.countRed = 0;
         this.countGrey = 0;
-      }
+      },
 
+      updateGeometry() {
+        this.$store.dispatch("updatingGeometry", true);
+      }
     },
 
     filters: {
@@ -467,6 +554,7 @@
 
     mounted() {
       this.populateNeighborhoods();
+      this.populateZones();
     }
   }
 </script>

@@ -6,7 +6,6 @@
 
 <script>
   import {loadedGoogleMapsAPI} from "boot/google-map";
-  import {api} from "boot/axios";
   import MarkerClusterer from '@googlemaps/markerclustererplus';
 
 
@@ -24,6 +23,10 @@
     computed: {
       filterChanged() {
         return this.$store.getters.filterChanged;
+      },
+
+      updatingGeometry() {
+        return this.$store.getters.updatingGeometry;
       }
     },
 
@@ -35,6 +38,10 @@
             center: { lat: 40.98390570573965, lng: 29.13268504720865 },
             mapId: "b15068e07cf8d4c6",
           });
+
+          this.map.addListener("click", () => {
+            this.$store.dispatch("getContainer", null)
+          })
 
           // this.drawingManager = new window.google.maps.drawing.DrawingManager({
           //   drawingControl: true,
@@ -111,17 +118,23 @@
             icon: svgMarker,
             animation: window.google.maps.Animation.DROP,
             clickable: true,
-            draggable: true
           });
 
           marker.setMap(this.map);
 
           marker.addListener("click", () => {
-            this.$store.dispatch("getContainer", container);
+            this.$store.dispatch("getContainer", {container: container, marker: marker});
           })
 
           marker.addListener("dragend", (evt) => {
-            console.log(`Marker dropped: Current Lat: ' + ${evt.latLng.lat().toFixed(3)} + ' Current Lng: ' + ${evt.latLng.lng().toFixed(3)}`)
+            this.$store.dispatch(
+              "updateGeometry",
+              {
+                latitude: evt.latLng.lat(),
+                longitude: evt.latLng.lng()
+              }
+            );
+            console.log(`Marker dropped: Current Lat: ' + ${evt.latLng.lat()} + ' Current Lng: ' + ${evt.latLng.lng()}`)
           })
 
           return marker;
@@ -140,6 +153,12 @@
       filterChanged() {
         if (this.filterChanged) {
           this.drawContainers();
+        }
+      },
+
+      updatingGeometry() {
+        if (this.updatingGeometry) {
+          this.$store.getters.getContainer.marker.setDraggable(true);
         }
       }
     },
