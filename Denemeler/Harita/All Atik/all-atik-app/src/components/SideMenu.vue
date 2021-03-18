@@ -68,7 +68,7 @@
         <q-expansion-item
           group="group"
           icon="filter_alt"
-          label="Filtre"
+          label="Filtreler"
           expand-separator
           default-opened
         >
