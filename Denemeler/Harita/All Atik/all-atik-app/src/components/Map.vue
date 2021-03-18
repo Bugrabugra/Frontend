@@ -79,11 +79,11 @@
           const fullness = () => {
             if (container.fullness === null) {
               return "grey"
-            } else if (container.fullness >= 0 && container.fullness <= 50) {
+            } else if (container.fullness >= 0 && container.fullness < 50) {
               return "#6aa454"
-            } else if (container.fullness > 50 && container.fullness <= 75) {
+            } else if (container.fullness >= 50 && container.fullness < 75) {
               return "#fdc740"
-            } else if (container.fullness > 75 && container.fullness <= 100) {
+            } else if (container.fullness >= 75 && container.fullness <= 100) {
               return "#ef4343"
             }
           };

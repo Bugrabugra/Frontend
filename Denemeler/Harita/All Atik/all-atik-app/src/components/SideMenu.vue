@@ -286,7 +286,7 @@
                   :disable="!this.$store.getters.getContainer"
                   @click="updateGeometry"
                   label="Geometri Düzenle"
-                  :color="!this.$store.getters.getContainer ? 'grey-5' : 'purple-3'"
+                  :color="!this.$store.getters.getContainer ? 'grey-5' : 'blue-6'"
                 />
               </div>
             </q-card-section>
