@@ -48,50 +48,51 @@
               </v-row>
 
               <v-row dense>
-                <!--Quote order quantity input-->
+                <!--Total buy-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="quoteOrderQty" label="Quote Order Quantity" hide-details background-color="red lighten-3" outlined></v-text-field>
+                  <v-text-field dense dark v-model="quoteOrderQty" label="Total Buy" background-color="red lighten-3" hide-details outlined></v-text-field>
                 </v-col>
 
                 <!--Total sell text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="totalSell" label="Total Sell" hide-details outlined readonly></v-text-field>
+                  <v-text-field dense dark v-model="totalSell" background-color="blue lighten-3" label="Total Sell" hide-details outlined readonly></v-text-field>
                 </v-col>
               </v-row>
 
               <v-row dense>
                 <!--Market buy quantity text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="marketBuyQuantity" hide-details outlined readonly label="Market Buy Quantity"></v-text-field>
+                  <v-text-field dense dark v-model="marketBuyQuantity" background-color="red lighten-2" hide-details outlined readonly label="Market Buy Quantity"></v-text-field>
                 </v-col>
 
-                <!--Market buy price text field-->
-                <v-col cols="6">
-                  <v-text-field dark v-model="marketBuyPrice" hide-details outlined readonly label="Market Buy Price"></v-text-field>
+                <!--Market sell quantity text field-->
+                <v-col>
+                  <v-text-field dense dark v-model="marketSellQuantity" background-color="blue lighten-3" hide-details outlined readonly label="Market Sell Quantity"></v-text-field>
                 </v-col>
+
               </v-row>
 
               <v-row dense>
-                <!--Market sell quantity text field-->
-                <v-col>
-                  <v-text-field dark v-model="marketSellQuantity" hide-details outlined readonly label="Market Sell Quantity"></v-text-field>
+                <!--Market buy price text field-->
+                <v-col cols="6">
+                  <v-text-field dense dark v-model="marketBuyPrice" background-color="red lighten-2" hide-details outlined readonly label="Market Buy Price"></v-text-field>
                 </v-col>
 
                 <!--Market sell price text field-->
                 <v-col>
-                  <v-text-field dark v-model="marketSellPrice" hide-details outlined readonly label="Market Sell Price"></v-text-field>
+                  <v-text-field dense dark v-model="marketSellPrice" background-color="blue lighten-3" hide-details outlined readonly label="Market Sell Price"></v-text-field>
                 </v-col>
               </v-row>
 
               <!--Duration text field-->
               <v-row dense>
                 <v-col cols="6">
-                  <v-text-field dark v-model="duration" label="Duration" hide-details outlined readonly></v-text-field>
+                  <v-text-field dense dark v-model="duration" label="Duration" hide-details outlined readonly></v-text-field>
                 </v-col>
 
                 <!--Current value text field-->
                 <v-col cols="6">
-                  <v-text-field dark v-model="currentValue" label="Current Price" outlined hide-details readonly></v-text-field>
+                  <v-text-field dense dark v-model="currentValue" label="Current Price" outlined hide-details readonly></v-text-field>
                 </v-col>
               </v-row>
 
@@ -142,7 +143,7 @@
         totalSell: 0,
         clipboard: "",
         ratio: 0,
-        toggleRatio: false,
+        toggleRatio: true,
         allBTCSymbols: []
       }
     },
