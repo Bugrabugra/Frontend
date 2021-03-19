@@ -6,7 +6,7 @@
          <Map/>
        </div>
 
-        <div class="col col-2">
+        <div class="col col-2" style="min-width: 400px;">
           <SideMenu/>
         </div>
 

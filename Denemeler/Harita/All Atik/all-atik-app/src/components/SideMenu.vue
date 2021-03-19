@@ -1,5 +1,5 @@
 <template>
-  <div class="full-width" style="max-width: 350px;">
+  <div class="full-width">
 
       <!--Toolbar-->
       <q-toolbar class="text-primary bg-grey-8 text-white">
@@ -7,8 +7,12 @@
           Konteyner Adet: <span v-if="$store.getters.getContainers">{{containersCount}}</span>
         </q-toolbar-title>
 
-        <!--<q-btn flat round dense icon="menu"/>-->
-
+        <q-icon
+          name="loop"
+          size="md"
+          style="cursor:pointer;"
+          @click="resetView"
+        />
       </q-toolbar>
 
       <!--Menu-->
@@ -66,11 +70,11 @@
 
         <!--Filtreler-->
         <q-expansion-item
-          group="group"
           icon="filter_alt"
           label="Filtreler"
           expand-separator
           default-opened
+          group="group"
         >
           <q-card style="width: 100%;">
             <q-card-section>
@@ -161,6 +165,7 @@
 
         <!--Konteyner detay-->
         <q-expansion-item
+          :value="$store.getters.expandContainerDetail"
           group="group"
           expand-separator
           icon="info"
@@ -175,14 +180,14 @@
             <q-card-section>
               <div class="row q-mb-md">
                 <div class="col-6">
-                  <div class="text-weight-bold">ID</div>
+                  <div class="text-h6 text-weight-bold">ID</div>
                   <div class="q-mr-xs" v-if="$store.getters.getContainer">
                     {{selectedContainer.id}}
                   </div>
                 </div>
 
                 <div class="col-6">
-                  <div class="text-weight-bold">Konteyner Adı</div>
+                  <div class="text-h6 text-weight-bold">Konteyner Adı</div>
                   <div v-if="$store.getters.getContainer">
                     {{selectedContainer.containerName}}
                   </div>
@@ -191,14 +196,14 @@
 
               <div class="row q-mb-md">
                 <div class="col-6">
-                  <div class="text-weight-bold">Mahalle</div>
+                  <div class="text-h6 text-weight-bold">Mahalle</div>
                   <div class="q-mr-xs" v-if="$store.getters.getContainer">
                     {{selectedContainer.neighborhoodName}}
                   </div>
                 </div>
 
                 <div class="col-6">
-                  <div class="text-weight-bold">Sokak</div>
+                  <div class="text-h6 text-weight-bold">Sokak</div>
                   <div v-if="$store.getters.getContainer">
                     {{selectedContainer.streetName}}
                   </div>
@@ -207,14 +212,14 @@
 
               <div class="row q-mb-md">
                 <div class="col-6">
-                  <div class="text-weight-bold">Bölge</div>
+                  <div class="text-h6 text-weight-bold">Bölge</div>
                   <div class="q-mr-xs" v-if="$store.getters.getContainer">
                     {{selectedContainer.zoneName}}
                   </div>
                 </div>
 
                 <div class="col-6">
-                  <div class="text-weight-bold">Tipi</div>
+                  <div class="text-h6 text-weight-bold">Tipi</div>
                   <div v-if="$store.getters.getContainer">
                     {{selectedContainer.typeName}}
                   </div>
@@ -223,7 +228,7 @@
 
               <div class="row q-mb-md">
                 <div class="col-6">
-                  <div class="text-weight-bold">Doluluk</div>
+                  <div class="text-h6 text-weight-bold">Doluluk</div>
                   <div v-if="$store.getters.getContainer">
                 <span :class="`text-${getFullness}`">
                   {{selectedContainer.fullness ? `% ${selectedContainer.fullness}` : "Veri yok"}}
@@ -232,7 +237,7 @@
                 </div>
 
                 <div class="col-6">
-                  <div class="text-weight-bold">Pil</div>
+                  <div class="text-h6 text-weight-bold">Pil</div>
                   <div v-if="$store.getters.getContainer">
                 <span :class="`text-${getBattery}`">
                   {{selectedContainer.battery ? `% ${selectedContainer.battery}` : "Veri yok"}}
@@ -243,7 +248,7 @@
 
               <div class="row q-mb-md">
                 <div class="col-6">
-                  <div class="text-weight-bold">Yangın Riski</div>
+                  <div class="text-h6 text-weight-bold">Yangın Riski</div>
                   <div v-if="$store.getters.getContainer">
                 <span :class="`text-${checkValue(selectedContainer.fireRisk)}`">
                   {{selectedContainer.fireRisk !== null ? selectedContainer.fireRisk === true ? "Var" : "Yok" : "Veri yok"}}
@@ -252,7 +257,7 @@
                 </div>
 
                 <div class="col-6">
-                  <div class="text-weight-bold">Cihaz</div>
+                  <div class="text-h6 text-weight-bold">Cihaz</div>
                   <div v-if="$store.getters.getContainer">
                 <span :class="`text-${checkValue(selectedContainer.device)}`">
                   {{selectedContainer.device ? selectedContainer.device : "Veri yok"}}
@@ -263,7 +268,7 @@
 
               <div class="row q-mb-md">
                 <div class="col-6">
-                  <div class="text-weight-bold">Son Toplama</div>
+                  <div class="text-h6 text-weight-bold">Son Toplama</div>
                   <div v-if="$store.getters.getContainer">
                 <span :class="`text-${checkValue(selectedContainer.lastCollection)}`">
                   {{selectedContainer.lastCollection | formatDate}}
@@ -272,7 +277,7 @@
                 </div>
 
                 <div class="col-6">
-                  <div class="text-weight-bold">Son Güncelleme</div>
+                  <div class="text-h6 text-weight-bold">Son Güncelleme</div>
                   <div v-if="$store.getters.getContainer">
                 <span :class="`text-${checkValue(selectedContainer.lastUpdate)}`">
                   {{selectedContainer.lastUpdate | formatDate}}
@@ -307,7 +312,6 @@
 
     data() {
       return {
-        sideMenu: true,
         neighborhoods: [],
         selectedNeighborhood: null,
         streets: [],
@@ -508,7 +512,6 @@
           this.selectedFullness = {name: "Veri yok", value: null};
         }
 
-
         this.selectFullness();
       },
 
@@ -533,6 +536,10 @@
 
       updateGeometry() {
         this.$store.dispatch("updatingGeometry", true);
+      },
+
+      resetView() {
+        this.$store.dispatch("resetView");
       }
     },
 

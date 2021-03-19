@@ -27,11 +27,17 @@
 
       updatingGeometry() {
         return this.$store.getters.updatingGeometry;
+      },
+
+      resetView() {
+        return this.$store.getters.resetView;
       }
     },
 
     methods: {
       initMap() {
+        this.$q.notify('Test')
+
         setTimeout(() => {
           this.map = new window.google.maps.Map(document.getElementById("map"), {
             zoom: 8,
@@ -40,7 +46,8 @@
           });
 
           this.map.addListener("click", () => {
-            this.$store.dispatch("getContainer", null)
+            this.$store.dispatch("getContainer", null);
+            this.$store.dispatch("expandContainerDetail", false);
           })
 
           // this.drawingManager = new window.google.maps.drawing.DrawingManager({
@@ -124,6 +131,7 @@
 
           marker.addListener("click", () => {
             this.$store.dispatch("getContainer", {container: container, marker: marker});
+
           })
 
           marker.addListener("dragend", (evt) => {
@@ -134,15 +142,50 @@
                 longitude: evt.latLng.lng()
               }
             );
-            console.log(`Marker dropped: Current Lat: ' + ${evt.latLng.lat()} + ' Current Lng: ' + ${evt.latLng.lng()}`)
           })
 
           return marker;
         });
 
-        this.markerCluster = new MarkerClusterer(this.map, this.markers, {
-          imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-        });
+        this.markerCluster = new MarkerClusterer(
+          this.map,
+          this.markers,
+          {
+            maxZoom: 14,
+            gridSize: 50,
+            styles: [
+              {
+                anchorText: [20, 2],
+                width: 50,
+                height: 50,
+                url: "/icons/cluster-icons/mm1.png",
+                textColor: 'white',
+                textSize: 12,
+                fontWeight: "bold"
+              },
+              {
+                anchorText: [19, -43],
+                width: 140,
+                height: 140,
+                url: "/icons/cluster-icons/mm2.png",
+                textColor: 'white',
+                textSize: 14,
+                fontWeight: "bold",
+              },
+              {
+                anchorText: [25, -3],
+                width: 70,
+                height: 70,
+                url: "/icons/cluster-icons/mm3.png",
+                textColor: 'white',
+                textSize: 16,
+                fontWeight: "bold"
+              }
+              //up to 5
+            ]
+          // imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+          }
+        );
 
         this.$q.loading.hide();
         this.$store.dispatch("changeFilter", false);
@@ -160,6 +203,12 @@
         if (this.updatingGeometry) {
           this.$store.getters.getContainer.marker.setDraggable(true);
         }
+      },
+
+      resetView() {
+        this.map.setCenter({ lat: 40.98390570573965, lng: 29.13268504720865 });
+        this.map.setZoom(8);
+        this.$store.dispatch("resetView", false);
       }
     },
 
@@ -172,12 +221,15 @@
   }
 </script>
 
-<style lang="sass" scoped>
-  #map
-    height: 100% !important
+<style scoped>
+  #map{
+    height: 100% !important;
+  }
+
   html,
-  body
-    height: 100%
-    margin: 0
-    padding: 0
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 </style>

@@ -4,11 +4,12 @@ import {api} from "boot/axios";
 import {Dialog, Loading} from 'quasar'
 
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default function () {
   return new Vuex.Store({
     state: {
+      resetView: false,
       containers: [],
       clickedContainer: null,
       filterChanged: false,
@@ -21,6 +22,7 @@ export default function () {
         fullness: "",
       },
       updatingGeometry: false,
+      expandContainerDetail: false
     },
 
     getters: {
@@ -54,6 +56,14 @@ export default function () {
 
       updatingGeometry(state) {
         return state.updatingGeometry;
+      },
+
+      expandContainerDetail(state) {
+        return state.expandContainerDetail;
+      },
+
+      resetView(state) {
+        return state.resetView;
       }
     },
 
@@ -76,6 +86,14 @@ export default function () {
 
       updatingGeometry(state, payload) {
         state.updatingGeometry = payload;
+      },
+
+      expandContainerDetail(state, payload) {
+        state.expandContainerDetail = payload;
+      },
+
+      resetView(state) {
+        state.resetView = true;
       }
     },
 
@@ -83,7 +101,8 @@ export default function () {
       getContainers({commit}) {
         Loading.show({
           delay: 0,
-          message: 'Konteyner verisi yükleniyor<br/>'
+          message: 'Konteyner verisi yükleniyor<br/>',
+          spinnerColor: "blue-6"
         });
 
         api.get(`/containers`)
@@ -102,6 +121,7 @@ export default function () {
 
       getContainer({commit}, payload) {
         commit("getContainer", payload);
+        commit("expandContainerDetail", true);
       },
 
       changeFilter({commit}, payload) {
@@ -120,16 +140,13 @@ export default function () {
             longitude: payload.longitude
           }
         ).then((response) => {
-          console.log("Güncelleme başarılı");
 
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},
-            message: `${context.getters.getContainer.container.containerName} adlı konteynerin konumu başarılı şekilde değiştirildi.`
+            message: `${context.getters.getContainer.container.containerName} adlı konteynerin konumu değiştirildi.`
           })
-          //   .onOk(() => {
-          //
-          // })
+
           context.dispatch("updatingGeometry", false);
         }).catch(error => {
           console.log("Veri güncellenirken hata oluştu", error);
@@ -138,6 +155,14 @@ export default function () {
 
       updatingGeometry({commit}, payload) {
         commit("updatingGeometry", payload);
+      },
+
+      expandContainerDetail({commit}, payload) {
+        commit("expandContainerDetail", payload);
+      },
+
+      resetView({commit}) {
+        commit("resetView");
       }
     }
   })
