@@ -45,8 +45,12 @@ export default function () {
           }
           if (state.queryParameterObject[key]) {
             if (key === "fullness") {
-              const [min, max] = String(state.queryParameterObject[key]).split("-")
-              return `${key}_gte=${min}&${key}_lte=${max}&${key}_ne=${max}`;
+              const [min, max] = String(state.queryParameterObject[key]).split("-");
+              if (max === "100") {
+                return `${key}_gte=${min}&${key}_lte=${max}`;
+              } else {
+                return `${key}_gte=${min}&${key}_lte=${max}&${key}_ne=${max}`;
+              }
             } else {
               return `${key}=${state.queryParameterObject[key]}`;
             }
@@ -92,8 +96,8 @@ export default function () {
         state.expandContainerDetail = payload;
       },
 
-      resetView(state) {
-        state.resetView = true;
+      resetView(state, payload) {
+        state.resetView = payload;
       }
     },
 
@@ -161,8 +165,8 @@ export default function () {
         commit("expandContainerDetail", payload);
       },
 
-      resetView({commit}) {
-        commit("resetView");
+      resetView({commit}, payload) {
+        commit("resetView", payload);
       }
     }
   })

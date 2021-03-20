@@ -8,7 +8,7 @@
         </q-toolbar-title>
 
         <q-icon
-          name="loop"
+          name="zoom_out_map"
           size="md"
           style="cursor:pointer;"
           @click="resetView"
@@ -26,9 +26,9 @@
         >
           <q-card style="width: 100%;">
             <!--Başlık-->
-            <q-card-section class="q-pb-none">
-              <div class="text-h7 text-weight-bold">Doluluk Oranı</div>
-            </q-card-section>
+            <!--<q-card-section class="q-pb-none">-->
+            <!--  <div class="text-h7 text-weight-bold">Doluluk Oranı</div>-->
+            <!--</q-card-section>-->
 
             <q-card-section>
               <div class="row q-mb-sm">
@@ -70,6 +70,7 @@
 
         <!--Filtreler-->
         <q-expansion-item
+          @click="$store.dispatch('expandContainerDetail', false)"
           icon="filter_alt"
           label="Filtreler"
           expand-separator
@@ -79,7 +80,7 @@
           <q-card style="width: 100%;">
             <q-card-section>
               <!--Adres-->
-              <div class="text-h7 text-weight-bold">Adres</div>
+              <div class="text-h6 text-weight-bold">Adres</div>
 
               <!--Mahalle-->
               <q-select
@@ -112,7 +113,7 @@
               />
 
               <!--Bölge-->
-              <div class="text-h7 text-weight-bold">Bölge</div>
+              <div class="text-h6 text-weight-bold">Bölge</div>
 
               <!--Bölge-->
               <q-select
@@ -130,7 +131,7 @@
               />
 
               <!--Konteyner-->
-              <div class="text-h7 text-weight-bold">Konteyner</div>
+              <div class="text-h6 text-weight-bold">Konteyner</div>
 
               <!--Konteyner tipi-->
               <q-select
@@ -173,9 +174,9 @@
         >
           <q-card style="width: 100%;">
             <!--Başlık-->
-            <q-card-section class="q-pb-none">
-              <div class="text-h7 text-weight-bold">Konteyner Detay</div>
-            </q-card-section>
+            <!--<q-card-section class="q-pb-none">-->
+            <!--  <div class="text-h7 text-weight-bold">Konteyner Detay</div>-->
+            <!--</q-card-section>-->
 
             <q-card-section>
               <div class="row q-mb-md">
@@ -373,10 +374,6 @@
           return "green"
         }
       },
-
-      containersFilled() {
-        return this.$store.getters.getContainers;
-      }
     },
 
     methods: {
@@ -385,7 +382,6 @@
           .then(response => {
             this.$store.dispatch("setContainers", response.data)
               .then(() => {
-                this.clearFullnessValues();
                 this.populateFullness();
                 this.$store.dispatch("changeFilter", true);
               });
@@ -411,6 +407,7 @@
       },
 
       populateFullness() {
+        this.clearFullnessValues();
         this.$store.getters.getContainers.forEach(container => {
           if (container.fullness === null) {
             this.countGrey++;
@@ -422,6 +419,14 @@
             this.countRed++;
           }
         })
+
+        this.$q.notify({
+          type: 'negative',
+          message: `Dolu durumda ${this.countRed} adet konteyner vardır!`,
+          actions: [{ icon: 'close', color: 'white' }],
+          icon: "local_shipping"
+        })
+
       },
 
       populateNeighborhoods() {
@@ -539,7 +544,7 @@
       },
 
       resetView() {
-        this.$store.dispatch("resetView");
+        this.$store.dispatch("resetView", true);
       }
     },
 
@@ -553,20 +558,19 @@
       },
     },
 
-    watch: {
-      containersFilled() {
-        this.populateFullness();
-      }
-    },
-
     mounted() {
       this.populateNeighborhoods();
       this.populateZones();
+      this.queryContainers();
     }
   }
 </script>
 
-<style lang="sass" scoped>
-  .expansion-icon
-    color: red
+<style lang="sass">
+  .q-item__section--avatar
+      min-width: 0
+
+  .q-item__section--side
+    padding-right: 5px
+
 </style>

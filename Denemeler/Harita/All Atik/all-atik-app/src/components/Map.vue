@@ -36,8 +36,6 @@
 
     methods: {
       initMap() {
-        this.$q.notify('Test')
-
         setTimeout(() => {
           this.map = new window.google.maps.Map(document.getElementById("map"), {
             zoom: 8,
