@@ -11,9 +11,9 @@
 
   export default {
     name: "Map",
+
     data() {
       return {
-        map: null,
         drawingManager: null,
         markers: [],
         markerCluster: null
@@ -31,45 +31,36 @@
 
       resetView() {
         return this.$store.getters.resetView;
+      },
+
+      createRoutes() {
+        return this.$store.getters.routeCreated;
       }
     },
 
     methods: {
       initMap() {
-        setTimeout(() => {
-          this.map = new window.google.maps.Map(document.getElementById("map"), {
-            zoom: 8,
-            center: { lat: 40.98390570573965, lng: 29.13268504720865 },
-            mapId: "b15068e07cf8d4c6",
-          });
+        const map = new window.google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: {
+            lat: 40.98390570573965,
+            lng: 29.13268504720865
+          },
+          mapId: "b15068e07cf8d4c6",
+        });
 
-          this.map.addListener("click", () => {
-            this.$store.dispatch("getContainer", null);
-            this.$store.dispatch("expandContainerDetail", false);
-          })
+        this.$store.dispatch("setMap", map);
 
-          // this.drawingManager = new window.google.maps.drawing.DrawingManager({
-          //   drawingControl: true,
-          //   drawingControlOptions: {
-          //     position: window.google.maps.ControlPosition.BOTTOM_CENTER,
-          //     drawingModes: [
-          //       window.google.maps.drawing.OverlayType.POLYGON,
-          //     ],
-          //   },
-          // });
-
-          // this.drawingManager.setMap(this.map);
-
-          // window.google.maps.event.addListener(this.drawingManager, 'polygoncomplete', function(polygon) {
-          //   this.geometry = window.google.maps.geometry.encoding.encodePath(polygon.getPath());
-          //   console.log(window.google.maps.geometry.encoding.encodePath(polygon.getPath()));
-          // });
-        }, 0)
+        this.$store.getters.getMap.addListener("click", () => {
+          this.$store.dispatch("getContainer", null);
+          this.$store.dispatch("expandContainerDetail", false);
+        })
 
         this.$store.dispatch("getContainers");
       },
 
       drawContainers() {
+        console.log("draw containers");
         if (this.markerCluster) {
           this.markerCluster.clearMarkers();
         }
@@ -79,6 +70,8 @@
         }
 
         this.markers = [];
+
+        console.log(this.$store.getters.getContainers)
 
         this.markers = this.$store.getters.getContainers.map(container => {
           const fullness = () => {
@@ -125,17 +118,18 @@
             clickable: true,
           });
 
-          marker.setMap(this.map);
+          marker.setMap(this.$store.getters.getMap);
 
           marker.addListener("click", () => {
             this.$store.dispatch("getContainer", {container: container, marker: marker});
-
+            this.$store.dispatch("setCurrentMarkerSymbol", this.$store.getters.getContainer.marker.getIcon());
           })
 
           marker.addListener("dragend", (evt) => {
             this.$store.dispatch(
               "updateGeometry",
               {
+                containerID: this.$store.getters.getContainer.container.id,
                 latitude: evt.latLng.lat(),
                 longitude: evt.latLng.lng()
               }
@@ -146,7 +140,7 @@
         });
 
         this.markerCluster = new MarkerClusterer(
-          this.map,
+          this.$store.getters.getMap,
           this.markers,
           {
             maxZoom: 14,
@@ -179,9 +173,7 @@
                 textSize: 16,
                 fontWeight: "bold"
               }
-              //up to 5
             ]
-          // imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
           }
         );
 
@@ -193,6 +185,7 @@
     watch: {
       filterChanged() {
         if (this.filterChanged) {
+          console.log("kontrol watch")
           this.drawContainers();
         }
       },
@@ -200,13 +193,74 @@
       updatingGeometry() {
         if (this.updatingGeometry) {
           this.$store.getters.getContainer.marker.setDraggable(true);
+          this.$store.getters.getContainer.marker.setIcon({
+            path: window.google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: "#11eac8",
+            fillOpacity: 0.8,
+            strokeWeight: 1
+          })
+        } else {
+          this.$store.getters.getContainer.marker.setDraggable(false);
         }
       },
 
       resetView() {
-        this.map.setCenter({ lat: 40.98390570573965, lng: 29.13268504720865 });
-        this.map.setZoom(8);
+        this.$store.getters.getMap.setCenter({ lat: 40.98390570573965, lng: 29.13268504720865 });
+        this.$store.getters.getMap.setZoom(8);
         this.$store.dispatch("resetView", false);
+      },
+
+      createRoutes() {
+        if (this.$store.getters.routeCreated) {
+          const stations = this.$store.getters.getContainers.map(container => {
+            return {lat: container.latitude, lng: container.longitude, name:container.containerName};
+          });
+
+          // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
+          let parts = []
+
+          for (let i = 0, max = 24; i < stations.length; i = i + max)
+            parts.push(stations.slice(i, i + max + 1));
+
+          // Service callback to process service results
+          const service_callback = (response, status) => {
+            console.log(response)
+            if (status !== 'OK') {
+              console.log('Directions request failed due to ' + status);
+              return;
+            }
+
+            const renderer = new window.google.maps.DirectionsRenderer;
+            renderer.setMap(this.$store.getters.getMap);
+            renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+            renderer.setDirections(response);
+          };
+
+          // Send requests to service to get route (for stations count <= 25 only one request will be sent)
+          for (let i = 0; i < parts.length; i++) {
+
+            // Waypoints does not include first station (origin) and last station (destination)
+            const waypoints = [];
+            for (let j = 1; j < parts[i].length - 1; j++)
+              waypoints.push({location: parts[i][j], stopover: false});
+
+            // Service options
+            const service_options = {
+              origin: parts[i][0],
+              destination: parts[i][parts[i].length - 1],
+              waypoints: waypoints,
+              travelMode: 'DRIVING',
+              optimizeWaypoints: true
+            };
+
+            // Send request
+            const service = new window.google.maps.DirectionsService;
+            service.route(service_options, service_callback);
+          }
+
+          this.$store.dispatch('createRoute', false);
+        }
       }
     },
 

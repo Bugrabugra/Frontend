@@ -33,37 +33,42 @@
             <q-card-section>
               <div class="row q-mb-sm">
                 <div class="col-6">
-              <span>
-                <q-icon @click="handleIconFullness($event)" class="green" style="color: #6AA454; cursor:pointer;" size="md" name="delete"/>
-                % 0-50 : <strong>{{countGreen}}</strong>
-              </span>
+                  <span>
+                    <q-icon @click="handleIconFullness($event)" class="green" style="color: #6AA454; cursor:pointer;" size="md" name="delete"/>
+                    % 0-50 : <strong>{{countGreen}}</strong>
+                  </span>
                 </div>
 
                 <div class="col-6">
-              <span>
-                <q-icon @click="handleIconFullness($event)" class="red" style="color: #ef4343; cursor:pointer;" size="md" name="delete"/>
-                % 75-100 : <strong>{{countRed}}</strong>
-              </span>
+                  <span>
+                    <q-icon @click="handleIconFullness($event)" class="red" style="color: #ef4343; cursor:pointer;" size="md" name="delete"/>
+                    % 75-100 : <strong>{{countRed}}</strong>
+                  </span>
                 </div>
 
               </div>
 
               <div class="row">
                 <div class="col-6">
-              <span>
-                <q-icon @click="handleIconFullness($event)" class="yellow" style="color: #fdc740; cursor:pointer;" size="md" name="delete"/>
-                % 50-75 : <strong>{{countYellow}}</strong>
-              </span>
+                  <span>
+                    <q-icon @click="handleIconFullness($event)" class="yellow" style="color: #fdc740; cursor:pointer;" size="md" name="delete"/>
+                    % 50-75 : <strong>{{countYellow}}</strong>
+                  </span>
                 </div>
 
                 <div class="col-6">
-              <span>
-                <q-icon @click="handleIconFullness($event)" class="grey" style="cursor:pointer;" color="grey" size="md" name="delete"/>
-                Veri Yok : <strong>{{countGrey}}</strong>
-              </span>
+                  <span>
+                    <q-icon @click="handleIconFullness($event)" class="grey" style="cursor:pointer;" color="grey" size="md" name="delete"/>
+                    Veri Yok : <strong>{{countGrey}}</strong>
+                  </span>
                 </div>
               </div>
             </q-card-section>
+
+            <div class="row justify-center">
+              <q-btn @click="$store.dispatch('createRoute', true)" glossy class="q-ma-sm block" color="blue-6">Rota oluştur</q-btn>
+            </div>
+
 
           </q-card>
         </q-expansion-item>
@@ -291,14 +296,14 @@
                 <q-btn
                   :disable="!this.$store.getters.getContainer"
                   @click="updateGeometry"
-                  label="Geometri Düzenle"
+                  :label="this.$store.getters.updatingGeometry ? 'Geometri Düzenleniyor' : 'Geometri Düzenle'"
                   :color="!this.$store.getters.getContainer ? 'grey-5' : 'blue-6'"
+                  :outline="this.$store.getters.updatingGeometry"
                 />
               </div>
             </q-card-section>
           </q-card>
         </q-expansion-item>
-
       </q-card>
   </div>
 </template>
@@ -378,9 +383,13 @@
 
     methods: {
       queryContainers() {
-        api.get(this.$store.getters.getQueryParameters ? `/containers?${this.$store.getters.getQueryParameters}` : `/containers`)
+        api.get(`/containers?${this.$store.getters.getQueryParameters}`)
           .then(response => {
-            this.$store.dispatch("setContainers", response.data)
+            const featuresWithGeometry = response.data.filter(container => {
+              return container.latitude !== null && container.longitude !== null;
+            });
+
+            this.$store.dispatch("setContainers", featuresWithGeometry)
               .then(() => {
                 this.populateFullness();
                 this.$store.dispatch("changeFilter", true);
@@ -420,13 +429,14 @@
           }
         })
 
-        this.$q.notify({
-          type: 'negative',
-          message: `Dolu durumda ${this.countRed} adet konteyner vardır!`,
-          actions: [{ icon: 'close', color: 'white' }],
-          icon: "local_shipping"
-        })
-
+        if (this.countRed) {
+          this.$q.notify({
+            type: 'negative',
+            message: `Dolu durumda ${this.countRed} adet konteyner vardır!`,
+            actions: [{ icon: 'close', color: 'white' }],
+            icon: "local_shipping"
+          })
+        }
       },
 
       populateNeighborhoods() {
@@ -540,12 +550,12 @@
       },
 
       updateGeometry() {
-        this.$store.dispatch("updatingGeometry", true);
+        this.$store.dispatch("updatingGeometry");
       },
 
       resetView() {
         this.$store.dispatch("resetView", true);
-      }
+      },
     },
 
     filters: {
@@ -572,5 +582,4 @@
 
   .q-item__section--side
     padding-right: 5px
-
 </style>

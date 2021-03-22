@@ -9,6 +9,8 @@ Vue.use(Vuex);
 export default function () {
   return new Vuex.Store({
     state: {
+      settings: {},
+      map: null,
       resetView: false,
       containers: [],
       clickedContainer: null,
@@ -22,10 +24,16 @@ export default function () {
         fullness: "",
       },
       updatingGeometry: false,
-      expandContainerDetail: false
+      currentMarkerSymbol: {},
+      expandContainerDetail: false,
+      routeCreated: false
     },
 
     getters: {
+      getMap(state) {
+        return state.map;
+      },
+
       getContainers(state) {
         return state.containers;
       },
@@ -68,10 +76,26 @@ export default function () {
 
       resetView(state) {
         return state.resetView;
+      },
+
+      routeCreated(state) {
+        return state.routeCreated;
+      },
+
+      currentMarkerSymbol(state) {
+        return state.currentMarkerSymbol;
+      },
+
+      getSettings(state) {
+        return state.settings;
       }
     },
 
     mutations: {
+      setMap(state, payload) {
+        state.map = payload;
+      },
+
       setContainers(state, payload) {
         state.containers = payload;
       },
@@ -88,8 +112,8 @@ export default function () {
         state.queryParameterObject[payload.query] = payload.value;
       },
 
-      updatingGeometry(state, payload) {
-        state.updatingGeometry = payload;
+      updatingGeometry(state) {
+        state.updatingGeometry = !state.updatingGeometry;
       },
 
       expandContainerDetail(state, payload) {
@@ -98,10 +122,26 @@ export default function () {
 
       resetView(state, payload) {
         state.resetView = payload;
+      },
+
+      createRoute(state, payload) {
+        state.routeCreated = payload;
+      },
+
+      setCurrentMarkerSymbol(state, payload) {
+        state.currentMarkerSymbol = payload;
+      },
+
+      setSettings(state, payload) {
+        state.settings = payload;
       }
     },
 
     actions: {
+      setMap({commit}, payload) {
+        commit("setMap", payload);
+      },
+
       getContainers({commit}) {
         Loading.show({
           delay: 0,
@@ -111,9 +151,12 @@ export default function () {
 
         api.get(`/containers`)
           .then(response => {
-            commit("setContainers", []);
-            commit("setContainers", response.data);
-            commit("changeFilter", true);
+            // commit("setContainers", []);
+            const featuresWithGeometry = response.data.filter(container => {
+              return container.latitude !== null && container.longitude !== null;
+            });
+
+            commit("setContainers", featuresWithGeometry);
           }).catch(error => {
           console.log("Konteynerler yüklenirken hata oluştu! ", error);
         })
@@ -138,27 +181,27 @@ export default function () {
 
       updateGeometry(context, payload) {
         api.patch(
-          `/containers/${context.getters.getContainer.container.id}`,
+          `/containers/${payload.containerID}`,
           {
             latitude: payload.latitude,
             longitude: payload.longitude
           }
         ).then((response) => {
-
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},
-            message: `${context.getters.getContainer.container.containerName} adlı konteynerin konumu değiştirildi.`
+            message: `${context.getters.getContainer.container.containerName} adlı konteynerin konumu güncellendi.`
           })
 
-          context.dispatch("updatingGeometry", false);
+          context.dispatch("updatingGeometry");
         }).catch(error => {
           console.log("Veri güncellenirken hata oluştu", error);
         })
       },
 
-      updatingGeometry({commit}, payload) {
-        commit("updatingGeometry", payload);
+      updatingGeometry(context) {
+        context.commit("updatingGeometry");
+        context.state.clickedContainer.marker.setIcon(context.getters.currentMarkerSymbol);
       },
 
       expandContainerDetail({commit}, payload) {
@@ -167,6 +210,18 @@ export default function () {
 
       resetView({commit}, payload) {
         commit("resetView", payload);
+      },
+
+      createRoute({commit}, payload) {
+        commit("createRoute", payload);
+      },
+
+      setCurrentMarkerSymbol({commit}, payload) {
+        commit("setCurrentMarkerSymbol", payload);
+      },
+
+      setSettings({commit}, payload) {
+        commit("setSettings", payload);
       }
     }
   })

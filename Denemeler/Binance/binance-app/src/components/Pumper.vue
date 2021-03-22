@@ -173,7 +173,6 @@
       start() {
         if (this.quoteOrderQty) {
           this.buyMARKET()
-          console.log("started");
           this.startMs = dayjs();
         }
       },
@@ -181,10 +180,8 @@
       // Stop timer
       end() {
         if (this.quoteOrderQty) {
-          console.log("ended");
           this.endMs = dayjs();
           this.duration = `${this.endMs.diff(this.startMs, "millisecond")} milliseconds`
-          console.log(this.duration)
         }
       },
 
