@@ -60,7 +60,7 @@
       },
 
       drawContainers() {
-        console.log("draw containers");
+        console.log("draw containers")
         if (this.markerCluster) {
           this.markerCluster.clearMarkers();
         }
@@ -70,8 +70,6 @@
         }
 
         this.markers = [];
-
-        console.log(this.$store.getters.getContainers)
 
         this.markers = this.$store.getters.getContainers.map(container => {
           const fullness = () => {
@@ -185,7 +183,6 @@
     watch: {
       filterChanged() {
         if (this.filterChanged) {
-          console.log("kontrol watch")
           this.drawContainers();
         }
       },

@@ -156,6 +156,7 @@ export default function () {
               return container.latitude !== null && container.longitude !== null;
             });
 
+            commit("changeFilter", true);
             commit("setContainers", featuresWithGeometry);
           }).catch(error => {
           console.log("Konteynerler yüklenirken hata oluştu! ", error);
