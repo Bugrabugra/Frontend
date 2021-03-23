@@ -3,42 +3,22 @@
     <q-btn
       v-show="!drawing"
       @click="addContainer"
-      :color="$store.getters.getContainer ? 'grey' : 'green'"
-      :disable="$store.getters.getContainer !== null"
+      color="green"
       class="q-ma-sm"
-      id="draw"
     >
-      <q-icon name="add_circle"/>
+      <q-icon name="add_location_alt"/>
     </q-btn>
 
     <q-btn
       v-show="drawing"
-      label="Çizimi iptal et"
-      @click="drawing = !drawing"
+      label="İPTAL"
+      @click="cancelDrawing"
       color="green"
       class="q-ma-sm"
-      id="not-draw"
     >
-      <q-icon name="add_circle"/>
+      <q-icon name="wrong_location"/>
     </q-btn>
 
-    <q-btn
-      @click="editContainer"
-      :color="$store.getters.getContainer ? 'orange' : 'grey'"
-      :disable="$store.getters.getContainer === null"
-      class="q-ma-sm"
-    >
-      <q-icon name="edit"/>
-    </q-btn>
-
-    <q-btn
-      @click="removeContainer"
-      :color="$store.getters.getContainer ? 'red' : 'grey'"
-      :disable="$store.getters.getContainer === null"
-      class="q-ma-sm"
-    >
-      <q-icon name="remove_circle"/>
-    </q-btn>
   </div>
 
 </template>
@@ -49,76 +29,72 @@
 
     data() {
       return {
-        drawingManager: null,
         drawing: false
+      }
+    },
+
+    computed: {
+      drawingManager() {
+        return this.$store.getters.getDrawingManager
+      },
+
+      map() {
+        return this.$store.getters.getMap;
       }
     },
 
     methods: {
       addContainer() {
         this.drawing = true;
+        this.drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.MARKER);
+      },
 
-        const containerID = this.$store.getters.getSettings.containerID;
+      cancelDrawing() {
+        this.drawing = false;
+        this.drawingManager.setDrawingMode(null);
+      },
 
-        window.google.maps.event.addListener(this.drawingManager, 'markercomplete', function(marker) {
-          console.log(marker);
+      initDrawingManager() {
+        const _this = this;
+        const containerID = parseInt(_this.$store.getters.getSettings.containerID);
+
+        const drawingManager = new window.google.maps.drawing.DrawingManager({
+          drawingControl: false,
+          markerOptions: {
+            icon: {
+              path: window.google.maps.SymbolPath.CIRCLE,
+              scale: 0
+            }
+          },
+          map: _this.$store.getters.getMap
         });
 
-        // this.$store.dispatch(
-        //   "updateGeometry",
-        //   {
-        //     containerID: containerID,
-        //     latitude: null,
-        //     longitude: null
-        //   })
-      },
+        _this.$store.dispatch("setDrawingManager", drawingManager);
 
-      editContainer() {
+        window.google.maps.event.addListener(_this.drawingManager, 'markercomplete', function(marker) {
+          const latitude = marker.getPosition().lat();
+          const longitude = marker.getPosition().lng();
 
-      },
-
-      removeContainer() {
-
+          _this.$store.dispatch(
+            "addGeometry",
+            {
+              containerID: containerID,
+              latitude: latitude,
+              longitude: longitude
+            }).then(() => {
+              setTimeout(() => {
+                _this.$store.dispatch("getContainers");
+              }, 1000)
+              _this.cancelDrawing();
+          })
+        });
       }
     },
 
-    mounted() {
-      this.drawingManager = new window.google.maps.drawing.DrawingManager({
-        drawingControl: false,
-        drawingControlOptions: {
-          position: window.google.maps.ControlPosition.BOTTOM_CENTER,
-          drawingModes: [
-            window.google.maps.drawing.OverlayType.MARKER,
-          ],
-        },
-        // Sketched polygons properties
-        markerOptions: {
-          fillColor: "#bf2424",
-          fillOpacity: 0.3,
-          strokeColor: "#e02525",
-          editable: true
-        }
-      });
-
-      // this.$store.dispatch("setDrawingManager", drawingManager);
-
-      this.drawingManager.setMap(this.$store.getters.getMap);
-
-      // Start drawing
-      window.google.maps.event.addDomListener(document.getElementById('draw'), 'click', function() {
-        // TODO burayı düzelt
-        this.drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.MARKER);
-      });
-
-      // Stop drawing
-      window.google.maps.event.addDomListener(document.getElementById('not-draw'), 'click', function() {
-        this.drawingManager.setDrawingMode(null);
-      });
+    watch: {
+      map() {
+        this.initDrawingManager();
+      }
     }
-
   }
 </script>
-
-<style scoped>
-
-</style>

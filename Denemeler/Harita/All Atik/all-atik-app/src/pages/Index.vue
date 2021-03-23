@@ -32,7 +32,6 @@
 <script>
   import Map from "components/Map";
   import SideMenu from "components/SideMenu";
-  import {api} from "boot/axios";
   import EditContainer from "components/EditContainer";
 
 
@@ -49,19 +48,6 @@
       page() {
         return this.$store.getters.getSettings.page;
       }
-    },
-
-    methods: {
-      getSettings() {
-        api.get("/settings")
-          .then(response => {
-            this.$store.dispatch("setSettings", response.data[0]);
-          })
-      }
-    },
-
-    mounted() {
-      this.getSettings();
     }
   }
 </script>

@@ -40,11 +40,25 @@
 
     methods: {
       initMap() {
+        let zoom;
+        let lat;
+        let lng;
+
+        if (this.$store.getters.getSettings.page === "main-map-page") {
+          zoom = 10
+          lat = 40.98390570573965;
+          lng = 29.13268504720865;
+        } else if (this.$store.getters.getSettings.page === "container-page") {
+          zoom = 17
+          lat = parseFloat(this.$store.getters.getSettings.latitude);
+          lng = parseFloat(this.$store.getters.getSettings.longitude);
+        }
+
         const map = new window.google.maps.Map(document.getElementById("map"), {
-          zoom: 8,
+          zoom: zoom,
           center: {
-            lat: 40.98390570573965,
-            lng: 29.13268504720865
+            lat: lat,
+            lng: lng
           },
           mapId: "b15068e07cf8d4c6",
         });
@@ -52,15 +66,15 @@
         this.$store.dispatch("setMap", map);
 
         this.$store.getters.getMap.addListener("click", () => {
-          this.$store.dispatch("getContainer", null);
+          this.$store.dispatch("getClickedContainer", null);
           this.$store.dispatch("expandContainerDetail", false);
         })
 
         this.$store.dispatch("getContainers");
+
       },
 
       drawContainers() {
-        console.log("draw containers")
         if (this.markerCluster) {
           this.markerCluster.clearMarkers();
         }
@@ -119,15 +133,15 @@
           marker.setMap(this.$store.getters.getMap);
 
           marker.addListener("click", () => {
-            this.$store.dispatch("getContainer", {container: container, marker: marker});
-            this.$store.dispatch("setCurrentMarkerSymbol", this.$store.getters.getContainer.marker.getIcon());
+            this.$store.dispatch("getClickedContainer", {container: container, marker: marker});
+            this.$store.dispatch("setCurrentMarkerSymbol", this.$store.getters.getClickedContainer.marker.getIcon());
           })
 
           marker.addListener("dragend", (evt) => {
             this.$store.dispatch(
               "updateGeometry",
               {
-                containerID: this.$store.getters.getContainer.container.id,
+                containerID: this.$store.getters.getClickedContainer.container.id,
                 latitude: evt.latLng.lat(),
                 longitude: evt.latLng.lng()
               }
@@ -189,8 +203,8 @@
 
       updatingGeometry() {
         if (this.updatingGeometry) {
-          this.$store.getters.getContainer.marker.setDraggable(true);
-          this.$store.getters.getContainer.marker.setIcon({
+          this.$store.getters.getClickedContainer.marker.setDraggable(true);
+          this.$store.getters.getClickedContainer.marker.setIcon({
             path: window.google.maps.SymbolPath.CIRCLE,
             scale: 10,
             fillColor: "#11eac8",
@@ -198,7 +212,7 @@
             strokeWeight: 1
           })
         } else {
-          this.$store.getters.getContainer.marker.setDraggable(false);
+          this.$store.getters.getClickedContainer.marker.setDraggable(false);
         }
       },
 

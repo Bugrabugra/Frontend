@@ -26,7 +26,9 @@ export default function () {
       updatingGeometry: false,
       currentMarkerSymbol: {},
       expandContainerDetail: false,
-      routeCreated: false
+      routeCreated: false,
+      drawingManager: null,
+      container: null
     },
 
     getters: {
@@ -38,7 +40,7 @@ export default function () {
         return state.containers;
       },
 
-      getContainer(state) {
+      getClickedContainer(state) {
         return state.clickedContainer;
       },
 
@@ -88,6 +90,14 @@ export default function () {
 
       getSettings(state) {
         return state.settings;
+      },
+
+      getDrawingManager(state) {
+        return state.drawingManager;
+      },
+
+      getContainer(state) {
+        return state.container;
       }
     },
 
@@ -100,7 +110,7 @@ export default function () {
         state.containers = payload;
       },
 
-      getContainer(state, payload) {
+      getClickedContainer(state, payload) {
         state.clickedContainer = payload;
       },
 
@@ -134,6 +144,14 @@ export default function () {
 
       setSettings(state, payload) {
         state.settings = payload;
+      },
+
+      setDrawingManager(state, payload) {
+        state.drawingManager = payload;
+      },
+
+      setContainer(state, payload) {
+        state.container = payload;
       }
     },
 
@@ -151,7 +169,6 @@ export default function () {
 
         api.get(`/containers`)
           .then(response => {
-            // commit("setContainers", []);
             const featuresWithGeometry = response.data.filter(container => {
               return container.latitude !== null && container.longitude !== null;
             });
@@ -167,8 +184,8 @@ export default function () {
         commit("setContainers", payload);
       },
 
-      getContainer({commit}, payload) {
-        commit("getContainer", payload);
+      getClickedContainer({commit}, payload) {
+        commit("getClickedContainer", payload);
         commit("expandContainerDetail", true);
       },
 
@@ -191,7 +208,7 @@ export default function () {
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},
-            message: `${context.getters.getContainer.container.containerName} adlı konteynerin konumu güncellendi.`
+            message: `${context.getters.getClickedContainer.container.containerName} adlı konteynerin konumu güncellendi.`
           })
 
           context.dispatch("updatingGeometry");
@@ -202,7 +219,27 @@ export default function () {
 
       updatingGeometry(context) {
         context.commit("updatingGeometry");
-        context.state.clickedContainer.marker.setIcon(context.getters.currentMarkerSymbol);
+        if (context.state.clickedContainer) {
+          context.state.clickedContainer.marker.setIcon(context.getters.currentMarkerSymbol);
+        }
+      },
+
+      addGeometry(context, payload) {
+        api.patch(
+          `/containers/${payload.containerID}`,
+          {
+            latitude: payload.latitude,
+            longitude: payload.longitude
+          }
+        ).then((response) => {
+          Dialog.create({
+            title: 'Uyarı',
+            ok: {label: "Tamam"},
+            message: `${payload.containerID} numaralı konteynerin konumu girildi.`
+          })
+        }).catch(error => {
+          console.log("Geometri girilirken hata oluştu", error);
+        })
       },
 
       expandContainerDetail({commit}, payload) {
@@ -223,6 +260,17 @@ export default function () {
 
       setSettings({commit}, payload) {
         commit("setSettings", payload);
+      },
+
+      setDrawingManager({commit}, payload) {
+        commit("setDrawingManager", payload);
+      },
+
+      setContainer({commit}, payload) {
+        api.get(`containers/${payload}`)
+          .then(response => {
+            commit("setContainer", response.data);
+          })
       }
     }
   })

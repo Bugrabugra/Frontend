@@ -1,10 +1,4 @@
 {
-  "settings": [
-    {
-      "page": "container-page",
-      "containerID": 25
-    }
-  ],
   "neighborhoods": [
     {
       "id": 1,
@@ -110,8 +104,8 @@
       "device": "Cihaz Adı-YavfW0kP",
       "lastCollection": 1615966264402,
       "lastUpdate": 1615967134317,
-      "latitude": 40.926559540499554,
-      "longitude": 29.138244061279305
+      "latitude": 40.92268771724286,
+      "longitude": 29.137130944538125
     },
     {
       "id": 4,
@@ -594,8 +588,8 @@
       "device": "Cihaz Adı-w3d8nEE8",
       "lastCollection": 1615966831190,
       "lastUpdate": 1615966462010,
-      "latitude": null,
-      "longitude": null
+      "latitude": 40.86863118472143,
+      "longitude": 29.123381500194018
     }
   ]
 }
