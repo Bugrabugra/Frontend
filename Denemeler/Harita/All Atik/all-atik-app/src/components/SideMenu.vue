@@ -310,7 +310,12 @@
 
 <script>
   import {format} from 'date-fns'
-  import {api} from "boot/axios";
+  import {
+    apiGetFilteredContainers,
+    apiGetNeighborhoods,
+    apiGetStreets,
+    apiGetZones
+  } from "src/api";
 
 
   export default {
@@ -383,7 +388,7 @@
 
     methods: {
       queryContainers() {
-        api.get(`/containers?${this.$store.getters.getQueryParameters}`)
+        apiGetFilteredContainers(this.$store.getters.getQueryParameters)
           .then(response => {
             const featuresWithGeometry = response.data.filter(container => {
               return container.latitude !== null && container.longitude !== null;
@@ -440,7 +445,7 @@
       },
 
       populateNeighborhoods() {
-        api.get("/neighborhoods")
+        apiGetNeighborhoods()
           .then(response => {
             this.neighborhoods = [];
             this.neighborhoods = response.data;
@@ -448,7 +453,7 @@
       },
 
       populateStreets() {
-        api.get(`/streets?neighborhoodID=${this.selectedNeighborhood.id}`)
+        apiGetStreets(this.selectedNeighborhood.id)
           .then(response => {
             this.streets = [];
             this.streets = response.data;
@@ -456,7 +461,7 @@
       },
 
       populateZones() {
-        api.get(`/zones`)
+        apiGetZones()
           .then(response => {
             this.zones = [];
             this.zones = response.data;

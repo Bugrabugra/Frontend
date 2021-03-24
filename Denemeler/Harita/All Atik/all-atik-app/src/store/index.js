@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {api} from "boot/axios";
 import {Dialog, Loading} from 'quasar'
+import {apiGetContainers, apiPatchContainer} from "../api/index";
 
 
 Vue.use(Vuex);
@@ -28,7 +28,6 @@ export default function () {
       expandContainerDetail: false,
       routeCreated: false,
       drawingManager: null,
-      container: null
     },
 
     getters: {
@@ -94,10 +93,6 @@ export default function () {
 
       getDrawingManager(state) {
         return state.drawingManager;
-      },
-
-      getContainer(state) {
-        return state.container;
       }
     },
 
@@ -148,10 +143,6 @@ export default function () {
 
       setDrawingManager(state, payload) {
         state.drawingManager = payload;
-      },
-
-      setContainer(state, payload) {
-        state.container = payload;
       }
     },
 
@@ -167,7 +158,7 @@ export default function () {
           spinnerColor: "blue-6"
         });
 
-        api.get(`/containers`)
+        apiGetContainers()
           .then(response => {
             const featuresWithGeometry = response.data.filter(container => {
               return container.latitude !== null && container.longitude !== null;
@@ -198,13 +189,7 @@ export default function () {
       },
 
       updateGeometry(context, payload) {
-        api.patch(
-          `/containers/${payload.containerID}`,
-          {
-            latitude: payload.latitude,
-            longitude: payload.longitude
-          }
-        ).then((response) => {
+        apiPatchContainer(payload).then(() => {
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},
@@ -225,13 +210,7 @@ export default function () {
       },
 
       addGeometry(context, payload) {
-        api.patch(
-          `/containers/${payload.containerID}`,
-          {
-            latitude: payload.latitude,
-            longitude: payload.longitude
-          }
-        ).then((response) => {
+        apiPatchContainer().then((response) => {
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},
@@ -264,13 +243,6 @@ export default function () {
 
       setDrawingManager({commit}, payload) {
         commit("setDrawingManager", payload);
-      },
-
-      setContainer({commit}, payload) {
-        api.get(`containers/${payload}`)
-          .then(response => {
-            commit("setContainer", response.data);
-          })
       }
     }
   })

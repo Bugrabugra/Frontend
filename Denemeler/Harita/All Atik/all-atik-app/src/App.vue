@@ -15,7 +15,6 @@
       })
 
       this.$store.dispatch("setSettings", settings);
-      console.log(this.$store.getters.getSettings);
     }
   }
 </script>
