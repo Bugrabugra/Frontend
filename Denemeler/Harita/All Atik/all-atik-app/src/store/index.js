@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {Dialog, Loading} from 'quasar'
-import {apiGetContainers, apiPatchContainer} from "../api/index";
+import {Dialog, Loading, Notify} from 'quasar'
+import {apiGetContainers, apiGetFilteredContainers, apiPatchContainer} from "../api/index";
 
 
 Vue.use(Vuex);
@@ -28,9 +28,20 @@ export default function () {
       expandContainerDetail: false,
       routeCreated: false,
       drawingManager: null,
+      selectedFullness: null,
+      fullnessColors: {
+        countGreen: 0,
+        countYellow: 0,
+        countRed: 0,
+        countGrey: 0,
+      }
     },
 
     getters: {
+      getFullnessColors(state) {
+        return state.fullnessColors;
+      },
+
       getPageSize(state) {
         return state.pageSize;
       },
@@ -53,7 +64,9 @@ export default function () {
 
       getQueryParameters(state) {
         const query = Object.keys(state.queryParameterObject).map(key => {
+          console.log(key)
           const value = state.queryParameterObject[key];
+          console.log(value)
           if (value) {
             if (key === "fullness") {
               if (key === "fullness" && value === "noValue") {
@@ -104,10 +117,25 @@ export default function () {
 
       getDrawingManager(state) {
         return state.drawingManager;
+      },
+
+      getSelectedFullness(state) {
+        return state.selectedFullness;
       }
     },
 
     mutations: {
+      resetFullnessValues(state) {
+        state.fullnessColors.countGreen = 0;
+        state.fullnessColors.countGrey = 0;
+        state.fullnessColors.countRed = 0;
+        state.fullnessColors.countYellow = 0;
+      },
+
+      increaseFullnessColors(state, payload) {
+        state.fullnessColors[payload]++;
+      },
+
       setPageSize(state, payload) {
         state.pageSize = payload;
       },
@@ -158,6 +186,10 @@ export default function () {
 
       setDrawingManager(state, payload) {
         state.drawingManager = payload;
+      },
+
+      setSelectedFullness(state, payload) {
+        state.selectedFullness = payload;
       }
     },
 
@@ -262,6 +294,72 @@ export default function () {
 
       setDrawingManager({commit}, payload) {
         commit("setDrawingManager", payload);
+      },
+
+      setSelectedFullness({commit}, payload) {
+        commit("setSelectedFullness", payload);
+      },
+
+      increaseFullnessColors({commit}, payload) {
+        commit("increaseFullnessColors", payload);
+      },
+
+      resetFullnessValues({commit}) {
+        commit("resetFullnessValues");
+      },
+
+      populateFullness(context) {
+        context.dispatch("resetFullnessValues");
+        context.getters.getContainers.forEach(container => {
+          if (container.fullness === null) {
+            context.dispatch("increaseFullnessColors", "countGrey");
+          } else if (container.fullness >= 0 && container.fullness < 50) {
+            context.dispatch("increaseFullnessColors", "countGreen");
+          } else if (container.fullness >= 50 && container.fullness < 75) {
+            context.dispatch("increaseFullnessColors", "countYellow");
+          } else if (container.fullness >= 75 && container.fullness <= 100) {
+            context.dispatch("increaseFullnessColors", "countRed");
+          }
+        })
+
+        if (context.getters.getFullnessColors.countRed) {
+          Notify.create({
+            type: 'negative',
+            message: `Dolu durumda ${context.getters.getFullnessColors.countRed} adet konteyner vardır!`,
+            actions: [{ icon: 'close', color: 'white' }],
+            icon: "local_shipping"
+          })
+        }
+      },
+
+      queryContainers(context) {
+        apiGetFilteredContainers(context.getters.getQueryParameters)
+          .then(response => {
+            const featuresWithGeometry = response.data.filter(container => {
+              return container.latitude !== null && container.longitude !== null;
+            });
+
+            context.dispatch("setContainers", featuresWithGeometry)
+              .then(() => {
+                context.dispatch("populateFullness");
+                context.dispatch("changeFilter", true);
+              });
+          })
+      },
+
+      selectFullness(context) {
+        console.log(context.getters.getSelectedFullness.value);
+        if (context.getters.getSelectedFullness) {
+          context.dispatch(
+            "updateQueryParameter",
+            {
+              query: "fullness",
+              value: context.getters.getSelectedFullness.value
+            }
+          )
+          // TODO
+          context.dispatch("queryContainers");
+        }
       }
     }
   })

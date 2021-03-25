@@ -219,6 +219,8 @@
       resetView() {
         this.$store.getters.getMap.setCenter({ lat: 40.98390570573965, lng: 29.13268504720865 });
         this.$store.getters.getMap.setZoom(8);
+        // this.$store.dispatch("getContainers");
+        // this.$store.dispatch("populateFullness");
         this.$store.dispatch("resetView", false);
       },
 
