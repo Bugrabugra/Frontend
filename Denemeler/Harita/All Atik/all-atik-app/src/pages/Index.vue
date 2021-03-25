@@ -2,18 +2,20 @@
   <q-page-container>
     <q-page>
       <div class="row">
-       <div
-         :class="['col', page === 'main-map-page' ? 'col-10' : 'col-12']"
-         :style="page === 'container-page' ? 'position: relative' : ''"
-       >
+        <div
+         :class="['col', mapSize]"
+         :style="[mapStyle]"
+        >
          <!--main-map-page / container-page-->
-         <Map/>
-       </div>
-
-        <div v-if="page === 'main-map-page'" class="col col-2">
-          <SideMenu/>
+          <Map/>
         </div>
 
+        <!--Side menu desktop or mobile-->
+        <div v-if="page === 'main-map-page' && pageSize !== 'xs'" class="col col-2 bg-indigo-1">
+          <SideMenuDesktop/>
+        </div>
+
+        <!--Edit container menu-->
         <div
           v-if="page === 'container-page'"
           style="bottom: 5%"
@@ -21,17 +23,18 @@
         >
           <EditContainer/>
         </div>
-
-
-
       </div>
+
+      <div v-if="page === 'main-map-page' && pageSize === 'xs'">
+        <BottomMenuMobile style="position: absolute; bottom: 0;"/>
+      </div>
+
     </q-page>
   </q-page-container>
 </template>
 
 <script>
   import Map from "components/Map";
-  import SideMenu from "components/SideMenu";
   import EditContainer from "components/EditContainer";
 
 
@@ -39,14 +42,43 @@
     name: 'PageIndex',
 
     components: {
+      BottomMenuMobile: () => import("components/BottomMenuMobile"),
+      SideMenuDesktop: () => import("components/SideMenuDesktop"),
       EditContainer,
-      SideMenu,
       Map
     },
 
     computed: {
       page() {
         return this.$store.getters.getSettings.page;
+      },
+
+      pageSize() {
+        return this.$store.getters.getPageSize;
+      },
+
+      mapSize() {
+        if (this.pageSize !== "xs") {
+          if (this.page === "main-map-page") {
+            return "col-10";
+          } else {
+            return "col-12";
+          }
+        } else {
+          return "col-12";
+        }
+      },
+
+      mapStyle() {
+        if (this.pageSize !== "xs") {
+          if (this.page === "container-page") {
+            return "position: relative;";
+          } else {
+            return "";
+          }
+        } else {
+          return "position: relative"
+        }
       }
     }
   }

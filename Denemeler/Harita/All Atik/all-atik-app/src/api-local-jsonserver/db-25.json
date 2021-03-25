@@ -40,6 +40,24 @@
       "name": "Uydukent M2"
     }
   ],
+  "containerTypes": [
+    {
+      "id": 1,
+      "name": "770 lt Sıcak Daldırma Galvanizli Çöp Konteyneri"
+    },
+    {
+      "id": 2,
+      "name": "PLASTİK ÇÖP KONTEYNERİ"
+    },
+    {
+      "id": 3,
+      "name": "TIBBİ ATIK KONTEYNER"
+    },
+    {
+      "id": 4,
+      "name": "660 lt Sıcak Daldırma Galvanizli Çöp Konteyneri"
+    }
+],
   "containers": [
     {
       "id": 1,
@@ -588,8 +606,8 @@
       "device": "Cihaz Adı-w3d8nEE8",
       "lastCollection": 1615966831190,
       "lastUpdate": 1615966462010,
-      "latitude": 40.86863118472143,
-      "longitude": 29.123381500194018
+      "latitude": 40.86188059782965,
+      "longitude": 29.119948272654955
     }
   ]
 }

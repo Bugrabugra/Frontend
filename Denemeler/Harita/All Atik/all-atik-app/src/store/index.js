@@ -9,13 +9,13 @@ Vue.use(Vuex);
 export default function () {
   return new Vuex.Store({
     state: {
+      pageSize: null,
       settings: {},
       map: null,
       resetView: false,
       containers: [],
       clickedContainer: null,
       filterChanged: false,
-      queryParameterArray: [],
       queryParameterObject: {
         neighborhoodID: 0,
         streetID: 0,
@@ -31,6 +31,10 @@ export default function () {
     },
 
     getters: {
+      getPageSize(state) {
+        return state.pageSize;
+      },
+
       getMap(state) {
         return state.map;
       },
@@ -48,23 +52,30 @@ export default function () {
       },
 
       getQueryParameters(state) {
-        return Object.keys(state.queryParameterObject).map(key => {
-          if (key === "fullness" && state.queryParameterObject.fullness === null) {
-
-          }
-          if (state.queryParameterObject[key]) {
+        const query = Object.keys(state.queryParameterObject).map(key => {
+          const value = state.queryParameterObject[key];
+          if (value) {
             if (key === "fullness") {
-              const [min, max] = String(state.queryParameterObject[key]).split("-");
-              if (max === "100") {
-                return `${key}_gte=${min}&${key}_lte=${max}`;
+              if (key === "fullness" && value === "noValue") {
+                return `${key}=null`
               } else {
-                return `${key}_gte=${min}&${key}_lte=${max}&${key}_ne=${max}`;
+                const [min, max] = String(value).split("-");
+                if (max === "100") {
+                  return `${key}_gte=${min}&${key}_lte=${max}`;
+                } else {
+                  return `${key}_gte=${min}&${key}_lte=${max}&${key}_ne=${max}`;
+                }
               }
             } else {
-              return `${key}=${state.queryParameterObject[key]}`;
+              return `${key}=${value}`;
             }
           }
-        }).join("&");
+        })
+
+        console.log(query)
+        console.log(query.filter(q => q !== undefined));
+        console.log(query.filter(q => q !== undefined).join("&"));
+        return query.filter(q => q !== undefined).join("&");
       },
 
       updatingGeometry(state) {
@@ -97,6 +108,10 @@ export default function () {
     },
 
     mutations: {
+      setPageSize(state, payload) {
+        state.pageSize = payload;
+      },
+
       setMap(state, payload) {
         state.map = payload;
       },
@@ -147,6 +162,10 @@ export default function () {
     },
 
     actions: {
+      setPageSize({commit}, payload) {
+        commit("setPageSize", payload);
+      },
+
       setMap({commit}, payload) {
         commit("setMap", payload);
       },
@@ -210,7 +229,7 @@ export default function () {
       },
 
       addGeometry(context, payload) {
-        apiPatchContainer().then((response) => {
+        apiPatchContainer().then(() => {
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},

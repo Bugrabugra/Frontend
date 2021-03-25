@@ -15,6 +15,18 @@
       })
 
       this.$store.dispatch("setSettings", settings);
+    },
+
+    computed: {
+      screenSize() {
+        return this.$q.screen.name;
+      }
+    },
+
+    watch: {
+      screenSize() {
+        this.$store.dispatch("setPageSize", this.$q.screen.name);
+      }
     }
   }
 </script>

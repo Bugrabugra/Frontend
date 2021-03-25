@@ -3,17 +3,20 @@ import {api} from "boot/axios";
 let containers;
 let neighborhoods;
 let zones;
+let containerTypes;
 
 if (api.defaults.baseURL === "http://localhost:3000") {
   containers = `/containers`;
   neighborhoods = `/neighborhoods`;
   // street özel bir durum bunun için `/streets`
   zones = `/zones`;
+  containerTypes = `/containerTypes`;
 } else if (api.defaults.baseURL === "https://unit.uni-yaz.com:8383/unit-ui/rest/binary") {
-  containers = `/atik-map-container`;
-  neighborhoods = `/atik-map-neighborhood`;
+  containers = `/atik-map-containers`;
+  neighborhoods = `/atik-map-neighborhoods`;
   // street özel bir durum `${neighborhoods}/${payload}/street`
-  zones = `/atik-map-zone`;
+  zones = `/atik-map-zones`;
+  containerTypes = `/atik-map-containertypes`
 }
 
 // Sorunsuz
@@ -44,10 +47,15 @@ export const apiGetNeighborhoods = () => {
 
 // Sorunsuz (lokalde patlıyor)
 export const apiGetStreets = (payload) => {
-  return api.get(`${neighborhoods}/${payload}/street`);
+  return api.get(`${neighborhoods}/${payload}/streets`);
 }
 
 // Sorunsuz
 export const apiGetZones = () => {
   return api.get(zones);
+}
+
+// Sorunsuz
+export const apiGetContainerTypes = () => {
+  return api.get(containerTypes);
 }
