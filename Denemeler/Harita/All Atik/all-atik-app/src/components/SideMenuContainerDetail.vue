@@ -1,110 +1,156 @@
 <template>
   <q-card style="width: 100%;">
     <q-card-section>
-      <div class="row q-mb-md">
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">ID</div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">ID:</div>
+        </div>
+
+        <div :class="valueWidth">
           <div class="q-mr-xs" v-if="$store.getters.getClickedContainer">
             {{selectedContainer.id}}
           </div>
         </div>
+      </div>
 
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Konteyner Adı</div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Konteyner Adı:</div>
+        </div>
+
+        <div :class="valueWidth">
           <div v-if="$store.getters.getClickedContainer">
             {{selectedContainer.containerName}}
           </div>
         </div>
       </div>
 
-      <div class="row q-mb-md">
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Mahalle</div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Mahalle:</div>
+        </div>
+
+        <div :class="valueWidth">
           <div class="q-mr-xs" v-if="$store.getters.getClickedContainer">
             {{selectedContainer.neighborhoodName}}
           </div>
         </div>
+      </div>
 
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Sokak</div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Sokak:</div>
+        </div>
+
+        <div :class="valueWidth">
           <div v-if="$store.getters.getClickedContainer">
             {{selectedContainer.streetName}}
           </div>
         </div>
       </div>
 
-      <div class="row q-mb-md">
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Bölge</div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Bölge:</div>
+        </div>
+
+        <div :class="valueWidth">
           <div class="q-mr-xs" v-if="$store.getters.getClickedContainer">
             {{selectedContainer.zoneName}}
           </div>
         </div>
+      </div>
 
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Tipi</div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Tipi:</div>
+        </div>
+
+        <div :class="valueWidth">
           <div v-if="$store.getters.getClickedContainer">
             {{selectedContainer.typeName}}
           </div>
         </div>
       </div>
 
-      <div class="row q-mb-md">
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Doluluk</div>
-          <div v-if="$store.getters.getClickedContainer">
-              <span :class="`text-${getFullness}`">
-                {{selectedContainer.fullness ? `% ${selectedContainer.fullness}` : "Veri yok"}}
-              </span>
-          </div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Doluluk:</div>
         </div>
 
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Pil</div>
+        <div :class="valueWidth">
           <div v-if="$store.getters.getClickedContainer">
-              <span :class="`text-${getBattery}`">
-                {{selectedContainer.battery ? `% ${selectedContainer.battery}` : "Veri yok"}}
-              </span>
+          <span :class="`text-${getFullness}`">
+            {{selectedContainer.fullness ? `% ${selectedContainer.fullness}` : "Veri yok"}}
+          </span>
           </div>
         </div>
       </div>
 
-      <div class="row q-mb-md">
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Yangın Riski</div>
-          <div v-if="$store.getters.getClickedContainer">
-              <span :class="`text-${checkValue(selectedContainer.fireRisk)}`">
-                {{selectedContainer.fireRisk !== null ? selectedContainer.fireRisk === true ? "Var" : "Yok" : "Veri yok"}}
-              </span>
-          </div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Pil:</div>
         </div>
 
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Cihaz</div>
+        <div :class="valueWidth">
           <div v-if="$store.getters.getClickedContainer">
-              <span :class="`text-${checkValue(selectedContainer.device)}`">
-                {{selectedContainer.device ? selectedContainer.device : "Veri yok"}}
-              </span>
+          <span :class="`text-${getBattery}`">
+            {{selectedContainer.battery ? `% ${selectedContainer.battery}` : "Veri yok"}}
+          </span>
           </div>
         </div>
       </div>
 
-      <div class="row q-mb-md">
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Son Toplama</div>
-          <div v-if="$store.getters.getClickedContainer">
-              <span :class="`text-${checkValue(selectedContainer.lastCollection)}`">
-                {{selectedContainer.lastCollection | formatDate}}
-              </span>
-          </div>
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Yangın Riski:</div>
         </div>
 
-        <div class="col-6">
-          <div :class="[textSize, 'text-weight-bold']">Son Güncelleme</div>
+        <div :class="valueWidth">
           <div v-if="$store.getters.getClickedContainer">
-              <span :class="`text-${checkValue(selectedContainer.lastUpdate)}`">
-                {{selectedContainer.lastUpdate | formatDate}}
-              </span>
+          <span :class="`text-${checkValue(selectedContainer.fireRisk)}`">
+            {{selectedContainer.fireRisk !== null ? selectedContainer.fireRisk === true ? "Var" : "Yok" : "Veri yok"}}
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Cihaz:</div>
+        </div>
+
+        <div :class="valueWidth">
+          <div v-if="$store.getters.getClickedContainer">
+            {{selectedContainer.typeName}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Son Güncelleme:</div>
+        </div>
+
+        <div :class="valueWidth">
+          <div v-if="$store.getters.getClickedContainer">
+          <span :class="`text-${checkValue(selectedContainer.lastUpdate)}`">
+            {{selectedContainer.lastUpdate | formatDate}}
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row q-mb-xs details">
+        <div :class="aliasWidth">
+          <div :class="[textSize, 'text-weight-bold']">Son Toplama:</div>
+        </div>
+
+        <div :class="valueWidth">
+          <div v-if="$store.getters.getClickedContainer">
+            <span :class="`text-${checkValue(selectedContainer.lastCollection)}`">
+              {{selectedContainer.lastCollection | formatDate}}
+            </span>
           </div>
         </div>
       </div>
@@ -124,17 +170,25 @@
 
 <script>
   import {format} from "date-fns";
+  import {mapActions} from "vuex";
 
 
   export default {
     name: "SideMenuContainerDetail",
+
+    data() {
+      return {
+        aliasWidth: "col-5",
+        valueWidth: "col-7"
+      }
+    },
 
     computed: {
       textSize() {
         if (this.$store.getters.getPageSize === "xs") {
           return "text-h8"
         } else {
-          return "text-h6"
+          return "text-h8"
         }
       },
 
@@ -172,6 +226,10 @@
     },
 
     methods: {
+      ...mapActions({
+        updateGeometry: "updatingGeometry"
+      }),
+
       checkValue(value) {
         if (value !== null) {
           return "black"
@@ -179,10 +237,6 @@
           return "grey"
         }
       },
-
-      updateGeometry() {
-        this.$store.dispatch("updatingGeometry");
-      }
     },
 
     filters: {
@@ -198,5 +252,7 @@
 </script>
 
 <style scoped>
-
+  .details {
+    border-bottom: 1px solid #e5e3e3;
+  }
 </style>

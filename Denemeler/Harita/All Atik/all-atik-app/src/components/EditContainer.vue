@@ -24,6 +24,9 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
+
+
   export default {
     name: "EditContainer",
 
@@ -34,13 +37,10 @@
     },
 
     computed: {
-      drawingManager() {
-        return this.$store.getters.getDrawingManager
-      },
-
-      map() {
-        return this.$store.getters.getMap;
-      }
+      ...mapGetters({
+        drawingManager: "getDrawingManager",
+        map: "getMap"
+      })
     },
 
     methods: {
@@ -55,8 +55,10 @@
       },
 
       initDrawingManager() {
+        console.log(this.$store.getters.getSettings);
         const _this = this;
-        const containerID = parseInt(_this.$store.getters.getSettings.containerID);
+        const containerID = parseInt(this.$store.getters.getSettings.containerID);
+        console.log(containerID);
 
         const drawingManager = new window.google.maps.drawing.DrawingManager({
           drawingControl: false,
@@ -66,10 +68,10 @@
               scale: 0
             }
           },
-          map: _this.$store.getters.getMap
+          map: this.$store.getters.getMap
         });
 
-        _this.$store.dispatch("setDrawingManager", drawingManager);
+        this.$store.dispatch("setDrawingManager", drawingManager);
 
         window.google.maps.event.addListener(_this.drawingManager, 'markercomplete', function(marker) {
           const latitude = marker.getPosition().lat();

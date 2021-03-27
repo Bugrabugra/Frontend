@@ -35,9 +35,9 @@
       </div>
     </q-card-section>
 
-    <!--<div class="row justify-center">-->
-    <!--  <q-btn @click="$store.dispatch('createRoute', true)" glossy class="q-ma-sm block" color="blue-6">Rota oluştur</q-btn>-->
-    <!--</div>-->
+    <div class="row justify-center">
+      <q-btn @click="$store.dispatch('createRoute', true)" glossy class="q-ma-sm block" color="blue-6">Rota oluştur</q-btn>
+    </div>
 
   </q-card>
 </template>
@@ -45,10 +45,6 @@
 <script>
   export default {
     name: "SideMenuFullness",
-
-    data() {
-      return {}
-    },
 
     methods: {
       handleIconFullness(event) {
@@ -60,7 +56,7 @@
         } else if (classList.includes("red")) {
           this.$store.dispatch("setSelectedFullness", {name: '% 75-100', value: '75-100'});
         } else {
-          this.$store.dispatch("setSelectedFullness", {name: "Veri yok", value: null});
+          this.$store.dispatch("setSelectedFullness", {name: "Veri yok", value: "noValue"});
         }
 
         this.$store.dispatch("selectFullness");
@@ -68,7 +64,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

@@ -64,19 +64,19 @@ export default function () {
 
       getQueryParameters(state) {
         const query = Object.keys(state.queryParameterObject).map(key => {
-          console.log(key)
           const value = state.queryParameterObject[key];
-          console.log(value)
           if (value) {
             if (key === "fullness") {
               if (key === "fullness" && value === "noValue") {
-                return `${key}=null`
+                return `${key}=null`;
+              } else if (key === "fullness" && value === "") {
+                return;
               } else {
                 const [min, max] = String(value).split("-");
                 if (max === "100") {
                   return `${key}_gte=${min}&${key}_lte=${max}`;
                 } else {
-                  return `${key}_gte=${min}&${key}_lte=${max}&${key}_ne=${max}`;
+                  return `${key}_gte=${min}&${key}_lt=${max}`;
                 }
               }
             } else {
@@ -133,7 +133,7 @@ export default function () {
       },
 
       increaseFullnessColors(state, payload) {
-        state.fullnessColors[payload]++;
+        state.fullnessColors = payload;
       },
 
       setPageSize(state, payload) {
@@ -202,7 +202,7 @@ export default function () {
         commit("setMap", payload);
       },
 
-      getContainers({commit}) {
+      getContainers(context) {
         Loading.show({
           delay: 0,
           message: 'Konteyner verisi yükleniyor<br/>',
@@ -211,12 +211,18 @@ export default function () {
 
         apiGetContainers()
           .then(response => {
+            console.log("Get containers cevap")
             const featuresWithGeometry = response.data.filter(container => {
               return container.latitude !== null && container.longitude !== null;
             });
 
-            commit("changeFilter", true);
-            commit("setContainers", featuresWithGeometry);
+            console.log(featuresWithGeometry)
+
+            context.commit("changeFilter", true);
+            context.dispatch("setContainers", featuresWithGeometry)
+              .then(() => {
+                context.dispatch("populateFullness");
+              })
           }).catch(error => {
           console.log("Konteynerler yüklenirken hata oluştu! ", error);
         })
@@ -261,6 +267,7 @@ export default function () {
       },
 
       addGeometry(context, payload) {
+        console.log(payload)
         apiPatchContainer().then(() => {
           Dialog.create({
             title: 'Uyarı',
@@ -309,18 +316,34 @@ export default function () {
       },
 
       populateFullness(context) {
-        context.dispatch("resetFullnessValues");
+        context.commit("resetFullnessValues");
+
+        let green = 0;
+        let yellow = 0;
+        let red = 0;
+        let grey = 0;
+
         context.getters.getContainers.forEach(container => {
           if (container.fullness === null) {
-            context.dispatch("increaseFullnessColors", "countGrey");
+            grey++;
           } else if (container.fullness >= 0 && container.fullness < 50) {
-            context.dispatch("increaseFullnessColors", "countGreen");
+            green++;
           } else if (container.fullness >= 50 && container.fullness < 75) {
-            context.dispatch("increaseFullnessColors", "countYellow");
+            yellow++;
           } else if (container.fullness >= 75 && container.fullness <= 100) {
-            context.dispatch("increaseFullnessColors", "countRed");
+            red++;
           }
         })
+
+        context.commit(
+          "increaseFullnessColors",
+          {
+            countGreen: green,
+            countYellow: yellow,
+            countRed: red,
+            countGrey: grey
+          }
+          )
 
         if (context.getters.getFullnessColors.countRed) {
           Notify.create({
@@ -333,22 +356,31 @@ export default function () {
       },
 
       queryContainers(context) {
-        apiGetFilteredContainers(context.getters.getQueryParameters)
-          .then(response => {
-            const featuresWithGeometry = response.data.filter(container => {
-              return container.latitude !== null && container.longitude !== null;
-            });
+        Loading.show({
+          delay: 0,
+          message: 'Konteyner verisi yükleniyor<br/>',
+          spinnerColor: "blue-6"
+        });
 
-            context.dispatch("setContainers", featuresWithGeometry)
-              .then(() => {
-                context.dispatch("populateFullness");
-                context.dispatch("changeFilter", true);
+        if (context.getters.getQueryParameters) {
+          apiGetFilteredContainers(context.getters.getQueryParameters)
+            .then(response => {
+              const featuresWithGeometry = response.data.filter(container => {
+                return container.latitude !== null && container.longitude !== null;
               });
-          })
+
+              context.dispatch("setContainers", featuresWithGeometry)
+                .then(() => {
+                  context.dispatch("populateFullness");
+                  context.dispatch("changeFilter", true);
+                });
+            })
+        } else {
+          context.dispatch("getContainers");
+        }
       },
 
       selectFullness(context) {
-        console.log(context.getters.getSelectedFullness.value);
         if (context.getters.getSelectedFullness) {
           context.dispatch(
             "updateQueryParameter",

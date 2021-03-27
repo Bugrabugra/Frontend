@@ -17,10 +17,6 @@
   export default {
     name: "SideMenuToolbar",
 
-    data() {
-      return {}
-    },
-
     computed: {
       containersCount() {
         return this.$store.getters.getContainers.length;

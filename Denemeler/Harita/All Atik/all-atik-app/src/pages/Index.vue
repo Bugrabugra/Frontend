@@ -54,7 +54,7 @@
       },
 
       pageSize() {
-        return this.$store.getters.getPageSize;
+        return this.$q.screen.name;
       },
 
       mapSize() {

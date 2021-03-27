@@ -7,6 +7,7 @@
 <script>
   import {loadedGoogleMapsAPI} from "boot/google-map";
   import MarkerClusterer from '@googlemaps/markerclustererplus';
+  import {mapGetters} from "vuex";
 
 
   export default {
@@ -21,21 +22,12 @@
     },
 
     computed: {
-      filterChanged() {
-        return this.$store.getters.filterChanged;
-      },
-
-      updatingGeometry() {
-        return this.$store.getters.updatingGeometry;
-      },
-
-      resetView() {
-        return this.$store.getters.resetView;
-      },
-
-      createRoutes() {
-        return this.$store.getters.routeCreated;
-      }
+      ...mapGetters({
+        filterChanged: "filterChanged",
+        updatingGeometry: "updatingGeometry",
+        resetView: "resetView",
+        createRoutes: "routeCreated"
+      })
     },
 
     methods: {
@@ -50,8 +42,8 @@
           lng = 29.13268504720865;
         } else if (this.$store.getters.getSettings.page === "container-page") {
           zoom = 17
-          lat = parseFloat(this.$store.getters.getSettings.latitude);
-          lng = parseFloat(this.$store.getters.getSettings.longitude);
+          lat = parseFloat(this.$store.getters.getSettings.lat);
+          lng = parseFloat(this.$store.getters.getSettings.lng);
         }
 
         const map = new window.google.maps.Map(document.getElementById("map"), {
@@ -70,6 +62,7 @@
           this.$store.dispatch("expandContainerDetail", false);
         })
 
+        console.log(this.$store.getters.getSettings);
         this.$store.dispatch("getContainers");
 
       },
@@ -236,19 +229,19 @@
           for (let i = 0, max = 24; i < stations.length; i = i + max)
             parts.push(stations.slice(i, i + max + 1));
 
-          // Service callback to process service results
-          const service_callback = (response, status) => {
-            console.log(response)
-            if (status !== 'OK') {
-              console.log('Directions request failed due to ' + status);
-              return;
-            }
+            // Service callback to process service results
+            const service_callback = (response, status) => {
+              console.log(response)
+              if (status !== 'OK') {
+                console.log('Directions request failed due to ' + status);
+                return;
+              }
 
-            const renderer = new window.google.maps.DirectionsRenderer;
-            renderer.setMap(this.$store.getters.getMap);
-            renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
-            renderer.setDirections(response);
-          };
+              const renderer = new window.google.maps.DirectionsRenderer;
+              renderer.setMap(this.$store.getters.getMap);
+              renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+              renderer.setDirections(response);
+            };
 
           // Send requests to service to get route (for stations count <= 25 only one request will be sent)
           for (let i = 0; i < parts.length; i++) {
