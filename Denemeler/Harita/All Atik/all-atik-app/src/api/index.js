@@ -11,7 +11,7 @@ if (api.defaults.baseURL === "http://localhost:3000") {
   // street özel bir durum bunun için `/streets`
   zones = `/zones`;
   containerTypes = `/containerTypes`;
-} else if (api.defaults.baseURL === "https://unit.uni-yaz.com:8383/unit-ui/rest/binary") {
+} else {
   containers = `/atik-map-containers`;
   neighborhoods = `/atik-map-neighborhoods`;
   // street özel bir durum `${neighborhoods}/${payload}/street`

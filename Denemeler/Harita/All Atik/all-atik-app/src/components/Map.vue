@@ -62,7 +62,6 @@
           this.$store.dispatch("expandContainerDetail", false);
         })
 
-        console.log(this.$store.getters.getSettings);
         this.$store.dispatch("getContainers");
 
       },

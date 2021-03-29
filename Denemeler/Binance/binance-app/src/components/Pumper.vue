@@ -195,7 +195,6 @@
 
           if (this.toggleRatio) {
             this.ratio = (((parseFloat(this.currentValue) * 100) / parseFloat(this.marketBuyPrice)) - 100).toFixed(2);
-            console.log(this.ratio)
           }
         }
       },

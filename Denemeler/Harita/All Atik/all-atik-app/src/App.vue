@@ -13,7 +13,7 @@
         const [key, value] = parameter.split("=")
         settings[key] = value;
       })
-
+      console.log(settings)
       this.$store.dispatch("setSettings", settings);
     }
   }

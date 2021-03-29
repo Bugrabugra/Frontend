@@ -268,7 +268,7 @@ export default function () {
 
       addGeometry(context, payload) {
         console.log(payload)
-        apiPatchContainer().then(() => {
+        apiPatchContainer(payload).then(() => {
           Dialog.create({
             title: 'Uyarı',
             ok: {label: "Tamam"},
