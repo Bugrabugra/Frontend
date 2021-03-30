@@ -3,15 +3,15 @@
     <div class="justify-center">
       <q-card>
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="percentages" class="q-ma-none q-pa-none">
+          <q-tab-panel v-if="percentagesIsOpen" name="percentages" class="q-ma-none q-pa-none">
             <SideMenuFullness/>
           </q-tab-panel>
 
-          <q-tab-panel name="filter" class="q-ma-none q-pa-none">
+          <q-tab-panel v-if="filterIsOpen" name="filter" class="q-ma-none q-pa-none">
             <SideMenuFilters/>
           </q-tab-panel>
 
-          <q-tab-panel name="info" class="q-ma-none q-pa-none">
+          <q-tab-panel v-if="infoIsOpen" name="info" class="q-ma-none q-pa-none">
             <SideMenuContainerDetail/>
           </q-tab-panel>
         </q-tab-panels>
@@ -23,11 +23,12 @@
           class="bg-grey-3"
           align="justify"
           narrow-indicator
+          active-color="blue-14"
           dense
         >
-          <q-tab name="percentages" label="Doluluk" />
-          <q-tab name="filter" label="Filtreler" />
-          <q-tab name="info" label="Detay" />
+          <q-tab icon="poll" name="percentages" label="DOLULUK" @click="openPercentages"/>
+          <q-tab icon="filter_alt" name="filter" label="FİLTRELER" @click="openFilter"/>
+          <q-tab icon="info" name="info" label="DETAY" @click="openInfo"/>
         </q-tabs>
       </q-card>
     </div>
@@ -43,17 +44,59 @@
   export default {
     name: "BottomMenuDesktop",
 
-    data() {
-      return {
-        tab: "percentages"
-      }
-    },
-
     components: {
       SideMenuFilters,
       SideMenuFullness,
       SideMenuContainerDetail
     },
+
+    data() {
+      return {
+        tab: "percentages",
+        percentagesIsOpen: true,
+        filterIsOpen: true,
+        infoIsOpen: true
+      }
+    },
+
+    computed: {
+      containerSelected() {
+        return this.$store.getters.getClickedContainer;
+      }
+    },
+
+    methods: {
+      openPercentages() {
+        if (this.tab === "percentages") {
+          this.percentagesIsOpen = !this.percentagesIsOpen;
+        }
+      },
+
+      openFilter() {
+        if (this.tab === "filter") {
+          this.filterIsOpen = !this.filterIsOpen;
+        }
+      },
+
+      openInfo() {
+        if (this.tab === "info") {
+          this.infoIsOpen = !this.infoIsOpen;
+        }
+      }
+    },
+
+    watch: {
+      tab() {
+        this.percentagesIsOpen = true;
+        this.filterIsOpen = true;
+        this.infoIsOpen = true;
+      },
+
+      containerSelected() {
+        this.tab = "info";
+        this.infoIsOpen = true;
+      }
+    }
   }
 </script>
 
@@ -68,5 +111,9 @@
 
   .q-item.q-item-type {
     border-bottom: #d5d4d4 1px solid;
+  }
+
+  .material-icons.q-icon.notranslate {
+    color: #6d7171;
   }
 </style>

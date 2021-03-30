@@ -57,7 +57,7 @@
       "id": 4,
       "name": "660 lt Sıcak Daldırma Galvanizli Çöp Konteyneri"
     }
-],
+  ],
   "containers": [
     {
       "id": 1,
@@ -254,8 +254,8 @@
       "device": "Cihaz Adı-lyKnLGpT",
       "lastCollection": 1615966434250,
       "lastUpdate": 1615966280649,
-      "latitude": 40.926626669143964,
-      "longitude": 29.167188587890614
+      "latitude": 40.90528780513886,
+      "longitude": 29.21774286340331
     },
     {
       "id": 10,

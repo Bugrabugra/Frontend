@@ -5,7 +5,7 @@
     <SideMenuToolbar/>
 
     <!--Menu-->
-    <q-card class="bg-blue-grey-1">
+    <q-card class="bg-white-1">
       <!--Doluluk oranı-->
       <q-expansion-item
         icon="poll"
@@ -58,7 +58,6 @@
       SideMenuContainerDetail,
       SideMenuToolbar
     },
-
   }
 </script>
 
@@ -71,7 +70,10 @@
     padding-right: 5px;
   }
 
-  .q-item.q-item-type {
-    border-bottom: #d5d4d4 1px solid;
+  /*.q-item.q-item-type {*/
+  /*  border-bottom: #d5d4d4 1px solid;*/
+  /*}*/
+  .material-icons.q-icon.notranslate {
+    color: #6d7171;
   }
 </style>

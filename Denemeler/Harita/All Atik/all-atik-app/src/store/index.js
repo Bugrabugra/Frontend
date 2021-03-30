@@ -254,6 +254,7 @@ export default function () {
           })
 
           context.dispatch("updatingGeometry");
+          context.dispatch("getContainers");
         }).catch(error => {
           console.log("Veri güncellenirken hata oluştu", error);
         })
@@ -346,12 +347,14 @@ export default function () {
           )
 
         if (context.getters.getFullnessColors.countRed) {
-          Notify.create({
-            type: 'negative',
-            message: `Dolu durumda ${context.getters.getFullnessColors.countRed} adet konteyner vardır!`,
-            actions: [{ icon: 'close', color: 'white' }],
-            icon: "local_shipping"
-          })
+          if (context.getters.getSettings.page !== "container-page") {
+            Notify.create({
+              type: 'negative',
+              message: `Dolu durumda ${context.getters.getFullnessColors.countRed} adet konteyner vardır!`,
+              actions: [{ icon: 'close', color: 'white' }],
+              icon: "local_shipping"
+            })
+          }
         }
       },
 
@@ -389,7 +392,6 @@ export default function () {
               value: context.getters.getSelectedFullness.value
             }
           )
-          // TODO
           context.dispatch("queryContainers");
         }
       }

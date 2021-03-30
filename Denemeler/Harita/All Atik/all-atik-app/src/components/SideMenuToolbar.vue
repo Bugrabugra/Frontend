@@ -7,7 +7,7 @@
     <q-icon
       name="zoom_out_map"
       size="md"
-      style="cursor:pointer;"
+      style="cursor:pointer; color: #ffffff;"
       @click="resetView"
     />
   </q-toolbar>

@@ -2,7 +2,7 @@
   <q-card style="width: 100%;">
     <q-card-section>
       <!--Adres-->
-      <div class="text-h6 text-weight-bold">Adres</div>
+      <div class="text-h7 text-weight-bold">Adres</div>
 
       <!--Mahalle-->
       <q-select
@@ -14,7 +14,6 @@
         class="q-mb-xs"
         :disable="selectedZone !== null"
         option-label="name"
-        bg-color="blue-1"
         filled
         dense
         clearable
@@ -30,14 +29,13 @@
         class="q-mb-xs q-mb-sm"
         :disable="!selectedNeighborhood"
         option-label="name"
-        bg-color="blue-1"
         filled
         dense
         clearable
       />
 
       <!--Bölge-->
-      <div class="text-h6 text-weight-bold">Bölge</div>
+      <div class="text-h7 text-weight-bold">Bölge</div>
 
       <!--Bölge-->
       <q-select
@@ -49,14 +47,13 @@
         option-label="name"
         class="q-mb-xs q-mb-sm"
         :disable="selectedNeighborhood !== null"
-        bg-color="blue-1"
         filled
         dense
         clearable
       />
 
       <!--Konteyner-->
-      <div class="text-h6 text-weight-bold">Konteyner</div>
+      <div class="text-h7 text-weight-bold">Konteyner</div>
 
       <!--Konteyner tipi-->
       <q-select
@@ -67,7 +64,6 @@
         label="Konteyner Tipi"
         option-label="name"
         class="q-mb-xs q-mb-sm"
-        bg-color="blue-1"
         filled
         dense
         clearable
@@ -81,7 +77,6 @@
         :options="fullness"
         label="Doluluk"
         option-label="name"
-        bg-color="blue-1"
         filled
         dense
         clearable

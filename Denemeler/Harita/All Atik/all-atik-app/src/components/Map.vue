@@ -120,6 +120,12 @@
             icon: svgMarker,
             animation: window.google.maps.Animation.DROP,
             clickable: true,
+            // TODO LABELI İPTAL ET
+            // label: {
+            //   text: String(container.id),
+            //   fontWeight: "bold",
+            //   fontSize: "20px"
+            // }
           });
 
           marker.setMap(this.$store.getters.getMap);
@@ -143,6 +149,7 @@
           return marker;
         });
 
+        // TODO CLUSTERI GERI AÇ
         this.markerCluster = new MarkerClusterer(
           this.$store.getters.getMap,
           this.markers,
@@ -219,8 +226,15 @@
       createRoutes() {
         if (this.$store.getters.routeCreated) {
           const stations = this.$store.getters.getContainers.map(container => {
-            return {lat: container.latitude, lng: container.longitude, name:container.containerName};
+            return {
+              lat: container.latitude,
+              lng: container.longitude,
+              name:container.containerName,
+              id: container.id
+            };
           });
+
+          console.log("Input stations: ", stations);
 
           // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
           let parts = []
@@ -238,14 +252,22 @@
 
               const renderer = new window.google.maps.DirectionsRenderer;
               renderer.setMap(this.$store.getters.getMap);
-              renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+              renderer.setOptions({
+                suppressMarkers: false,
+                preserveViewport: true,
+                suppressInfoWindows: false
+              });
               renderer.setDirections(response);
             };
 
-          // Send requests to service to get route (for stations count <= 25 only one request will be sent)
+          console.log("Parts: ", parts);
+
+          // Send requests to service to get route
+          // (for stations count <= 25 only one request will be sent)
           for (let i = 0; i < parts.length; i++) {
 
-            // Waypoints does not include first station (origin) and last station (destination)
+            // Waypoints does not include first station (origin)
+            // and last station (destination)
             const waypoints = [];
             for (let j = 1; j < parts[i].length - 1; j++)
               waypoints.push({location: parts[i][j], stopover: false});
