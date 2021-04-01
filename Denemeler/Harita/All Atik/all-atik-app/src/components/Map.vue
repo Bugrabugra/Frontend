@@ -32,6 +32,15 @@
 
     methods: {
       initMap() {
+        navigator.geolocation.getCurrentPosition(
+          success => {
+            console.log(success)
+          }, error => {
+            console.log(error)
+          },
+          {enableHighAccuracy: true}
+        )
+
         let zoom;
         let lat;
         let lng;
@@ -54,6 +63,9 @@
           },
           mapId: "b15068e07cf8d4c6",
         });
+
+        // Municipality center marker
+
 
         this.$store.dispatch("setMap", map);
 
@@ -106,7 +118,7 @@
             strokeColor: "#a0a0a0",
             rotation: 0,
             scale: 2.0,
-            anchor: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(12, 10),
           };
 
           const containerLatLng = {
@@ -120,12 +132,13 @@
             icon: svgMarker,
             animation: window.google.maps.Animation.DROP,
             clickable: true,
-            // TODO LABELI İPTAL ET
-            // label: {
-            //   text: String(container.id),
-            //   fontWeight: "bold",
-            //   fontSize: "20px"
-            // }
+            label: this.$store.getters.getSettings.page === "container-page" ?
+              {
+                text: String(container.id),
+                fontWeight: "bold",
+                fontSize: "20px",
+                color: "#dc4a4a"
+              } : null
           });
 
           marker.setMap(this.$store.getters.getMap);
