@@ -74,30 +74,44 @@
       </div>
 
       <div class="row q-mb-xs details">
-        <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Doluluk:</div>
-        </div>
-
-        <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
-          <span :class="`text-${getFullness}`">
-            {{selectedContainer.fullness ? `% ${selectedContainer.fullness}` : "Veri yok"}}
-          </span>
+        <div class="col-6">
+          <div :class="aliasWidth">
+            <div :class="[textSize, 'text-weight-bold']">Doluluk:</div>
           </div>
-        </div>
-      </div>
 
-      <div class="row q-mb-xs details">
-        <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Pil:</div>
+          <q-circular-progress
+            v-if="$store.getters.getClickedContainer"
+            show-value
+            font-size="12px"
+            :value="selectedContainer.fullness ? selectedContainer.fullness : 'Veri yok'"
+            size="50px"
+            :thickness="0.22"
+            :color="getFullness"
+            track-color="grey-3"
+            class="q-ma-md"
+          >
+            %{{selectedContainer.fullness ? selectedContainer.fullness : "Veri yok"}}
+          </q-circular-progress>
         </div>
 
-        <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
-          <span :class="`text-${getBattery}`">
-            {{selectedContainer.battery ? `% ${selectedContainer.battery}` : "Veri yok"}}
-          </span>
+        <div class="col-6">
+          <div :class="aliasWidth">
+            <div :class="[textSize, 'text-weight-bold']">Pil:</div>
           </div>
+
+          <q-circular-progress
+            v-if="$store.getters.getClickedContainer"
+            show-value
+            font-size="12px"
+            :value="selectedContainer.battery ? selectedContainer.battery : 'Veri yok'"
+            size="50px"
+            :thickness="0.22"
+            :color="getBattery"
+            track-color="grey-3"
+            class="q-ma-md"
+          >
+            %{{selectedContainer.battery ? selectedContainer.battery : "Veri yok"}}
+          </q-circular-progress>
         </div>
       </div>
 
@@ -154,23 +168,12 @@
           </div>
         </div>
       </div>
-
-      <div class="row justify-center">
-        <q-btn
-          :disable="!this.$store.getters.getClickedContainer"
-          @click="updateGeometry"
-          :label="this.$store.getters.updatingGeometry ? 'Geometri Düzenleniyor' : 'Geometri Düzenle'"
-          :color="!this.$store.getters.getClickedContainer ? 'grey-5' : 'blue-6'"
-          :outline="this.$store.getters.updatingGeometry"
-        />
-      </div>
     </q-card-section>
   </q-card>
 </template>
 
 <script>
   import {format} from "date-fns";
-  import {mapActions} from "vuex";
 
 
   export default {
@@ -226,10 +229,6 @@
     },
 
     methods: {
-      ...mapActions({
-        updateGeometry: "updatingGeometry"
-      }),
-
       checkValue(value) {
         if (value !== null) {
           return "black"

@@ -105,7 +105,7 @@ module.exports = function (/* ctx */) {
     // https://quasar.dev/options/animations
     animations: [
       "fadeInRight",
-      "fadeInLeft"
+      "fadeInLeft",
     ],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr

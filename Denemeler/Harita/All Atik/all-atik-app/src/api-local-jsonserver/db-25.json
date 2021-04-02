@@ -1,4 +1,18 @@
 {
+  "institution": [
+    {
+      "id": 1,
+      "name": "Ataşehir Belediyesi",
+      "institutionCoordinates": {
+        "lat": 40.99746121927607,
+        "lng": 29.10117809329827
+      },
+      "disposalCoordinates": {
+        "lat": 40.92740338231693,
+        "lng": 29.208084503737982
+      }
+    }
+  ],
   "neighborhoods": [
     {
       "id": 1,
@@ -254,8 +268,8 @@
       "device": "Cihaz Adı-lyKnLGpT",
       "lastCollection": 1615966434250,
       "lastUpdate": 1615966280649,
-      "latitude": 40.90528780513886,
-      "longitude": 29.21774286340331
+      "latitude": 40.908920438633125,
+      "longitude": 29.212593022094715
     },
     {
       "id": 10,
@@ -452,8 +466,8 @@
       "device": "Cihaz Adı-QsSDCe3V",
       "lastCollection": 1615966434342,
       "lastUpdate": 1615966491159,
-      "latitude": 40.9688997592859,
-      "longitude": 29.131469355468766
+      "latitude": 40.972788112618765,
+      "longitude": 29.134215937500016
     },
     {
       "id": 19,
@@ -513,101 +527,13 @@
       "typeID": 36590,
       "typeName": "Tip Adı-sxBJIQCS",
       "fullness": 58,
-      "battery": 67,
+      "battery": 100,
       "fireRisk": true,
       "device": "Cihaz Adı-WUTytCOL",
       "lastCollection": 1615966504019,
       "lastUpdate": 1615967072571,
       "latitude": 40.981237087851405,
       "longitude": 29.123057021484396
-    },
-    {
-      "id": 22,
-      "containerName": "Konteyner Adı-tIqdatCy",
-      "districtID": 5831,
-      "districtName": "İlçe Adı-OpsUletk",
-      "neighborhoodID": 5831,
-      "neighborhoodName": "Mahalle Adı-ty39zVbm",
-      "streetID": 5831,
-      "streetName": "Cadde/Sokak Adı-pPPaDgtN",
-      "zoneID": 2,
-      "zoneName": "Uydukent M2",
-      "typeID": 5831,
-      "typeName": "Tip Adı-EGwJmTGL",
-      "fullness": 94,
-      "battery": 45,
-      "fireRisk": true,
-      "device": "Cihaz Adı-X9BW0kCc",
-      "lastCollection": 1615966223880,
-      "lastUpdate": 1615967083606,
-      "latitude": 41.00311572341291,
-      "longitude": 29.03104523947143
-    },
-    {
-      "id": 23,
-      "containerName": "Konteyner Adı-sJvgAoIb",
-      "districtID": 58775,
-      "districtName": "İlçe Adı-XjI48TeD",
-      "neighborhoodID": 58775,
-      "neighborhoodName": "Mahalle Adı-IXHHZWak",
-      "streetID": 58775,
-      "streetName": "Cadde/Sokak Adı-wBbHx6Rh",
-      "zoneID": 2,
-      "zoneName": "Uydukent M2",
-      "typeID": 58775,
-      "typeName": "Tip Adı-U4xSBFa9",
-      "fullness": 31,
-      "battery": 75,
-      "fireRisk": true,
-      "device": "Cihaz Adı-p7WVJ9Y0",
-      "lastCollection": 1615966211840,
-      "lastUpdate": 1615966892215,
-      "latitude": 40.95034737473425,
-      "longitude": 29.123997487792987
-    },
-    {
-      "id": 24,
-      "containerName": "Konteyner Adı-FTAEHRVL",
-      "districtID": 31343,
-      "districtName": "İlçe Adı-ECSOvGDQ",
-      "neighborhoodID": 31343,
-      "neighborhoodName": "Mahalle Adı-awY5iOGr",
-      "streetID": 31343,
-      "streetName": "Cadde/Sokak Adı-Fc7ntCPX",
-      "zoneID": 2,
-      "zoneName": "Uydukent M2",
-      "typeID": 31343,
-      "typeName": "Tip Adı-viUOpFDE",
-      "fullness": 57,
-      "battery": 23,
-      "fireRisk": false,
-      "device": "Cihaz Adı-OnX87N4M",
-      "lastCollection": 1615966901283,
-      "lastUpdate": 1615966713257,
-      "latitude": 40.95729804778178,
-      "longitude": 29.097048009765615
-    },
-    {
-      "id": 25,
-      "containerName": "Konteyner Adı-X7RxK13g",
-      "districtID": 90529,
-      "districtName": "İlçe Adı-L1CIrkO2",
-      "neighborhoodID": 90529,
-      "neighborhoodName": "Mahalle Adı-1Iz60wew",
-      "streetID": 90529,
-      "streetName": "Cadde/Sokak Adı-64Z4luX1",
-      "zoneID": 90529,
-      "zoneName": "Blge Adı-Hdcu4ukN",
-      "typeID": 90529,
-      "typeName": "Tip Adı-44t5n2X7",
-      "fullness": null,
-      "battery": 38,
-      "fireRisk": false,
-      "device": "Cihaz Adı-w3d8nEE8",
-      "lastCollection": 1615966831190,
-      "lastUpdate": 1615966462010,
-      "latitude": 40.86188059782965,
-      "longitude": 29.119948272654955
     }
   ]
 }

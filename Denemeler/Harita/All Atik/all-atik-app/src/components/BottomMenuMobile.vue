@@ -11,6 +11,10 @@
             <SideMenuFilters/>
           </q-tab-panel>
 
+          <q-tab-panel v-if="spatialIsOpen" name="spatial" class="q-ma-none q-pa-none">
+            <SideMenuSpatialOperations/>
+          </q-tab-panel>
+
           <q-tab-panel v-if="infoIsOpen" name="info" class="q-ma-none q-pa-none">
             <SideMenuContainerDetail/>
           </q-tab-panel>
@@ -28,6 +32,7 @@
         >
           <q-tab icon="poll" name="percentages" label="DOLULUK" @click="openPercentages"/>
           <q-tab icon="filter_alt" name="filter" label="FİLTRELER" @click="openFilter"/>
+          <q-tab icon="public" name="spatial" label="COĞRAFİ İŞLEMLER" @click="openSpatial"/>
           <q-tab icon="info" name="info" label="DETAY" @click="openInfo"/>
         </q-tabs>
       </q-card>
@@ -39,12 +44,14 @@
   import SideMenuContainerDetail from "components/SideMenuContainerDetail";
   import SideMenuFullness from "components/SideMenuFullness";
   import SideMenuFilters from "components/SideMenuFilters";
+  import SideMenuSpatialOperations from "components/SideMenuSpatialOperations";
 
 
   export default {
     name: "BottomMenuDesktop",
 
     components: {
+      SideMenuSpatialOperations,
       SideMenuFilters,
       SideMenuFullness,
       SideMenuContainerDetail
@@ -55,6 +62,7 @@
         tab: "percentages",
         percentagesIsOpen: true,
         filterIsOpen: true,
+        spatialIsOpen: true,
         infoIsOpen: true
       }
     },
@@ -78,6 +86,12 @@
         }
       },
 
+      openSpatial() {
+        if (this.tab === "spatial") {
+          this.filterIsOpen = !this.filterIsOpen;
+        }
+      },
+
       openInfo() {
         if (this.tab === "info") {
           this.infoIsOpen = !this.infoIsOpen;
@@ -89,6 +103,7 @@
       tab() {
         this.percentagesIsOpen = true;
         this.filterIsOpen = true;
+        this.spatialIsOpen = true;
         this.infoIsOpen = true;
       },
 

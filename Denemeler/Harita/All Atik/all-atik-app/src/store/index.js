@@ -34,7 +34,9 @@ export default function () {
         countYellow: 0,
         countRed: 0,
         countGrey: 0,
-      }
+      },
+      myLocation: null,
+      myLocationMarker: null
     },
 
     getters: {
@@ -121,6 +123,14 @@ export default function () {
 
       getSelectedFullness(state) {
         return state.selectedFullness;
+      },
+
+      getMyLocation(state) {
+        return state.myLocation;
+      },
+
+      getMyLocationMarker(state) {
+        return state.myLocationMarker;
       }
     },
 
@@ -190,6 +200,14 @@ export default function () {
 
       setSelectedFullness(state, payload) {
         state.selectedFullness = payload;
+      },
+
+      setMyLocation(state, payload) {
+        state.myLocation = payload;
+      },
+
+      setMyLocationMarker(state, payload) {
+        state.myLocationMarker = payload;
       }
     },
 
@@ -394,6 +412,52 @@ export default function () {
           )
           context.dispatch("queryContainers");
         }
+      },
+
+      setMyLocation(context) {
+        if (context.getters.getMyLocationMarker) {
+          context.getters.getMyLocationMarker.setMap(null);
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          response => {
+            console.log(response);
+            const payload = {
+              lat: response.coords.latitude,
+              lng: response.coords.longitude
+            }
+            context.commit("setMyLocation", payload);
+
+            const markerMyLocation = new window.google.maps.Marker({
+              position: context.getters.getMyLocation,
+              title: "Konumum",
+              icon: {
+                path:
+                  "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z",
+                fillColor: "purple",
+                fillOpacity: 0.3,
+                strokeWeight: 1,
+                rotation: 0,
+                scale: 2,
+                anchor: new window.google.maps.Point(15, 30),
+              },
+              map: context.getters.getMap
+            })
+
+            context.dispatch("setMyLocationMarker", markerMyLocation)
+          }, error => {
+            console.log("Konum bilgisi çekilirken hata oluştu", error)
+          },
+          {
+            enableHighAccuracy: true,
+            maximumAge: 1,
+          }
+        )
+
+      },
+
+      setMyLocationMarker(context, payload) {
+        context.commit("setMyLocationMarker", payload);
       }
     }
   })

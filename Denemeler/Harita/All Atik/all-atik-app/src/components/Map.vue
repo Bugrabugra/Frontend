@@ -26,21 +26,13 @@
         filterChanged: "filterChanged",
         updatingGeometry: "updatingGeometry",
         resetView: "resetView",
-        createRoutes: "routeCreated"
+        createRoutes: "routeCreated",
+        getMyLocation: "getMyLocation"
       })
     },
 
     methods: {
       initMap() {
-        navigator.geolocation.getCurrentPosition(
-          success => {
-            console.log(success)
-          }, error => {
-            console.log(error)
-          },
-          {enableHighAccuracy: true}
-        )
-
         let zoom;
         let lat;
         let lng;
@@ -64,9 +56,6 @@
           mapId: "b15068e07cf8d4c6",
         });
 
-        // Municipality center marker
-
-
         this.$store.dispatch("setMap", map);
 
         this.$store.getters.getMap.addListener("click", () => {
@@ -76,6 +65,39 @@
 
         this.$store.dispatch("getContainers");
 
+        // Municipality center marker
+        const markerMunicipalityCenter = new window.google.maps.Marker({
+          position: {lat: 40.99746121927607, lng: 29.10117809329827},
+          title: "Belediye Merkez",
+          icon: {
+            path:
+              "M0,21V10L7.5,5L15,10V21H10V14H5V21H0M24,2V21H17V8.93L16,8.27V6H14V6.93L10,4.27V2H24M21,14H19V16H21V14M21,10H19V12H21V10M21,6H19V8H21V6Z",
+            fillColor: "blue",
+            fillOpacity: 1,
+            strokeWeight: 1,
+            rotation: 0,
+            scale: 1,
+            anchor: new window.google.maps.Point(15, 30),
+          },
+          map: this.$store.getters.getMap
+        })
+
+        // Municipality center marker
+        const markerDisposalArea = new window.google.maps.Marker({
+          position: {lat: 40.92740338231693, lng: 29.208084503737982},
+          title: "Çöp Döküm Merkezi",
+          icon: {
+            path:
+              "M4,18V20H8V18H4M4,14V16H14V14H4M10,18V20H14V18H10M16,14V16H20V14H16M16,18V20H20V18H16M2,22V8L7,12V8L12,12V8L17,12L18,2H21L22,12V22H2Z",
+            fillColor: "blue",
+            fillOpacity: 1,
+            strokeWeight: 0,
+            rotation: 0,
+            scale: 2,
+            anchor: new window.google.maps.Point(15, 15),
+          },
+          map: this.$store.getters.getMap
+        })
       },
 
       drawContainers() {
@@ -168,7 +190,7 @@
           this.markers,
           {
             maxZoom: 14,
-            gridSize: 50,
+            gridSize: 30,
             styles: [
               {
                 anchorText: [20, 2],
@@ -203,10 +225,19 @@
 
         this.$q.loading.hide();
         this.$store.dispatch("changeFilter", false);
+      },
+
+      drawMyLocation() {
+        // My location marker
+
       }
     },
 
     watch: {
+      getMyLocation() {
+        this.drawMyLocation();
+      },
+
       filterChanged() {
         if (this.filterChanged) {
           this.drawContainers();

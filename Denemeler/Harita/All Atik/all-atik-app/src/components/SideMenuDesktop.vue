@@ -28,6 +28,17 @@
         <SideMenuFilters/>
       </q-expansion-item>
 
+      <!--İşlemler-->
+      <q-expansion-item
+        @click="$store.dispatch('expandContainerDetail', false)"
+        icon="public"
+        group="group"
+        label="Coğrafi İşlemler"
+        expand-separator
+      >
+        <SideMenuSpatialOperations/>
+      </q-expansion-item>
+
       <!--Konteyner detay-->
       <q-expansion-item
         :value="$store.getters.expandContainerDetail"
@@ -47,12 +58,14 @@
   import SideMenuContainerDetail from "components/SideMenuContainerDetail";
   import SideMenuFullness from "components/SideMenuFullness";
   import SideMenuFilters from "components/SideMenuFilters";
+  import SideMenuSpatialOperations from "components/SideMenuSpatialOperations";
 
 
   export default {
     name: "SideMenuDesktop",
 
     components: {
+      SideMenuSpatialOperations,
       SideMenuFilters,
       SideMenuFullness,
       SideMenuContainerDetail,

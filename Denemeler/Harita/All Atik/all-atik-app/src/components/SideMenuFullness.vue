@@ -34,11 +34,6 @@
         </div>
       </div>
     </q-card-section>
-
-    <div class="row justify-center">
-      <q-btn @click="$store.dispatch('createRoute', true)" glossy class="q-ma-sm block" color="blue-6">Rota oluştur</q-btn>
-    </div>
-
   </q-card>
 </template>
 
