@@ -1,4 +1,4 @@
-const response = require("../distance-matrix-response/response.json");
+const response = require("../distance-matrix-response-creator/response.json");
 const Excel = require('exceljs');
 
 
@@ -16,9 +16,3 @@ response.rows.forEach((row, i) => {
 });
 
 workbook.xlsx.writeFile('Distances.xlsx').then(() => {});
-
-
-
-// response.rows.forEach(row => {
-//   console.log(row.elements)
-// })

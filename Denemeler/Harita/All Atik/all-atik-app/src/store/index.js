@@ -22,6 +22,7 @@ export default function () {
         zoneID: 0,
         typeID: 0,
         fullness: "",
+        fireRisk: null
       },
       updatingGeometry: false,
       currentMarkerSymbol: {},
@@ -36,10 +37,20 @@ export default function () {
         countGrey: 0,
       },
       myLocation: null,
-      myLocationMarker: null
+      myLocationMarker: null,
+      counterFireRisk: 0,
+      queryPolygon: null
     },
 
     getters: {
+      getQueryParameterObject(state) {
+        return state.queryParameterObject;
+      },
+
+      getSelectedFireRisk(state) {
+        return state.queryParameterObject.fireRisk;
+      },
+
       getFullnessColors(state) {
         return state.fullnessColors;
       },
@@ -81,7 +92,14 @@ export default function () {
                   return `${key}_gte=${min}&${key}_lt=${max}`;
                 }
               }
-            } else {
+            } else if (key === "fireRisk") {
+              if (value === "yes") {
+                return `${key}=true`;
+              } else {
+                return `${key}=false`;
+              }
+            }
+            else {
               return `${key}=${value}`;
             }
           }
@@ -131,6 +149,14 @@ export default function () {
 
       getMyLocationMarker(state) {
         return state.myLocationMarker;
+      },
+
+      getCounterFireRisk(state) {
+        return state.counterFireRisk;
+      },
+
+      getQueryPolygon(state) {
+        return state.queryPolygon;
       }
     },
 
@@ -158,7 +184,7 @@ export default function () {
         state.containers = payload;
       },
 
-      getClickedContainer(state, payload) {
+      setClickedContainer(state, payload) {
         state.clickedContainer = payload;
       },
 
@@ -208,6 +234,14 @@ export default function () {
 
       setMyLocationMarker(state, payload) {
         state.myLocationMarker = payload;
+      },
+
+      setCounterFireRisk(state, payload) {
+        state.counterFireRisk = payload;
+      },
+
+      setQueryPolygon(state, payload) {
+        state.queryPolygon = payload;
       }
     },
 
@@ -250,8 +284,8 @@ export default function () {
         commit("setContainers", payload);
       },
 
-      getClickedContainer({commit}, payload) {
-        commit("getClickedContainer", payload);
+      setClickedContainer({commit}, payload) {
+        commit("setClickedContainer", payload);
         commit("expandContainerDetail", true);
       },
 
@@ -367,10 +401,11 @@ export default function () {
         if (context.getters.getFullnessColors.countRed) {
           if (context.getters.getSettings.page !== "container-page") {
             Notify.create({
-              type: 'negative',
+              type: 'info',
               message: `Dolu durumda ${context.getters.getFullnessColors.countRed} adet konteyner vardır!`,
               actions: [{ icon: 'close', color: 'white' }],
-              icon: "local_shipping"
+              icon: "local_shipping",
+              classes: "notifier-fullness"
             })
           }
         }
@@ -433,16 +468,19 @@ export default function () {
               title: "Konumum",
               icon: {
                 path:
-                  "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z",
-                fillColor: "purple",
-                fillOpacity: 0.3,
-                strokeWeight: 1,
+                  "M12,2C15.31,2 18,4.66 18,7.95C18,12.41 12,19 12,19C12,19 6,12.41 6,7.95C6,4.66 8.69,2 12,2M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M20,19C20,21.21 16.42,23 12,23C7.58,23 4,21.21 4,19C4,17.71 5.22,16.56 7.11,15.83L7.75,16.74C6.67,17.19 6,17.81 6,18.5C6,19.88 8.69,21 12,21C15.31,21 18,19.88 18,18.5C18,17.81 17.33,17.19 16.25,16.74L16.89,15.83C18.78,16.56 20,17.71 20,19Z",
+                fillColor: "grey",
+                fillOpacity: 1,
+                strokeWeight: 0,
                 rotation: 0,
                 scale: 2,
                 anchor: new window.google.maps.Point(15, 30),
               },
               map: context.getters.getMap
             })
+
+            context.getters.getMap.panTo(context.getters.getMyLocation);
+            context.getters.getMap.setZoom(17);
 
             context.dispatch("setMyLocationMarker", markerMyLocation)
           }, error => {
@@ -458,6 +496,40 @@ export default function () {
 
       setMyLocationMarker(context, payload) {
         context.commit("setMyLocationMarker", payload);
+      },
+
+      setCounterFireRisk(context, payload) {
+        context.commit("setCounterFireRisk", payload);
+
+        Notify.create({
+          type: 'negative',
+          message: `Yangın riski olan ${context.getters.getCounterFireRisk} adet konteyner vardır!`,
+          actions: [
+            {
+              icon: "visibility",
+              color: "white",
+              handler: () => {
+                // context.commit("updateQueryParameter", {query: "neighborhoodID", value: 0});
+                // context.commit("updateQueryParameter", {query: "streetID", value: 0});
+                // context.commit("updateQueryParameter", {query: "zoneID", value: 0});
+                // context.commit("updateQueryParameter", {query: "typeID", value: 0});
+                // context.commit("updateQueryParameter", {query: "fullness", value: ""});
+
+                context.commit("updateQueryParameter", {query: "fireRisk", value: "yes"});
+                context.dispatch("queryContainers");
+              },
+              label: "GÖRMEK İÇİN TIKLAYINIZ"
+              },
+            {icon: 'close', color: 'white'}
+            ],
+          icon: "local_fire_department",
+          timeout: 3000000,
+          classes: "notifier-fire-risk"
+        })
+      },
+
+      setQueryPolygon({commit}, payload) {
+        commit("setQueryPolygon", payload);
       }
     }
   })

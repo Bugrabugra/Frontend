@@ -1,7 +1,7 @@
 <template>
   <q-toolbar class="text-primary bg-grey-8 text-white">
     <q-toolbar-title>
-      Konteyner Adet: <span v-if="$store.getters.getContainers">{{containersCount}}</span>
+      Konteyner Adet: <span v-if="getContainers">{{containersCount}}</span>
     </q-toolbar-title>
 
     <q-icon
@@ -14,10 +14,17 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
+
+
   export default {
     name: "SideMenuToolbar",
 
     computed: {
+      ...mapGetters([
+        "getContainers"
+      ]),
+
       containersCount() {
         return this.$store.getters.getContainers.length;
       },
@@ -30,7 +37,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

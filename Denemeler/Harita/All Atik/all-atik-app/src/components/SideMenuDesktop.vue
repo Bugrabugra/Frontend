@@ -41,7 +41,7 @@
 
       <!--Konteyner detay-->
       <q-expansion-item
-        :value="$store.getters.expandContainerDetail"
+        :value="expandContainerDetail"
         group="group"
         expand-separator
         icon="info"
@@ -54,11 +54,12 @@
 </template>
 
 <script>
-  import SideMenuToolbar from "components/SideMenuToolbar";
-  import SideMenuContainerDetail from "components/SideMenuContainerDetail";
-  import SideMenuFullness from "components/SideMenuFullness";
-  import SideMenuFilters from "components/SideMenuFilters";
-  import SideMenuSpatialOperations from "components/SideMenuSpatialOperations";
+  import SideMenuToolbar from "components/MainMapPage/SideMenuToolbar";
+  import SideMenuContainerDetail from "components/MainMapPage/SideMenuContainerDetail";
+  import SideMenuFullness from "components/MainMapPage/SideMenuFullness";
+  import SideMenuFilters from "components/MainMapPage/SideMenuFilters";
+  import SideMenuSpatialOperations from "components/MainMapPage/SideMenuSpatialOperations";
+  import {mapGetters} from "vuex";
 
 
   export default {
@@ -71,6 +72,12 @@
       SideMenuContainerDetail,
       SideMenuToolbar
     },
+
+    computed: {
+      ...mapGetters([
+        "expandContainerDetail"
+      ])
+    }
   }
 </script>
 
@@ -86,7 +93,7 @@
   /*.q-item.q-item-type {*/
   /*  border-bottom: #d5d4d4 1px solid;*/
   /*}*/
-  .material-icons.q-icon.notranslate {
+  .q-expansion-item__container .material-icons.q-icon.notranslate {
     color: #6d7171;
   }
 </style>

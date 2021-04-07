@@ -2,12 +2,14 @@
   <q-card style="width: 100%;">
     <q-card-section>
       <div class="row q-mb-xs details">
+
+        <!--  Konteyner Detayları-->
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">ID:</div>
         </div>
 
         <div :class="valueWidth">
-          <div class="q-mr-xs" v-if="$store.getters.getClickedContainer">
+          <div class="q-mr-xs" v-if="getClickedContainer">
             {{selectedContainer.id}}
           </div>
         </div>
@@ -19,7 +21,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
             {{selectedContainer.containerName}}
           </div>
         </div>
@@ -31,7 +33,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div class="q-mr-xs" v-if="$store.getters.getClickedContainer">
+          <div class="q-mr-xs" v-if="getClickedContainer">
             {{selectedContainer.neighborhoodName}}
           </div>
         </div>
@@ -43,7 +45,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
             {{selectedContainer.streetName}}
           </div>
         </div>
@@ -55,7 +57,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div class="q-mr-xs" v-if="$store.getters.getClickedContainer">
+          <div class="q-mr-xs" v-if="getClickedContainer">
             {{selectedContainer.zoneName}}
           </div>
         </div>
@@ -67,7 +69,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
             {{selectedContainer.typeName}}
           </div>
         </div>
@@ -80,10 +82,10 @@
           </div>
 
           <q-circular-progress
-            v-if="$store.getters.getClickedContainer"
-            show-value
+            v-if="getClickedContainer"
+            :show-value="selectedContainer.fullness !== null"
             font-size="12px"
-            :value="selectedContainer.fullness ? selectedContainer.fullness : 'Veri yok'"
+            :value="selectedContainer.fullness ? selectedContainer.fullness : 0"
             size="50px"
             :thickness="0.22"
             :color="getFullness"
@@ -100,10 +102,10 @@
           </div>
 
           <q-circular-progress
-            v-if="$store.getters.getClickedContainer"
-            show-value
+            v-if="getClickedContainer"
+            :show-value="selectedContainer.battery !== null"
             font-size="12px"
-            :value="selectedContainer.battery ? selectedContainer.battery : 'Veri yok'"
+            :value="selectedContainer.battery ? selectedContainer.battery : 0"
             size="50px"
             :thickness="0.22"
             :color="getBattery"
@@ -112,6 +114,7 @@
           >
             %{{selectedContainer.battery ? selectedContainer.battery : "Veri yok"}}
           </q-circular-progress>
+
         </div>
       </div>
 
@@ -121,7 +124,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
           <span :class="`text-${checkValue(selectedContainer.fireRisk)}`">
             {{selectedContainer.fireRisk !== null ? selectedContainer.fireRisk === true ? "Var" : "Yok" : "Veri yok"}}
           </span>
@@ -135,7 +138,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
             {{selectedContainer.typeName}}
           </div>
         </div>
@@ -147,7 +150,7 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
           <span :class="`text-${checkValue(selectedContainer.lastUpdate)}`">
             {{selectedContainer.lastUpdate | formatDate}}
           </span>
@@ -161,19 +164,21 @@
         </div>
 
         <div :class="valueWidth">
-          <div v-if="$store.getters.getClickedContainer">
+          <div v-if="getClickedContainer">
             <span :class="`text-${checkValue(selectedContainer.lastCollection)}`">
               {{selectedContainer.lastCollection | formatDate}}
             </span>
           </div>
         </div>
       </div>
+
     </q-card-section>
   </q-card>
 </template>
 
 <script>
   import {format} from "date-fns";
+  import {mapGetters} from "vuex";
 
 
   export default {
@@ -187,6 +192,10 @@
     },
 
     computed: {
+      ...mapGetters([
+        "getClickedContainer"
+      ]),
+
       textSize() {
         if (this.$store.getters.getPageSize === "xs") {
           return "text-h8"
@@ -231,9 +240,12 @@
     methods: {
       checkValue(value) {
         if (value !== null) {
-          return "black"
-        } else {
-          return "grey"
+          if (value === true) {
+            return "red";
+          }
+          return "black";
+        }  else {
+          return "grey";
         }
       },
     },
@@ -241,7 +253,7 @@
     filters: {
       formatDate(value) {
         if (value) {
-          return format(value, "dd.MM.yyyy - HH:MM")
+          return format(value, "dd.MM.yyyy - HH:mm")
         } else {
           return "Veri yok";
         }
@@ -253,5 +265,6 @@
 <style scoped>
   .details {
     border-bottom: 1px solid #e5e3e3;
+    padding-bottom: 3px;
   }
 </style>

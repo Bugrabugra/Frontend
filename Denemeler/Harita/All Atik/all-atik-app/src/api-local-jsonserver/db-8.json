@@ -1,0 +1,253 @@
+{
+  "institution": [
+    {
+      "id": 1,
+      "name": "Ataşehir Belediyesi",
+      "institutionCoordinates": {
+        "lat": 40.99746121927607,
+        "lng": 29.10117809329827
+      },
+      "disposalCoordinates": {
+        "lat": 40.92740338231693,
+        "lng": 29.208084503737982
+      }
+    }
+  ],
+  "neighborhoods": [
+    {
+      "id": 1,
+      "districtID": 1,
+      "name": "Atatürk"
+    },
+    {
+      "id": 2,
+      "districtID": 1,
+      "name": "Cumhuriyet"
+    }
+  ],
+  "streets": [
+    {
+      "id": 1,
+      "neighborhoodID": 1,
+      "name": "Erzincan"
+    },
+    {
+      "id": 2,
+      "neighborhoodID": 1,
+      "name": "Bilgi"
+    },
+    {
+      "id": 3,
+      "neighborhoodID": 2,
+      "name": "Öztürk"
+    }
+  ],
+  "zones": [
+    {
+      "id": 1,
+      "districtID": 1,
+      "name": "Atablok B2"
+    },
+    {
+      "id": 2,
+      "districtID": 1,
+      "name": "Uydukent M2"
+    }
+  ],
+  "containertypes": [
+    {
+      "id": 1,
+      "name": "770 lt Sıcak Daldırma Galvanizli Çöp Konteyneri"
+    },
+    {
+      "id": 2,
+      "name": "PLASTİK ÇÖP KONTEYNERİ"
+    },
+    {
+      "id": 3,
+      "name": "TIBBİ ATIK KONTEYNER"
+    },
+    {
+      "id": 4,
+      "name": "660 lt Sıcak Daldırma Galvanizli Çöp Konteyneri"
+    }
+  ],
+  "containers": [
+    {
+      "id": 1,
+      "containerName": "Konteyner Adı-nAMp05Dk",
+      "districtID": 23332,
+      "districtName": "İlçe Adı-WFY9NBMN",
+      "neighborhoodID": 1,
+      "neighborhoodName": "Atatürk",
+      "streetID": 1,
+      "streetName": "Erzincan",
+      "zoneID": 1,
+      "zoneName": "Atablok B2",
+      "typeID": 1,
+      "typeName": "Metal",
+      "fullness": 72,
+      "battery": 55,
+      "fireRisk": false,
+      "device": "Cihaz Adı-zAemDWAi",
+      "lastCollection": 1615966413380,
+      "lastUpdate": 1615966900412,
+      "latitude": 40.98165759198049,
+      "longitude": 29.12321583740673
+    },
+    {
+      "id": 2,
+      "containerName": "Konteyner Adı-Mw6jpxjf",
+      "districtID": 58334,
+      "districtName": "İlçe Adı-YXXqU2xH",
+      "neighborhoodID": 1,
+      "neighborhoodName": "Atatürk",
+      "streetID": 2,
+      "streetName": "Cadde/Sokak Adı-Sub40D93",
+      "zoneID": 1,
+      "zoneName": "Atablok B2",
+      "typeID": 1,
+      "typeName": "Metal",
+      "fullness": 83,
+      "battery": 74,
+      "fireRisk": false,
+      "device": "Cihaz Adı-QM3uqPmX",
+      "lastCollection": 1615966777389,
+      "lastUpdate": 1615966401315,
+      "latitude": 40.98160205095518,
+      "longitude": 29.12721487037658
+    },
+    {
+      "id": 3,
+      "containerName": "Konteyner Adı-GMZtAnst",
+      "districtID": 73125,
+      "districtName": "İlçe Adı-0XnOwDfu",
+      "neighborhoodID": 1,
+      "neighborhoodName": "Atatürk",
+      "streetID": 3,
+      "streetName": "Cadde/Sokak Adı-9BBFLREh",
+      "zoneID": 1,
+      "zoneName": "Atablok B2",
+      "typeID": 1,
+      "typeName": "Metal",
+      "fullness": 53,
+      "battery": 64,
+      "fireRisk": false,
+      "device": "Cihaz Adı-YavfW0kP",
+      "lastCollection": 1615966264402,
+      "lastUpdate": 1615967134317,
+      "latitude": 40.9797419598478,
+      "longitude": 29.122840134906777
+    },
+    {
+      "id": 4,
+      "containerName": "Konteyner Adı-JLhsAObM",
+      "districtID": 73209,
+      "districtName": "İlçe Adı-mNzVDHc7",
+      "neighborhoodID": 1,
+      "neighborhoodName": "Atatürk",
+      "streetID": 1,
+      "streetName": "Cadde/Sokak Adı-Z3H1uq3g",
+      "zoneID": 1,
+      "zoneName": "Atablok B2",
+      "typeID": 1,
+      "typeName": "Metal",
+      "fullness": 51,
+      "battery": 12,
+      "fireRisk": true,
+      "device": "Cihaz Adı-OCaoHOjB",
+      "lastCollection": 1615966693962,
+      "lastUpdate": 1615966364429,
+      "latitude": 40.97993651418412,
+      "longitude": 29.12579148083495
+    },
+    {
+      "id": 5,
+      "containerName": "Konteyner Adı-opkIpU1J",
+      "districtID": 57496,
+      "districtName": "İlçe Adı-uBpSf0yN",
+      "neighborhoodID": 1,
+      "neighborhoodName": "Atatürk",
+      "streetID": 2,
+      "streetName": "Cadde/Sokak Adı-Go8PB9oU",
+      "zoneID": 1,
+      "zoneName": "Atablok B2",
+      "typeID": 1,
+      "typeName": "Metal",
+      "fullness": 91,
+      "battery": 76,
+      "fireRisk": false,
+      "device": "Cihaz Adı-b5avdMqT",
+      "lastCollection": 1615966867319,
+      "lastUpdate": 1615966154414,
+      "latitude": 40.980697618709385,
+      "longitude": 29.126035795684817
+    },
+    {
+      "id": 6,
+      "containerName": "Konteyner Adı-yRNtseNU",
+      "districtID": 4870,
+      "districtName": "İlçe Adı-LqGmWQEU",
+      "neighborhoodID": 2,
+      "neighborhoodName": "Cumhuriyet",
+      "streetID": 3,
+      "streetName": "Öztürk",
+      "zoneID": 1,
+      "zoneName": "Atablok B2",
+      "typeID": 1,
+      "typeName": "Metal",
+      "fullness": 93,
+      "battery": 49,
+      "fireRisk": true,
+      "device": "Cihaz Adı-QGDZYqgM",
+      "lastCollection": 1615966588152,
+      "lastUpdate": 1615966955787,
+      "latitude": 40.981549908778355,
+      "longitude": 29.120912880462626
+    },
+    {
+      "id": 7,
+      "containerName": "Konteyner Adı-ELE2yfLe",
+      "districtID": 26698,
+      "districtName": "İlçe Adı-pxjbzGgJ",
+      "neighborhoodID": 2,
+      "neighborhoodName": "Cumhuriyet",
+      "streetID": 3,
+      "streetName": "Öztürk",
+      "zoneID": 2,
+      "zoneName": "Uydukent M2",
+      "typeID": 2,
+      "typeName": "Galvaniz",
+      "fullness": 21,
+      "battery": 83,
+      "fireRisk": true,
+      "device": "Cihaz Adı-5bAGAsgV",
+      "lastCollection": 1615966368124,
+      "lastUpdate": 1615966665735,
+      "latitude": 40.98090473826654,
+      "longitude": 29.12436741117859
+    },
+    {
+      "id": 8,
+      "containerName": "Konteyner Adı-Kx6Zn0IE",
+      "districtID": 19687,
+      "districtName": "İlçe Adı-jsepR4go",
+      "neighborhoodID": 2,
+      "neighborhoodName": "Cumhuriyet",
+      "streetID": 3,
+      "streetName": "Öztürk",
+      "zoneID": 2,
+      "zoneName": "Uydukent M2",
+      "typeID": 2,
+      "typeName": "Galvaniz",
+      "fullness": 55,
+      "battery": 45,
+      "fireRisk": true,
+      "device": "Cihaz Adı-deZyKX3c",
+      "lastCollection": 1615967003595,
+      "lastUpdate": 1615967137448,
+      "latitude": 40.98049175691667,
+      "longitude": 29.12191857183836
+    }
+  ]
+}

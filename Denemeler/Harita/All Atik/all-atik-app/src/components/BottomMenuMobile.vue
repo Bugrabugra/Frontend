@@ -41,10 +41,10 @@
 </template>
 
 <script>
-  import SideMenuContainerDetail from "components/SideMenuContainerDetail";
-  import SideMenuFullness from "components/SideMenuFullness";
-  import SideMenuFilters from "components/SideMenuFilters";
-  import SideMenuSpatialOperations from "components/SideMenuSpatialOperations";
+  import SideMenuContainerDetail from "components/MainMapPage/SideMenuContainerDetail";
+  import SideMenuFullness from "components/MainMapPage/SideMenuFullness";
+  import SideMenuFilters from "components/MainMapPage/SideMenuFilters";
+  import SideMenuSpatialOperations from "components/MainMapPage/SideMenuSpatialOperations";
 
 
   export default {
@@ -88,7 +88,7 @@
 
       openSpatial() {
         if (this.tab === "spatial") {
-          this.filterIsOpen = !this.filterIsOpen;
+          this.spatialIsOpen = !this.spatialIsOpen;
         }
       },
 

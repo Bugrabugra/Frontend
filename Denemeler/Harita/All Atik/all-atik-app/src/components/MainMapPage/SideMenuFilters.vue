@@ -71,11 +71,25 @@
 
       <!--Doluluk-->
       <q-select
-        @input="changeFullness"
+        @input="selectFullness"
         @clear="clearFullness"
         v-model="selectedFullness"
         :options="fullness"
         label="Doluluk"
+        option-label="name"
+        class="q-mb-xs q-mb-sm"
+        filled
+        dense
+        clearable
+      />
+
+      <!--Yangın riski-->
+      <q-select
+        @input="selectFireRisk"
+        @clear="clearFireRisk"
+        v-model="selectedFireRisk"
+        :options="fireRisk"
+        label="Yangın Riski"
         option-label="name"
         filled
         dense
@@ -110,13 +124,19 @@
           {name: "% 50-75", value: "50-75"},
           {name: "% 75-100", value: "75-100"},
           {name: "Veri yok", value: "noValue"},
+        ],
+        selectedFireRisk: null,
+        fireRisk: [
+          {name: "Var", value: "yes"},
+          {name: "Yok", value: "no"}
         ]
       }
     },
 
     computed: {
       ...mapGetters({
-        storeSelectedFullness: "getSelectedFullness"
+        storeSelectedFullness: "getSelectedFullness",
+        storeSelectedFireRisk: "getSelectedFireRisk"
       })
     },
 
@@ -273,15 +293,51 @@
         this.$store.dispatch("queryContainers");
       },
 
-      changeFullness() {
+      selectFullness() {
         this.$store.dispatch("setSelectedFullness", this.selectedFullness);
         this.$store.dispatch('selectFullness');
+      },
+
+      selectFireRisk() {
+        if (this.selectedFireRisk) {
+          this.$store.dispatch(
+            "updateQueryParameter",
+            {
+              query: "fireRisk",
+              value: this.selectedFireRisk.value
+            }
+          )
+
+          this.$store.dispatch("queryContainers");
+        }
+      },
+
+      clearFireRisk() {
+        this.$store.dispatch(
+          "updateQueryParameter",
+          {
+            query: "fireRisk",
+            value: null
+          }
+        )
+
+        this.$store.dispatch("queryContainers");
       }
     },
 
     watch: {
       storeSelectedFullness() {
         this.selectedFullness = this.$store.getters.getSelectedFullness;
+      },
+
+      storeSelectedFireRisk() {
+        if (this.$store.getters.getSelectedFireRisk === "yes") {
+          this.selectedFireRisk = "Var";
+        } else if (this.$store.getters.getSelectedFireRisk === "no")
+          this.selectedFireRisk = "Yok";
+        else {
+          this.selectedFireRisk = null;
+        }
       }
     },
 
@@ -289,8 +345,6 @@
       this.populateNeighborhoods();
       this.populateZones();
       this.populateContainerTypes();
-
-      // this.$store.dispatch("queryContainers");
     }
   }
 </script>

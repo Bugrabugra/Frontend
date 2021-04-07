@@ -18,11 +18,18 @@
         <!--Edit container menu-->
         <div
           v-if="page === 'container-page'"
-          style="bottom: 5%"
-          class="row justify-center items-center absolute full-width transparent"
+          class="col col-3"
         >
-          <EditContainer/>
+          <!--Edit container geometry button-->
+            <!--class="row justify-center items-center absolute full-width transparent"-->
+            <!--style="bottom: 5%"-->
+
+          <!--Side menu-->
+          <div>
+            <ContainerDetailPanel/>
+          </div>
         </div>
+
       </div>
 
       <div v-if="page === 'main-map-page' && pageSize === 'xs'">
@@ -35,13 +42,17 @@
 
 <script>
   import Map from "components/Map";
-  import EditContainer from "components/EditContainer";
+  import EditContainer from "components/ContainerPage/EditContainerButton";
+  import EditContainerButton from "components/ContainerPage/EditContainerButton";
+  import ContainerDetailPanel from "components/ContainerPage/ContainerDetailPanel";
 
 
   export default {
     name: 'PageIndex',
 
     components: {
+      ContainerDetailPanel,
+      EditContainerButton,
       BottomMenuMobile: () => import("components/BottomMenuMobile"),
       SideMenuDesktop: () => import("components/SideMenuDesktop"),
       EditContainer,
@@ -59,10 +70,10 @@
 
       mapSize() {
         if (this.pageSize !== "xs") {
-          if (this.page === "main-map-page") {
+          if (this.page === "container-page") {
+            return "col-9"
+          } else if (this.page === "main-map-page") {
             return "col-10";
-          } else {
-            return "col-12";
           }
         } else {
           return "col-12";
@@ -83,3 +94,13 @@
     }
   }
 </script>
+
+<style>
+  .notifier-fire-risk {
+    width: 370px;
+  }
+
+  .notifier-fullness {
+    width: 370px;
+  }
+</style>

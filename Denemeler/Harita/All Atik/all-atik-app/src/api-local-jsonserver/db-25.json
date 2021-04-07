@@ -268,8 +268,8 @@
       "device": "Cihaz Adı-lyKnLGpT",
       "lastCollection": 1615966434250,
       "lastUpdate": 1615966280649,
-      "latitude": 40.908920438633125,
-      "longitude": 29.212593022094715
+      "latitude": 40.918260579851776,
+      "longitude": 29.20675653527831
     },
     {
       "id": 10,
@@ -504,10 +504,10 @@
       "zoneName": "Uydukent M2",
       "typeID": 43136,
       "typeName": "Tip Adı-0QUTe7AV",
-      "fullness": 66,
-      "battery": 58,
-      "fireRisk": false,
-      "device": "Cihaz Adı-V1ChgX8H",
+      "fullness": null,
+      "battery": null,
+      "fireRisk": null,
+      "device": null,
       "lastCollection": 1615966678711,
       "lastUpdate": 1615966740016,
       "latitude": 41.02032459658499,

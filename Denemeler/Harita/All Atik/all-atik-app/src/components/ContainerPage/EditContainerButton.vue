@@ -2,6 +2,7 @@
   <div>
     <q-btn
       v-show="!drawing"
+      label="GEOMETRI OLUŞTURMA"
       @click="addContainer"
       color="green"
       class="q-ma-sm"
@@ -18,9 +19,7 @@
     >
       <q-icon name="wrong_location"/>
     </q-btn>
-
   </div>
-
 </template>
 
 <script>
@@ -28,7 +27,7 @@
 
 
   export default {
-    name: "EditContainer",
+    name: "EditContainerButton",
 
     data() {
       return {
@@ -37,27 +36,28 @@
     },
 
     computed: {
-      ...mapGetters({
-        drawingManager: "getDrawingManager",
-        map: "getMap"
-      })
+      ...mapGetters([
+        "getDrawingManager",
+        "getMap",
+        "getSettings"
+      ])
     },
 
     methods: {
       addContainer() {
         this.drawing = true;
-        this.drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.MARKER);
+        this.getDrawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.MARKER);
       },
 
       cancelDrawing() {
         this.drawing = false;
-        this.drawingManager.setDrawingMode(null);
+        this.getDrawingManager.setDrawingMode(null);
       },
 
       initDrawingManager() {
-        console.log(this.$store.getters.getSettings);
+        console.log(this.getSettings);
         const _this = this;
-        const containerID = parseInt(this.$store.getters.getSettings.containerID);
+        const containerID = parseInt(this.getSettings.containerID);
         console.log(containerID);
 
         const drawingManager = new window.google.maps.drawing.DrawingManager({
@@ -68,12 +68,12 @@
               scale: 0
             }
           },
-          map: this.$store.getters.getMap
+          map: _this.getMap
         });
 
         this.$store.dispatch("setDrawingManager", drawingManager);
 
-        window.google.maps.event.addListener(_this.drawingManager, 'markercomplete', function(marker) {
+        window.google.maps.event.addListener(_this.getDrawingManager, 'markercomplete', function(marker) {
           const latitude = marker.getPosition().lat();
           const longitude = marker.getPosition().lng();
 
@@ -94,7 +94,7 @@
     },
 
     watch: {
-      map() {
+      getMap() {
         this.initDrawingManager();
       }
     }
