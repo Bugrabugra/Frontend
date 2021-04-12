@@ -18,7 +18,7 @@
         <!--Edit container menu-->
         <div
           v-if="page === 'container-page'"
-          class="col col-3"
+          class="col col-4"
         >
           <!--Edit container geometry button-->
             <!--class="row justify-center items-center absolute full-width transparent"-->
@@ -71,7 +71,7 @@
       mapSize() {
         if (this.pageSize !== "xs") {
           if (this.page === "container-page") {
-            return "col-9"
+            return "col-8"
           } else if (this.page === "main-map-page") {
             return "col-10";
           }

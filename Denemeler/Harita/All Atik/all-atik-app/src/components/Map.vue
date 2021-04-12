@@ -1,7 +1,10 @@
 <template>
-  <q-layout id="map">
+  <div>
+    <q-layout id="map">
 
-  </q-layout>
+    </q-layout>
+  </div>
+
 </template>
 
 <script>
@@ -221,8 +224,10 @@
           return marker;
         });
 
-        if (this.counterFireRisk > 0) {
-          this.$store.dispatch("setCounterFireRisk", this.counterFireRisk);
+        if (this.getSettings.page === "main-map-page") {
+          if (this.counterFireRisk > 0) {
+            this.$store.dispatch("setCounterFireRisk", this.counterFireRisk);
+          }
         }
 
         // TODO CLUSTERI GERI AÇ
@@ -315,7 +320,7 @@
             })
           }
 
-          const stations = this.getContainers.map(container => {
+          let stations = this.getContainers.map(container => {
             return {
               lat: container.latitude,
               lng: container.longitude,
@@ -331,89 +336,94 @@
 
             axios.post("http://localhost:3001", arrayStationsID)
               .then(response => {
-                console.log(response)
+                console.log(response.data)
+                let newStations = [];
+
+                response.data.forEach(id => {
+                  newStations.push(
+                    stations.filter(station => {
+                      return station.id === id;
+                    })[0]
+                  )
+                })
+
+                stations = newStations;
+
+                console.log("New stations", newStations)
+
+                stations.unshift({
+                  lat: this.coordinatesMunicipalityCenter.lat,
+                  lng: this.coordinatesMunicipalityCenter.lng,
+                  name: "Municipality Center",
+                  id: 1000
+                })
+
+                stations.push({
+                  lat: this.coordinatesDisposalArea.lat,
+                  lng: this.coordinatesDisposalArea.lng,
+                  name: "Disposal Area",
+                  id: 1001
+                })
+
+                // Service callback to process service results
+                const service_callback = (response, status) => {
+                  console.log(response)
+                  if (status !== 'OK') {
+                    console.log('Directions request failed due to ' + status);
+                    return;
+                  }
+                  let markerCounter = 1;
+
+                  this.directionsRenderer = new window.google.maps.DirectionsRenderer;
+                  this.directionsRenderer.setMap(this.getMap);
+                  this.directionsRenderer.setOptions({
+                    suppressMarkers: false,
+                    preserveViewport: true,
+                    suppressInfoWindows: false,
+                  });
+                  this.directionsRenderer.setDirections(response);
+
+                  // add custom markers
+                  const route = response.routes[0];
+                  // start marker
+                  addMarker(route.legs[0].start_location, markerCounter++);
+                  // the rest
+                  for (let i = 0; i < route.legs[0].via_waypoints.length; i++) {
+                    addMarker(route.legs[0].via_waypoints[i], markerCounter++);
+                  }
+                };
+
+                // Send requests to service to get route
+                // (for stations count <= 25 only one request will be sent)
+                const waypoints = [];
+                for (let j = 1; j < stations.length - 1; j++)
+                  waypoints.push({location: {lat: stations[j].lat, lng: stations[j].lng}, stopover: false});
+
+                console.log("Waypoints", waypoints);
+
+
+                // Service options
+                const service_options = {
+                  origin: stations[0],
+                  destination: stations[stations.length - 1],
+                  waypoints: waypoints,
+                  travelMode: 'DRIVING',
+                  optimizeWaypoints: true
+                };
+
+                // Send request
+                // TODO
+
+                const directionsService = new window.google.maps.DirectionsService;
+                directionsService.route(service_options, service_callback);
+
               }).catch(error => {
               console.log(error)
             })
           }
 
           // Adding municipality center and disposal area coordinates to stations
-          stations.unshift({
-            lat: this.coordinatesMunicipalityCenter.lat,
-            lng: this.coordinatesMunicipalityCenter.lng,
-            name: "Municipality Center",
-            id: 1000
-          })
 
-          stations.push({
-            lat: this.coordinatesDisposalArea.lat,
-            lng: this.coordinatesDisposalArea.lng,
-            name: "Disposal Area",
-            id: 1001
-          })
-
-          console.log("Input stations: ", stations);
-
-          // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
-          let parts = []
-
-          for (let i = 0, max = 24; i < stations.length; i = i + max) {
-            parts.push(stations.slice(i, i + max + 1));
-          }
-
-          console.log("Parts: ", parts);
-
-          // Service callback to process service results
-          const service_callback = (response, status) => {
-            console.log(response)
-            if (status !== 'OK') {
-              console.log('Directions request failed due to ' + status);
-              return;
-            }
-            let markerCounter = 1;
-
-            this.directionsRenderer = new window.google.maps.DirectionsRenderer;
-            this.directionsRenderer.setMap(this.getMap);
-            this.directionsRenderer.setOptions({
-              suppressMarkers: false,
-              preserveViewport: true,
-              suppressInfoWindows: false
-            });
-            this.directionsRenderer.setDirections(response);
-
-            // add custom markers
-            const route = response.routes[0];
-            // start marker
-            addMarker(route.legs[0].start_location, markerCounter++);
-            // the rest
-            for (let i = 0; i < route.legs[0].via_waypoints.length; i++) {
-              addMarker(route.legs[0].via_waypoints[i], markerCounter++);
-            }
-          };
-
-          // Send requests to service to get route
-          // (for stations count <= 25 only one request will be sent)
-          for (let i = 0; i < parts.length; i++) {
-
-            // Waypoints does not include first station (origin)
-            // and last station (destination)
-            const waypoints = [];
-            for (let j = 1; j < parts[i].length - 1; j++)
-              waypoints.push({location: parts[i][j], stopover: false});
-
-            // Service options
-            const service_options = {
-              origin: parts[i][0],
-              destination: parts[i][parts[i].length - 1],
-              waypoints: waypoints,
-              travelMode: 'DRIVING',
-              optimizeWaypoints: true
-            };
-
-            // Send request
-            const directionsService = new window.google.maps.DirectionsService;
-            directionsService.route(service_options, service_callback);
-          }
         }
 
         this.$store.dispatch('createRoute', false);

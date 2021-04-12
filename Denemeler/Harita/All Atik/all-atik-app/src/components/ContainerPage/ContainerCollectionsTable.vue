@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <q-table
-      title="Bir Haftalık Toplama Tarihleri"
-      :data="data"
-      :columns="columns"
-      row-key="name"
-      rows-per-page-label="Gösterilecek kayıt sayısı"
-      dense
-    />
-
-  </div>
+  <q-table
+    v-if="getCurrentContainerLastCollections"
+    title="Bir Haftalık Toplama Tarihleri"
+    :data="getCurrentContainerLastCollections"
+    :columns="columns"
+    row-key="name"
+    rows-per-page-label="Gösterilecek kayıt sayısı"
+    :rows-per-page-options="[15]"
+    no-data-label="Veri bulunamadı"
+    class="q-table--square"
+    title-class="title"
+    :card-style="{minHeight: getCurrentContainerLastCollections > 0 ? '520px' : '90px'}"
+    dense
+  />
 </template>
 
 <script>
   import {format} from "date-fns";
+  import {mapGetters} from "vuex";
 
 
   export default {
@@ -32,37 +36,20 @@
             sortable: true
           }
         ],
-        data: [
-          {
-            collectionDate: 1619201237000,
-          },
-          {
-            collectionDate: 1619287118700,
-          },
-          {
-            collectionDate: 1619373926000,
-          },
-          {
-            collectionDate: 1619415087000,
-          },
-          {
-            collectionDate: 1619491389000,
-          },
-          {
-            collectionDate: 1619573841000,
-          },
-          {
-            collectionDate: 1619659272000,
-          },
-          {
-            collectionDate: 1619744704000,
-          }
-        ]
       }
+    },
+
+    computed: {
+      ...mapGetters([
+        "getCurrentContainerLastCollections"
+      ])
     }
   }
 </script>
 
-<style scoped>
-
+<style>
+  .container-page .q-table__title.title {
+    font-size: 12px;
+    font-weight: bold;
+  }
 </style>

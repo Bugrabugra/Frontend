@@ -154,7 +154,7 @@
       "typeName": "Metal",
       "fullness": 51,
       "battery": 12,
-      "fireRisk": true,
+      "fireRisk": false,
       "device": "Cihaz Adı-OCaoHOjB",
       "lastCollection": 1615966693962,
       "lastUpdate": 1615966364429,
@@ -198,7 +198,7 @@
       "typeName": "Metal",
       "fullness": 93,
       "battery": 49,
-      "fireRisk": true,
+      "fireRisk": false,
       "device": "Cihaz Adı-QGDZYqgM",
       "lastCollection": 1615966588152,
       "lastUpdate": 1615966955787,
@@ -220,7 +220,7 @@
       "typeName": "Galvaniz",
       "fullness": 21,
       "battery": 83,
-      "fireRisk": true,
+      "fireRisk": false,
       "device": "Cihaz Adı-5bAGAsgV",
       "lastCollection": 1615966368124,
       "lastUpdate": 1615966665735,
@@ -242,12 +242,12 @@
       "typeName": "Galvaniz",
       "fullness": 55,
       "battery": 45,
-      "fireRisk": true,
+      "fireRisk": false,
       "device": "Cihaz Adı-deZyKX3c",
       "lastCollection": 1615967003595,
       "lastUpdate": 1615967137448,
-      "latitude": 40.98049175691667,
-      "longitude": 29.12191857183836
+      "latitude": 40.98040240867904,
+      "longitude": 29.12157357270382
     }
   ]
 }

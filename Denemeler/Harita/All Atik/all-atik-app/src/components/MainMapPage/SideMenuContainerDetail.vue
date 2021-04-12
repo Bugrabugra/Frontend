@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 100%;">
+  <q-card style="width: 100%;" class="container-detail" square >
     <q-card-section>
       <div class="row q-mb-xs details">
 

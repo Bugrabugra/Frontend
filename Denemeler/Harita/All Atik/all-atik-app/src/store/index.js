@@ -1,7 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {Dialog, Loading, Notify} from 'quasar'
-import {apiGetContainers, apiGetFilteredContainers, apiPatchContainer} from "../api/index";
+import {
+  apiGetContainers,
+  apiGetFilteredContainers,
+  apiPatchContainer,
+  apiGetContainer,
+  apiGetLastCollections,
+  apiGetLastFiveCoordinates
+} from "../api/index";
 
 
 Vue.use(Vuex);
@@ -39,7 +46,10 @@ export default function () {
       myLocation: null,
       myLocationMarker: null,
       counterFireRisk: 0,
-      queryPolygon: null
+      queryPolygon: null,
+      currentContainer: null,
+      currentContainerLastCollections: null,
+      currentContainerLastFiveCoordinates: null
     },
 
     getters: {
@@ -157,6 +167,18 @@ export default function () {
 
       getQueryPolygon(state) {
         return state.queryPolygon;
+      },
+
+      getCurrentContainer(state) {
+        return state.currentContainer;
+      },
+
+      getCurrentContainerLastCollections(state) {
+        return state.currentContainerLastCollections;
+      },
+
+      getCurrentContainerLastFiveCoordinates(state) {
+        return state.currentContainerLastFiveCoordinates;
       }
     },
 
@@ -242,6 +264,18 @@ export default function () {
 
       setQueryPolygon(state, payload) {
         state.queryPolygon = payload;
+      },
+
+      setCurrentContainer(state, payload) {
+        state.currentContainer = payload;
+      },
+
+      setCurrentContainerLastCollections(state, payload) {
+        state.currentContainerLastCollections = payload;
+      },
+
+      setCurrentContainerLastFiveCoordinates(state, payload) {
+        state.currentContainerLastFiveCoordinates = payload;
       }
     },
 
@@ -284,9 +318,11 @@ export default function () {
         commit("setContainers", payload);
       },
 
-      setClickedContainer({commit}, payload) {
-        commit("setClickedContainer", payload);
-        commit("expandContainerDetail", true);
+      setClickedContainer(context, payload) {
+        context.commit("setClickedContainer", payload);
+        context.commit("setCurrentContainer", payload.container)
+        context.dispatch("setCurrentContainerLastCollections", payload.container.id);
+        context.commit("expandContainerDetail", true);
       },
 
       changeFilter({commit}, payload) {
@@ -509,12 +545,6 @@ export default function () {
               icon: "visibility",
               color: "white",
               handler: () => {
-                // context.commit("updateQueryParameter", {query: "neighborhoodID", value: 0});
-                // context.commit("updateQueryParameter", {query: "streetID", value: 0});
-                // context.commit("updateQueryParameter", {query: "zoneID", value: 0});
-                // context.commit("updateQueryParameter", {query: "typeID", value: 0});
-                // context.commit("updateQueryParameter", {query: "fullness", value: ""});
-
                 context.commit("updateQueryParameter", {query: "fireRisk", value: "yes"});
                 context.dispatch("queryContainers");
               },
@@ -530,6 +560,63 @@ export default function () {
 
       setQueryPolygon({commit}, payload) {
         commit("setQueryPolygon", payload);
+      },
+
+      setCurrentContainer(context, payload) {
+        apiGetContainer(payload)
+          .then(response => {
+            console.log("Container page: ", response.data);
+            context.commit("setCurrentContainer", response.data);
+            context.commit("setClickedContainer", {container: response.data});
+            context.dispatch("setCurrentContainerLastCollections", response.data.id);
+          }).catch(error => {
+          console.log("Konteyner çekilirken hata oluştu", error);
+        })
+      },
+
+      setCurrentContainerLastCollections({commit}, payload) {
+        apiGetLastCollections(payload)
+          .then(response => {
+            console.log(response.data);
+            commit("setCurrentContainerLastCollections", response.data);
+          })
+      },
+
+      setCurrentContainerLastFiveCoordinates(context, payload) {
+        apiGetLastFiveCoordinates(payload)
+          .then(response => {
+            console.log(response.data);
+            context.commit("setCurrentContainerLastFiveCoordinates", response.data);
+
+            response.data.forEach(calculation => {
+              if (calculation.latitude !== 0 && calculation.longitude !== 0) {
+                const markerLastFiveCoordinates = new window.google.maps.Marker({
+                  position: {
+                    lat: calculation.latitude,
+                    lng: calculation.longitude
+                  },
+                  title: "Konumum",
+                  icon: {
+                    path:
+                      "M12 6C8.62 6 5.5 7.12 3 9L1.2 6.6C4.21 4.34 7.95 3 12 3S19.79 4.34 22.8 6.6L21 9C18.5 7.12 15.38 6 12 6M13 15.09C12.69 15.03 12.35 15 12 15C10.65 15 9.4 15.45 8.4 16.2L12 21L13.8 18.6C13.33 17.58 13 16.5 13 15.5C13 15.36 13 15.23 13 15.09M12 9C9.3 9 6.81 9.89 4.8 11.4L6.6 13.8C8.1 12.67 9.97 12 12 12C12.73 12 13.43 12.09 14.1 12.25C14.86 11.25 15.93 10.5 17.17 10.18C15.6 9.43 13.85 9 12 9M22 15.5C22 18.1 18.5 22 18.5 22S15 18.1 15 15.5C15 13.6 16.6 12 18.5 12S22 13.6 22 15.5M19.7 15.6C19.7 15 19.1 14.4 18.5 14.4S17.3 14.9 17.3 15.6C17.3 16.2 17.8 16.8 18.5 16.8S19.8 16.2 19.7 15.6Z",
+                    fillColor: "orange",
+                    fillOpacity: 1,
+                    strokeWeight: 0,
+                    rotation: 0,
+                    scale: 2,
+                    anchor: new window.google.maps.Point(15, 30),
+                  },
+                  label: {
+                    text: String(calculation.sensorReadDate),
+                    fontWeight: "bold",
+                    fontSize: "12px",
+                    color: "#14586a"
+                  },
+                  map: context.getters.getMap
+                })
+              }
+            })
+          })
       }
     }
   })

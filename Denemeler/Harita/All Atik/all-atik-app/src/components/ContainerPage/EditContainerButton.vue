@@ -6,9 +6,8 @@
       @click="addContainer"
       color="green"
       class="q-ma-sm"
-    >
-      <q-icon name="add_location_alt"/>
-    </q-btn>
+      icon="add_location_alt"
+    />
 
     <q-btn
       v-show="drawing"
@@ -16,9 +15,8 @@
       @click="cancelDrawing"
       color="green"
       class="q-ma-sm"
-    >
-      <q-icon name="wrong_location"/>
-    </q-btn>
+      icon="wrong_location"
+    />
   </div>
 </template>
 
