@@ -128,7 +128,7 @@
     border-bottom: #d5d4d4 1px solid;
   }
 
-  .material-icons.q-icon.notranslate {
+  .q-tab__content .material-icons.q-icon.notranslate {
     color: #6d7171;
   }
 </style>

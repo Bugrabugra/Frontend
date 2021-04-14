@@ -1,45 +1,48 @@
 <template>
   <q-card style="width: 100%;">
     <q-card-section>
-      <div class="row justify-center">
-        <div class="col-6 q-pa-sm">
-          <q-btn
-            :disable="!getClickedContainer"
-            @click="updateGeometry"
-            :label="updatingGeometry ? 'Geometri Düzenleniyor' : 'Geometri Düzenle'"
-            :color="!getClickedContainer ? 'grey-5' : 'purple-3'"
-            :outline="updatingGeometry"
-          />
-        </div>
+      <div :class="[spatialMenuSize, 'row', 'justify-center']">
+        <q-btn
+          v-if="!updatingGeometry"
+          :disable="!getClickedContainer"
+          @click="updateGeometry"
+          label="GEOMETRİ DÜZENLE"
+          :color="!getClickedContainer ? 'grey-5' : 'blue-3'"
+          class="q-ma-xs"
+          style="min-width: 201px;"
+          icon="edit_location_alt"
+        />
 
-        <div class="col-6 q-pa-sm">
-          <q-btn
-            @click="$store.dispatch('createRoute', true)"
-            color="orange-6"
-            label="ROTA OLUŞTUR"
-          />
-        </div>
+        <q-btn
+          v-if="updatingGeometry"
+          @click="updateGeometry"
+          label="İPTAL ET"
+          color="blue-3"
+          outline
+          class="q-ma-xs"
+          style="min-width: 201px;"
+          icon="wrong_location"
+        />
+
+        <q-btn
+          @click="$store.dispatch('createRoute', true)"
+          color="orange-4"
+          label="ROTA OLUŞTUR"
+          class="q-ma-xs"
+          style="min-width: 201px;"
+          icon="local_shipping"
+        />
+
+        <q-btn
+          @click="$store.dispatch('setMyLocation')"
+          color="green-4"
+          label="KONUMUMU BUL"
+          class="q-ma-xs"
+          style="min-width: 201px;"
+          icon="my_location"
+        />
+
       </div>
-
-      <div class="row justify-center">
-        <div class="col-6 q-pa-sm">
-          <q-btn
-            @click="$store.dispatch('setMyLocation')"
-            color="green-6"
-            label="KONUMUMU BUL"
-          />
-        </div>
-
-        <div class="col-6 q-pa-sm">
-          <q-btn
-            @click="$store.dispatch('setQueryPolygon')"
-            color="cyan-9"
-            label="AlAN İLE SORGULA"
-          />
-        </div>
-      </div>
-
-
     </q-card-section>
   </q-card>
 </template>
@@ -54,14 +57,24 @@
     computed: {
       ...mapGetters([
         "getClickedContainer",
-        "updatingGeometry"
-      ])
+        "updatingGeometry",
+      ]),
+
+      pageSize() {
+        return this.$q.screen.name;
+      },
     },
 
     methods: {
       ...mapActions({
         updateGeometry: "updatingGeometry"
       }),
+
+      spatialMenuSize() {
+        if (this.pageSize === "xl") {
+          return "q-ma-sm";
+        }
+      }
     }
   }
 </script>

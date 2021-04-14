@@ -1,33 +1,55 @@
 <template>
-  <q-btn
-    label="SON 5 KOORDİNAT ÖLÇÜMÜ"
-    @click="five"
-    color="orange"
-    class="q-ma-sm"
-    icon="my_location"
-  />
+  <div>
+    <q-btn
+      v-if="!isButtonClicked"
+      label="SON 5 KOORDİNAT"
+      @click="showFiveCoordinates"
+      color="blue-3"
+      icon="my_location"
+    />
+
+    <q-btn
+      v-if="isButtonClicked"
+      label="KOORDİNATLARI GİZLE"
+      @click="hideFiveCoordinates"
+      color="blue-3"
+      icon="gps_off"
+      outline
+    />
+  </div>
 </template>
 
 <script>
-  import {mapActions, mapGetters} from "vuex";
+  import {mapGetters} from "vuex";
 
 
   export default {
     name: "DrawLastFiveCoordinates",
 
+    data() {
+      return {
+        isButtonClicked: false
+      }
+    },
+
     computed: {
       ...mapGetters([
-        "getCurrentContainer"
+        "getCurrentContainer",
+        "getArrayMarkerLastFiveCoordinates"
       ])
     },
 
     methods: {
-      // ...mapActions([
-      //   "setCurrentContainerLastFiveCoordinates"
-      // ])
-      five() {
-        console.log(this.getCurrentContainer)
+      showFiveCoordinates() {
+        this.isButtonClicked = true;
         this.$store.dispatch("setCurrentContainerLastFiveCoordinates", this.getCurrentContainer.id)
+      },
+
+      hideFiveCoordinates() {
+        this.isButtonClicked = false;
+        this.getArrayMarkerLastFiveCoordinates.forEach(marker => {
+          marker.setMap(null);
+        })
       }
     }
   }

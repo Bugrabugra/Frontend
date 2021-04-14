@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 100%;" class="container-detail" square >
+  <q-card style="width: 100%;" square>
     <q-card-section>
       <div class="row q-mb-xs details">
 
@@ -226,13 +226,13 @@
         const battery = this.selectedContainer.battery;
 
         if (battery === null) {
-          return "grey"
+          return "grey";
         } else if (battery >= 0 && battery < 50) {
-          return "red"
+          return "red";
         } else if (battery >= 50 && battery < 75) {
-          return "orange"
+          return "orange";
         } else if (battery >= 75 && battery <= 100) {
-          return "green"
+          return "green";
         }
       },
     },
@@ -253,7 +253,7 @@
     filters: {
       formatDate(value) {
         if (value) {
-          return format(value, "dd.MM.yyyy - HH:mm")
+          return format(value, "dd.MM.yyyy - HH:mm");
         } else {
           return "Veri yok";
         }

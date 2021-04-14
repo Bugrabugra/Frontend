@@ -62,6 +62,6 @@ export const apiGetLastCollections = (payload) => {
 }
 
 // Get last 5 coordinates => payload = id
-export const apiGetLastFiveCoordinates = (payload) => {
+export const apiGetDataStream = (payload) => {
   return api.get(`${deviceDataStream}/${payload}`);
 }

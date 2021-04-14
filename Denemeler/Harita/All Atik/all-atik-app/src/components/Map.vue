@@ -4,7 +4,6 @@
 
     </q-layout>
   </div>
-
 </template>
 
 <script>
@@ -12,6 +11,15 @@
   import MarkerClusterer from '@googlemaps/markerclustererplus';
   import {mapGetters} from "vuex";
   import {axios} from "boot/axios";
+  import {
+    svgMarkerMunicipalityCenter,
+    svgMarkerDisposalArea,
+    svgMarkerFireRisk,
+    svgMarkerType1,
+    svgMarkerType2,
+    svgMarkerType3,
+    svgMarkerType4
+  } from "components/svgIcons";
 
 
   export default {
@@ -91,8 +99,7 @@
           },
           title: "Belediye Merkez",
           icon: {
-            path:
-              "M0,21V10L7.5,5L15,10V21H10V14H5V21H0M24,2V21H17V8.93L16,8.27V6H14V6.93L10,4.27V2H24M21,14H19V16H21V14M21,10H19V12H21V10M21,6H19V8H21V6Z",
+            path: svgMarkerMunicipalityCenter,
             fillColor: "#5665db",
             fillOpacity: 1,
             strokeWeight: 0,
@@ -111,8 +118,7 @@
           },
           title: "Çöp Döküm Merkezi",
           icon: {
-            path:
-              "M4,18V20H8V18H4M4,14V16H14V14H4M10,18V20H14V18H10M16,14V16H20V14H16M16,18V20H20V18H16M2,22V8L7,12V8L12,12V8L17,12L18,2H21L22,12V22H2Z",
+            path: svgMarkerDisposalArea,
             fillColor: "#5665db",
             fillOpacity: 1,
             strokeWeight: 0,
@@ -156,12 +162,16 @@
           // TODO konteyner tiplerini gir + yangın riski
           const svgIconChooser = () => {
             if (container.fireRisk === true) {
-              return "M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.78 15.46 9.35 14.82 8.72C13.33 7.26 13 4.85 13.95 3C13 3.23 12.17 3.75 11.46 4.32C8.87 6.4 7.85 10.07 9.07 13.22C9.11 13.32 9.15 13.42 9.15 13.55C9.15 13.77 9 13.97 8.8 14.05C8.57 14.15 8.33 14.09 8.14 13.93C8.08 13.88 8.04 13.83 8 13.76C6.87 12.33 6.69 10.28 7.45 8.64C5.78 10 4.87 12.3 5 14.47C5.06 14.97 5.12 15.47 5.29 15.97C5.43 16.57 5.7 17.17 6 17.7C7.08 19.43 8.95 20.67 10.96 20.92C13.1 21.19 15.39 20.8 17.03 19.32C18.86 17.66 19.5 15 18.56 12.72L18.43 12.46C18.22 12 17.66 11.2 17.66 11.2M14.5 17.5C14.22 17.74 13.76 18 13.4 18.1C12.28 18.5 11.16 17.94 10.5 17.28C11.69 17 12.4 16.12 12.61 15.23C12.78 14.43 12.46 13.77 12.33 13C12.21 12.26 12.23 11.63 12.5 10.94C12.69 11.32 12.89 11.7 13.13 12C13.9 13 15.11 13.44 15.37 14.8C15.41 14.94 15.43 15.08 15.43 15.23C15.46 16.05 15.1 16.95 14.5 17.5H14.5Z"
+              return svgMarkerFireRisk;
             } else {
-              if (container.typeID === 12715) {
-                return "M3,3H21V7H3V3M4,8H20V21H4V8M9.5,11A0.5,0.5 0 0,0 9,11.5V13H15V11.5A0.5,0.5 0 0,0 14.5,11H9.5Z"
-              } else {
-                return "M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+              if (container.typeID === 1) {
+                return svgMarkerType1;
+              } else if (container.typeID === 2) {
+                return svgMarkerType2;
+              } else if (container.typeID === 3) {
+                return svgMarkerType3;
+              } else if (container.typeID === 4) {
+                return svgMarkerType4;
               }
             }
           }
@@ -193,22 +203,25 @@
                 text: String(container.id),
                 fontWeight: "bold",
                 fontSize: "20px",
-                color: "#dc4a4a"
+                color: "#554b4b"
               } :
-              {
-                text: String(container.id),
-                fontWeight: "bold",
-                fontSize: "20px",
-                color: "#dc4a4a"
-              }
+              null
+              // {
+              //   text: String(container.id),
+              //   fontWeight: "bold",
+              //   fontSize: "20px",
+              //   color: "#dc4a4a"
+              // }
           });
 
           marker.setMap(this.getMap);
 
-          marker.addListener("click", () => {
-            this.$store.dispatch("setClickedContainer", {container: container, marker: marker});
-            this.$store.dispatch("setCurrentMarkerSymbol", this.getClickedContainer.marker.getIcon());
-          })
+          if (this.getSettings.page === "main-map-page") {
+            marker.addListener("click", () => {
+              this.$store.dispatch("setClickedContainer", {container: container, marker: marker});
+              this.$store.dispatch("setCurrentMarkerSymbol", this.getClickedContainer.marker.getIcon());
+            })
+          }
 
           marker.addListener("dragend", (evt) => {
             this.$store.dispatch(
@@ -421,9 +434,6 @@
               console.log(error)
             })
           }
-
-          // Adding municipality center and disposal area coordinates to stations
-
         }
 
         this.$store.dispatch('createRoute', false);

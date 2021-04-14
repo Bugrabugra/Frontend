@@ -1,24 +1,36 @@
 <template>
   <div>
-    <div class="row items-center justify-center">
-      <EditContainerButton/>
-      <DrawLastFiveCoordinates/>
-    </div>
-
     <div class="row">
-      <div class="col col-5 q-pl-sm container-page">
-        <ContainerCollectionsTable class="full-width"/>
+      <div class="col col-7 q-pl-sm">
+        <div class="row">
+          <ContainerCollectionsTable class="fit q-mt-sm"/>
+        </div>
+
+        <div class="row">
+          <ContainerChart
+            v-if="isGraphicLoaded"
+            class="q-mt-sm full-width"
+          />
+        </div>
       </div>
 
-      <div class="col col-7 q-pl-sm q-pr-sm container-page">
-        <SideMenuContainerDetail/>
+      <div class="col col-5 q-pl-sm q-pr-sm">
+        <div class="row items-center justify-center">
+          <q-card class="q-mt-sm q-pa-none full-width" square>
+            <q-card-section class="row q-ma-none q-pa-none items-center justify-center">
+              <EditContainerButton class="q-ma-sm"/>
+              <DrawLastFiveCoordinates class="q-ma-sm"/>
+            </q-card-section>
+          </q-card>
+
+        </div>
+
+        <div class="row items-center justify-center">
+          <SideMenuContainerDetail class="q-mt-sm" style="min-height: 553px"/>
+        </div>
+
       </div>
     </div>
-
-    <!--<div class="row">-->
-    <!--  -->
-    <!--</div>-->
-
   </div>
 </template>
 
@@ -28,16 +40,24 @@
   import EditContainerButton from "components/ContainerPage/EditContainerButton";
   import {mapActions, mapGetters} from "vuex";
   import DrawLastFiveCoordinates from "components/ContainerPage/DrawLastFiveCoordinates";
+  import ContainerChart from "components/ContainerPage/ContainerChart";
 
 
   export default {
     name: "ContainerDetailPanel",
 
     components: {
+      ContainerChart,
       DrawLastFiveCoordinates,
       EditContainerButton,
       ContainerCollectionsTable,
       SideMenuContainerDetail
+    },
+
+    data() {
+      return {
+        isGraphicLoaded: false
+      }
     },
 
     computed: {
@@ -49,19 +69,21 @@
     methods: {
       ...mapActions([
         "setCurrentContainer"
-      ])
+      ]),
+
+      loadGraphic() {
+        setTimeout(() => {
+          this.isGraphicLoaded = true;
+        }, 1500)
+      }
     },
 
     mounted() {
+      this.loadGraphic();
+
       this.setCurrentContainer({
         containerID: this.getSettings.containerID
       })
     }
   }
 </script>
-
-<style>
-  .container-page .container-detail {
-    min-height: 520px;
-  }
-</style>

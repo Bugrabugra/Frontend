@@ -1,21 +1,22 @@
 <template>
   <div>
     <q-btn
-      v-show="!drawing"
-      label="GEOMETRI OLUŞTURMA"
+      v-show="!isButtonClicked"
+      label="GEOMETRİ"
       @click="addContainer"
-      color="green"
-      class="q-ma-sm"
+      color="brown-3"
       icon="add_location_alt"
+      style="width: 188px"
     />
 
     <q-btn
-      v-show="drawing"
+      v-show="isButtonClicked"
       label="İPTAL"
       @click="cancelDrawing"
-      color="green"
-      class="q-ma-sm"
+      color="brown-3"
       icon="wrong_location"
+      style="width: 188px"
+      outline
     />
   </div>
 </template>
@@ -29,7 +30,7 @@
 
     data() {
       return {
-        drawing: false
+        isButtonClicked: false
       }
     },
 
@@ -43,12 +44,12 @@
 
     methods: {
       addContainer() {
-        this.drawing = true;
+        this.isButtonClicked = true;
         this.getDrawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.MARKER);
       },
 
       cancelDrawing() {
-        this.drawing = false;
+        this.isButtonClicked = false;
         this.getDrawingManager.setDrawingMode(null);
       },
 

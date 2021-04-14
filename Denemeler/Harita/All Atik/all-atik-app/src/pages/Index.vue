@@ -2,28 +2,18 @@
   <q-page-container>
     <q-page>
       <div class="row">
-        <div
-         :class="['col', mapSize]"
-         :style="[mapStyle]"
-        >
-         <!--main-map-page / container-page-->
-          <Map/>
+        <div :class="['col', mapSize]" :style="[mapStyle]">
+          <Map/> <!--main-map-page / container-page-->
         </div>
 
         <!--Side menu desktop or mobile-->
-        <div v-if="page === 'main-map-page' && pageSize !== 'xs'" class="col col-2 bg-indigo-1">
+        <div v-if="page === 'main-map-page' && (pageSize !== 'xs' && pageSize !== 'sm')" :class="['col', 'bg-indigo-1', sideMenuSize]">
           <SideMenuDesktop/>
         </div>
 
         <!--Edit container menu-->
         <div
-          v-if="page === 'container-page'"
-          class="col col-4"
-        >
-          <!--Edit container geometry button-->
-            <!--class="row justify-center items-center absolute full-width transparent"-->
-            <!--style="bottom: 5%"-->
-
+          v-if="page === 'container-page'" class="col col-6">
           <!--Side menu-->
           <div>
             <ContainerDetailPanel/>
@@ -32,7 +22,7 @@
 
       </div>
 
-      <div v-if="page === 'main-map-page' && pageSize === 'xs'">
+      <div v-if="page === 'main-map-page' && (pageSize === 'xs' || pageSize === 'sm')">
         <BottomMenuMobile style="position: absolute; bottom: 0;"/>
       </div>
 
@@ -69,14 +59,16 @@
       },
 
       mapSize() {
-        if (this.pageSize !== "xs") {
+        if (this.pageSize !== "xs" && this.pageSize !== "sm") {
           if (this.page === "container-page") {
-            return "col-8"
+            return "col-6"
           } else if (this.page === "main-map-page") {
-            return "col-10";
+            if (this.pageSize === "md") {
+              return "col-9";
+            } else {
+              return "col-10";
+            }
           }
-        } else {
-          return "col-12";
         }
       },
 
@@ -89,6 +81,16 @@
           }
         } else {
           return "position: relative"
+        }
+      },
+
+      sideMenuSize() {
+        if (this.page === "main-map-page") {
+          if (this.pageSize === "xl" || this.pageSize === "lg") {
+            return "col-2";
+          } else {
+            return "col-3";
+          }
         }
       }
     }

@@ -90,10 +90,12 @@
     padding-right: 5px;
   }
 
-  /*.q-item.q-item-type {*/
-  /*  border-bottom: #d5d4d4 1px solid;*/
-  /*}*/
-  .q-expansion-item__container .material-icons.q-icon.notranslate {
+  .q-item__section--side .q-expansion-item__container .material-icons.q-icon.notranslate {
     color: #6d7171;
   }
+
+  /*.q-expansion-item .q-expansion-item__container .material-icons.q-icon.notranslate {*/
+  /*  color: #6d7171;*/
+  /*}*/
+
 </style>

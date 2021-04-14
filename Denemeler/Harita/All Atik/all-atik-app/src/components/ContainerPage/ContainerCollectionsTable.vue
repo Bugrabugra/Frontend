@@ -1,16 +1,15 @@
 <template>
   <q-table
     v-if="getCurrentContainerLastCollections"
-    title="Bir Haftalık Toplama Tarihleri"
     :data="getCurrentContainerLastCollections"
     :columns="columns"
     row-key="name"
     rows-per-page-label="Gösterilecek kayıt sayısı"
-    :rows-per-page-options="[15]"
+    :rows-per-page-options="[5]"
     no-data-label="Veri bulunamadı"
     class="q-table--square"
     title-class="title"
-    :card-style="{minHeight: getCurrentContainerLastCollections > 0 ? '520px' : '90px'}"
+    :card-style="{minHeight: getCurrentContainerLastCollections > 0 ? '520px' : '104px'}"
     dense
   />
 </template>
@@ -29,7 +28,7 @@
           {
             name: 'name',
             required: true,
-            label: 'Toplama Tarihleri',
+            label: 'Bir Haftalık Toplama Tarihleri',
             align: 'center',
             field: row => row.collectionDate,
             format: val => `${format(val, "dd.MM.yyyy - HH:mm")}`,
