@@ -10,6 +10,7 @@ import {
   apiGetDataStream
 } from "../api/index";
 import {svgMarkerDataStream, svgMarkerMyLocation} from "components/svgIcons";
+import {i18n} from "boot/i18n";
 
 
 Vue.use(Vuex);
@@ -292,18 +293,15 @@ export default function () {
       getContainers(context) {
         Loading.show({
           delay: 0,
-          message: 'Konteyner verisi yükleniyor<br/>',
+          message: `${i18n.t("notifications.lblLoading")}<br/>`,
           spinnerColor: "blue-6"
         });
 
         apiGetContainers()
           .then(response => {
-            console.log("Get containers cevap")
             const featuresWithGeometry = response.data.filter(container => {
               return container.latitude !== null && container.longitude !== null;
             });
-
-            console.log(featuresWithGeometry)
 
             context.commit("changeFilter", true);
             context.dispatch("setContainers", featuresWithGeometry)
@@ -311,7 +309,7 @@ export default function () {
                 context.dispatch("populateFullness");
               })
           }).catch(error => {
-          console.log("Konteynerler yüklenirken hata oluştu! ", error);
+          console.log(i18n.t("errors.lblLoadContainers"), error);
         })
       },
 
@@ -337,15 +335,15 @@ export default function () {
       updateGeometry(context, payload) {
         apiPatchContainer(payload).then(() => {
           Dialog.create({
-            title: 'Uyarı',
-            ok: {label: "Tamam"},
+            title: i18n.t("notifications.lblWarning"),
+            ok: {label: i18n.t("notifications.btnOK")},
             message: `${context.getters.getClickedContainer.container.containerName} adlı konteynerin konumu güncellendi.`
           })
 
           context.dispatch("updatingGeometry");
           context.dispatch("getContainers");
         }).catch(error => {
-          console.log("Veri güncellenirken hata oluştu", error);
+          console.log(i18n.t("errors.lblUpdateGeometry"), error);
         })
       },
 
@@ -360,12 +358,12 @@ export default function () {
         console.log(payload)
         apiPatchContainer(payload).then(() => {
           Dialog.create({
-            title: 'Uyarı',
-            ok: {label: "Tamam"},
-            message: `${payload.containerID} numaralı konteynerin konumu girildi.`
+            title: i18n.t("notifications.lblWarning"),
+            ok: {label: i18n.t("notifications.btnOK")},
+            message: `${payload.containerID} ${i18n.t("notifications.lblAddGeometry")}`
           })
         }).catch(error => {
-          console.log("Geometri girilirken hata oluştu", error);
+          console.log(i18n.t("errors.lblAddGeometry"), error);
         })
       },
 
@@ -437,9 +435,10 @@ export default function () {
 
         if (context.getters.getFullnessColors.countRed) {
           if (context.getters.getSettings.page !== "container-page") {
+            const messageFullness = i18n.t("notifications.lblFullContainers")
             Notify.create({
               type: 'info',
-              message: `Dolu durumda ${context.getters.getFullnessColors.countRed} adet konteyner vardır!`,
+              message: `${messageFullness} ${context.getters.getFullnessColors.countRed}`,
               actions: [{ icon: 'close', color: 'white' }],
               icon: "local_shipping",
               classes: "notifier-fullness"
@@ -451,7 +450,7 @@ export default function () {
       queryContainers(context) {
         Loading.show({
           delay: 0,
-          message: 'Konteyner verisi yükleniyor<br/>',
+          message: `${i18n.t("notifications.lblLoading")}<br/>`,
           spinnerColor: "blue-6"
         });
 
@@ -502,7 +501,7 @@ export default function () {
 
             const markerMyLocation = new window.google.maps.Marker({
               position: context.getters.getMyLocation,
-              title: "Konumum",
+              title: i18n.t("myLocation.lblTitle"),
               icon: {
                 path: svgMarkerMyLocation,
                 fillColor: "grey",
@@ -520,7 +519,7 @@ export default function () {
 
             context.dispatch("setMyLocationMarker", markerMyLocation)
           }, error => {
-            console.log("Konum bilgisi çekilirken hata oluştu", error)
+            console.log(i18n.t("errors.lblMyLocation"), error)
           },
           {
             enableHighAccuracy: true,
@@ -539,7 +538,7 @@ export default function () {
 
         Notify.create({
           type: 'negative',
-          message: `Yangın riski olan ${context.getters.getCounterFireRisk} adet konteyner vardır!`,
+          message: `${i18n.t("notifications.lblFireRisk")} ${context.getters.getCounterFireRisk}`,
           actions: [
             {
               icon: "visibility",
@@ -548,7 +547,7 @@ export default function () {
                 context.commit("updateQueryParameter", {query: "fireRisk", value: "yes"});
                 context.dispatch("queryContainers");
               },
-              label: "GÖRMEK İÇİN TIKLAYINIZ"
+              label: i18n.t("notifications.btnClickToSee")
               },
             {icon: 'close', color: 'white'}
             ],
@@ -565,21 +564,21 @@ export default function () {
       setCurrentContainer(context, payload) {
         apiGetContainer(payload)
           .then(response => {
-            console.log("Container page: ", response.data);
             context.commit("setCurrentContainer", response.data);
             context.commit("setClickedContainer", {container: response.data});
             context.dispatch("setCurrentContainerLastCollections", response.data.id);
           }).catch(error => {
-          console.log("Konteyner çekilirken hata oluştu", error);
+          console.log(i18n.t("errors.lblGetContainer"), error);
         })
       },
 
-      setCurrentContainerLastCollections({commit}, payload) {
-        apiGetLastCollections(payload)
-          .then(response => {
-            console.log(response.data);
-            commit("setCurrentContainerLastCollections", response.data);
-          })
+      setCurrentContainerLastCollections(context, payload) {
+        if (context.getters.getSettings.page === "container-page") {
+          apiGetLastCollections(payload)
+            .then(response => {
+              context.commit("setCurrentContainerLastCollections", response.data);
+            })
+        }
       },
 
       setCurrentContainerLastFiveCoordinates(context, payload) {

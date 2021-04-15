@@ -9,7 +9,7 @@
       <!--Doluluk oranı-->
       <q-expansion-item
         icon="poll"
-        label="Doluluk Oranları"
+        :label="$t('pageMainMap.expansionItems.headers.lblFullnessPercentages')"
         expand-separator
         default-opened
       >
@@ -20,7 +20,7 @@
       <q-expansion-item
         @click="$store.dispatch('expandContainerDetail', false)"
         icon="filter_alt"
-        label="Filtreler"
+        :label="$t('pageMainMap.expansionItems.headers.lblFilters')"
         expand-separator
         default-opened
         group="group"
@@ -33,7 +33,7 @@
         @click="$store.dispatch('expandContainerDetail', false)"
         icon="public"
         group="group"
-        label="Coğrafi İşlemler"
+        :label="$t('pageMainMap.expansionItems.headers.lblSpatialOperations')"
         expand-separator
       >
         <SideMenuSpatialOperations/>
@@ -45,7 +45,7 @@
         group="group"
         expand-separator
         icon="info"
-        label="Konteyner Detay"
+        :label="$t('pageMainMap.expansionItems.headers.lblContainerDetail')"
       >
         <SideMenuContainerDetail/>
       </q-expansion-item>
@@ -94,8 +94,8 @@
     color: #6d7171;
   }
 
-  /*.q-expansion-item .q-expansion-item__container .material-icons.q-icon.notranslate {*/
-  /*  color: #6d7171;*/
-  /*}*/
+  .q-item__section.column.q-item__section--avatar .material-icons.q-icon.notranslate {
+    color: #6d7171;
+  }
 
 </style>

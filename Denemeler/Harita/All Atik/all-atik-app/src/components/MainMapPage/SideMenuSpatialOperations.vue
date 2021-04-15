@@ -6,7 +6,7 @@
           v-if="!updatingGeometry"
           :disable="!getClickedContainer"
           @click="updateGeometry"
-          label="GEOMETRİ DÜZENLE"
+          :label="$t('pageMainMap.expansionItems.spatialOperations.btnEditGeometry')"
           :color="!getClickedContainer ? 'grey-5' : 'blue-3'"
           class="q-ma-xs"
           style="min-width: 201px;"
@@ -16,7 +16,7 @@
         <q-btn
           v-if="updatingGeometry"
           @click="updateGeometry"
-          label="İPTAL ET"
+          :label="$t('pageMainMap.expansionItems.spatialOperations.btnEditGeometryCancel')"
           color="blue-3"
           outline
           class="q-ma-xs"
@@ -27,7 +27,7 @@
         <q-btn
           @click="$store.dispatch('createRoute', true)"
           color="orange-4"
-          label="ROTA OLUŞTUR"
+          :label="$t('pageMainMap.expansionItems.spatialOperations.btnCreateRoute')"
           class="q-ma-xs"
           style="min-width: 201px;"
           icon="local_shipping"
@@ -36,7 +36,7 @@
         <q-btn
           @click="$store.dispatch('setMyLocation')"
           color="green-4"
-          label="KONUMUMU BUL"
+          :label="$t('pageMainMap.expansionItems.spatialOperations.btnFindMyLocation')"
           class="q-ma-xs"
           style="min-width: 201px;"
           icon="my_location"

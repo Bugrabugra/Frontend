@@ -2,7 +2,7 @@
   <div>
     <q-btn
       v-if="!isButtonClicked"
-      label="SON 5 KOORDİNAT"
+      :label="$t('pageContainer.buttonContainer.btnLastFiveContainers')"
       @click="showFiveCoordinates"
       color="blue-3"
       icon="my_location"
@@ -10,7 +10,7 @@
 
     <q-btn
       v-if="isButtonClicked"
-      label="KOORDİNATLARI GİZLE"
+      :label="$t('pageContainer.buttonContainer.btnLastFiveContainersHide')"
       @click="hideFiveCoordinates"
       color="blue-3"
       icon="gps_off"

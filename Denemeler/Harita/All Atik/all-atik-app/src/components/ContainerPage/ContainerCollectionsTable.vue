@@ -4,9 +4,9 @@
     :data="getCurrentContainerLastCollections"
     :columns="columns"
     row-key="name"
-    rows-per-page-label="Gösterilecek kayıt sayısı"
+    :rows-per-page-label="$t('pageContainer.weeklyCollections.lblHeader')"
     :rows-per-page-options="[5]"
-    no-data-label="Veri bulunamadı"
+    :no-data-label="$t('pageContainer.weeklyCollections.lblNoValue')"
     class="q-table--square"
     title-class="title"
     :card-style="{minHeight: getCurrentContainerLastCollections > 0 ? '520px' : '104px'}"
@@ -28,7 +28,7 @@
           {
             name: 'name',
             required: true,
-            label: 'Bir Haftalık Toplama Tarihleri',
+            label: this.$t("pageContainer.weeklyCollections.lblHeader"),
             align: 'center',
             field: row => row.collectionDate,
             format: val => `${format(val, "dd.MM.yyyy - HH:mm")}`,

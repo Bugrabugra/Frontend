@@ -2,7 +2,7 @@
   <div>
     <q-btn
       v-show="!isButtonClicked"
-      label="GEOMETRİ"
+      :label="$t('pageContainer.buttonContainer.btnGeometry')"
       @click="addContainer"
       color="brown-3"
       icon="add_location_alt"
@@ -11,7 +11,7 @@
 
     <q-btn
       v-show="isButtonClicked"
-      label="İPTAL"
+      :label="$t('pageContainer.buttonContainer.btnGeometryCancel')"
       @click="cancelDrawing"
       color="brown-3"
       icon="wrong_location"

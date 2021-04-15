@@ -2,7 +2,7 @@
   <q-card style="width: 100%;">
     <q-card-section>
       <!--Adres-->
-      <div class="text-h7 text-weight-bold">Adres</div>
+      <div class="text-h7 text-weight-bold">{{$t("pageMainMap.expansionItems.filters.lblAddress")}}</div>
 
       <!--Mahalle-->
       <q-select
@@ -10,7 +10,7 @@
         @clear="clearNeighborhood"
         v-model="selectedNeighborhood"
         :options="neighborhoods"
-        label="Mahalle"
+        :label="$t('pageMainMap.expansionItems.filters.phNeighborhood')"
         class="q-mb-xs"
         :disable="selectedZone !== null"
         option-label="name"
@@ -25,7 +25,7 @@
         @clear="clearStreet"
         v-model="selectedStreet"
         :options="streets"
-        label="Sokak"
+        :label="$t('pageMainMap.expansionItems.filters.phStreet')"
         class="q-mb-xs q-mb-sm"
         :disable="!selectedNeighborhood"
         option-label="name"
@@ -35,7 +35,7 @@
       />
 
       <!--Bölge-->
-      <div class="text-h7 text-weight-bold">Bölge</div>
+      <div class="text-h7 text-weight-bold">{{$t('pageMainMap.expansionItems.filters.lblZone')}}</div>
 
       <!--Bölge-->
       <q-select
@@ -43,7 +43,7 @@
         @clear="clearZone"
         v-model="selectedZone"
         :options="zones"
-        label="Bölge"
+        :label="$t('pageMainMap.expansionItems.filters.phZone')"
         option-label="name"
         class="q-mb-xs q-mb-sm"
         :disable="selectedNeighborhood !== null"
@@ -53,7 +53,7 @@
       />
 
       <!--Konteyner-->
-      <div class="text-h7 text-weight-bold">Konteyner</div>
+      <div class="text-h7 text-weight-bold">{{$t('pageMainMap.expansionItems.filters.lblContainer')}}</div>
 
       <!--Konteyner tipi-->
       <q-select
@@ -61,7 +61,7 @@
         @clear="clearContainerType"
         v-model="selectedContainerType"
         :options="containerTypes"
-        label="Konteyner Tipi"
+        :label="$t('pageMainMap.expansionItems.filters.phContainerType')"
         option-label="name"
         class="q-mb-xs q-mb-sm"
         filled
@@ -75,7 +75,7 @@
         @clear="clearFullness"
         v-model="selectedFullness"
         :options="fullness"
-        label="Doluluk"
+        :label="$t('pageMainMap.expansionItems.filters.phFullness')"
         option-label="name"
         class="q-mb-xs q-mb-sm"
         filled
@@ -89,7 +89,7 @@
         @clear="clearFireRisk"
         v-model="selectedFireRisk"
         :options="fireRisk"
-        label="Yangın Riski"
+        :label="$t('pageMainMap.expansionItems.filters.phFireRisk')"
         option-label="name"
         filled
         dense
@@ -103,6 +103,7 @@
 <script>
   import {apiGetContainerTypes, apiGetNeighborhoods, apiGetStreets, apiGetZones} from "src/api";
   import {mapGetters} from "vuex";
+  import {i18n} from "boot/i18n";
 
 
   export default {
@@ -123,12 +124,12 @@
           {name: "% 0-50", value: "0-50"},
           {name: "% 50-75", value: "50-75"},
           {name: "% 75-100", value: "75-100"},
-          {name: "Veri yok", value: "noValue"},
+          {name: this.$t('pageMainMap.expansionItems.containerDetail.lblNoValue'), value: "noValue"},
         ],
         selectedFireRisk: null,
         fireRisk: [
-          {name: "Var", value: "yes"},
-          {name: "Yok", value: "no"}
+          {name: this.$t('pageMainMap.expansionItems.containerDetail.lblThere'), value: "yes"},
+          {name: this.$t('pageMainMap.expansionItems.containerDetail.lblThereIsNot'), value: "no"}
         ]
       }
     },

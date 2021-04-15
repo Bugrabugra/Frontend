@@ -2,7 +2,6 @@
   <q-card style="width: 100%;">
     <q-card-section>
         <div class="row q-mb-sm">
-
           <div class="col-6">
                 <span>
                   <q-icon
@@ -55,7 +54,7 @@
                     size="md"
                     name="delete"
                   />
-                  Veri Yok : <strong>{{getFullnessColors.countGrey}}</strong>
+                  {{$t("pageMainMap.expansionItems.fullness.lblNoValue")}} <strong>{{getFullnessColors.countGrey}}</strong>
                 </span>
           </div>
         </div>

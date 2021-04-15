@@ -25,7 +25,7 @@
         options: {
           title: {
             display: true,
-            text: "Son 5 Sensör Verisi",
+            text: this.$t("pageContainer.lastFiveSensorValue.lblHeader"),
           },
 
           scales: {
@@ -74,17 +74,17 @@
               labels: this.dates,
               datasets: [
                 {
-                  label: "Sıcaklık",
+                  label: this.$t("pageContainer.lastFiveSensorValue.lblTemperature"),
                   backgroundColor: "#F6B283",
                   data: this.temperatureArray
                 },
                 {
-                  label: "Doluluk",
+                  label: this.$t("pageContainer.lastFiveSensorValue.lblFullness"),
                   backgroundColor: "#ADC187",
                   data: this.fullnessArray
                 },
                 {
-                  label: "Pil",
+                  label: this.$t("pageContainer.lastFiveSensorValue.lblBattery"),
                   backgroundColor: "#8BABD5",
                   data: this.batteryArray
                 }

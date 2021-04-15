@@ -1,8 +1,17 @@
 <template>
   <q-toolbar class="text-primary bg-grey-8 text-white">
     <q-toolbar-title>
-      Konteyner Adet: <span v-if="getContainers">{{containersCount}}</span>
+      {{$t('pageMainMap.toolbar.lblContainerCount')}} <span v-if="getContainers">{{containersCount}}</span>
     </q-toolbar-title>
+
+    <!--TODO Change language-->
+    <q-btn
+      @click="toggleLanguage"
+      color="indigo-2"
+      flat
+      round
+      :icon="$i18n.locale === 'tr-tr' ? 'img:/icons/flags/turkey.png' : 'img:/icons/flags/uk.png'"
+    />
 
     <q-icon
       name="zoom_out_map"
@@ -34,6 +43,14 @@
       resetView() {
         this.$store.dispatch("resetView", true);
       },
+
+      toggleLanguage() {
+        if (this.$i18n.locale === "tr-tr") {
+          this.$i18n.locale = "en-en";
+        } else {
+          this.$i18n.locale = "tr-tr";
+        }
+      }
     }
   }
 </script>

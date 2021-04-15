@@ -5,7 +5,7 @@
 
         <!--  Konteyner Detayları-->
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">ID:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblID')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -17,7 +17,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Konteyner Adı:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblContainerName')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -29,7 +29,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Mahalle:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblNeighborhood')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -41,7 +41,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Sokak:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblStreet')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -53,7 +53,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Bölge:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblZone')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -65,7 +65,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Tipi:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblType')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -78,41 +78,41 @@
       <div class="row q-mb-xs details">
         <div class="col-6">
           <div :class="aliasWidth">
-            <div :class="[textSize, 'text-weight-bold']">Doluluk:</div>
+            <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblFullness')}}</div>
           </div>
 
           <q-circular-progress
             v-if="getClickedContainer"
-            :show-value="selectedContainer.fullness !== null"
+            :show-value="true"
             font-size="12px"
-            :value="selectedContainer.fullness ? selectedContainer.fullness : 0"
+            :value="(selectedContainer.fullness >= 0 && selectedContainer.fullness <= 100) ? selectedContainer.fullness : 0"
             size="50px"
             :thickness="0.22"
             :color="getFullness"
-            track-color="grey-3"
+            :track-color="selectedContainer.fullness === 100 ? 'red' : 'grey-3'"
             class="q-ma-md"
           >
-            %{{selectedContainer.fullness ? selectedContainer.fullness : "Veri yok"}}
+            {{(selectedContainer.fullness >= 0 && selectedContainer.fullness <= 100 && selectedContainer.fullness !== null) ? `%${selectedContainer.fullness}` : $t("pageMainMap.expansionItems.containerDetail.lblNoValue")}}
           </q-circular-progress>
         </div>
 
         <div class="col-6">
           <div :class="aliasWidth">
-            <div :class="[textSize, 'text-weight-bold']">Pil:</div>
+            <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblBattery')}}</div>
           </div>
 
           <q-circular-progress
             v-if="getClickedContainer"
-            :show-value="selectedContainer.battery !== null"
+            :show-value="true"
             font-size="12px"
-            :value="selectedContainer.battery ? selectedContainer.battery : 0"
+            :value="(selectedContainer.battery >= 0 && selectedContainer.battery <= 100) ? selectedContainer.battery : 0"
             size="50px"
             :thickness="0.22"
             :color="getBattery"
-            track-color="grey-3"
+            :track-color="selectedContainer.battery === 0 ? 'red' : 'grey-3'"
             class="q-ma-md"
           >
-            %{{selectedContainer.battery ? selectedContainer.battery : "Veri yok"}}
+            {{(selectedContainer.battery >= 0 && selectedContainer.battery <= 100 && selectedContainer.battery !== null) ? `%${selectedContainer.battery}` : $t("pageMainMap.expansionItems.containerDetail.lblNoValue")}}
           </q-circular-progress>
 
         </div>
@@ -120,13 +120,13 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Yangın Riski:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblFireRisk')}}</div>
         </div>
 
         <div :class="valueWidth">
           <div v-if="getClickedContainer">
           <span :class="`text-${checkValue(selectedContainer.fireRisk)}`">
-            {{selectedContainer.fireRisk !== null ? selectedContainer.fireRisk === true ? "Var" : "Yok" : "Veri yok"}}
+            {{selectedContainer.fireRisk !== null ? selectedContainer.fireRisk === true ? $t("pageMainMap.expansionItems.containerDetail.lblThere") : $t("pageMainMap.expansionItems.containerDetail.lblThereIsNot") : $t("pageMainMap.expansionItems.containerDetail.lblNoValue")}}
           </span>
           </div>
         </div>
@@ -134,7 +134,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Cihaz:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblDevice')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -146,7 +146,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Son Güncelleme:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblLastUpdate')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -160,7 +160,7 @@
 
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
-          <div :class="[textSize, 'text-weight-bold']">Son Toplama:</div>
+          <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblLastCollection')}}</div>
         </div>
 
         <div :class="valueWidth">
@@ -179,6 +179,7 @@
 <script>
   import {format} from "date-fns";
   import {mapGetters} from "vuex";
+  import {i18n} from "boot/i18n";
 
 
   export default {
@@ -255,7 +256,8 @@
         if (value) {
           return format(value, "dd.MM.yyyy - HH:mm");
         } else {
-          return "Veri yok";
+          // TODO i18n
+          return i18n.t("pageMainMap.expansionItems.containerDetail.lblNoValue");
         }
       },
     },

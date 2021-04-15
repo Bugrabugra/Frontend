@@ -97,7 +97,7 @@
             lat: this.coordinatesMunicipalityCenter.lat,
             lng: this.coordinatesMunicipalityCenter.lng
           },
-          title: "Belediye Merkez",
+          title: this.$t("pageMainMap.map.lblMunicipalityCenter"),
           icon: {
             path: svgMarkerMunicipalityCenter,
             fillColor: "#5665db",
@@ -116,7 +116,7 @@
             lat: this.coordinatesDisposalArea.lat,
             lng: this.coordinatesDisposalArea.lng
           },
-          title: "Çöp Döküm Merkezi",
+          title: this.$t("pageMainMap.map.lblDisposalCenter"),
           icon: {
             path: svgMarkerDisposalArea,
             fillColor: "#5665db",
@@ -249,7 +249,7 @@
           this.markers,
           {
             maxZoom: 14,
-            gridSize: 30,
+            gridSize: 40,
             styles: [
               {
                 anchorText: [20, 2],
@@ -362,8 +362,6 @@
 
                 stations = newStations;
 
-                console.log("New stations", newStations)
-
                 stations.unshift({
                   lat: this.coordinatesMunicipalityCenter.lat,
                   lng: this.coordinatesMunicipalityCenter.lng,
@@ -382,7 +380,7 @@
                 const service_callback = (response, status) => {
                   console.log(response)
                   if (status !== 'OK') {
-                    console.log('Directions request failed due to ' + status);
+                    console.log(this.$t("pageMainMap.map.lblDirectionsError") + status);
                     return;
                   }
                   let markerCounter = 1;

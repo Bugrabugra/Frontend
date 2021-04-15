@@ -16,6 +16,10 @@
       })
       console.log(settings)
       this.$store.dispatch("setSettings", settings);
+    },
+
+    mounted() {
+      this.$i18n.locale = "tr-tr";
     }
   }
 </script>
