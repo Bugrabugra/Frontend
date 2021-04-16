@@ -319,8 +319,8 @@ export default function () {
 
       setClickedContainer(context, payload) {
         context.commit("setClickedContainer", payload);
-        context.commit("setCurrentContainer", payload.container)
-        context.dispatch("setCurrentContainerLastCollections", payload.container.id);
+        context.commit("setCurrentContainer", payload ? payload.container : null)
+        // context.dispatch("setCurrentContainerLastCollections", payload ? payload.container.id : null);
         context.commit("expandContainerDetail", true);
       },
 
