@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import {format} from "date-fns";
   import {mapGetters} from "vuex";
+  import {date} from "quasar";
 
 
   export default {
@@ -31,7 +31,7 @@
             label: this.$t("pageContainer.weeklyCollections.lblHeader"),
             align: 'center',
             field: row => row.collectionDate,
-            format: val => `${format(val, "dd.MM.yyyy - HH:mm")}`,
+            format: val => `${date.formatDate(val, "DD.MM.YYYY - HH:mm")}`,
             sortable: true
           }
         ],

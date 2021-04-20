@@ -19,7 +19,7 @@
           <q-card class="q-mt-sm q-pa-none full-width" square>
             <q-card-section class="row q-ma-none q-pa-none items-center justify-center">
               <EditContainerButton class="q-ma-sm"/>
-              <DrawLastFiveCoordinates class="q-ma-sm"/>
+              <DrawLastFiveCoordinatesButton class="q-ma-sm"/>
             </q-card-section>
           </q-card>
 
@@ -38,9 +38,9 @@
   import SideMenuContainerDetail from "components/MainMapPage/SideMenuContainerDetail";
   import ContainerCollectionsTable from "components/ContainerPage/ContainerCollectionsTable";
   import EditContainerButton from "components/ContainerPage/EditContainerButton";
-  import {mapActions, mapGetters} from "vuex";
-  import DrawLastFiveCoordinates from "components/ContainerPage/DrawLastFiveCoordinates";
+  import DrawLastFiveCoordinatesButton from "components/ContainerPage/DrawLastFiveCoordinatesButton";
   import ContainerChart from "components/ContainerPage/ContainerChart";
+  import {mapActions, mapGetters} from "vuex";
 
 
   export default {
@@ -48,7 +48,7 @@
 
     components: {
       ContainerChart,
-      DrawLastFiveCoordinates,
+      DrawLastFiveCoordinatesButton,
       EditContainerButton,
       ContainerCollectionsTable,
       SideMenuContainerDetail

@@ -23,3 +23,23 @@
     }
   }
 </script>
+
+<style>
+  .notifier-fire-risk .q-notification__actions{
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .notifier-fire-risk .q-notification__actions .q-btn__wrapper {
+    padding-left: 0;
+  }
+
+  .close-button .q-btn__wrapper{
+    padding-left: 16px;
+    padding-right: 8px;
+  }
+
+  .notifier-fire-risk .q-notification__icon {
+    margin-right: 12px;
+  }
+</style>

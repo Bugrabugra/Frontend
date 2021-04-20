@@ -337,7 +337,7 @@ export default function () {
           Dialog.create({
             title: i18n.t("notifications.lblWarning"),
             ok: {label: i18n.t("notifications.btnOK")},
-            message: `${context.getters.getClickedContainer.container.containerName} adlı konteynerin konumu güncellendi.`
+            message: `${context.getters.getClickedContainer.container.containerName} ${i18n.t("notifications.lblAddGeometry")}`
           })
 
           context.dispatch("updatingGeometry");
@@ -360,7 +360,7 @@ export default function () {
           Dialog.create({
             title: i18n.t("notifications.lblWarning"),
             ok: {label: i18n.t("notifications.btnOK")},
-            message: `${payload.containerID} ${i18n.t("notifications.lblAddGeometry")}`
+            message: `ID: ${payload.containerID} ${i18n.t("notifications.lblAddGeometry")}`
           })
         }).catch(error => {
           console.log(i18n.t("errors.lblAddGeometry"), error);
@@ -441,7 +441,7 @@ export default function () {
               message: `${messageFullness} ${context.getters.getFullnessColors.countRed}`,
               actions: [{ icon: 'close', color: 'white' }],
               icon: "local_shipping",
-              classes: "notifier-fullness"
+              classes: "notifier-fullness",
             })
           }
         }
@@ -509,7 +509,7 @@ export default function () {
                 strokeWeight: 0,
                 rotation: 0,
                 scale: 2,
-                anchor: new window.google.maps.Point(15, 30),
+                anchor: new window.google.maps.Point(15, 15),
               },
               map: context.getters.getMap
             })
@@ -548,12 +548,16 @@ export default function () {
                 context.dispatch("queryContainers");
               },
               label: i18n.t("notifications.btnClickToSee")
-              },
-            {icon: 'close', color: 'white'}
+            },
+            {
+              icon: 'close',
+              color: 'white',
+              class: "close-button"
+            }
             ],
           icon: "local_fire_department",
           timeout: 3000000,
-          classes: "notifier-fire-risk"
+          classes: "notifier-fire-risk",
         })
       },
 

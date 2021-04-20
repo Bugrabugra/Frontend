@@ -24,7 +24,7 @@
 
 
   export default {
-    name: "DrawLastFiveCoordinates",
+    name: "DrawLastFiveCoordinatesButton",
 
     data() {
       return {
@@ -54,7 +54,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

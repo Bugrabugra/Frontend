@@ -177,9 +177,9 @@
 </template>
 
 <script>
-  import {format} from "date-fns";
   import {mapGetters} from "vuex";
   import {i18n} from "boot/i18n";
+  import {date} from "quasar";
 
 
   export default {
@@ -254,7 +254,7 @@
     filters: {
       formatDate(value) {
         if (value) {
-          return format(value, "dd.MM.yyyy - HH:mm");
+          return date.formatDate(value, "DD.MM.YYYY - HH:mm");
         } else {
           // TODO i18n
           return i18n.t("pageMainMap.expansionItems.containerDetail.lblNoValue");
