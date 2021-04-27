@@ -20,6 +20,7 @@
       <q-btn
         v-if="hasCameraSupport"
         @click="captureImage"
+        :disable="imageCaptured"
         color="grey-10"
         icon="eva-camera"
         size="lg"
@@ -43,7 +44,7 @@
         <q-input
           v-model="post.caption"
           class="col col-sm-6"
-          label="Caption"
+          label="Caption *"
           dense
         />
       </div>
@@ -58,7 +59,7 @@
         >
           <template v-slot:append>
             <q-btn
-              v-if="!locationLoading && geolocationSupported"
+              v-if="!locationLoading && isGeolocationSupported"
               @click="getLocation"
               icon="eva-navigation-2-outline"
               round
@@ -72,6 +73,7 @@
       <div class="row justify-center q-mt-lg">
         <q-btn
           @click="addPost"
+          :disable="!post.caption || !post.photo"
           color="primary"
           label="Post Image"
           unelevated
@@ -84,8 +86,6 @@
 
 <script>
   import {uid} from "quasar";
-
-
   require("md-gum-polyfill");
 
 
@@ -109,12 +109,12 @@
     },
 
     computed: {
-      geolocationSupported() {
-        if ("geolocation" in navigator) {
-          return true;
-        } else {
-          return false;
-        }
+      isGeolocationSupported() {
+        return "geolocation" in navigator;
+      },
+
+      isBackgroundSyncSupported() {
+        return "serviceWorker" in navigator && "SyncManager" in window;
       }
     },
 
@@ -220,6 +220,8 @@
       },
 
       addPost() {
+        this.$q.loading.show();
+
         let formData = new FormData();
         formData.append("id", this.post.id);
         formData.append("caption", this.post.caption);
@@ -230,9 +232,28 @@
         this.$axios.post(`${process.env.API}/createPost`, formData)
           .then(response => {
             console.log("response: ", response);
+            this.$router.push("/");
+            this.$q.notify({
+              message: "Post created",
+              actions: [
+                {label: "Dismiss", color: "white"}
+              ]
+            })
+            this.$q.loading.hide();
           })
           .catch(error => {
             console.log("error: ", error);
+            if (!navigator.onLine && this.isBackgroundSyncSupported) {
+              // Redirect to home page
+              this.$q.notify("Post created offline");
+              this.$router.push("/");
+            } else {
+              this.$q.dialog({
+                title: "Error",
+                message: "Sorry, could not create post!"
+              })
+            }
+            this.$q.loading.hide();
           })
       }
     },

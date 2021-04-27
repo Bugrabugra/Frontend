@@ -35,11 +35,67 @@
     </q-header>
 
     <q-footer
-      class="bg-white small-screen-only"
+      class="bg-white"
       bordered
     >
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div
+          v-if="showAppInstallBanner"
+          class="banner-container bg-primary"
+        >
+          <div class="constrain">
+            <q-banner
+              class="bg-primary text-white"
+              inline-actions
+              dense
+            >
+              <template v-slot:avatar>
+                <q-avatar
+                  icon="eva-camera-outline"
+                  color="white"
+                  text-color="grey-10"
+                  font-size="22px"
+                />
+              </template>
+              <b>Install Quasagram?</b>
+
+              <template v-slot:action>
+                <q-btn
+                  @click="installApp"
+                  label="Yes"
+                  class="q-px-sm"
+                  flat
+                  dense
+                />
+
+                <q-btn
+                  @click="showAppInstallBanner = false"
+                  label="Later"
+                  class="q-px-sm"
+                  flat
+                  dense
+                />
+
+                <q-btn
+                  @click="neverShowAppInstallBanner"
+                  label="Never"
+                  class="q-px-sm"
+                  flat
+                  dense
+                />
+              </template>
+
+            </q-banner>
+          </div>
+        </div>
+      </transition>
+
       <q-tabs
-        class="text-grey-10"
+        class="text-grey-10 small-screen-only"
         active-color="primary"
         indicator-color="transparent"
       >
@@ -55,19 +111,63 @@
     </q-footer>
 
     <q-page-container class="bg-grey-1">
-      <router-view/>
+      <keep-alive :include="['PageHome']">
+        <router-view/>
+      </keep-alive>
     </q-page-container>
 
   </q-layout>
 </template>
 
 <script>
+  let deferredPrompt;
+
   export default {
     name: 'MainLayout',
-    components: {},
+
     data() {
       return {
+        showAppInstallBanner: false
+      }
+    },
 
+    methods: {
+      installApp() {
+        // Hide the app provided install promotion
+        this.showAppInstallBanner = false;
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then(choiceResult => {
+          if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the install prompt");
+            this.neverShowAppInstallBanner();
+          } else {
+            console.log("User dismissed the install prompt");
+          }
+        })
+      },
+
+      neverShowAppInstallBanner() {
+        this.showAppInstallBanner = false;
+        this.$q.localStorage.set("neverShowAppInstallBanner", true);
+      }
+    },
+
+    mounted() {
+      const neverShowAppInstallBanner = this.$q.localStorage.getItem("neverShowAppInstallBanner")
+
+      if (!neverShowAppInstallBanner) {
+        window.addEventListener("beforeinstallprompt", (e) => {
+          // Prevent the mini-infobar from appearing on mobile
+          e.preventDefault();
+          // Stash the event so it can be triggered later
+          deferredPrompt = e;
+          // Update UI notify the user they can install the PWA
+          setTimeout(() => {
+            this.showAppInstallBanner = true;
+          }, 3000)
+        })
       }
     }
   }
