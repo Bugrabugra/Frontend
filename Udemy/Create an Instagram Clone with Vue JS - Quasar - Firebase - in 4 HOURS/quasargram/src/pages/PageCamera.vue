@@ -232,6 +232,7 @@
         this.$axios.post(`${process.env.API}/createPost`, formData)
           .then(response => {
             console.log("response: ", response);
+            this.$q.localStorage.set("postCreated", true);
             this.$router.push("/");
             this.$q.notify({
               message: "Post created",
