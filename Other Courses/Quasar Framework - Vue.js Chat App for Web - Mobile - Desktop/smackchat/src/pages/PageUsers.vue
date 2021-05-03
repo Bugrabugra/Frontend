@@ -5,9 +5,9 @@
       separator
     >
       <q-item
-        v-for="user in users"
-        :key="user.id"
-        to="/chat"
+        v-for="(user, key) in users"
+        :key="key"
+        :to="'/chat/' + key"
         clickable
         v-ripple
       >
@@ -31,29 +31,14 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
+
+
   export default {
     name: 'PageIndex',
 
-    data() {
-      return {
-        users: [
-          {
-            id: 1,
-            name: "Ahmet Mehmet",
-            online: true
-          },
-          {
-            id: 2,
-            name: "Buğra Otken",
-            online: false
-          },
-          {
-            id: 3,
-            name: "Cem Aksa",
-            online: true
-          }
-        ]
-      }
-    },
+    computed: {
+      ...mapGetters("store", ["users"])
+    }
   }
 </script>

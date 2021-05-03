@@ -34,7 +34,9 @@
   import LoginRegister from "components/LoginRegister";
   export default {
     name: "PageAuth",
+
     components: {LoginRegister},
+
     data() {
       return {
         tab: "login"

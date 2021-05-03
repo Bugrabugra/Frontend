@@ -1,10 +1,21 @@
 <template>
   <div id="q-app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 <script>
-export default {
-  name: 'App'
-}
+  import {mapActions} from "vuex";
+
+
+  export default {
+    name: 'App',
+
+    methods: {
+      ...mapActions("store", ["handleAuthStateChanged"])
+    },
+
+    mounted() {
+      this.handleAuthStateChanged();
+    }
+  }
 </script>
