@@ -2,7 +2,7 @@
   "name": "1---understanding-ts",
   "version": "1.0.0",
   "description": "",
-  "main": "basics.js",
+  "main": "src/basics.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "lite-server"
