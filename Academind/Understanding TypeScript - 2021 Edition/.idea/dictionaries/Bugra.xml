@@ -3,9 +3,11 @@
     <words>
       <w>autobind</w>
       <w>combinable</w>
+      <w>geocoding</w>
       <w>greetable</w>
       <w>manu</w>
       <w>pers</w>
+      <w>todos</w>
     </words>
   </dictionary>
 </component>
