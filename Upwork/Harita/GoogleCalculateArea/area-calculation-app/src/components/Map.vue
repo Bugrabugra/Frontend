@@ -1,5 +1,5 @@
 <template>
-  <v-container class="ma-0 pa-0" style="height: 100%;">
+  <v-container fluid class="ma-0 pa-0" style="height: 100%;">
     <!--Map container-->
     <div id="map" style="height: 100% !important;"></div>
 
@@ -125,7 +125,7 @@
             _this.$store.state.map.data.setStyle(featureStyling);
           });
         }, 500)
-      },
+      }
     }
   }
 </script>

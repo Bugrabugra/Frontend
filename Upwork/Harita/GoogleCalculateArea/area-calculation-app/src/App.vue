@@ -2,7 +2,7 @@
   <v-app>
     <Drawer v-if="!mini"/>
     <v-main>
-      <Map/>
+      <Map style="width: 100%;"/>
       <DrawerMini v-if="mini"/>
     </v-main>
   </v-app>
