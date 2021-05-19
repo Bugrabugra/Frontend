@@ -19,7 +19,6 @@
                     prepend-inner-icon="mdi-account"
                     outlined
                     clearable
-                    autofocus
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -45,7 +44,7 @@
                 <v-text-field
                     v-model="customerPhone"
                     :counter="14"
-                    :rules="phoneRules"
+                    :rules="customerPhone ? phoneRules : []"
                     label="Phone Number"
                     prepend-inner-icon="mdi-phone"
                     outlined
@@ -65,6 +64,29 @@
                     outlined
                     disabled
                 ></v-text-field>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <!--Radio button-->
+              <v-col>
+                <v-radio-group
+                    label="Service Type"
+                    v-model="customerChoice"
+                    hide-details
+                >
+                  <v-radio
+                      key="diy"
+                      label="DIY"
+                      value="diy"
+                  />
+
+                  <v-radio
+                      key="fs"
+                      label="Full Service"
+                      value="full-service"
+                  />
+                </v-radio-group>
               </v-col>
             </v-row>
 
@@ -88,7 +110,7 @@
               @click="sendReport"
               class="white--text"
           >
-            Send
+            Submit
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -106,6 +128,7 @@
         customerName: "",
         customerEmail: "",
         customerPhone: "",
+        customerChoice: "diy",
         // Here are the email, name and number rules
         nameRules: [
           v => !!v || 'Name is required',
@@ -116,7 +139,6 @@
           v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
         ],
         phoneRules: [
-          v => !!v || 'Phone number is required',
           v => /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(v) || 'Phone number must be valid',
         ]
       }
@@ -141,7 +163,8 @@
         const payload = {
           customerName: this.customerName,
           customerEmail: this.customerEmail,
-          customerPhone: this.customerPhone
+          customerPhone: this.customerPhone,
+          customerChoice: this.customerChoice
         }
 
         this.$store.dispatch("saveCustomerInfos", payload);

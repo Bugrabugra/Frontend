@@ -20,7 +20,8 @@ export default new Vuex.Store({
     totalArea: null,
     customerName: null,
     customerPhone: null,
-    customerEmail: null
+    customerEmail: null,
+    customerChoice: null
   },
 
   mutations: {
@@ -105,6 +106,7 @@ export default new Vuex.Store({
       state.customerName = payload.customerName;
       state.customerEmail = payload.customerEmail;
       state.customerPhone = payload.customerPhone;
+      state.customerChoice = payload.customerChoice;
     },
 
     sendReport(state) {
@@ -114,6 +116,7 @@ export default new Vuex.Store({
       const customerName = state.customerName;
       const customerEmail = state.customerEmail;
       const customerPhone = state.customerPhone;
+      const customerChoice = state.customerChoice;
 
       const config = {
         headers: {
@@ -127,20 +130,29 @@ export default new Vuex.Store({
       formData.append("your-name", customerName);
       formData.append("your-email", customerEmail);
       formData.append("phone_number", customerPhone);
+      formData.append("your-choice", customerChoice); // TODO ask to Jeremy
       formData.append("your-subject", longAddress);
       formData.append("polygons", polygonsStringify);
       formData.append("area_square_feet", totalArea);
 
-      console.log(formData);
+      // TODO delete this
+      for (const pair of formData.entries()) {
+        console.log(pair[0]+ '===> ' + pair[1]);
+      }
+      return // TODO delete return
 
       axios.post(
         "https://petes17.sg-host.com/wp-json/contact-form-7/v1/contact-forms/499/feedback",
         formData,
         config
-        ).then(response => {
-        console.log(response);
-        state.showReportDialog = false;
-      })
+      )
+        .then(response => {
+          console.log(response);
+          state.showReportDialog = false;
+        })
+        .catch(error => {
+          console.log("There was an error posting the payload! Error: ", error)
+        })
     },
 
     showReportDialog(state, payload) {

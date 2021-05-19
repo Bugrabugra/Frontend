@@ -19,7 +19,7 @@
               </v-list-item-subtitle>
             </v-list-item-content>
 
-            <v-list-item-icon class="pa-0 ma-0 mt-2">
+            <v-list-item-icon class="pa-0 ma-0 mt-md-1 mt-sm-1 mt-xs-2">
               <v-btn @click="deletePolygon(polygon.geometry)" icon plain>
                 <v-icon>mdi-delete</v-icon>
               </v-btn>

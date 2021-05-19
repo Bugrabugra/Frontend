@@ -48,6 +48,11 @@
             center: { lat: 36.833, lng: -99.903 },
             // You can switch on Google Map types here
             mapTypeId: "satellite",
+            // Disable yellow man (street view)
+            streetViewControl: false,
+            // Disable 45 degrees
+            tilt: 0,
+            rotateControl: false
           });
 
           this.$store.dispatch("setMap", this.map);

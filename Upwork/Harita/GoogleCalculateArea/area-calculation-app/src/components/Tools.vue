@@ -77,6 +77,7 @@
                 </v-btn>
               </div>
             </template>
+
             <!--Tooltip message-->
             <span>You must draw at least 1 area</span>
             <hr>
@@ -100,7 +101,8 @@
 
     computed: {
       enableSendReport() {
-        return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
+        // return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
+        return this.$store.state.polygons.length;
       },
 
       // Checking if the page was loaded in mobile device
