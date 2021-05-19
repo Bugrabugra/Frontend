@@ -112,7 +112,7 @@
         <v-img
             max-height="150"
             max-width="250"
-            src="../assets/HLP-New-Logo-for-Website.svg"
+            src="../assets/Logo.svg"
             class="logo"
             @click="goToMainPage"
         />
