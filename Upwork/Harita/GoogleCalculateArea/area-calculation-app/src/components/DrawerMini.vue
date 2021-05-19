@@ -1,7 +1,7 @@
 <template>
   <!--This is the drawer for mobile devices-->
   <v-bottom-sheet no-click-animation hide-overlay :value="true" eager persistent>
-    <v-card class="light-green darken-1">
+    <v-card style="background-color: #8FB5F0;">
       <!--Address component-->
       <Address/>
 

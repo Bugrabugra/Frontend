@@ -11,9 +11,9 @@
               <v-btn
                   v-show="!$store.state.drawPolygon"
                   @click="toggleDraw"
-                  color="#173c00"
+                  color="#fff"
                   style="width: 100%"
-                  class="white--text"
+                  class="green--text text--darken-4"
                   id="draw"
               >
                 <v-icon class="pr-2">
@@ -35,10 +35,10 @@
               <!--Draw button-->
               <v-btn
                   v-show="$store.state.drawPolygon"
-                  color="#173c00"
+                  color="#fff"
                   @click="toggleDraw"
                   style="width: 100%"
-                  class="white--text"
+                  class="green--text text--darken-4"
                   id="not-draw"
               >
                 <v-icon class="pr-2">
@@ -56,6 +56,24 @@
     </v-row>
 
     <v-row align="center" justify="center">
+      <v-col>
+        <!--Draw button-->
+        <v-btn
+            @click="startOver"
+            color="#fff"
+            style="width: 100%"
+            class="green--text text--darken-4"
+        >
+          <v-icon class="pr-2">
+            mdi-refresh
+          </v-icon>
+          {{mini ? "" : "Start Over"}}
+        </v-btn>
+
+      </v-col>
+    </v-row>
+
+    <v-row align="center" justify="center">
       <v-col cols="12">
         <!--Tooltip for estimate button-->
           <v-tooltip right>
@@ -65,8 +83,9 @@
                 <v-btn
                     v-on="on"
                     @click="openReportDialog"
-                    color="#173c00"
+                    color="#fff"
                     :disabled="!enableSendReport"
+                    class="green--text text--darken-4"
                     dark
                     block
                 >
@@ -84,6 +103,19 @@
             <span>And search an address</span>
 
           </v-tooltip>
+      </v-col>
+    </v-row>
+
+    <!--Logo-->
+    <v-row>
+      <v-col>
+        <v-img
+            max-height="150"
+            max-width="250"
+            src="../assets/HLP-New-Logo-for-Website.svg"
+            class="logo"
+            @click="goToMainPage"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -124,7 +156,25 @@
 
       openReportDialog() {
         this.$store.dispatch("showReportDialog", true);
+      },
+
+      startOver() {
+        console.log("aaa")
+      },
+
+      goToMainPage() {
+        window.open("https://healthylawnpros.com", "_blank");
       }
     }
   }
 </script>
+
+<style>
+  .logo {
+    background-color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+  }
+</style>

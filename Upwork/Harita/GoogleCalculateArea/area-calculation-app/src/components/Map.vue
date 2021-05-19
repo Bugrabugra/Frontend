@@ -34,7 +34,7 @@
 
     mounted() {
       // Initializing the Google Maps API when the page is created
-      loadedGoogleMapsAPI.then(()=>{
+      loadedGoogleMapsAPI.then(() => {
         this.initMap();
       });
     },

@@ -1,6 +1,6 @@
 <template>
   <!--This is the drawer for computer screens-->
-  <v-navigation-drawer permanent app class="light-green darken-1">
+  <v-navigation-drawer permanent app style="background-color: #8FB5F0">
     <!--Address component-->
     <Address/>
 
