@@ -3,11 +3,11 @@
     <v-row>
       <!--Cols value changes the width of the components-->
       <v-col :cols="mini ? 7 : ''">
-        <h4 v-if="polygons.length < 1 && mini" class="font-weight-medium mt-2">First, search for your property address. Then tap the "draw new area" button on the right. Then trace the area, tapping corner by corner.</h4>
+        <h4 v-if="getPolygons.length < 1 && mini" class="font-weight-medium mt-2">First, search for your property address. Then tap the "draw new area" button on the right. Then trace the area, tapping corner by corner.</h4>
 
         <v-list style="max-height: 150px; overflow-y: auto" id="list">
           <v-list-item
-              v-for="polygon in polygons"
+              v-for="polygon in getPolygons"
               :key="polygon.geometry"
               class="item pa-0"
               :dense="mini"
@@ -30,7 +30,7 @@
 
         <!--For computer screens-->
         <!--If as least 1 polygon was created then this component appears-->
-        <h4 v-if="polygons.length && !mini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
+        <h4 v-if="getPolygons.length && !mini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
       </v-col>
 
       <v-divider v-if="mini" vertical/>
@@ -39,7 +39,7 @@
         <Tools/>
         <!--For mobile devices-->
         <!--If as least 1 polygon was created then this component appears-->
-        <h4 v-if="polygons.length && mini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
+        <h4 v-if="getPolygons.length && mini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
       </v-col>
     </v-row>
 
@@ -47,22 +47,20 @@
 </template>
 
 <script>
-  // const convert = require('convert-units');
-
-
   import Tools from "./Tools";
+  import {mapGetters} from "vuex";
+
+
   export default {
     name: "List",
     components: {Tools},
     computed: {
-      polygons() {
-        return this.$store.state.polygons;
-      },
+      ...mapGetters(["getPolygons"]),
 
       polygonsTotalArea() {
         let total = 0;
 
-        this.polygons.forEach(polygon => {
+        this.getPolygons.forEach(polygon => {
           total += parseInt(polygon.area);
         })
         return total;

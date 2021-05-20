@@ -3,11 +3,20 @@
     <!--Map container-->
     <div id="map" style="height: 100% !important;"></div>
 
+    <!--Welcome Popup-->
+    <WelcomePopup/>
+
     <!--The dialog that appears when you complete a polygon-->
     <SaveAreaDialog/>
 
     <!--The dialog that appears when you press estimate button-->
     <SendReportDialog/>
+
+    <!--Street view-->
+    <StreetView
+        v-if="$store.getters.getLocation"
+        style="position: absolute; top: 70px; left: 10px; width: 400px; height: 270px; z-index: 2; border: 4px solid white;"
+    />
 
   </v-container>
 </template>
@@ -16,12 +25,16 @@
   import SaveAreaDialog from "./SaveAreaDialog";
   import SendReportDialog from "./SendReportDialog";
   import {loadedGoogleMapsAPI} from "../main";
+  import WelcomePopup from "./WelcomePopup";
+  import StreetView from "./StreetView";
 
 
   export default {
     name: 'Map',
 
     components: {
+      StreetView,
+      WelcomePopup,
       SendReportDialog,
       SaveAreaDialog
     },

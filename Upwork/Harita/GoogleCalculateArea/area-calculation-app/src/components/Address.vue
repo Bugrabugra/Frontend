@@ -1,24 +1,36 @@
 <template>
   <v-container>
     <!--Address search bar-->
-    <input type="text" placeholder="Address Search" ref="origin" id="address"/>
+    <input type="text" placeholder="Enter your address" ref="origin" id="address"/>
 
     <!--The chosen address-->
-    <div style="margin-top: 15px;">
-      <p class="font-weight-black pb-0 ma-0">
-        {{address}}
-      </p>
-    </div>
+    <!--<div style="margin-top: 15px;">-->
+    <!--  <p class="font-weight-black pb-0 ma-0">-->
+    <!--    {{getAddress}}-->
+    <!--  </p>-->
+    <!--</div>-->
 
   </v-container>
 </template>
 
 <script>
   import {loadedGoogleMapsAPI} from "../main";
+  import {mapGetters} from "vuex";
 
 
   export default {
     name: "Address",
+
+    data() {
+      return {
+        location: "",
+        selectedLongAddress: ""
+      }
+    },
+
+    computed: {
+      ...mapGetters(["getAddress"])
+    },
 
     mounted() {
       // Initializing the Places API with 3 fields which is supposed to be free
@@ -40,25 +52,15 @@
           this.location = {name: name, coordinates: coordinates};
 
           // Setting the Long Address to the store
-          this.$store.dispatch("setLongAddress", this.selectedLongAddress)
+          this.$store.dispatch("setLongAddress", this.selectedLongAddress);
+
+          // Closing the popup dialog
+          this.$store.dispatch("toggleWelcomePopup", false);
 
           // Setting the Short Address and Alias to the store
           this.$store.dispatch("setLocation", this.location);
         })
       });
-    },
-
-    data() {
-      return {
-        location: "",
-        selectedLongAddress: ""
-      }
-    },
-
-    computed: {
-      address() {
-        return this.$store.state.longAddress;
-      }
     }
   }
 </script>

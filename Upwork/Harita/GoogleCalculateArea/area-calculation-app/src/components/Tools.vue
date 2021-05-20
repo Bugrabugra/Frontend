@@ -51,25 +51,57 @@
           <!--Tooltip message-->
           <span>Right click to cancel drawing</span>
         </v-tooltip>
-
       </v-col>
     </v-row>
 
-    <v-row align="center" justify="center">
+    <v-row>
       <v-col>
-        <!--Draw button-->
-        <v-btn
-            @click="startOver"
-            color="#fff"
-            style="width: 100%"
-            class="green--text text--darken-4"
+        <v-dialog
+            v-model="dialogStartOver"
+            width="300"
         >
-          <v-icon class="pr-2">
-            mdi-refresh
-          </v-icon>
-          {{mini ? "" : "Start Over"}}
-        </v-btn>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                color="#fff"
+                style="width: 100%"
+                class="green--text text--darken-4"
+                v-bind="attrs"
+                v-on="on"
+            >
+              <v-icon class="pr-2">
+                mdi-refresh
+              </v-icon>
+              {{mini ? "" : "Start Over"}}
+            </v-btn>
+          </template>
 
+          <v-card>
+            <v-card-title>
+              Start over?
+            </v-card-title>
+
+            <v-card-text>
+              Are you sure you want to delete all polygons and start over?
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                  @click="startOver"
+                  color="blue"
+              >
+                OK
+              </v-btn>
+
+              <v-btn
+                  @click="dialogStartOver = false"
+                  color="grey"
+              >
+                Cancel
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-col>
     </v-row>
 
@@ -127,7 +159,8 @@
 
     data() {
       return {
-        drawActive: false
+        drawActive: false,
+        dialogStartOver: false
       }
     },
 
@@ -159,7 +192,13 @@
       },
 
       startOver() {
-        console.log("aaa")
+        this.dialogStartOver = false;
+        this.$store.dispatch("toggleWelcomePopup", true);
+        this.$store.dispatch("setLongAddress", null);
+        this.$store.dispatch("clearPolygons");
+        this.$store.dispatch("clearLocation");
+        this.$store.getters.getMap.setZoom(5);
+        this.$store.getters.getMap.setCenter({lat: 36.833, lng: -99.903});
       },
 
       goToMainPage() {
@@ -169,7 +208,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .logo {
     background-color: white;
     border: 3px solid white;

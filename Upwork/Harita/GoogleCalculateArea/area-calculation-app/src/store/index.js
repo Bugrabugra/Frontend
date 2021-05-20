@@ -21,7 +21,35 @@ export default new Vuex.Store({
     customerName: null,
     customerPhone: null,
     customerEmail: null,
-    customerChoice: null
+    customerChoice: null,
+    welcomePopup: true
+  },
+
+  getters: {
+    getPolygons(state) {
+      return state.polygons;
+    },
+
+    getAddress(state) {
+      return state.longAddress;
+    },
+
+    getWelcomePopup(state) {
+      return state.welcomePopup;
+    },
+
+    getMap(state) {
+      return state.map;
+    },
+
+    getLocation(state) {
+      if (state.location) {
+        return {
+          lat: state.location.coordinates.lat(),
+          lng: state.location.coordinates.lng()
+        };
+      }
+    }
   },
 
   mutations: {
@@ -48,6 +76,10 @@ export default new Vuex.Store({
     addPolygon(state, payload) {
       console.log(payload)
       state.polygons.push(payload);
+    },
+
+    clearPolygons(state) {
+      state.polygons = [];
     },
 
     deletePolygon(state, payload) {
@@ -90,8 +122,15 @@ export default new Vuex.Store({
       new window.google.maps.Marker({
         position: state.location.coordinates,
         map: state.map,
-        label: state.location.name,
+        label: {
+          text: state.location.name,
+          color: "white"
+        }
       });
+    },
+
+    clearLocation(state) {
+      state.location = null;
     },
 
     setLongAddress(state, payload) {
@@ -157,6 +196,10 @@ export default new Vuex.Store({
 
     showReportDialog(state, payload) {
       state.showReportDialog = payload;
+    },
+
+    toggleWelcomePopup(state, payload) {
+      state.welcomePopup = payload;
     }
   },
 
@@ -189,6 +232,10 @@ export default new Vuex.Store({
       commit("deletePolygon", payload);
     },
 
+    clearPolygons({commit}) {
+      commit("clearPolygons");
+    },
+
     drawPolygons({commit}) {
       commit("drawPolygons");
     },
@@ -199,6 +246,10 @@ export default new Vuex.Store({
 
     setLocation({commit}, payload) {
       commit("setLocation", payload);
+    },
+
+    clearLocation({commit}) {
+      commit("clearLocation");
     },
 
     setTotalArea({commit}, payload) {
@@ -219,6 +270,10 @@ export default new Vuex.Store({
 
     saveCustomerInfos({commit}, payload) {
       commit("saveCustomerInfos", payload);
+    },
+
+    toggleWelcomePopup({commit}, payload) {
+      commit("toggleWelcomePopup", payload);
     }
   }
 })
