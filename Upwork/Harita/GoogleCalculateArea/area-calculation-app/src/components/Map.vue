@@ -14,7 +14,7 @@
 
     <!--Street view-->
     <StreetView
-        v-if="$store.getters.getLocation"
+        v-if="$store.getters.getPanorama"
         style="position: absolute; top: 70px; left: 10px; width: 400px; height: 270px; z-index: 2; border: 4px solid white;"
     />
 

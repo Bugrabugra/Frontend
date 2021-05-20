@@ -1,5 +1,15 @@
 <template>
-  <div id="panorama"/>
+  <div>
+    <div id="panorama"/>
+    <div>
+      <v-btn
+          class="mt-1 close-button"
+          @click="closeStreetView"
+      >
+        Close
+      </v-btn>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -8,10 +18,6 @@
 
   export default {
     name: "StreetView",
-
-    data() {
-      return {}
-    },
 
     computed: {
       ...mapGetters(["getLocation", "getMap"])
@@ -31,6 +37,10 @@
         );
 
         this.getMap.setStreetView(panorama);
+      },
+
+      closeStreetView() {
+        this.$store.dispatch("setPanorama", false);
       }
     },
 
@@ -44,5 +54,12 @@
   #panorama {
     height: 100%;
     width: 100%;
+  }
+
+  .close-button {
+    position: absolute;
+    right: -4px;
+    border-radius: 0;
+    float: right;
   }
 </style>

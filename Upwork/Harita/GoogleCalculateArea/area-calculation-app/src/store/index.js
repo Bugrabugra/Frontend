@@ -22,7 +22,9 @@ export default new Vuex.Store({
     customerPhone: null,
     customerEmail: null,
     customerChoice: null,
-    welcomePopup: true
+    welcomePopup: true,
+    marker: null,
+    panorama: null
   },
 
   getters: {
@@ -48,6 +50,12 @@ export default new Vuex.Store({
           lat: state.location.coordinates.lat(),
           lng: state.location.coordinates.lng()
         };
+      }
+    },
+
+    getPanorama(state) {
+      if (state.panorama) {
+        return state.panorama;
       }
     }
   },
@@ -119,7 +127,7 @@ export default new Vuex.Store({
       state.map.setZoom(20);
       state.map.panTo(state.location.coordinates);
 
-      new window.google.maps.Marker({
+      state.marker = new window.google.maps.Marker({
         position: state.location.coordinates,
         map: state.map,
         label: {
@@ -127,6 +135,8 @@ export default new Vuex.Store({
           color: "white"
         }
       });
+
+
     },
 
     clearLocation(state) {
@@ -200,6 +210,14 @@ export default new Vuex.Store({
 
     toggleWelcomePopup(state, payload) {
       state.welcomePopup = payload;
+    },
+
+    clearMarker(state) {
+      state.marker.setMap(null);
+    },
+
+    setPanorama(state, payload) {
+      state.panorama = payload;
     }
   },
 
@@ -246,10 +264,12 @@ export default new Vuex.Store({
 
     setLocation({commit}, payload) {
       commit("setLocation", payload);
+      commit("setPanorama", true);
     },
 
     clearLocation({commit}) {
       commit("clearLocation");
+      commit("setPanorama", false);
     },
 
     setTotalArea({commit}, payload) {
@@ -274,6 +294,14 @@ export default new Vuex.Store({
 
     toggleWelcomePopup({commit}, payload) {
       commit("toggleWelcomePopup", payload);
+    },
+
+    clearMarker({commit}) {
+      commit("clearMarker");
+    },
+
+    setPanorama({commit}, payload) {
+      commit("setPanorama", payload);
     }
   }
 })

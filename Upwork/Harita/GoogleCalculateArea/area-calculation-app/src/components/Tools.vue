@@ -197,6 +197,7 @@
         this.$store.dispatch("setLongAddress", null);
         this.$store.dispatch("clearPolygons");
         this.$store.dispatch("clearLocation");
+        this.$store.dispatch("clearMarker");
         this.$store.getters.getMap.setZoom(5);
         this.$store.getters.getMap.setCenter({lat: 36.833, lng: -99.903});
       },
