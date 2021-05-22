@@ -1,15 +1,9 @@
 <template>
   <!--This is the drawer for mobile devices-->
-  <v-bottom-sheet no-click-animation hide-overlay :value="true" eager persistent>
-    <v-card style="background-color: #8FB5F0;">
-      <!--Address component-->
-      <Address/>
-
-      <v-divider/>
-
+  <v-bottom-sheet :value="true" no-click-animation hide-overlay eager persistent>
+    <v-card style="background-color: #8FB5F0; border-radius: 0; max-height: 400px;">
       <!--List component-->
       <List/>
-
     </v-card>
   </v-bottom-sheet>
 </template>

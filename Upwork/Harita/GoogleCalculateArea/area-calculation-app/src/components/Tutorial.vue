@@ -1,5 +1,5 @@
 <template>
-  <v-card color="white" class="ma-3">
+  <v-card color="white" :class="isMini ? 'ma-0' : 'ma-3'">
     <div class="ma-2">
       Now it is time to draw your lawn area(s) on map!<br>
       1. Tap on the <b>"Draw New Area"</b> button.<br>
@@ -13,8 +13,15 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
+
+
   export default {
     name: "Tutorial",
+
+    computed: {
+      ...mapGetters(["isMini"])
+    }
 
   }
 </script>

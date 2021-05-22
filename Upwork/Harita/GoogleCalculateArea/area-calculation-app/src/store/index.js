@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import Vuetify from '../plugins/vuetify'
 
 Vue.use(Vuex);
 
@@ -28,6 +29,16 @@ export default new Vuex.Store({
   },
 
   getters: {
+    isMini() {
+      if (
+        Vuetify.framework.breakpoint.name === "md" ||
+        Vuetify.framework.breakpoint.name === "sm" ||
+        Vuetify.framework.breakpoint.name === "xs"
+      ) {
+        return true
+      }
+    },
+
     getPolygons(state) {
       return state.polygons;
     },
@@ -88,6 +99,10 @@ export default new Vuex.Store({
 
     clearPolygons(state) {
       state.polygons = [];
+      state.map.data.forEach(d => {
+        state.map.data.remove(d);
+      })
+
     },
 
     deletePolygon(state, payload) {
@@ -179,7 +194,7 @@ export default new Vuex.Store({
       formData.append("your-name", customerName);
       formData.append("your-email", customerEmail);
       formData.append("phone_number", customerPhone);
-      formData.append("your-choice", customerChoice); // TODO ask to Jeremy
+      formData.append("service-type", customerChoice);
       formData.append("your-subject", longAddress);
       formData.append("polygons", polygonsStringify);
       formData.append("area_square_feet", totalArea);
@@ -188,10 +203,9 @@ export default new Vuex.Store({
       for (const pair of formData.entries()) {
         console.log(pair[0]+ '===> ' + pair[1]);
       }
-      return // TODO delete return
 
       axios.post(
-        "https://petes17.sg-host.com/wp-json/contact-form-7/v1/contact-forms/499/feedback",
+        "https://healthylawnpros.com/wp-json/contact-form-7/v1/contact-forms/499/feedback",
         formData,
         config
       )

@@ -2,15 +2,17 @@
   <v-container>
     <v-row>
       <!--Cols value changes the width of the components-->
-      <v-col :cols="mini ? 7 : ''">
-        <h4 v-if="getPolygons.length < 1 && mini" class="font-weight-medium mt-2">First, search for your property address. Then tap the "draw new area" button on the right. Then trace the area, tapping corner by corner.</h4>
+      <v-col :cols="isMini ? 7 : ''" class="pa-0 pl-2">
+        <h4 v-if="getPolygons.length < 1 && isMini" style="font-weight: normal; font-size: 0.8rem;">
+          <Tutorial/>
+        </h4>
 
-        <v-list style="max-height: 150px; overflow-y: auto" id="list">
+        <v-list class="mt-1 pr-2" style="max-height: 150px; overflow-y: auto" id="list">
           <v-list-item
               v-for="polygon in getPolygons"
               :key="polygon.geometry"
               class="item pa-0"
-              :dense="mini"
+              :dense="isMini"
           >
             <v-list-item-content class="pa-0 ma-0">
               <v-list-item-title class="pl-2" style="font-weight: bold">{{polygon.name}}</v-list-item-title>
@@ -30,16 +32,15 @@
 
         <!--For computer screens-->
         <!--If as least 1 polygon was created then this component appears-->
-        <h4 v-if="getPolygons.length && !mini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
+        <h4 v-if="getPolygons.length && !isMini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
+        <v-divider v-if="isMini" vertical/>
       </v-col>
 
-      <v-divider v-if="mini" vertical/>
-
-      <v-col v-if="mini" cols="4">
+      <v-col v-if="isMini" cols="5" class="pa-0">
         <Tools/>
         <!--For mobile devices-->
         <!--If as least 1 polygon was created then this component appears-->
-        <h4 v-if="getPolygons.length && mini" class="font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
+        <h4 v-if="getPolygons.length && isMini" class="text-center font-weight-medium mt-2">Total: {{polygonsTotalArea.toLocaleString()}} ft²</h4>
       </v-col>
     </v-row>
 
@@ -49,13 +50,19 @@
 <script>
   import Tools from "./Tools";
   import {mapGetters} from "vuex";
+  import Tutorial from "./Tutorial";
 
 
   export default {
     name: "List",
-    components: {Tools},
+
+    components: {
+      Tutorial,
+      Tools
+    },
+
     computed: {
-      ...mapGetters(["getPolygons"]),
+      ...mapGetters(["getPolygons", "isMini"]),
 
       polygonsTotalArea() {
         let total = 0;
@@ -64,16 +71,6 @@
           total += parseInt(polygon.area);
         })
         return total;
-      },
-
-      mini() {
-        if (
-          this.$vuetify.breakpoint.name === "md" ||
-          this.$vuetify.breakpoint.name === "sm" ||
-          this.$vuetify.breakpoint.name === "xs"
-        ) {
-          return true
-        }
       }
     },
 

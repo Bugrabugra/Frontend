@@ -3,7 +3,7 @@
     <Drawer v-if="!mini"/>
     <v-main>
       <Map style="width: 100%;"/>
-      <DrawerMini v-if="mini"/>
+      <DrawerMini v-if="mini && $store.getters.getLocation !== undefined"/>
     </v-main>
   </v-app>
 </template>
@@ -11,7 +11,6 @@
 <script>
   import Map from "./components/Map";
   import Drawer from "./components/Drawer";
-  import Dialog from "./components/SaveAreaDialog";
   import DrawerMini from "./components/DrawerMini";
 
 
@@ -20,15 +19,8 @@
 
     components: {
       DrawerMini,
-      Dialog,
       Drawer,
       Map
-    },
-
-    data() {
-      return {
-        // mini: false
-      }
     },
 
     computed: {
@@ -39,7 +31,6 @@
           this.$vuetify.breakpoint.name === "xs"
         ) {
           return true
-          // this.mini = true;
         }
       }
     },

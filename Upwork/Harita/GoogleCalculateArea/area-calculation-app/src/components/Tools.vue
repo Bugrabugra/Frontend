@@ -3,7 +3,7 @@
     <v-row align="center" justify="center">
       <v-col>
         <!--Tooltip for draw-->
-        <v-tooltip right>
+        <v-tooltip :disabled="isMini" right>
           <template v-slot:activator="{ on }">
             <div v-on="on">
 
@@ -16,19 +16,19 @@
                   class="green--text text--darken-4"
                   id="draw"
               >
-                <v-icon class="pr-2">
+                <v-icon v-if="!isMini" class="pr-2">
                   mdi-pencil-plus
                 </v-icon>
-                {{mini ? "" : "Draw New Area"}}
+                Draw New Area
               </v-btn>
             </div>
           </template>
           <!--Tooltip message-->
-          <span>Right click to cancel drawing</span>
+          <span v-if="!isMini">Right click to cancel drawing</span>
         </v-tooltip>
 
         <!--Tooltip for draw (cancel mode)-->
-        <v-tooltip right>
+        <v-tooltip :disabled="isMini" right>
           <template v-slot:activator="{ on }">
             <div v-on="on">
 
@@ -38,18 +38,18 @@
                   color="#fff"
                   @click="toggleDraw"
                   style="width: 100%"
-                  class="green--text text--darken-4"
+                  class="green--text text--darken-4 button"
                   id="not-draw"
               >
-                <v-icon class="pr-2">
+                <v-icon v-if="!isMini" class="pr-2">
                   mdi-close-circle
                 </v-icon>
-                {{mini ? "" : "Draw New Area"}}
+                Cancel
               </v-btn>
             </div>
           </template>
           <!--Tooltip message-->
-          <span>Right click to cancel drawing</span>
+          <span v-if="!isMini">Right click to cancel drawing</span>
         </v-tooltip>
       </v-col>
     </v-row>
@@ -68,10 +68,10 @@
                 v-bind="attrs"
                 v-on="on"
             >
-              <v-icon class="pr-2">
+              <v-icon v-if="!isMini" class="pr-2">
                 mdi-refresh
               </v-icon>
-              {{mini ? "" : "Start Over"}}
+              Start Over
             </v-btn>
           </template>
 
@@ -89,16 +89,12 @@
               <v-btn
                   @click="startOver"
                   color="blue"
-              >
-                OK
-              </v-btn>
+              >OK</v-btn>
 
               <v-btn
                   @click="dialogStartOver = false"
                   color="grey"
-              >
-                Cancel
-              </v-btn>
+              >Cancel</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -108,7 +104,7 @@
     <v-row align="center" justify="center">
       <v-col cols="12">
         <!--Tooltip for estimate button-->
-          <v-tooltip right>
+          <v-tooltip :disabled="isMini" right>
             <template v-slot:activator="{ on }">
               <div v-on="on">
                 <!--Estimate button-->
@@ -121,10 +117,10 @@
                     dark
                     block
                 >
-                  <v-icon class="pr-2">
+                  <v-icon v-if="!isMini" class="pr-2">
                     mdi-currency-usd
                   </v-icon>
-                  {{mini ? "" : "Request Estimate"}}
+                  {{isMini ? "Request" : "Request Estimate"}}
                 </v-btn>
               </div>
             </template>
@@ -154,6 +150,9 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
+
+
   export default {
     name: "Tools",
 
@@ -165,24 +164,29 @@
     },
 
     computed: {
+      // Checking if the page was loaded in mobile device
+      ...mapGetters(["isMini"]),
+
       enableSendReport() {
         // return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
         return this.$store.state.polygons.length;
-      },
-
-      // Checking if the page was loaded in mobile device
-      mini() {
-        if (
-          this.$vuetify.breakpoint.name === "md" ||
-          this.$vuetify.breakpoint.name === "sm" ||
-          this.$vuetify.breakpoint.name === "xs"
-        ) {
-          return true;
-        }
       }
     },
 
     methods: {
+      initDrawing() {
+        // Start drawing
+        const _this = this;
+        window.google.maps.event.addDomListener(document.getElementById('draw'), 'click', function() {
+          _this.$store.state.drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.POLYGON);
+        });
+
+        // Stop drawing
+        window.google.maps.event.addDomListener(document.getElementById('not-draw'), 'click', function() {
+          _this.$store.state.drawingManager.setDrawingMode(null);
+        });
+      },
+
       toggleDraw() {
         this.$store.dispatch("startDraw");
       },
@@ -205,6 +209,10 @@
       goToMainPage() {
         window.open("https://healthylawnpros.com", "_blank");
       }
+    },
+
+    mounted() {
+      this.initDrawing();
     }
   }
 </script>

@@ -15,7 +15,15 @@
     <!--Street view-->
     <StreetView
         v-if="$store.getters.getPanorama"
-        style="position: absolute; top: 70px; left: 10px; width: 400px; height: 270px; z-index: 2; border: 4px solid white;"
+        :style="{
+          position: 'absolute',
+          top: '70px',
+          left: '10px',
+          width: isMini ? '300px' : '400px',
+          height: isMini ? '200px' : '270px',
+          zIndex: 2,
+          border: '4px solid white'
+        }"
     />
 
   </v-container>
@@ -27,6 +35,7 @@
   import {loadedGoogleMapsAPI} from "../main";
   import WelcomePopup from "./WelcomePopup";
   import StreetView from "./StreetView";
+  import {mapGetters} from "vuex";
 
 
   export default {
@@ -43,6 +52,10 @@
       return {
         map: null,
       }
+    },
+
+    computed: {
+      ...mapGetters(["isMini"])
     },
 
     mounted() {
@@ -90,16 +103,6 @@
           this.$store.dispatch("setDrawingManager", drawingManager);
 
           drawingManager.setMap(this.$store.state.map);
-
-          // Start drawing
-          window.google.maps.event.addDomListener(document.getElementById('draw'), 'click', function() {
-            _this.$store.state.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
-          });
-
-          // Stop drawing
-          window.google.maps.event.addDomListener(document.getElementById('not-draw'), 'click', function() {
-            _this.$store.state.drawingManager.setDrawingMode(null);
-          });
 
           // Stop drawing on right click
           _this.map.addListener('rightclick', (e) => {

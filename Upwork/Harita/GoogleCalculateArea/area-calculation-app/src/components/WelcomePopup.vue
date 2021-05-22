@@ -60,6 +60,5 @@
 <style scoped>
   .logo {
     background-color: white;
-    /*border: 1px solid white;*/
   }
 </style>
