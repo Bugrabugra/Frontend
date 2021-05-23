@@ -10,7 +10,7 @@
               <!--Draw button-->
               <v-btn
                   v-show="!$store.state.drawPolygon"
-                  @click="toggleDraw"
+                  @click="startDraw"
                   color="#fff"
                   style="width: 100%"
                   class="green--text text--darken-4"
@@ -36,7 +36,7 @@
               <v-btn
                   v-show="$store.state.drawPolygon"
                   color="#fff"
-                  @click="toggleDraw"
+                  @click="stopDraw"
                   style="width: 100%"
                   class="green--text text--darken-4 button"
                   id="not-draw"
@@ -165,7 +165,11 @@
 
     computed: {
       // Checking if the page was loaded in mobile device
-      ...mapGetters(["isMini"]),
+      ...mapGetters(["isMini", "getMap"]),
+
+      getMap() {
+        return this.$store.getters.getMap;
+      },
 
       enableSendReport() {
         // return this.$store.state.polygons.length > 0 && this.$store.state.longAddress;
@@ -175,8 +179,8 @@
 
     methods: {
       initDrawing() {
-        // Start drawing
         const _this = this;
+        // Start drawing
         window.google.maps.event.addDomListener(document.getElementById('draw'), 'click', function() {
           _this.$store.state.drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.POLYGON);
         });
@@ -187,8 +191,12 @@
         });
       },
 
-      toggleDraw() {
+      startDraw() {
         this.$store.dispatch("startDraw");
+      },
+
+      stopDraw() {
+        this.$store.dispatch("stopDraw");
       },
 
       openReportDialog() {
@@ -202,6 +210,7 @@
         this.$store.dispatch("clearPolygons");
         this.$store.dispatch("clearLocation");
         this.$store.dispatch("clearMarker");
+        this.$store.dispatch("stopDraw");
         this.$store.getters.getMap.setZoom(5);
         this.$store.getters.getMap.setCenter({lat: 36.833, lng: -99.903});
       },
@@ -212,7 +221,15 @@
     },
 
     mounted() {
-      this.initDrawing();
+      if (this.$store.getters.getMap) {
+        this.initDrawing();
+      }
+    },
+
+    watch: {
+      getMap() {
+        this.initDrawing();
+      }
     }
   }
 </script>

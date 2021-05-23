@@ -77,7 +77,11 @@ export default new Vuex.Store({
     },
 
     startDraw(state) {
-      state.drawPolygon = !state.drawPolygon;
+      state.drawPolygon = true;
+    },
+
+    stopDraw(state) {
+      state.drawPolygon = false;
     },
 
     setDrawingManager(state, payload) {
@@ -150,8 +154,6 @@ export default new Vuex.Store({
           color: "white"
         }
       });
-
-
     },
 
     clearLocation(state) {
@@ -242,6 +244,10 @@ export default new Vuex.Store({
 
     startDraw({commit}) {
       commit("startDraw");
+    },
+
+    stopDraw({commit}) {
+      commit("stopDraw");
     },
 
     setDrawingManager({commit}, payload) {
