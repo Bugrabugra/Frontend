@@ -5,6 +5,7 @@ const container = `/container`;
 const neighborhoods = `/neighborhoods`;
 const streets = `/streets`;
 const zones = `/zones`;
+const zone = `/zone`;
 const containertypes = `/containertypes`;
 const lastCollections = `/last-collections`;
 const deviceDataStream = `/device-data-stream`
@@ -32,8 +33,8 @@ export const apiPatchContainer = (payload) => {
 }
 
 // Get filtered containers => payload = {filters}
-export const apiGetFilteredContainers = (payload) => {
-  return api.get(`${containers}?${payload}`);
+export const apiGetFilteredContainers = (filter) => {
+  return api.get(`${containers}?${filter}`);
 }
 
 // Get neighborhoods
@@ -42,13 +43,28 @@ export const apiGetNeighborhoods = () => {
 }
 
 // Get streets => payload = neighborhoodID
-export const apiGetStreets = (payload) => {
-  return api.get(`${streets}?neighborhoodID=${payload}`);
+export const apiGetStreets = (neighborhoodID) => {
+  return api.get(`${streets}?neighborhoodID=${neighborhoodID}`);
 }
 
 // Get zones
 export const apiGetZones = () => {
   return api.get(zones);
+}
+
+// Get zone
+export const apiGetZone = (zoneID) => {
+  return api.get(`${zone}/${zoneID}`)
+}
+
+// Get zone
+export const apiPatchZone = (zoneID, geometry) => {
+  return api.patch(
+    `${zones}/${zoneID}`,
+    {
+      geometry: geometry,
+    }
+  );
 }
 
 // Get container types
@@ -57,11 +73,11 @@ export const apiGetContainerTypes = () => {
 }
 
 // Get last 1 week collections => payload = id
-export const apiGetLastCollections = (payload) => {
-  return api.get(`${lastCollections}/${payload}`);
+export const apiGetLastCollections = (containerID) => {
+  return api.get(`${lastCollections}/${containerID}`);
 }
 
 // Get last 5 coordinates => payload = id
-export const apiGetDataStream = (payload) => {
-  return api.get(`${deviceDataStream}/${payload}`);
+export const apiGetDataStream = (containerID) => {
+  return api.get(`${deviceDataStream}/${containerID}`);
 }

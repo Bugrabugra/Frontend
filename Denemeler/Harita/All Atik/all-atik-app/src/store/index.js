@@ -7,10 +7,12 @@ import {
   apiPatchContainer,
   apiGetContainer,
   apiGetLastCollections,
-  apiGetDataStream
+  apiGetDataStream,
+  apiGetZone, apiGetZones
 } from "../api/index";
 import {svgMarkerDataStream, svgMarkerMyLocation} from "components/svgIcons";
 import {i18n} from "boot/i18n";
+import {apiPatchZone} from "src/api";
 
 
 Vue.use(Vuex);
@@ -51,7 +53,9 @@ export default function () {
       currentContainer: null,
       currentContainerLastCollections: null,
       currentContainerLastFiveCoordinates: null,
-      arrayMarkerLastFiveCoordinates: []
+      arrayMarkerLastFiveCoordinates: [],
+      currentZone: null,
+      zones: []
     },
 
     getters: {
@@ -181,6 +185,14 @@ export default function () {
 
       getArrayMarkerLastFiveCoordinates(state) {
         return state.arrayMarkerLastFiveCoordinates;
+      },
+
+      getCurrentZone(state) {
+        return state.currentZone;
+      },
+
+      getZones(state) {
+        return state.zones;
       }
     },
 
@@ -278,6 +290,14 @@ export default function () {
 
       setArrayMarkerLastFiveCoordinates(state, payload) {
         state.arrayMarkerLastFiveCoordinates.push(payload);
+      },
+
+      setCurrentZone(state, payload) {
+        state.currentZone = payload;
+      },
+
+      setZones(state, payload) {
+        state.zones = payload;
       }
     },
 
@@ -333,18 +353,20 @@ export default function () {
       },
 
       updateGeometry(context, payload) {
-        apiPatchContainer(payload).then(() => {
-          Dialog.create({
-            title: i18n.t("notifications.lblWarning"),
-            ok: {label: i18n.t("notifications.btnOK")},
-            message: `${context.getters.getClickedContainer.container.containerName} ${i18n.t("notifications.lblAddGeometry")}`
-          })
+        apiPatchContainer(payload)
+          .then(() => {
+            Dialog.create({
+              title: i18n.t("notifications.lblWarning"),
+              ok: {label: i18n.t("notifications.btnOK")},
+              message: `${context.getters.getClickedContainer.container.containerName} ${i18n.t("notifications.lblAddGeometry")}`
+            })
 
-          context.dispatch("updatingGeometry");
-          context.dispatch("getContainers");
-        }).catch(error => {
-          console.log(i18n.t("errors.lblUpdateGeometry"), error);
-        })
+            context.dispatch("updatingGeometry");
+            context.dispatch("getContainers");
+          })
+          .catch(error => {
+            console.log(i18n.t("errors.lblUpdateGeometry"), error);
+          })
       },
 
       updatingGeometry(context) {
@@ -355,16 +377,18 @@ export default function () {
       },
 
       addGeometry(context, payload) {
-        console.log(payload)
-        apiPatchContainer(payload).then(() => {
-          Dialog.create({
-            title: i18n.t("notifications.lblWarning"),
-            ok: {label: i18n.t("notifications.btnOK")},
-            message: `ID: ${payload.containerID} ${i18n.t("notifications.lblAddGeometry")}`
+        console.log(payload);
+        apiPatchContainer(payload)
+          .then(() => {
+            Dialog.create({
+              title: i18n.t("notifications.lblWarning"),
+              ok: {label: i18n.t("notifications.btnOK")},
+              message: `ID: ${payload.containerID} ${i18n.t("notifications.lblAddGeometry")}`
+            })
           })
-        }).catch(error => {
-          console.log(i18n.t("errors.lblAddGeometry"), error);
-        })
+          .catch(error => {
+            console.log(i18n.t("errors.lblAddGeometry"), error);
+          })
       },
 
       expandContainerDetail({commit}, payload) {
@@ -624,6 +648,106 @@ export default function () {
 
       setArrayMarkerLastFiveCoordinates({commit}, payload) {
         commit("setArrayMarkerLastFiveCoordinates", payload);
+      },
+
+      getZoneGeometry(context, payload) {
+        // payload = zoneID
+        // result => {geometry: geometry}
+        apiGetZone(payload)
+          .then(response => {
+            console.log(response);
+
+            context.commit("setCurrentZone", response.data);
+
+            if (response.data.geometry) {
+              const encodedGeometry = response.data.geometry;
+              const decodedGeometry = window.google.maps.geometry.encoding.decodePath(encodedGeometry);
+
+              let bounds = new window.google.maps.LatLngBounds;
+              decodedGeometry.forEach(function(latLng) {
+                bounds.extend(latLng);
+              });
+
+              context.state.map.fitBounds(bounds);
+            }
+          })
+          .catch(error => {
+            console.log("Bölge geometrisi çekilirken hata oluştu", error)
+          })
+      },
+
+      setZoneGeometry(context, payload) {
+        // payload = zoneID
+        // result => {geometry: geometry}
+        apiPatchZone(payload.zoneID, payload.geometry)
+          .then(response => {
+            console.log(response);
+            Dialog.create({
+              title: i18n.t("notifications.lblWarning"),
+              ok: {label: i18n.t("notifications.btnOK")},
+              message: `ID ${payload.zoneID} geometrisi başarıyla güncellendi.`
+            })
+          })
+      },
+
+      drawZones(context) {
+        context.state.zones.forEach(zone => {
+          zone.setMap(null);
+        });
+
+        context.commit("setZones", []);
+
+        setTimeout(() => {
+          apiGetZones()
+            .then(response => {
+              console.log(response);
+
+              response.data.forEach(zone => {
+                if (zone.geometry) {
+                  const decodedGeometry = window.google.maps.geometry.encoding.decodePath(zone.geometry);
+
+                  // Viewing the parsed polygons
+                  const poly = new window.google.maps.Polygon({
+                    paths: decodedGeometry,
+                    strokeColor: "#07abd9",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#81d0e8",
+                    fillOpacity: 0.20,
+                    label: zone.name
+                  });
+
+                  poly.setMap(context.state.map);
+
+                  let bounds = new window.google.maps.LatLngBounds;
+                  decodedGeometry.forEach(function(latLng) {
+                    bounds.extend(latLng);
+                  });
+
+                  // Mouse over info bubble
+                  const infoWindow = new window.google.maps.InfoWindow();
+
+                  // Mouse over highlight property
+                  window.google.maps.event.addListener(poly, 'mouseover', (e) => {
+                    poly.setOptions({fillColor: "#00FF00"});
+                    infoWindow.setContent(`${zone.name}`);
+                    infoWindow.setPosition(bounds.getCenter());
+                    infoWindow.open(context.state.map);
+                  });
+
+                  // Mouse out highlight property
+                  window.google.maps.event.addListener(poly, 'mouseout', (e) => {
+                    poly.setOptions({fillColor: "#81d0e8"});
+                    infoWindow.setPosition(null);
+                  });
+
+                  context.state.zones.push(poly);
+                }
+              })
+
+              console.log(context.state.zones)
+            })
+        }, 700)
       }
     }
   })

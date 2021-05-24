@@ -3,25 +3,28 @@
     <q-page>
       <div class="row">
         <div :class="['col', mapSize]" :style="[mapStyle]">
-          <Map/> <!--main-map-page / container-page-->
+          <Map/> <!--main-map-page / container-page / zone-page -->
         </div>
 
-        <!--Side menu desktop or mobile-->
+        <!--Side menu desktop-->
         <div v-if="page === 'main-map-page' && (pageSize !== 'xs' && pageSize !== 'sm')" :class="['col', 'bg-indigo-1', sideMenuSize]">
           <SideMenuDesktop/>
         </div>
 
         <!--Edit container menu-->
-        <div
-          v-if="page === 'container-page'" class="col col-6">
+        <div v-if="page === 'container-page'" class="col col-6">
           <!--Side menu-->
           <div>
             <ContainerDetailPanel/>
           </div>
         </div>
 
+        <div v-if="page === 'zone-page'">
+          <EditZoneButtons class="absolute absolute-bottom justify-center" style="bottom: 30px;"/>
+        </div>
       </div>
 
+      <!--Bottom menu mobile-->
       <div v-if="page === 'main-map-page' && (pageSize === 'xs' || pageSize === 'sm')">
         <BottomMenuMobile style="position: absolute; bottom: 0;"/>
       </div>
@@ -35,12 +38,14 @@
   import EditContainer from "components/ContainerPage/EditContainerButton";
   import EditContainerButton from "components/ContainerPage/EditContainerButton";
   import ContainerDetailPanel from "components/ContainerPage/ContainerDetailPanel";
+  import EditZoneButtons from "components/ZonePage/EditZoneButtons";
 
 
   export default {
     name: 'PageIndex',
 
     components: {
+      EditZoneButtons,
       ContainerDetailPanel,
       EditContainerButton,
       BottomMenuMobile: () => import("components/BottomMenuMobile"),

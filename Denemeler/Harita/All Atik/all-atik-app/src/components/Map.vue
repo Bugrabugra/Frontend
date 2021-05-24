@@ -63,6 +63,7 @@
         let lat;
         let lng;
 
+        // Map page types
         if (this.getSettings.page === "main-map-page") {
           zoom = 10
           lat = 40.98390570573965;
@@ -71,13 +72,17 @@
           zoom = 19
           lat = parseFloat(this.getSettings.lat);
           lng = parseFloat(this.getSettings.lng);
+        } else if (this.getSettings.page === "zone-page") {
+          this.$store.dispatch("getZoneGeometry", this.getSettings.zoneID);
+          this.drawZones();
+          zoom = 15
         }
 
         const map = new window.google.maps.Map(document.getElementById("map"), {
           zoom: zoom,
           center: {
-            lat: lat,
-            lng: lng
+            lat: lat ? lat : 40.98390570573965,
+            lng: lng ? lng : 29.13268504720865
           },
           mapId: "b15068e07cf8d4c6",
         });
@@ -128,6 +133,10 @@
           },
           map: this.getMap
         })
+      },
+
+      drawZones() {
+        this.$store.dispatch("drawZones");
       },
 
       drawContainers() {
