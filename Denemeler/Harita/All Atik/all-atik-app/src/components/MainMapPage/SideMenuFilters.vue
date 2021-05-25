@@ -238,6 +238,11 @@
             }
           )
 
+          this.$store.dispatch(
+            "selectZoneGeometry",
+            this.selectedZone.id
+          )
+
           this.selectedStreet = null;
           this.selectedNeighborhood = null;
           this.$store.dispatch("queryContainers");

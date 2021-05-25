@@ -650,6 +650,41 @@ export default function () {
         commit("setArrayMarkerLastFiveCoordinates", payload);
       },
 
+      selectZoneGeometry(context, payload) {
+        context.dispatch("clearZones")
+          .then(() => {
+            apiGetZone(payload)
+              .then(response => {
+                // context.commit("setCurrentZone", response.data);
+                if (response.data.geometry) {
+                  const encodedGeometry = response.data.geometry;
+                  const decodedGeometry = window.google.maps.geometry.encoding.decodePath(encodedGeometry);
+
+                  // Viewing the parsed polygons
+                  const poly = new window.google.maps.Polygon({
+                    paths: decodedGeometry,
+                    strokeColor: "#07abd9",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#81d0e8",
+                    fillOpacity: 0.20,
+                    label: response.data.name
+                  });
+
+                  poly.setMap(context.state.map);
+
+                  let bounds = new window.google.maps.LatLngBounds;
+                  decodedGeometry.forEach(function(latLng) {
+                    bounds.extend(latLng);
+                  });
+
+                  context.state.zones.push(poly);
+                  context.state.map.fitBounds(bounds);
+                }
+              })
+          })
+      },
+
       getZoneGeometry(context, payload) {
         // payload = zoneID
         // result => {geometry: geometry}
@@ -690,12 +725,16 @@ export default function () {
           })
       },
 
-      drawZones(context) {
+      clearZones(context) {
         context.state.zones.forEach(zone => {
           zone.setMap(null);
         });
 
         context.commit("setZones", []);
+      },
+
+      drawZones(context) {
+        context.dispatch("clearZones");
 
         setTimeout(() => {
           apiGetZones()

@@ -68,10 +68,12 @@
           zoom = 10
           lat = 40.98390570573965;
           lng = 29.13268504720865;
+
         } else if (this.getSettings.page === "container-page") {
           zoom = 19
           lat = parseFloat(this.getSettings.lat);
           lng = parseFloat(this.getSettings.lng);
+
         } else if (this.getSettings.page === "zone-page") {
           this.$store.dispatch("getZoneGeometry", this.getSettings.zoneID);
           this.drawZones();
@@ -151,7 +153,20 @@
         this.markers = [];
         this.counterFireRisk = 0;
 
-        this.markers = this.getContainers.map(container => {
+        // If page is zone-page then not all the containers should be shown on the map
+        // So, if it is page=main-map-page then show all the containers otherwise
+        // filter the containers first
+        let containersArray = [];
+
+        if (this.getSettings.page === "zone-page") {
+          containersArray = this.getContainers.filter(container => {
+            return container.zoneID == this.getSettings.zoneID;
+          })
+        } else {
+          containersArray = this.getContainers;
+        }
+
+        this.markers = containersArray.map(container => {
           if (container.fireRisk === true) {
             this.counterFireRisk++;
           }
