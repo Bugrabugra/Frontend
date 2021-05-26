@@ -160,7 +160,7 @@
 
         if (this.getSettings.page === "zone-page") {
           containersArray = this.getContainers.filter(container => {
-            return container.zoneID == this.getSettings.zoneID;
+            return container.zoneID == this.getSettings.zoneID; // TODO buraya && container.zone2ID == this.getSettings.zoneID eklenecek
           })
         } else {
           containersArray = this.getContainers;

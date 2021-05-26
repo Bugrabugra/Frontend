@@ -19,16 +19,101 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4445fcc-43cb-403e-a582-8a5ff381803a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/.idea/Ionic and Vue js - Full Tutorial - Build a Complete App.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b4445fcc-43cb-403e-a582-8a5ff381803a" name="Default Changelist" comment="26052021 - Acedemind Ionic">
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/capacitor.build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/assets/capacitor.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/assets/capacitor.plugins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/java/bugra/google/com/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-land-hdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-land-mdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-land-xhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-land-xxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-land-xxxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-port-hdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-port-mdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-port-xhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-port-xxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-port-xxxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/drawable/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/main/res/xml/file_paths.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/capacitor.settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/android/variables.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/components/base/BaseLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/components/memories/CreateMemoryForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/components/memories/MemoriesList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/components/memories/MemoryListItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/components/memories/MemoryOverview.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/pages/AddMemoryPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/pages/MemoriesPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/pages/MemoryDetailsPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/theme/core.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/capacitor.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/capacitor.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/theme/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/theme/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ionic and Vue js - Full Tutorial - Build a Complete App/vue-first-app/src/views/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Denemeler/Harita/All Atik/all-atik-app/src/components/Map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../Denemeler/Harita/All Atik/all-atik-app/src/components/Map.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -49,6 +134,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\Bugra\Documents\GitHub\Frontend\Academind\Ionic and Vue js - Full Tutorial - Build a Complete App\vue-first-app\node_modules\typescript\lib" />
   </component>
   <component name="SvnConfiguration">
@@ -61,8 +148,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622009592603</updated>
-      <workItem from="1622009594526" duration="1381000" />
+      <workItem from="1622009594526" duration="18364000" />
     </task>
+    <task id="LOCAL-00001" summary="26052021 - Acedemind Ionic">
+      <created>1622011277766</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622011277766</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,12 +175,28 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="26052021 - Acedemind Ionic" />
+    <option name="LAST_COMMIT_MESSAGE" value="26052021 - Acedemind Ionic" />
   </component>
   <component name="WindowStateProjectService">
     <state x="148" y="254" key="IDE.errors.dialog" timestamp="1622009814515">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="148" y="254" key="IDE.errors.dialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622009814515" />
+    <state x="69" y="164" key="SettingsEditor" timestamp="1622018637409">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="69" y="164" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622018637409" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1622035640202">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622035640202" />
+    <state x="160" y="239" key="Vcs.Push.Dialog.v2" timestamp="1622011292027">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="160" y="239" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622011292027" />
   </component>
 </project>

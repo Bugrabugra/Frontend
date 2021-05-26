@@ -1,0 +1,6 @@
+{
+	"appId": "bugra.google.com",
+	"appName": "Vue Memories",
+	"webDir": "public",
+	"bundledWebRuntime": false
+}

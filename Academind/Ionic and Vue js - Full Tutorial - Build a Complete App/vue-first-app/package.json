@@ -10,6 +10,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@capacitor/android": "^3.0.0",
     "@capacitor/app": "1.0.0",
     "@capacitor/core": "3.0.0",
     "@capacitor/haptics": "1.0.0",
@@ -18,7 +19,8 @@
     "@ionic/vue-router": "^5.4.0",
     "core-js": "^3.6.5",
     "vue": "^3.0.0-0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.1"
   },
   "devDependencies": {
     "@capacitor/cli": "3.0.0",

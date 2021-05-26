@@ -1,9 +1,9 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'vue-first-app',
-  webDir: 'dist',
+  appId: 'bugra.google.com',
+  appName: 'Vue Memories',
+  webDir: 'public',
   bundledWebRuntime: false
 };
 
