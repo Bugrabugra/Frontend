@@ -7,6 +7,7 @@
       color="brown-3"
       icon="add_location_alt"
       style="width: 188px"
+      :class="getSettings.page === 'container-page' ? null : 'q-ma-xs'"
     />
 
     <q-btn
@@ -16,6 +17,7 @@
       color="brown-3"
       icon="wrong_location"
       style="width: 188px"
+      :class="getSettings.page === 'container-page' ? null : 'q-ma-xs'"
       outline
     />
   </div>

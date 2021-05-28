@@ -256,8 +256,9 @@
             query: "zoneID",
             value: 0
           }
-        )
+        );
 
+        this.$store.dispatch("clearZones");
         this.$store.dispatch("queryContainers");
       },
 

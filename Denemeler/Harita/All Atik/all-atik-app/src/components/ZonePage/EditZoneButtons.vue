@@ -22,23 +22,14 @@
       İPTAL
     </q-btn>
 
-    <!--<q-btn-->
-    <!--  @click="modifyZone"-->
-    <!--  icon="auto_fix_high"-->
-    <!--  color="amber-4"-->
-    <!--  class="q-ma-xs"-->
-    <!--&gt;-->
-    <!--  DÜZENLE-->
-    <!--</q-btn>-->
-
-    <!--<q-btn-->
-    <!--  @click="deleteZone"-->
-    <!--  icon="clear"-->
-    <!--  color="red"-->
-    <!--  class="q-ma-xs"-->
-    <!--&gt;-->
-    <!--  SİL-->
-    <!--</q-btn>-->
+    <q-btn
+      @click="deleteZone"
+      icon="clear"
+      color="red"
+      class="q-ma-xs"
+    >
+      SİL
+    </q-btn>
   </div>
 </template>
 
@@ -135,12 +126,21 @@
         this.drawing = false;
       },
 
-      // deleteZone() {
-      //   this.$store.dispatch("setZoneGeometry", {zoneID: this.getSettings.zoneID, geometry: ""})
-      //     .then(() => {
-      //       this.$store.dispatch("drawZones");
-      //     })
-      // }
+      deleteZone() {
+        this.$q.dialog({
+          title: i18n.t("notifications.lblWarning"),
+          ok: {
+            label: i18n.t("notifications.btnOK"),
+          },
+          message: `ID: ${this.getSettings.zoneID} silmek istediğinize emin misiniz?`,
+        }).onOk(() => {
+          this.$store.dispatch("setZoneGeometry", {zoneID: this.getSettings.zoneID, geometry: ""})
+            .then(() => {
+              this.$store.dispatch("drawZones");
+            })
+        })
+
+      }
     },
 
     watch: {

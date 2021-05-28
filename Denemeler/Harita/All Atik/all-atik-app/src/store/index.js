@@ -8,7 +8,8 @@ import {
   apiGetContainer,
   apiGetLastCollections,
   apiGetDataStream,
-  apiGetZone, apiGetZones
+  apiGetZone,
+  apiGetZones, apiGetFilteredZones
 } from "../api/index";
 import {svgMarkerDataStream, svgMarkerMyLocation} from "components/svgIcons";
 import {i18n} from "boot/i18n";
@@ -458,7 +459,7 @@ export default function () {
           )
 
         if (context.getters.getFullnessColors.countRed) {
-          if (context.getters.getSettings.page !== "container-page") {
+          if (context.getters.getSettings.page === "main-map-page") {
             const messageFullness = i18n.t("notifications.lblFullContainers")
             Notify.create({
               type: 'info',
@@ -598,6 +599,19 @@ export default function () {
           }).catch(error => {
           console.log(i18n.t("errors.lblGetContainer"), error);
         })
+      },
+
+      getContainer(context, payload) {
+        apiGetContainer(payload)
+          .then(response => {
+            if (response.data.latitude && response.data.longitude) {
+              context.getters.getMap.setCenter({
+                lat: response.data.latitude,
+                lng: response.data.longitude
+              });
+              context.getters.getMap.setZoom(20);
+            }
+          })
       },
 
       setCurrentContainerLastCollections(context, payload) {
@@ -752,6 +766,62 @@ export default function () {
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: "#81d0e8",
+                    fillOpacity: 0.20,
+                    label: zone.name
+                  });
+
+                  poly.setMap(context.state.map);
+
+                  let bounds = new window.google.maps.LatLngBounds;
+                  decodedGeometry.forEach(function(latLng) {
+                    bounds.extend(latLng);
+                  });
+
+                  // Mouse over info bubble
+                  const infoWindow = new window.google.maps.InfoWindow();
+
+                  // Mouse over highlight property
+                  window.google.maps.event.addListener(poly, 'mouseover', (e) => {
+                    poly.setOptions({fillColor: "#00FF00"});
+                    infoWindow.setContent(`${zone.name}`);
+                    infoWindow.setPosition(bounds.getCenter());
+                    infoWindow.open(context.state.map);
+                  });
+
+                  // Mouse out highlight property
+                  window.google.maps.event.addListener(poly, 'mouseout', (e) => {
+                    poly.setOptions({fillColor: "#81d0e8"});
+                    infoWindow.setPosition(null);
+                  });
+
+                  context.state.zones.push(poly);
+                }
+              })
+
+              console.log(context.state.zones)
+            })
+        }, 700)
+      },
+
+      drawFilteredZones(context, zoneIDs) {
+        context.dispatch("clearZones");
+
+        console.log(zoneIDs)
+
+        setTimeout(() => {
+          apiGetFilteredZones(zoneIDs)
+            .then(response => {
+              response.data.forEach(zone => {
+                if (zone.geometry && zone.status === "ACTIVE") {
+                  const decodedGeometry = window.google.maps.geometry.encoding.decodePath(zone.geometry);
+
+                  // Viewing the parsed polygons
+                  const poly = new window.google.maps.Polygon({
+                    paths: decodedGeometry,
+                    strokeColor: "#d90785",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#e881ce",
                     fillOpacity: 0.20,
                     label: zone.name
                   });

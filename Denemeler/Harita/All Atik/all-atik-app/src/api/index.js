@@ -52,6 +52,11 @@ export const apiGetZones = () => {
   return api.get(zones);
 }
 
+// Get filtered zones
+export const apiGetFilteredZones = (filter) => {
+  return api.get(`${zones}?ID=${filter}`);
+}
+
 // Get zone
 export const apiGetZone = (zoneID) => {
   return api.get(`${zone}/${zoneID}`)

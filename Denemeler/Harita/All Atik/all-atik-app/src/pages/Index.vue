@@ -19,9 +19,16 @@
           </div>
         </div>
 
+        <!--Edit zone menu-->
         <div v-if="page === 'zone-page'">
           <EditZoneButtons class="absolute absolute-bottom justify-center" style="bottom: 30px;"/>
         </div>
+
+        <!--Edit zone menu-->
+        <div v-if="page === 'edit-container-page'">
+          <EditContainerPageButtons class="absolute absolute-bottom justify-center" style="bottom: 30px;"/>
+        </div>
+
       </div>
 
       <!--Bottom menu mobile-->
@@ -39,12 +46,14 @@
   import EditContainerButton from "components/ContainerPage/EditContainerButton";
   import ContainerDetailPanel from "components/ContainerPage/ContainerDetailPanel";
   import EditZoneButtons from "components/ZonePage/EditZoneButtons";
+  import EditContainerPageButtons from "components/EditContainerPage/EditContainerPageButtons";
 
 
   export default {
     name: 'PageIndex',
 
     components: {
+      EditContainerPageButtons,
       EditZoneButtons,
       ContainerDetailPanel,
       EditContainerButton,

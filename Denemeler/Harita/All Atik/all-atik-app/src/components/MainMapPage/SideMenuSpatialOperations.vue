@@ -2,6 +2,7 @@
   <q-card style="width: 100%;">
     <q-card-section>
       <div :class="[spatialMenuSize, 'row', 'justify-center']">
+        <!--Update geometry-->
         <q-btn
           v-if="!updatingGeometry"
           :disable="!getClickedContainer"
@@ -24,6 +25,7 @@
           icon="wrong_location"
         />
 
+        <!--Create route-->
         <q-btn
           @click="$store.dispatch('createRoute', true)"
           color="orange-4"
@@ -33,14 +35,8 @@
           icon="local_shipping"
         />
 
-        <q-btn
-          @click="$store.dispatch('setMyLocation')"
-          color="green-4"
-          :label="$t('pageMainMap.expansionItems.spatialOperations.btnFindMyLocation')"
-          class="q-ma-xs"
-          style="min-width: 201px;"
-          icon="my_location"
-        />
+        <!--Find my location-->
+        <FindMyLocation/>
 
       </div>
     </q-card-section>
@@ -49,10 +45,13 @@
 
 <script>
   import {mapActions, mapGetters} from "vuex";
+  import FindMyLocation from "components/_Global/FindMyLocation";
 
 
   export default {
     name: "SideMenuSpatialOperations",
+
+    components: {FindMyLocation},
 
     computed: {
       ...mapGetters([

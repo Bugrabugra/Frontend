@@ -78,6 +78,13 @@
           this.$store.dispatch("getZoneGeometry", this.getSettings.zoneID);
           this.drawZones();
           zoom = 15
+        } else if (this.getSettings.page === "planning-page") {
+          if (this.getSettings.zoneID) {
+            this.drawFilteredZones(this.getSettings.zoneID);
+          } else {
+            this.clearZones();
+          }
+          zoom = 12;
         }
 
         const map = new window.google.maps.Map(document.getElementById("map"), {
@@ -141,6 +148,14 @@
         this.$store.dispatch("drawZones");
       },
 
+      drawFilteredZones(zoneIDs) {
+        this.$store.dispatch("drawFilteredZones", zoneIDs);
+      },
+
+      clearZones() {
+        this.$store.dispatch("clearZones");
+      },
+
       drawContainers() {
         if (this.markerCluster) {
           this.markerCluster.clearMarkers();
@@ -160,7 +175,7 @@
 
         if (this.getSettings.page === "zone-page") {
           containersArray = this.getContainers.filter(container => {
-            return container.zoneID == this.getSettings.zoneID; // TODO buraya && container.zone2ID == this.getSettings.zoneID eklenecek
+            return container.zoneID == this.getSettings.zoneID || container.zone2ID == this.getSettings.zoneID;
           })
         } else {
           containersArray = this.getContainers;
