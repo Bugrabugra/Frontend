@@ -8,6 +8,7 @@
 <script>
   import FindMyLocation from "components/_Global/FindMyLocation";
   import EditContainerButton from "components/ContainerPage/EditContainerButton";
+  import {mapGetters} from "vuex";
 
 
   export default {
@@ -17,11 +18,8 @@
       EditContainerButton,
       FindMyLocation},
 
-    data() {
-      return {}
-    },
-
     computed: {
+      ...mapGetters(["getMap"]),
       containerID() {
         return this.$store.getters.getSettings.containerID;
       }
@@ -36,8 +34,10 @@
       }
     },
 
-    mounted() {
-      this.getContainer();
+    watch: {
+      getMap() {
+        this.getContainer();
+      }
     }
   }
 </script>

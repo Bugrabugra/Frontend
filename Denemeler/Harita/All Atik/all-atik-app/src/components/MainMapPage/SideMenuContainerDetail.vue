@@ -3,11 +3,12 @@
     <q-card-section>
       <div class="row q-mb-xs details">
 
-        <!--  Konteyner Detayları-->
+        <!--  Container details-->
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblID')}}</div>
         </div>
 
+        <!--ID-->
         <div :class="valueWidth">
           <div class="q-mr-xs" v-if="getClickedContainer">
             {{selectedContainer.id}}
@@ -15,6 +16,7 @@
         </div>
       </div>
 
+      <!--Container name-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblContainerName')}}</div>
@@ -27,6 +29,7 @@
         </div>
       </div>
 
+      <!--Container neighborhood-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblNeighborhood')}}</div>
@@ -39,6 +42,7 @@
         </div>
       </div>
 
+      <!--Container street-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblStreet')}}</div>
@@ -51,6 +55,7 @@
         </div>
       </div>
 
+      <!--Container zone-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblZone')}}</div>
@@ -63,6 +68,7 @@
         </div>
       </div>
 
+      <!--Container type-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblType')}}</div>
@@ -75,6 +81,7 @@
         </div>
       </div>
 
+      <!--Container fullness-->
       <div class="row q-mb-xs details">
         <div class="col-6">
           <div :class="aliasWidth">
@@ -96,6 +103,7 @@
           </q-circular-progress>
         </div>
 
+        <!--Container battery-->
         <div class="col-6">
           <div :class="aliasWidth">
             <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblBattery')}}</div>
@@ -118,6 +126,7 @@
         </div>
       </div>
 
+      <!--Container fire risk-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblFireRisk')}}</div>
@@ -132,6 +141,7 @@
         </div>
       </div>
 
+      <!--Container device-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblDevice')}}</div>
@@ -139,11 +149,12 @@
 
         <div :class="valueWidth">
           <div v-if="getClickedContainer">
-            {{selectedContainer.typeName}}
+            {{selectedContainer.device}}
           </div>
         </div>
       </div>
 
+      <!--Container last update-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblLastUpdate')}}</div>
@@ -158,6 +169,7 @@
         </div>
       </div>
 
+      <!--Container last collection-->
       <div class="row q-mb-xs details">
         <div :class="aliasWidth">
           <div :class="[textSize, 'text-weight-bold']">{{$t('pageMainMap.expansionItems.containerDetail.lblLastCollection')}}</div>

@@ -721,7 +721,7 @@ export default function () {
             }
           })
           .catch(error => {
-            console.log("Bölge geometrisi çekilirken hata oluştu", error)
+            console.log(i18n.t("errors.lblLoadZones"), error)
           })
       },
 
@@ -734,7 +734,7 @@ export default function () {
             Dialog.create({
               title: i18n.t("notifications.lblWarning"),
               ok: {label: i18n.t("notifications.btnOK")},
-              message: `ID ${payload.zoneID} geometrisi başarıyla güncellendi.`
+              message: `ID ${payload.zoneID} ${i18n.t("notifications.lblAddGeometry")}`
             })
           })
       },

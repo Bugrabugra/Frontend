@@ -57,7 +57,7 @@ export default {
   },
   pageContainer: {
     buttonContainer: {
-      btnGeometry: "GEOMETRY",
+      btnGeometry: "LOCATION",
       btnGeometryCancel: "CANCEL",
       btnLastFiveContainers: "LAST 5 COORDINATES",
       btnLastFiveContainersHide: "HIDE COORDINATES"
@@ -88,7 +88,8 @@ export default {
     lblUpdateGeometry: "There was an error while updating value!",
     lblAddGeometry: "There was an error while updating geometry!",
     lblMyLocation: "There was an error while fetching location data!",
-    lblGetContainer: "There was an error while fetching container!"
+    lblGetContainer: "There was an error while fetching container!",
+    lblLoadZones: "There was an error while loading zones!"
   },
   myLocation: {
     lblTitle: "My Location"

@@ -93,6 +93,16 @@
             lat: lat ? lat : 40.98390570573965,
             lng: lng ? lng : 29.13268504720865
           },
+          zoomControlOptions: {
+            position: window.google.maps.ControlPosition.TOP_RIGHT,
+          },
+          streetViewControlOptions: {
+            position: window.google.maps.ControlPosition.LEFT_TOP,
+          },
+          fullscreenControlOptions: {
+            position: window.google.maps.ControlPosition.LEFT_TOP
+          },
+
           mapId: "b15068e07cf8d4c6",
         });
 
@@ -487,7 +497,7 @@
 </script>
 
 <style scoped>
-  #map{
+  #map {
     height: 100% !important;
   }
 

@@ -26,7 +26,7 @@ export default {
         phFireRisk: "Yangın Riski"
       },
       spatialOperations: {
-        btnEditGeometry: "GEOMETRİ DÜZENLE",
+        btnEditGeometry: "KONUM DÜZENLE",
         btnEditGeometryCancel: "İPTAL ET",
         btnCreateRoute: "ROTA OLUŞTUR",
         btnFindMyLocation: "KONUMUMU BUL"
@@ -57,7 +57,7 @@ export default {
   },
   pageContainer: {
     buttonContainer: {
-      btnGeometry: "GEOMETRİ",
+      btnGeometry: "KONUM",
       btnGeometryCancel: "İPTAL ET",
       btnLastFiveContainers: "SON 5 KOORDİNAT",
       btnLastFiveContainersHide: "KOORDİNATLARI GİZLE"
@@ -86,9 +86,10 @@ export default {
   errors: {
     lblLoadContainers: "Konteynerler yüklenirken hata oluştu!",
     lblUpdateGeometry: "Veri güncellenirken hata oluştu!",
-    lblAddGeometry: "Geometri girilirken hata oluştu!",
+    lblAddGeometry: "Konum girilirken hata oluştu!",
     lblMyLocation: "Konum bilgisi çekilirken hata oluştu!",
-    lblGetContainer: "Konteyner çekilirken hata oluştu!"
+    lblGetContainer: "Konteyner çekilirken hata oluştu!",
+    lblLoadZones: "Bölgeler yüklenirken hata oluştu!"
   },
   myLocation: {
     lblTitle: "Konumum"
