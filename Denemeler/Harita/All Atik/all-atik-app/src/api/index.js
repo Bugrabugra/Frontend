@@ -1,5 +1,6 @@
 import {api} from "boot/axios";
 
+const institution = `/institution`;
 const containers = `/containers`;
 const container = `/container`;
 const neighborhoods = `/neighborhoods`;
@@ -8,8 +9,12 @@ const zones = `/zones`;
 const zone = `/zone`;
 const containertypes = `/containertypes`;
 const lastCollections = `/last-collections`;
-const deviceDataStream = `/device-data-stream`
+const deviceDataStream = `/device-data-stream`;
 
+// Get institution
+export const apiGetInstitution = () => {
+  return api.get(institution);
+}
 
 // Get all containers
 export const apiGetContainers = () => {

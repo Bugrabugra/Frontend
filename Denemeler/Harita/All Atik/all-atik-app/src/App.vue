@@ -8,14 +8,25 @@
   export default {
     name: 'App',
 
+    methods: {
+      getSettings() {
+        const settings = {};
+        String(document.location.search).slice(1).split("&").forEach(parameter => {
+          const [key, value] = parameter.split("=")
+          settings[key] = value;
+        })
+        console.log(settings)
+        this.$store.dispatch("setSettings", settings);
+      },
+
+      getInstitution() {
+        this.$store.dispatch("setInstitution");
+      }
+    },
+
     beforeMount() {
-      const settings = {};
-      String(document.location.search).slice(1).split("&").forEach(parameter => {
-        const [key, value] = parameter.split("=")
-        settings[key] = value;
-      })
-      console.log(settings)
-      this.$store.dispatch("setSettings", settings);
+      this.getSettings();
+      this.getInstitution();
     },
 
     mounted() {

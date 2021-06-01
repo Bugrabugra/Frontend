@@ -9,7 +9,8 @@ import {
   apiGetLastCollections,
   apiGetDataStream,
   apiGetZone,
-  apiGetZones, apiGetFilteredZones
+  apiGetZones,
+  apiGetFilteredZones, apiGetInstitution
 } from "../api/index";
 import {svgMarkerDataStream, svgMarkerMyLocation} from "components/svgIcons";
 import {i18n} from "boot/i18n";
@@ -21,6 +22,7 @@ Vue.use(Vuex);
 export default function () {
   return new Vuex.Store({
     state: {
+      institution: null,
       pageSize: null,
       settings: {},
       map: null,
@@ -60,6 +62,10 @@ export default function () {
     },
 
     getters: {
+      getInstitution(state) {
+        return state.institution;
+      },
+
       getQueryParameterObject(state) {
         return state.queryParameterObject;
       },
@@ -198,6 +204,10 @@ export default function () {
     },
 
     mutations: {
+      setInstitution(state, payload) {
+        state.institution = payload;
+      },
+
       resetFullnessValues(state) {
         state.fullnessColors.countGreen = 0;
         state.fullnessColors.countGrey = 0;
@@ -303,6 +313,13 @@ export default function () {
     },
 
     actions: {
+      setInstitution({commit}) {
+        apiGetInstitution()
+          .then(response => {
+            commit("setInstitution", response.data);
+          })
+      },
+
       setPageSize({commit}, payload) {
         commit("setPageSize", payload);
       },

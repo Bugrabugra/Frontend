@@ -31,20 +31,13 @@
         markers: [],
         markerCluster: null,
         counterFireRisk: 0,
-        directionsRenderer: null,
-        coordinatesMunicipalityCenter: {
-          lat: 40.9828807765619,
-          lng: 29.116861107227084
-        },
-        coordinatesDisposalArea: {
-          lat: 40.97841698244163,
-          lng: 29.13004295270447
-        }
+        directionsRenderer: null
       }
     },
 
     computed: {
       ...mapGetters([
+        "getInstitution",
         "filterChanged",
         "updatingGeometry",
         "resetView",
@@ -65,9 +58,9 @@
 
         // Map page types
         if (this.getSettings.page === "main-map-page") {
-          zoom = 10
-          lat = 40.98390570573965;
-          lng = 29.13268504720865;
+          zoom = this.getInstitution.mapZoom;
+          lat = this.getInstitution.mapCenterLat;
+          lng = this.getInstitution.mapCenterLng;
 
         } else if (this.getSettings.page === "container-page") {
           zoom = 19
@@ -75,16 +68,17 @@
           lng = parseFloat(this.getSettings.lng);
 
         } else if (this.getSettings.page === "zone-page") {
+          zoom = 15;
           this.$store.dispatch("getZoneGeometry", this.getSettings.zoneID);
           this.drawZones();
-          zoom = 15
+
         } else if (this.getSettings.page === "planning-page") {
+          zoom = 12;
           if (this.getSettings.zoneID) {
             this.drawFilteredZones(this.getSettings.zoneID);
           } else {
             this.clearZones();
           }
-          zoom = 12;
         }
 
         const map = new window.google.maps.Map(document.getElementById("map"), {
@@ -118,8 +112,8 @@
         // Municipality center marker
         const markerMunicipalityCenter = new window.google.maps.Marker({
           position: {
-            lat: this.coordinatesMunicipalityCenter.lat,
-            lng: this.coordinatesMunicipalityCenter.lng
+            lat: this.getInstitution.municipalityCenterLat,
+            lng: this.getInstitution.municipalityCenterLng
           },
           title: this.$t("pageMainMap.map.lblMunicipalityCenter"),
           icon: {
@@ -137,8 +131,8 @@
         // Municipality center marker
         const markerDisposalArea = new window.google.maps.Marker({
           position: {
-            lat: this.coordinatesDisposalArea.lat,
-            lng: this.coordinatesDisposalArea.lng
+            lat: this.getInstitution.disposalAreaLat,
+            lng: this.getInstitution.disposalAreaLng
           },
           title: this.$t("pageMainMap.map.lblDisposalCenter"),
           icon: {
@@ -337,6 +331,12 @@
     },
 
     watch: {
+      getInstitution() {
+        loadedGoogleMapsAPI.then(() => {
+          this.initMap();
+        })
+      },
+
       filterChanged() {
         if (this.filterChanged) {
           this.drawContainers();
@@ -359,7 +359,7 @@
       },
 
       resetView() {
-        this.getMap.setCenter({ lat: 40.98390570573965, lng: 29.13268504720865 });
+        this.getMap.setCenter({ lat: this.getInstitution.mapCenterLat, lng: this.getInstitution.mapCenterLng });
         this.getMap.setZoom(8);
         // this.$store.dispatch("getContainers");
         // this.$store.dispatch("populateFullness");
@@ -412,15 +412,15 @@
                 stations = newStations;
 
                 stations.unshift({
-                  lat: this.coordinatesMunicipalityCenter.lat,
-                  lng: this.coordinatesMunicipalityCenter.lng,
+                  lat: this.getInstitution.municipalityCenterLat,
+                  lng: this.getInstitution.municipalityCenterLng,
                   name: "Municipality Center",
                   id: 1000
                 })
 
                 stations.push({
-                  lat: this.coordinatesDisposalArea.lat,
-                  lng: this.coordinatesDisposalArea.lng,
+                  lat: this.getInstitution.disposalAreaLat,
+                  lng: this.getInstitution.disposalAreaLng,
                   name: "Disposal Area",
                   id: 1001
                 })
@@ -485,13 +485,6 @@
 
         this.$store.dispatch('createRoute', false);
       }
-    },
-
-    mounted() {
-      // Initializing the Google Maps API when the page is created
-      loadedGoogleMapsAPI.then(() => {
-        this.initMap();
-      })
     }
   }
 </script>
