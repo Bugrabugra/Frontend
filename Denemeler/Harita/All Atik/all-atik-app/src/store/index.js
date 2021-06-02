@@ -380,7 +380,7 @@ export default function () {
             })
 
             context.dispatch("updatingGeometry");
-            context.dispatch("getContainers");
+            context.dispatch("queryContainers");
           })
           .catch(error => {
             console.log(i18n.t("errors.lblUpdateGeometry"), error);
