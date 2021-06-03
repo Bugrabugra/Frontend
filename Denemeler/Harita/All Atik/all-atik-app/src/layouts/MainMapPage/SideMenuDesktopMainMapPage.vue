@@ -63,7 +63,7 @@
 
 
   export default {
-    name: "SideMenuDesktop",
+    name: "SideMenuDesktopMainMapPage",
 
     components: {
       SideMenuSpatialOperations,

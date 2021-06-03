@@ -8,11 +8,11 @@
 
         <!--Side menu desktop-->
         <div v-if="page === 'main-map-page' && (pageSize !== 'xs' && pageSize !== 'sm')" :class="['col', 'bg-indigo-1', sideMenuSize]">
-          <SideMenuDesktop/>
+          <SideMenuDesktopMainMapPage/>
         </div>
 
         <!--Edit container menu-->
-        <div v-if="page === 'container-page'" class="col col-6">
+        <div v-if="page === 'container-page' && (pageSize !== 'xs' && pageSize !== 'sm')" class="col col-6">
           <!--Side menu-->
           <div>
             <ContainerDetailPanel/>
@@ -33,7 +33,11 @@
 
       <!--Bottom menu mobile-->
       <div v-if="page === 'main-map-page' && (pageSize === 'xs' || pageSize === 'sm')">
-        <BottomMenuMobile style="position: absolute; bottom: 0;"/>
+        <BottomMenuMobileMainMapPage style="position: absolute; bottom: 0;"/>
+      </div>
+
+      <div v-if="page === 'container-page' && (pageSize === 'xs' || pageSize === 'sm')">
+        <BottomMenuMobileContainerPage style="position: absolute; bottom: 0;"/>
       </div>
 
     </q-page>
@@ -44,7 +48,7 @@
   import Map from "components/Map";
   import EditContainer from "components/ContainerPage/EditContainerButton";
   import EditContainerButton from "components/ContainerPage/EditContainerButton";
-  import ContainerDetailPanel from "components/ContainerPage/ContainerDetailPanel";
+  import ContainerDetailPanel from "components/ContainerPage/ContainerRightPanel";
   import EditZoneButtons from "components/ZonePage/EditZoneButtons";
   import EditContainerPageButtons from "components/EditContainerPage/EditContainerPageButtons";
 
@@ -57,8 +61,9 @@
       EditZoneButtons,
       ContainerDetailPanel,
       EditContainerButton,
-      BottomMenuMobile: () => import("components/BottomMenuMobile"),
-      SideMenuDesktop: () => import("components/SideMenuDesktop"),
+      BottomMenuMobileMainMapPage: () => import("layouts/MainMapPage/BottomMenuMobileMainMapPage"),
+      SideMenuDesktopMainMapPage: () => import("layouts/MainMapPage/SideMenuDesktopMainMapPage"),
+      BottomMenuMobileContainerPage: () => import("layouts/ContainerPage/BottomMenuMobileContainerPage"),
       EditContainer,
       Map
     },

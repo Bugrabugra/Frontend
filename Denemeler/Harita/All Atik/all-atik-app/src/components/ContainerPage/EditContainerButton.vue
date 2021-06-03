@@ -39,13 +39,16 @@
     computed: {
       ...mapGetters([
         "getDrawingManager",
-        "getMap",
         "getSettings"
-      ])
+      ]),
+      getMap() {
+        return this.$store.getters.getMap;
+      }
     },
 
     methods: {
       addContainer() {
+        this.initDrawingManager();
         this.isButtonClicked = true;
         this.getDrawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.MARKER);
       },
@@ -56,8 +59,6 @@
       },
 
       initDrawingManager() {
-        console.log(this.getSettings);
-        const _this = this;
         const containerID = parseInt(this.getSettings.containerID);
         console.log(containerID);
 
@@ -69,11 +70,12 @@
               scale: 0
             }
           },
-          map: _this.getMap
+          map: this.getMap
         });
 
         this.$store.dispatch("setDrawingManager", drawingManager);
 
+        const _this = this;
         window.google.maps.event.addListener(_this.getDrawingManager, 'markercomplete', function(marker) {
           const latitude = marker.getPosition().lat();
           const longitude = marker.getPosition().lng();

@@ -2,7 +2,7 @@
   <div class="full-width">
     <div class="justify-center">
       <q-card>
-        <q-tab-panels v-model="tab" animated>
+        <q-tab-panels keep-alive v-model="tab" animated>
           <q-tab-panel v-if="percentagesIsOpen" name="percentages" class="q-ma-none q-pa-none">
             <SideMenuFullness/>
           </q-tab-panel>
@@ -48,7 +48,7 @@
 
 
   export default {
-    name: "BottomMenuDesktop",
+    name: "BottomMenuMobileMainMapPage",
 
     components: {
       SideMenuSpatialOperations,

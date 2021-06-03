@@ -22,7 +22,6 @@
               <DrawLastFiveCoordinatesButton class="q-ma-sm"/>
             </q-card-section>
           </q-card>
-
         </div>
 
         <div class="row items-center justify-center">
@@ -44,7 +43,7 @@
 
 
   export default {
-    name: "ContainerDetailPanel",
+    name: "ContainerRightPanel",
 
     components: {
       ContainerChart,
