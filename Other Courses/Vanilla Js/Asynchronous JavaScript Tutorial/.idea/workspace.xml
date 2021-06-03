@@ -22,7 +22,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Academind/Vue Js/Nuxt.js and Storyblok - Building a Complete Blog" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -35,7 +35,17 @@
       <option name="presentableId" value="Default" />
       <updated>1622730237852</updated>
       <workItem from="1622730239463" duration="4000" />
+      <workItem from="1622731012263" duration="32000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="385" y="274" width="681" height="491" key="FileChooserDialogImpl" timestamp="1622731042430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="385" y="274" width="681" height="491" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622731042430" />
   </component>
 </project>
