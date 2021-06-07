@@ -1,54 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="be492e84-467d-469a-a44f-86849dc85d1a" name="Default Changelist" comment="03062021 - Async js">
-      <change afterPath="$PROJECT_DIR$/tutorial/async_await.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tutorial/fetch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tutorial/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tutorial/todos/mario.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tutorial/todos/shaun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/sandbox.js" beforeDir="false" />
-    </list>
+    <list default="true" id="be492e84-467d-469a-a44f-86849dc85d1a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1tRS74SiqQ0Iu0ozZtxwqnTckDh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,35 +19,10 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Node Js/User Authentication in Web Apps - Passport js - Node - Express" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Other Courses\Vanilla Js\Asynchronous JavaScript Tutorial\2\todos" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html (1)">
-    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Asynchronous JavaScript Tutorial/tutorial/index.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Asynchronous JavaScript Tutorial/2/index.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="promise.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/tutorial/promise.js" working-dir="$PROJECT_DIR$/tutorial">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.index.html (1)" />
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="Node.js.promise.js" />
-      </list>
-    </recent_temporary>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Academind/Vue Js/Nuxt.js and Storyblok - Building a Complete Blog" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -98,102 +36,16 @@
       <updated>1622730237852</updated>
       <workItem from="1622730239463" duration="4000" />
       <workItem from="1622731012263" duration="32000" />
-      <workItem from="1622731192726" duration="2343000" />
-      <workItem from="1622737169963" duration="56000" />
-      <workItem from="1622788368775" duration="4943000" />
     </task>
-    <task id="LOCAL-00001" summary="03062021 - Async js">
-      <created>1622737107880</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1622737107880</updated>
-    </task>
-    <task id="LOCAL-00002" summary="03062021 - Async js">
-      <created>1622737199389</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1622737199389</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="03062021 - Async js" />
-    <option name="LAST_COMMIT_MESSAGE" value="03062021 - Async js" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="385" y="274" width="681" height="491" key="FileChooserDialogImpl" timestamp="1622809667747">
+    <state x="385" y="274" width="681" height="491" key="FileChooserDialogImpl" timestamp="1622731042430">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="385" y="274" width="681" height="491" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809667747" />
-    <state width="1173" height="343" key="GridCell.Tab.0.bottom" timestamp="1622809669366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669366" />
-    <state width="1173" height="343" key="GridCell.Tab.0.center" timestamp="1622809669366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669366" />
-    <state width="1173" height="343" key="GridCell.Tab.0.left" timestamp="1622809669366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669366" />
-    <state width="1173" height="343" key="GridCell.Tab.0.right" timestamp="1622809669366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669366" />
-    <state width="1173" height="343" key="GridCell.Tab.1.bottom" timestamp="1622809669367">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669367" />
-    <state width="1173" height="343" key="GridCell.Tab.1.center" timestamp="1622809669366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669366" />
-    <state width="1173" height="343" key="GridCell.Tab.1.left" timestamp="1622809669366">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669366" />
-    <state width="1173" height="343" key="GridCell.Tab.1.right" timestamp="1622809669367">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669367" />
-    <state width="1173" height="343" key="GridCell.Tab.2.bottom" timestamp="1622809669367">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.2.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669367" />
-    <state width="1173" height="343" key="GridCell.Tab.2.center" timestamp="1622809669367">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.2.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669367" />
-    <state width="1173" height="343" key="GridCell.Tab.2.left" timestamp="1622809669367">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.2.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669367" />
-    <state width="1173" height="343" key="GridCell.Tab.2.right" timestamp="1622809669367">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1173" height="343" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622809669367" />
-    <state x="197" y="242" key="Vcs.Push.Dialog.v2" timestamp="1622737210264">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="197" y="242" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622737210264" />
+    <state x="385" y="274" width="681" height="491" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1622731042430" />
   </component>
 </project>
