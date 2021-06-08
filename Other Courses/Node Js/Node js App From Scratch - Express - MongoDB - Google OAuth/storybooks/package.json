@@ -10,7 +10,7 @@
   "author": "Bugra",
   "license": "MIT",
   "dependencies": {
-    "connect-mongo": "^4.4.1",
+    "connect-mongo": "^3.0.0-rc.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
