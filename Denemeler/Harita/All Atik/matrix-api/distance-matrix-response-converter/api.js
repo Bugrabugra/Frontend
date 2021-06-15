@@ -25,9 +25,6 @@ const distancesMatrix = [
 
 app.post('/', (req, res) => {
   const containersToBeCollected = req.body;
-  console.log("Containers will be collected");
-  console.log(containersToBeCollected)
-
   const orderedContainers = []
 
   // Calculating the first container to be collected
@@ -36,7 +33,6 @@ app.post('/', (req, res) => {
     let minimumDistance = 0;
 
     containersToBeCollected.forEach(container => {
-
       if (minimumDistance === 0) {
         minimumDistance = distancesMatrix[0][container];
       }

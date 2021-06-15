@@ -51,7 +51,8 @@
       getDataStream() {
         apiGetDataStream(
           this.getClickedContainer.container.id ?
-            this.getClickedContainer.container.id : this.getSettings.containerID
+            this.getClickedContainer.container.id : this.getSettings.containerID,
+          this.getSettings.jwt
         )
           .then(response => {
             this.temperatureArray = response.data.map(item => {

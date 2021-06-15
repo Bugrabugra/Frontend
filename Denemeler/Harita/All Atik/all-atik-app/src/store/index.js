@@ -10,7 +10,8 @@ import {
   apiGetDataStream,
   apiGetZone,
   apiGetZones,
-  apiGetFilteredZones, apiGetInstitution
+  apiGetFilteredZones,
+  apiGetInstitution
 } from "../api/index";
 import {svgMarkerDataStream, svgMarkerMyLocation} from "components/svgIcons";
 import {i18n} from "boot/i18n";
@@ -313,10 +314,10 @@ export default function () {
     },
 
     actions: {
-      setInstitution({commit}) {
-        apiGetInstitution()
+      setInstitution(context) {
+        apiGetInstitution(context.getters.getSettings.jwt)
           .then(response => {
-            commit("setInstitution", response.data);
+            context.commit("setInstitution", response.data);
           })
       },
 
@@ -335,7 +336,8 @@ export default function () {
           spinnerColor: "blue-6"
         });
 
-        apiGetContainers()
+        console.log(context.getters.getSettings.jwt)
+        apiGetContainers(context.getters.getSettings.jwt)
           .then(response => {
             const featuresWithGeometry = response.data.filter(container => {
               return container.latitude !== null && container.longitude !== null;
@@ -371,7 +373,7 @@ export default function () {
       },
 
       updateGeometry(context, payload) {
-        apiPatchContainer(payload)
+        apiPatchContainer(payload, context.getters.getSettings.jwt)
           .then(() => {
             Dialog.create({
               title: i18n.t("notifications.lblWarning"),
@@ -396,7 +398,7 @@ export default function () {
 
       addGeometry(context, payload) {
         console.log(payload);
-        apiPatchContainer(payload)
+        apiPatchContainer(payload, context.getters.getSettings.jwt)
           .then(() => {
             Dialog.create({
               title: i18n.t("notifications.lblWarning"),
@@ -497,7 +499,7 @@ export default function () {
         });
 
         if (context.getters.getQueryParameters) {
-          apiGetFilteredContainers(context.getters.getQueryParameters)
+          apiGetFilteredContainers(context.getters.getQueryParameters, context.getters.getSettings.jwt)
             .then(response => {
               const featuresWithGeometry = response.data.filter(container => {
                 return container.latitude !== null && container.longitude !== null;
@@ -608,7 +610,7 @@ export default function () {
       },
 
       setCurrentContainer(context, payload) {
-        apiGetContainer(payload)
+        apiGetContainer(payload, context.getters.getSettings.jwt)
           .then(response => {
             context.commit("setCurrentContainer", response.data);
             context.commit("setClickedContainer", {container: response.data});
@@ -619,7 +621,7 @@ export default function () {
       },
 
       getContainer(context, payload) {
-        apiGetContainer(payload)
+        apiGetContainer(payload, context.getters.getSettings.jwt)
           .then(response => {
             if (response.data.latitude && response.data.longitude) {
               context.getters.getMap.setCenter({
@@ -633,7 +635,7 @@ export default function () {
 
       setCurrentContainerLastCollections(context, payload) {
         if (context.getters.getSettings.page === "container-page") {
-          apiGetLastCollections(payload)
+          apiGetLastCollections(payload, context.getters.getSettings.jwt)
             .then(response => {
               context.commit("setCurrentContainerLastCollections", response.data);
             })
@@ -641,7 +643,7 @@ export default function () {
       },
 
       setCurrentContainerLastFiveCoordinates(context, payload) {
-        apiGetDataStream(payload)
+        apiGetDataStream(payload, context.getters.getSettings.jwt)
           .then(response => {
             console.log(response.data);
             context.commit("setCurrentContainerLastFiveCoordinates", response.data);
@@ -684,7 +686,7 @@ export default function () {
       selectZoneGeometry(context, payload) {
         context.dispatch("clearZones")
           .then(() => {
-            apiGetZone(payload)
+            apiGetZone(payload, context.getters.getSettings.jwt)
               .then(response => {
                 // context.commit("setCurrentZone", response.data);
                 if (response.data.geometry) {
@@ -719,7 +721,7 @@ export default function () {
       getZoneGeometry(context, payload) {
         // payload = zoneID
         // result => {geometry: geometry}
-        apiGetZone(payload)
+        apiGetZone(payload, context.getters.getSettings.jwt)
           .then(response => {
             console.log(response);
 
@@ -745,7 +747,7 @@ export default function () {
       setZoneGeometry(context, payload) {
         // payload = zoneID
         // result => {geometry: geometry}
-        apiPatchZone(payload.zoneID, payload.geometry)
+        apiPatchZone(payload.zoneID, payload.geometry, context.getters.getSettings.jwt)
           .then(response => {
             console.log(response);
             Dialog.create({
@@ -768,7 +770,7 @@ export default function () {
         context.dispatch("clearZones");
 
         setTimeout(() => {
-          apiGetZones()
+          apiGetZones(context.getters.getSettings.jwt)
             .then(response => {
               console.log(response);
 
@@ -826,7 +828,7 @@ export default function () {
         console.log(zoneIDs)
 
         setTimeout(() => {
-          apiGetFilteredZones(zoneIDs)
+          apiGetFilteredZones(zoneIDs, context.getters.getSettings.jwt)
             .then(response => {
               response.data.forEach(zone => {
                 if (zone.geometry && zone.status === "ACTIVE") {

@@ -137,13 +137,14 @@
     computed: {
       ...mapGetters({
         storeSelectedFullness: "getSelectedFullness",
-        storeSelectedFireRisk: "getSelectedFireRisk"
+        storeSelectedFireRisk: "getSelectedFireRisk",
+        getSettings: "getSettings"
       })
     },
 
     methods: {
       populateNeighborhoods() {
-        apiGetNeighborhoods()
+        apiGetNeighborhoods(this.getSettings.jwt)
           .then(response => {
             this.neighborhoods = [];
             this.neighborhoods = response.data;
@@ -151,7 +152,7 @@
       },
 
       populateStreets() {
-        apiGetStreets(this.selectedNeighborhood.id)
+        apiGetStreets(this.selectedNeighborhood.id, this.getSettings.jwt)
           .then(response => {
             this.streets = [];
             this.streets = response.data;
@@ -159,7 +160,7 @@
       },
 
       populateZones() {
-        apiGetZones()
+        apiGetZones(this.getSettings.jwt)
           .then(response => {
             this.zones = [];
             this.zones = response.data;
@@ -167,7 +168,7 @@
       },
 
       populateContainerTypes() {
-        apiGetContainerTypes()
+        apiGetContainerTypes(this.getSettings.jwt)
           .then(response => {
             this.containerTypes = [];
             this.containerTypes = response.data;
