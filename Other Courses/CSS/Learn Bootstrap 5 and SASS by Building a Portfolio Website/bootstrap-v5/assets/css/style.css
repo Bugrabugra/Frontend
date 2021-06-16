@@ -10729,5 +10729,103 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+@keyframes pulse-border {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+.btn-rounded {
+  position: relative;
+  padding: 0.9375rem 4.375rem 0.9375rem 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  border: 0.1rem solid rgba(255, 255, 255, 0.6);
+  background-color: #fff;
+}
+@media (max-width: 575.98px) {
+  .btn-rounded {
+    display: none;
+  }
+}
+.btn-rounded span {
+  position: absolute;
+  background-color: #9926f0;
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+.btn-rounded span i {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 2.5rem;
+}
+.btn-rounded:hover {
+  background: linear-gradient(to right, rgba(153, 38, 240, 0.95), rgba(209, 34, 227, 0.95));
+  color: #fff;
+}
+.btn-rounded:hover span {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.display-2 {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+}
+.display-2--intro {
+  display: inline-block;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+.display-2--description {
+  font-size: 1.5rem;
+  display: block;
+  margin-top: 1.2rem;
+  text-transform: none;
+}
+
+.menu {
+  background: linear-gradient(to right, rgba(153, 38, 240, 0.95), rgba(209, 34, 227, 0.95));
+}
+.menu li {
+  padding: 0.5rem 0.7rem;
+}
+.menu li a {
+  color: #fff !important;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.intro-section {
+  background: linear-gradient(to right, rgba(153, 38, 240, 0.95), rgba(209, 34, 227, 0.95));
+  padding: 10rem 0 0 0;
+  width: 100%;
+  height: 100%;
+}
+
+.intros .video-box {
+  position: relative;
+}
+.intros .video-box a span i {
+  font-size: 6rem;
+  color: #d122e3;
+}
+
+.border-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6rem;
+  height: 6rem;
+  border: 0.55rem solid #000;
+  border-radius: 50%;
+  animation: pulse-border 1s linear infinite;
+}
 
 /*# sourceMappingURL=style.css.map */
