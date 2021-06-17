@@ -264,6 +264,7 @@
       },
 
       selectContainerType() {
+        console.log("selectedContainerType: ", this.selectedContainerType)
         if (this.selectedContainerType) {
           this.$store.dispatch(
             "updateQueryParameter",

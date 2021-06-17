@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="firebase-auth" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_www.gstatic.com_firebasejs_8.2.5_firebase-auth.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_www.gstatic.com_firebasejs_8.2.5_firebase-auth.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

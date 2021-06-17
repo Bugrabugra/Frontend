@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="ckeditor" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_cdnjs.cloudflare.com_ajax_libs_ckeditor_4.16.1_ckeditor.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_cdnjs.cloudflare.com_ajax_libs_ckeditor_4.16.1_ckeditor.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

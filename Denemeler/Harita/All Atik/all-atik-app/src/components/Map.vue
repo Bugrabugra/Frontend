@@ -207,13 +207,13 @@
             if (container.fireRisk === true) {
               return svgMarkerFireRisk;
             } else {
-              if (container.typeID === 1) {
+              if (container.iconID === 1) {
                 return svgMarkerType1;
-              } else if (container.typeID === 2) {
+              } else if (container.iconID === 2) {
                 return svgMarkerType2;
-              } else if (container.typeID === 3) {
+              } else if (container.iconID === 3) {
                 return svgMarkerType3;
-              } else if (container.typeID === 4) {
+              } else if (container.iconID === 4) {
                 return svgMarkerType4;
               }
             }
