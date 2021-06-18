@@ -10732,9 +10732,11 @@ textarea.form-control-lg {
 @keyframes pulse-border {
   0% {
     transform: scale(1);
+    opacity: 1;
   }
   100% {
     transform: scale(1.5);
+    opacity: 0;
   }
 }
 .btn-rounded {
@@ -10784,10 +10786,61 @@ textarea.form-control-lg {
   font-family: "Poppins", sans-serif;
 }
 .display-2--description {
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: block;
   margin-top: 1.2rem;
   text-transform: none;
+}
+@media (min-width: 992px) {
+  .display-2--description {
+    font-size: 1.4rem;
+    display: inline-block;
+  }
+}
+
+.heading-line::before {
+  content: "";
+  width: 10rem;
+  height: 0.1rem;
+  display: block;
+  margin: 0 auto;
+  background-color: #9926f0;
+}
+
+.heading-line::after {
+  content: "";
+  width: 2rem;
+  padding-top: 0.5rem;
+  height: 0.2rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  background-color: #9926f0;
+}
+
+.display-3 {
+  font-family: "Poppins", sans-serif;
+}
+.display-3--title {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  display: inline-block;
+  background-image: linear-gradient(to right, #9926f0, #d122e3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (min-width: 992px) {
+  .display-3--title {
+    font-size: 1.8rem;
+  }
+}
+
+.border-right {
+  border-right: 0.1rem solid #dee2e6;
+  height: 100%;
 }
 
 .menu {
@@ -10823,9 +10876,113 @@ textarea.form-control-lg {
   left: 0;
   width: 6rem;
   height: 6rem;
-  border: 0.55rem solid #000;
+  border: 0.55rem solid #fff;
   border-radius: 50%;
-  animation: pulse-border 1s linear infinite;
+  animation: pulse-border 1.5s linear infinite;
+}
+.border-animation--border-1 {
+  animation-delay: 1s;
+}
+.border-animation--border-2 {
+  animation-delay: 1.5s;
+}
+
+.companies {
+  padding: 0 0 5rem 0;
+}
+.companies__logo-box {
+  max-width: 100%;
+  height: 3rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  position: relative;
+}
+.companies__logo-box img {
+  height: 100%;
+}
+.companies__logo-box img:hover {
+  filter: grayscale(120);
+}
+
+.services {
+  position: relative;
+  padding: 1rem 0;
+}
+.services__content {
+  padding: 1rem;
+  margin-top: 0;
+}
+.services__content p {
+  font-size: 0.8rem;
+}
+@media (min-width: 992px) {
+  .services__content p {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 992px) {
+  .services__content {
+    margin-top: 5rem;
+  }
+}
+.services__content .icon {
+  font-size: 1.5rem;
+  color: #9926f0;
+}
+@media (min-width: 992px) {
+  .services__content .icon {
+    font-size: 2.5rem;
+  }
+}
+.services__pic {
+  max-width: 100%;
+}
+
+.testimonials {
+  position: relative;
+  padding: 0;
+  background: linear-gradient(to right, rgba(153, 38, 240, 0.95), rgba(209, 34, 227, 0.95));
+}
+.testimonials__card {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem 1.25rem;
+  border-radius: 0.625rem;
+  height: auto;
+  text-align: center;
+}
+.testimonials__card i {
+  font-size: 1.5rem;
+  color: rgba(153, 38, 240, 0.7);
+}
+.testimonials__card .ratings i {
+  color: rgba(153, 38, 240, 0.7);
+  font-size: 1rem;
+}
+.testimonials__picture {
+  width: 6rem;
+  height: 6rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.testimonials__picture img {
+  border: 0.325rem solid rgba(153, 38, 240, 0.7);
+}
+.testimonials__name {
+  padding-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+}
+.testimonials__name h3 {
+  padding-top: 0.8rem;
+  text-transform: capitalize;
+}
+.testimonials__name p {
+  padding-bottom: 2rem;
+  text-transform: capitalize;
 }
 
 /*# sourceMappingURL=style.css.map */

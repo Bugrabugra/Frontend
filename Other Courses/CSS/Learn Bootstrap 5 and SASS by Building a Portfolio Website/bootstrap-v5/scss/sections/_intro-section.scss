@@ -9,15 +9,12 @@
 }
 
 .intros {
-
   .video-box {
     position: relative;
 
     a {
       //@include absoluteCenter;
-
       span {
-
         i {
           font-size: 6rem;
           color: $secondary;
@@ -33,11 +30,14 @@
   left: 0;
   width: 6rem;
   height: 6rem;
-  border: 0.55rem solid $black;
+  border: 0.55rem solid $white;
   border-radius: 50%;
-  animation: pulse-border 1s linear infinite;
+  animation: pulse-border 1.5s linear infinite;
 
   &--border-1 {
-
+    animation-delay: 1s;
+  }
+  &--border-2 {
+    animation-delay: 1.5s;
   }
 }
