@@ -1,0 +1,8 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+
+
+.get-started {
+  padding: 4rem 0;
+  background-color: $gray-200;
+}
