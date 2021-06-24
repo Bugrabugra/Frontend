@@ -26,14 +26,14 @@
         />
 
         <!--Create route-->
-        <q-btn
-          @click="$store.dispatch('createRoute', true)"
-          color="orange-4"
-          :label="$t('pageMainMap.expansionItems.spatialOperations.btnCreateRoute')"
-          class="q-ma-xs"
-          style="min-width: 201px;"
-          icon="local_shipping"
-        />
+        <!--<q-btn-->
+        <!--  @click="$store.dispatch('createRoute', true)"-->
+        <!--  color="orange-4"-->
+        <!--  :label="$t('pageMainMap.expansionItems.spatialOperations.btnCreateRoute')"-->
+        <!--  class="q-ma-xs"-->
+        <!--  style="min-width: 201px;"-->
+        <!--  icon="local_shipping"-->
+        <!--/>-->
 
         <!--Find my location-->
         <FindMyLocation/>
