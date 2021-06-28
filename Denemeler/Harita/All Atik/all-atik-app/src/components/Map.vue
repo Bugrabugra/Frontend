@@ -96,9 +96,17 @@
           fullscreenControlOptions: {
             position: window.google.maps.ControlPosition.LEFT_TOP
           },
-
           mapId: "b15068e07cf8d4c6",
+          // styles: [
+          //   {
+          //     featureType: "transit.station.bus",
+          //     stylers: [
+          //       {"visibility": "off"}
+          //     ]
+          //   }
+          // ]
         });
+
 
         this.$store.dispatch("setMap", map);
 
