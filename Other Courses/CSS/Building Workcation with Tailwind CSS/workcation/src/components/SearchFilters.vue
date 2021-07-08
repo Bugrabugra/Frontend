@@ -11,7 +11,11 @@
       </div>
 
       <!--Filters button-->
-      <button class="inline-flex bg-gray-700 hover:bg-gray-600 focus:outline-none focus:shadow-outline rounded-lg shadow pl-3 pr-4">
+      <button
+          @click="toggle"
+          type="button"
+          :class="{'bg-gray-500': isOpen, 'bg-gray-700': !isOpen}"
+          class="inline-flex focus:outline-none focus:shadow-outline hover:bg-gray-600 shadow rounded-lg pl-3 pr-4">
         <svg class="h-6 w-6 fill-current text-gray-500 mt-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm3 6a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1zm4 5a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-4z"/></svg>
         <span class="ml-1 text-white font-medium mt-2">
           Filters
@@ -19,13 +23,13 @@
       </button>
     </div>
 
-    <form>
+    <form v-show="isOpen">
       <fieldset class="px-4 py-4 border-t border-gray-900">
         <div class="flex -mx-2">
           <!--Bedrooms-->
           <label class="block w-1/2 px-2">
             <span class="text-sm font-semibold text-gray-500">Bedrooms</span>
-            <select class="mt-1 form-select rounded-lg block w-full">
+            <select class="mt-1 form-select border-lg bg-gray-700 focus:bg-gray-600 focus:border-transparent shadow border-transparent text-white leading-snug rounded-lg block w-full">
               <option>4</option>
             </select>
           </label>
@@ -33,7 +37,7 @@
           <!--Bathrooms-->
           <label class="block w-1/2 px-2">
             <span class="text-sm font-semibold text-gray-500">Bathrooms</span>
-            <select class="mt-1 form-select rounded-lg block w-full">
+            <select class="mt-1 form-select border-lg bg-gray-700 focus:bg-gray-600 focus:border-transparent shadow border-transparent text-white leading-snug rounded-lg block w-full">
               <option>4</option>
             </select>
           </label>
@@ -43,7 +47,7 @@
           <!--Price range-->
           <label>
             <span class="text-sm font-semibold text-gray-500">Price Range</span>
-            <select class="mt-1 form-select rounded-lg block w-full">
+            <select class="mt-1 form-select border-lg bg-gray-700 focus:bg-gray-600 focus:border-transparent shadow border-transparent text-white leading-snug rounded-lg block w-full">
               <option>Up to $2,000/wk</option>
             </select>
           </label>
@@ -52,71 +56,73 @@
 
       <!--Property type-->
       <fieldset class="px-4 py-4 border-t border-gray-900">
-        <legend>Property Type</legend>
+        <span class="block text-sm font-semibold text-gray-500">
+          Property Type
+        </span>
 
-        <label>
-          <input class="form-radio" type="radio" value="house">
-          House
+        <label class="mt-3 flex items-center">
+          <input class="form-radio h-6 w-6 bg-gray-900 checked:bg-indigo-500 border-transparent leading-snug" type="radio" value="house">
+          <span class="ml-2 text-white">House</span>
         </label>
 
-        <label>
-          <input class="form-radio" type="radio" value="apartment">
-          Apartment
+        <label class="mt-3 flex items-center">
+          <input class="form-radio h-6 w-6 bg-gray-900 checked:bg-indigo-500 border-transparent leading-snug" type="radio" value="apartment">
+          <span class="ml-2 text-white">Apartment</span>
         </label>
 
-        <label>
-          <input class="form-radio" type="radio" value="loft">
-          Loft
+        <label class="mt-3 flex items-center">
+          <input class="form-radio h-6 w-6 bg-gray-900 checked:bg-indigo-500 border-transparent leading-snug" type="radio" value="loft">
+          <span class="ml-2 text-white">Loft</span>
         </label>
 
-        <label>
-          <input class="form-radio" type="radio" value="townhouse">
-          Townhouse
+        <label class="mt-3 flex items-center">
+          <input class="form-radio h-6 w-6 bg-gray-900 checked:bg-indigo-500 border-transparent leading-snug" type="radio" value="townhouse">
+          <span class="ml-2 text-white">Townhouse</span>
         </label>
       </fieldset>
 
       <!--Amenities-->
-      <fieldset>
-        <legend>Amenities</legend>
+      <fieldset class="px-4 py-4 border-t border-gray-900">
+        <span class="block text-sm font-semibold text-gray-500">Amenities</span>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="balcony">
-          Balcony
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="balcony">
+          <span class="ml-2 text-white">Balcony</span>
         </label>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="airConditioning">
-          Air Conditioning
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="airConditioning">
+          <span class="ml-2 text-white">Air Conditioning</span>
         </label>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="pool">
-          Pool
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="pool">
+          <span class="ml-2 text-white">Pool</span>
         </label>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="beach">
-          Beach
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="beach">
+          <span class="ml-2 text-white">Beach</span>
         </label>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="petFriendly">
-          Pet Friendly
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="petFriendly">
+          <span class="ml-2 text-white">Pet Friendly</span>
         </label>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="kidFriendly">
-          Kid Friendly
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="kidFriendly">
+          <span class="ml-2 text-white">Kid Friendly</span>
         </label>
 
-        <label>
-          <input class="form-checkbox" type="checkbox" value="parking">
-          Parking
+        <label class="mt-3 flex items-center">
+          <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="parking">
+          <span class="ml-2 text-white">Parking</span>
         </label>
       </fieldset>
 
-      <div>
-        <button class="">Update results</button>
+      <div class="bg-gray-900 px-4 py-4">
+        <button class="block w-full bg-blue-500 hover:bg-blue-400 font-semibold text-white px-4 py-2 rounded-lg">Update results</button>
       </div>
     </form>
 
@@ -127,7 +133,14 @@
   export default {
     name: "SearchFilters",
     data() {
-      return {}
+      return {
+        isOpen: false
+      }
+    },
+    methods: {
+      toggle() {
+        this.isOpen = !this.isOpen;
+      }
     }
   }
 </script>

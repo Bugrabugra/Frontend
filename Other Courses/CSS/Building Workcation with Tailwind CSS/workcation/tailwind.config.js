@@ -13,7 +13,7 @@ module.exports = {
         lime: colors.lime,
         orange: colors.orange,
       }
-    },
+    }
   },
   variants: {
     extend: {},
