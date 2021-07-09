@@ -39,6 +39,7 @@
   import SiteHeader from "./components/SiteHeader";
   import SearchFilters from "./components/SearchFilters";
   import PropertyCard from "./components/PropertyCard";
+
   export default {
     name: 'App',
     components: {

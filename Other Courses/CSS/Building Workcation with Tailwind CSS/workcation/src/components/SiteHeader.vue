@@ -35,37 +35,78 @@
         </div>
 
         <!--Bottom-->
-        <div class="px-5 py-5 sm:py-0 sm:ml-4 sm:px-0">
-          <div class="flex items-center">
+        <div class="relative px-5 py-5 sm:py-0 sm:ml-4 sm:px-0">
+          <div class="flex items-center sm:hidden">
             <img class="h-10 w-10 object-cover rounded-full border-2 border-gray-600 sm:h-8 sm:w-8" src="https://images.unsplash.com/photo-1553514029-1318c9127859?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHdvbWFuJTIwZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
             <span class="ml-4 font-semibold text-gray-200 sm:hidden">Isla Schoger</span>
           </div>
 
           <div class="mt-5 sm:hidden">
-            <a href="#" class="block text-gray-400 hover:text-white">Account settings</a>
-            <a href="#" class="mt-3 block text-gray-400 hover:text-white">Support</a>
-            <a href="#" class="mt-3 block text-gray-400 hover:text-white">Sign out</a>
+            <a href="#account" class="block text-gray-400 hover:text-white">Account settings</a>
+            <a href="#support" class="mt-3 block text-gray-400 hover:text-white">Support</a>
+            <a href="#sign-out" class="mt-3 block text-gray-400 hover:text-white">Sign out</a>
           </div>
+
+          <Dropdown class="hidden sm:block">
+            <template #trigger="{hasFocus, isOpen}">
+              <span
+                  class="block h-8 w-8 overflow-hidden rounded-full border-2"
+                  :class="[hasFocus || isOpen ? 'border-white xl:border-blue-500' : 'border-gray-600 xl:border-gray-300']"
+              >
+                <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1553514029-1318c9127859?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHdvbWFuJTIwZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+              </span>
+            </template>
+
+            <template #dropdown>
+              <div class="mt-3 bg-white xl:border rounded-lg w-48 py-2 shadow-xl">
+                <a href="#account" class="block hover:text-white text-gray-800 px-4 py-2 hover:bg-blue-500">Account settings</a>
+                <a href="#support" class="block hover:text-white text-gray-800 mt-2 px-4 py-2 hover:bg-blue-500">Support</a>
+                <a href="#sign-out" class="block hover:text-white text-gray-800 mt-2 px-4 py-2 hover:bg-blue-500">Sign out</a>
+              </div>
+            </template>
+          </Dropdown>
         </div>
       </div>
-      <!--Top-->
-
     </nav>
   </header>
 </template>
 
 <script>
+  import Dropdown from "./Dropdown";
+
+
   export default {
     name: "SiteHeader",
+    components: {Dropdown},
     data() {
       return {
-        isOpen: false
+        isOpen: false,
+        dropdownOpen: false
       }
     },
     methods: {
       toggle() {
         this.isOpen = !this.isOpen;
+      },
+      toggleDropdown() {
+        this.dropdownOpen = !this.dropdownOpen;
       }
+    },
+
+    mounted() {
+      const onEscape = (e) => {
+        if (!this.dropdownOpen || e.key !== "Escape") {
+          return
+        }
+        console.log("closing");
+        this.dropdownOpen = false;
+      }
+
+      document.addEventListener("keydown", onEscape);
+
+      this.$on("hook:destroyed", () => {
+        document.removeEventListener("keydown", onEscape);
+      })
     }
   }
 </script>

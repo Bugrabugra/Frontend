@@ -15,7 +15,8 @@
           @click="toggle"
           type="button"
           :class="{'bg-gray-600': isOpen, 'bg-gray-700': !isOpen}"
-          class="ml-4 inline-flex focus:outline-none focus:shadow-outline hover:bg-gray-600 shadow rounded-lg pl-3 pr-4">
+          class="ml-4 inline-flex focus:outline-none focus:shadow-outline hover:bg-gray-600 shadow rounded-lg pl-3 pr-4"
+      >
         <svg class="h-6 w-6 fill-current text-gray-500 mt-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm3 6a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1zm4 5a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-4z"/></svg>
         <span class="ml-1 text-white font-medium mt-2">
           Filters
@@ -24,7 +25,7 @@
     </div>
 
     <!--Filters form-->
-    <form v-show="isOpen" class="xl:h-full xl:flex xl:flex-col xl:justify-between">
+    <form :class="{ 'hidden': !isOpen, 'block': isOpen }" class="xl:block xl:h-full xl:flex xl:flex-col xl:justify-between">
       <div class="lg:flex xl:block xl:overflow-y-auto">
         <div class="px-4 py-4 border-t border-gray-900 xl:border-t-0 lg:w-1/3 xl:w-full">
           <div class="flex flex-wrap -mx-2">
@@ -129,7 +130,7 @@
 
 
       <!--Update results button-->
-      <div class="bg-gray-900 px-4 py-4">
+      <div class="bg-gray-900 px-4 py-4 sm:text-right">
         <button class="block w-full sm:w-auto sm:inline-block bg-blue-500 hover:bg-blue-400 font-semibold text-white px-4 py-2 rounded-lg xl:block xl:w-full">Update results</button>
       </div>
 
@@ -143,7 +144,7 @@
     name: "SearchFilters",
     data() {
       return {
-        isOpen: true
+        isOpen: false
       }
     },
     methods: {
