@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-gray-800">
-    <div class="flex justify-between px-4 py-3">
+  <section class="bg-gray-800 xl:w-72">
+    <div class="flex justify-between px-4 py-3 xl:hidden">
       <!--Search input-->
       <div class="relative max-w-xs w-full">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -24,9 +24,9 @@
     </div>
 
     <!--Filters form-->
-    <form v-show="isOpen">
-      <div class="lg:flex">
-        <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3">
+    <form v-show="isOpen" class="xl:h-full xl:flex xl:flex-col xl:justify-between">
+      <div class="lg:flex xl:block xl:overflow-y-auto">
+        <div class="px-4 py-4 border-t border-gray-900 xl:border-t-0 lg:w-1/3 xl:w-full">
           <div class="flex flex-wrap -mx-2">
             <!--Bedrooms-->
             <label class="block w-1/2 px-2 sm:w-1/4 lg:w-1/2">
@@ -56,7 +56,7 @@
         </div>
 
         <!--Property type-->
-        <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l">
+        <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full">
           <span class="block text-sm font-semibold text-gray-500">
             Property Type
           </span>
@@ -85,36 +85,36 @@
         </div>
 
         <!--Amenities-->
-        <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l">
+        <div class="px-4 py-4 border-t border-gray-900 lg:w-1/3 lg:border-l xl:w-full">
           <span class="block text-sm font-semibold text-gray-500">Amenities</span>
 
           <div class="sm:flex sm:flex-wrap sm:-mx-2">
-            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2">
+            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2 xl:w-full">
               <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="balcony">
               <span class="ml-2 text-white">Balcony</span>
             </label>
 
-            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2">
+            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2 xl:w-full">
               <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="pool">
               <span class="ml-2 text-white">Pool</span>
             </label>
 
-            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2">
+            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2 xl:w-full">
               <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="beach">
               <span class="ml-2 text-white">Beach</span>
             </label>
 
-            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2">
+            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2 xl:w-full">
               <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="petFriendly">
               <span class="ml-2 text-white">Pet Friendly</span>
             </label>
 
-            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2">
+            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2 xl:w-full">
               <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="kidFriendly">
               <span class="ml-2 text-white">Kid Friendly</span>
             </label>
 
-            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2">
+            <label class="mt-3 flex items-center sm:w-1/4 sm:px-2 lg:w-1/2 xl:w-full">
               <input class="form-checkbox h-6 w-6 bg-gray-900 rounded-lg checked:bg-indigo-500 border-transparent leading-snug" type="checkbox" value="parking">
               <span class="ml-2 text-white">Parking</span>
             </label>
@@ -130,7 +130,7 @@
 
       <!--Update results button-->
       <div class="bg-gray-900 px-4 py-4">
-        <button class="block w-full sm:w-auto sm:inline-block bg-blue-500 hover:bg-blue-400 font-semibold text-white px-4 py-2 rounded-lg">Update results</button>
+        <button class="block w-full sm:w-auto sm:inline-block bg-blue-500 hover:bg-blue-400 font-semibold text-white px-4 py-2 rounded-lg xl:block xl:w-full">Update results</button>
       </div>
 
     </form>
