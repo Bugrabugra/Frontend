@@ -20,7 +20,7 @@
           v-for="(route, i) in routes"
           :key="i"
           :to="route.path"
-          class="p-4 text-center text-2xl text-gray-300"
+          :class="`p-4 text-center text-2xl ${(route.name === $route.name) ? 'text-green-500' : 'text-gray-300'}`"
       >
         <i :class="route.iconClass"></i>
       </router-link>
