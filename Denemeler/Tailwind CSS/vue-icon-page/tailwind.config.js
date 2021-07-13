@@ -1,4 +1,5 @@
 const colors = require('./node_modules/tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 
 module.exports = {
@@ -13,6 +14,10 @@ module.exports = {
         teal: colors.teal,
         lime: colors.lime,
         orange: colors.orange,
+      },
+      screens: {
+        "xs": "576px",
+        ...defaultTheme.screens,
       }
     },
   },
