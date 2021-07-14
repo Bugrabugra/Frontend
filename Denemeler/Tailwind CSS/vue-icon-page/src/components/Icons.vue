@@ -2,7 +2,7 @@
   <div class="border-t border-gray-200 mt-10 mb-6">
     <div class="flex justify-between items-center mt-10">
       <!--Icons header-->
-      <h2 class="text-2xl font-semibold">Icons</h2>
+      <h2 class="text-2xl font-semibold md:text-3xl">Icons</h2>
 
       <!--Search bar-->
       <input

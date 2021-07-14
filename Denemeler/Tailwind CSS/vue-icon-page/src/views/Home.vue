@@ -1,16 +1,19 @@
 <template>
   <div>
+    <!--Navbar-->
+    <Navbar/>
+
     <!--Home-->
-    <div class="flex flex-col xs:mx-auto xs:px-3 xs:px-8 md:w-3xl lg:w-9/12">
+    <div class="flex flex-col mt-8 xs:mx-auto xs:px-3 xs:px-8 md:w-3xl lg:w-9/12">
       <!--Top = Image + Text-->
-      <div class="flex flex-col lg:flex-row">
+      <div class="flex flex-col lg:flex-row lg:w-10/12">
         <!--Image-->
         <div class="w-2/4 mx-auto mt-12 sm:w-2/5 lg:w-1/3 lg:mx-0 lg:order-2">
           <img src="@/assets/icons-hero.png" alt="">
         </div>
 
         <!--Text-->
-        <div class="flex flex-col px-4 xs:justify-center xs:items-center lg:w-2/3 lg:order-1 lg:justify-start">
+        <div class="flex flex-col px-4 justify-center items-center lg:w-2/3 lg:order-1 lg:justify-start lg:items-start">
 
           <!--Teal button-->
           <button class="mt-4 bg-teal-100 rounded py-1 w-full text-md w-7/12 rounded px-1 sm:w-72 sm:px-0 sm:rounded-full">
@@ -24,7 +27,7 @@
           </h2>
 
           <!--Text-->
-          <p class="text-xl text-center mt-4 sm:text-2xl">
+          <p class="text-xl text-center mt-4 sm:text-2xl lg:text-left">
             Free, high quality, open source icon library with over 1,300 icons.
             Include them anyway you like—SVGs, SVG sprite, or web fonts.
             Use them with or without
@@ -35,7 +38,7 @@
           </p>
 
           <!--NPM-->
-          <div class="mx-auto w-72 mt-8 px-4 py-5 bg-gray-50 rounded">
+          <div class="mx-auto w-72 mt-8 px-4 py-5 bg-gray-50 rounded lg:mx-0">
             <div class="flex justify-between items-center">
               <p class="tracking-wider">
                 <span class="text-gray-400">$</span> npm i bootstrap-icons
@@ -54,7 +57,7 @@
       <div class="w-full px-4">
         <Icons @search="searchIcon"/>
 
-        <div class="grid grid-cols-3 xs:grid-cols-4 gap-6 lg:grid-cols-6">
+        <div class="grid gap-6 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
           <Icon
               v-for="icon in filteredIcons"
               :key="icon.id"
@@ -71,9 +74,11 @@
 <script>
   import Icons from "../components/Icons";
   import Icon from "../components/Icon";
+  import Navbar from "../components/Navbar";
   export default {
     name: 'Home',
     components: {
+      Navbar,
       Icon,
       Icons
     },
