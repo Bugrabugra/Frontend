@@ -14,7 +14,7 @@ module.exports = {
         orange: colors.orange,
       },
       animation: {
-        wiggle: "wiggle 1s infinite"
+        wiggle: "wiggle 1s infinite",
       },
       keyframes: {
         wiggle: {
@@ -30,7 +30,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      boxDecorationBreak: ["hover"]
+      boxDecorationBreak: ["hover"],
+      transitionProperty: ["hover"],
+      transform: ["hover"],
     },
   },
   plugins: [],

@@ -1,4 +1,4 @@
 # run
 ```
- npx tailwindcss -i ./tailwind/tailwind.css -o ./dist/tailwind.css --watc
+ npx tailwindcss -i ./tailwind/tailwind.css -o ./dist/tailwind.css --watch
 ```
