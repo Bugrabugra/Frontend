@@ -6,14 +6,14 @@
     <!--Home-->
     <div class="flex flex-col mt-8 xs:mx-auto xs:px-3 xs:px-8 md:w-3xl lg:w-9/12">
       <!--Top = Image + Text-->
-      <div class="flex flex-col lg:flex-row lg:w-10/12">
+      <div class="flex flex-col lg:flex-row lg:w-10/12 lg:justify-between">
         <!--Image-->
-        <div class="w-2/4 mx-auto mt-12 sm:w-2/5 lg:w-1/3 lg:mx-0 lg:order-2">
+        <div class="w-2/4 mx-auto mt-12 sm:w-3/5 lg:w-4/12 lg:mx-0 lg:order-2 lg:mt-4">
           <img src="@/assets/icons-hero.png" alt="">
         </div>
 
         <!--Text-->
-        <div class="flex flex-col px-4 justify-center items-center lg:w-2/3 lg:order-1 lg:justify-start lg:items-start">
+        <div class="flex flex-col px-4 justify-center items-center lg:w-8/12 lg:order-1 lg:justify-start lg:items-start">
 
           <!--Teal button-->
           <button class="mt-4 bg-teal-100 rounded py-1 w-full text-md w-7/12 rounded px-1 sm:w-72 sm:px-0 sm:rounded-full">
@@ -38,7 +38,7 @@
           </p>
 
           <!--NPM-->
-          <div class="mx-auto w-72 mt-8 px-4 py-5 bg-gray-50 rounded lg:mx-0">
+          <div class="mx-auto w-80 mt-8 px-4 py-5 bg-gray-50 rounded lg:mx-0">
             <div class="flex justify-between items-center">
               <p class="tracking-wider">
                 <span class="text-gray-400">$</span> npm i bootstrap-icons
