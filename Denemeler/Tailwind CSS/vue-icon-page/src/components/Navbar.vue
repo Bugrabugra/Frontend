@@ -1,6 +1,6 @@
 <template>
   <div class="bg-purple-500">
-    <nav class="flex justify-between items-center h-18 py-4 container lg:px-24 mx-auto">
+    <nav class="flex justify-between items-center h-18 py-4 container lg:px-20 xl:px-32 2xl:px-28 mx-auto">
       <!--Menu-->
       <div class="flex justify-between items-center space-x-4 text-white">
         <a href="#">

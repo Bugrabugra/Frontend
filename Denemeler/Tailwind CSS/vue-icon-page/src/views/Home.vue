@@ -4,11 +4,11 @@
     <Navbar/>
 
     <!--Home-->
-    <div class="flex flex-col mt-8 xs:mx-auto xs:px-3 xs:px-8 md:w-3xl lg:w-9/12">
+    <div class="flex flex-col mt-8 xs:mx-auto xs:px-3 xs:px-8 md:w-3xl lg:container xl:w-9/12">
       <!--Top = Image + Text-->
-      <div class="flex flex-col lg:flex-row lg:w-10/12 lg:justify-between">
+      <div class="flex flex-col lg:flex-row lg:w-full lg:justify-between">
         <!--Image-->
-        <div class="w-2/4 mx-auto mt-12 sm:w-3/5 lg:w-4/12 lg:mx-0 lg:order-2 lg:mt-4">
+        <div class="w-2/4 mx-auto mt-12 sm:w-3/5 md:w-2/5 lg:w-6/12 xl:w-4/12 lg:mx-0 lg:order-2 lg:mt-4">
           <img src="@/assets/icons-hero.png" alt="">
         </div>
 
