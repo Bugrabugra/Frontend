@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 
 // Create express app
@@ -19,6 +20,7 @@ db.once("open", () => {
 })
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
