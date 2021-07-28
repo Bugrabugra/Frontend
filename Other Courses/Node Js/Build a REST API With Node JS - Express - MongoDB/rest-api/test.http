@@ -1,0 +1,30 @@
+### Get all qutoes
+GET http://localhost:3000/quotes
+
+### Create new quote
+POST http://localhost:3000/quotes/new
+Content-Type: application/json
+
+{
+  "content": "Kinda motivated quote!",
+  "author": "Buğracığım"
+}
+
+### Get specific quote
+GET http://localhost:3000/quotes/get/610119dc40741f2f186313e8
+Content-Type: application/json
+
+### Delete specific quote
+GET http://localhost:3000/quotes/delete/610119dc40741f2f186313e8
+Content-Type: application/json
+
+### Update a quote
+PATCH http://localhost:3000/quotes/update/61011a0d40741f2f186313ea
+Content-Type: application/json
+
+{
+  "author": "Burcucuğummmm"
+}
+
+### Get a random quote
+GET http://localhost:3000/quotes/random
