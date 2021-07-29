@@ -1,0 +1,37 @@
+<form action="/login" method="post">
+  <div>
+    {{#if error}}
+      <p class="err-msg">Username or password is incorrect</p>
+    {{/if}}
+    <h1>Login</h1>
+  </div>
+
+  <!--Username-->
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Enter your username"
+        required
+    >
+  </div>
+
+  <!--Password-->
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Enter your password"
+        required
+    >
+  </div>
+
+  <!--Submit-->
+  <div>
+    <input type="submit" value="Login">
+  </div>
+</form>
