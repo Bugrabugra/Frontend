@@ -267,7 +267,7 @@
 
           marker.setMap(this.getMap);
 
-          if (this.getSettings.page === "main-map-page") {
+          if (this.getSettings.page === "main-map-page" || this.getSettings.page === "container-page") {
             marker.addListener("click", () => {
               this.$store.dispatch("setClickedContainer", {container: container, marker: marker});
               this.$store.dispatch("setCurrentMarkerSymbol", this.getClickedContainer.marker.getIcon());

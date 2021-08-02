@@ -200,6 +200,8 @@
           }
         )
 
+        this.clearStreet();
+        this.selectedStreet = null;
         this.$store.dispatch("queryContainers");
       },
 
