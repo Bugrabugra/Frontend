@@ -3,6 +3,9 @@
     <div v-if="!mobile" class="app flex flex-column">
       <Navigation/>
       <div class="app-content flex flex-column">
+        <transition name="invoice">
+          <InvoiceModal v-if="invoiceModal"/>
+        </transition>
         <router-view/>
       </div>
     </div>
@@ -16,33 +19,47 @@
 
 <script>
   import Navigation from "./components/Navigation";
+  import {ref, onMounted, computed} from "vue";
+  import {useStore} from "vuex"
+  import InvoiceModal from "./components/InvoiceModal";
 
 
   export default {
     name: "App",
     components: {
+      InvoiceModal,
       Navigation
     },
-    data() {
-      return {
-        mobile: null
-      }
-    },
-    methods: {
-      checkScreen() {
+    setup() {
+      // Store
+      const store = useStore();
+
+      // References
+      const mobile = ref(null);
+
+      // Computed
+      const invoiceModal = computed(() => {
+        return store.state.invoiceModal;
+      })
+
+      // Methods
+      const checkScreen = () => {
         const windowWidth = window.innerWidth;
         if (windowWidth <= 750) {
-          this.mobile = true;
+          mobile.value = true;
           return;
         }
-        this.mobile = false;
-      }
-    },
-    created() {
-      this.checkScreen();
-      window.addEventListener("resize", this.checkScreen);
-    },
+        mobile.value = false;
+      };
 
+      // Mount
+      onMounted(() => {
+        checkScreen();
+        window.addEventListener("resize", checkScreen);
+      });
+
+      return {mobile, checkScreen, invoiceModal}
+    }
   }
 </script>
 
@@ -82,6 +99,22 @@
     p {
       margin-top: 16px;
     }
+  }
+
+  // Animated invoice
+  .invoice-enter-active,
+  .invoice-leave-active {
+    transition: 0.8s ease all;
+  }
+
+  .invoice-enter-from,
+  .invoice-leave-to {
+    transform: translateX(-700px);
+  }
+
+  .invoice-enter-to,
+  .invoice-leave-from {
+    transform: translateX(0px);
   }
 
   button,
