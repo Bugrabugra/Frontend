@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div v-if="invoicesLoaded">
     <div v-if="!mobile" class="app flex flex-column">
       <Navigation/>
       <div class="app-content flex flex-column">
+        <Modal v-if="modalActive"/>
         <transition name="invoice">
           <InvoiceModal v-if="invoiceModal"/>
         </transition>
@@ -15,18 +16,20 @@
       <p>To use this app, please use a computer or tablet</p>
     </div>
   </div>
-</template>
+ </template>
 
 <script>
   import Navigation from "./components/Navigation";
   import {ref, onMounted, computed} from "vue";
   import {useStore} from "vuex"
   import InvoiceModal from "./components/InvoiceModal";
+  import Modal from "./components/Modal";
 
 
   export default {
     name: "App",
     components: {
+      Modal,
       InvoiceModal,
       Navigation
     },
@@ -40,6 +43,14 @@
       // Computed
       const invoiceModal = computed(() => {
         return store.state.invoiceModal;
+      });
+
+      const modalActive = computed(() => {
+        return store.state.modalActive;
+      })
+
+      const invoicesLoaded = computed(() => {
+        return store.state.invoicesLoaded;
       })
 
       // Methods
@@ -52,13 +63,18 @@
         mobile.value = false;
       };
 
+      const getInvoices = () => {
+        store.dispatch("GET_INVOICES");
+      };
+
       // Mount
       onMounted(() => {
+        getInvoices();
         checkScreen();
         window.addEventListener("resize", checkScreen);
       });
 
-      return {mobile, checkScreen, invoiceModal}
+      return {mobile, checkScreen, invoiceModal, modalActive, invoicesLoaded}
     }
   }
 </script>

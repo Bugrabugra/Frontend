@@ -4,18 +4,18 @@
     <div class="header flex">
       <div class="left flex flex-column">
         <h1>Invoices</h1>
-        <span>There are 4 total invoices</span>
+        <span>There are {{invoiceData.length}} total invoices</span>
       </div>
 
       <div class="right flex">
         <div @click="toggleFilterMenu" class="filter flex">
-          <span>Filter by status</span>
+          <span>Filter by status <span v-if="filteredInvoice">: {{filteredInvoice}}</span></span>
           <img src="../assets/icon-arrow-down.svg" alt="">
           <ul v-show="filterMenu" class="filter-menu">
-            <li>Draft</li>
-            <li>Pending</li>
-            <li>Paid</li>
-            <li>Clear Filter</li>
+            <li @click="filteredInvoices">Draft</li>
+            <li @click="filteredInvoices">Pending</li>
+            <li @click="filteredInvoices">Paid</li>
+            <li @click="filteredInvoices">Clear Filter</li>
           </ul>
         </div>
 
@@ -27,23 +27,60 @@
         </div>
       </div>
     </div>
+
+    <!--Invoices-->
+    <div v-if="invoiceData.length > 0">
+      <Invoice
+          v-for="(invoice, index) in filteredData"
+          :key="index"
+          :invoice="invoice"
+      />
+    </div>
+
+    <div v-else class="empty flex flex-column">
+      <img src="../assets/illustration-empty.svg" alt="empty">
+      <h3>There is nothing here</h3>
+      <p>Create a new invoice by clicking the New Invoice button and get started!</p>
+    </div>
   </div>
 </template>
 
 <script>
-  import {ref} from "vue";
+  import {ref, computed} from "vue";
   import {useStore} from "vuex";
+  import Invoice from "../components/Invoice";
 
 
   export default {
     name: "Home",
-    components: {},
+    components: {Invoice},
     setup() {
       // Store
       const store = useStore();
 
       // References
       const filterMenu = ref(null);
+      const filteredInvoice = ref(null);
+
+      // Computed
+      const invoiceData = computed(() => {
+        return store.state.invoiceData;
+      });
+
+      const filteredData = computed(() => {
+        return invoiceData.value.filter(invoice => {
+          if (filteredInvoice.value === "Draft") {
+            return invoice.invoiceDraft === true;
+          }
+          if (filteredInvoice.value === "Pending") {
+            return invoice.invoicePending === true;
+          }
+          if (filteredInvoice.value === "Paid") {
+            return invoice.invoicePaid === true;
+          }
+          return invoice;
+        });
+      });
 
       // Methods
       const newInvoice = () => {
@@ -54,7 +91,23 @@
         filterMenu.value = !filterMenu.value;
       };
 
-      return {filterMenu, newInvoice, toggleFilterMenu}
+      const filteredInvoices = (e) => {
+        if (e.target.innerText === "Clear Filter") {
+          filteredInvoice.value = null;
+          return;
+        }
+        filteredInvoice.value = e.target.innerText;
+      };
+
+      return {
+        filterMenu,
+        newInvoice,
+        toggleFilterMenu,
+        invoiceData,
+        filteredInvoice,
+        filteredInvoices,
+        filteredData
+      }
     }
   };
 </script>
@@ -137,6 +190,29 @@
             }
           }
         }
+      }
+    }
+
+    .empty {
+      margin-top: 160px;
+      align-items: center;
+
+      img {
+        width: 214px;
+        height: 200px;
+      }
+
+      h3 {
+        font-size: 20px;
+        margin-top: 40px;
+      }
+
+      p {
+        text-align: center;
+        max-width: 224px;
+        font-size: 12px;
+        font-weight: 300;
+        margin-top: 16px;
       }
     }
   }

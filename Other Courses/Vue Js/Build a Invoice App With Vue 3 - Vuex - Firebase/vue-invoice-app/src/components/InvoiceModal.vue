@@ -6,7 +6,8 @@
   >
     <form @submit.prevent="submitForm" class="invoice-content">
       <Loading v-show="loading"/>
-      <h1>New Invoice</h1>
+      <h1 v-if="!editInvoice">New Invoice</h1>
+      <h1 v-else>Edit Invoice</h1>
 
       <!--Bill from-->
       <div class="bill-from flex flex-column">
@@ -132,18 +133,36 @@
       <!--Save/Exit-->
       <div class="save flex">
         <div class="left">
-          <button @click="closeInvoice" class="red">
+          <button type="button" @click="closeInvoice" class="red">
             Cancel
           </button>
         </div>
 
         <div class="right flex">
-          <button @click="saveDraft" class="dark-purple">
+          <button
+              v-if="!editInvoice"
+              type="submit"
+              @click="saveDraft"
+              class="dark-purple"
+          >
             Save Draft
           </button>
 
-          <button @click="publishInvoice" class="purple">
+          <button
+              v-if="!editInvoice"
+              type="submit"
+              @click="publishInvoice"
+              class="purple"
+          >
             Create Invoice
+          </button>
+
+          <button
+              v-if="editInvoice"
+              type="submit"
+              class="purple"
+          >
+            Update Invoice
           </button>
         </div>
       </div>
@@ -153,10 +172,11 @@
 
 <script>
   import db from "../firebase/firebaseInit";
-  import {ref, onMounted, watch} from "vue";
+  import {ref, onMounted, watch, computed} from "vue";
   import {useStore} from "vuex";
   import {uid} from "uid";
   import Loading from "./Loading";
+  import {useRoute} from "vue-router";
 
 
   export default {
@@ -166,11 +186,16 @@
       // Store
       const store = useStore();
 
+      // Route
+      const route = useRoute();
+
       // References
       const loading = ref(null);
+      const invoiceWrap = ref(null);
 
       const dateOptions = ref({year: "numeric", month: "short", day: "numeric"});
 
+      const docId = ref(null);
       const billerStreetAddress = ref(null);
       const billerCity = ref(null);
       const billerZipCode = ref(null);
@@ -192,9 +217,21 @@
       const invoiceItemList = ref([]);
       const invoiceTotal = ref(0);
 
+      // Computed
+      const editInvoice = computed(() => {
+        return store.state.editInvoice;
+      });
+
+      const currentInvoiceArray = computed(() => {
+        return store.state.currentInvoiceArray;
+      });
+
       // Methods
       const closeInvoice = () => {
         store.commit("TOGGLE_INVOICE");
+        if (editInvoice.value) {
+          store.commit("TOGGLE_EDIT_INVOICE");
+        }
       };
 
       const addNewInvoiceItem = () => {
@@ -268,17 +305,99 @@
         loading.value = false;
 
         closeInvoice();
+
+        await store.dispatch("GET_INVOICES");
+      };
+
+      const updateInvoice = async () => {
+        if (invoiceItemList.value.length <= 0) {
+          alert("Please ensure you filled out work items!");
+          return;
+        }
+
+        loading.value = true;
+
+        calculateInvoiceTotal();
+
+        const database = db.collection("invoices").doc(docId.value);
+
+        await database.update({
+          billerStreetAddress: billerStreetAddress.value,
+          billerCity: billerCity.value,
+          billerZipCode: billerZipCode.value,
+          billerCountry: billerCountry.value,
+          clientName: clientName.value,
+          clientEmail: clientEmail.value,
+          clientStreetAddress: clientStreetAddress.value,
+          clientCity: clientCity.value,
+          clientZipCode: clientZipCode.value,
+          clientCountry: clientCountry.value,
+          paymentTerms: paymentTerms.value,
+          paymentDueDateUnix: paymentDueDateUnix.value,
+          paymentDueDate: paymentDueDate.value,
+          productDescription: productDescription.value,
+          invoiceItemList: invoiceItemList.value,
+          invoiceTotal: invoiceTotal.value,
+        });
+
+        loading.value = false;
+
+        const data = {
+          docId: docId.value,
+          routeId: route.params.invoiceId
+        }
+
+        await store.dispatch("UPDATE_INVOICE", data);
       };
 
       const submitForm = () => {
+        if (editInvoice.value) {
+          updateInvoice();
+          return;
+        }
         uploadInvoice();
+      };
+
+      const checkClick = (e) => {
+        if (e.target === invoiceWrap.value) {
+          store.commit("TOGGLE_MODAL");
+        }
       };
 
       // Mounted
       onMounted(() => {
-        invoiceDateUnix.value = Date.now();
-        invoiceDate.value = new Date(invoiceDateUnix.value)
-          .toLocaleDateString("en-us", dateOptions.value);
+        // Get current date for invoice date field
+        if (!editInvoice.value) {
+          invoiceDateUnix.value = Date.now();
+          invoiceDate.value = new Date(invoiceDateUnix.value)
+            .toLocaleDateString("en-us", dateOptions.value);
+        }
+
+        if (editInvoice.value) {
+          const currentInvoice = currentInvoiceArray.value[0];
+
+          docId.value = currentInvoice.docId;
+          billerStreetAddress.value = currentInvoice.billerStreetAddress;
+          billerCity.value = currentInvoice.billerCity;
+          billerZipCode.value = currentInvoice.billerZipCode;
+          billerCountry.value = currentInvoice.billerCountry;
+          clientName.value = currentInvoice.clientName;
+          clientEmail.value = currentInvoice.clientEmail;
+          clientStreetAddress.value = currentInvoice.clientStreetAddress;
+          clientCity.value = currentInvoice.clientCity;
+          clientZipCode.value = currentInvoice.clientZipCode;
+          clientCountry.value = currentInvoice.clientCountry;
+          invoiceDateUnix.value = currentInvoice.invoiceDateUnix;
+          invoiceDate.value = currentInvoice.invoiceDate;
+          paymentTerms.value = currentInvoice.paymentTerms;
+          paymentDueDateUnix.value = currentInvoice.paymentDueDateUnix;
+          paymentDueDate.value = currentInvoice.paymentDueDate;
+          productDescription.value = currentInvoice.productDescription;
+          invoicePending.value = currentInvoice.invoicePending;
+          invoiceDraft.value = currentInvoice.invoiceDraft;
+          invoiceItemList.value = currentInvoice.invoiceItemList;
+          invoiceTotal.value = currentInvoice.invoiceTotal;
+        }
       });
 
       // Watch
@@ -294,8 +413,8 @@
         invoiceDateUnix, invoiceDate,
         paymentTerms, paymentDueDateUnix, paymentDueDate, productDescription,
         invoicePending, invoiceDraft, invoiceItemList, invoiceTotal,
-        loading,
-        closeInvoice, addNewInvoiceItem, deleteInvoiceItem, publishInvoice, saveDraft, submitForm
+        loading, checkClick, invoiceWrap, closeInvoice, addNewInvoiceItem, deleteInvoiceItem,
+        publishInvoice, saveDraft, submitForm, editInvoice, updateInvoice
       }
     }
   }
