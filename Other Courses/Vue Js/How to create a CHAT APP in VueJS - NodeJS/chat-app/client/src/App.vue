@@ -5,17 +5,19 @@
       <p class="username">Username: {{username}}</p>
       <p class="online">Online: {{users.length}}</p>
     </div>
+    <ChatRoom :messages="messages" @sendMessage="sendMessage"/>
   </div>
 </template>
 
 <script>
   import {ref, onMounted} from "vue";
   import io from "socket.io-client";
+  import ChatRoom from "./components/ChatRoom";
 
 
   export default {
     name: 'App',
-    components: {},
+    components: {ChatRoom},
     setup() {
       // References
       const username = ref("");
@@ -30,6 +32,29 @@
           users.value = data.users;
           socket.emit("newUser", username.value);
         });
+
+        listen();
+      };
+
+      const listen = () => {
+        // Join
+        socket.on("userOnline", user => {
+          users.value.push(user);
+        });
+
+        // Leave
+        socket.on("userLeft", user => {
+          users.value.splice(users.value.indexOf(user), 1);
+        });
+
+        // Message
+        socket.on("msg", message => {
+          messages.value.push(message);
+        })
+      };
+
+      const sendMessage = (message) => {
+        socket.emit("msg", message);
       };
 
       // Mount
@@ -42,7 +67,7 @@
         joinServer();
       });
 
-      return {username, users}
+      return {username, users, messages, sendMessage}
     }
   }
 </script>
@@ -57,11 +82,13 @@
   }
 
   #app {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100%;
     max-width: 768px;
     margin: 0 auto;
+    padding: 15px;
   }
 </style>
