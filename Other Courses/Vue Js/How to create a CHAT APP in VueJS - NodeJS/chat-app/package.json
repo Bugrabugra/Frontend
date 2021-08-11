@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "express": "*",
+    "mongoose": "^5.13.6",
     "socket.io": "*"
   },
   "devDependencies": {
