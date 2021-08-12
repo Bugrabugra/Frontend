@@ -1,6 +1,7 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
+      <Navigation/>
       <router-view/>
     </div>
   </div>
@@ -38,3 +39,9 @@
     color: #fff;
   }
 </style>
+<script>
+  import Navigation from "./components/Navigation";
+  export default {
+    components: {Navigation}
+  }
+</script>
