@@ -83,6 +83,10 @@
         clearable
       />
 
+      <!--Uayarılar-->
+      <!--<div class="text-h7 text-weight-bold">{{$t('pageMainMap.expansionItems.filters.lblWarnings')}}</div>-->
+
+
       <!--Yangın riski-->
       <q-select
         @input="selectFireRisk"
@@ -95,6 +99,19 @@
         dense
         clearable
       />
+
+      <!--Bağlantı sorunu-->
+      <!--<q-select-->
+      <!--  @input="selectFireRisk"-->
+      <!--  @clear="clearFireRisk"-->
+      <!--  v-model="selectedFireRisk"-->
+      <!--  :options="fireRisk"-->
+      <!--  :label="$t('pageMainMap.expansionItems.filters.phFireRisk')"-->
+      <!--  option-label="name"-->
+      <!--  filled-->
+      <!--  dense-->
+      <!--  clearable-->
+      <!--/>-->
     </q-card-section>
 
   </q-card>

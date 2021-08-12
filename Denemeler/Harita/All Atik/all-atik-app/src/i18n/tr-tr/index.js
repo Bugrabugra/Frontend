@@ -21,6 +21,8 @@ export default {
         lblZone: "Bölge",
         phZone: "Bölge",
         lblContainer: "Konteyner",
+        lblWarnings: "Uyarılar",
+        phConnectionProblem: "Bağlantı Sorunu",
         phContainerType: "Konteyner Tipi",
         phFullness: "Doluluk",
         phFireRisk: "Yangın Riski"

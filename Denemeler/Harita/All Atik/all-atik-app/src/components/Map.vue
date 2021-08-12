@@ -18,7 +18,7 @@
     svgMarkerType1,
     svgMarkerType2,
     svgMarkerType3,
-    svgMarkerType4
+    svgMarkerType4, svgMarkerConnectionProblem
   } from "components/svgIcons";
 
 
@@ -214,6 +214,8 @@
           const svgIconChooser = () => {
             if (container.fireRisk === true) {
               return svgMarkerFireRisk;
+            } else if (container.connected === false) {
+              return svgMarkerConnectionProblem;
             } else {
               if (container.iconID === 1) {
                 return svgMarkerType1;
@@ -227,9 +229,19 @@
             }
           }
 
+          const svgIconColorPicker = () => {
+            if (container.fireRisk === true) {
+              return "#ef4343";
+            } else if (container.connected === false) {
+              return "grey";
+            } else {
+              return fullness();
+            }
+          };
+
           const svgMarker = {
             path: svgIconChooser(),
-            fillColor: fullness(),
+            fillColor: svgIconColorPicker(),
             fillOpacity: 1,
             strokeWeight: 0.5,
             strokeColor: "#a0a0a0",
@@ -267,6 +279,7 @@
 
           marker.setMap(this.getMap);
 
+          // Container click events
           if (this.getSettings.page === "main-map-page" || this.getSettings.page === "container-page") {
             marker.addListener("click", () => {
               this.$store.dispatch("setClickedContainer", {container: container, marker: marker});
@@ -274,6 +287,7 @@
             })
           }
 
+          // Container drag events
           marker.addListener("dragend", (evt) => {
             this.$store.dispatch(
               "updateGeometry",

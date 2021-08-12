@@ -5,13 +5,13 @@
     </q-toolbar-title>
 
     <!--TODO Change language-->
-    <q-btn
-      @click="toggleLanguage"
-      color="indigo-2"
-      flat
-      round
-      :icon="$i18n.locale === 'tr-tr' ? 'img:/icons/flags/uk.png' : 'img:/icons/flags/turkey.png'"
-    />
+    <!--<q-btn-->
+    <!--  @click="toggleLanguage"-->
+    <!--  color="indigo-2"-->
+    <!--  flat-->
+    <!--  round-->
+    <!--  :icon="$i18n.locale === 'tr-tr' ? 'img:/icons/flags/uk.png' : 'img:/icons/flags/turkey.png'"-->
+    <!--/>-->
 
     <q-icon
       name="zoom_out_map"

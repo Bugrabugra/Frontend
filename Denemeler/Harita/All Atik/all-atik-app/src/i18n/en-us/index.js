@@ -21,6 +21,8 @@ export default {
         lblZone: "Zone",
         phZone: "Zone",
         lblContainer: "Container",
+        lblWarnings: "Warnings",
+        phConnectionProblem: "Connection Problem",
         phContainerType: "Container Type",
         phFullness: "Fullness",
         phFireRisk: "Fire Risk"
