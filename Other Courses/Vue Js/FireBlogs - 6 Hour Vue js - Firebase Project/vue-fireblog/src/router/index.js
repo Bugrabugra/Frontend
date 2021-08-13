@@ -6,6 +6,21 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/',
+    name: 'Blogs',
+    component: Home
+  },
+  {
+    path: '/',
+    name: 'NewPost',
+    component: Home
+  },
+  {
+    path: '/',
+    name: 'Login',
+    component: Home
   }
 ]
 

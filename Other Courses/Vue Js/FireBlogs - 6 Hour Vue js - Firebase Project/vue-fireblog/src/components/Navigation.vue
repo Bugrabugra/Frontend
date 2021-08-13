@@ -15,7 +15,13 @@
       </div>
     </nav>
 
-    <img @click="toggleMobileNav" :src="menuIcon" v-show="mobile" class="menu-icon">
+    <img
+        @click="toggleMobileNav"
+        src="../assets/Icons/bars-regular.svg"
+        v-show="mobile"
+        class="menu-icon"
+        alt=""
+    >
 
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
@@ -29,13 +35,11 @@
 </template>
 
 <script>
-  import menuIcon from "../assets/Icons/bars-regular.svg";
   import {ref, onMounted} from "vue";
 
 
   export default {
     name: "Navigation",
-    components: {menuIcon},
     setup() {
       // References
       const mobile = ref(null);
@@ -64,7 +68,7 @@
       })
 
       // Returns
-      return {menuIcon, toggleMobileNav, mobileNav, mobile}
+      return {toggleMobileNav, mobileNav, mobile}
     }
   }
 </script>
@@ -150,6 +154,21 @@
         padding: 15px 0;
         color: #fff;
       }
+    }
+
+    .mobile-nav-enter-active,
+    .mobile-nav-leave-active {
+      transition: all 1s ease;
+    }
+
+    .mobile-nav-enter-from,
+    .mobile-nav-leave-to {
+      transform: translateX(-250px);
+    }
+
+    .mobile-nav-enter-to,
+    .mobile-nav-leave-from {
+      transform: translateX(0);
     }
   }
 </style>
