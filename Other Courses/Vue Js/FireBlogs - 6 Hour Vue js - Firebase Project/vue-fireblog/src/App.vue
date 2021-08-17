@@ -1,9 +1,9 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Navigation/>
+      <Navigation v-if="!navigation"/>
       <router-view/>
-      <Footer/>
+      <Footer v-if="!navigation"/>
     </div>
   </div>
 </template>
@@ -11,12 +11,46 @@
 <script>
   import Navigation from "./components/Navigation";
   import Footer from "./components/Footer";
+  import {ref, onMounted, watch} from "vue";
+  import {useRoute} from "vue-router";
 
 
   export default {
     components: {
       Footer,
       Navigation
+    },
+    setup() {
+      // Route
+      const route = useRoute();
+
+      // References
+      const navigation = ref(null);
+
+      // Methods
+      const checkRoute = () => {
+        if (
+          route.name === "Login" ||
+          route.name === "Register" ||
+          route.name === "ForgotPassword"
+        ) {
+          navigation.value = true;
+        } else {
+          navigation.value = false;
+        }
+      };
+
+      // Mounted
+      onMounted(() => {
+        checkRoute();
+      });
+
+      // Watch
+      watch(route, () => {
+        checkRoute();
+      });
+
+      return {navigation}
     }
   }
 </script>
