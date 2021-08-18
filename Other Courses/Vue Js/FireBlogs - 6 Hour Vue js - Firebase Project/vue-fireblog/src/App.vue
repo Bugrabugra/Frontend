@@ -13,6 +13,8 @@
   import Footer from "./components/Footer";
   import {ref, onMounted, watch} from "vue";
   import {useRoute} from "vue-router";
+  import firebase from "firebase/app";
+  import "firebase/auth";
 
 
   export default {
@@ -43,6 +45,7 @@
       // Mounted
       onMounted(() => {
         checkRoute();
+        console.log(firebase.auth().currentUser);
       });
 
       // Watch
@@ -152,6 +155,12 @@
     pointer-events: none !important;
     cursor: none !important;
     background-color: rgba(128, 128, 128, 0.5);
+  }
+
+  .error {
+    text-align: center;
+    font-size: 12px;
+    color: red;
   }
 
   .blog-card-wrap {

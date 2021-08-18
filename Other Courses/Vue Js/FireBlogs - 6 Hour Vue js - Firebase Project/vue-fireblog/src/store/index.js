@@ -1,5 +1,8 @@
 import { createStore } from 'vuex'
-import {ref} from "vue";
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "../firebase/firebaseInit";
+
 
 export default createStore({
   state: {
@@ -9,7 +12,14 @@ export default createStore({
       {blogTitle: "Blog Card #3", blogCoverPhoto: "stock-3", blogDate: "May 1, 2021"},
       {blogTitle: "Blog Card #4", blogCoverPhoto: "stock-4", blogDate: "May 1, 2021"},
     ],
-    editPost: null
+    editPost: null,
+    user: null,
+    profileEmail: null,
+    profileFirstName: null,
+    profileLastName: null,
+    profileUsername: null,
+    profileId: null,
+    profileInitials: null
   },
   mutations: {
     toggleEditPost(state, payload) {
@@ -18,6 +28,12 @@ export default createStore({
     }
   },
   actions: {
+    async getCurrentUser({commit}) {
+      const dataBase = await db
+        .collection("users")
+        .doc(firebase.auth().currentUser.uid);
+
+    }
   },
   modules: {
   }
