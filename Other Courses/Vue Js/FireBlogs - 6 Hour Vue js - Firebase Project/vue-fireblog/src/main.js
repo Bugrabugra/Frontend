@@ -9,6 +9,7 @@ import "firebase/auth";
 
 
 let app;
+
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     createApp(App)
@@ -16,6 +17,7 @@ firebase.auth().onAuthStateChanged(() => {
       .use(store)
       .use(router)
       .mount('#app');
+    app = true;
   }
 });
 

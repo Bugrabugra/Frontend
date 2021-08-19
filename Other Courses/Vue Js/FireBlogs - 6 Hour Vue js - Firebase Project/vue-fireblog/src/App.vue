@@ -15,6 +15,7 @@
   import {useRoute} from "vue-router";
   import firebase from "firebase/app";
   import "firebase/auth";
+  import {useStore} from "vuex";
 
 
   export default {
@@ -25,6 +26,9 @@
     setup() {
       // Route
       const route = useRoute();
+
+      // Store
+      const store = useStore();
 
       // References
       const navigation = ref(null);
@@ -44,8 +48,13 @@
 
       // Mounted
       onMounted(() => {
+        firebase.auth().onAuthStateChanged(user => {
+          store.commit("updateUser", user);
+          if (user) {
+            store.dispatch("getCurrentUser");
+          }
+        })
         checkRoute();
-        console.log(firebase.auth().currentUser);
       });
 
       // Watch
