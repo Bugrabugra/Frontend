@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <BlogPost :post="welcomeScreen"/>
+    <BlogPost v-if="!user" :post="welcomeScreen"/>
     <BlogPost :post="post" v-for="(post, index) in sampleBlogPosts" :key="index"/>
     <div class="blog-card-wrap">
       <div class="container">
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="updates">
+    <div v-if="!user" class="updates">
       <div class="container">
         <h2>Never miss a post. Register for your free account today!</h2>
         <router-link class="router-button" to="#">
@@ -71,7 +71,11 @@
         return store.state.sampleBlogCards;
       });
 
-      return {welcomeScreen, sampleBlogPosts, sampleBlogCards}
+      const user = computed(() => {
+        return store.state.user;
+      });
+
+      return {welcomeScreen, sampleBlogPosts, sampleBlogCards, user}
     }
   }
 </script>

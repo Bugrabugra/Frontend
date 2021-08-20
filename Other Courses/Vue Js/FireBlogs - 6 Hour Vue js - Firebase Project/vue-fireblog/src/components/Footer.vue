@@ -43,7 +43,7 @@
           <ul>
             <router-link class="link" :to="{name: 'Home'}">Home</router-link>
             <router-link class="link" :to="{name: 'Blogs'}">Blogs</router-link>
-            <router-link v-if="user" class="link" :to="{name: 'NewPost'}">Create Post</router-link>
+            <router-link v-if="admin" class="link" to="#">Create Post</router-link>
             <router-link v-if="!user" class="link" :to="{name: 'Login'}">Login / Register</router-link>
           </ul>
         </div>
@@ -57,15 +57,26 @@
 </template>
 
 <script>
-  import {ref} from "vue";
+  import {computed} from "vue";
+  import {useStore} from "vuex";
 
 
   export default {
     name: "Footer",
     setup() {
-      const user = ref("")
+      // Store
+      const store = useStore();
 
-      return {user}
+      // Computed
+      const user = computed(() => {
+        return store.state.user;
+      });
+
+      const admin = computed(() => {
+        return store.state.profileAdmin;
+      });
+
+      return {user, admin}
     }
   }
 </script>

@@ -14,6 +14,7 @@ export default createStore({
     ],
     editPost: null,
     user: null,
+    profileAdmin: null,
     profileEmail: null,
     profileFirstName: null,
     profileLastName: null,
@@ -29,6 +30,10 @@ export default createStore({
     updateUser(state, payload) {
       state.user = payload;
     },
+    setProfileAdmin(state, payload) {
+      state.profileAdmin = payload;
+      console.log(state.profileAdmin);
+    },
     setProfileInfo(state, doc) {
       state.profileId = doc.id;
       state.profileEmail = doc.data().email;
@@ -40,16 +45,41 @@ export default createStore({
       state.profileInitials =
         state.profileFirstName.charAt(0) +
         state.profileLastName.charAt(0)
-    }
+    },
+    changeFirstName(state, payload) {
+      state.profileFirstName = payload;
+    },
+    changeLastName(state, payload) {
+      state.profileLastName = payload;
+    },
+    changeUsername(state, payload) {
+      state.profileUsername = payload;
+    },
   },
   actions: {
-    async getCurrentUser({commit}) {
+    async getCurrentUser({commit}, user) {
       const database = await db
         .collection("users")
         .doc(firebase.auth().currentUser.uid);
       const dbResults = await database.get();
       commit("setProfileInfo", dbResults);
       commit("setProfileInitials");
+      const token = await user.getIdTokenResult();
+      const admin = await token.claims.admin;
+      console.log(token, admin)
+      commit("setProfileAdmin", admin);
+    },
+    async updateUserSettings({commit, state}) {
+      const database = await db
+        .collection("users")
+        .doc(state.profileId);
+      await database.update({
+        firstName: state.profileFirstName,
+        lastName: state.profileLastName,
+        username: state.profileUsername
+      });
+      commit("setProfileInitials");
+
     }
   },
   modules: {

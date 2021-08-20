@@ -51,7 +51,7 @@
         firebase.auth().onAuthStateChanged(user => {
           store.commit("updateUser", user);
           if (user) {
-            store.dispatch("getCurrentUser");
+            store.dispatch("getCurrentUser", user);
           }
         })
         checkRoute();

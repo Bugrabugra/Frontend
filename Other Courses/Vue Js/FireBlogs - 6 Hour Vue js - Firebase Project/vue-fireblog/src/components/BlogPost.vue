@@ -1,12 +1,12 @@
 <template>
-  <div class="blog-wrapper no-user">
+  <div class="blog-wrapper" :class="{'no-user': !user}">
     <div class="blog-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{post.title}}</h2>
         <h2 v-else>{{post.title}}</h2>
         <p v-if="post.welcomeScreen">{{post.blogPost}}</p>
         <p v-else class="content-preview">{{post.blogHTML}}</p>
-        <router-link v-if="post.welcomeScreen" class="link link-light" to="#">
+        <router-link v-if="post.welcomeScreen" class="link link-light" :to="{name: 'Login'}">
           Login/Register
           <svg focusable="false" data-prefix="fal" data-icon="arrow-right"
                class="svg-inline--fa fa-arrow-right fa-w-14 arrow arrow-light" role="img"
@@ -36,9 +36,24 @@
 </template>
 
 <script>
+  import {computed} from "vue";
+  import {useStore} from "vuex";
+
+
   export default {
     name: "BlogPost",
-    props: ["post"]
+    props: ["post"],
+    setup() {
+      // Store
+      const store = useStore();
+
+      // Computed
+      const user = computed(() => {
+        return store.state.user;
+      });
+
+      return {user}
+    }
   }
 </script>
 
