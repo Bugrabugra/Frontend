@@ -1,12 +1,12 @@
 <template>
   <div class="home">
     <BlogPost v-if="!user" :post="welcomeScreen"/>
-    <BlogPost :post="post" v-for="(post, index) in sampleBlogPosts" :key="index"/>
+    <BlogPost :post="post" v-for="(post, index) in blogPostsFeed" :key="index"/>
     <div class="blog-card-wrap">
       <div class="container">
         <h3>View More Recent Blogs</h3>
         <div class="blog-cards">
-          <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index"/>
+          <BlogCard :post="post" v-for="(post, index) in blogPostsCards" :key="index"/>
         </div>
       </div>
     </div>
@@ -16,9 +16,7 @@
         <h2>Never miss a post. Register for your free account today!</h2>
         <router-link class="router-button" to="#">
           Register for FireBlogs
-          <svg focusable="false" data-prefix="fal" data-icon="arrow-right"
-               class="svg-inline--fa fa-arrow-right fa-w-14 arrow arrow-light" role="img" xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
+          <svg focusable="false" data-prefix="fal" data-icon="arrow-right" class="svg-inline--fa fa-arrow-right fa-w-14 arrow arrow-light" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path fill="currentColor"
                   d="M216.464 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L387.887 239H12c-6.627 0-12 5.373-12 12v10c0 6.627 5.373 12 12 12h375.887L209.393 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L233.434 36.465c-4.686-4.687-12.284-4.687-16.97 0z"></path>
           </svg>
@@ -67,15 +65,19 @@
       ]);
 
       // Computed
-      const sampleBlogCards = computed(() => {
-        return store.state.sampleBlogCards;
+      const blogPostsFeed = computed(() => {
+        return store.getters.blogPostsFeed;
+      });
+
+      const blogPostsCards = computed(() => {
+        return store.getters.blogPostsCards;
       });
 
       const user = computed(() => {
         return store.state.user;
       });
 
-      return {welcomeScreen, sampleBlogPosts, sampleBlogCards, user}
+      return {welcomeScreen, sampleBlogPosts, blogPostsCards, blogPostsFeed, user}
     }
   }
 </script>

@@ -3,9 +3,9 @@
     <div class="blog-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{post.title}}</h2>
-        <h2 v-else>{{post.title}}</h2>
+        <h2 v-else>{{post.blogTitle}}</h2>
         <p v-if="post.welcomeScreen">{{post.blogPost}}</p>
-        <p v-else class="content-preview">{{post.blogHTML}}</p>
+        <p v-else class="content-preview" v-html="post.blogHTML"></p>
         <router-link v-if="post.welcomeScreen" class="link link-light" :to="{name: 'Login'}">
           Login/Register
           <svg focusable="false" data-prefix="fal" data-icon="arrow-right"
@@ -16,7 +16,7 @@
           </svg>
         </router-link>
 
-        <router-link v-else class="link" to="#">
+        <router-link v-else class="link" :to="{name: 'ViewBlog', params: {blogId: post.blogID}}">
           View The Post
           <svg focusable="false" data-prefix="fal" data-icon="arrow-right"
                class="svg-inline--fa fa-arrow-right fa-w-14 arrow" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@
 
     <div class="blog-photo">
       <img v-if="post.welcomeScreen" :src="require(`../assets/blogPhotos/${post.photo}.jpg`)" alt="">
-      <img v-else :src="require(`../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)" alt="">
+      <img v-else :src="post.blogCoverPhoto" alt="">
     </div>
   </div>
 </template>

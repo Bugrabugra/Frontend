@@ -55,6 +55,7 @@
           }
         })
         checkRoute();
+        store.dispatch("getPost");
       });
 
       // Watch

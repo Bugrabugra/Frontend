@@ -6,6 +6,9 @@ import Register from "../views/Register";
 import ForgotPassword from "../views/ForgotPassword";
 import Profile from "../views/Profile";
 import Admin from "../views/Admin";
+import CreatePost from "../views/CreatePost";
+import BlogPreview from "../views/BlogPreview";
+import ViewBlog from "../views/ViewBlog";
 
 
 const routes = [
@@ -64,7 +67,32 @@ const routes = [
     meta: {
       title: "Admin"
     }
-  }
+  },
+  {
+    path: '/create-post',
+    name: 'CreatePost',
+    component: CreatePost,
+    meta: {
+      title: "Create Post"
+    }
+  },
+  {
+    path: '/post-preview',
+    name: 'BlogPreview',
+    component: BlogPreview,
+    meta: {
+      title: "Preview Blog Post"
+    }
+  },
+  {
+    path: '/view-blog/:blogId',
+    name: 'ViewBlog',
+    component: ViewBlog,
+    meta: {
+      title: "View Blog Post"
+    }
+  },
+
 ]
 
 const router = createRouter({

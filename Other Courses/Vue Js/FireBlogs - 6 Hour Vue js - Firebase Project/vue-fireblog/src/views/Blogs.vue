@@ -6,7 +6,7 @@
         <input type="checkbox" v-model="editPost">
       </div>
 
-      <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index"/>
+      <BlogCard :post="post" v-for="(post, index) in blogPosts" :key="index"/>
     </div>
   </div>
 </template>
@@ -25,8 +25,8 @@
       const store = useStore();
 
       // Computed
-      const sampleBlogCards = computed(() => {
-        return store.state.sampleBlogCards;
+      const blogPosts = computed(() => {
+        return store.state.blogPosts;
       });
 
       const editPost = computed({
@@ -43,7 +43,7 @@
         store.commit("toggleEditPost", false);
       });
 
-      return {sampleBlogCards, editPost}
+      return {blogPosts, editPost}
     }
   }
 </script>
