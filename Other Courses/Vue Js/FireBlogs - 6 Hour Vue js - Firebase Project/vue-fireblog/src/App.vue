@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <div class="app">
+    <div class="app" v-if="postLoaded">
       <Navigation v-if="!navigation"/>
       <router-view/>
       <Footer v-if="!navigation"/>
@@ -11,7 +11,7 @@
 <script>
   import Navigation from "./components/Navigation";
   import Footer from "./components/Footer";
-  import {ref, onMounted, watch} from "vue";
+  import {ref, onMounted, watch, computed} from "vue";
   import {useRoute} from "vue-router";
   import firebase from "firebase/app";
   import "firebase/auth";
@@ -32,6 +32,11 @@
 
       // References
       const navigation = ref(null);
+
+      // Computed
+      const postLoaded = computed(() => {
+        return store.state.postLoaded;
+      });
 
       // Methods
       const checkRoute = () => {
@@ -63,7 +68,7 @@
         checkRoute();
       });
 
-      return {navigation}
+      return {navigation, postLoaded}
     }
   }
 </script>

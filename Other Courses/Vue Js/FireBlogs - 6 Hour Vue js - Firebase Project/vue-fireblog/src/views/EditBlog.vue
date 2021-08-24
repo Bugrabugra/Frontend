@@ -27,14 +27,13 @@
             v-model:content="blogHTML"
             :contentType="'html'"
             :content="blogHTML"
-            @image-added="imageHandler"
         />
       </div>
 
       <div class="blog-actions">
-        <button @click="uploadBlog">Publish Blog</button>
+        <button @click="updateBlog">Save Changes</button>
         <router-link class="router-button" :to="{name: 'BlogPreview'}">
-          Post Preview
+          Preview Changes
         </router-link>
       </div>
     </div>
@@ -42,14 +41,14 @@
 </template>
 
 <script>
-  import { ref, defineComponent, computed } from 'vue';
+  import {ref, defineComponent, computed, onMounted} from 'vue';
   import {useStore} from "vuex";
   import QuillEditor from "../components/QuillEditor"
   import BlogCoverPreview from "../components/BlogCoverPreview";
   import firebase from "firebase/app";
   import "firebase/storage";
   import db from "../firebase/firebaseInit";
-  import {useRouter} from "vue-router";
+  import {useRoute, useRouter} from "vue-router";
   import Loading from "../components/Loading";
 
 
@@ -67,12 +66,17 @@
       // Router
       const router = useRouter();
 
+      // Route
+      const route = useRoute();
+
       // References
       const error = ref(null);
       const errorMsg = ref(null);
       const file = ref(null);
       const blogPhoto = ref(null);
       const loading = ref(null);
+      const routeID = ref(null);
+      const currentBlog = ref(null);
 
       // Computed
       const blogPhotoFileURL = computed(() => {
@@ -145,7 +149,10 @@
         )
       };
 
-      const uploadBlog = () => {
+      const updateBlog = async () => {
+        const database = await db
+          .collection("blogPosts")
+          .doc(routeID.value)
         if (blogTitle.value.length !== 0 && blogHTML.value.length !== 0) {
           if (file.value) {
             loading.value = true;
@@ -162,44 +169,30 @@
               },
               async () => {
                 const downloadURL = await docRef.getDownloadURL();
-                const timestamp = await Date.now();
-                const database = await db.collection("blogPosts").doc();
 
-                console.log("blogCoverPhotoName: ", blogCoverPhotoName);
-                console.log("profileId: ", profileId);
-
-                console.log(`
-                  blogID: ${database.id},
-                  blogHTML: ${blogHTML.value},
-                  blogCoverPhoto: ${downloadURL},
-                  blogCoverPhotoName: ${blogCoverPhotoName.value},
-                  blogTitle: ${blogTitle.value},
-                  profileId: ${profileId.value},
-                  date: ${timestamp}
-                `);
-
-                await database.set({
+                await database.update({
                   blogID: database.id,
                   blogHTML: blogHTML.value,
                   blogCoverPhoto: downloadURL,
                   blogCoverPhotoName: blogCoverPhotoName.value,
                   blogTitle: blogTitle.value,
-                  profileId: profileId.value,
-                  date: timestamp
                 });
 
-                await store.dispatch("getPost");
+                await store.dispatch("updatePost", routeID.value);
                 loading.value = false;
                 await router.push({name: "ViewBlog", params: {blogId: database.id}});
               }
             )
             return;
           }
-          error.value = true;
-          errorMsg.value = "Please ensure you uploaded a cover photo!";
-          setTimeout(() => {
-            error.value = false;
-          }, 5000);
+          loading.value = true;
+          await database.update({
+            blogHTML: blogHTML.value,
+            blogTitle: blogTitle.value
+          });
+          await store.dispatch("updatePost", routeID.value);
+          loading.value = false;
+          await router.push({name: "ViewBlog", params: {blogId: database.id}});
           return;
         }
         error.value = true;
@@ -210,6 +203,16 @@
         return;
       };
 
+      // Mounted
+      onMounted(async () => {
+        routeID.value = route.params.blogId;
+        currentBlog.value = await store.state.blogPosts.filter(post => {
+          return post.blogID === routeID.value;
+        });
+        console.log(currentBlog.value[0])
+        store.commit("setBlogState", currentBlog.value[0]);
+      });
+
       return {
         errorMsg, error,
         blogPhotoFileURL, blogPhotoName,
@@ -217,8 +220,8 @@
         profileId, blogCoverPhotoName,
         fileChange, blogPhoto,
         blogPhotoPreview, openPreview,
-        imageHandler, uploadBlog,
-        loading
+        imageHandler,
+        loading, updateBlog
       }
     }
   })
