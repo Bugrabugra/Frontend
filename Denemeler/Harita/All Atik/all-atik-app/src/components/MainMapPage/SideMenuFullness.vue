@@ -44,19 +44,19 @@
                 </span>
           </div>
 
-          <div class="col-6">
-                <span>
-                  <q-icon
-                    @click="handleIconFullness($event)"
-                    class="grey"
-                    style="cursor:pointer;"
-                    color="grey"
-                    size="md"
-                    name="delete"
-                  />
-                  {{$t("pageMainMap.expansionItems.fullness.lblNoValue")}} <strong>{{getFullnessColors.countGrey}}</strong>
-                </span>
-          </div>
+          <!--<div class="col-6">-->
+          <!--  <span>-->
+          <!--    <q-icon-->
+          <!--      @click="handleIconFullness($event)"-->
+          <!--      class="grey"-->
+          <!--      style="cursor:pointer;"-->
+          <!--      color="grey"-->
+          <!--      size="md"-->
+          <!--      name="delete"-->
+          <!--    />-->
+          <!--    {{$t("pageMainMap.expansionItems.fullness.lblNoValue")}} <strong>{{getFullnessColors.countGrey}}</strong>-->
+          <!--  </span>-->
+          <!--</div>-->
         </div>
       </q-card-section>
   </q-card>
@@ -84,8 +84,6 @@
           this.$store.dispatch("setSelectedFullness", {name: '% 50-75', value: '50-75'});
         } else if (classList.includes("red")) {
           this.$store.dispatch("setSelectedFullness", {name: '% 75-100', value: '75-100'});
-        } else {
-          this.$store.dispatch("setSelectedFullness", {name: "Veri yok", value: "noValue"});
         }
 
         this.$store.dispatch("selectFullness");

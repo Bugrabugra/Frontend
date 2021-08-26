@@ -37,7 +37,8 @@ export default function () {
         zoneID: 0,
         typeID: 0,
         fullness: "",
-        fireRisk: null
+        fireRisk: null,
+        connected: null
       },
       updatingGeometry: false,
       currentMarkerSymbol: {},
@@ -50,6 +51,11 @@ export default function () {
         countYellow: 0,
         countRed: 0,
         countGrey: 0,
+      },
+      sensorInfos: {
+        sensorsIdentified: 0,
+        sensorsUnidentified: 0,
+        connectionProblem: 0
       },
       myLocation: null,
       myLocationMarker: null,
@@ -79,6 +85,10 @@ export default function () {
         return state.fullnessColors;
       },
 
+      getSensorInfos(state) {
+        return state.sensorInfos;
+      },
+
       getPageSize(state) {
         return state.pageSize;
       },
@@ -103,7 +113,7 @@ export default function () {
         const query = Object.keys(state.queryParameterObject).map(key => {
           const value = state.queryParameterObject[key];
           if (value) {
-            if (key === "fullness") {
+            if (key === "fullness") { // Fullness
               if (key === "fullness" && value === "noValue") {
                 return `${key}=null`;
               } else if (key === "fullness" && value === "") {
@@ -116,14 +126,24 @@ export default function () {
                   return `${key}_gte=${min}&${key}_lt=${max}`;
                 }
               }
-            } else if (key === "fireRisk") {
+            } else if (key === "fireRisk") { // Fire risk
               if (value === "yes") {
                 return `${key}=true`;
               } else {
                 return `${key}=false`;
               }
-            }
-            else {
+            } else if (key === "connected") { // Connected
+              if (value === "false") {
+                return `${key}=false`;
+              }
+            } else if (key === "device") { // Device
+              if (value === "null") {
+                return `${key}_eq=null`;
+              } else if (value === "notnull") {
+                return `${key}_ne=null`;
+              }
+                }
+            else { // Rest
               return `${key}=${value}`;
             }
           }
@@ -216,8 +236,18 @@ export default function () {
         state.fullnessColors.countYellow = 0;
       },
 
+      resetSensorInfos(state) {
+        state.sensorInfos.sensorsIdentified = 0;
+        state.sensorInfos.sensorsUnidentified = 0;
+        state.sensorInfos.connectionProblem = 0;
+      },
+
       increaseFullnessColors(state, payload) {
         state.fullnessColors = payload;
+      },
+
+      increaseSensorInfos(state, payload) {
+        state.sensorInfos = payload;
       },
 
       setPageSize(state, payload) {
@@ -242,6 +272,18 @@ export default function () {
 
       updateQueryParameter(state, payload) {
         state.queryParameterObject[payload.query] = payload.value;
+      },
+
+      removeQueryParameter(state) {
+        state.queryParameterObject = {
+          neighborhoodID: 0,
+          streetID: 0,
+          zoneID: 0,
+          typeID: 0,
+          fullness: "",
+          fireRisk: null,
+          connected: null
+        }
       },
 
       updatingGeometry(state) {
@@ -347,6 +389,7 @@ export default function () {
             context.dispatch("setContainers", featuresWithGeometry)
               .then(() => {
                 context.dispatch("populateFullness");
+                context.dispatch("populateSensorInfo");
               })
           }).catch(error => {
           console.log(i18n.t("errors.lblLoadContainers"), error);
@@ -491,6 +534,35 @@ export default function () {
         }
       },
 
+      populateSensorInfo(context) {
+        context.commit("resetSensorInfos");
+
+        let identified = 0;
+        let unidentified = 0;
+        let problem = 0;
+
+        context.getters.getContainers.forEach(container => {
+          if (container.device !== null) {
+            identified++;
+          } else if (container.device === null) {
+            unidentified++;
+          }
+
+          if (container.connected === false) {
+            problem++;
+          }
+        })
+
+        context.commit(
+          "increaseSensorInfos",
+          {
+            sensorsIdentified: identified,
+            sensorsUnidentified: unidentified,
+            connectionProblem: problem
+          }
+        )
+      },
+
       queryContainers(context) {
         Loading.show({
           delay: 0,
@@ -508,6 +580,7 @@ export default function () {
               context.dispatch("setContainers", featuresWithGeometry)
                 .then(() => {
                   context.dispatch("populateFullness");
+                  context.dispatch("populateSensorInfo");
                   context.dispatch("changeFilter", true);
                 });
             })

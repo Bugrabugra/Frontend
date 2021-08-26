@@ -7,12 +7,19 @@ export default {
     expansionItems: {
       headers: {
         lblFullnessPercentages: "Doluluk Oranları",
+        lblSensorInfo: "Sensör Bilgisi",
         lblFilters: "Filtreler",
         lblSpatialOperations: "Coğrafi İşlemler",
         lblContainerDetail: "Konteyner Detay"
       },
       fullness: {
         lblNoValue: "Veri Yok :"
+      },
+      info: {
+        lblSensorsIdentified: "Sensör Bağlı Konteynerler",
+        lblSensorsUnidentified: "Sensör Tanımlanmayan",
+        lblConnectionProblem: "Bağlantı Sorunu",
+        btnClearFilter: "FİLTREYİ TEMİZLE"
       },
       filters: {
         lblAddress: "Adres",

@@ -7,12 +7,19 @@ export default {
     expansionItems: {
       headers: {
         lblFullnessPercentages: "Fullness Values",
+        lblSensorInfo: "Sensor Info",
         lblFilters: "Filters",
         lblSpatialOperations: "Spatial Operations",
         lblContainerDetail: "Container Detail"
       },
       fullness: {
         lblNoValue: "No Value :"
+      },
+      info: {
+        lblSensorsIdentified: "Sensors Identified",
+        lblSensorsUnidentified: "Sensors Unidentified",
+        lblConnectionProblem: "Connection Problem",
+        btnClearFilter: "Clear Filter"
       },
       filters: {
         lblAddress: "Address",

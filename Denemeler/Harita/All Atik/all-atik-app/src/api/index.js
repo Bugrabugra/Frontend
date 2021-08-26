@@ -46,6 +46,7 @@ export const apiPatchContainer = (payload, token) => {
 
 // Get filtered containers => payload = {filters}
 export const apiGetFilteredContainers = (filter, token) => {
+  console.log(filter);
   return api.get(`${containers}?${filter}`, config(token));
 }
 

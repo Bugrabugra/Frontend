@@ -16,6 +16,16 @@
         <SideMenuFullness/>
       </q-expansion-item>
 
+      <!--Sensör bilgisi-->
+      <q-expansion-item
+        icon="info"
+        :label="$t('pageMainMap.expansionItems.headers.lblSensorInfo')"
+        expand-separator
+        default-opened
+      >
+        <SideMenuSensorInfo/>
+      </q-expansion-item>
+
       <!--Filtreler-->
       <q-expansion-item
         @click="$store.dispatch('expandContainerDetail', false)"
@@ -59,6 +69,7 @@
   import SideMenuFullness from "components/MainMapPage/SideMenuFullness";
   import SideMenuFilters from "components/MainMapPage/SideMenuFilters";
   import SideMenuSpatialOperations from "components/MainMapPage/SideMenuSpatialOperations";
+  import SideMenuSensorInfo from "components/MainMapPage/SideMenuSensorInfo";
   import {mapGetters} from "vuex";
 
 
@@ -66,6 +77,7 @@
     name: "SideMenuDesktopMainMapPage",
 
     components: {
+      SideMenuSensorInfo,
       SideMenuSpatialOperations,
       SideMenuFilters,
       SideMenuFullness,
