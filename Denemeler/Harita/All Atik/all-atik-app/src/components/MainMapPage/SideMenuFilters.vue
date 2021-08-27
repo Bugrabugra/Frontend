@@ -155,7 +155,8 @@
       ...mapGetters({
         storeSelectedFullness: "getSelectedFullness",
         storeSelectedFireRisk: "getSelectedFireRisk",
-        getSettings: "getSettings"
+        getSettings: "getSettings",
+        getQueryParameters: "getQueryParameters"
       })
     },
 
@@ -364,6 +365,18 @@
         } else if (this.$store.getters.getSelectedFireRisk === "no")
           this.selectedFireRisk = "Yok";
         else {
+          this.selectedFireRisk = null;
+        }
+      },
+
+      getQueryParameters() {
+        console.log("cleared")
+        if (this.getQueryParameters === "") {
+          this.selectedStreet = null;
+          this.selectedZone = null;
+          this.selectedNeighborhood = null;
+          this.selectedFullness = null;
+          this.selectedContainerType = null;
           this.selectedFireRisk = null;
         }
       }

@@ -274,13 +274,14 @@ export default function () {
         state.queryParameterObject[payload.query] = payload.value;
       },
 
-      removeQueryParameter(state) {
+      truncateQueryParameter(state) {
         state.queryParameterObject = {
           neighborhoodID: 0,
           streetID: 0,
           zoneID: 0,
           typeID: 0,
           fullness: "",
+          device: null,
           fireRisk: null,
           connected: null
         }

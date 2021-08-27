@@ -88,14 +88,14 @@
 
     methods: {
       clearFilters() {
-        this.$store.commit("removeQueryParameter");
+        this.$store.commit("truncateQueryParameter");
         this.$store.dispatch("queryContainers");
       },
 
       handleIcon(event) {
         const classList = Array.from(event.target.classList);
         if (classList.includes("no-sensor")) {
-          this.$store.commit("removeQueryParameter");
+          this.$store.commit("truncateQueryParameter");
           this.$store.dispatch(
             "updateQueryParameter",
             {
@@ -108,7 +108,7 @@
             console.log(error);
           });
         } else if (classList.includes("online")) {
-          this.$store.commit("removeQueryParameter");
+          this.$store.commit("truncateQueryParameter");
           this.$store.dispatch(
             "updateQueryParameter",
             {
@@ -121,7 +121,7 @@
             console.log(error);
           });
         } else if (classList.includes("problem")) {
-          this.$store.commit("removeQueryParameter");
+          this.$store.commit("truncateQueryParameter");
           this.$store.dispatch(
             "updateQueryParameter",
             {

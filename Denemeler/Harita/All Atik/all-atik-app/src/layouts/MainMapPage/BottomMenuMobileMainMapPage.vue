@@ -3,18 +3,27 @@
     <div class="justify-center">
       <q-card>
         <q-tab-panels keep-alive v-model="tab" animated>
+          <!--Doluluk-->
           <q-tab-panel v-if="percentagesIsOpen" name="percentages" class="q-ma-none q-pa-none">
             <SideMenuFullness/>
           </q-tab-panel>
 
+          <!--Sensör bilgisi-->
+          <q-tab-panel v-if="sensorInfoIsOpen" name="sensorInfo" class="q-ma-none q-pa-none">
+            <SideMenuSensorInfo/>
+          </q-tab-panel>
+
+          <!--Filtreler-->
           <q-tab-panel v-if="filterIsOpen" name="filter" class="q-ma-none q-pa-none">
             <SideMenuFilters/>
           </q-tab-panel>
 
+          <!--Coğrafi işlemler-->
           <q-tab-panel v-if="spatialIsOpen" name="spatial" class="q-ma-none q-pa-none">
             <SideMenuSpatialOperations/>
           </q-tab-panel>
 
+          <!--Detay-->
           <q-tab-panel v-if="infoIsOpen" name="info" class="q-ma-none q-pa-none">
             <SideMenuContainerDetail/>
           </q-tab-panel>
@@ -31,6 +40,7 @@
           dense
         >
           <q-tab icon="poll" name="percentages" label="DOLULUK" @click="openPercentages"/>
+          <q-tab icon="info" name="sensorInfo" label="SENSÖR BİLGİSİ" @click="openSensorInfo"/>
           <q-tab icon="filter_alt" name="filter" label="FİLTRELER" @click="openFilter"/>
           <q-tab icon="public" name="spatial" label="COĞRAFİ İŞLEMLER" @click="openSpatial"/>
           <q-tab icon="info" name="info" label="DETAY" @click="openInfo"/>
@@ -45,12 +55,14 @@
   import SideMenuFullness from "components/MainMapPage/SideMenuFullness";
   import SideMenuFilters from "components/MainMapPage/SideMenuFilters";
   import SideMenuSpatialOperations from "components/MainMapPage/SideMenuSpatialOperations";
+  import SideMenuSensorInfo from "components/MainMapPage/SideMenuSensorInfo";
 
 
   export default {
     name: "BottomMenuMobileMainMapPage",
 
     components: {
+      SideMenuSensorInfo,
       SideMenuSpatialOperations,
       SideMenuFilters,
       SideMenuFullness,
@@ -63,7 +75,8 @@
         percentagesIsOpen: true,
         filterIsOpen: true,
         spatialIsOpen: true,
-        infoIsOpen: true
+        infoIsOpen: true,
+        sensorInfoIsOpen: true
       }
     },
 
@@ -77,6 +90,12 @@
       openPercentages() {
         if (this.tab === "percentages") {
           this.percentagesIsOpen = !this.percentagesIsOpen;
+        }
+      },
+
+      openSensorInfo() {
+        if (this.tab === "sensorInfo") {
+          this.sensorInfoIsOpen = !this.sensorInfoIsOpen;
         }
       },
 
@@ -105,6 +124,7 @@
         this.filterIsOpen = true;
         this.spatialIsOpen = true;
         this.infoIsOpen = true;
+        this.sensorInfoIsOpen = true;
       },
 
       containerSelected() {
