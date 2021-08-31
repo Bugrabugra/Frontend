@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div class="min-h-screen bg-blue-900 flex items-center justify-center">
+      <form>
+        <div class="double-confirm overflow-hidden">
+          <div class="double-confirm-inner relative transform transition duration-500 ease-in-out">
+            <!--delete button-->
+            <button type="button" class="py-5 px-10 font-mono bg-black text-gray-300">
+              Delete
+            </button>
+
+            <!--confirm button-->
+            <button type="submit" class="absolute py-5 px-10 font-mono bg-red-800 text-red-300">
+              Really?
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    // grab all the things
+    const doubleConfirm = document.querySelector(".double-confirm");
+    const doubleConfirmInner = document.querySelector(".double-confirm-inner");
+
+    // add event listeners
+    doubleConfirm.addEventListener("click", () => {
+      doubleConfirmInner.classList.add("-translate-x-full");
+    })
+  </script>
+</html>
