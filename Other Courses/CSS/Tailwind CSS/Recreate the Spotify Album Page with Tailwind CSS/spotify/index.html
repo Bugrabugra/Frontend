@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div class="bg-black text-gray-300 min-h-screen p-10">
+      <!--header-->
+      <div class="flex">
+        <img class="mr-6" src="https://placekitten.com/g/200/200" alt="kitten">
+        <div class="flex flex-col justify-center">
+          <!--content-->
+          <h4 class="mt-0 mb-3 uppercase text-gray-500 tracking-widest text-sm">
+            Playlist
+          </h4>
+
+          <h1 class="mt-0 mb-2 text-white text-4xl">
+            MIDDLE CHILD Radio
+          </h1>
+
+          <p class="text-gray-600 mb-2 text-sm">
+            With J. Cole, Quavo, Ty Dollar $ign
+          </p>
+
+          <p class="text-gray-600 text-sm">
+            Created by
+            <a href="#">Spotify</a>
+            - 50 songs 3 hr 2 min
+          </p>
+        </div>
+      </div>
+
+      <!--action buttons-->
+      <div class="mt-6 flex justify-between">
+        <div class="flex space-x-2">
+          <!--play-->
+          <button class="">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-green-500 h-16 w-16" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <!--like-->
+          <button class="mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hover:text-red-400 hover:fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path class="pointer-events-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </button>
+
+          <!--download-->
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+            </svg>
+          </button>
+
+          <!--3 dots-->
+          <button class="">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="text-gray-600 text-sm tracking-widest text-right">
+          <h5 class="mb-1">Followers</h5>
+          <p>5,055</p>
+        </div>
+      </div>
+
+      <!--song list-->
+      <div class="mt-10">
+        <!--song list header-->
+        <div class="flex text-gray-600">
+          <div class="p-2 w-8 flex-shrink-0"></div>
+
+          <div class="p-2 w-8 flex-shrink-0"></div>
+          <div class="p-2 w-full">Title</div>
+          <div class="p-2 w-full">Artist</div>
+          <div class="p-2 w-full">Album</div>
+          <div class="p-2 w-8 flex-shrink-0 mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="flex border-b border-gray-800 hover:bg-gray-800">
+          <div class="p-2 w-8 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+
+          <div class="p-2 w-8 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <div class="p-2 w-full">My Song Here</div>
+          <div class="p-2 w-full">Eminem</div>
+          <div class="p-2 w-full">My Album</div>
+          <div class="p-2 w-12 flex-shrink-0">5:35</div>
+        </div>
+
+        <div class="flex border-b border-gray-800 hover:bg-gray-800">
+          <div class="p-2 w-8 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+
+          <div class="p-2 w-8 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <div class="p-2 w-full">My Song Here</div>
+          <div class="p-2 w-full">Eminem</div>
+          <div class="p-2 w-full">My Album</div>
+          <div class="p-2 w-12 flex-shrink-0">5:35</div>
+        </div>
+
+        <div class="flex border-b border-gray-800 hover:bg-gray-800">
+          <div class="p-2 w-8 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+
+          <div class="p-2 w-8 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <div class="p-2 w-full">My Song Here</div>
+          <div class="p-2 w-full">Eminem</div>
+          <div class="p-2 w-full">My Album</div>
+          <div class="p-2 w-12 flex-shrink-0">5:35</div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>

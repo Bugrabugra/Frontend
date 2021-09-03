@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body class="dark:bg-black min-h-screen flex items-center justify-center">
+    <!--card goes here-->
+    <div class="dark:bg-gray-800 p-6 w-1/2 bg-gray-200 rounded-lg">
+      <h2 class="mb-2 text-4xl font-bold text-black dark:text-white">
+        Tailwind Dark Mode is Here!
+      </h2>
+
+      <p class="mb-4 text-gray-800 dark:text-gray-200">
+        Super cool that we can switch from light to dark.
+      </p>
+
+      <button class="block py-3 px-6 bg-blue-600 dark:bg-yellow-400 dark:text-yellow-800 text-blue-100 rounded-lg">
+        Let's Go
+      </button>
+    </div>
+
+    <script>
+      // grab everything we need
+      const button = document.querySelector("button");
+      const html = document.querySelector("html");
+
+      // add event listeners
+      button.addEventListener("click", () => {
+        html.classList.toggle("dark");
+      })
+    </script>
+  </body>
+</html>
