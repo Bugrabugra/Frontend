@@ -72,10 +72,10 @@
       <div v-if="filters.length === 0" class="flex items-center justify-center">
         <button
             @click="addNewFilter"
-            class="flex items-center px-2 py-1 bg-gray-400 text-gray-200 rounded hover:bg-gray-300 hover:text-gray-500 transition duration-300"
+            class="group flex items-center px-2 py-1 bg-gray-400 text-gray-100 rounded hover:bg-gray-300 hover:text-gray-500 transition duration-300"
         >
           <span class="inline-flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-100 group-hover:text-gray-500 transition duration-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
           </span>
@@ -89,9 +89,9 @@
     <button
         v-if="filters.length > 0"
         @click="filterQueries"
-        class="flex items-center mt-4 px-2 py-1 bg-gray-400 text-gray-200 rounded hover:bg-gray-300 hover:text-gray-500 transition duration-300"
+        class="group flex items-center mt-4 px-2 py-1 bg-gray-400 text-gray-200 rounded hover:bg-gray-300 hover:text-gray-500 transition duration-300"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-200 group-hover:text-gray-500 transition duration-300 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
       </svg>
       Filter
