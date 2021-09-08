@@ -20,22 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66d5cf00-bd18-40d9-92e3-e4b1965f1ee2" name="Default Changelist" comment="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/.idea/glowing-background.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/tailwind.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Glowing Background Gradient Effects with Tailwind CSS/glowing-background/tailwind/tailwind.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilterConditions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterConditions.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +83,7 @@
       <workItem from="1630993640691" duration="25166000" />
       <workItem from="1631034950377" duration="267000" />
       <workItem from="1631081242378" duration="13984000" />
-      <workItem from="1631121024671" duration="350000" />
+      <workItem from="1631121024671" duration="964000" />
     </task>
     <task id="LOCAL-00001" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
       <created>1631119178978</created>
@@ -107,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631119178978</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
+      <created>1631121387818</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1631121387818</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,10 +149,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631115597949" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1631119180295">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1631121389296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631119180295" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631121389296" />
     <state x="667" y="255" width="585" height="530" key="find.popup" timestamp="1631029262800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
