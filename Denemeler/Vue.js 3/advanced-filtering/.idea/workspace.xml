@@ -20,7 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66d5cf00-bd18-40d9-92e3-e4b1965f1ee2" name="Default Changelist" comment="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/.idea/drag-drop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other Courses/Vanilla JS/Easy Drag n Drop with JavaScript - how to code tutorial/drag-drop/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +94,7 @@
       <workItem from="1631081242378" duration="13984000" />
       <workItem from="1631121024671" duration="980000" />
       <workItem from="1631168052125" duration="599000" />
+      <workItem from="1631196392655" duration="589000" />
     </task>
     <task id="LOCAL-00001" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
       <created>1631119178978</created>
