@@ -83,7 +83,8 @@
       <workItem from="1630993640691" duration="25166000" />
       <workItem from="1631034950377" duration="267000" />
       <workItem from="1631081242378" duration="13984000" />
-      <workItem from="1631121024671" duration="964000" />
+      <workItem from="1631121024671" duration="980000" />
+      <workItem from="1631168052125" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
       <created>1631119178978</created>
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631121387818</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
+      <created>1631124422506</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1631124422506</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,10 +157,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631115597949" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1631121389296">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1631124423885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631121389296" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631124423885" />
     <state x="667" y="255" width="585" height="530" key="find.popup" timestamp="1631029262800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
