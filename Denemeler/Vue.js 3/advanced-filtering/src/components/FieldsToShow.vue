@@ -11,13 +11,9 @@
     </h2>
 
     <!--tag list-->
-    <div
-        class="flex items-center justify-between mt-2 border border-gray-400 rounded"
-    >
+    <div class="flex items-center justify-between mt-2 border border-gray-400 rounded">
       <div
-          @drop="onDrop($event)"
-          @dragenter.prevent
-          @dragover.prevent
+          class="_container flex"
       >
         <!--tags-->
         <div
@@ -25,11 +21,7 @@
             :key="index"
             :item="field.id"
             draggable="true"
-            @dragstart="startDrag($event, field.id)"
-            @dragover.prevent="dragOver($event)"
-            @dragleave="dragLeave($event)"
-            @dragend="dragEnd($event)"
-            class="draggable border border-gray-400 bg-gradient-to-b from-gray-100 to-gray-300 px-1 mx-1 my-1 inline-flex items-center rounded cursor-pointer select-none"
+            class="draggable flex cursor-move border border-gray-400 bg-gradient-to-b from-gray-100 to-gray-300 px-1 mx-1 my-1 items-center rounded select-none"
         >
           {{field.name}}
           <button class="ml-1" @click="removeField(index)">
@@ -40,11 +32,11 @@
         </div>
       </div>
 
-      <button @click="resetFields">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
-      </button>
+      <!--<button @click="resetFields">-->
+      <!--  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+      <!--    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />-->
+      <!--  </svg>-->
+      <!--</button>-->
     </div>
 
     <!--sorters-->
@@ -95,7 +87,7 @@
 </template>
 
 <script>
-  import {ref} from "vue";
+  import {ref, onMounted} from "vue";
   import {useStore} from "vuex";
 
 
@@ -110,60 +102,92 @@
         return field.value !== "tags";
       }));
 
-      const fieldsToSort = ref(store.state.fields.filter(field => {
-        return field.value !== "tags";
-      }));
-
-      const isDragOver = ref(false);
+      const fieldsToSort = ref(store.state.fields.filter(field => field.value !== "tags"));
 
       // methods
-      const removeField = (index) => {
-        fields.value = fields.value.filter(field => {
-          return field !== fields.value[index];
+      function updateField() {
+        const container = document.querySelector("._container");
+
+        const _fieldsToSort = [];
+        [...container.children].forEach(child => {
+          fieldsToSort.value.forEach(field => {
+            if (field.id === +child.getAttribute("item")) {
+              _fieldsToSort.push(field.value);
+            }
+          })
         })
-      };
+        store.commit("setFieldsToShow", _fieldsToSort);
+      }
 
-      const resetFields = () => {
-        fields.value = store.state.fields.filter(field => {
-          return field.value !== "tags";
+      const removeField = (index) => {
+        fieldsToSort.value = fieldsToSort.value.filter(field => {
+          return field !== fieldsToSort.value[index];
         });
+        updateField();
       };
 
-      const startDrag = (event, id) => {
-        event.dataTransfer.dropEffect = "move";
-        event.dataTransfer.effectAllowed = "move";
-        event.dataTransfer.setData("itemId", id);
-        event.target.classList.add("opacity-25");
-      };
+      // on mount
+      onMounted(() => {
+        const draggables = document.querySelectorAll(".draggable");
+        const container = document.querySelector("._container");
+        updateField();
 
-      const onDrop = (event) => {
-        const sourceItemId = event.dataTransfer.getData("itemId");
-        const targetItemId = event.target.attributes[0].value;
+        // draggables
+        draggables.forEach(draggable => {
+          draggable.addEventListener("dragstart", () => {
+            draggable.classList.add("dragging");
+          });
 
-        const item = fieldsToSort.value[sourceItemId];
-        fieldsToSort.value[sourceItemId] = fieldsToSort.value[targetItemId];
-        fieldsToSort.value[targetItemId] = item;
-        // event.target.classList.remove("border-gray-400");
-        // event.target.classList.remove("border-4");
-      };
+          draggable.addEventListener("dragend", () => {
+            draggable.classList.remove("dragging");
+          });
 
-      const dragOver = (event) => {
-        // event.target.classList.add("border-gray-400");
-        // event.target.classList.add("border-4");
-      };
+          draggable.addEventListener("drop", (e) => {
+            e.preventDefault();
+            updateField();
+          });
 
-      const dragLeave = (event) => {
-        // event.target.classList.remove("border-gray-400");
-        // event.target.classList.remove("border-4");
-        // event.target.classList.add("border");
-        // event.target.classList.add("border-gray-400");
-      };
+          draggable.addEventListener("dragend", (e) => {
+            e.preventDefault();
+            updateField();
+          });
+        });
 
-      const dragEnd = (event) => {
-        event.target.classList.remove("opacity-25");
-      };
+        // container
+        container.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          const afterElement = getDragAfterElement(container, e.clientX);
+          const draggable = document.querySelector(".dragging");
+
+          if (afterElement == null) {
+            container.appendChild(draggable);
+          } else {
+            container.insertBefore(draggable, afterElement);
+          }
+        });
+
+        function getDragAfterElement(container, x) {
+          const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
+          return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = x - box.left - box.width / 2;
+            if (offset < 0 && offset > closest.offset) {
+              return {offset: offset, element: child};
+            } else {
+              return closest;
+            }
+          }, {offset: Number.NEGATIVE_INFINITY}).element;
+        }
+      });
       
-      return {fields, fieldsToSort, removeField, resetFields, startDrag, onDrop, dragOver, dragLeave, dragEnd, isDragOver}
+      return {fields, fieldsToSort, removeField}
     }
   }
 </script>
+
+<style scoped>
+  .draggable.dragging {
+    opacity: 0.5;
+    border: 2px solid crimson !important
+  }
+</style>

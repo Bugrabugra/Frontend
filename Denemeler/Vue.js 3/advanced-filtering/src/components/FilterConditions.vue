@@ -135,7 +135,6 @@
       };
 
       const filterQueries = () => {
-        store.commit("setFilter");
         store.dispatch("filterQueries");
       };
 

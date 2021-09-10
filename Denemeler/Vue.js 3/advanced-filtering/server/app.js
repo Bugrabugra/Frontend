@@ -52,7 +52,8 @@ app.get("/ads", async (req, res) => {
   const query = req.query;
   const {filter, skip, limit, sort, projection, population} = aqp(query);
 
-  console.log(filter, skip, limit, sort, projection, population);
+  console.log("filter:", filter);
+  console.log("population:", projection);
 
   // console.log(queryArray);
   const ads = await Ads

@@ -90,9 +90,9 @@
     <!--and or-->
     <div class="flex items-center justify-center text-gray-500 text-xs">
       <button @click="addNewFilter" class="uppercase px-2 py-1 hover:bg-gray-300 transition duration-300 rounded">And</button>
-      <p class="text-gray-400 mx-1">|</p>
+      <!--<p class="text-gray-400 mx-1">|</p>-->
       <!--TODO complete "OR"-->
-      <button class="uppercase px-2 py-1 hover:bg-gray-300 transition duration-300 rounded">Or</button>
+      <!--<button class="uppercase px-2 py-1 hover:bg-gray-300 transition duration-300 rounded">Or</button>-->
     </div>
   </div>
 </template>

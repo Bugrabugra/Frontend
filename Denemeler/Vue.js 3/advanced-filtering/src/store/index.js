@@ -21,10 +21,12 @@ const store = createStore({
     ],
     filter: null,
     filters: [],
-    ads: []
+    fieldsToShow: [],
+    ads: [],
+    response: null
   },
   mutations: {
-    addNewFilter(state, filter) {
+    addNewFilter(state) {
       state.filters.push(
         {
           selectedField: null,
@@ -42,8 +44,11 @@ const store = createStore({
     setAds(state, ads) {
       state.ads = ads;
     },
-    setFilter(state) {
-
+    setFieldsToShow(state, fieldsToShow) {
+      state.fieldsToShow = fieldsToShow;
+    },
+    setResponse(state, data) {
+      state.response = data;
     }
   },
   actions: {
@@ -52,11 +57,16 @@ const store = createStore({
       state.filters.forEach(filter => {
         filterList.push(`${filter.selectedField}${filter.selectedCondition}${filter.selectedValue}`)
       });
-      state.filter = filterList.join("&");
-      console.log(state.filter);
+      const filter = filterList.join("&");
+      console.log(filter);
 
-      const response = await axios.get(`http://localhost:3001/ads?${state.filter}`);
-      console.log(response.data)
+      const fields = state.fieldsToShow.join(",");
+      console.log(fields);
+
+      const response = await axios.get(`http://localhost:3001/ads?${filter}&fields=${fields}`);
+      const data = await response.data;
+      commit("setResponse", data);
+      console.log(data);
     }
   }
 });
