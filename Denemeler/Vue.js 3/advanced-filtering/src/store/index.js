@@ -6,12 +6,12 @@ import axios from "axios";
 const store = createStore({
   state: {
     fields: [
-      {value: "countFloor", name: "Floor Count"},
-      {value: "countRoom", name: "Room Count"},
-      {value: "estateType", name: "Estate Type"},
-      {value: "dateBuilding", name: "Building Date"},
-      {value: "numberFloor", name: "Floor Number"},
-      {value: "tags", name: "Tags"},
+      {id: 0, value: "countFloor", name: "Floor Count"},
+      {id: 1, value: "countRoom", name: "Room Count"},
+      {id: 2, value: "estateType", name: "Estate Type"},
+      {id: 3, value: "dateBuilding", name: "Building Date"},
+      {id: 4, value: "numberFloor", name: "Floor Number"},
+      {id: 5, value: "tags", name: "Tags"},
     ],
     tags: [
       {value: "closeToSea", name: "Close to Sea"},

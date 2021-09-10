@@ -11,13 +11,25 @@
     </h2>
 
     <!--tag list-->
-    <div class="flex items-center justify-between mt-2 border border-gray-400 rounded">
-      <div>
+    <div
+        class="flex items-center justify-between mt-2 border border-gray-400 rounded"
+    >
+      <div
+          @drop="onDrop($event)"
+          @dragenter.prevent
+          @dragover.prevent
+      >
         <!--tags-->
         <div
-            v-for="(field, index) in fields"
+            v-for="(field, index) in fieldsToSort"
             :key="index"
-            class="border border-gray-400 bg-gradient-to-b from-gray-100 to-gray-300 px-1 mx-1 my-1 inline-flex items-center rounded cursor-pointer select-none"
+            :item="field.id"
+            draggable="true"
+            @dragstart="startDrag($event, field.id)"
+            @dragover.prevent="dragOver($event)"
+            @dragleave="dragLeave($event)"
+            @dragend="dragEnd($event)"
+            class="draggable border border-gray-400 bg-gradient-to-b from-gray-100 to-gray-300 px-1 mx-1 my-1 inline-flex items-center rounded cursor-pointer select-none"
         >
           {{field.name}}
           <button class="ml-1" @click="removeField(index)">
@@ -98,6 +110,12 @@
         return field.value !== "tags";
       }));
 
+      const fieldsToSort = ref(store.state.fields.filter(field => {
+        return field.value !== "tags";
+      }));
+
+      const isDragOver = ref(false);
+
       // methods
       const removeField = (index) => {
         fields.value = fields.value.filter(field => {
@@ -111,7 +129,41 @@
         });
       };
 
-      return {fields, removeField, resetFields}
+      const startDrag = (event, id) => {
+        event.dataTransfer.dropEffect = "move";
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("itemId", id);
+        event.target.classList.add("opacity-25");
+      };
+
+      const onDrop = (event) => {
+        const sourceItemId = event.dataTransfer.getData("itemId");
+        const targetItemId = event.target.attributes[0].value;
+
+        const item = fieldsToSort.value[sourceItemId];
+        fieldsToSort.value[sourceItemId] = fieldsToSort.value[targetItemId];
+        fieldsToSort.value[targetItemId] = item;
+        // event.target.classList.remove("border-gray-400");
+        // event.target.classList.remove("border-4");
+      };
+
+      const dragOver = (event) => {
+        // event.target.classList.add("border-gray-400");
+        // event.target.classList.add("border-4");
+      };
+
+      const dragLeave = (event) => {
+        // event.target.classList.remove("border-gray-400");
+        // event.target.classList.remove("border-4");
+        // event.target.classList.add("border");
+        // event.target.classList.add("border-gray-400");
+      };
+
+      const dragEnd = (event) => {
+        event.target.classList.remove("opacity-25");
+      };
+      
+      return {fields, fieldsToSort, removeField, resetFields, startDrag, onDrop, dragOver, dragLeave, dragEnd, isDragOver}
     }
   }
 </script>
