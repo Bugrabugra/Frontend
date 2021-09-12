@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-500 flex items-center justify-center">
-    <div class="w-3/5 h-80 bg-gray-200 shadow-xl">
+    <div class="w-3/5 bg-gray-200 shadow-xl">
       <!--title-->
       <div class="flex justify-between items-center bg-teal-400">
         <p class="pl-4">Select by Attributes</p>
@@ -14,7 +14,7 @@
       <!--main div-->
       <div class="px-4 py-2">
         <!--layer-->
-        <div class="grid grid-cols-6">
+        <div class="grid grid-cols-6 mt-2 gap-y-2">
           <label class="col-span-1" for="select-layer">Layer:</label>
           <select name="select-layer" id="select-layer" class="col-span-5">
             <option value="mahalle">Mahalle</option>
@@ -36,9 +36,15 @@
             <option value="select-from-current">Select from current selection</option>
           </select>
 
+          <FieldList/>
 
+          <div class="col-span-2">
+            <Operators/>
+          </div>
 
-
+          <div class="col-span-4 ml-2">
+            <UniqueValues/>
+          </div>
 
         </div>
       </div>
@@ -47,27 +53,30 @@
 </template>
 
 <script>
-  import {ref} from "vue";
+  import FieldList from "./components/FieldList.vue";
+  import Operators from "./components/Operators.vue";
+  import UniqueValues from "./components/UniqueValues.vue";
 
 
  export default {
+   components: {
+     UniqueValues,
+     Operators,
+     FieldList
+   },
    setup() {
      // references
-     const fields = ref([
-       {name: "ObjectId", value: "OBJECTID"},
-       {name: "İl no", value: "ABS_IL_NO"},
-       {name: "İlçe no", value: "ABS_ILCE_NO"},
-       {name: "Mahalle no", value: "ABS_MAHALLE_NO"},
-       {name: "İl no", value: "ABS_IL_NO"},
-       {name: "İlçe no", value: "ABS_ILCE_NO"},
-       {name: "Mahalle no", value: "ABS_MAHALLE_NO"},
-     ]);
 
-     return {fields}
+
+     return {}
    }
  }
 </script>
 
 <style>
-
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 </style>
