@@ -13,14 +13,25 @@
 
       <!--main div-->
       <div class="px-4 py-2">
-        <!--layer-->
         <div class="grid grid-cols-6 mt-2 gap-y-2">
+          <!--layer combo-->
           <label class="col-span-1" for="select-layer">Layer:</label>
-          <select name="select-layer" id="select-layer" class="col-span-5">
-            <option value="mahalle">Mahalle</option>
-            <option value="bina">Bina</option>
+          <select
+              v-model="selectedLayer"
+              name="select-layer"
+              id="select-layer"
+              class="col-span-5 border border-gray-400 hover:bg-blue-100 transition duration-500"
+          >
+            <option
+                v-for="layer in layers"
+                :key="layer.value"
+                :value="layer.value"
+            >
+              {{layer.name}}
+            </option>
           </select>
 
+          <!--checkbox-->
           <div class="flex col-span-5 col-start-2 items-center">
             <input type="checkbox" id="check-selectable-layer">
             <label class="ml-1" for="check-selectable-layer">
@@ -28,24 +39,59 @@
             </label>
           </div>
 
+          <!--method-->
           <label class="col-span-1" for="select-method">Method:</label>
-          <select name="select-method" id="select-method" class="col-span-5">
+          <select
+              name="select-method"
+              id="select-method"
+              class="col-span-5 border border-gray-400 hover:bg-blue-100 transition duration-500"
+          >
             <option value="new">Create a new selection</option>
             <option value="add-current">Add to current selection</option>
             <option value="remove-current">Remove from current selection</option>
             <option value="select-from-current">Select from current selection</option>
           </select>
 
-          <FieldList/>
+          <!--field list-->
+          <div class="col-span-6">
+            <FieldList/>
+          </div>
 
+          <!--operators-->
           <div class="col-span-2">
             <Operators/>
           </div>
 
+          <!--unique values-->
           <div class="col-span-4 ml-2">
             <UniqueValues/>
           </div>
 
+          <!--query text-->
+          <div class="col-span-6">
+            <p>SELECT * FROM {{truncatedSelectedLayer}} WHERE:</p>
+          </div>
+
+          <!--query-->
+          <div class="col-span-6">
+            <QueryTextArea/>
+          </div>
+
+          <!--query menu buttons-->
+          <div class="col-span-6 flex space-x-2 border-b border-gray-400 -mt-2 pb-3">
+            <button @click="clearQuery" class="button flex-1 py-0">Clear</button>
+            <button class="button flex-1 py-0">Verify</button>
+            <button class="button flex-1 py-0">Help</button>
+            <button class="button flex-1 py-0">Load...</button>
+            <button class="button flex-1 py-0">Save...</button>
+          </div>
+
+          <!--command buttons-->
+          <div class="col-span-6 flex justify-end space-x-3 pt-1">
+            <button class="button w-20">OK</button>
+            <button class="button w-20">Apply</button>
+            <button class="button w-20">Close</button>
+          </div>
         </div>
       </div>
     </div>
@@ -56,19 +102,44 @@
   import FieldList from "./components/FieldList.vue";
   import Operators from "./components/Operators.vue";
   import UniqueValues from "./components/UniqueValues.vue";
+  import QueryTextArea from "./components/QueryTextArea.vue";
+  import {ref, computed} from "vue";
+  import {useStore} from "vuex";
 
 
  export default {
    components: {
+     QueryTextArea,
      UniqueValues,
      Operators,
      FieldList
    },
    setup() {
+     // store
+     const store = useStore();
+
+     // computed
+     const truncatedSelectedLayer = computed(() => {
+       if (selectedLayer.value && selectedLayer.value.length > 30) {
+         return selectedLayer.value.substring(0, 18) + "...";
+       } else {
+         return selectedLayer.value;
+       }
+     });
+
      // references
+     const selectedLayer = ref(null);
+     const layers = ref([
+       {name: "Mahalle", value: "ABS_MAHALLE_Mmmjfhfmmmmmmmmmmmmmmmmmmmm"},
+       {name: "Bina", value: "ABS_BINA_M"}
+     ]);
 
+     // methods
+     const clearQuery = () => {
+       store.commit("setQuery", "");
+     };
 
-     return {}
+     return {layers, selectedLayer, truncatedSelectedLayer, clearQuery}
    }
  }
 </script>

@@ -15,14 +15,14 @@
     <!--button and input-->
     <div class="row-span-1">
       <div class="grid grid-cols-6 gap-x-1 min-h-full">
-        <button class="col-span-3 text-xs bg-gray-300 px-1 py-1 border border-gray-400 hover:border-blue-400 hover:bg-blue-100 transition duration-500">
+        <button class="col-span-3 button text-xs">
           Get Unique Values
         </button>
         <div class="col-span-3 grid grid-cols-3 flex items-center justify-center">
           <label class="col-span-1 text-xs" for="input-unique-value">
             Go To:
           </label>
-          <input class="col-span-2" type="text" id="input-unique-value">
+          <input class="col-span-2 outline-none px-1" type="text" id="input-unique-value">
         </div>
       </div>
     </div>

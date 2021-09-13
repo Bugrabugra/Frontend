@@ -8,7 +8,8 @@
     "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/assets/css/styles.css --watch"
   },
   "dependencies": {
-    "vue": "^3.2.6"
+    "vue": "^3.2.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.6.1",

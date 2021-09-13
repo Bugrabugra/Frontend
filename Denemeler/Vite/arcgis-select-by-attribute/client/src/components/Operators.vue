@@ -1,7 +1,8 @@
 <template>
   <div class="grid grid-cols-6 gap-2">
     <button
-        class="bg-gray-300 px-1 py-1 border border-gray-400 hover:border-blue-400 hover:bg-blue-100 transition duration-500"
+        @click="addToQuery(operator.value)"
+        class="button"
         v-for="operator in operators"
         :class="{'col-span-2': !operator.small, 'col-span-1': operator.small, 'px-0': operator.small}"
     >
@@ -12,11 +13,15 @@
 
 <script>
   import {ref} from "vue";
+  import {useStore} from "vuex";
 
 
   export default {
     name: "Operators",
     setup() {
+      // store
+      const store = useStore();
+
       // references
       const operators = ref([
         {value: "="},
@@ -37,7 +42,12 @@
         {value: "Null"}
       ]);
 
-      return {operators}
+      // methods
+      const addToQuery = (operator) => {
+        store.commit("updateQuery", operator);
+      }
+
+      return {operators, addToQuery}
     }
   }
 </script>

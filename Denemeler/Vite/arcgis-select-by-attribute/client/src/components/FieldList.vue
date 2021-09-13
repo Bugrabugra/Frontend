@@ -1,7 +1,8 @@
 <template>
-  <div class="bg-white col-span-6 mt-2 h-32 border border-gray-400 overflow-scroll overflow-x-hidden">
+  <div class="bg-white mt-2 h-32 border border-gray-400 overflow-scroll overflow-x-hidden">
     <ul>
       <li
+          @click="addToQuery(field.value)"
           class="px-2 py-1 border border-gray-100 hover:bg-blue-100 transition duration-300 cursor-pointer"
           v-for="field in fields"
       >
@@ -13,11 +14,15 @@
 
 <script>
   import {ref} from "vue";
+  import {useStore} from "vuex";
 
 
   export default {
     name: "FieldList",
     setup() {
+      // store
+      const store = useStore();
+
       // references
       const fields = ref([
         {name: "ObjectId", value: "OBJECTID"},
@@ -29,7 +34,12 @@
         {name: "Mahalle no", value: "ABS_MAHALLE_NO"},
       ]);
 
-      return {fields}
+      // methods
+      const addToQuery = (field) => {
+        store.commit("updateQuery", field);
+      }
+
+      return {fields, addToQuery}
     }
   }
 </script>
