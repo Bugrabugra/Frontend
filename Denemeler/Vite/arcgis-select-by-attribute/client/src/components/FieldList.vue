@@ -2,18 +2,20 @@
   <div class="bg-white mt-2 h-32 border border-gray-400 overflow-scroll overflow-x-hidden">
     <ul>
       <li
-          @click="addToQuery(field.value)"
-          class="px-2 py-1 border border-gray-100 hover:bg-blue-100 transition duration-300 cursor-pointer"
-          v-for="field in fields"
+          @click="highlight(field, index)"
+          @dblclick="addToQuery(field, index)"
+          class="px-2 py-1 select-none border border-gray-100 hover:bg-blue-100 transition duration-300 cursor-pointer"
+          v-for="(field, index) in fields"
+          :class="{'bg-blue-400': index === clickedField}"
       >
-        {{field.name}}
+        {{field}}
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-  import {ref} from "vue";
+  import {ref, computed} from "vue";
   import {useStore} from "vuex";
 
 
@@ -24,22 +26,24 @@
       const store = useStore();
 
       // references
-      const fields = ref([
-        {name: "ObjectId", value: "OBJECTID"},
-        {name: "İl no", value: "ABS_IL_NO"},
-        {name: "İlçe no", value: "ABS_ILCE_NO"},
-        {name: "Mahalle no", value: "ABS_MAHALLE_NO"},
-        {name: "İl no", value: "ABS_IL_NO"},
-        {name: "İlçe no", value: "ABS_ILCE_NO"},
-        {name: "Mahalle no", value: "ABS_MAHALLE_NO"},
-      ]);
+      const clickedField = ref(null);
+
+      // computed
+      const fields = computed(() => {
+        return store.state.fields;
+      });
 
       // methods
       const addToQuery = (field) => {
         store.commit("updateQuery", field);
-      }
+      };
 
-      return {fields, addToQuery}
+      const highlight = (field, index) => {
+        clickedField.value = index;
+        store.commit("setClickedField", field)
+      };
+
+      return {fields, clickedField, highlight, addToQuery}
     }
   }
 </script>

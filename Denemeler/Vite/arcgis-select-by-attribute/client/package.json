@@ -8,6 +8,8 @@
     "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/assets/css/styles.css --watch"
   },
   "dependencies": {
+    "axios": "^0.21.4",
+    "leaflet": "^1.7.1",
     "vue": "^3.2.6",
     "vuex": "^4.0.2"
   },
