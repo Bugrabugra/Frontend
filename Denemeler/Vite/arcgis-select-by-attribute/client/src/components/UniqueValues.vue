@@ -4,7 +4,7 @@
     <div class="row-span-5 h-0 min-h-full bg-white border border-gray-400 overflow-y-auto overflow-x-hidden">
       <ul>
         <li
-            @click="addToQuery(uniqueValue)"
+            @dblclick="addToQuery(uniqueValue)"
             class="px-2 py-1 border border-gray-200 hover:bg-blue-100 transition duration-300 cursor-pointer"
             v-for="uniqueValue in uniqueValues"
         >

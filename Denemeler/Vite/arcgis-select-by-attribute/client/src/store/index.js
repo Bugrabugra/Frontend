@@ -14,7 +14,7 @@ const store = createStore({
     query: null,
     result: null,
     uniqueValues: null,
-    features: []
+    features: {}
   },
   getters: {
     getFeatures(state) {
@@ -52,7 +52,10 @@ const store = createStore({
       state.uniqueValues = values;
     },
     setFeatures(state, payload) {
-      state.features[payload.layerName] = payload.features;
+      const obj = {}
+      const _key = payload.layerName;
+      obj[_key] = payload.features;
+      state.features = {...state.features, ...obj}
     }
   },
   actions: {
@@ -66,7 +69,6 @@ const store = createStore({
             }
           });
         const response = await request.data;
-        // commit("setFeatures", {layerName: layer.value, features: response});
 
         const featuresArray = [];
         response.forEach(feature => {
