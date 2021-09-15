@@ -14,6 +14,10 @@
       // store
       const store = useStore();
 
+      // references
+      const buildings = ref(null);
+      const neighborhoods = ref(null);
+
       // computed
       const layers = computed(() => {
         return store.state.layers;
@@ -28,7 +32,7 @@
       let map = null
 
       // methods
-      const initMap = () => {
+      const initMap = async () => {
         // myMap.value = L.map("map");
         map = L.map("map");
         // myMap.value.setView([41, 29.040], 15);
@@ -38,42 +42,28 @@
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // layers.value.forEach(async (l) => {
-        //   layerList[l.value] = L.geoJSON(null, {
-        //     style: (feature) => {
-        //       return l.value === 'bina' ? { color: 'red'} : {color: 'blue'};
-        //     },
-        //     onEachFeature: (feature, layer) => {
-        //       let popup = ``
-        //       Object.keys(feature.properties).forEach(key => {
-        //         popup += `<p><span class="font-extrabold">${key}:</span> ${feature.properties[key]}</p>`
-        //       });
-        //       layer.bindPopup(popup);
-        //     }
-        //   }).addTo(map);
-        //   layerList[l.value].addData(await getFeatures(l.value));
-        // });
-        //
-        // const overlays = {};
-        //
-        // Object.keys(layerList).forEach(key => {
-        //   overlays[key] = layerList[key];
-        // })
-        //
-        // L.control.layers(null, overlays).addTo(map);
+        const createGeoJSON = async (layerName, color) => {
+          return L.geoJSON(await getFeatures(layerName), {
+            style: (feature) => {
+              return {color: color};
+            },
+            onEachFeature: (feature, layer) => {
+              let popup = ``
+              Object.keys(feature.properties).forEach(key => {
+                popup += `<p><span class="font-extrabold">${key}:</span> ${feature.properties[key]}</p>`
+              });
+              layer.bindPopup(popup);
+            }
+          }).addTo(map);
+        }
 
-        layers.value.forEach(lay => {
-          getFeatures(lay.name);
-        });
+        neighborhoods.value = await createGeoJSON("mahalle", "purple");
+        buildings.value = await createGeoJSON("bina", "black");
 
-        const overlays = {};
-
-        Object.keys(featuresCollectionArray).forEach(key => {
-          console.log(key);
-          overlays[key] = featuresCollectionArray[key];
-        })
-
-        L.control.layers(null, overlays).addTo(map);
+        L.control.layers(null, {
+          "Bina": buildings.value,
+          "Mahalle": neighborhoods.value
+        }).addTo(map);
       };
 
       const getFeatures = async (layerName) => {
@@ -105,22 +95,7 @@
           featureCollection.push(geoFeature);
         });
 
-        featuresCollectionArray[layerName] = {type: "FeatureCollection", features: featureCollection};
-
-        L.geoJSON(featuresCollectionArray[layerName], {
-          style: (feature) => {
-            return layerName === "Bina" ? {color: 'green'} : {color: 'blue'};
-          },
-          onEachFeature: (feature, layer) => {
-            let popup = ``
-            Object.keys(feature.properties).forEach(key => {
-              popup += `<p><span class="font-extrabold">${key}:</span> ${feature.properties[key]}</p>`
-            });
-            layer.bindPopup(popup);
-          }
-        }).addTo(map);
-
-        map.eachLayer(l => console.log(l))
+        return {type: "FeatureCollection", features: featureCollection};
       };
 
       // mounted
@@ -129,15 +104,30 @@
       });
 
       // watch
-      watch(queryResult, value => {
-        console.log(store.state.layer, value);
-        // layerList[store.state.layer].setStyle({
-        //   fillOpacity: 0.5
-        // });
-        console.log(layerList[store.state.layer])
-        layerList[store.state.layer].eachLayer(layer => {
+      watch(queryResult, change => {
+        const result = Object.values(change).map(val => {
+          return val.id
+        });
 
-        })
+        if (store.state.layer === "bina") {
+          buildings.value.eachLayer(layer => {
+            layer.setStyle({color: "black", fillColor: "black", fillOpacity: 0.2})
+            if (result.includes(layer.feature.properties.id)) {
+              layer.setStyle({color: "#42f5e9", fillColor: "#42f5e9", fillOpacity: 0.5})
+            }
+          })
+        }
+
+        if (store.state.layer === "mahalle") {
+          neighborhoods.value.eachLayer(layer => {
+            layer.setStyle({color: "purple", fillColor: "purple", fillOpacity: 0.2})
+            if (result.includes(layer.feature.properties.id)) {
+              layer.setStyle({color: "#42f5e9", fillColor: "#42f5e9", fillOpacity: 0.5})
+            }
+          })
+        };
+
+
 
       });
 

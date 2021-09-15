@@ -14,7 +14,8 @@ const store = createStore({
     query: null,
     result: null,
     uniqueValues: null,
-    features: {}
+    features: {},
+    error: false
   },
   getters: {
     getFeatures(state) {
@@ -51,40 +52,11 @@ const store = createStore({
     setUniqueValues(state, values) {
       state.uniqueValues = values;
     },
-    setFeatures(state, payload) {
-      const obj = {}
-      const _key = payload.layerName;
-      obj[_key] = payload.features;
-      state.features = {...state.features, ...obj}
+    setError(state, payload) {
+      state.error = payload;
     }
   },
   actions: {
-    getFeatures({state, commit}) {
-      state.layers.forEach(async (layer) => {
-        const request = await axios.post(
-          "http://localhost:3001/layer",
-          null,
-          { params: {
-              layer: layer.value,
-            }
-          });
-        const response = await request.data;
-
-        const featuresArray = [];
-        response.forEach(feature => {
-          const geo = {
-            type: "Feature",
-            properties: {"party": "Republican"},
-            geometry: {
-              type: JSON.parse(feature.geometry).type,
-              coordinates: JSON.parse(feature.geometry).coordinates
-            }
-          }
-          featuresArray.push(geo);
-        })
-        commit("setFeatures", {layerName: layer.name, features: featuresArray});
-      });
-    },
     async query({state, commit}) {
       const request = await axios.post(
         "http://localhost:3001/layer",
@@ -94,6 +66,10 @@ const store = createStore({
             filter: state.query
           }
         });
+
+      if (request.data.name === "error") {
+        commit("setError", true);
+      }
       const response = await request.data;
       commit("setResult", response);
       console.log(state.result)

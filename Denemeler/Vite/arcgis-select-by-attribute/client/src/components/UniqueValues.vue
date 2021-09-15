@@ -6,9 +6,9 @@
         <li
             @dblclick="addToQuery(uniqueValue)"
             class="px-2 py-1 border border-gray-200 hover:bg-blue-100 transition duration-300 cursor-pointer"
-            v-for="uniqueValue in uniqueValues"
+            v-for="uniqueValue in filteredUniqueValues"
         >
-          {{uniqueValue}}
+          {{uniqueValue }}
         </li>
       </ul>
     </div>
@@ -23,7 +23,7 @@
           <label class="col-span-1 text-xs" for="input-unique-value">
             Go To:
           </label>
-          <input class="col-span-2 outline-none px-1" type="text" id="input-unique-value">
+          <input v-model="goTo" class="col-span-2 outline-none px-1" type="text" id="input-unique-value">
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import {computed} from "vue";
+  import {ref, computed} from "vue";
   import {useStore} from "vuex";
 
 
@@ -41,10 +41,23 @@
       // store
       const store = useStore();
 
+      // references
+      const goTo = ref("");
+
       // computed
       const uniqueValues = computed(() => {
         return store.state.uniqueValues;
       });
+
+      console.log(uniqueValues)
+
+      const filteredUniqueValues = computed(() => {
+        if (uniqueValues.value) {
+          return uniqueValues.value.filter(uv => {
+            return String(uv).includes(goTo.value)
+          })
+        }
+      })
 
       // methods
       const getUniqueValues = () => {
@@ -55,7 +68,7 @@
         store.commit("updateQuery", field);
       };
 
-      return {uniqueValues, addToQuery, getUniqueValues}
+      return {goTo, uniqueValues, filteredUniqueValues, addToQuery, getUniqueValues}
     }
   }
 </script>

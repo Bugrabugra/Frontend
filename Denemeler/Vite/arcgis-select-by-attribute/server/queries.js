@@ -16,9 +16,10 @@ const getFeatures = (req, res) => {
 
   pool.query(filter ? `select ST_AsGeoJSON(geom) as geometry, * from ${layer} where ${filter}` : `select ST_AsGeoJSON(geom) as geometry, * from ${layer}`, (error, result) => {
     if (error) {
-      throw error
+      res.send(error);
+    } else {
+      res.send(result.rows)
     }
-    res.send(result.rows)
   })
 };
 

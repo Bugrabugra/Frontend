@@ -1,13 +1,17 @@
 <template>
-  <div class="min-h-screen bg-gray-500 flex items-center justify-center">
+  <Error v-if="error"/>
+
+  <div class="z-10 min-h-screen bg-gray-500 flex items-center justify-center">
     <div class="flex w-2/3 justify-center items-center space-x-10 relative">
+      <!--select component-->
       <div class="w-1/3 bg-gray-200 shadow-xl rounded-lg">
         <!--title-->
         <div class="flex justify-between items-center bg-teal-400 rounded-t-lg">
           <p class="pl-4">Select by Attributes</p>
           <button class="px-2 py-2 hover:bg-red-500 transition duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
         </div>
@@ -82,7 +86,7 @@
             <!--query menu buttons-->
             <div class="col-span-6 flex space-x-2 border-b border-gray-400 -mt-2 pb-3">
               <button @click="clearQuery" class="button flex-1 py-0">Clear</button>
-              <button class="button flex-1 py-0">Verify</button>
+              <button @click="verify" class="button flex-1 py-0">Verify</button>
               <button class="button flex-1 py-0">Help</button>
               <button class="button flex-1 py-0">Load...</button>
               <button class="button flex-1 py-0">Save...</button>
@@ -98,7 +102,8 @@
         </div>
       </div>
 
-      <div class="w-2/3 bg-gray-200 shadow-xl">
+      <!--map-->
+      <div class="z-10 w-2/3 bg-gray-200 shadow-xl">
         <Map class="absolute top-0 bottom-0 right-0 w-2/3 rounded-lg"/>
       </div>
     </div>
@@ -112,55 +117,73 @@
   import UniqueValues from "./components/UniqueValues.vue";
   import QueryTextArea from "./components/QueryTextArea.vue";
   import Map from "./components/Map.vue";
-  import {ref, computed} from "vue";
+  import Error from "./components/Error.vue";
+  import {computed, ref} from "vue";
   import {useStore} from "vuex";
-  import axios from "axios";
 
 
- export default {
-   components: {
-     Map,
-     QueryTextArea,
-     UniqueValues,
-     Operators,
-     FieldList
-   },
-   setup() {
-     // store
-     const store = useStore();
+  export default {
+    components: {
+      Error,
+      Map,
+      QueryTextArea,
+      UniqueValues,
+      Operators,
+      FieldList
+    },
+    setup() {
+      // store
+      const store = useStore();
 
-     // references
-     const selectedLayer = ref(null);
-     const layers = computed(() => {
-       return store.state.layers;
-     });
+      // references
+      const selectedLayer = ref(null);
+      const layers = computed(() => {
+        return store.state.layers;
+      });
 
-     // computed
-     const truncatedSelectedLayer = computed(() => {
-       if (selectedLayer.value && selectedLayer.value.length > 30) {
-         return selectedLayer.value.substring(0, 18) + "...";
-       } else {
-         return selectedLayer.value;
-       }
-     });
+      // computed
+      const truncatedSelectedLayer = computed(() => {
+        if (selectedLayer.value && selectedLayer.value.length > 30) {
+          return selectedLayer.value.substring(0, 18) + "...";
+        } else {
+          return selectedLayer.value;
+        }
+      });
 
-     // methods
-     const setLayer = () => {
-       store.commit("setLayer", selectedLayer.value);
-       store.dispatch("getFields");
-     };
+      const error = computed(() => {
+        return store.state.error
+      });
 
-     const queryLayer = () => {
-       store.dispatch("query");
-     };
+      // methods
+      const setLayer = () => {
+        store.commit("setLayer", selectedLayer.value);
+        store.dispatch("getFields");
+      };
 
-     const clearQuery = () => {
-       store.commit("setQuery", "");
-     };
+      const queryLayer = () => {
+        store.dispatch("query");
+      };
 
-     return {layers, setLayer, queryLayer, selectedLayer, truncatedSelectedLayer, clearQuery}
-   }
- }
+      const clearQuery = () => {
+        store.commit("setQuery", "");
+      };
+
+      const verify = () => {
+
+      }
+
+      return {
+        layers,
+        setLayer,
+        verify,
+        queryLayer,
+        selectedLayer,
+        truncatedSelectedLayer,
+        clearQuery,
+        error
+      }
+    }
+  }
 </script>
 
 <style>
