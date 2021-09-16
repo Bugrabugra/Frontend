@@ -67,12 +67,15 @@
       };
 
       const getFeatures = async (layerName) => {
-        const response = await axios.post(`http://localhost:3001/layer`, null, {
+        const response = await axios.get(`http://localhost:3001/layer`, {
           params: {
             layer: layerName
           }
         });
         const data = await response.data;
+        console.log(data)
+        
+        
 
         const featureCollection = [];
         data.forEach(feature => {

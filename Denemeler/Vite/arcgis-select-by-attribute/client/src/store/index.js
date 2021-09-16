@@ -58,12 +58,12 @@ const store = createStore({
   },
   actions: {
     async query({state, commit}) {
-      const request = await axios.post(
+      const request = await axios.get(
         "http://localhost:3001/layer",
-        null,
-        { params: {
+        { 
+          params: {
             layer: state.layer,
-            filter: state.query
+            filter: encodeURIComponent(state.query)
           }
         });
 
@@ -75,10 +75,10 @@ const store = createStore({
       console.log(state.result)
     },
     async getFields({state, commit}) {
-      const request = await axios.post(
+      const request = await axios.get(
         "http://localhost:3001/fields",
-        null,
-        { params: {
+        { 
+          params: {
             layer: state.layer,
           }
         });
@@ -87,10 +87,10 @@ const store = createStore({
       commit("setFields", fields);
     },
     async getUniqueValues({state, commit}) {
-      const request = await axios.post(
+      const request = await axios.get(
         "http://localhost:3001/unique",
-        null,
-        { params: {
+        { 
+          params: {
             layer: state.layer,
             field: state.field
           }
