@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const pg = require("pg");
 const queries = require("./queries");
 
 const app = express();
