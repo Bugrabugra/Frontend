@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="min-h-screen flex justify-center items-center bg-gradient-to-br from-indigo-500 to-indigo-800">
+      <!--flip clock container-->
+      <div class="relative border-8 border-yellow-100 rounded shadow-2xl font-mono text-9xl text-white grid grid-cols-2">
+        <!--stand-->
+        <div class="absolute inset-x-0 -bottom-5 mx-auto flex justify-center">
+          <div class="w-3/4 bg-yellow-100 h-5 rounded">
+
+          </div>
+        </div>
+
+        <!--left side-->
+        <div class="relative bg-black p-8">
+
+          <!--background grid of black squares-->
+          <div class="absolute inset-0 grid grid-rows-2">
+            <div class="bg-gradient-to-br from-gray-800 to-black"></div>
+            <div class="bg-gradient-to-br from-gray-700 to-black"></div>
+          </div>
+
+          <!--time numbers-->
+          <span class="relative">05</span>
+          <!--line across the middle-->
+          <div class="absolute inset-0 flex items-center">
+            <div class="h-px w-full bg-black"></div>
+          </div>
+        </div>
+
+        <!--right side-->
+        <div class="relative bg-black p-8">
+          <!--background grid of black squares-->
+          <div class="absolute inset-0 grid grid-rows-2">
+            <div class="bg-gradient-to-br from-gray-800 to-black"></div>
+            <div class="bg-gradient-to-br from-gray-700 to-black"></div>
+          </div>
+          <!--time numbers-->
+          <span class="relative">47</span>
+          <!--line across the middle-->
+          <div class="absolute inset-0 flex items-center">
+            <div class="h-px w-full bg-black"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

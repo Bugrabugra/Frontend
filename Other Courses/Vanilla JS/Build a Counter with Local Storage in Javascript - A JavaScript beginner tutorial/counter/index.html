@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+      <h1>Counter</h1>
+      <p>A simple counting web app</p>
+      <div class="counter">
+        <div class="counter-value">0</div>
+        <div class="counter-controls">
+          <button data-action="decrease">
+            <span>Decrease</span>
+          </button>
+
+          <button data-action="reset">
+            <span>Reset</span>
+          </button>
+
+          <button data-action="increase">
+            <span>Increase</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="save">
+        <button data-action="save">
+          <span>Save</span>
+        </button>
+
+        <button data-action="load">
+          <span>Load</span>
+        </button>
+
+        <button data-action="clear">
+          <span>Clear</span>
+        </button>
+      </div>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

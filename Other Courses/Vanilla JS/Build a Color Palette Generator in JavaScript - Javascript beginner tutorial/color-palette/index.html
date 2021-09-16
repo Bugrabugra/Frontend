@@ -4,10 +4,62 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Color Generator</title>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div id="app"></div>
+    <main>
+      <h1>Color Generator</h1>
+      <p>Press [
+        <button class="generator-button">
+          Space
+        </button>
+         ] to generate a new colour palette.
+      </p>
+
+      <h4>Generator</h4>
+      <div class="colours">
+        <div class="colour">
+          <button class="lock-toggle">
+            <img src="icons/lock-open.svg" />
+          </button>
+          <input type="text" class="colour-input" value="#000000">
+          <button class="copy-hex">
+            Copy
+          </button>
+        </div>
+
+        <div class="colour">
+          <button class="lock-toggle">
+            <img src="icons/lock-open.svg" />
+          </button>
+          <input type="text" class="colour-input" value="#000000">
+          <button class="copy-hex">
+            Copy
+          </button>
+        </div>
+
+        <div class="colour">
+          <button class="lock-toggle">
+            <img src="icons/lock-open.svg" />
+          </button>
+          <input type="text" class="colour-input" value="#000000">
+          <button class="copy-hex">
+            Copy
+          </button>
+        </div>
+
+        <div class="colour">
+          <button class="lock-toggle">
+            <img src="icons/lock-open.svg" />
+          </button>
+          <input type="text" class="colour-input" value="#000000">
+          <button class="copy-hex">
+            Copy
+          </button>
+        </div>
+      </div>
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
