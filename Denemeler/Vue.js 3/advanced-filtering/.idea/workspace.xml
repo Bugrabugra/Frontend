@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d5cf00-bd18-40d9-92e3-e4b1965f1ee2" name="Default Changelist" comment="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express (Draggable çalışan)">
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/.idea/Tailwind CSS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="66d5cf00-bd18-40d9-92e3-e4b1965f1ee2" name="Default Changelist" comment="17092021&#10;1- Nihayet upgrade!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +61,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Vue template" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -101,6 +94,7 @@
       <workItem from="1631252154503" duration="19381000" />
       <workItem from="1631829384058" duration="250000" />
       <workItem from="1631829650300" duration="323000" />
+      <workItem from="1631831138106" duration="367000" />
     </task>
     <task id="LOCAL-00001" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
       <created>1631119178978</created>
@@ -130,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631252579756</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="17092021&#10;1- Nihayet upgrade!">
+      <created>1631831329370</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631831329370</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +155,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express" />
     <MESSAGE value="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express (Draggable çalışan)" />
-    <option name="LAST_COMMIT_MESSAGE" value="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express (Draggable çalışan)" />
+    <MESSAGE value="17092021&#10;1- Nihayet upgrade!" />
+    <option name="LAST_COMMIT_MESSAGE" value="17092021&#10;1- Nihayet upgrade!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
