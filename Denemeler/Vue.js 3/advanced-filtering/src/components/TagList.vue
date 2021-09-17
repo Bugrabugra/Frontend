@@ -28,15 +28,11 @@
 
 <script>
   import {ref} from "vue";
-  import {useStore} from "vuex";
 
 
   export default {
     name: "TagList",
     setup(_, {emit}) {
-      // store
-      const store = useStore();
-
       // references
       const stringTag = ref("");
       const tagList = ref([]);

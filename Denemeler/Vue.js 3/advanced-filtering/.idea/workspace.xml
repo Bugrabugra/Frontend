@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d5cf00-bd18-40d9-92e3-e4b1965f1ee2" name="Default Changelist" comment="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express (Draggable çalışan)">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Bugra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FieldsToShow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FieldsToShow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilterConditions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterConditions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Results.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Results.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="66d5cf00-bd18-40d9-92e3-e4b1965f1ee2" name="Default Changelist" comment="17092021&#10;1- Nihayet upgrade!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,12 +54,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Other Courses/CSS/SASS Tutorial (build your own CSS library)/complete-sass-tutorial" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.16.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.20.25" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Other Courses/CSS/Tailwind CSS/Building Card Components with Tailwind CSS/card" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -77,6 +71,7 @@
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Vue.js 3\advanced-filtering\src" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -97,6 +92,9 @@
       <workItem from="1631201228565" duration="3870000" />
       <workItem from="1631223889054" duration="4094000" />
       <workItem from="1631252154503" duration="19381000" />
+      <workItem from="1631829384058" duration="250000" />
+      <workItem from="1631829650300" duration="323000" />
+      <workItem from="1631831138106" duration="367000" />
     </task>
     <task id="LOCAL-00001" summary="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express">
       <created>1631119178978</created>
@@ -126,11 +124,18 @@
       <option name="project" value="LOCAL" />
       <updated>1631252579756</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="17092021&#10;1- Nihayet upgrade!">
+      <created>1631831329370</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631831329370</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -150,48 +155,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express" />
     <MESSAGE value="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express (Draggable çalışan)" />
-    <option name="LAST_COMMIT_MESSAGE" value="08092021&#10;1- Vue 3, Tailwind CSS, Mongoose, Express (Draggable çalışan)" />
+    <MESSAGE value="17092021&#10;1- Nihayet upgrade!" />
+    <option name="LAST_COMMIT_MESSAGE" value="17092021&#10;1- Nihayet upgrade!" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="740" y="274" width="615" height="491" key="FileChooserDialogImpl" timestamp="1631276958410">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" width="615" height="491" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631276958410" />
-    <state width="1132" height="281" key="GridCell.Tab.0.bottom" timestamp="1630945727484">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1132" height="281" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1630945727484" />
-    <state width="1132" height="281" key="GridCell.Tab.0.center" timestamp="1630945727484">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1132" height="281" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1630945727484" />
-    <state width="1132" height="281" key="GridCell.Tab.0.left" timestamp="1630945727483">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1132" height="281" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1630945727483" />
-    <state width="1132" height="281" key="GridCell.Tab.0.right" timestamp="1630945727484">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1132" height="281" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1630945727484" />
-    <state x="86" y="168" key="SettingsEditor" timestamp="1631114923684">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="86" y="168" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631114923684" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1631258084931">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631258084931" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1631252581605">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631252581605" />
-    <state x="667" y="255" width="585" height="530" key="find.popup" timestamp="1631029262800">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="667" y="255" width="585" height="530" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631029262800" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1631269720485">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631269720485" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
