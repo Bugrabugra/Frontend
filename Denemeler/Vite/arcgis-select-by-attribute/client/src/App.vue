@@ -86,7 +86,7 @@
             <!--query menu buttons-->
             <div class="col-span-6 flex space-x-2 border-b border-gray-400 -mt-2 pb-3">
               <button @click="clearQuery" class="button flex-1 py-0">Clear</button>
-              <button @click="verify" class="button flex-1 py-0">Verify</button>
+              <button class="button flex-1 py-0">Verify</button>
               <button class="button flex-1 py-0">Help</button>
               <button class="button flex-1 py-0">Load...</button>
               <button class="button flex-1 py-0">Save...</button>
