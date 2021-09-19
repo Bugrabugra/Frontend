@@ -35,7 +35,7 @@ const getFeatures = (req, res) => {
   )
 };
 
-const getField = (req, res) => {
+const getFields = (req, res) => {
   const layer = req.query.layer;
 
   pool.query(`select column_name from information_schema.columns where table_name = '${layer}'`, (error, result) => {
@@ -61,5 +61,5 @@ const getUniqueValues = (req, res) => {
 module.exports = {
   getUniqueValues,
   getFeatures,
-  getField
+  getFields
 }

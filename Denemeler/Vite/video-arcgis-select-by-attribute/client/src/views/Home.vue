@@ -1,9 +1,9 @@
 <template>
+  <Error v-if="error"/>
   <div class="z-10 min-h-screen bg-gray-500 flex items-center justify-center">
-    <div class="flex w-2/3 justify-center items-center">
+    <div class="flex w-2/3 justify-center items-center space-x-10 relative">
       <!--select component-->
-      <!--TODO w-1/3-->
-      <div class="bg-gray-200 shadow-xl rounded-lg">
+      <div class="w-1/3 bg-gray-200 shadow-xl rounded-lg">
         <!--title-->
         <div class="flex justify-between items-center bg-teal-400 rounded-t-lg">
           <p class="pl-4">Select by Attributes</p>
@@ -19,16 +19,15 @@
           <div class="grid grid-cols-6 mt-2 gap-y-2">
             <!--layer combobox-->
             <label for="select-layer" id="select-layer" class="col-span-1">Layer:</label>
-            <!--TODO @change v-model-->
             <select
+                @change="setLayer"
                 id="select-layer"
                 class="col-span-5 border border-gray-400 hover:bg-blue-100 transition duration-500"
                 v-model="selectedLayer"
             >
-              <!--TODO option-->
               <option
-                  v-for="layer in layers"
-                  :key="layer.value"
+                  v-for="(layer, index) in layers"
+                  :key="index"
                   :value="layer.value"
               >
                 {{layer.name}}
@@ -43,7 +42,6 @@
               </label>
             </div>
 
-            deneme yapalım
             <!--method combobox-->
             <label for="select-method" id="select-method" class="col-span-1">
               Method:
@@ -60,34 +58,33 @@
 
             <!--field list-->
             <div class="col-span-6">
-
+              <FieldList/>
             </div>
 
             <!--operators-->
             <div class="col-span-2">
-
+              <Operators/>
             </div>
 
             <!--unique values-->
             <div class="col-span-4 ml-2">
-
+              <UniqueValues/>
             </div>
 
             <!--query text-->
             <div class="col-span-6">
-              <!--TODO layer name-->
-              <p>SELECT * FROM BINA WHERE</p>
+              <p>SELECT * FROM {{truncatedSelectedLayer}} WHERE</p>
             </div>
 
             <!--query-->
             <div class="col-span-6">
-
+              <QueryTextArea/>
             </div>
 
             <!--query menu button-->
             <div class="col-span-6 flex space-x-2 border-b border-gray-400 -mt-2 pb-3">
               <!--TODO clear-->
-              <button class="button flex-1 py-0">Clear</button>
+              <button @click="clearQuery" class="button flex-1 py-0">Clear</button>
               <button class="button flex-1 py-0">Verify</button>
               <button class="button flex-1 py-0">Help</button>
               <button class="button flex-1 py-0">Load...</button>
@@ -97,8 +94,7 @@
             <!--command button-->
             <div class="col-span-6 flex justify-end space-x-3 pt-1">
               <button class="button w-20">OK</button>
-            <!--TODO @click-->
-              <button class="button w-20">Apply</button>
+              <button @click="queryLayer" class="button w-20">Apply</button>
               <button class="button w-20">Close</button>
             </div>
           </div>
@@ -106,7 +102,9 @@
       </div>
 
       <!--map-->
-      <!--TODO map-->
+      <div class="z-10 w-2/3 bg-gray-200 shadow-xl">
+        <Map class="absolute top-0 bottom-0 right-0 w-2/3 rounded-lg"/>
+      </div>
     </div>
   </div>
 </template>
@@ -114,10 +112,24 @@
 <script>
   import {useStore} from "vuex";
   import {ref, computed} from "vue";
+  import FieldList from "../components/FieldList.vue";
+  import QueryTextArea from "../components/QueryTextArea.vue";
+  import Operators from "../components/Operators.vue";
+  import UniqueValues from "../components/UniqueValues.vue";
+  import Error from "../components/Error.vue";
+  import Map from "../components/Map.vue";
 
 
   export default {
     name: "Home",
+    components: {
+      Map,
+      Error,
+      UniqueValues,
+      Operators,
+      QueryTextArea,
+      FieldList
+    },
     setup() {
       // store
       const store = useStore();
@@ -126,17 +138,44 @@
       const selectedLayer = ref(null);
       const layers = computed(() => {
         return store.state.layers;
-      })
+      });
 
       // computed
+      const truncatedSelectedLayer = computed(() => {
+        if (selectedLayer.value && selectedLayer.value.length > 30) {
+          return selectedLayer.value.substring(0, 18) + "...";
+        } else {
+          return selectedLayer.value;
+        }
+      });
+
+      const error = computed(() => {
+        return store.state.error;
+      });
 
       // methods
+      const setLayer = () => {
+        store.commit("setLayer", selectedLayer.value);
+        store.dispatch("getFields");
+      };
 
-      return {selectedLayer, layers}
+      const clearQuery = () => {
+        store.commit("setQuery", "");
+      };
+
+      const queryLayer = () => {
+        store.dispatch("query");
+      }
+
+      return {selectedLayer, layers, setLayer, truncatedSelectedLayer, clearQuery, queryLayer, error}
     }
   }
 </script>
 
 <style>
-
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 </style>

@@ -3,8 +3,9 @@
 </template>
 
 <script>
-  import {ref, computed, watch, onMounted} from "vue";
   import {useStore} from "vuex";
+  import {computed, ref, watch, onMounted} from "vue";
+  import L from "leaflet";
   import axios from "axios";
 
 
@@ -29,14 +30,12 @@
 
       const layerList = {};
       const featuresCollectionArray = {};
-      let map = null
+      let map = null;
 
       // methods
       const initMap = async () => {
-        // myMap.value = L.map("map");
         map = L.map("map");
-        // myMap.value.setView([41, 29.040], 15);
-        map.setView([41, 29.040], 15);
+        map.setView([40.876, 29.092], 15);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -45,12 +44,18 @@
         const createGeoJSON = async (layerName, color) => {
           return L.geoJSON(await getFeatures(layerName), {
             style: (feature) => {
-              return {color: color};
+              return {color: color}
             },
             onEachFeature: (feature, layer) => {
-              let popup = ``
+              console.log("feature: ", feature)
+              let popup = "";
               Object.keys(feature.properties).forEach(key => {
-                popup += `<p><span class="font-extrabold">${key}:</span> ${feature.properties[key]}</p>`
+                popup += `
+                  <p>
+                    <span class="font-extrabold">${key}:</span>
+                    ${feature.properties[key]}
+                  </p>
+                `
               });
               layer.bindPopup(popup);
             }
@@ -67,15 +72,16 @@
       };
 
       const getFeatures = async (layerName) => {
-        const response = await axios.get(`http://localhost:3001/layer`, {
-          params: {
-            layer: layerName
-          }
-        });
+        const response = await axios.get(
+            "http://localhost:3001/layer",
+            {
+              params: {
+                layer: layerName
+              }
+            }
+        );
         const data = await response.data;
-        console.log(data)
-        
-        
+        console.log(data);
 
         const featureCollection = [];
         data.forEach(feature => {
@@ -83,6 +89,7 @@
 
           Object.keys(feature).filter(key => {
             if (key !== "geom" && key !== "geometry") {
+              console.log(key, feature[key])
               return properties[key] = feature[key];
             }
           });
@@ -101,34 +108,30 @@
         return {type: "FeatureCollection", features: featureCollection};
       };
 
-      // mounted
       onMounted(async () => {
         await initMap();
       });
 
-      // watch
       watch(queryResult, change => {
-        const result = Object.values(change).map(val => {
-          return val.id
+        const result = Object.values(change).map(val => val.id);
 
-          if (store.state.layer === "bina") {
+        if (store.state.layer === "bina") {
           buildings.value.eachLayer(layer => {
-            layer.setStyle({color: "black", fillColor: "black", fillOpacity: 0.2})
+            layer.setStyle({color: "black", fillColor: "black", fillOpacity: 0.2});
             if (result.includes(layer.feature.properties.id)) {
-              layer.setStyle({color: "#42f5e9", fillColor: "#42f5e9", fillOpacity: 0.5})
+              layer.setStyle({color: "#42f5e9", fillColor: "#42f5e9", fillOpacity: 0.5});
             }
           })
         }
 
         if (store.state.layer === "mahalle") {
           neighborhoods.value.eachLayer(layer => {
-            layer.setStyle({color: "purple", fillColor: "purple", fillOpacity: 0.2})
+            layer.setStyle({color: "black", fillColor: "black", fillOpacity: 0.2});
             if (result.includes(layer.feature.properties.id)) {
-              layer.setStyle({color: "#42f5e9", fillColor: "#42f5e9", fillOpacity: 0.5})
+              layer.setStyle({color: "#42f5e9", fillColor: "#42f5e9", fillOpacity: 0.5});
             }
           })
-        };
-        });
+        }
       });
 
       return {}

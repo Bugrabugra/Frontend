@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/assets/css/styles.css --watch"
   },
   "dependencies": {
     "axios": "^0.21.4",

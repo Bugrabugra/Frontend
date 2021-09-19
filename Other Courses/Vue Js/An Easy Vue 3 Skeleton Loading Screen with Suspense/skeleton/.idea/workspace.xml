@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f047312-486d-426d-82b6-fc0cf9fca895" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileCardSkeleton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/Vite/arcgis-select-by-attribute/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Denemeler/Vite/arcgis-select-by-attribute/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/Vite/video-arcgis-select-by-attribute/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Denemeler/Vite/video-arcgis-select-by-attribute/client/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Building a Reusable Tabs Component with Vue Slots/tabs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Building a Reusable Tabs Component with Vue Slots/tabs/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631958269352</updated>
       <workItem from="1631958270849" duration="2559000" />
+      <workItem from="1631963157945" duration="37000" />
     </task>
     <servers />
   </component>
@@ -76,6 +63,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

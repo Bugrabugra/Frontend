@@ -1,35 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ec38d67-e8ec-4e16-a2e7-3a6203a206f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/src/components/ProfileCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/src/components/ProfileCardSkeleton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Tab.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TabsWrapper.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/Vite/arcgis-select-by-attribute/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Denemeler/Vite/arcgis-select-by-attribute/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/Vite/video-arcgis-select-by-attribute/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Denemeler/Vite/video-arcgis-select-by-attribute/client/src/views/Home.vue" afterDir="false" />
+    <list default="true" id="4ec38d67-e8ec-4e16-a2e7-3a6203a206f2" name="Changes" comment="18092021&#10;1- VueJs">
+      <change beforePath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../An Easy Vue 3 Skeleton Loading Screen with Suspense/skeleton/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -80,8 +54,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631961191666</updated>
-      <workItem from="1631961192931" duration="1219000" />
+      <workItem from="1631961192931" duration="1507000" />
+      <workItem from="1631962735892" duration="39000" />
+      <workItem from="1631962780247" duration="41000" />
+      <workItem from="1631962842549" duration="122000" />
+      <workItem from="1631962981431" duration="51000" />
+      <workItem from="1631963051385" duration="84000" />
+      <workItem from="1631963221509" duration="19000" />
+      <workItem from="1631963243334" duration="66000" />
+      <workItem from="1632040875898" duration="67000" />
     </task>
+    <task id="LOCAL-00001" summary="18092021&#10;1- VueJs">
+      <created>1631962674555</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1631962674555</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,8 +87,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="18092021&#10;1- VueJs" />
+    <option name="LAST_COMMIT_MESSAGE" value="18092021&#10;1- VueJs" />
   </component>
 </project>

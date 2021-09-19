@@ -12,7 +12,7 @@ app.use(cors());
 
 // queries
 app.get("/layer", queries.getFeatures);
-app.get("/fields", queries.getField);
+app.get("/fields", queries.getFields);
 app.get("/unique", queries.getUniqueValues);
 
 // listen server
