@@ -1,0 +1,19 @@
+{
+  "name": "sb-vue",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.12",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
