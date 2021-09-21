@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="551b063c-1196-46e3-bc42-304ad2b2742c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/src/components/Guide.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/src/components/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/src/components/HelloWorld.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/src/components/MyHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/src/plugins/MyFirstPlugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Building Your Own Vue Plugins - Updated for Vue 3/own-plugins/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/Vite/video-arcgis-select-by-attribute/client/src/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Denemeler/Vite/video-arcgis-select-by-attribute/client/src/assets/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../An Introduction to Vue Suspense Components - New Vue 3 Feature/suspense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../An Introduction to Vue Suspense Components - New Vue 3 Feature/suspense/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1yRdnmAGJU6z9lusxyWNhLplhib" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="551b063c-1196-46e3-bc42-304ad2b2742c" name="Changes" comment="" />
+      <created>1632218504107</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632218504107</updated>
+      <workItem from="1632218505529" duration="2450000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
