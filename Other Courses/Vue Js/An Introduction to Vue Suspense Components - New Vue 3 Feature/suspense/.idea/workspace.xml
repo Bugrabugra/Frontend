@@ -1,57 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d0187ca-d447-493c-909c-73848bcc5f1d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/src/components/ListComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/src/components/Post.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/src/composables/get-posts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/A Quick Vue Infinite Scrolling Component/infinite-scroll/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/components/List.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/components/MyHome.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/views/About.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A Deep Dive Into Async Components In Vue/async-components/src/views/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ArticleInfo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ArticlePost.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Vue 3 Suspense Tutorial and First Look/suspense/src/components/User.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Working In Vue js 3 And Need Vuex Without Vuex/vuex/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Working In Vue js 3 And Need Vuex Without Vuex/vuex/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Working In Vue js 3 And Need Vuex Without Vuex/vuex/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Working In Vue js 3 And Need Vuex Without Vuex/vuex/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Working In Vue js 3 And Need Vuex Without Vuex/vuex/src/composables/global.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Working In Vue js 3 And Need Vuex Without Vuex/vuex/src/main.js" afterDir="false" />
+    <list default="true" id="2d0187ca-d447-493c-909c-73848bcc5f1d" name="Changes" comment="20092021&#10;1- Vue">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +45,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632146002421</updated>
-      <workItem from="1632146003787" duration="619000" />
+      <workItem from="1632146003787" duration="815000" />
+      <workItem from="1632207336218" duration="133000" />
     </task>
+    <task id="LOCAL-00001" summary="20092021&#10;1- Vue">
+      <created>1632146799502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632146799502</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,8 +71,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="20092021&#10;1- Vue" />
+    <option name="LAST_COMMIT_MESSAGE" value="20092021&#10;1- Vue" />
   </component>
 </project>
