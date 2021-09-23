@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="07206cd6-f5f3-47ba-bbfe-bffb64936bf5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/.postcssrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/public/icons/favicon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/public/icons/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/public/icons/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/public/icons/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/quasar.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/assets/quasar-logo-vertical.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/boot/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/boot/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/components/EssentialLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/css/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/css/quasar.variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/css/tailwind.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/index.template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/layouts/MainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/pages/Error404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/pages/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/router/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/module-example/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/module-example/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/module-example/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/module-example/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/module-example/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/src/store/store-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Quasar/tailwind-vue3/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Vuelidate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/src/components/CustomTextInput.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/src/components/VModel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Everything You Need to Know About Vue v-model - Two-way data binding in Vue/vmodel/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/src/components/CustomTextInput.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/components/CaptionedContent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/.idea/QuasarTest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/.postcssrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/public/icons/favicon-128x128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/public/icons/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/public/icons/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/public/icons/favicon-96x96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/quasar.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/assets/quasar-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/boot/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/boot/i18n.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/components/EssentialLink.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/css/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/css/quasar.variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/i18n/en-us/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/i18n/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/i18n/tr-tr/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/index.template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/layouts/MainLayout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/pages/Error404.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/pages/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/QuasarTest/internationalization/src/router/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1yXRRNbNV4wo19FvDG0e0RGDU64" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="07206cd6-f5f3-47ba-bbfe-bffb64936bf5" name="Changes" comment="" />
+      <created>1632395936905</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632395936905</updated>
+      <workItem from="1632395938524" duration="8187000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2239795a-a434-4bcc-9b88-48e102da91ef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomTextInput.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Vue 3 Reactivity Made Easy - ref - reactive - toRefs/reactivity/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/components/CaptionedContent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../What You Need to Know About Vue Slots/slots/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1yWtPozXhPemSs393sEZoOtkTMn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2239795a-a434-4bcc-9b88-48e102da91ef" name="Changes" comment="" />
+      <created>1632379151064</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632379151064</updated>
+      <workItem from="1632379152569" duration="2321000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
