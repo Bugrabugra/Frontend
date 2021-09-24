@@ -2,7 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551b063c-1196-46e3-bc42-304ad2b2742c" name="Changes" comment="21092021&#10;1- Vue">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/components/Drawer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/components/TheMap.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/css/tailwind.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/ModalContent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/NotificationHandler.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1632218504107</updated>
       <workItem from="1632218505529" duration="3811000" />
+      <workItem from="1632493955589" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="21092021&#10;1- Vue">
       <created>1632221153532</created>
@@ -78,6 +111,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />

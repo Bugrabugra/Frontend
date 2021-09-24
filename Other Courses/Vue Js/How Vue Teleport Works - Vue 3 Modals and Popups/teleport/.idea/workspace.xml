@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb37ce6a-db80-4cc0-a7ad-51ecf06ef4d2" name="Changes" comment="">
+    <list default="true" id="99ab67bc-f77a-4e24-ad11-cab9eb95b50b" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.vscode/extensions.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/README.md" afterDir="false" />
@@ -19,23 +19,22 @@
       <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/tailwind.config.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/ModalContent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/NotificationHandler.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../How Vue Teleport Works - Vue 3 Modals and Popups/teleport/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ModalContent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NotificationHandler.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
       </list>
     </option>
@@ -53,7 +51,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="ProjectId" id="1yRHT8aGxM6hbEcoFCVqI4zhJz7" />
+  <component name="ProjectId" id="1yaaP6zvjhUC4FF36et554DSisU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -64,32 +62,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\Bugra\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bb37ce6a-db80-4cc0-a7ad-51ecf06ef4d2" name="Changes" comment="" />
-      <created>1632207486664</created>
+      <changelist id="99ab67bc-f77a-4e24-ad11-cab9eb95b50b" name="Changes" comment="" />
+      <created>1632492125591</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1632207486664</updated>
-      <workItem from="1632207488107" duration="4307000" />
-      <workItem from="1632491115986" duration="970000" />
-      <workItem from="1632493964339" duration="28000" />
+      <updated>1632492125591</updated>
+      <workItem from="1632492126734" duration="1223000" />
+      <workItem from="1632493428444" duration="170000" />
+      <workItem from="1632493604638" duration="152000" />
+      <workItem from="1632493784360" duration="132000" />
+      <workItem from="1632493923463" duration="16000" />
     </task>
     <servers />
   </component>
@@ -110,9 +103,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
