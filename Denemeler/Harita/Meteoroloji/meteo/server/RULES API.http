@@ -1,15 +1,15 @@
 // get rules
-GET http://localhost:3001/api/rules/getRules
+GET http://localhost:3001/api/rules/getall
 
 ###
 
 // get specific rule
-GET http://localhost:3001/api/rules/getRule/16
+GET http://localhost:3001/api/rules/getone/16
 
 ###
 
 // create rule
-POST http://localhost:3001/api/rules/createRule
+POST http://localhost:3001/api/rules/create
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 ###
 
 // edit rule
-POST http://localhost:3001/api/rules/editRule/16
+POST http://localhost:3001/api/rules/edit/16
 Content-Type: application/json
 
 {
@@ -39,7 +39,7 @@ Content-Type: application/json
 ###
 
 // delete rule
-POST http://localhost:3001/api/rules/deleteRule/14
+POST http://localhost:3001/api/rules/delete/14
 Content-Type: application/json
 
 ###

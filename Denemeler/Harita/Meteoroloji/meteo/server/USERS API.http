@@ -1,15 +1,15 @@
 // get users
-GET http://localhost:3001/api/users/getUsers
+GET http://localhost:3001/api/users/getall
 
 ###
 
 // get specific user
-GET http://localhost:3001/api/users/getUser/16
+GET http://localhost:3001/api/users/getone/16
 
 ###
 
 // create user
-POST http://localhost:3001/api/users/createUser
+POST http://localhost:3001/api/users/create
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 ###
 
 // edit user
-POST http://localhost:3001/api/users/editUser/16
+POST http://localhost:3001/api/users/edit/16
 Content-Type: application/json
 
 {
@@ -39,7 +39,7 @@ Content-Type: application/json
 ###
 
 // delete user
-POST http://localhost:3001/api/users/deleteUser/14
+POST http://localhost:3001/api/users/delete/14
 Content-Type: application/json
 
 ###

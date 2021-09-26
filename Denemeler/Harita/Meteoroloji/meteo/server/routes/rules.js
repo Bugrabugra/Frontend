@@ -9,18 +9,18 @@ const {
 } = require("../apis/rules");
 
 // get users
-routerRules.get("/getRules", getRules);
+routerRules.get("/getall", getRules);
 
 // get specific user
-routerRules.get("/getRule/:id", getRule);
+routerRules.get("/getone/:id", getRule);
 
 // create user
-routerRules.post("/createRule", createRule);
+routerRules.post("/create", createRule);
 
 // edit user
-routerRules.post("/editRule/:id", editRule)
+routerRules.post("/edit/:id", editRule)
 
 // delete user
-routerRules.post("/deleteRule/:id", deleteRule);
+routerRules.post("/delete/:id", deleteRule);
 
 module.exports = routerRules;

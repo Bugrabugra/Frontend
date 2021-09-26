@@ -9,18 +9,18 @@ const {
 } = require("../apis/users");
 
 // get users
-routerUsers.get("/getUsers", getUsers);
+routerUsers.get("/getall", getUsers);
 
 // get specific user
-routerUsers.get("/getUser/:id", getUser);
+routerUsers.get("/getone/:id", getUser);
 
 // create user
-routerUsers.post("/createUser", createUser);
+routerUsers.post("/create", createUser);
 
 // edit user
-routerUsers.post("/editUser/:id", editUser)
+routerUsers.post("/edit/:id", editUser)
 
 // delete user
-routerUsers.post("/deleteUser/:id", deleteUser);
+routerUsers.post("/delete/:id", deleteUser);
 
 module.exports = routerUsers;
