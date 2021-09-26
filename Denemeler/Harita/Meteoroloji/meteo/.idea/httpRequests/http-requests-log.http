@@ -1,0 +1,573 @@
+GET http://localhost:3001/api/getUser/16
+
+<> 2021-09-26T122633.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+
+<> 2021-09-26T122411.200.json
+
+###
+
+POST http://localhost:3001/api/editUser/16
+Content-Type: application/json
+
+{
+"username": "12ktdtud3",
+"password": "dhfds",
+"email": "ccjjugdc",
+"phone_number": "ddkutdutkddd",
+"name": "eekdktde",
+"surname": "fkdkdkff"
+}
+
+<> 2021-09-26T122406.200.json
+
+###
+
+POST http://localhost:3001/api/editUser/16
+Content-Type: application/json
+
+{
+"username": "12ktdtud3",
+"password": "dhfds",
+"email": "ccjjugdc",
+"phone_number": "ddkutdutkddd",
+"name": "eekdktde",
+"surname": "fkdkdkff"
+}
+
+<> 2021-09-26T122248.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+
+<> 2021-09-26T122133.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+
+<> 2021-09-26T121740.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T121737.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+
+<> 2021-09-26T121733.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+
+<> 2021-09-26T121322.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T121320.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+
+<> 2021-09-26T121315.200.json
+
+###
+
+POST http://localhost:3001/api/deleteUser/14
+Content-Type: application/json
+
+<> 2021-09-26T121223.200.json
+
+###
+
+POST http://localhost:3001/api/deleteUser/13
+Content-Type: application/json
+
+<> 2021-09-26T121215.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T121210.200.json
+
+###
+
+POST http://localhost:3001/api/deleteUser/13
+Content-Type: application/json
+
+<> 2021-09-26T121128.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T120652.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T120625.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T120605.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Content-Type: application/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T120557.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json,
+
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+
+<> 2021-09-26T120523.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T120345.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T120012.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115843.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115814.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: text/json,
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115257.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115213.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115142.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115136.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T115114.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T114959.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114941.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T114919.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114908.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114810.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114802.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114622.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114536.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114339.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114323.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114249.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114239.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114230.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114131.200.json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+###
+
+GET http://localhost:3001/api/getUsers
+Accept: application/json
+
+<> 2021-09-26T114114.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T114100.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T113929.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T113922.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T113913.200.json
+
+###
+
+POST http://localhost:3001/api/createUser
+Accept: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T113850.200.json
+
+###
+
