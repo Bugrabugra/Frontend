@@ -1,1 +1,0 @@
-{"length": 157, "name": "error", "severity": "HATA", "code": "42501", "file": "d:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\catalog\\aclchk.c", "line": "3466", "routine": "aclcheck_error"}

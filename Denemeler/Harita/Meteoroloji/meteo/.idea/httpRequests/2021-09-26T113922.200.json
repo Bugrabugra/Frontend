@@ -1,1 +1,0 @@
-{"length": 172, "name": "error", "severity": "HATA", "code": "42703", "position": "111", "file": "d:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\parser\\parse_relation.c", "line": "3514", "routine": "errorMissingColumn"}

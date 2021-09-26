@@ -1,3 +1,401 @@
+POST http://localhost:3001/api/users/deleteUser/14
+Content-Type: application/json
+
+<> 2021-09-26T135835.200.json
+
+###
+
+POST http://localhost:3001/api/users/editUser/16
+Content-Type: application/json
+
+{
+"username": "12ktdtud3",
+"password": "dhfds",
+"email": "ccjjugdc",
+"phone_number": "ddkutdutkddd",
+"name": "eekdktde",
+"surname": "fkdkdkff"
+}
+
+<> 2021-09-26T135834.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc@kkk",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T135833-2.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUser/16
+
+<> 2021-09-26T135833-1.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T135833.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T135812.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T135805.200.json
+
+###
+
+POST http://localhost:3001/api/users/deleteUser/14
+Content-Type: application/json
+
+<> 2021-09-26T135740.200.json
+
+###
+
+POST http://localhost:3001/api/users/editUser/16
+Content-Type: application/json
+
+{
+"username": "12ktdtud3",
+"password": "dhfds",
+"email": "ccjjugdc",
+"phone_number": "ddkutdutkddd",
+"name": "eekdktde",
+"surname": "fkdkdkff"
+}
+
+<> 2021-09-26T135736.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc@kkk",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T135731.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUser/16
+
+<> 2021-09-26T135726.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T135721.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T135337.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc@kkk",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134242.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc@kkk",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134233.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134220.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134158.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134035.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134032.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T134020.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133959.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133955.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133657.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133653.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133641.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133637.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133606.200.json
+
+###
+
+POST http://localhost:3001/api/users/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+<> 2021-09-26T133559.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUser/16
+
+<> 2021-09-26T132614.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUser/16
+
+<> 2021-09-26T132456.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T132452.200.json
+
+###
+
+GET http://localhost:3001/api/users/getUsers
+
+<> 2021-09-26T132448.200.json
+
+###
+
 GET http://localhost:3001/api/getUser/16
 
 <> 2021-09-26T122633.200.json
@@ -170,404 +568,6 @@ Content-Type: application/json
 }
 
 <> 2021-09-26T120625.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Content-Type: application/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T120605.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Content-Type: application/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T120557.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json,
-
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-
-<> 2021-09-26T120523.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T120345.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T120012.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115843.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115814.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: text/json,
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115257.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115213.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115142.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115136.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T115114.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T114959.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114941.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T114919.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114908.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114810.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114802.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114622.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114536.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114339.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114323.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114249.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114239.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114230.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114131.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-###
-
-GET http://localhost:3001/api/getUsers
-Accept: application/json
-
-<> 2021-09-26T114114.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T114100.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T113929.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T113922.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T113913.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Accept: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T113850.200.json
 
 ###
 

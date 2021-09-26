@@ -1,26 +1,10 @@
 const express = require("express");
-const router = express.Router();
-const {
-  getUsers,
-  getUser,
-  createUser,
-  deleteUser,
-  editUser
-} = require("../api");
+const routerUsers = require("./users");
+const routerRules = require("./rules");
+const routerApi = express.Router();
 
-// get users
-router.get("/getUsers", getUsers);
 
-// get specific user
-router.get("/getUser/:id", getUser);
+routerApi.use("/users", routerUsers);
+routerApi.use("/rules", routerRules);
 
-// create user
-router.post("/createUser", createUser);
-
-// edit user
-router.post("/editUser/:id", editUser)
-
-// delete user
-router.post("/deleteUser/:id", deleteUser);
-
-module.exports = router;
+module.exports = routerApi;
