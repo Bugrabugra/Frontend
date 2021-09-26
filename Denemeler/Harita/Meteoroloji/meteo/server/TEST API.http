@@ -1,0 +1,45 @@
+// get users
+GET http://localhost:3001/api/getUsers
+
+###
+
+// get specific user
+GET http://localhost:3001/api/getUser/16
+
+###
+
+// create user
+POST http://localhost:3001/api/createUser
+Content-Type: application/json
+
+{
+"username": "aaa",
+"password": "bbb",
+"email": "ccc",
+"phone_number": "ddd",
+"name": "eee",
+"surname": "fff"
+}
+
+###
+
+// edit user
+POST http://localhost:3001/api/editUser/16
+Content-Type: application/json
+
+{
+"username": "12ktdtud3",
+"password": "dhfds",
+"email": "ccjjugdc",
+"phone_number": "ddkutdutkddd",
+"name": "eekdktde",
+"surname": "fkdkdkff"
+}
+
+###
+
+// delete user
+POST http://localhost:3001/api/deleteUser/14
+Content-Type: application/json
+
+###

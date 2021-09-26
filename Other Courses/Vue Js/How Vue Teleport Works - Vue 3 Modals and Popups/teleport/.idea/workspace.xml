@@ -1,107 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99ab67bc-f77a-4e24-ad11-cab9eb95b50b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/components/Drawer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/components/TheMap.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/css/tailwind.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/tailwind.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ModalContent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NotificationHandler.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6357d526-bb65-4616-a69d-efdcf086658d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Denemeler/Harita/Meteoroloji/meteo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ModalContent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ModalContent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Vue Single File Component" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="ProjectId" id="1yaaP6zvjhUC4FF36et554DSisU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1yagH6AM8tpn7xn9YOT5cDwFZwU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="99ab67bc-f77a-4e24-ad11-cab9eb95b50b" name="Changes" comment="" />
-      <created>1632492125591</created>
+      <changelist id="6357d526-bb65-4616-a69d-efdcf086658d" name="Changes" comment="" />
+      <created>1632495022768</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1632492125591</updated>
-      <workItem from="1632492126734" duration="1223000" />
-      <workItem from="1632493428444" duration="170000" />
-      <workItem from="1632493604638" duration="152000" />
-      <workItem from="1632493784360" duration="132000" />
-      <workItem from="1632493923463" duration="16000" />
+      <updated>1632495022768</updated>
+      <workItem from="1632495024177" duration="80000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

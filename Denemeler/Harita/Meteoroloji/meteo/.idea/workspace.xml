@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="459fd30c-923a-4e9f-9f8e-ee812bbdf13a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Drawer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TheMap.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/tailwind.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/ModalContent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/NotificationHandler.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/Animating Vue Router Transitions in Vue 3/animate/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="bc81d7d9-2ede-4eca-aac9-0d6a16c2ec9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/meteo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/TEST API.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/database/db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.idea/teleport.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/emit-events.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Drawer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TheMap.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/tailwind.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/ModalContent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How Vue Teleport Works - Vue 3 Modals and Popups/teleport/src/components/ModalContent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/How to Send Custom Events in Vue with Vue Emit/emit-events/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/Vue Dependency Injection Using Provide and Inject/provide-inject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Other Courses/Vue Js/When to Use Vue Keep Alive to Cache Components - Dynamic Components in Vue 3/keep-alive/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,15 +47,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
-        <option value="Vue Single File Component" />
+        <option value="HTTP Request" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="ProjectId" id="1yZhS6bEra58Rdh4BPZ1NHYbjdw" />
+  <component name="ProjectId" id="1yfNPdQOioCAoobTQi6GIPNj4vX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -65,28 +65,45 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RunManager" selected="HTTP Request.TEST API#2">
+    <configuration name="TEST API#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="TEST API#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API.http" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="TEST API#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API.http" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.TEST API#2" />
+        <item itemvalue="HTTP Request.TEST API#1" />
+        <item itemvalue="HTTP Request.TEST API#3" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="459fd30c-923a-4e9f-9f8e-ee812bbdf13a" name="Changes" comment="" />
-      <created>1632465015190</created>
+      <changelist id="bc81d7d9-2ede-4eca-aac9-0d6a16c2ec9b" name="Changes" comment="" />
+      <created>1632638660266</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1632465015190</updated>
-      <workItem from="1632465016804" duration="14248000" />
-      <workItem from="1632493994984" duration="83000" />
-      <workItem from="1632494139505" duration="19000" />
+      <updated>1632638660266</updated>
+      <workItem from="1632638661603" duration="9279000" />
     </task>
     <servers />
   </component>
@@ -103,7 +120,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
