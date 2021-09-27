@@ -1,6 +1,6 @@
 <template>
   <Modal v-if="showModal" :content="modalContent"/>
-  <router-view class="relative"/>
+  <router-view/>
 </template>
 
 <script setup>

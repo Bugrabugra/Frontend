@@ -2,13 +2,8 @@
 
 </template>
 
-<script>
-  export default {
-    name: "Map",
-    data() {
-      return {}
-    }
-  }
+<script setup>
+
 </script>
 
 <style scoped>

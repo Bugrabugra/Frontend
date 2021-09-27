@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 rounded-xl shadow-2xl">
+  <div class="bg-gray-300 rounded-b-xl shadow-2xl">
     <div class="px-4 py-2">
       <!--header-->
       <h2 class="text-xl font-bold text-gray-600">
@@ -7,37 +7,66 @@
       </h2>
 
       <!--crud menu-->
-      <div class="border border-gray-400 rounded-xl px-2 py-2
+      <div class="mt-2 border border-gray-400 rounded-xl px-2 py-2
       grid grid-cols-12 gap-y-2 gap-x-2">
-        <div class="col-span-6 md:col-span-4 lg:col-span-4 xl:col-span-3
-                    2xl:col-span-4 flex flex-col flex-nowrap space-y-1">
-          <p class="py-1 font-bold text-gray-700">Kullanıcı adı:</p>
-          <p class="py-1 font-bold text-gray-700">E-mail:</p>
-          <p class="py-1 font-bold text-gray-700">Şifre:</p>
-          <p class="py-1 font-bold text-gray-700">Telefon numarası:</p>
-          <p class="py-1 font-bold text-gray-700">Ad:</p>
-          <p class="py-1 font-bold text-gray-700">Soyad:</p>
-        </div>
-
-        <div class="col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-7
-                    2xl:col-span-6 flex flex-col flex-nowrap space-y-1">
+        <div class="col-span-12 md:col-span-10 flex flex-col flex-nowrap space-y-1">
           <!--username-->
-          <input class="users-input" type="text" v-model="inputUsername">
+          <div class="flex">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Kullanıcı adı:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputUsername">
+          </div>
+          <p class="text-xs text-red-600" v-if="errorUsername">
+            *{{errorUsername["message"]}}
+          </p>
+
           <!--email-->
-          <input class="users-input" type="text" v-model="inputEmail">
+          <div class="flex">
+            <label class="w-1/3 py-1 font-bold text-gray-700">E-mail:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputEmail">
+          </div>
+          <div class="text-xs text-red-600" v-if="errorEmail">
+            *{{errorEmail["message"]}}
+          </div>
+
           <!--password-->
-          <input class="users-input" type="password" v-model="inputPassword">
+          <div class="flex">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Şifre:</label>
+            <input class="w-2/3 users-input" type="password" v-model="inputPassword">
+          </div>
+          <p class="text-xs text-red-600" v-if="errorPassword">
+            *{{errorPassword["message"]}}
+          </p>
+
           <!--phone number-->
-          <input class="users-input" placeholder="0-5XX-XXXXXXX"
-                 type="text" v-model="inputPhoneNumber">
+          <div class="flex">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Telefon numarası:</label>
+            <input class="w-2/3 users-input" placeholder="0-5XX-XXXXXXX"
+                   type="text" v-model="inputPhoneNumber">
+          </div>
+          <p class="text-xs text-red-600" v-if="errorPhoneNumber">
+            *{{errorPhoneNumber["message"]}}
+          </p>
+
           <!--name-->
-          <input class="users-input" type="text" v-model="inputName">
+          <div class="flex">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Ad:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputName">
+          </div>
+          <p class="text-xs text-red-600" v-if="errorName">
+            *{{errorName["message"]}}
+          </p>
+
           <!--surname-->
-          <input class="users-input" type="text" v-model="inputSurname">
+          <div class="flex">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Soyad:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputSurname">
+          </div>
+          <p class="text-xs text-red-600" v-if="errorSurname">
+            *{{errorSurname["message"]}}
+          </p>
         </div>
 
-        <div class="col-span-12 md:col-span-2 lg:col-span-2 xl:col-span-2
-                    2xl:col-span-2">
+        <div class="col-span-12 md:col-span-2">
           <div class="flex flex-row md:flex-col md:h-full flex-wrap w-full
                       space-x-2 md:space-x-0 md:space-y-2 justify-between">
             <!--create-->
@@ -79,15 +108,14 @@
       </div>
 
       <!--header-->
-      <div class="mt-6 flex justify-between items-center">
+      <div class="mt-6 flex flex-wrap justify-between items-center">
         <h2 class="text-xl font-bold text-gray-600">
           Kullanıcılar
         </h2>
 
-        <!--TODO responsive patladı-->
-        <div class="flex justify-between items-center space-x-4">
+        <div class="flex justify-between items-center">
           <label for="search">Kullanıcı ara:</label>
-          <input v-model="searchUserText" type="text" id="search" class="users-input">
+          <input v-model="searchUserText" type="text" id="search" class="flex-1 ml-2 w-full users-input">
         </div>
       </div>
 
@@ -162,20 +190,16 @@
         )
       },
       inputEmail: {
-        required: helpers.withMessage(
-            "E-mail girilmelidir",
-            required
-        ),
         email: helpers.withMessage(
             "E-mail formatı yanlıştır",
             email
+        ),
+        required: helpers.withMessage(
+            "Email girilmelidir",
+            required
         )
       },
       inputPassword: {
-        required: helpers.withMessage(
-            "Şifre dolu olmalıdır",
-            required
-        ),
         minLength: helpers.withMessage(
             "En az 6 karakterlik bir şifre girmelisiniz",
             minLength(6)
@@ -202,6 +226,54 @@
     }
   });
 
+  const errorUsername = computed(() => {
+    return vuelidateErrors.value.filter(error => {
+      if (error.property === 'inputUsername') {
+        return error.message;
+      }
+    })[0];
+  });
+
+  const errorEmail = computed(() => {
+    return vuelidateErrors.value.filter(error => {
+      if (error.property === 'inputEmail') {
+        return error.message;
+      }
+    })[0];
+  });
+
+  const errorPassword = computed(() => {
+    return vuelidateErrors.value.filter(error => {
+      if (error.property === 'inputPassword') {
+        return error.message;
+      }
+    })[0];
+  });
+
+  const errorPhoneNumber = computed(() => {
+    return vuelidateErrors.value.filter(error => {
+      if (error.property === 'inputPhoneNumber') {
+        return error.message;
+      }
+    })[0];
+  });
+
+  const errorName = computed(() => {
+    return vuelidateErrors.value.filter(error => {
+      if (error.property === 'inputName') {
+        return error.message;
+      }
+    })[0];
+  });
+
+  const errorSurname = computed(() => {
+    return vuelidateErrors.value.filter(error => {
+      if (error.property === 'inputSurname') {
+        return error.message;
+      }
+    })[0];
+  });
+
   // methods
   const v$ = useVuelidate(rules, {
     inputUsername: inputUsername,
@@ -215,10 +287,13 @@
   const CRUDResultHandler = async (result) => {
     if (result.error) {
       console.log(result.error);
+      console.log(vuelidateErrors.value)
+
       // enable popup
       store.commit("general/setModal", true);
       // set popup content
       store.commit("general/setModalContent", `<p>${result.error}</p>`);
+
       // clear highlight
       indexClickedUser.value = null;
     } else {
@@ -230,10 +305,11 @@
     }
   }
   const createUser = async () => {
+    vuelidateErrors.value = [];
     v$.value.$validate();
     console.log(v$.value);
     v$.value.$errors.forEach(error => {
-      vuelidateErrors.value.push(error.$message)
+      vuelidateErrors.value.push({property: error.$property, message: error.$message})
     });
     console.log(vuelidateErrors.value);
 
@@ -247,26 +323,14 @@
         surname: inputSurname.value
       };
       const result = await store.dispatch("users/createUser", user);
-
       await CRUDResultHandler(result);
     } else {
-      // enable popup
-      store.commit("general/setModal", true);
-      // set popup content
-      // TODO errorü boşalt
-      let error = "";
-      vuelidateErrors.value.forEach(err => {
-        error += `<p>${err}</p>`
-      })
-      console.log(error);
-      store.commit(
-          "general/setModalContent",
-          error
-      );
+
     }
   };
 
   const editUser = async () => {
+    vuelidateErrors.value = [];
     v$.value.$validate();
     console.log(v$.value);
     v$.value.$errors.forEach(error => {
@@ -291,17 +355,7 @@
 
       await CRUDResultHandler(result);
     } else {
-      // enable popup
-      store.commit("general/setModal", true);
-      // set popup content
-      let error = "";
-      vuelidateErrors.value.forEach(err => {
-        error += err + "<br/>"
-      })
-      store.commit(
-          "general/setModalContent",
-          error
-      );
+
     }
 
   };
@@ -317,6 +371,7 @@
   const highlight = (user, index) => {
     indexClickedUser.value = index;
     store.commit("users/setSelectedUser", user);
+    vuelidateErrors.value = [];
   };
 
   const clear = () => {
