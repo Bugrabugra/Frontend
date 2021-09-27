@@ -1,22 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="">
+    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="26092021&#10;Meteoroloji">
+      <change afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/css/tailwind.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/User.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Users.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Global/Modal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Home/Map.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/modules/general.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/modules/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/views/Admin.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T120625.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/RULES API.http" beforeDir="false" afterPath="$PROJECT_DIR$/server/RULES API.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/USERS API.http" beforeDir="false" afterPath="$PROJECT_DIR$/server/USERS API.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/rules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="ProjectId" id="1yfuXHK6hxC7QzFeloxBQeJvkgc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,14 +61,31 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Home" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="USERS API#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/USERS API.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.USERS API#1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -44,12 +98,40 @@
       <workItem from="1632655013096" duration="19000" />
       <workItem from="1632655038712" duration="6000" />
       <workItem from="1632655069988" duration="540000" />
-      <workItem from="1632684623268" duration="356000" />
+      <workItem from="1632684623268" duration="528000" />
+      <workItem from="1632722275524" duration="31235000" />
     </task>
+    <task id="LOCAL-00001" summary="26092021&#10;Meteoroloji">
+      <created>1632685140150</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632685140150</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="26092021&#10;Meteoroloji" />
+    <option name="LAST_COMMIT_MESSAGE" value="26092021&#10;Meteoroloji" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
