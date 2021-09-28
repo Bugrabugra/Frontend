@@ -3,10 +3,8 @@ const db = require("../database/db");
 
 // get rules
 const getRules = (req, res) => {
-  db.query(`
-    select * 
-    from users
-    `,
+  db.query(
+    `select * from rules`,
     (error, result) => {
       if (error) {
         res.send(error);
@@ -19,11 +17,8 @@ const getRules = (req, res) => {
 // get specific rule
 const getRule = (req, res) => {
   const id = req.params.id;
-  db.query(`
-    select * 
-    from users
-    where id = ${id}
-    `,
+  db.query(
+    `select * from rules where id = ${id}`,
     (error, result) => {
       if (error) {
         res.send(error);
@@ -35,53 +30,28 @@ const getRule = (req, res) => {
 
 // create rule
 const createRule = async (req, res) => {
-  const {username, password, email, phone_number, name, surname} = req.body;
-  // same email control
-  await db.query(
-    `select * from users where email = '${email}'`,
+  const {source, min_value, max_value, warning_message, groups} = req.body;
+  db.query(
+    `insert into rules (source, min_value, max_value, warning_message, groups) 
+     values ('${source}', ${min_value}, ${max_value}, '${warning_message}', 
+     '${groups}') returning id`,
     (error, result) => {
-      if (result.rows.length > 0) {
-        res.json({error: "Aynı e-mail adresine sahip kullanıcı mevcuttur."});
+      if (error) {
+        res.send(error);
       } else {
-        db.query(`
-          insert into users 
-          (username, password, email, phone_number, name, surname) 
-          values (
-            '${username}', 
-            '${password}', 
-            '${email}', 
-            '${phone_number}', 
-            '${name}', 
-            '${surname}'
-          ) returning id
-        `,
-          (error, result) => {
-            if (error) {
-              res.send(error);
-            } else {
-              res.send(result.rows);
-            }
-          })
+        res.send(result.rows);
       }
     })
 };
 
 // edit rule
 const editRule = async (req, res) => {
-  const {username, password, email, phone_number, name, surname} = req.body;
+  const {source, min_value, max_value, warning_message, groups} = req.body;
   const id = req.params.id;
-  await db.query(`
-    update users 
-    set 
-    username = '${username}', 
-    password = '${password}', 
-    email = '${email}', 
-    phone_number = '${phone_number}', 
-    name = '${name}', 
-    surname = '${surname}'
-    where id = '${id}'
-    returning id
-    `,
+  await db.query(
+    `update rules set source = '${source}', min_value = ${min_value}, 
+    max_value = ${max_value}, warning_message = '${warning_message}', 
+    groups = '${groups}' where id = '${id}' returning id`,
     (error, result) => {
       if (error) {
         res.send(error);
@@ -94,11 +64,8 @@ const editRule = async (req, res) => {
 // delete rule
 const deleteRule = async (req, res) => {
   const id = req.params.id;
-  await db.query(`
-    delete from users 
-    where id = ${id} 
-    returning id
-    `,
+  await db.query(
+    `delete from rules where id = ${id} returning id`,
     (error, result) => {
       if (error) {
         res.send(error);

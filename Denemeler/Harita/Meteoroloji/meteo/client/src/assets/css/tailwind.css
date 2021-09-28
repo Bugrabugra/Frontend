@@ -3,11 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
-    @apply p-0 m-0 box-border
-  }
   .users-input {
-    @apply outline-none px-2 py-1 rounded bg-gray-100 hover:bg-gray-200
+    @apply outline-none px-2 py-1 rounded bg-blue-100 hover:bg-green-100
     transition duration-200 font-medium text-gray-500 border-none
     appearance-none
   }

@@ -25,6 +25,11 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   #app {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

@@ -1,14 +1,10 @@
 <template>
-
+  <Map/>
 </template>
 
-<script>
-  export default {
-    name: "Home",
-    data() {
-      return {}
-    }
-  }
+<script setup>
+  import Map from "../components/Home/Map.vue";
+
 </script>
 
 <style scoped>

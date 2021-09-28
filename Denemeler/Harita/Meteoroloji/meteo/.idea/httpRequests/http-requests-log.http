@@ -1,3 +1,70 @@
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-09-28T143858.200.json
+
+###
+
+POST http://localhost:3001/api/rules/delete/1
+Content-Type: application/json
+
+<> 2021-09-28T143855.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-09-28T143847.200.json
+
+###
+
+POST http://localhost:3001/api/rules/edit/2
+Content-Type: application/json
+
+{
+  "source": "Sel",
+  "min_value": "20.45",
+  "max_value": "34.98",
+  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
+  "groups": "3,4,8"
+}
+
+<> 2021-09-28T143842.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-09-28T143814.200.json
+
+###
+
+POST http://localhost:3001/api/rules/create
+Content-Type: application/json
+
+{
+  "source": "Sel",
+  "min_value": "45.7",
+  "max_value": "93.5",
+  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
+  "groups": "3,4,8"
+}
+
+<> 2021-09-28T143810.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getone/1
+
+<> 2021-09-28T143659.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-09-28T143651.200.json
+
+###
+
 GET http://localhost:3001/api/users/getall
 
 <> 2021-09-27T091149.200.json
@@ -477,87 +544,6 @@ Content-Type: application/json
 GET http://localhost:3001/api/getUsers
 
 <> 2021-09-26T121733.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-
-<> 2021-09-26T121322.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T121320.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-
-<> 2021-09-26T121315.200.json
-
-###
-
-POST http://localhost:3001/api/deleteUser/14
-Content-Type: application/json
-
-<> 2021-09-26T121223.200.json
-
-###
-
-POST http://localhost:3001/api/deleteUser/13
-Content-Type: application/json
-
-<> 2021-09-26T121215.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T121210.200.json
-
-###
-
-POST http://localhost:3001/api/deleteUser/13
-Content-Type: application/json
-
-<> 2021-09-26T121128.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T120652.200.json
 
 ###
 

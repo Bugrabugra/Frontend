@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 rounded-b-xl shadow-2xl">
+  <div class="bg-gray-100 rounded-b-xl shadow-2xl">
     <div class="px-4 py-2">
       <!--header-->
       <h2 class="text-xl font-bold text-gray-600">
@@ -12,8 +12,8 @@
         <div class="col-span-12 md:col-span-10 flex flex-col flex-nowrap space-y-1">
           <!--username-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Kullanıcı adı:</label>
-            <input class="w-2/3 users-input" type="text" v-model="inputUsername">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="user-name">Kullanıcı adı:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputUsername" id="user-name"/>
           </div>
           <p class="text-xs text-red-600" v-if="errorUsername">
             *{{errorUsername["message"]}}
@@ -21,8 +21,8 @@
 
           <!--email-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">E-mail:</label>
-            <input class="w-2/3 users-input" type="text" v-model="inputEmail">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="email">E-mail:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputEmail" id="email"/>
           </div>
           <div class="text-xs text-red-600" v-if="errorEmail">
             *{{errorEmail["message"]}}
@@ -30,8 +30,8 @@
 
           <!--password-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Şifre:</label>
-            <input class="w-2/3 users-input" type="password" v-model="inputPassword">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="password">Şifre:</label>
+            <input class="w-2/3 users-input" type="password" v-model="inputPassword" id="password"/>
           </div>
           <p class="text-xs text-red-600" v-if="errorPassword">
             *{{errorPassword["message"]}}
@@ -39,9 +39,9 @@
 
           <!--phone number-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Telefon numarası:</label>
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="phone">Telefon numarası:</label>
             <input class="w-2/3 users-input" placeholder="0-5XX-XXXXXXX"
-                   type="text" v-model="inputPhoneNumber">
+                   type="text" v-model="inputPhoneNumber" id="phone"/>
           </div>
           <p class="text-xs text-red-600" v-if="errorPhoneNumber">
             *{{errorPhoneNumber["message"]}}
@@ -49,8 +49,8 @@
 
           <!--name-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Ad:</label>
-            <input class="w-2/3 users-input" type="text" v-model="inputName">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="name">Ad:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputName" id="name">
           </div>
           <p class="text-xs text-red-600" v-if="errorName">
             *{{errorName["message"]}}
@@ -58,8 +58,8 @@
 
           <!--surname-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Soyad:</label>
-            <input class="w-2/3 users-input" type="text" v-model="inputSurname">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="surname">Soyad:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputSurname" id="surname">
           </div>
           <p class="text-xs text-red-600" v-if="errorSurname">
             *{{errorSurname["message"]}}
@@ -80,6 +80,7 @@
                   indexClickedUser !== null,
                 }"
             >Oluştur</button>
+
             <!--edit-->
             <button
                 @click="editUser"
@@ -91,12 +92,14 @@
                   indexClickedUser === null,
                 }"
             >Düzenle</button>
+
             <!--clear-->
             <button
                 @click="clear"
                 class="users-button flex-1 bg-blue-400 hover:bg-blue-500
                        text-blue-700 hover:text-blue-100"
             >Temizle</button>
+
             <!--delete-->
             <button
                 @click="deleteUser"
@@ -128,9 +131,9 @@
                 @click="highlight(user, index)"
                 class="mr-2 scrollbar"
                 :class="{
-                'bg-blue-200 border-2 border-gray-400':
+                'bg-blue-200 border-2 border-gray-400 shadow-xl':
                 index === indexClickedUser,
-                'bg-gray-100': index !== indexClickedUser
+                'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedUser
                 }"
                 :user="user"
             />
@@ -181,7 +184,7 @@
   });
 
   // vuelidate rules
-  const rules = computed(() => {
+  const vuelidateRules = computed(() => {
     return {
       inputUsername: {
         required: helpers.withMessage(
@@ -275,7 +278,7 @@
   });
 
   // methods
-  const v$ = useVuelidate(rules, {
+  const v$ = useVuelidate(vuelidateRules, {
     inputUsername: inputUsername,
     inputEmail: inputEmail,
     inputPassword: inputPassword,
@@ -398,7 +401,3 @@
     inputSurname.value = newValue.surname;
   })
 </script>
-
-<style scoped>
-
-</style>

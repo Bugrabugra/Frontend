@@ -19,7 +19,6 @@
       </p>
     </div>
   </div>
-
 </template>
 
 <script setup>
@@ -27,7 +26,3 @@
 
   defineProps(["user"]);
 </script>
-
-<style scoped>
-
-</style>

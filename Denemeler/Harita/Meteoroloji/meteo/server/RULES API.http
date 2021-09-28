@@ -4,7 +4,7 @@ GET http://localhost:3001/api/rules/getall
 ###
 
 // get specific rule
-GET http://localhost:3001/api/rules/getone/16
+GET http://localhost:3001/api/rules/getone/1
 
 ###
 
@@ -13,33 +13,31 @@ POST http://localhost:3001/api/rules/create
 Content-Type: application/json
 
 {
-  "username": "aaa",
-  "password": "bbb",
-  "email": "ccc@kkk",
-  "phone_number": "ddd",
-  "name": "eee",
-  "surname": "fff"
+  "source": "Sel",
+  "min_value": "45.7",
+  "max_value": "93.5",
+  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
+  "groups": "3,4,8"
 }
 
 ###
 
 // edit rule
-POST http://localhost:3001/api/rules/edit/16
+POST http://localhost:3001/api/rules/edit/2
 Content-Type: application/json
 
 {
-  "username": "12ktdtud3",
-  "password": "dhfds",
-  "email": "ccjjugdc",
-  "phone_number": "ddkutdutkddd",
-  "name": "eekdktde",
-  "surname": "fkdkdkff"
+  "source": "Sel",
+  "min_value": "20.45",
+  "max_value": "34.98",
+  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
+  "groups": "3,4,8"
 }
 
 ###
 
 // delete rule
-POST http://localhost:3001/api/rules/delete/14
+POST http://localhost:3001/api/rules/delete/1
 Content-Type: application/json
 
 ###
