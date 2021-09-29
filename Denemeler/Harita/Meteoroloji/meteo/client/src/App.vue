@@ -8,9 +8,13 @@
   import {computed} from "vue";
   import {useStore} from "vuex";
 
+
   // store
   const store = useStore();
-
+  // references
+  const user = computed(() => {
+    return store.state.auth.userLoggedIn;
+  })
   // computed
   const showModal = computed(() => {
     return store.state.general.isModalOpen;

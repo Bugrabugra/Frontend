@@ -1,6 +1,8 @@
 <template>
-  <div id="map" class="absolute top-0 bottom-0 w-full">
-
+  <div id="map" class="top-0 bottom-0 w-full absolute">
+    <button class="top-20 right-20 bg-red-400 px-2 py-1 rounded-md">
+      Admin
+    </button>
   </div>
 </template>
 
@@ -18,13 +20,6 @@
       zoom: 9,
       pitch: 20,
     });
-
-    const geocoder = MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl,
-      language: 'tr',
-      placeholder: 'Adres Ara',
-    });
   };
 
   onMounted(() => {
@@ -32,7 +27,3 @@
   });
 
 </script>
-
-<style scoped>
-
-</style>

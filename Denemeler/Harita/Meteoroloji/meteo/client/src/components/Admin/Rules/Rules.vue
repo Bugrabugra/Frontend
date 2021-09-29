@@ -115,7 +115,7 @@
         </h2>
 
         <div class="flex justify-between items-center">
-          <label for="search">Kural türü:</label>
+          <label for="search">Kural türü ara:</label>
           <input
               v-model="searchRuleSource"
               type="text"
@@ -127,16 +127,15 @@
       <!--rules list-->
       <div class="mt-2 flex flex-col items-center justify-center border
                   border-gray-400 rounded-xl px-2 py-2">
-        <ul class="w-full space-y-2 overflow-y-scroll h-96 md:h-[500px]">
+        <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[400px]">
           <li v-for="(rule, index) in filteredRules">
             <Rule
                 @click="highlight(rule, index)"
                 :key="index"
                 class="mr-2 scrollbar"
                 :class="{
-                'bg-blue-200 border-2 border-gray-400 shadow-xl':
-                index === indexClickedRule,
-                'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedRule
+                  'bg-blue-200 border-2 border-gray-400 shadow-xl': index === indexClickedRule,
+                  'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedRule
                 }"
                 :rule="rule"
             />
@@ -174,8 +173,8 @@
   const searchRuleSource = ref("");
 
   const inputSource = ref("");
-  const inputMinValue = ref(0);
-  const inputMaxValue = ref(0);
+  const inputMinValue = ref(null);
+  const inputMaxValue = ref(null);
   const inputWarningMessage = ref("");
   const inputGroups = ref("");
 
@@ -188,7 +187,9 @@
 
   const filteredRules = computed(() => {
     return rules.value.filter(rule => {
-      return rule.source.toLowerCase().includes(searchRuleSource.value.toLowerCase());
+      return ruleTypes.value.find(ruleType => {
+        return ruleType.value === rule.source;
+      }).name.toLowerCase().includes(searchRuleSource.value.toLowerCase());
     });
   });
 

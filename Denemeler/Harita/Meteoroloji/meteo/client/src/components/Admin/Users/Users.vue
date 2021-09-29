@@ -64,8 +64,15 @@
           <p class="text-xs text-red-600" v-if="errorSurname">
             *{{errorSurname["message"]}}
           </p>
+
+          <!--admin-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="admin">Yönetici:</label>
+            <input class="w-2/3 h-4 w-4" type="checkbox" v-model="inputAdmin" id="admin">
+          </div>
         </div>
 
+        <!--buttons-->
         <div class="col-span-12 md:col-span-2">
           <div class="flex flex-row md:flex-col md:h-full flex-wrap w-full
                       space-x-2 md:space-x-0 md:space-y-2 justify-between">
@@ -118,22 +125,28 @@
 
         <div class="flex justify-between items-center">
           <label for="search">Kullanıcı ara:</label>
-          <input v-model="searchUserText" type="text" id="search" class="flex-1 ml-2 w-full users-input">
+          <input
+              v-model="searchUserText"
+              type="text"
+              id="search"
+              class="flex-1 ml-2 w-full users-input"
+          >
         </div>
       </div>
 
       <!--users list-->
       <div class="mt-2 flex flex-col items-center justify-center border
-      border-gray-400 rounded-xl px-2 py-2">
-        <ul class="w-full space-y-2 overflow-y-scroll h-96 md:h-[500px]">
+                  border-gray-400 rounded-xl px-2 py-2">
+        <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[400px]">
           <li v-for="(user, index) in filteredUsers">
             <User
                 @click="highlight(user, index)"
+                :key="index"
                 class="mr-2 scrollbar"
                 :class="{
-                'bg-blue-200 border-2 border-gray-400 shadow-xl':
-                index === indexClickedUser,
-                'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedUser
+                  'bg-blue-200 border-2 border-gray-400 shadow-xl': index === indexClickedUser,
+                  'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedUser,
+                  'bg-red-200 shadow-md border-2 border-red-400': user.admin
                 }"
                 :user="user"
             />
@@ -165,6 +178,7 @@
   const inputPhoneNumber = ref("");
   const inputName = ref("");
   const inputSurname = ref("");
+  const inputAdmin = ref(false);
 
   const vuelidateErrors = ref([]);
 
@@ -323,7 +337,8 @@
         password: inputPassword.value,
         phone_number: inputPhoneNumber.value,
         name: inputName.value,
-        surname: inputSurname.value
+        surname: inputSurname.value,
+        admin: inputAdmin.value
       };
       const result = await store.dispatch("users/createUser", user);
       await CRUDResultHandler(result);
@@ -348,7 +363,8 @@
         password: inputPassword.value,
         phone_number: inputPhoneNumber.value,
         name: inputName.value,
-        surname: inputSurname.value
+        surname: inputSurname.value,
+        admin: inputAdmin.value
       };
 
       const result = await store.dispatch(
@@ -360,7 +376,6 @@
     } else {
 
     }
-
   };
 
   const deleteUser = async () => {
@@ -385,11 +400,14 @@
     inputPhoneNumber.value = "";
     inputName.value = "";
     inputSurname.value = "";
+    inputAdmin.value = null;
 
     searchUserText.value = "";
 
     // clear highlight
     indexClickedUser.value = null;
+
+    vuelidateErrors.value = [];
   }
 
   watch(selectedUser, newValue => {
@@ -399,5 +417,6 @@
     inputPhoneNumber.value = newValue.phone_number;
     inputName.value = newValue.name;
     inputSurname.value = newValue.surname;
+    inputAdmin.value = newValue.admin
   })
 </script>

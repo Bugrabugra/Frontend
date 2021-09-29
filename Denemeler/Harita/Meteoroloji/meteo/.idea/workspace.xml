@@ -1,36 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="27092021&#10;Meteoroloji&#10;1- User front end bitti gibi">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Groups/Groups.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rule.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/store/modules/rules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T120652.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121128.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121210.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121215.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121223.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121315.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121320.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121322.200.json" beforeDir="false" />
+    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="28092021&#10;Meteoroloji&#10;1- Rules front end bitti gibi">
+      <change afterPath="$PROJECT_DIR$/client/src/store/modules/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/views/Login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/TEST API/AUTH API.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/apis/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/verifyToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121733.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121737.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T121740.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T122133.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T122248.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T122406.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T122411.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T122633.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T132448.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T132452.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T132456.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T132614.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133559.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133606.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133637.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133641.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133653.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133657.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133955.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T133959.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T134020.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T134032.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T134035.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T134158.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T134220.200.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/tailwind.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Rules.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Users/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/User.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Home/Map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Home/Map.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/rules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Admin.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/RULES API.http" beforeDir="false" afterPath="$PROJECT_DIR$/server/RULES API.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/RULES API.http" beforeDir="false" afterPath="$PROJECT_DIR$/server/TEST API/RULES API.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/USERS API.http" beforeDir="false" afterPath="$PROJECT_DIR$/server/TEST API/USERS API.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/apis/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/rules.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/apis/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +66,9 @@
       <list>
         <option value="TypeScript File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="HTTP Request" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -77,39 +102,62 @@
     <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="CodeWithMe" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\server\TEST API" />
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\views" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Admin\Users" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Admin\Rules" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Home" />
     </key>
   </component>
-  <component name="RunManager" selected="HTTP Request.RULES API#1">
-    <configuration name="RULES API#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/RULES API.http" runType="Run single request">
+  <component name="RunManager" selected="HTTP Request.AUTH API#2">
+    <configuration name="AUTH API#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API/AUTH API.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="RULES API#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/RULES API.http" index="2" runType="Run single request">
+    <configuration name="LOGIN API#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API/LOGIN API.http" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="RULES API#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/RULES API.http" index="3" runType="Run single request">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
-    <configuration name="RULES API#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/RULES API.http" index="4" runType="Run single request">
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
-    <configuration name="RULES API#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/RULES API.http" index="5" runType="Run single request">
+    <configuration name="tailwind" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="tailwind" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.RULES API#1" />
-        <item itemvalue="HTTP Request.RULES API#5" />
-        <item itemvalue="HTTP Request.RULES API#4" />
-        <item itemvalue="HTTP Request.RULES API#3" />
-        <item itemvalue="HTTP Request.RULES API#2" />
+        <item itemvalue="npm.tailwind" />
+        <item itemvalue="HTTP Request.AUTH API#2" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="HTTP Request.LOGIN API#1" />
+        <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +176,10 @@
       <workItem from="1632722275524" duration="33886000" />
       <workItem from="1632758954112" duration="6426000" />
       <workItem from="1632808453384" duration="2409000" />
-      <workItem from="1632822527892" duration="12589000" />
+      <workItem from="1632822527892" duration="15149000" />
+      <workItem from="1632894858722" duration="30269000" />
+      <workItem from="1632933424898" duration="3897000" />
+      <workItem from="1632952083497" duration="6782000" />
     </task>
     <task id="LOCAL-00001" summary="26092021&#10;Meteoroloji">
       <created>1632685140150</created>
@@ -151,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632765667329</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="28092021&#10;Meteoroloji&#10;1- Rules front end bitti gibi">
+      <created>1632841268570</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1632841268570</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +233,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="26092021&#10;Meteoroloji" />
     <MESSAGE value="27092021&#10;Meteoroloji&#10;1- User front end bitti gibi" />
-    <option name="LAST_COMMIT_MESSAGE" value="27092021&#10;Meteoroloji&#10;1- User front end bitti gibi" />
+    <MESSAGE value="28092021&#10;Meteoroloji&#10;1- Rules front end bitti gibi" />
+    <option name="LAST_COMMIT_MESSAGE" value="28092021&#10;Meteoroloji&#10;1- Rules front end bitti gibi" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

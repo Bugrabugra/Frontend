@@ -2,8 +2,8 @@ const db = require("../database/db");
 
 
 // get rules
-const getRules = (req, res) => {
-  db.query(
+const getRules = async (req, res) => {
+  await db.query(
     `select * from rules`,
     (error, result) => {
       if (error) {
@@ -15,9 +15,9 @@ const getRules = (req, res) => {
 };
 
 // get specific rule
-const getRule = (req, res) => {
+const getRule = async (req, res) => {
   const id = req.params.id;
-  db.query(
+  await db.query(
     `select * from rules where id = ${id}`,
     (error, result) => {
       if (error) {
@@ -26,15 +26,15 @@ const getRule = (req, res) => {
         res.send(result.rows);
       }
     })
-};
+}
 
 // create rule
 const createRule = async (req, res) => {
   const {source, min_value, max_value, warning_message, groups} = req.body;
-  db.query(
+  await db.query(
     `insert into rules (source, min_value, max_value, warning_message, groups) 
-     values ('${source}', ${min_value}, ${max_value}, '${warning_message}', 
-     '${groups}') returning id`,
+         values ('${source}', ${min_value}, ${max_value}, '${warning_message}', 
+         '${groups}') returning id`,
     (error, result) => {
       if (error) {
         res.send(error);
@@ -42,7 +42,7 @@ const createRule = async (req, res) => {
         res.send(result.rows);
       }
     })
-};
+}
 
 // edit rule
 const editRule = async (req, res) => {
@@ -50,8 +50,8 @@ const editRule = async (req, res) => {
   const id = req.params.id;
   await db.query(
     `update rules set source = '${source}', min_value = ${min_value}, 
-    max_value = ${max_value}, warning_message = '${warning_message}', 
-    groups = '${groups}' where id = '${id}' returning id`,
+         max_value = ${max_value}, warning_message = '${warning_message}', 
+         groups = '${groups}' where id = '${id}' returning id`,
     (error, result) => {
       if (error) {
         res.send(error);

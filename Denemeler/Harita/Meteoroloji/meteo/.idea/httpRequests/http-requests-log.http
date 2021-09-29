@@ -1,3 +1,303 @@
+POST http://localhost:3001/api/auth/logout
+Content-Type: application/json
+
+<> 2021-09-30T021638.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-30T015118.200.json
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T131631.200.json
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T113404.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "",
+  "password": ""
+}
+
+<> 2021-09-29T113359.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T113031.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin1234"
+}
+
+<> 2021-09-29T113026.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T113020.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+<> 2021-09-29T113005.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "adminn",
+  "password": "admin123"
+}
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112556.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112534.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112456.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112435.200.html
+
+###
+
+POST http://localhost:3001/api/login/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112348.200.html
+
+###
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112310.200.html
+
+###
+
+GET http://localhost:3001/api/login/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112256.404.html
+
+###
+
+GET http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112214.404.html
+
+###
+
+GET http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112155.404.html
+
+###
+
+GET http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+<> 2021-09-29T112043.404.html
+
+###
+
+POST http://localhost:3001/api/users/create
+Content-Type: application/json
+
+{
+  "username": "OOO",
+  "password": "OOO",
+  "email": "OOO@kkk",
+  "phone_number": "OOO",
+  "name": "OOO",
+  "surname": "OOO",
+  "admin": false
+}
+
+<> 2021-09-29T091930.200.json
+
+###
+
 GET http://localhost:3001/api/rules/getall
 
 <> 2021-09-28T143858.200.json
@@ -220,330 +520,6 @@ Content-Type: application/json
 }
 
 <> 2021-09-26T134233.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134220.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134158.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134035.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134032.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134020.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133959.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133955.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133657.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133653.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133641.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133637.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133606.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T133559.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUser/16
-
-<> 2021-09-26T132614.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUser/16
-
-<> 2021-09-26T132456.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T132452.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T132448.200.json
-
-###
-
-GET http://localhost:3001/api/getUser/16
-
-<> 2021-09-26T122633.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-
-<> 2021-09-26T122411.200.json
-
-###
-
-POST http://localhost:3001/api/editUser/16
-Content-Type: application/json
-
-{
-"username": "12ktdtud3",
-"password": "dhfds",
-"email": "ccjjugdc",
-"phone_number": "ddkutdutkddd",
-"name": "eekdktde",
-"surname": "fkdkdkff"
-}
-
-<> 2021-09-26T122406.200.json
-
-###
-
-POST http://localhost:3001/api/editUser/16
-Content-Type: application/json
-
-{
-"username": "12ktdtud3",
-"password": "dhfds",
-"email": "ccjjugdc",
-"phone_number": "ddkutdutkddd",
-"name": "eekdktde",
-"surname": "fkdkdkff"
-}
-
-<> 2021-09-26T122248.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-
-<> 2021-09-26T122133.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-
-<> 2021-09-26T121740.200.json
-
-###
-
-POST http://localhost:3001/api/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T121737.200.json
-
-###
-
-GET http://localhost:3001/api/getUsers
-
-<> 2021-09-26T121733.200.json
 
 ###
 

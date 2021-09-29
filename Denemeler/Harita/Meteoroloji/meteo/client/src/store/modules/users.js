@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "../../router";
 
 // state *********************************
 const state = () => ({
@@ -24,32 +25,67 @@ const mutations = {
 // actions *******************************
 const actions = {
   async getUsers({commit}) {
-    const response = await axios.get("http://localhost:3001/api/users/getall");
-    const users = response.data;
-    commit("setUsers", users);
+    try {
+      const response = await axios.get(
+        "http://localhost:3001/api/users/getall",
+        {
+          withCredentials: true
+        }
+      );
+      const users = response.data;
+      commit("setUsers", users);
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   },
   async createUser(_, user) {
-    const response = await axios.post(
-      "http://localhost:3001/api/users/create",
-      user,
-    );
-    const result = response.data;
-    return result;
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/users/create",
+        user,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   },
   async editUser(_, payload) {
-    const response = await axios.post(
-      `http://localhost:3001/api/users/edit/${payload.id}`,
-      payload.user
-    );
-    const result = response.data;
-    return result;
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/api/users/edit/${payload.id}`,
+        payload.user,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   },
   async deleteUser(_, userId) {
-    const response = await axios.post(
-      `http://localhost:3001/api/users/delete/${userId}`,
-    );
-    const result = response.data;
-    return result;
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/api/users/delete/${userId}`,
+        null,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   }
 };
 

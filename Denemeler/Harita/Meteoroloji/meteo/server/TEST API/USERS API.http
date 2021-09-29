@@ -13,12 +13,13 @@ POST http://localhost:3001/api/users/create
 Content-Type: application/json
 
 {
-"username": "aaa",
-"password": "bbb",
-"email": "ccc@kkk",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
+  "username": "OOO",
+  "password": "OOO",
+  "email": "OOO@kkk",
+  "phone_number": "OOO",
+  "name": "OOO",
+  "surname": "OOO",
+  "admin": false
 }
 
 ###
@@ -28,12 +29,13 @@ POST http://localhost:3001/api/users/edit/16
 Content-Type: application/json
 
 {
-"username": "12ktdtud3",
-"password": "dhfds",
-"email": "ccjjugdc",
-"phone_number": "ddkutdutkddd",
-"name": "eekdktde",
-"surname": "fkdkdkff"
+  "username": "12ktdtud3",
+  "password": "dhfds",
+  "email": "ccjjugdc",
+  "phone_number": "ddkutdutkddd",
+  "name": "eekdktde",
+  "surname": "fkdkdkff",
+  "admin": false
 }
 
 ###

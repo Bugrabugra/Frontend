@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "../../router";
 
 // state *********************************
 const state = () => ({
@@ -24,32 +25,67 @@ const mutations = {
 // actions *******************************
 const actions = {
   async getRules({commit}) {
-    const response = await axios.get("http://localhost:3001/api/rules/getall");
-    const rules = response.data;
-    commit("setRules", rules);
+    try {
+      const response = await axios.get(
+        "http://localhost:3001/api/rules/getall",
+        {
+          withCredentials: true,
+        }
+      );
+      const rules = response.data;
+      commit("setRules", rules);
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   },
   async createRule(_, rule) {
-    const response = await axios.post(
-      "http://localhost:3001/api/rules/create",
-      rule,
-    );
-    const result = response.data;
-    return result;
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/rules/create",
+        rule,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   },
   async editRule(_, payload) {
-    const response = await axios.post(
-      `http://localhost:3001/api/rules/edit/${payload.id}`,
-      payload.rule
-    );
-    const result = response.data;
-    return result;
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/api/rules/edit/${payload.id}`,
+        payload.rule,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   },
   async deleteRule(_, ruleId) {
-    const response = await axios.post(
-      `http://localhost:3001/api/rules/delete/${ruleId}`,
-    );
-    const result = response.data;
-    return result;
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/api/rules/delete/${ruleId}`,
+        null,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+      // await router.replace("/login");
+    }
   }
 };
 

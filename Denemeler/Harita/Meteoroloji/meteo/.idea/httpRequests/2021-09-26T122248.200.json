@@ -1,1 +1,0 @@
-{"length": 100, "name": "error", "severity": "HATA", "code": "42601", "position": "46", "file": "scan.l", "line": "1180", "routine": "scanner_yyerror"}
