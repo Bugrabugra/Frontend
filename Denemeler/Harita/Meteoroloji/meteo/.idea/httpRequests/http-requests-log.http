@@ -1,3 +1,44 @@
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-09-30T182505.404.html
+
+###
+
+GET http://localhost:3001/api/map/getpois
+Content-Type: application/json
+
+<> 2021-09-30T182438.404.html
+
+###
+
+GET http://localhost:3001/api/map/getpois
+Content-Type: application/json
+
+<> 2021-09-30T182359.404.html
+
+###
+
+GET http://localhost:3001/api/map/getpois
+Content-Type: application/json
+
+<> 2021-09-30T182300.404.html
+
+###
+
+GET http://localhost:3001/api/map/getpois
+Content-Type: application/json
+
+<> 2021-09-30T182214.404.html
+
+###
+
+POST http://localhost:3001/api/map/getpois
+Content-Type: application/json
+
+<> 2021-09-30T182207.404.html
+
+###
+
 POST http://localhost:3001/api/auth/logout
 Content-Type: application/json
 
@@ -454,72 +495,6 @@ Content-Type: application/json
 }
 
 <> 2021-09-26T135736.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc@kkk",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T135731.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUser/16
-
-<> 2021-09-26T135726.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T135721.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T135337.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc@kkk",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134242.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc@kkk",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T134233.200.json
 
 ###
 

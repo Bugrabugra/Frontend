@@ -8,6 +8,10 @@
     "tailwind": "npx tailwindcss -i ./src/assets/css/tailwind.css -o ./src/assets/css/styles.css --watch"
   },
   "dependencies": {
+    "@deck.gl/core": "^8.5.10",
+    "@deck.gl/layers": "^8.5.10",
+    "@deck.gl/mapbox": "^8.5.10",
+    "@turf/circle": "^6.5.0",
     "@vuelidate/core": "^2.0.0-alpha.26",
     "@vuelidate/validators": "^2.0.0-alpha.22",
     "animate.css": "^4.1.1",
