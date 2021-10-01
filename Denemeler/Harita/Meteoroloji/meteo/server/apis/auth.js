@@ -27,7 +27,7 @@ const login = async (req, res) => {
                 },
                 (error, token) => {
                   res.cookie("meteor", token, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000});
-                  res.send({username, email, admin});
+                  res.json({username, email, admin});
                 }
                 )
             } else {

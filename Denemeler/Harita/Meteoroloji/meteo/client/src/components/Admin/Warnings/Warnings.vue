@@ -1,9 +1,15 @@
 <template>
+  <RuleListModal
+      v-if="showRulesList"
+      :selectedWarning="selectedWarning"
+      @sendRules="updateRules"
+      @closeModal="showRulesList = false"
+  />
   <div class="bg-gray-100 rounded-b-xl shadow-2xl">
     <div class="px-4 py-2">
       <!--header-->
       <h2 class="text-xl font-bold text-gray-600">
-        Kural yaratma/düzenleme
+        Uyarı yaratma/düzenleme
       </h2>
 
       <!--crud menu-->
@@ -27,26 +33,45 @@
             *{{errorSource["message"]}}
           </p>
 
-          <!--min value-->
+          <!--event-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700" for="min">Minimum değer:</label>
-            <input class="w-2/3 users-input" type="number" v-model="inputMinValue" id="min">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="source-name">Olay adı:</label>
+            <input class="w-2/3 users-input" type="text" v-model="inputEvent" id="source-name">
           </div>
 
-          <!--max value-->
+          <!--message-->
           <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700" for="max">Maksimum değer:</label>
-            <input class="w-2/3 users-input" type="number" v-model="inputMaxValue" id="max">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Uyarı mesajı:</label>
+            <textarea rows="4" class="w-2/3 users-input" v-model="inputMessage" id="message"/>
           </div>
 
-          <!--isPresent-->
-          <div class="flex">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Mevcut / Yaklaşan:</label>
-            <select class="w-2/3 users-input" v-model="inputIsPresent">
-              <option value="true">Mevcut</option>
-              <option value="false">Yaklaşan</option>
-              <option value="null" selected>Tanımsız</option>
-            </select>
+          <!--isScreen-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="is-screen">Ekranda gözüksün:</label>
+            <input class="w-2/3 h-4 w-4" type="checkbox" v-model="inputIsScreen" id="is-screen">
+          </div>
+
+          <!--isField-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700" for="is-field">Saha ekibine gitsin:</label>
+            <input class="w-2/3 h-4 w-4" type="checkbox" v-model="inputIsField" id="is-field">
+          </div>
+
+          <!--rules-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Kurallar:</label>
+            <button class="users-button bg-indigo-400 hover:bg-indigo-500
+                       text-indigo-700 hover:text-indigo-100"
+                    @click="showRulesList = true"
+            >
+              Kuralları tanımla
+            </button>
+          </div>
+
+          <!--defined rules-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Tanımlanan kurallar:</label>
+            <p>{{inputRules}}</p>
           </div>
 
         </div>
@@ -56,25 +81,25 @@
                       space-x-2 md:space-x-0 md:space-y-2 justify-between">
             <!--create-->
             <button
-                @click="createRule"
-                :disabled="indexClickedRule !== null"
+                @click="createWarning"
+                :disabled="indexClickedWarning !== null"
                 class="users-button flex-1 bg-green-400 hover:bg-green-500
                        text-green-700 hover:text-green-100"
                 :class="{
                   'disabled:bg-gray-200 disabled:text-green-700':
-                  indexClickedRule !== null,
+                  indexClickedWarning !== null,
                 }"
             >Oluştur</button>
 
             <!--edit-->
             <button
-                @click="editRule"
-                :disabled="indexClickedRule === null"
+                @click="editWarning"
+                :disabled="indexClickedWarning === null"
                 class="users-button flex-1 bg-yellow-400 hover:bg-yellow-500
                        text-yellow-700 hover:text-yellow-100"
                 :class="{
                   'disabled:bg-gray-200 disabled:text-green-700':
-                  indexClickedRule === null,
+                  indexClickedWarning === null,
                 }"
             >Düzenle</button>
 
@@ -87,7 +112,7 @@
 
             <!--delete-->
             <button
-                @click="deleteRule"
+                @click="deleteWarning"
                 class="users-button flex-1 bg-red-400 hover:bg-red-500
                        text-red-700 hover:text-red-100"
             >Sil</button>
@@ -98,13 +123,13 @@
       <!--header-->
       <div class="mt-6 flex flex-wrap justify-between items-center">
         <h2 class="text-xl font-bold text-gray-600">
-          Kurallar
+          Uyarılar
         </h2>
 
         <div class="flex justify-between items-center">
-          <label for="search">Kural türü ara:</label>
+          <label for="search">Uyarı türü ara:</label>
           <input
-              v-model="searchRuleSource"
+              v-model="searchWarningSource"
               type="text"
               id="search"
               class="flex-1 ml-2 w-full users-input">
@@ -115,16 +140,16 @@
       <div class="mt-2 flex flex-col items-center justify-center border
                   border-gray-400 rounded-xl px-2 py-2">
         <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[400px]">
-          <li v-for="(rule, index) in filteredRules">
-            <Rule
-                @click="highlight(rule, index)"
+          <li v-for="(warning, index) in filteredWarnings">
+            <Warning
+                @click="highlight(warning, index)"
                 :key="index"
                 class="mr-2 scrollbar"
                 :class="{
-                  'bg-blue-200 border-2 border-gray-400 shadow-xl': index === indexClickedRule,
-                  'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedRule
+                  'bg-blue-200 border-2 border-gray-400 shadow-xl': index === indexClickedWarning,
+                  'bg-red-100 shadow-md border-2 border-red-200': index !== indexClickedWarning
                 }"
-                :rule="rule"
+                :warning="warning"
             />
           </li>
         </ul>
@@ -136,46 +161,62 @@
 <script setup>
   import {ref, computed, watch} from "vue";
   import {useStore} from "vuex";
-  import Rule from "./Rule.vue";
+  import Warning from "./Warning.vue";
+  import RuleListModal from "./RuleListModal.vue";
   import useVuelidate from "@vuelidate/core";
   import {helpers, required} from "@vuelidate/validators";
 
 
   // store
   const store = useStore();
-  store.dispatch("rules/getRules");
+  store.dispatch("warnings/getWarnings");
 
   // references
-  const indexClickedRule = ref(null);
-  const searchRuleSource = ref("");
+  const indexClickedWarning = ref(null);
+  const searchWarningSource = ref("");
+  const showRulesList = ref(false);
 
   const inputSource = ref("");
-  const inputMinValue = ref(null);
-  const inputMaxValue = ref(null);
-  const inputIsPresent = ref(null);
+  const inputEvent = ref("");
+  const inputMessage = ref("");
+  const inputIsScreen = ref(null);
+  const inputIsField = ref(null);
+  const inputRules = ref(null);
+
+  const selectedRules = ref(null);
 
   const vuelidateErrors = ref([]);
 
   // computed
-  const rules = computed(() => {
-    return store.state.rules.rules;
+  const warnings = computed(() => {
+    return store.state.warnings.warnings;
   });
 
   const ruleTypes = computed(() => {
     return store.state.rules.ruleTypes;
   });
 
-  const filteredRules = computed(() => {
-    return rules.value.filter(rule => {
+  const filteredWarnings = computed(() => {
+    console.log(warnings);
+    return warnings.value.filter(warning => {
       return ruleTypes.value.find(ruleType => {
-        return ruleType.value === rule.source;
-      }).name.toLowerCase().includes(searchRuleSource.value.toLowerCase());
+        return ruleType.value === warning.source;
+      }).name.toLowerCase().includes(searchWarningSource.value.toLowerCase());
     });
   });
 
-  const selectedRule = computed(() => {
-    return store.state.rules.selectedRule;
+  const selectedWarning = computed(() => {
+    if (store.state.warnings.selectedWarning) {
+      return store.state.warnings.selectedWarning;
+    } else {
+      return null;
+    }
   });
+
+  // methods
+  const updateRules = (rules) => {
+    inputRules.value = rules;
+  };
 
   // vuelidate rules
   const vuelidateRules = computed(() => {
@@ -213,16 +254,16 @@
       store.commit("general/setModalContent", `<p>${result.error}</p>`);
 
       // clear highlight
-      indexClickedRule.value = null;
+      indexClickedWarning.value = null;
     } else {
-      // if no errors, get rules again
-      await store.dispatch("rules/getRules");
+      // if no errors, get warnings again
+      await store.dispatch("warnings/getWarnings");
 
       // clear input boxes
       clear();
     }
   }
-  const createRule = async () => {
+  const createWarning = async () => {
     vuelidateErrors.value = [];
     v$.value.$validate();
     console.log(v$.value);
@@ -232,20 +273,22 @@
     console.log(vuelidateErrors.value);
 
     if (!v$.value.$error) {
-      const rule = {
+      const warning = {
         source: inputSource.value,
-        min_value: inputMinValue.value,
-        max_value: inputMaxValue.value,
-        is_present: inputIsPresent.value,
+        event: inputEvent.value,
+        message: inputMessage.value,
+        is_screen: inputIsScreen.value,
+        is_field: inputIsField.value,
+        rules: inputRules.value,
       };
-      const result = await store.dispatch("rules/createRule", rule);
+      const result = await store.dispatch("warnings/createWarning", warning);
       await CRUDResultHandler(result);
     } else {
 
     }
   };
 
-  const editRule = async () => {
+  const editWarning = async () => {
     vuelidateErrors.value = [];
     v$.value.$validate();
     console.log(v$.value);
@@ -255,55 +298,64 @@
     console.log(vuelidateErrors.value);
 
     if (!v$.value.$error) {
-      const rule = {
+      const warning = {
         source: inputSource.value,
-        min_value: inputMinValue.value,
-        max_value: inputMaxValue.value,
-        is_present: inputIsPresent.value,
+        event: inputEvent.value,
+        message: inputMessage.value,
+        is_screen: inputIsScreen.value,
+        is_field: inputIsField.value,
+        rules: inputRules.value,
       };
 
       const result = await store.dispatch(
-          "rules/editRule",
-          {id: selectedRule.value.id, rule: rule}
+          "warnings/editWarning",
+          {id: selectedWarning.value.id, warning: warning}
       );
-
       await CRUDResultHandler(result);
     } else {
 
     }
   };
 
-  const deleteRule = async () => {
+  const deleteWarning = async () => {
     const result = await store.dispatch(
-        "rules/deleteRule",
-        selectedRule.value.id
+        "warnings/deleteWarning",
+        selectedWarning.value.id
     );
 
     await CRUDResultHandler(result);
   };
   const highlight = (user, index) => {
-    indexClickedRule.value = index;
-    store.commit("rules/setSelectedRule", user);
+    indexClickedWarning.value = index;
+    store.commit("warnings/setSelectedWarning", user);
     vuelidateErrors.value = [];
   };
 
   const clear = () => {
     // clear input boxes
     inputSource.value = "";
-    inputMinValue.value = 0;
-    inputMaxValue.value = 0;
-    inputIsPresent.value = null;
+    inputEvent.value = "";
+    inputMessage.value = "";
+    inputIsScreen.value = null;
+    inputIsField.value = null;
+    inputRules.value = null;
 
-    searchRuleSource.value = "";
+    searchWarningSource.value = "";
+    selectedRules.value = [];
+    store.commit("warnings/setSelectedWarning", null);
 
     // clear highlight
-    indexClickedRule.value = null;
+    indexClickedWarning.value = null;
   }
 
-  watch(selectedRule, newValue => {
-    inputSource.value = newValue.source;
-    inputMinValue.value = newValue.min_value;
-    inputMaxValue.value = newValue.max_value;
-    inputIsPresent.value = newValue.is_present;
+  watch(selectedWarning, newValue => {
+    if (newValue !== null) {
+      inputSource.value = newValue.source;
+      inputEvent.value = newValue.event;
+      inputMessage.value = newValue.message;
+      inputIsScreen.value = newValue.is_screen;
+      inputIsField.value = newValue.is_field;
+      inputRules.value = newValue.rules;
+    }
   })
 </script>

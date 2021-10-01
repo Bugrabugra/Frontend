@@ -1,0 +1,1 @@
+{"length": 183, "name": "error", "severity": "HATA", "code": "42703", "position": "28", "file": "d:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\parser\\parse_target.c", "line": "1039", "routine": "checkInsertTargets"}

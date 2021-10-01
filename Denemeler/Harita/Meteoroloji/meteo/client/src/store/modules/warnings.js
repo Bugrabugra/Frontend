@@ -3,8 +3,8 @@ import axios from "axios";
 
 // state *********************************
 const state = () => ({
-  users: [],
-  selectedUser: null
+  warnings: [],
+  selectedWarning: null
 });
 
 // getters *******************************
@@ -14,52 +14,36 @@ const getters = {
 
 // mutations *****************************
 const mutations = {
-  setUsers(state, users) {
-    state.users = users;
+  setWarnings(state, warnings) {
+    state.warnings = warnings;
   },
-  setSelectedUser(state, user) {
-    state.selectedUser = user;
+  setSelectedWarning(state, warning) {
+    state.selectedWarning = warning;
   }
 };
 
 // actions *******************************
 const actions = {
-  async getUsers({commit}) {
+  async getWarnings({commit}) {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/users/getall",
+        "http://localhost:3001/api/warnings/getall",
         {
-          withCredentials: true
+          withCredentials: true,
         }
       );
-      const users = response.data;
-      commit("setUsers", users);
+      const warnings = response.data;
+      commit("setWarnings", warnings);
+      console.log(warnings);
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
-  async createUser(_, user) {
+  async createWarning(_, warning) {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/users/create",
-        user,
-        {
-          withCredentials: true
-        }
-      );
-      const result = response.data;
-      return result;
-    } catch (error) {
-      console.log(error);
-      // await router.replace("/login");
-    }
-  },
-  async editUser(_, payload) {
-    try {
-      const response = await axios.post(
-        `http://localhost:3001/api/users/edit/${payload.id}`,
-        payload.user,
+        "http://localhost:3001/api/warnings/create",
+        warning,
         {
           withCredentials: true
         }
@@ -68,13 +52,27 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
-  async deleteUser(_, userId) {
+  async editWarning(_, payload) {
     try {
       const response = await axios.post(
-        `http://localhost:3001/api/users/delete/${userId}`,
+        `http://localhost:3001/api/warnings/edit/${payload.id}`,
+        payload.warning,
+        {
+          withCredentials: true
+        }
+      );
+      const result = response.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  async deleteWarning(_, warningId) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/api/warnings/delete/${warningId}`,
         null,
         {
           withCredentials: true
@@ -84,7 +82,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   }
 };

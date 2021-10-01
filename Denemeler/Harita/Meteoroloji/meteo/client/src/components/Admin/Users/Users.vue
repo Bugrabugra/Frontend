@@ -194,7 +194,7 @@
   });
 
   const selectedUser = computed(() => {
-    return store.state.users.userSelected;
+    return store.state.users.selectedUser;
   });
 
   // vuelidate rules
@@ -389,6 +389,7 @@
   const highlight = (user, index) => {
     indexClickedUser.value = index;
     store.commit("users/setSelectedUser", user);
+    console.log(user)
     vuelidateErrors.value = [];
   };
 

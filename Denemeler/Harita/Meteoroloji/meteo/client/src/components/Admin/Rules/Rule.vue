@@ -1,12 +1,15 @@
 <template>
   <div class="grid grid-cols-2 cursor-pointer rounded-xl px-2 py-1">
-    <div class="col-span-1">
-      <p class="font-semibold">Kural türü:
+    <div class="col-span-2 sm:col-span-1">
+      <p class="font-semibold">Olay türü:
         <span class="font-normal">{{sourceName}}</span>
       </p>
+      <p class="font-semibold">Mevcut/Yaklaşan:
+        <span class="font-normal">{{isPresentName}}</span>
+      </p>
+    </div>
 
-      <p class="font-semibold">Gruplar:</p>
-      <p>{{rule.groups}}</p>
+    <div class="col-span-2 sm:col-span-1">
       <p class="font-semibold">Minimum değer:
         <span class="font-normal">{{rule.min_value}}</span>
       </p>
@@ -14,34 +17,37 @@
         <span class="font-normal">{{rule.max_value}}</span>
       </p>
     </div>
-
-    <div class="col-span-1">
-      <p class="font-semibold">Uyarı mesajı:
-        <span class="font-normal">{{rule.warning_message}}</span>
-      </p>
-    </div>
   </div>
 </template>
 
 <script setup>
-  import {computed, defineProps, ref} from "vue";
+  import {computed, defineProps} from "vue";
+  import {useStore} from "vuex";
 
+  // store
+  const store = useStore();
+
+  // props
   const props = defineProps(["rule"]);
 
-  const ruleTypes = ref([
-    {value: "precipitation", name: "Yağış"},
-    {value: "heat", name: "Sıcaklık"},
-    {value: "pressure", name: "Basınç"},
-    {value: "moisture", name: "Nem"},
-    {value: "snow", name: "Kar"},
-    {value: "storm", name: "Fırtına"},
-    {value: "lightning", name: "Yıldırım/Şimşek"},
-    {value: "cloud", name: "Bulut"},
-  ]);
+  // computed
+  const ruleTypes = computed(() => {
+    return store.state.rules.ruleTypes;
+  });
 
   const sourceName = computed(()=> {
     return ruleTypes.value.find(_rule => {
       return _rule.value === props.rule.source
     })["name"];
+  });
+
+  const isPresentName = computed(()=> {
+    if (props.rule.is_present) {
+      return "Mevcut";
+    } else if (props.rule.is_present === null) {
+      return "-";
+    } else {
+      return "Yaklaşan";
+    }
   });
 </script>

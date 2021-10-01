@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1, "source": "yağmur", "event": "orta şiddetli", "message": "dikkat edin", "is_screen": true, "is_field": false, "rules": [
+    1,
+    2,
+    3
+  ]
+  }
+]

@@ -11,7 +11,7 @@ const getUsers = async (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      res.send(result.rows);
+      res.json(result.rows);
     }
   })
 };
@@ -25,14 +25,19 @@ const getUser = async (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      res.send(result.rows);
+      res.json(result.rows);
     }
   })
 };
 
 // create user
 const createUser = async (req, res) => {
-  const {username, password, email, phone_number, name, surname, admin} = req.body;
+  const {
+    username, password, email,
+    phone_number, name, surname,
+    admin, poi_responsibilities,
+    messages_to_receive
+  } = req.body;
   // same email control
   await db.query(
     `select * from users where email = '${email}'`,
@@ -46,7 +51,8 @@ const createUser = async (req, res) => {
             // store hash db
             db.query(`
               insert into users 
-              (username, password, email, phone_number, name, surname, admin) 
+              (username, password, email, phone_number, name, 
+              surname, admin, poi_responsibilities, messages_to_receive) 
               values (
                 '${username}', 
                 '${hash}',
@@ -54,13 +60,15 @@ const createUser = async (req, res) => {
                 '${phone_number}', 
                 '${name}', 
                 '${surname}',
-                ${admin}
+                ${admin},
+                array [${poi_responsibilities}],
+                array [${messages_to_receive}],
               ) returning id
             `, (error, result) => {
               if (error) {
                 res.send(error);
               } else {
-                res.send(result.rows);
+                res.json(result.rows);
               }
             })
           });
@@ -71,7 +79,11 @@ const createUser = async (req, res) => {
 
 // edit user
 const editUser = async (req, res) => {
-  const {username, password, email, phone_number, name, surname, admin} = req.body;
+  const {
+    username, password, email, phone_number,
+    name, surname, admin, poi_responsibilities,
+    messages_to_receive
+  } = req.body;
   const id = req.params.id;
   // crypt the password
   await bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
@@ -79,11 +91,13 @@ const editUser = async (req, res) => {
         // store hash db
         db.query(`update users set username = '${username}', password = '${hash}', 
          email = '${email}', phone_number = '${phone_number}', name = '${name}', 
-         surname = '${surname}', admin = ${admin} where id = '${id}' returning id`, (error, result) => {
+         surname = '${surname}', admin = ${admin}, 
+         poi_responsibilities = array [${poi_responsibilities}],
+         messages_to_receive = array [${messages_to_receive}] where id = '${id}' returning id`, (error, result) => {
           if (error) {
             res.send(error);
           } else {
-            res.send(result.rows);
+            res.json(result.rows);
           }
         })
       })
@@ -99,7 +113,7 @@ const deleteUser = async (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      res.send(result.rows);
+      res.json(result.rows);
     }
   })
 }

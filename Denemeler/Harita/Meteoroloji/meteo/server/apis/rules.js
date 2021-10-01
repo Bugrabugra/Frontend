@@ -9,7 +9,7 @@ const getRules = async (req, res) => {
       if (error) {
         res.send(error);
       } else {
-        res.send(result.rows);
+        res.json(result.rows);
       }
     })
 };
@@ -23,40 +23,40 @@ const getRule = async (req, res) => {
       if (error) {
         res.send(error);
       } else {
-        res.send(result.rows);
+        res.json(result.rows);
       }
     })
 }
 
 // create rule
 const createRule = async (req, res) => {
-  const {source, min_value, max_value, warning_message, groups} = req.body;
+  const {source, min_value, max_value, is_present} = req.body;
   await db.query(
-    `insert into rules (source, min_value, max_value, warning_message, groups) 
-         values ('${source}', ${min_value}, ${max_value}, '${warning_message}', 
-         '${groups}') returning id`,
+    `insert into rules (source, min_value, max_value, is_present) 
+         values ('${source}', ${min_value}, ${max_value}, ${is_present}) 
+         returning id`,
     (error, result) => {
       if (error) {
         res.send(error);
       } else {
-        res.send(result.rows);
+        res.json(result.rows);
       }
     })
 }
 
 // edit rule
 const editRule = async (req, res) => {
-  const {source, min_value, max_value, warning_message, groups} = req.body;
+  const {source, min_value, max_value, is_present} = req.body;
   const id = req.params.id;
   await db.query(
     `update rules set source = '${source}', min_value = ${min_value}, 
-         max_value = ${max_value}, warning_message = '${warning_message}', 
-         groups = '${groups}' where id = '${id}' returning id`,
+         max_value = ${max_value}, is_present = ${is_present} where id = '${id}' 
+         returning id`,
     (error, result) => {
       if (error) {
         res.send(error);
       } else {
-        res.send(result.rows);
+        res.json(result.rows);
       }
     })
 }
@@ -70,7 +70,7 @@ const deleteRule = async (req, res) => {
       if (error) {
         res.send(error);
       } else {
-        res.send(result.rows);
+        res.json(result.rows);
       }
     })
 }

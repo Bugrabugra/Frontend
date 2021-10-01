@@ -1,3 +1,408 @@
+POST http://localhost:3001/api/warnings/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T163035.200.json
+
+###
+
+GET http://localhost:3001/api/warnings/getone/1
+
+<> 2021-10-01T163015.200.json
+
+###
+
+GET http://localhost:3001/api/warnings/getall
+
+<> 2021-10-01T163006.200.json
+
+###
+
+POST http://localhost:3001/api/messages/delete/2
+Content-Type: application/json
+
+<> 2021-10-01T141454.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T141448.200.json
+
+###
+
+POST http://localhost:3001/api/messages/edit/1
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3,4,5}"
+}
+
+<> 2021-10-01T141433.200.json
+
+###
+
+POST http://localhost:3001/api/messages/edit/1
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3,4,5}"
+}
+
+<> 2021-10-01T141430.200.json
+
+###
+
+POST http://localhost:3001/api/messages/edit/1
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3,4,5}"
+}
+
+<> 2021-10-01T141417.200.json
+
+###
+
+POST http://localhost:3001/api/messages/edit/1
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3,4,5}"
+}
+
+<> 2021-10-01T141326.200.json
+
+###
+
+POST http://localhost:3001/api/messages/edit/2
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3,4,5}"
+}
+
+<> 2021-10-01T141317.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getone/1
+
+<> 2021-10-01T141258.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T141254.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T140621.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T140609.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T140539.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T140318.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-01T140217.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": [1,2,3]
+}
+
+<> 2021-10-01T140139.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": [1,2,3]
+}
+
+<> 2021-10-01T140136.200.json
+
+###
+
+POST http://localhost:3001/api/messages/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": [1,2,3]
+}
+
+<> 2021-10-01T140113.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getone/1
+
+<> 2021-10-01T140000.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T135956.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T135510.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T133932.404.html
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T133554.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T133432.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T133427.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T133425.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T133359.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T132842.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T132559.404.html
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T132545.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T132346.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T132334.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T132318.200.json
+
+###
+
+GET http://localhost:3001/api/rules/getall
+
+<> 2021-10-01T132226.404.html
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T131854.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T131804.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T131642.200.json
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+###
+
+GET http://localhost:3001/api/messages/getall
+
+<> 2021-10-01T131524.404.html
+
+###
+
 GET http://localhost:3001/api/rules/getall
 
 <> 2021-09-30T182505.404.html
@@ -67,434 +472,6 @@ Content-Type: application/json
 }
 
 <> 2021-09-29T131631.200.json
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T113404.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "",
-  "password": ""
-}
-
-<> 2021-09-29T113359.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T113031.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin1234"
-}
-
-<> 2021-09-29T113026.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T113020.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-<> 2021-09-29T113005.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "adminn",
-  "password": "admin123"
-}
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112556.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112534.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112456.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112435.200.html
-
-###
-
-POST http://localhost:3001/api/login/
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112348.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112310.200.html
-
-###
-
-GET http://localhost:3001/api/login/
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112256.404.html
-
-###
-
-GET http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112214.404.html
-
-###
-
-GET http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112155.404.html
-
-###
-
-GET http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T112043.404.html
-
-###
-
-POST http://localhost:3001/api/users/create
-Content-Type: application/json
-
-{
-  "username": "OOO",
-  "password": "OOO",
-  "email": "OOO@kkk",
-  "phone_number": "OOO",
-  "name": "OOO",
-  "surname": "OOO",
-  "admin": false
-}
-
-<> 2021-09-29T091930.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-09-28T143858.200.json
-
-###
-
-POST http://localhost:3001/api/rules/delete/1
-Content-Type: application/json
-
-<> 2021-09-28T143855.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-09-28T143847.200.json
-
-###
-
-POST http://localhost:3001/api/rules/edit/2
-Content-Type: application/json
-
-{
-  "source": "Sel",
-  "min_value": "20.45",
-  "max_value": "34.98",
-  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
-  "groups": "3,4,8"
-}
-
-<> 2021-09-28T143842.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-09-28T143814.200.json
-
-###
-
-POST http://localhost:3001/api/rules/create
-Content-Type: application/json
-
-{
-  "source": "Sel",
-  "min_value": "45.7",
-  "max_value": "93.5",
-  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
-  "groups": "3,4,8"
-}
-
-<> 2021-09-28T143810.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getone/1
-
-<> 2021-09-28T143659.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-09-28T143651.200.json
-
-###
-
-GET http://localhost:3001/api/users/getall
-
-<> 2021-09-27T091149.200.json
-
-###
-
-POST http://localhost:3001/api/users/deleteUser/14
-Content-Type: application/json
-
-<> 2021-09-26T135835.200.json
-
-###
-
-POST http://localhost:3001/api/users/editUser/16
-Content-Type: application/json
-
-{
-"username": "12ktdtud3",
-"password": "dhfds",
-"email": "ccjjugdc",
-"phone_number": "ddkutdutkddd",
-"name": "eekdktde",
-"surname": "fkdkdkff"
-}
-
-<> 2021-09-26T135834.200.json
-
-###
-
-POST http://localhost:3001/api/users/createUser
-Content-Type: application/json
-
-{
-"username": "aaa",
-"password": "bbb",
-"email": "ccc@kkk",
-"phone_number": "ddd",
-"name": "eee",
-"surname": "fff"
-}
-
-<> 2021-09-26T135833-2.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUser/16
-
-<> 2021-09-26T135833-1.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T135833.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T135812.200.json
-
-###
-
-GET http://localhost:3001/api/users/getUsers
-
-<> 2021-09-26T135805.200.json
-
-###
-
-POST http://localhost:3001/api/users/deleteUser/14
-Content-Type: application/json
-
-<> 2021-09-26T135740.200.json
-
-###
-
-POST http://localhost:3001/api/users/editUser/16
-Content-Type: application/json
-
-{
-"username": "12ktdtud3",
-"password": "dhfds",
-"email": "ccjjugdc",
-"phone_number": "ddkutdutkddd",
-"name": "eekdktde",
-"surname": "fkdkdkff"
-}
-
-<> 2021-09-26T135736.200.json
 
 ###
 

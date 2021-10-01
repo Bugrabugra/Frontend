@@ -26,7 +26,7 @@
       <div class="z-10">
         <Users v-if="selectedTab === 'Kullanıcı yönetimi'"/>
         <Rules v-if="selectedTab === 'Kural yönetimi'"/>
-        <Groups v-if="selectedTab === 'Grup yönetimi'"/>
+        <Warnings v-if="selectedTab === 'Uyarı yönetimi'"/>
 
         <!--<transition-->
         <!--    mode="out-in"-->
@@ -44,7 +44,7 @@
   import {useRouter} from "vue-router";
   import Users from "../components/Admin/Users/Users.vue";
   import Rules from "../components/Admin/Rules/Rules.vue";
-  import Groups from "../components/Admin/Groups/Groups.vue";
+  import Warnings from "../components/Admin/Warnings/Warnings.vue";
 
 
   // router
@@ -54,7 +54,7 @@
   const tabs = ref([
       "Kullanıcı yönetimi",
       "Kural yönetimi",
-      "Grup yönetimi"
+      "Uyarı yönetimi"
   ]);
   const selectedTab = ref("Kullanıcı yönetimi");
 

@@ -1,0 +1,1 @@
+{"length": 316, "name": "error", "severity": "HATA", "code": "23502", "detail": "Hata veren satır (null, yağmur, orta şiddetli, dikkat edin, t, f, {1,2,3}) içeriyor.", "schema": "public", "table": "messages", "column": "id", "file": "d:\\pginstaller_13.auto\\postgres.windows-x64\\src\\backend\\executor\\execmain.c", "line": "1953", "routine": "ExecConstraints"}

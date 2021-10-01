@@ -1,10 +1,21 @@
 import axios from "axios";
-import router from "../../router";
+import {ref} from "vue";
+
 
 // state *********************************
 const state = () => ({
   rules: [],
-  ruleSelected: null
+  selectedRule: null,
+  ruleTypes: [
+    {value: "precipitation", name: "Yağmur"},
+    {value: "snow", name: "Kar"},
+    {value: "lightning", name: "Yıldırım/Şimşek"},
+    {value: "greenStormPolygon", name: "Yeşil Fırtına Poligonu"},
+    {value: "orangeStormPolygon", name: "Turuncu Fırtına Poligonu"},
+    {value: "purpleStormPolygon", name: "Mor Fırtına Poligonu"},
+    {value: "heat", name: "Sıcaklık"},
+    {value: "wind", name: "Rüzgar"},
+  ]
 });
 
 // getters *******************************
@@ -18,7 +29,7 @@ const mutations = {
     state.rules = rules;
   },
   setSelectedRule(state, rule) {
-    state.ruleSelected = rule;
+    state.selectedRule = rule;
   }
 };
 
@@ -34,6 +45,7 @@ const actions = {
       );
       const rules = response.data;
       commit("setRules", rules);
+      console.log(rules);
     } catch (error) {
       console.log(error);
       // await router.replace("/login");
@@ -52,7 +64,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
   async editRule(_, payload) {
@@ -68,7 +79,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
   async deleteRule(_, ruleId) {
@@ -84,7 +94,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   }
 };
