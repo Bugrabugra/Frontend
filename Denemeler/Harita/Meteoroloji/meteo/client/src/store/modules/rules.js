@@ -10,9 +10,9 @@ const state = () => ({
     {value: "precipitation", name: "Yağmur"},
     {value: "snow", name: "Kar"},
     {value: "lightning", name: "Yıldırım/Şimşek"},
-    {value: "greenStormPolygon", name: "Yeşil Fırtına Poligonu"},
-    {value: "orangeStormPolygon", name: "Turuncu Fırtına Poligonu"},
-    {value: "purpleStormPolygon", name: "Mor Fırtına Poligonu"},
+    {value: "green storm polygon", name: "Yeşil Fırtına Poligonu"},
+    {value: "orange storm polygon", name: "Turuncu Fırtına Poligonu"},
+    {value: "purple storm polygon", name: "Mor Fırtına Poligonu"},
     {value: "heat", name: "Sıcaklık"},
     {value: "wind", name: "Rüzgar"},
   ]

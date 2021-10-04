@@ -36,7 +36,7 @@ const createUser = async (req, res) => {
     username, password, email,
     phone_number, name, surname,
     admin, poi_responsibilities,
-    messages_to_receive
+    warnings_to_receive
   } = req.body;
   // same email control
   await db.query(
@@ -52,7 +52,7 @@ const createUser = async (req, res) => {
             db.query(`
               insert into users 
               (username, password, email, phone_number, name, 
-              surname, admin, poi_responsibilities, messages_to_receive) 
+              surname, admin, poi_responsibilities, warnings_to_receive) 
               values (
                 '${username}', 
                 '${hash}',
@@ -62,7 +62,7 @@ const createUser = async (req, res) => {
                 '${surname}',
                 ${admin},
                 array [${poi_responsibilities}],
-                array [${messages_to_receive}],
+                array [${warnings_to_receive}],
               ) returning id
             `, (error, result) => {
               if (error) {
@@ -82,7 +82,7 @@ const editUser = async (req, res) => {
   const {
     username, password, email, phone_number,
     name, surname, admin, poi_responsibilities,
-    messages_to_receive
+    warnings_to_receive
   } = req.body;
   const id = req.params.id;
   // crypt the password
@@ -93,7 +93,7 @@ const editUser = async (req, res) => {
          email = '${email}', phone_number = '${phone_number}', name = '${name}', 
          surname = '${surname}', admin = ${admin}, 
          poi_responsibilities = array [${poi_responsibilities}],
-         messages_to_receive = array [${messages_to_receive}] where id = '${id}' returning id`, (error, result) => {
+         warnings_to_receive = array [${warnings_to_receive}] where id = '${id}' returning id`, (error, result) => {
           if (error) {
             res.send(error);
           } else {

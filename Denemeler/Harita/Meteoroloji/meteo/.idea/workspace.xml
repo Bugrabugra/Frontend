@@ -1,67 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="30092021&#10;Meteoroloji&#10;1- Map dışındakiler bitti gibi">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Warnings/RuleListModal.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Warnings/Warning.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Warnings/Warnings.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/store/modules/warnings.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/TEST API/WARNINGS API.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/apis/warnings.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/warnings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135736.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135740.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135805.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135812.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135833-1.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135833-2.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135833.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135834.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-26T135835.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-27T091149.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143651.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143659.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143810.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143814.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143842.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143847.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143855.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-28T143858.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T091930.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112043.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112155.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112214.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112256.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112310.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112348.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112435.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112456.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112534.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T112556.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T113005.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T113020.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T113026.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T113031.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T113359.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T113404.200.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="02092021&#10;Meteoroloji&#10;1- Devam">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/tailwind.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Groups/Groups.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rule.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Users/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/modules/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/general.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/modules/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/rules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/modules/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/apis/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/apis/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/rules.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/apis/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +69,7 @@
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Admin\Rules" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RunManager" selected="npm.tailwind">
     <configuration name="WARNINGS API#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API/WARNINGS API.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -164,9 +108,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.serve" />
         <item itemvalue="npm.tailwind" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.serve" />
         <item itemvalue="HTTP Request.WARNINGS API#3" />
         <item itemvalue="HTTP Request.WARNINGS API#2" />
       </list>
@@ -201,7 +145,11 @@
       <workItem from="1633039200964" duration="1639000" />
       <workItem from="1633068090854" duration="670000" />
       <workItem from="1633068936593" duration="29784000" />
-      <workItem from="1633117216375" duration="7172000" />
+      <workItem from="1633117216375" duration="7450000" />
+      <workItem from="1633163079304" duration="1187000" />
+      <workItem from="1633175951099" duration="151000" />
+      <workItem from="1633247715917" duration="1409000" />
+      <workItem from="1633326678000" duration="589000" />
     </task>
     <task id="LOCAL-00001" summary="26092021&#10;Meteoroloji">
       <created>1632685140150</created>
@@ -252,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633016667347</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="02092021&#10;Meteoroloji&#10;1- Devam">
+      <created>1633124699407</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1633124699407</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +233,8 @@
     <MESSAGE value="27092021&#10;Meteoroloji&#10;1- User front end bitti gibi" />
     <MESSAGE value="28092021&#10;Meteoroloji&#10;1- Rules front end bitti gibi" />
     <MESSAGE value="30092021&#10;Meteoroloji&#10;1- Map dışındakiler bitti gibi" />
-    <option name="LAST_COMMIT_MESSAGE" value="30092021&#10;Meteoroloji&#10;1- Map dışındakiler bitti gibi" />
+    <MESSAGE value="02092021&#10;Meteoroloji&#10;1- Devam" />
+    <option name="LAST_COMMIT_MESSAGE" value="02092021&#10;Meteoroloji&#10;1- Devam" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
