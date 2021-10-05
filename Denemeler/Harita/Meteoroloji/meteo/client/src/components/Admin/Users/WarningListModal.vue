@@ -17,29 +17,31 @@
                     justify-center">
           <div class="mb-4">
             <ul class="h-96 overflow-y-scroll flex flex-col space-y-1">
-              <li v-for="rule in rules"
+              <li v-for="warning in warnings"
                   class="px-2 py-1 hover:bg-blue-200 transition duration-200
                   bg-blue-100 rounded-md border border-blue-200"
               >
                 <div class="flex items-center justify-between">
-                  <input @change="handleCheckBox(rule.id)" type="checkbox" :checked="check(rule.id)">
+                  <input
+                      class="h-5 w-5"
+                      @change="handleCheckBox(warning.id)"
+                      type="checkbox"
+                      :checked="check(warning.id)"
+                  >
 
                   <div class="grid grid-cols-2 rounded-xl px-2 py-1 gap-x-4 flex-1">
-                    <div class="col-span-2 sm:col-span-1 text-left">
+                    <div class="col-span-2 text-left">
                       <p class="font-semibold">Olay türü:
-                        <span class="font-normal">{{sourceName(rule.source)}}</span>
+                        <span class="font-normal">{{sourceName(warning.source)}}</span>
                       </p>
-                      <p class="font-semibold">Mevcut/Yaklaşan:
-                        <span class="font-normal">{{isPresent(rule.is_present)}}</span>
+                      <p class="font-semibold">Olay adı:
+                        <span class="font-normal">{{warning.event}}</span>
                       </p>
                     </div>
 
-                    <div class="col-span-2 sm:col-span-1 text-left sm:text-right">
-                      <p class="font-semibold">Minimum:
-                        <span class="font-normal">{{rule.min_value}}</span>
-                      </p>
-                      <p class="font-semibold">Maksimum:
-                        <span class="font-normal">{{rule.max_value}}</span>
+                    <div class="col-span-2 text-left">
+                      <p class="font-semibold">Uyarı mesajı:
+                        <span class="font-normal">{{warning.message}}</span>
                       </p>
                     </div>
                   </div>
@@ -49,7 +51,7 @@
           </div>
 
           <div class="flex-col space-x-2">
-            <button class="users-button bg-blue-400" @click="chooseRulesAndCloseModal">
+            <button class="users-button bg-blue-400" @click="chooseWarningsAndCloseModal">
               Seç
             </button>
           </div>
@@ -66,37 +68,49 @@
 
   // store
   const store = useStore();
-  store.dispatch("rules/getRules");
+  store.dispatch("warnings/getWarnings");
 
   // props
-  const props = defineProps(["selectedWarning"]);
+  const props = defineProps(["selectedUser"]);
 
   // references
   const outside = ref(false);
   const isOpen = ref(true);
-  const ruleList = ref([]);
+  const warningList = ref([]);
 
   // computed
-  const rules = computed(() => {
-    return store.state.rules.rules;
-  });
-
   const ruleTypes = computed(() => {
     return store.state.rules.ruleTypes;
   });
 
+  // const sourceName = computed(()=> {
+  //   return ruleTypes.value.find(_rule => {
+  //     return _rule.value === props.warning.source
+  //   })["name"];
+  // });
+
+  const warnings = computed(() => {
+    return store.state.warnings.warnings;
+  });
+
   // methods
   const check = (id) => {
-    if (props.selectedWarning) {
-      return props.selectedWarning.rules.indexOf(id) > -1;
+    if (props.selectedUser) {
+      return props.selectedUser.warnings_to_receive.indexOf(id) > -1;
     }
   };
 
-  const chooseRulesAndCloseModal = () => {
-    console.log("RULES LIST TO BE SENT: ", ruleList.value);
+  const sourceName = (name) => {
+    return ruleTypes.value.find(_rule => {
+      return _rule.value === name
+    })["name"];
+  };
+
+  const chooseWarningsAndCloseModal = () => {
+    console.log("WARNINGS LIST TO BE SENT: ", warningList.value);
     isOpen.value = false;
-    store.commit("warnings/setSelectedRulesList", ruleList.value);
-    store.commit("warnings/setSelectRulesModalOpen", false);
+    store.commit("users/setSelectedWarningsList", warningList.value);
+    store.commit("users/setSelectWarningsModalOpen", false);
   };
 
   const clickOutside = () => {
@@ -106,34 +120,18 @@
     }, 200)
   };
 
-  const sourceName = (name) => {
-    return ruleTypes.value.find(_rule => {
-      return _rule.value === name
-    })["name"];
-  };
-
-  const isPresent = (bool) => {
-    if (bool) {
-      return "Evet"
-    } else if (bool === null) {
-      return "-"
-    } else {
-      return "Hayır";
-    }
-  }
-
   const handleCheckBox = (id) => {
-    if (ruleList.value.indexOf(id) === -1) {
-      ruleList.value.push(id);
+    if (warningList.value.indexOf(id) === -1) {
+      warningList.value.push(id);
     } else {
-      ruleList.value.splice(ruleList.value.indexOf(id), 1);
+      warningList.value.splice(warningList.value.indexOf(id), 1);
     }
   }
 
   onMounted(() => {
-    ruleList.value = [];
-    if (props.selectedWarning) {
-      ruleList.value = props.selectedWarning.rules
+    warningList.value = [];
+    if (props.selectedUser) {
+      warningList.value = props.selectedUser.warnings_to_receive
     }
   });
 </script>

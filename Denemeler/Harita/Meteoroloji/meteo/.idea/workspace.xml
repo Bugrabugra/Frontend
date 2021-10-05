@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="02092021&#10;Meteoroloji&#10;1- Devam">
+    <list default="true" id="ffd8c75e-ec23-4886-b589-0b6d6647871e" name="Changes" comment="04092021&#10;Meteoroloji&#10;1- Devam">
+      <change afterPath="$PROJECT_DIR$/alarm/alarm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alarm/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alarm/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alarm/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/POIListModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/WarningListModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/images/v2_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/TEST API/ALARM API.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/apis/alarm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/alarm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Other Courses/CSS/Tailwind CSS/Building a YouTube Thumbnail with Tailwind CSS/thumbnail/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-29T131631.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T015118.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T021638.200.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T182207.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T182214.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T182300.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T182359.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T182438.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-09-30T182505.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T131524.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T131642.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T131804.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T131854.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132226.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132318.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132334.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132346.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132545.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132559.404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T132842.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2021-10-01T133359.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/modules/rules.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/rules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Rules/Rules.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Users/Users.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Warnings/RuleListModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Warnings/RuleListModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Warnings/Warning.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Warnings/Warning.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/Warnings/Warnings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/Warnings/Warnings.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/general.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/modules/warnings.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/modules/warnings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/apis/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/apis/warnings.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/warnings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +70,9 @@
       <list>
         <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="Vue Single File Component" />
         <option value="HTTP Request" />
         <option value="JavaScript File" />
-        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -62,28 +115,24 @@
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\server\TEST API" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\alarm" />
+      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\server\apis" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Admin\Warnings" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\server\TEST API" />
       <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\views" />
-      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Admin\Users" />
-      <recent name="C:\Users\Bugra\Documents\GitHub\Frontend\Denemeler\Harita\Meteoroloji\meteo\client\src\components\Admin\Rules" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.tailwind">
-    <configuration name="WARNINGS API#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API/WARNINGS API.http" index="2" runType="Run single request">
+  <component name="RunManager" selected="Node.js.test.js">
+    <configuration name="ALARM API#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API/ALARM API.http" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="WARNINGS API#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/server/TEST API/WARNINGS API.http" index="3" runType="Run single request">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/meteo/design/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/client/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
+    <configuration name="test metos api.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/alarm/test metos api.js" working-dir="$PROJECT_DIR$/alarm">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/alarm/test.js" working-dir="$PROJECT_DIR$/alarm">
       <method v="2" />
     </configuration>
     <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -96,23 +145,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="tailwind" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/client/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="tailwind" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.tailwind" />
-        <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.test.js" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="Node.js.test metos api.js" />
+        <item itemvalue="HTTP Request.ALARM API#1" />
         <item itemvalue="npm.serve" />
-        <item itemvalue="HTTP Request.WARNINGS API#3" />
-        <item itemvalue="HTTP Request.WARNINGS API#2" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +188,11 @@
       <workItem from="1633163079304" duration="1187000" />
       <workItem from="1633175951099" duration="151000" />
       <workItem from="1633247715917" duration="1409000" />
-      <workItem from="1633326678000" duration="589000" />
+      <workItem from="1633326678000" duration="21374000" />
+      <workItem from="1633413155168" duration="2193000" />
+      <workItem from="1633418050749" duration="6000" />
+      <workItem from="1633423143000" duration="96000" />
+      <workItem from="1633423272826" duration="14268000" />
     </task>
     <task id="LOCAL-00001" summary="26092021&#10;Meteoroloji">
       <created>1632685140150</created>
@@ -207,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633124699407</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="04092021&#10;Meteoroloji&#10;1- Devam">
+      <created>1633327352074</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1633327352074</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +284,8 @@
     <MESSAGE value="28092021&#10;Meteoroloji&#10;1- Rules front end bitti gibi" />
     <MESSAGE value="30092021&#10;Meteoroloji&#10;1- Map dışındakiler bitti gibi" />
     <MESSAGE value="02092021&#10;Meteoroloji&#10;1- Devam" />
-    <option name="LAST_COMMIT_MESSAGE" value="02092021&#10;Meteoroloji&#10;1- Devam" />
+    <MESSAGE value="04092021&#10;Meteoroloji&#10;1- Devam" />
+    <option name="LAST_COMMIT_MESSAGE" value="04092021&#10;Meteoroloji&#10;1- Devam" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

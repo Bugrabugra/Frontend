@@ -38,7 +38,7 @@
     return store.state.rules.ruleTypes;
   });
 
-  const sourceName = computed(()=> {
+  const sourceName = computed(() => {
     return ruleTypes.value.find(_rule => {
       return _rule.value === props.warning.source
     })["name"];

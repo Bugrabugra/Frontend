@@ -1,5 +1,0 @@
-[
-  {"id": 3, "source": "lightning", "min_value": 20.8, "max_value": 43.1, "is_present": false},
-  {"id": 4, "source": "heat", "min_value": 35, "max_value": 40, "is_present": null},
-  {"id": 5, "source": "snow", "min_value": 20, "max_value": 30, "is_present": true}
-]

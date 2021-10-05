@@ -114,7 +114,7 @@
       <!--rules list-->
       <div class="mt-2 flex flex-col items-center justify-center border
                   border-gray-400 rounded-xl px-2 py-2">
-        <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[400px]">
+        <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[480px]">
           <li v-for="(rule, index) in filteredRules">
             <Rule
                 @click="highlight(rule, index)"
@@ -290,8 +290,8 @@
   const clear = () => {
     // clear input boxes
     inputSource.value = "";
-    inputMinValue.value = 0;
-    inputMaxValue.value = 0;
+    inputMinValue.value = null;
+    inputMaxValue.value = null;
     inputIsPresent.value = null;
 
     searchRuleSource.value = "";

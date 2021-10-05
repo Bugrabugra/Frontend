@@ -1,3 +1,391 @@
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "green storm polygon",
+  "value": 0,
+  "isPresent": true,
+  "source2": null,
+  "value2": 0,
+  "bool2": null,
+  "poiId": 112
+}
+
+<> 2021-10-05T115253.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "green storm polygon",
+  "value": 0,
+  "isPresent": true,
+  "source2": null,
+  "value2": 0,
+  "bool2": null,
+  "poiId": 112
+}
+
+<> 2021-10-04T171122.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "green storm polygon",
+  "value": null,
+  "isPresent": true,
+  "source2": null,
+  "value2": null,
+  "bool2": null,
+  "poiId": 112
+}
+
+<> 2021-10-04T170750.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "green storm polygon",
+  "value": null,
+  "isPresent": true,
+  "source2": null,
+  "value2": null,
+  "bool2": null,
+  "poiId": 112
+}
+
+<> 2021-10-04T170644.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T170051.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T170049.200.json
+
+###
+
+POST http://localhost:3001/api/warnings/create
+Content-Type: application/json
+
+{
+  "source": "yağmur",
+  "event": "orta şiddetli",
+  "message": "dikkat edin",
+  "is_screen": true,
+  "is_field": false,
+  "rules": "{1,2,3}"
+}
+
+<> 2021-10-04T170037-1.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T170037.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T170035.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T165602.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": null,
+  "value2": null,
+  "bool2": null,
+  "poiId": 112
+}
+
+<> 2021-10-04T165520.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T165421.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T165417.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T165351.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "poiId": 112
+}
+
+<> 2021-10-04T165028.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "poiId": 112
+}
+
+<> 2021-10-04T164959.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "precipitation",
+  "value": 42,
+  "bool": false,
+  "source2": "precipitation",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T164946.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "heat",
+  "value": 42,
+  "bool": false,
+  "source2": "heat",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T164902.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "heat",
+  "value": 42,
+  "bool": false,
+  "source2": "heat",
+  "value2": 54,
+  "bool2": true,
+  "poiId": 112
+}
+
+<> 2021-10-04T164752.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "multi",
+  "source": "heat",
+  "source2": "",
+  "value": 38,
+  "value2": "",
+  "bool": false,
+  "bool2": "",
+  "poiId": 112
+}
+
+<> 2021-10-04T164645.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "heat",
+  "source2": "",
+  "value": 38,
+  "value2": "",
+  "bool": false,
+  "bool2": "",
+  "poiId": 112
+}
+
+<> 2021-10-04T160523.200.json
+
+###
+
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "admin123",
+  "source2": "",
+  "value": 38,
+  "value2": "",
+  "bool": false,
+  "bool2": "",
+  "poiId": 112
+}
+
+<> 2021-10-04T160502.200.json
+
+###
+
 POST http://localhost:3001/api/warnings/create
 Content-Type: application/json
 
@@ -324,154 +712,6 @@ GET http://localhost:3001/api/messages/getall
 GET http://localhost:3001/api/messages/getall
 
 <> 2021-10-01T133425.200.json
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-<> 2021-10-01T133359.200.json
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-<> 2021-10-01T132842.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-10-01T132559.404.html
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-10-01T132545.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-10-01T132346.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-10-01T132334.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-10-01T132318.200.json
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-10-01T132226.404.html
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-<> 2021-10-01T131854.200.json
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-<> 2021-10-01T131804.200.json
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-<> 2021-10-01T131642.200.json
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-###
-
-GET http://localhost:3001/api/messages/getall
-
-<> 2021-10-01T131524.404.html
-
-###
-
-GET http://localhost:3001/api/rules/getall
-
-<> 2021-09-30T182505.404.html
-
-###
-
-GET http://localhost:3001/api/map/getpois
-Content-Type: application/json
-
-<> 2021-09-30T182438.404.html
-
-###
-
-GET http://localhost:3001/api/map/getpois
-Content-Type: application/json
-
-<> 2021-09-30T182359.404.html
-
-###
-
-GET http://localhost:3001/api/map/getpois
-Content-Type: application/json
-
-<> 2021-09-30T182300.404.html
-
-###
-
-GET http://localhost:3001/api/map/getpois
-Content-Type: application/json
-
-<> 2021-09-30T182214.404.html
-
-###
-
-POST http://localhost:3001/api/map/getpois
-Content-Type: application/json
-
-<> 2021-09-30T182207.404.html
-
-###
-
-POST http://localhost:3001/api/auth/logout
-Content-Type: application/json
-
-<> 2021-09-30T021638.200.html
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-30T015118.200.json
-
-###
-
-POST http://localhost:3001/api/login
-Content-Type: application/json
-
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-<> 2021-09-29T131631.200.json
 
 ###
 

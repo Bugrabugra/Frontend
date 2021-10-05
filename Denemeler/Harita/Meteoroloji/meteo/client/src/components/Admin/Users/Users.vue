@@ -1,4 +1,12 @@
 <template>
+  <POIListModal
+      v-if="showPOIList"
+      :selectedUser="selectedUser"
+  />
+  <WarningListModal
+      v-if="showWarningList"
+      :selectedUser="selectedUser"
+  />
   <div class="bg-gray-100 rounded-b-xl shadow-2xl">
     <div class="px-4 py-2">
       <!--header-->
@@ -70,6 +78,40 @@
             <label class="w-1/3 py-1 font-bold text-gray-700" for="admin">Yönetici:</label>
             <input class="w-2/3 h-4 w-4" type="checkbox" v-model="inputAdmin" id="admin">
           </div>
+
+          <!--pois-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Bölgeleri:</label>
+            <button class="users-button bg-indigo-400 hover:bg-indigo-500
+                       text-indigo-700 hover:text-indigo-100"
+                    @click="openPOIsList"
+            >
+              Bölgeleri tanımla
+            </button>
+          </div>
+
+          <!--defined pois-->
+          <!--<div class="flex items-center">-->
+          <!--  <label class="w-1/3 py-1 font-bold text-gray-700">Tanımlanan bölgeler:</label>-->
+          <!--  <p>{{inputPOIs}}</p>-->
+          <!--</div>-->
+
+          <!--warnings-->
+          <div class="flex items-center">
+            <label class="w-1/3 py-1 font-bold text-gray-700">Uyarıları:</label>
+            <button class="users-button bg-indigo-400 hover:bg-indigo-500
+                       text-indigo-700 hover:text-indigo-100"
+                    @click="openWarningsList"
+            >
+              Uyarıları tanımla
+            </button>
+          </div>
+
+          <!--defined warnings-->
+          <!--<div class="flex items-center">-->
+          <!--  <label class="w-1/3 py-1 font-bold text-gray-700">Tanımlanan uyarılar:</label>-->
+          <!--  <p>{{inputWarnings}}</p>-->
+          <!--</div>-->
         </div>
 
         <!--buttons-->
@@ -137,7 +179,7 @@
       <!--users list-->
       <div class="mt-2 flex flex-col items-center justify-center border
                   border-gray-400 rounded-xl px-2 py-2">
-        <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[400px]">
+        <ul class="w-full space-y-2 overflow-y-scroll h-48 md:h-[320px]">
           <li v-for="(user, index) in filteredUsers">
             <User
                 @click="highlight(user, index)"
@@ -163,6 +205,8 @@
   import useVuelidate from "@vuelidate/core";
   import {helpers, required, email, minLength} from "@vuelidate/validators";
   import User from "./User.vue";
+  import POIListModal from "./POIListModal.vue";
+  import WarningListModal from "./WarningListModal.vue";
 
   // store
   const store = useStore();
@@ -179,10 +223,20 @@
   const inputName = ref("");
   const inputSurname = ref("");
   const inputAdmin = ref(false);
+  const inputPOIs = ref(null);
+  const inputWarnings = ref(null);
 
   const vuelidateErrors = ref([]);
 
   // computed
+  const showPOIList = computed(() => {
+    return store.state.users.isSelectPOIListModalOpen;
+  });
+
+  const showWarningList = computed(() => {
+    return store.state.users.isSelectWarningListModalOpen;
+  });
+
   const users = computed(() => {
     return store.state.users.users;
   });
@@ -194,7 +248,19 @@
   });
 
   const selectedUser = computed(() => {
-    return store.state.users.selectedUser;
+    if (store.state.users.selectedUser) {
+      return store.state.users.selectedUser;
+    } else {
+      return null;
+    }
+  });
+
+  const selectedPOIsList = computed(() => {
+    return store.state.users.selectedPOIsList;
+  });
+
+  const selectedWarningsList = computed(() => {
+    return store.state.users.selectedWarningsList;
   });
 
   // vuelidate rules
@@ -292,6 +358,14 @@
   });
 
   // methods
+  const openPOIsList = () => {
+    store.commit("users/setSelectPOIsModalOpen", true);
+  };
+
+  const openWarningsList = () => {
+    store.commit("users/setSelectWarningsModalOpen", true);
+  };
+
   const v$ = useVuelidate(vuelidateRules, {
     inputUsername: inputUsername,
     inputEmail: inputEmail,
@@ -338,7 +412,9 @@
         phone_number: inputPhoneNumber.value,
         name: inputName.value,
         surname: inputSurname.value,
-        admin: inputAdmin.value
+        admin: inputAdmin.value,
+        poi_responsibilities: inputPOIs.value,
+        warnings_to_receive: inputWarnings.value
       };
       const result = await store.dispatch("users/createUser", user);
       await CRUDResultHandler(result);
@@ -364,8 +440,12 @@
         phone_number: inputPhoneNumber.value,
         name: inputName.value,
         surname: inputSurname.value,
-        admin: inputAdmin.value
+        admin: inputAdmin.value,
+        poi_responsibilities: inputPOIs.value,
+        warnings_to_receive: inputWarnings.value
       };
+
+      console.log("USER: ", user);
 
       const result = await store.dispatch(
           "users/editUser",
@@ -387,6 +467,7 @@
     await CRUDResultHandler(result);
   };
   const highlight = (user, index) => {
+    clear();
     indexClickedUser.value = index;
     store.commit("users/setSelectedUser", user);
     console.log(user)
@@ -402,8 +483,13 @@
     inputName.value = "";
     inputSurname.value = "";
     inputAdmin.value = null;
+    inputPOIs.value = null;
+    inputWarnings.value = null;
 
     searchUserText.value = "";
+    store.commit("users/setSelectedUser", null);
+    store.commit("users/setSelectedPOIsList", null);
+    store.commit("users/setSelectedWarningsList", null);
 
     // clear highlight
     indexClickedUser.value = null;
@@ -411,13 +497,27 @@
     vuelidateErrors.value = [];
   }
 
-  watch(selectedUser, newValue => {
-    inputUsername.value = newValue.username;
-    inputEmail.value = newValue.email;
-    inputPassword.value = newValue.password;
-    inputPhoneNumber.value = newValue.phone_number;
-    inputName.value = newValue.name;
-    inputSurname.value = newValue.surname;
-    inputAdmin.value = newValue.admin
+  watch(
+      [selectedUser, selectedPOIsList, selectedWarningsList],
+      ([newSelectedUser, newSelectedPOIsList, newSelectedWarningsList]) => {
+        if (newSelectedUser !== null) {
+          inputUsername.value = newSelectedUser.username;
+          inputEmail.value = newSelectedUser.email;
+          inputPassword.value = newSelectedUser.password;
+          inputPhoneNumber.value = newSelectedUser.phone_number;
+          inputName.value = newSelectedUser.name;
+          inputSurname.value = newSelectedUser.surname;
+          inputAdmin.value = newSelectedUser.admin;
+          inputPOIs.value = newSelectedUser.poi_responsibilities;
+          inputWarnings.value = newSelectedUser.warnings_to_receive;
+        }
+
+        if (newSelectedPOIsList !== null) {
+          inputPOIs.value = newSelectedPOIsList;
+        }
+
+        if (newSelectedWarningsList !== null) {
+          inputWarnings.value = newSelectedWarningsList;
+        }
   })
 </script>

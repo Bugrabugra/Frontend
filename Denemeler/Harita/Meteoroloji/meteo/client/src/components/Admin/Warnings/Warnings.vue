@@ -2,8 +2,6 @@
   <RuleListModal
       v-if="showRulesList"
       :selectedWarning="selectedWarning"
-      @sendRules="updateRules"
-      @closeModal="showRulesList = false"
   />
   <div class="bg-gray-100 rounded-b-xl shadow-2xl">
     <div class="px-4 py-2">
@@ -62,17 +60,17 @@
             <label class="w-1/3 py-1 font-bold text-gray-700">Kurallar:</label>
             <button class="users-button bg-indigo-400 hover:bg-indigo-500
                        text-indigo-700 hover:text-indigo-100"
-                    @click="showRulesList = true"
+                    @click="openRulesList"
             >
               Kuralları tanımla
             </button>
           </div>
 
           <!--defined rules-->
-          <div class="flex items-center">
-            <label class="w-1/3 py-1 font-bold text-gray-700">Tanımlanan kurallar:</label>
-            <p>{{inputRules}}</p>
-          </div>
+          <!--<div class="flex items-center">-->
+          <!--  <label class="w-1/3 py-1 font-bold text-gray-700">Tanımlanan kurallar:</label>-->
+          <!--  <p>{{inputRules}}</p>-->
+          <!--</div>-->
 
         </div>
 
@@ -139,7 +137,7 @@
       <!--rules list-->
       <div class="mt-2 flex flex-col items-center justify-center border
                   border-gray-400 rounded-xl px-2 py-2">
-        <ul class="w-full space-y-2 overflow-y-scroll h-80 md:h-[400px]">
+        <ul class="w-full space-y-2 overflow-y-scroll h-40 md:h-[320px]">
           <li v-for="(warning, index) in filteredWarnings">
             <Warning
                 @click="highlight(warning, index)"
@@ -174,7 +172,6 @@
   // references
   const indexClickedWarning = ref(null);
   const searchWarningSource = ref("");
-  const showRulesList = ref(false);
 
   const inputSource = ref("");
   const inputEvent = ref("");
@@ -183,11 +180,13 @@
   const inputIsField = ref(null);
   const inputRules = ref(null);
 
-  const selectedRules = ref(null);
-
   const vuelidateErrors = ref([]);
 
   // computed
+  const showRulesList = computed(() => {
+    return store.state.warnings.isSelectRulesModalOpen;
+  });
+
   const warnings = computed(() => {
     return store.state.warnings.warnings;
   });
@@ -213,9 +212,13 @@
     }
   });
 
+  const selectedRulesList = computed(() => {
+    return store.state.warnings.selectedRulesList;
+  });
+
   // methods
-  const updateRules = (rules) => {
-    inputRules.value = rules;
+  const openRulesList = () => {
+    store.commit("warnings/setSelectRulesModalOpen", true);
   };
 
   // vuelidate rules
@@ -325,9 +328,10 @@
 
     await CRUDResultHandler(result);
   };
-  const highlight = (user, index) => {
+  const highlight = (warning, index) => {
+    clear();
     indexClickedWarning.value = index;
-    store.commit("warnings/setSelectedWarning", user);
+    store.commit("warnings/setSelectedWarning", warning);
     vuelidateErrors.value = [];
   };
 
@@ -341,21 +345,27 @@
     inputRules.value = null;
 
     searchWarningSource.value = "";
-    selectedRules.value = [];
     store.commit("warnings/setSelectedWarning", null);
+    store.commit("warnings/setSelectedRulesList", null);
 
     // clear highlight
     indexClickedWarning.value = null;
   }
 
-  watch(selectedWarning, newValue => {
-    if (newValue !== null) {
-      inputSource.value = newValue.source;
-      inputEvent.value = newValue.event;
-      inputMessage.value = newValue.message;
-      inputIsScreen.value = newValue.is_screen;
-      inputIsField.value = newValue.is_field;
-      inputRules.value = newValue.rules;
+  watch([selectedWarning, selectedRulesList], ([newSelectedWarning, newSelectedRulesList], [a, b]) => {
+    if (newSelectedWarning !== null) {
+      console.log("selected rules: ", newSelectedWarning.rules)
+      console.log("NEW: ", newSelectedWarning)
+      inputSource.value = newSelectedWarning.source;
+      inputEvent.value = newSelectedWarning.event;
+      inputMessage.value = newSelectedWarning.message;
+      inputIsScreen.value = newSelectedWarning.is_screen;
+      inputIsField.value = newSelectedWarning.is_field;
+      inputRules.value = newSelectedWarning.rules;
+    }
+
+    if (newSelectedRulesList !== null) {
+      inputRules.value = newSelectedRulesList;
     }
   })
 </script>

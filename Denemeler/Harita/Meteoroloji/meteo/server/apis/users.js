@@ -84,6 +84,7 @@ const editUser = async (req, res) => {
     name, surname, admin, poi_responsibilities,
     warnings_to_receive
   } = req.body;
+  console.log("POI: ", poi_responsibilities);
   const id = req.params.id;
   // crypt the password
   await bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
@@ -93,7 +94,8 @@ const editUser = async (req, res) => {
          email = '${email}', phone_number = '${phone_number}', name = '${name}', 
          surname = '${surname}', admin = ${admin}, 
          poi_responsibilities = array [${poi_responsibilities}],
-         warnings_to_receive = array [${warnings_to_receive}] where id = '${id}' returning id`, (error, result) => {
+         warnings_to_receive = array [${warnings_to_receive}] where id = ${id} returning id`,
+          (error, result) => {
           if (error) {
             res.send(error);
           } else {

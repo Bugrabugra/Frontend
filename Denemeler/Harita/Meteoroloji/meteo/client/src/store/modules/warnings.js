@@ -4,7 +4,9 @@ import axios from "axios";
 // state *********************************
 const state = () => ({
   warnings: [],
-  selectedWarning: null
+  selectedWarning: null,
+  selectedRulesList: null,
+  isSelectRulesModalOpen: false
 });
 
 // getters *******************************
@@ -19,6 +21,12 @@ const mutations = {
   },
   setSelectedWarning(state, warning) {
     state.selectedWarning = warning;
+  },
+  setSelectedRulesList(state, selectedRulesList) {
+    state.selectedRulesList = selectedRulesList;
+  },
+  setSelectRulesModalOpen(state, bool) {
+    state.isSelectRulesModalOpen = bool;
   }
 };
 

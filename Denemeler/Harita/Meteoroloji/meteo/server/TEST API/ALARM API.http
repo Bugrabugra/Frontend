@@ -1,0 +1,37 @@
+// check alarm
+POST http://localhost:3001/api/alarm/check
+Content-Type: application/json
+
+{
+  "queryType": "single",
+  "source": "green storm polygon",
+  "value": 0,
+  "isPresent": true,
+  "source2": null,
+  "value2": 0,
+  "bool2": null,
+  "poiId": 112
+}
+###
+
+#{
+#  "queryType": "single",
+#  "source": "precipitation",
+#  "value": 42,
+#  "bool": false,
+#  "source2": null,
+#  "value2": null,
+#  "bool2": null,
+#  "poiId": 112
+#}
+
+#{
+#  "queryType": "multi",
+#  "source": "precipitation",
+#  "value": 42,
+#  "bool": false,
+#  "source2": "precipitation",
+#  "value2": 54,
+#  "bool2": true,
+#  "poiId": 112
+#}

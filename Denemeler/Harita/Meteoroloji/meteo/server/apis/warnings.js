@@ -54,7 +54,7 @@ const editWarning = async (req, res) => {
   await db.query(
     `update warnings set source = '${source}', event = '${event}', 
          message = '${message}', is_screen = ${is_screen}, 
-         is_field = ${is_field}, rules = array [${rules}] where id = '${id}' 
+         is_field = ${is_field}, rules = array [${rules}] where id = ${id}
          returning id`,
     (error, result) => {
       if (error) {

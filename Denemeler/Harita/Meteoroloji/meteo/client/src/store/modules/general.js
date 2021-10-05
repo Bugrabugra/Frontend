@@ -2,7 +2,6 @@
 const state = () => ({
   isModalOpen: null,
   modalContent: "",
-  ruleList: []
 });
 
 // getters *******************************
@@ -17,9 +16,6 @@ const mutations = {
   },
   setModalContent(state, content) {
     state.modalContent = content;
-  },
-  setRuleList(state, ruleList) {
-    state.ruleList = ruleList;
   }
 };
 

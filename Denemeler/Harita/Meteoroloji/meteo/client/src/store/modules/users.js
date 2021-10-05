@@ -4,7 +4,11 @@ import axios from "axios";
 // state *********************************
 const state = () => ({
   users: [],
-  selectedUser: null
+  selectedUser: null,
+  selectedPOIsList: null,
+  isSelectPOIListModalOpen: false,
+  selectedWarningsList: null,
+  isSelectWarningListModalOpen: false
 });
 
 // getters *******************************
@@ -19,6 +23,18 @@ const mutations = {
   },
   setSelectedUser(state, user) {
     state.selectedUser = user;
+  },
+  setSelectedPOIsList(state, selectedPOIsList) {
+    state.selectedPOIsList = selectedPOIsList;
+  },
+  setSelectPOIsModalOpen(state, bool) {
+    state.isSelectPOIListModalOpen = bool;
+  },
+  setSelectedWarningsList(state, selectedWarningsList) {
+    state.selectedWarningsList = selectedWarningsList;
+  },
+  setSelectWarningsModalOpen(state, bool) {
+    state.isSelectWarningListModalOpen = bool;
   }
 };
 
@@ -36,7 +52,6 @@ const actions = {
       commit("setUsers", users);
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
   async createUser(_, user) {
@@ -52,7 +67,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
   async editUser(_, payload) {
@@ -68,7 +82,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   },
   async deleteUser(_, userId) {
@@ -84,7 +97,6 @@ const actions = {
       return result;
     } catch (error) {
       console.log(error);
-      // await router.replace("/login");
     }
   }
 };

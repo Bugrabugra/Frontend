@@ -1,0 +1,23 @@
+{
+  "name": "alarm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^3.10.1",
+    "axios": "^0.22.0",
+    "axios-adapter-hmac": "^0.1.1",
+    "crypto-js": "^4.1.1",
+    "moment": "^2.29.1",
+    "node-cron": "^3.0.0"
+  },
+  "devDependencies": {
+    "hmac-scheme-plain": "^0.1.1"
+  }
+}
