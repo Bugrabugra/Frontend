@@ -23,7 +23,7 @@
     <!--admin-->
     <router-link
         v-if="user && user.is_admin"
-        class="map-button"
+        class="map-button group"
         to="/admin"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,6 +35,7 @@
     <!--zoom in-->
     <button
         class="map-button"
+        @click="zoomIn"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -44,6 +45,7 @@
     <!--zoom out-->
     <button
         class="map-button"
+        @click="zoomOut"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M18 12H6" />
@@ -58,6 +60,42 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
     </button>
+
+    <!--warnings-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg>
+    </button>
+
+    <!--legend-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!--risk points-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    </button>
+
+    <!--simulation-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </button>
   </div>
 
   <!--map-->
@@ -69,13 +107,16 @@
   import {ColumnLayer} from '@deck.gl/layers';
   import { MapboxLayer } from '@deck.gl/mapbox';
   import turfCircle from '@turf/circle';
-  import {computed, onMounted} from "vue";
+  import {computed, onMounted, ref} from "vue";
   import {useStore} from "vuex";
   mapboxgl.accessToken = "pk.eyJ1IjoiYnV1cmEiLCJhIjoiY2tmZG15d3FpMDJiMTM0bXNjaTFnMzVqNSJ9.JN4zgUGd9sJ_j5enKZ4g9A"
 
   // store
   const store = useStore();
   store.dispatch("map/getPOIs");
+
+  // references
+  const map = ref(null)
 
   // computed
   const user = computed(() => {
@@ -89,8 +130,16 @@
     await store.dispatch("auth/logoutUser");
   };
 
+  const zoomIn = () => {
+    map.value.zoomIn({duration: 1000});
+  }
+
+  const zoomOut = () => {
+    map.value.zoomOut({duration: 1000});
+  }
+
   const initMap = async () => {
-    const map = new mapboxgl.Map({
+    map.value = new mapboxgl.Map({
       container: 'map',
       interactive: true,
       style: 'mapbox://styles/buura/ckfdn1lxl6dt019npcbm0ypx6',
@@ -105,10 +154,10 @@
 
     // console.log(featureCollection.features);
 
-    map.on('load', () => {
+    map.value.on('load', () => {
       const dotData = store.state.map.POIs;
 
-      map.addSource('dot-names', {
+      map.value.addSource('dot-names', {
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
@@ -126,7 +175,7 @@
         },
       });
 
-      map.addSource('dot-circle', {
+      map.value.addSource('dot-circle', {
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
@@ -168,11 +217,7 @@
         },
       })
 
-      map.addLayer(layer);
-
-
-
-
+      map.value.addLayer(layer);
     });
 
 
