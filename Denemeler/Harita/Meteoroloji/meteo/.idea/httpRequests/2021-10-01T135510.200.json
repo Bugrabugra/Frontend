@@ -1,9 +1,0 @@
-[
-  {
-    "source": "test", "event": "test", "message": "test", "is_screen": true, "is_field": false, "rules": [
-    1,
-    2,
-    3
-  ], "id": 1
-  }
-]
