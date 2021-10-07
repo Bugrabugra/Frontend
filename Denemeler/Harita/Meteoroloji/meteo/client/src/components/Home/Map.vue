@@ -1,4 +1,11 @@
 <template>
+  <!--left menu-->
+  <!--<div class="absolute h-full z-20 top-5 left-5 flex space-y-2">-->
+  <!--  <div class="w-80 h-full bg-gray-700 opacity-75">-->
+
+  <!--  </div>-->
+  <!--</div>-->
+
   <!--right menu-->
   <div class="absolute z-20 top-5 right-5 flex flex-col space-y-2">
     <!--search-->
@@ -84,7 +91,8 @@
         class="map-button"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     </button>
 
