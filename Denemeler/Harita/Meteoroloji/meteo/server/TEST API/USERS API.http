@@ -13,29 +13,33 @@ POST http://localhost:3001/api/users/create
 Content-Type: application/json
 
 {
-  "username": "OOO",
-  "password": "OOO",
-  "email": "OOO@kkk",
-  "phone_number": "OOO",
-  "name": "OOO",
-  "surname": "OOO",
-  "admin": false
+  "username": "07102021",
+  "password": "07102021",
+  "email": "07102021@gmail.com",
+  "phone_number": "07102021",
+  "name": "07102021",
+  "surname": "07102021",
+  "is_admin": false,
+  "poi_responsibilities": "{1,2,3}",
+  "warnings_to_receive": "{3,4,5}"
 }
 
 ###
 
 // edit user
-POST http://localhost:3001/api/users/edit/16
+POST http://localhost:3001/api/users/edit/44
 Content-Type: application/json
 
 {
-  "username": "12ktdtud3",
-  "password": "dhfds",
-  "email": "ccjjugdc",
-  "phone_number": "ddkutdutkddd",
-  "name": "eekdktde",
-  "surname": "fkdkdkff",
-  "admin": false
+  "username": "07102021",
+  "password": "07102021",
+  "email": "07102021@gmail.com",
+  "phone_number": "07102021",
+  "name": "07102021",
+  "surname": "07102021",
+  "is_admin": false,
+  "poi_responsibilities": "{1,2,3}",
+  "warnings_to_receive": "{3,4,5}"
 }
 
 ###

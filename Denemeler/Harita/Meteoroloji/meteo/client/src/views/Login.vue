@@ -73,6 +73,8 @@
         {username: username.value, password: password.value}
     );
 
+    console.log(result);
+
     if (result.username) {
       await router.replace("/");
     }

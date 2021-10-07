@@ -26,6 +26,6 @@
   const props = defineProps(["user"]);
 
   const admin = computed(() => {
-    return props.user.admin ? "Evet" : "Hayır";
+    return props.user.is_admin ? "Evet" : "Hayır";
   });
 </script>

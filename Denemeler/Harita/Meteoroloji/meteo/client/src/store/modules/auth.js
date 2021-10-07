@@ -32,13 +32,16 @@ const actions = {
       }
     );
     const result = await response.data;
+    console.log("RESULT: ", result);
     if (!result.errorUsername && !result.errorPassword) {
       commit("setUserLoggedIn", result);
-      localStorage.setItem("meteor-user",  JSON.stringify(result));
+      localStorage.setItem("meteor-user", JSON.stringify(result));
       return result;
     } else {
+      console.log("ERROR");
       commit("setUserLoggedIn", null);
       localStorage.removeItem("meteor-user");
+      return result;
     }
   },
   async logoutUser({commit}) {

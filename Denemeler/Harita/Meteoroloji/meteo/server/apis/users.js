@@ -35,7 +35,7 @@ const createUser = async (req, res) => {
   const {
     username, password, email,
     phone_number, name, surname,
-    admin, poi_responsibilities,
+    is_admin, poi_responsibilities,
     warnings_to_receive
   } = req.body;
   // same email control
@@ -52,7 +52,7 @@ const createUser = async (req, res) => {
             db.query(`
               insert into users 
               (username, password, email, phone_number, name, 
-              surname, admin, poi_responsibilities, warnings_to_receive) 
+              surname, is_admin, poi_responsibilities, warnings_to_receive) 
               values (
                 '${username}', 
                 '${hash}',
@@ -60,7 +60,7 @@ const createUser = async (req, res) => {
                 '${phone_number}', 
                 '${name}', 
                 '${surname}',
-                ${admin},
+                ${is_admin},
                 array [${poi_responsibilities}],
                 array [${warnings_to_receive}],
               ) returning id
@@ -81,29 +81,56 @@ const createUser = async (req, res) => {
 const editUser = async (req, res) => {
   const {
     username, password, email, phone_number,
-    name, surname, admin, poi_responsibilities,
+    name, surname, is_admin, poi_responsibilities,
     warnings_to_receive
   } = req.body;
   console.log("POI: ", poi_responsibilities);
   const id = req.params.id;
-  // crypt the password
-  await bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
+  // check if the password is being changed
+  console.log("PASSWORD: ", password);
+  if (password !== "") {
+    // crypt the password
+    await bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
       bcrypt.hash(password, salt, (err, hash) => {
+        console.log(`update users set username = '${username}', password = '${hash}', 
+         email = '${email}', phone_number = '${phone_number}', name = '${name}', 
+         surname = '${surname}', is_admin = ${is_admin}, 
+         poi_responsibilities = array [${poi_responsibilities}],
+         warnings_to_receive = array [${warnings_to_receive}] where id = ${id} returning id`)
         // store hash db
         db.query(`update users set username = '${username}', password = '${hash}', 
          email = '${email}', phone_number = '${phone_number}', name = '${name}', 
-         surname = '${surname}', admin = ${admin}, 
+         surname = '${surname}', is_admin = ${is_admin}, 
          poi_responsibilities = array [${poi_responsibilities}],
          warnings_to_receive = array [${warnings_to_receive}] where id = ${id} returning id`,
           (error, result) => {
-          if (error) {
-            res.send(error);
-          } else {
-            res.json(result.rows);
-          }
-        })
+            if (error) {
+              res.send(error);
+            } else {
+              res.json(result.rows);
+            }
+          })
       })
     })
+  } else {
+    console.log(`update users set username = '${username}', 
+         email = '${email}', phone_number = '${phone_number}', name = '${name}', 
+         surname = '${surname}', is_admin = ${is_admin}, 
+         poi_responsibilities = array [${poi_responsibilities}],
+         warnings_to_receive = array [${warnings_to_receive}] where id = ${id} returning id`)
+    db.query(`update users set username = '${username}', 
+         email = '${email}', phone_number = '${phone_number}', name = '${name}', 
+         surname = '${surname}', is_admin = ${is_admin}, 
+         poi_responsibilities = array [${poi_responsibilities}],
+         warnings_to_receive = array [${warnings_to_receive}] where id = ${id} returning id`,
+      (error, result) => {
+        if (error) {
+          res.send(error);
+        } else {
+          res.json(result.rows);
+        }
+      })
+  }
 }
 
 // delete user

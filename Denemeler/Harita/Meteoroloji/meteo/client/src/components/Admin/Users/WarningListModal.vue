@@ -83,27 +83,23 @@
     return store.state.rules.ruleTypes;
   });
 
-  // const sourceName = computed(()=> {
-  //   return ruleTypes.value.find(_rule => {
-  //     return _rule.value === props.warning.source
-  //   })["name"];
-  // });
-
   const warnings = computed(() => {
     return store.state.warnings.warnings;
   });
 
   // methods
   const check = (id) => {
-    if (props.selectedUser) {
+    if (props.selectedUser.warnings_to_receive) {
       return props.selectedUser.warnings_to_receive.indexOf(id) > -1;
     }
   };
 
   const sourceName = (name) => {
-    return ruleTypes.value.find(_rule => {
-      return _rule.value === name
-    })["name"];
+    if (name) {
+      return ruleTypes.value.find(_rule => {
+        return _rule.value === name;
+      })["name"];
+    }
   };
 
   const chooseWarningsAndCloseModal = () => {
@@ -121,6 +117,8 @@
   };
 
   const handleCheckBox = (id) => {
+    console.log("ID: ", id);
+    console.log("WARNING LIST: ", warningList.value);
     if (warningList.value.indexOf(id) === -1) {
       warningList.value.push(id);
     } else {
@@ -130,7 +128,7 @@
 
   onMounted(() => {
     warningList.value = [];
-    if (props.selectedUser) {
+    if (props.selectedUser.warnings_to_receive) {
       warningList.value = props.selectedUser.warnings_to_receive
     }
   });

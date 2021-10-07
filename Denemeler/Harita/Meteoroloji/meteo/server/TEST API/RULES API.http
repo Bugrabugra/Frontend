@@ -13,11 +13,10 @@ POST http://localhost:3001/api/rules/create
 Content-Type: application/json
 
 {
-  "source": "Sel",
+  "source": "precipitation",
   "min_value": "45.7",
   "max_value": "93.5",
-  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
-  "groups": "3,4,8"
+  "is_present": true
 }
 
 ###
@@ -27,11 +26,10 @@ POST http://localhost:3001/api/rules/edit/2
 Content-Type: application/json
 
 {
-  "source": "Sel",
-  "min_value": "20.45",
-  "max_value": "34.98",
-  "warning_message": "Sel felaketi geliyor. Dikkatli olun.",
-  "groups": "3,4,8"
+  "source": "precipitation",
+  "min_value": "45.7",
+  "max_value": "93.5",
+  "is_present": true
 }
 
 ###

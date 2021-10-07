@@ -18,16 +18,16 @@ const login = async (req, res) => {
           bcrypt.compare(password, hashedPassword, function(err, bcryptResult) {
             if (bcryptResult) {
               // if username exists and password is correct
-              const {username, email, admin} = result.rows[0];
+              const {username, email, is_admin} = result.rows[0];
               jwt.sign(
-                {username, email, admin},
+                {username, email, is_admin},
                 process.env.JWT_SECRET,
                 {
                   expiresIn: "1d"
                 },
                 (error, token) => {
                   res.cookie("meteor", token, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000});
-                  res.json({username, email, admin});
+                  res.json({username, email, is_admin});
                 }
                 )
             } else {

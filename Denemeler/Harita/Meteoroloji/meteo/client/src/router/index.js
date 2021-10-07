@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === "/admin") {
       if (
         store.getters["auth/getUser"] &&
-        store.getters["auth/getUser"].admin
+        store.getters["auth/getUser"].is_admin
       ) {
         next();
       } else {

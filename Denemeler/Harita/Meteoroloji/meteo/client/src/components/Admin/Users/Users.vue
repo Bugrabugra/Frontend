@@ -503,11 +503,10 @@
         if (newSelectedUser !== null) {
           inputUsername.value = newSelectedUser.username;
           inputEmail.value = newSelectedUser.email;
-          inputPassword.value = newSelectedUser.password;
           inputPhoneNumber.value = newSelectedUser.phone_number;
           inputName.value = newSelectedUser.name;
           inputSurname.value = newSelectedUser.surname;
-          inputAdmin.value = newSelectedUser.admin;
+          inputAdmin.value = newSelectedUser.is_admin;
           inputPOIs.value = newSelectedUser.poi_responsibilities;
           inputWarnings.value = newSelectedUser.warnings_to_receive;
         }
