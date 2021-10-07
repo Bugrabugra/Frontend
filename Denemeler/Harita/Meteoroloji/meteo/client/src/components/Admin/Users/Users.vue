@@ -412,7 +412,7 @@
         phone_number: inputPhoneNumber.value,
         name: inputName.value,
         surname: inputSurname.value,
-        admin: inputAdmin.value,
+        is_admin: inputAdmin.value,
         poi_responsibilities: inputPOIs.value,
         warnings_to_receive: inputWarnings.value
       };
@@ -440,7 +440,7 @@
         phone_number: inputPhoneNumber.value,
         name: inputName.value,
         surname: inputSurname.value,
-        admin: inputAdmin.value,
+        is_admin: inputAdmin.value,
         poi_responsibilities: inputPOIs.value,
         warnings_to_receive: inputWarnings.value
       };

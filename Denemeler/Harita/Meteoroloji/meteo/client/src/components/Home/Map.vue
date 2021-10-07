@@ -1,9 +1,67 @@
 <template>
-  <div id="map" class="top-0 bottom-0 w-full absolute">
-    <button class="top-20 right-20 bg-red-400 px-2 py-1 rounded-md">
-      Admin
+  <!--right menu-->
+  <div class="absolute z-20 top-5 right-5 flex flex-col space-y-2">
+    <!--search-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </button>
+
+    <!--logout-->
+    <button
+        class="map-button"
+        @click="logout"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+      </svg>
+    </button>
+
+    <!--admin-->
+    <router-link
+        v-if="user && user.is_admin"
+        class="map-button"
+        to="/admin"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    </router-link>
+
+    <!--zoom in-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+      </svg>
+    </button>
+
+    <!--zoom out-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M18 12H6" />
+      </svg>
+    </button>
+
+    <!--weather-->
+    <button
+        class="map-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>
     </button>
   </div>
+
+  <!--map-->
+  <div id="map" class="z-10 top-0 bottom-0 w-full absolute"></div>
 </template>
 
 <script setup>
@@ -11,13 +69,25 @@
   import {ColumnLayer} from '@deck.gl/layers';
   import { MapboxLayer } from '@deck.gl/mapbox';
   import turfCircle from '@turf/circle';
-  import {onMounted} from "vue";
+  import {computed, onMounted} from "vue";
   import {useStore} from "vuex";
   mapboxgl.accessToken = "pk.eyJ1IjoiYnV1cmEiLCJhIjoiY2tmZG15d3FpMDJiMTM0bXNjaTFnMzVqNSJ9.JN4zgUGd9sJ_j5enKZ4g9A"
 
   // store
   const store = useStore();
   store.dispatch("map/getPOIs");
+
+  // computed
+  const user = computed(() => {
+    if (store.state.auth.userLoggedIn) {
+      return store.state.auth.userLoggedIn;
+    }
+  });
+
+  // methods
+  const logout = async () => {
+    await store.dispatch("auth/logoutUser");
+  };
 
   const initMap = async () => {
     const map = new mapboxgl.Map({
@@ -170,19 +240,5 @@
 </script>
 
 <style>
-  .marker {
-    background-color: aqua;
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  .mapboxgl-popup {
-    max-width: 200px;
-  }
-  .mapboxgl-popup-content {
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-  }
+
 </style>
