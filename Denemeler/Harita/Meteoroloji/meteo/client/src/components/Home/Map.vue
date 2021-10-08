@@ -1,10 +1,18 @@
 <template>
-  <!--left menu-->
-  <!--<div class="absolute h-full z-20 top-5 left-5 flex space-y-2">-->
-  <!--  <div class="w-80 h-full bg-gray-700 opacity-75">-->
+  <!--forecast-->
+  <div v-if="isWeatherForecastOpen" class="absolute z-20 top-5 left-1/2 -translate-x-1/2">
+    <iframe
+        src="https://www.meteoblue.com/tr/hava/widget/three/%c4%b0stanbul_t%c3%bcrkiye_745044?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"
+        frameborder="0"
+        scrolling="NO"
+        allowtransparency="true"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+        style="width: 800px; height: 587px;"
+    />
+  </div>
 
-  <!--  </div>-->
-  <!--</div>-->
+  <!--left menu-->
+  <Drawer/>
 
   <!--right menu-->
   <div class="absolute z-20 top-5 right-5 flex flex-col space-y-2">
@@ -62,6 +70,7 @@
     <!--weather-->
     <button
         class="map-button"
+        @click="isWeatherForecastOpen = !isWeatherForecastOpen"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -89,6 +98,7 @@
     <!--risk points-->
     <button
         class="map-button"
+        @click="togglePOIs"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -117,6 +127,7 @@
   import turfCircle from '@turf/circle';
   import {computed, onMounted, ref} from "vue";
   import {useStore} from "vuex";
+  import Drawer from "./Drawer.vue";
   mapboxgl.accessToken = "pk.eyJ1IjoiYnV1cmEiLCJhIjoiY2tmZG15d3FpMDJiMTM0bXNjaTFnMzVqNSJ9.JN4zgUGd9sJ_j5enKZ4g9A"
 
   // store
@@ -124,7 +135,9 @@
   store.dispatch("map/getPOIs");
 
   // references
-  const map = ref(null)
+  const map = ref(null);
+  const layerPOIs = ref(null);
+  const isWeatherForecastOpen = ref(false);
 
   // computed
   const user = computed(() => {
@@ -140,13 +153,22 @@
 
   const zoomIn = () => {
     map.value.zoomIn({duration: 1000});
-  }
+  };
 
   const zoomOut = () => {
     map.value.zoomOut({duration: 1000});
-  }
+  };
+  
+  const togglePOIs = () => {
+    if (map.value.getLayer("dot-layer")) {
+      map.value.removeLayer(layerPOIs.value.id);
+    } else {
+      map.value.addLayer(layerPOIs.value);
+    }
+  };
 
   const initMap = async () => {
+    // old color #162131 2b3a50
     map.value = new mapboxgl.Map({
       container: 'map',
       interactive: true,
@@ -203,7 +225,7 @@
         },
       });
 
-      const layer = new MapboxLayer({
+      layerPOIs.value = new MapboxLayer({
         id: 'dot-layer',
         type: ColumnLayer,
         data: dotData,
@@ -225,7 +247,7 @@
         },
       })
 
-      map.value.addLayer(layer);
+      map.value.addLayer(layerPOIs.value);
     });
 
 
