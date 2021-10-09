@@ -28,12 +28,13 @@
 
         <!--nowcast and forecast icons-->
         <div class="">
-
+        
         </div>
+      </div>
+      <!--bottom section-->
+      <div class="flex">
 
       </div>
-
-      <!--bottom section-->
     </div>
   </div>
 </template>
