@@ -1,6 +1,6 @@
 <template>
   <div class="absolute z-20 top-5 left-5 bottom-5 flex space-y-2">
-    <div class="w-80 h-full bg-gray-900 rounded-lg">
+    <div class="w-80 h-full bg-gray-900 rounded-lg overflow-hidden">
       <!--top section-->
       <div class="flex flex-col bg-gray-800 px-3 pt-2">
         <!--logo and headers-->
