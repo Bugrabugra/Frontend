@@ -1,13 +1,13 @@
 <template>
-  <div class="absolute z-20 top-5 left-5 bottom-5 flex space-y-2">
-    <div class="w-80 h-full bg-gray-900 rounded-lg overflow-hidden">
+  <div class="absolute z-20 top-2 left-2 bottom-5 flex space-y-2">
+    <div class="w-[22rem] h-full rounded-lg bg-map-drawer-bottom-menu overflow-hidden">
       <!--top section-->
-      <div class="flex flex-col bg-gray-800 px-3 pt-2">
+      <div class="flex flex-col bg-gray-700 px-3 pt-2">
         <!--logo and headers-->
         <div class="flex">
           <!--logo-->
           <img
-              src="../../assets/images/abb-logo.png"
+              src="../../assets/images/abb-logo.svg"
               alt="ABB Logo"
               class="h-12"
           >
@@ -15,7 +15,7 @@
           <!--headers-->
           <div class="text-center w-full">
             <!--main header-->
-            <h3 class="text-lg text-map-left-menu-header">
+            <h3 class="text-lg text-map-drawer-header">
               Ankara Büyükşehir Belediyesi
             </h3>
 
@@ -50,8 +50,9 @@
         </div>
       </div>
       <!--bottom section-->
-      <div class="flex">
-
+      <div class="flex flex-col bg-map-drawer-bottom-menu px-2 py-2 space-y-2">
+        <DrawerBottomSectionNowcast v-if="menu === 'nowcast'"/>
+        <DrawerBottomSectionForecast v-if="menu === 'forecast'"/>
       </div>
     </div>
   </div>
@@ -59,6 +60,9 @@
 
 <script setup>
   import {computed, ref} from "vue";
+  import Button from "./Button.vue";
+  import DrawerBottomSectionNowcast from "./DrawerBottomSectionNowcast.vue";
+  import DrawerBottomSectionForecast from "./DrawerBottomSectionForecast.vue";
 
   // references
   const menu = ref("forecast");
@@ -69,9 +73,4 @@
         "Gelişmiş Hava Tahmin Ekranı" :
         "Hava Afet Kontrol ve Durumsal Farkındalık Ekranı"
   });
-
 </script>
-
-<style scoped>
-
-</style>

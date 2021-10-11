@@ -11,8 +11,8 @@ module.exports = {
         "rain-very-heavy": "#F1873F",
         "rain-severe": "#EB5944",
         "snow-light": "#B2DAEC",
-        "snow-heavy": "#59A8DD",
-        "snow-severe": "#3E78AB",
+        "snow-medium": "#59A8DD",
+        "snow-heavy": "#3E78AB",
         "wind-light": "#A7B44F",
         "wind-heavy": "#F1873F",
         "wind-severe": "#97549D",
@@ -21,10 +21,17 @@ module.exports = {
         "weather-icon": "#09222F",
         "weather-icon-hover": "#125172",
         "weather-icon-object": "#323A41",
-        "map-left-menu-header": "#FFBA93"
+        "map-drawer-header": "#009FE3",
+        "map-drawer-top-menu": "#29323C",
+        "map-drawer-bottom-menu": "#252730",
       },
       boxShadow: {
-        buttonInner: "inset 20px 5px 10px -4px rgba(10, 10, 10, 0.9), inset -12px 5px 10px -4px rgba(10, 10, 10, 0.9)"
+        buttonInner: "" +
+          "inset 10px 5px 10px -4px rgba(10, 10, 10, 0.9), " +
+          "inset -12px 5px 10px -4px rgba(10, 10, 10, 0.9)"
+      },
+      fontSize: {
+        'xxs': '.65rem',
       }
     },
   },

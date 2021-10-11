@@ -311,9 +311,4 @@
   onMounted(() => {
     initMap();
   });
-
 </script>
-
-<style>
-
-</style>
