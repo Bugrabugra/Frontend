@@ -8,7 +8,7 @@
       <template #svg-icon>
         <img
             class="group-hover:transform group-hover:scale-110 h-24 w-24"
-            src="../assets/images/SVG/rain-light.svg"
+            src="../assets/images/drawer/rain-light.svg"
             alt=""
         >
       </template>
