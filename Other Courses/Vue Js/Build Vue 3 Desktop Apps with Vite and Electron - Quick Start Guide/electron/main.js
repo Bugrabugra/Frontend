@@ -1,6 +1,6 @@
 const {app, BrowserWindow} = require("electron");
 const path = require("path");
-const {browserExternalId} = require("vite/dist/node/plugins/resolve");
+
 
 function createWindow() {
   const win = new BrowserWindow({

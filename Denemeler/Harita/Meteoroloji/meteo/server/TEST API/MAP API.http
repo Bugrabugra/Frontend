@@ -1,5 +1,0 @@
-// get all POI's
-GET http://localhost:3001/api/map/getpois
-Content-Type: application/json
-
-###
