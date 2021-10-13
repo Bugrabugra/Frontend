@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   res.json(err);
 });
 
-const dbURI = "mongodb+srv://bugra:buura6630@cluster0.sehxn.mongodb.net/globomantics?authSource=admin&replicaSet=atlas-qqm3fb-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
+const dbURI = "mongodb+srv://user:password@cluster0.sehxn.mongodb.net/globomantics?authSource=admin&replicaSet=atlas-qqm3fb-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
 const db = mongoose.connection;

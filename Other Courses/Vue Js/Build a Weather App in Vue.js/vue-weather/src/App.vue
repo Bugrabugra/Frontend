@@ -35,7 +35,7 @@
   name: 'App',
   data() {
     return {
-      api_key: "e37bc76e2ffdf3812e8ed0397f2e7133",
+      api_key: "",
       url_base: "https://api.openweathermap.org/data/2.5/",
       query: "",
       weather: {}
