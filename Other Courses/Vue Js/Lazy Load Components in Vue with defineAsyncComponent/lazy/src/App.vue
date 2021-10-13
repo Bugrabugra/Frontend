@@ -1,6 +1,6 @@
 <template>
   <button @click="show = true">Login</button>
-  <AsyncPopup v-if="show"/>
+  <LoginPopupWithAsyncSetup v-if="show"/>
 </template>
 
 <script setup>
@@ -10,16 +10,16 @@
   import Error from "./components/Error.vue";
 
 
-  // const LoginPopup = defineAsyncComponent(() => import("./components/LoginPopup.vue"))
+  const LoginPopupWithAsyncSetup = defineAsyncComponent(() => import("./components/LoginPopupWithAsyncSetup.vue"))
   const show = ref(false);
 
-  const AsyncPopup = defineAsyncComponent({
-    loader: () => import("./components/LoginPopupWithAsyncSetup.vue"),
-    loadingComponent: Loading,
-    errorComponent: Error,
-    delay: 1000,
-    timeout: 3000
-  });
+  // const AsyncPopup = defineAsyncComponent({
+  //   loader: () => import("./components/LoginPopupWithAsyncSetup.vue"),
+  //   loadingComponent: Loading,
+  //   errorComponent: Error,
+  //   delay: 1000,
+  //   timeout: 3000
+  // });
 
 
 </script>

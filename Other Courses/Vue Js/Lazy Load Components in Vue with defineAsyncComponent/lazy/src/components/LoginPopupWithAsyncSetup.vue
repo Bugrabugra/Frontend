@@ -10,7 +10,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
+  import {ref} from "vue";
+
+
   const getArticleInfo = async () => {
     // wait 3 seconds to mimic API call
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -20,14 +23,8 @@
     }
     return article
   }
-  export default {
-    async setup() {
-      const article = await getArticleInfo()
-      console.log(article)
 
-      return {
-        article
-      }
-    }
-  }
+  const article = ref(await getArticleInfo())
+  console.log(article.value)
+
 </script>
