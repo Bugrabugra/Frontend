@@ -1,27 +1,24 @@
 <template>
   <button @click="show = true">Login</button>
-  <LoginPopupWithAsyncSetup v-if="show"/>
+  <Suspense v-if="show">
+    <template #default>
+      <AsyncPopup/>
+    </template>
+    <template #fallback>
+      <Loading/>
+    </template>
+  </Suspense>
 </template>
 
 <script setup>
   import {defineAsyncComponent} from "vue";
   import {ref} from "vue";
   import Loading from "./components/Loading.vue";
-  import Error from "./components/Error.vue";
 
-
-  const LoginPopupWithAsyncSetup = defineAsyncComponent(() => import("./components/LoginPopupWithAsyncSetup.vue"))
+  const AsyncPopup = defineAsyncComponent(
+      () => import("./components/LoginPopupWithAsyncSetup.vue")
+  );
   const show = ref(false);
-
-  // const AsyncPopup = defineAsyncComponent({
-  //   loader: () => import("./components/LoginPopupWithAsyncSetup.vue"),
-  //   loadingComponent: Loading,
-  //   errorComponent: Error,
-  //   delay: 1000,
-  //   timeout: 3000
-  // });
-
-
 </script>
 
 <style>
