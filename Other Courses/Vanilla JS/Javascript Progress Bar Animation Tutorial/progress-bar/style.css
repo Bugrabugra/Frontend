@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  overscroll-behavior-y: none;
+}
+
+section {
+  margin: 10% 20%;
+}
+
+h2 {
+  font-size: 4rem;
+  padding: 2rem 0;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 2.5rem;
+  padding: 2rem 0;
+}
+
+p {
+  font-size: 1.3rem;
+  line-height: 175%;
+  color: rgb(30, 30, 30);
+}
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 16px;
+  background: linear-gradient(to right, #ff5f6d, #ffc731);
+  width: 20%;
+  z-index: 100;
+  transition: width 0.2s ease-out;
+}
