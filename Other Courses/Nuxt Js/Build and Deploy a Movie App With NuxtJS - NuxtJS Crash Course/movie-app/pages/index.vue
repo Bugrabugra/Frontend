@@ -9,6 +9,9 @@
       <button v-show='searchInput !==""' class='button' @click='clearSearch'>Clear Search</button>
     </div>
 
+    <!--loading-->
+    <Loading v-if='$fetchState.pending'/>
+
     <!--movies-->
     <div class='container movies'>
       <!--searched movies-->
@@ -100,7 +103,6 @@ import axios from 'axios'
 const URL = 'https://api.themoviedb.org/3'
 const apiKey = '2303b079631deb95e753dc7dcc733562'
 
-
 export default {
   data() {
     return {
@@ -116,6 +118,24 @@ export default {
     }
     await this.searchMovies();
   },
+  head() {
+    return {
+      title: "Movie App - Latest Streaming Movie Info",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Get all the latest streaming movies in theaters & online"
+        },
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: "movies, stream, streaming"
+        }
+      ]
+    }
+  },
+  fetchDelay: 1000,
   methods: {
     async getMovies() {
       const response = await axios.get(`${URL}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`);
