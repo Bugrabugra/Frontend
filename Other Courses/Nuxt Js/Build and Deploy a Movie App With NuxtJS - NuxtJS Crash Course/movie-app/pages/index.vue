@@ -5,8 +5,8 @@
 
     <!--search-->
     <div class='container search'>
-      <input @keyup.enter='$fetch' v-model.lazy='searchInput' type='text' placeholder='Search'>
-      <button @click='clearSearch' v-show='searchInput !==""' class='button'>Clear Search</button>
+      <input v-model.lazy='searchInput' type='text' placeholder='Search' @keyup.enter='$fetch'>
+      <button v-show='searchInput !==""' class='button' @click='clearSearch'>Clear Search</button>
     </div>
 
     <!--movies-->
