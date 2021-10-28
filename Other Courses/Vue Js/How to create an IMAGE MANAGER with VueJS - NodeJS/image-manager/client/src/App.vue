@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-  import {onBeforeMount, onMounted, ref, watch} from "vue";
+  import {onMounted, ref} from "vue";
   import ImageUploader from "./components/ImageUploader.vue";
   import ImageGallery from "./components/ImageGallery.vue";
 
@@ -40,16 +40,13 @@
     })
   };
 
-  onMounted(() => {
-    fetch(api.retrieve)
-      .then(response => {
-        return response.json();
-      }).then(images => {
-        images.value = images;
-        console.log(images)
-      }).catch(error => {
-      console.log(error)
-    })
+  onMounted(async () => {
+    try {
+      const response = await fetch(api.retrieve);
+      images.value = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
   });
 </script>
 
