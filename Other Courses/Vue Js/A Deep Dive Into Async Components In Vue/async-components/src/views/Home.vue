@@ -1,17 +1,9 @@
 <template>
-  <div>
+  <div class="home">
     <MyHome/>
   </div>
 </template>
 
-<script>
+<script setup>
   import MyHome from "@/components/MyHome.vue";
-
-
-  export default {
-    name: 'Home',
-    components: {
-      MyHome
-    }
-  }
 </script>

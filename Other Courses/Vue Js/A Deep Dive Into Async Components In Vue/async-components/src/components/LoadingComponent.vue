@@ -1,15 +1,12 @@
 <template>
   <div>
-    <h3>List Vue</h3>
+    <h1>Loading</h1>
   </div>
 </template>
 
 <script>
   export default {
-    name: "List",
-    data() {
-      return {}
-    }
+    name: "LoadingComponent"
   }
 </script>
 

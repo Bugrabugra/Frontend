@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <h3>My Home</h3>
-    <button @click="toggleShow">
-      Show List
-    </button>
+    <button @click="show = !show">Show List</button>
     <div v-if="show">
       <List/>
     </div>
@@ -11,20 +9,24 @@
 </template>
 
 <script>
+  import LoadingComponent from "./LoadingComponent";
+  import ErrorComponent from "./ErrorComponent";
+
+  const List = () => ({
+    component: import(/* webpackChunkName: "list" */ "./List.vue"),
+    loading: LoadingComponent,
+    error: ErrorComponent,
+    timeout: 3000
+  });
   export default {
-    name: "MyHome",
-    components: {
-      List: () => import("@/components/List")
-    },
     data() {
       return {
         show: false
       }
     },
-    methods: {
-      toggleShow() {
-        this.show = !this.show;
-      }
+    components: {
+      // List: () => import(/* webpackChunkName: "list" */ "@/components/List.vue").catch()
+      List
     }
   }
 </script>

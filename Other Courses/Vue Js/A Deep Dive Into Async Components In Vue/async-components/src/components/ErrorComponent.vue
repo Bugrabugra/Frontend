@@ -1,15 +1,12 @@
 <template>
   <div>
-    <h3>List Vue</h3>
+    <h1>Error</h1>
   </div>
 </template>
 
 <script>
   export default {
-    name: "List",
-    data() {
-      return {}
-    }
+    name: "ErrorComponent"
   }
 </script>
 
