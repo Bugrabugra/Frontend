@@ -6,8 +6,8 @@
     </label>
     <ul>
       <li v-for="task in tasks" :key="task.id">
-        <p :class="(task.done ? 'done' : '')">{{task.task}}</p>
-        <div class="remove">x</div>
+        <p :class="(task.done ? 'done' : '')" @click="toggleDone(task.id)">{{task.task}}</p>
+        <div class="remove" @click="removeTask(task.id)">x</div>
       </li>
     </ul>
   </div>
@@ -18,9 +18,22 @@
   import {useStore} from "vuex";
 
   const store = useStore();
-  const showDone = ref("");
-  defineProps(["showDone"]);
-  const tasks = computed(() => store.state.tasks);
+
+  const showDone = ref(false);
+  const tasks = computed(() => {
+    if (showDone.value) {
+      return store.getters.doneTasks;
+    } else {
+      return store.state.tasks
+    }
+  });
+  const removeTask = (taskId) => {
+    store.commit("removeTask", taskId);
+  };
+  const toggleDone = (taskId) => {
+    store.commit("toggleDone", taskId);
+  };
+
 </script>
 
 <style scoped>
