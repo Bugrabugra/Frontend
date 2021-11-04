@@ -1,0 +1,66 @@
+# git status
+git durumunu gösteriyor.
+
+# git init
+git kurulumu yapıyor.
+
+# git add <filename> [.]
+belirtilen dosya(ları)yı staging areaya gönderiyor.
+
+# git commit -m <message>
+staging areadaki veriyi gömüyor.
+
+# git log
+commitleri gösteriyor.
+
+# git checkout <commmit id>
+belirtilen commit'e dönüyor.
+
+# git checkout <branch>
+belirtilen branche geçiyor.
+
+# git branch
+mevcut branchleri gösteriyor.
+
+# git branch <branch name>
+yeni bir branch yaratıyor.
+
+# git checkout -b <branch name>
+yeni bir branch yaratıyor ve onu yüklüyor.
+
+# git switch <branch>
+belirtilen branche geçiyor.
+
+# git switch -c <branch>
+yeni bir branch yaratıyor ve ona geçiyor.
+
+# git ls-files
+bulunulan branchteki staging areadaki dosyaları gösterir.
+
+# git rm <file name>
+belirtilen dosyayı staging areadan çıkarır.
+
+# git checkout <file name>
+belirtilen dosyayı unstaged haline döndürüyor.
+
+# git restore <file name>
+belirtilen dosyayı unstaged haline döndürüyor.
+
+# git clean -dn
+d: untrackedleri sil 
+n: silmeden önce nelerin yapılacağını listele!
+f: soru sormadan sil
+
+# git reset <file name>
+staging areada değiştirilmiş veriyi staging areadaki orjinal haline döndürür.
+
+# git restore --staged <file name>
+üsttekiyle aynı
+
+# git reset --hard/soft <file name>
+soft: sadece son commiti siler, working ve staging areadakiler kalır.
+hard: commiti siler, staging areadan siler, working areadan siler.
+
+# git branch -d/D <branch name>
+d: sadece merge ettiklerini silebilir.
+D: silmeye zorlar.
