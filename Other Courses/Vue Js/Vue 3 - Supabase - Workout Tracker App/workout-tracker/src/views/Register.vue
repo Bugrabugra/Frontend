@@ -82,14 +82,17 @@
           email: email.value,
           password: password.value
         });
-
         if (error) {
           throw error;
         }
         await router.push({name: "Login"});
       } catch(error) {
         errorMsg.value = error.message;
+        setTimeout(() => {
+          errorMsg.value = null;
+        }, 3000);
       }
+      return;
     }
     errorMsg.value = "Error: Passwords do not match";
     setTimeout(() => {
