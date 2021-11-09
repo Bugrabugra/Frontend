@@ -6,7 +6,7 @@
     </div>
 
     <!--login-->
-    <form class="p-8 flex flex-col bg-light-grey rounded-md shadow-lg">
+    <form @submit.prevent="login" class="p-8 flex flex-col bg-light-grey rounded-md shadow-lg">
       <h1 class="text-3xl text-at-light-green mb-4">Login</h1>
       <!--email-->
       <div class="flex flex-col mb-2">
@@ -50,13 +50,34 @@
 
 <script setup>
   import {ref} from "vue";
+  import {supabase} from "@/supabase/init";
+  import {useRouter} from "vue-router";
 
+
+  // router
+  const router = useRouter();
 
   // Create data / vars
   const email = ref(null);
   const password = ref(null);
   const errorMsg = ref(null);
 
-
-  // Register function
+  // Login function
+  const login = async () => {
+    try {
+      const {error} = await supabase.auth.signIn({
+        email: email.value,
+        password: password.value
+      });
+      if (error) {
+        throw error;
+      }
+      await router.push({name: "Home"})
+    } catch(error) {
+      errorMsg.value = `Error: ${error.message}`;
+      setTimeout(() => {
+        errorMsg.value = null;
+      }, 3000)
+    }
+  };
 </script>
