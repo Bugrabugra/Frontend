@@ -33,7 +33,6 @@ const useFetch = (url) => {
     }, 1000);
 
     return () => abortCont.abort();
-
   }, [url]); // [] var ise sadece bir kere çalışır
 
   return {data, isPending, error};
