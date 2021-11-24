@@ -1,7 +1,6 @@
 import classes from "./Checkout.module.css";
 import {useRef} from "react";
 
-
 const Checkout = (props) => {
   const nameInputRef = useRef();
   const streetInputRef = useRef();
