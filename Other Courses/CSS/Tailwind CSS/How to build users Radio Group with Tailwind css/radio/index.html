@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="w-screen h-screen p-12 flex justify-center items-center bg-gradient-to-r from-pink-400 to-purple-600">
+      <div class="w-full md:w-6/12 lg:w-5/12 space-y-2">
+        <div class="relative">
+          <input type="radio" name="user" id="user1" class="hidden peer">
+          <label
+              for="user1"
+              class="flex items-center gap-4 p-4 rounded-xl bg-white bg-opacity-90 backdrop-blur-2xl shadow-xl hover:bg-opacity-75
+              peer-checked:bg-purple-900 peer-checked:text-white transition cursor-pointer"
+          >
+            <img src="https://i.pravatar.cc/300" alt="" class="w-10 h-10 object-cover rounded-full">
+            <div>
+              <h6 class="text-base">John Handerson</h6>
+              <span class="text-sm opacity-60">UX Writer</span>
+            </div>
+          </label>
+          <div class="flex absolute top-0 right-4 bottom-0 w-7 h-7 my-auto rounded-full bg-purple-700
+          scale-0 peer-checked:scale-100 transition delay-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="relative">
+          <input type="radio" name="user" id="user2" class="hidden peer">
+          <label
+              for="user2"
+              class="flex items-center gap-4 p-4 rounded-xl bg-white bg-opacity-90 backdrop-blur-2xl shadow-xl hover:bg-opacity-75
+              peer-checked:bg-purple-900 peer-checked:text-white transition cursor-pointer"
+          >
+            <img src="https://i.pravatar.cc/200" alt="" class="w-10 h-10 object-cover rounded-full">
+            <div>
+              <h6 class="text-base">John Doe</h6>
+              <span class="text-sm opacity-60">Web developer</span>
+            </div>
+          </label>
+          <div class="flex absolute top-0 right-4 bottom-0 w-7 h-7 my-auto rounded-full bg-purple-700
+          scale-0 peer-checked:scale-100 transition delay-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="relative">
+          <input type="radio" name="user" id="user3" class="hidden peer">
+          <label
+              for="user3"
+              class="flex items-center gap-4 p-4 rounded-xl bg-white bg-opacity-90 backdrop-blur-2xl shadow-xl
+              hover:bg-opacity-75 peer-checked:bg-purple-900 peer-checked:text-white transition cursor-pointer"
+          >
+            <img src="https://i.pravatar.cc/100" alt="" class="w-10 h-10 object-cover rounded-full">
+            <div>
+              <h6 class="text-base">Mike Doe</h6>
+              <span class="text-sm opacity-60">New user</span>
+            </div>
+          </label>
+          <div class="flex absolute top-0 right-4 bottom-0 w-7 h-7 my-auto rounded-full bg-purple-700
+          scale-0 peer-checked:scale-100 transition delay-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
