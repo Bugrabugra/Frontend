@@ -5,7 +5,14 @@ import {
 } from "antd";
 import {useEffect, useState} from "react";
 import Icon, {
-  AppleFilled, BankTwoTone, LoadingOutlined, LogoutOutlined, PieChartFilled, PoweroffOutlined, UserOutlined
+  AppleFilled,
+  BankTwoTone,
+  DeleteOutlined, EditOutlined,
+  LoadingOutlined,
+  LogoutOutlined,
+  PieChartFilled,
+  PoweroffOutlined,
+  UserOutlined
 } from "@ant-design/icons";
 
 function App() {
@@ -16,6 +23,12 @@ function App() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [alreadySelectedRows, setAlreadySelectedRows] = useState(["1", "3"]);
+  const [crudDataSource, setCrudDataSource] = useState([
+    {id: 1, name: "John", email: "john@gmail.com", address: "john address"},
+    {id: 2, name: "David", email: "david@gmail.com", address: "david address"},
+    {id: 3, name: "James", email: "james@gmail.com", address: "james address"},
+    {id: 4, name: "Sam", email: "sam@gmail.com", address: "sam address"},
+  ]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -100,6 +113,40 @@ function App() {
     {key: "4", id: 4, name: "Student Name 4", grade: "C"},
     {key: "5", id: 5, name: "Student Name 5", grade: "A"},
   ];
+
+  const crudColumns = [
+    {key: "1", title: "ID", dataIndex: "id"},
+    {key: "2", title: "Name", dataIndex: "name"},
+    {key: "3", title: "Email", dataIndex: "email"},
+    {key: "4", title: "Address", dataIndex: "address"},
+    {
+      key: "5",
+      title: "Actions",
+      render: record => {
+        return (
+          <>
+            <EditOutlined/>
+            <DeleteOutlined style={{color: "red"}}/>
+          </>
+        )
+      },
+      dataIndex: "address"
+    },
+  ];
+
+  const onAddStudent = () => {
+    const randomNumber = parseInt(Math.random() * 1000);
+    const newStudent = {
+      id: randomNumber,
+      name: "Name " + randomNumber,
+      email: randomNumber + "@gmail.com",
+      address: "Address " + randomNumber
+    };
+
+    setCrudDataSource(pre => {
+      return [...pre, newStudent];
+    })
+  };
 
   // icons
   const HeartIcon = (props) => {
@@ -242,8 +289,6 @@ function App() {
           }}
         />
 
-
-
         {/*alert*/}
         <p>Alert</p>
         {showAlert && (
@@ -299,6 +344,16 @@ function App() {
           </Button>
           <Divider/>
         </div>
+
+        {/*crud*/}
+        <p>CRUD</p>
+        <Button onClick={onAddStudent}>Add a new student</Button>
+        <Table
+          columns={crudColumns}
+          dataSource={crudDataSource}
+        >
+
+        </Table>
 
       </header>
     </div>
