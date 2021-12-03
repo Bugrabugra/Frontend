@@ -1,31 +1,48 @@
-const DUMMY_DATA = [
-  {
-    id: 'm1',
-    title: 'This is a first meetup',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
-    description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-  },
-  {
-    id: 'm2',
-    title: 'This is a second meetup',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
-    description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-  },
-];
+import MeetupList from "../components/meetups/MeetupList";
+import {useEffect, useState} from "react";
+
+
+const url = "https://react-course-ba29d-default-rtdb.europe-west1.firebasedatabase.app";
 
 const AllMeetups = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
+
+  useEffect(() => {
+    fetch(url + "/meetups.json")
+      .then(response => {
+        return response.json();
+      }).then(data => {
+      setIsLoading(false);
+
+      const meetups = [];
+      for (const dataKey in data) {
+        meetups.push({
+          id: dataKey,
+          ...data[dataKey]
+          // image: data[dataKey].image,
+          // title: data[dataKey].title,
+          // address: data[dataKey].address,
+          // description: data[dataKey].description
+        })
+      }
+      setLoadedMeetups(meetups);
+    })
+
+    if (isLoading) {
+      return (
+        <section>
+          <p>Loading...</p>
+        </section>
+      )
+    }
+  }, []);
+
+
   return (
     <section>
       <h1>All Meetups</h1>
-      {DUMMY_DATA.map(meetup => {
-        return <li key={meetup.id}>{meetup.title}</li>
-      })}
+      <MeetupList meetups={loadedMeetups}/>
     </section>
   );
 };
