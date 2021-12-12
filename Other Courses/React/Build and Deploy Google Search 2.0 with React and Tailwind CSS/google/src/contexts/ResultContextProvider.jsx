@@ -8,7 +8,7 @@ const apiKey = import.meta.env.VITE_RAPID_API;
 export const ResultContextProvider = (props) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("Elon Musk");
 
   const getResults = async (type) => {
     setIsLoading(true);
@@ -23,7 +23,15 @@ export const ResultContextProvider = (props) => {
     });
 
     const data = await response.json();
-    setResults(data);
+
+    if (type.includes("/news")) {
+      setResults(data.entries);
+    } else if (type.includes("/images")) {
+      setResults(data.image_results);
+    } else {
+      setResults(data.results);
+    }
+
     setIsLoading(false);
   };
 
