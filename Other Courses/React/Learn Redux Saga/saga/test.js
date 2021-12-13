@@ -13,6 +13,8 @@ function* sayHiGenerator() {
   return "hi";
 }
 
+
+
 const resultGenerator = sayHiGenerator();
 console.log(resultGenerator.next());
 console.log(resultGenerator.next());

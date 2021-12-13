@@ -1,20 +1,11 @@
-import {takeEvery} from "redux-saga/effects";
-import {IMAGES} from "../constants";
+import { all } from "redux-saga/effects";
+import imagesSaga from "./imagesSaga";
+import statsSaga from "./statsSaga";
 
 
-const handleImagesLoad = () => {
-  console.log("fetching images from unsplash");
+export default function* rootSaga() {
+  yield all([
+    imagesSaga(),
+    statsSaga()
+  ])
 };
-
-const handleDang = () => {
-  console.log("DANG!!");
-};
-
-// watcher saga
-function* rootSaga() {
-  yield takeEvery(IMAGES.LOAD, handleImagesLoad)
-}
-
-// watcher saga => actions > worker saga
-
-export default rootSaga;
