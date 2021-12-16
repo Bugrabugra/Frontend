@@ -1,7 +1,6 @@
-const elvenShieldRecipe = {
-  leatherStrips: 2,
-  ironIngot: 1,
-  refinedMoonstone: 4
-};
+import {render} from "react-dom";
+import App from "./components/App"
 
-console.log(elvenShieldRecipe);
+
+render(<App/>, document.getElementById("root"));
+
