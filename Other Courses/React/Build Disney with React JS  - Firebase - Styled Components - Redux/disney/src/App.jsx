@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import Header from './components/Header';
 import Home from './components/Home';
+import Detail from './components/Detail';
 
 
 // import db from "./firebase";
@@ -42,6 +43,10 @@ function App() {
           
           <Route path="/home">
             <Home/>
+          </Route>
+          
+          <Route path="/detail/:id">
+            <Detail/>
           </Route>
         </Switch>
       </BrowserRouter>
