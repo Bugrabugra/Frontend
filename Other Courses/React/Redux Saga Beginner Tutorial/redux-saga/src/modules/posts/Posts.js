@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addPost, getPosts } from './Posts.actions';
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ const Posts = () => {
 
   return (
     <div>
-      <button onClick={() => {}}>Get Posts</button>
+      <button onClick={() => {dispatch(getPosts())}}>Get Posts</button>
 
       <input
         value={title}
@@ -20,7 +21,7 @@ const Posts = () => {
         onChange={(e) => setDescription(e.target.value)}
         placeholder='description'
       />
-      <button onClick={() => {}}>Add Item</button>
+      <button onClick={() => {dispatch(addPost({title, description}))}}>Add Item</button>
     </div>
   );
 };
