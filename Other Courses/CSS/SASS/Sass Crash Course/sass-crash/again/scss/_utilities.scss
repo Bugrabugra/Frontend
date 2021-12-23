@@ -5,8 +5,8 @@
   overflow: auto;
 }
 
-// Margin & padding classes
-$space-amounts: (1,2,3,4,5);
+// margin & padding classes
+$space-amounts: (1, 2, 3, 4, 5);
 
 @each $space in $space-amounts {
   .m-#{$space} {
@@ -15,7 +15,6 @@ $space-amounts: (1,2,3,4,5);
   .my-#{$space} {
     margin: #{$space}rem 0;
   }
-
   .p-#{$space} {
     padding: #{$space}rem;
   }
