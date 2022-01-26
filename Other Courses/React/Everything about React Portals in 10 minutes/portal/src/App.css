@@ -1,0 +1,46 @@
+.App {
+  width: 500px;
+  margin: 40px auto;
+  padding: 50px;
+  position: relative;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  backdrop-filter: blur(2px);
+}
+
+.content {
+  background-color: white;
+  z-index: 2;
+  padding: 32px;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.content > button {
+  margin: 12px;
+}
