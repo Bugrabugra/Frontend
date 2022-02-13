@@ -1,0 +1,27 @@
+// get all goals
+GET http://localhost:5000/api/goals
+Accept: application/json
+
+###
+
+// create goal
+POST http://localhost:5000/api/goals
+Content-Type: application/x-www-form-urlencoded
+
+text=My Second Goal
+
+###
+
+// update goal
+PUT http://localhost:5000/api/goals/62094a403d756620de3f738c
+Content-Type: application/x-www-form-urlencoded
+
+text=Updated Goal
+
+###
+
+// delete goal
+DELETE http://localhost:5000/api/goals/62094a403d756620de3f738c
+Content-Type: application/x-www-form-urlencoded
+
+###
