@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm run dev --prefix ../frontend"
+    "client": "npm run dev --prefix ../frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "mongoose": "^6.2.1"
   },
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "2.5.1"
