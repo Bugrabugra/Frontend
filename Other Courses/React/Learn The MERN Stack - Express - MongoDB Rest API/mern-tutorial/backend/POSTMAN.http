@@ -1,5 +1,5 @@
 // get all goals
-GET http://localhost:5000/api/goals
+GET http://localhost:3001/api/goals
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTAyYjVlY2E3ODE0ZDJkNGEzMDVlOCIsImlhdCI6MTY0NTIyODM0MiwiZXhwIjoxNjQ3ODIwMzQyfQ.reqdXmg_IPxRBspWrTYUydbOE4qg7ommj_7jnr2bSOY
 
@@ -8,7 +8,7 @@ text=This is Buğras goal 1
 ###
 
 // create goal
-POST http://localhost:5000/api/goals
+POST http://localhost:3001/api/goals
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTAyYjVlY2E3ODE0ZDJkNGEzMDVlOCIsImlhdCI6MTY0NTIyODM0MiwiZXhwIjoxNjQ3ODIwMzQyfQ.reqdXmg_IPxRBspWrTYUydbOE4qg7ommj_7jnr2bSOY
 
@@ -17,7 +17,7 @@ text=My Second Goal
 ###
 
 // update goal
-PUT http://localhost:5000/api/goals/62094a403d756620de3f738c
+PUT http://localhost:3001/api/goals/62094a403d756620de3f738c
 Content-Type: application/x-www-form-urlencoded
 
 text=Updated Goal
@@ -25,13 +25,13 @@ text=Updated Goal
 ###
 
 // delete goal
-DELETE http://localhost:5000/api/goals/62094a403d756620de3f738c
+DELETE http://localhost:3001/api/goals/62094a403d756620de3f738c
 Content-Type: application/x-www-form-urlencoded
 
 ###
 
 // register user
-POST http://localhost:5000/api/users
+POST http://localhost:3001/api/users
 Content-Type: application/x-www-form-urlencoded
 
 name=Buğra&email=b@g.com&password=123456
@@ -39,7 +39,7 @@ name=Buğra&email=b@g.com&password=123456
 ###
 
 // authenticate user
-POST http://localhost:5000/api/users/login
+POST http://localhost:3001/api/users/login
 Content-Type: application/x-www-form-urlencoded
 
 email=b@g.com&password=123456
@@ -47,7 +47,7 @@ email=b@g.com&password=123456
 ###
 
 // get user
-GET http://localhost:5000/api/users/me
+GET http://localhost:3001/api/users/me
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTAyYjVlY2E3ODE0ZDJkNGEzMDVlOCIsImlhdCI6MTY0NTIyODM0MiwiZXhwIjoxNjQ3ODIwMzQyfQ.reqdXmg_IPxRBspWrTYUydbOE4qg7ommj_7jnr2bSOY
 
