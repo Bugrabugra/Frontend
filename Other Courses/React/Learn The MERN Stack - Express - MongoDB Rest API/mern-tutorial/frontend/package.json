@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=http://localhost:3001/dist",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,jsx}\" --fix"
   },
