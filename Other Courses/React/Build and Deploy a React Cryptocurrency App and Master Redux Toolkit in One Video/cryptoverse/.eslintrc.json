@@ -35,6 +35,13 @@
     "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "error",
     "comma-spacing": ["error", { "before": false, "after": true }],
-    "no-trailing-spaces": ["error"]
+    "no-trailing-spaces": ["error"],
+    "key-spacing": [
+      "warn",
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ]
   }
 }
