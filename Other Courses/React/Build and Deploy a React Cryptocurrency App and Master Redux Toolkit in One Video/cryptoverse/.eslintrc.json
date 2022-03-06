@@ -30,8 +30,8 @@
       "error",
       "always"
     ],
-    "no-unused-vars": "warn",
-    "object-curly-spacing": ["error", "always", { "arraysInObjects": false, "objectsInObjects": false }],
+    "no-unused-vars": "off",
+    "object-curly-spacing": ["warn", "always", { "arraysInObjects": false, "objectsInObjects": false }],
     "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "error",
     "comma-spacing": ["error", { "before": false, "after": true }],
@@ -42,6 +42,8 @@
         "beforeColon": false,
         "afterColon": true
       }
-    ]
+    ],
+    "react/prop-types": "off",
+    "no-undef": "off"
   }
 }
