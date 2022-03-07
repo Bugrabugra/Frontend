@@ -3,6 +3,7 @@ import { Avatar, Card, Col, Row, Select, Typography } from "antd";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import moment from "moment";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import { Loader } from "./index";
 
 const demoImage = "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
 
@@ -15,7 +16,7 @@ const News = ({ simplified }) => {
   const { data } = useGetCryptosQuery(100);
 
   if (!cryptoNews?.value) {
-    return "Loading...";
+    return <Loader/>;
   }
 
   return (

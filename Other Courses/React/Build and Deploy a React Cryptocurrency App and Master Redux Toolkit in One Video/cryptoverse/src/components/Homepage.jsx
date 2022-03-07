@@ -3,7 +3,7 @@ import { Col, Row, Statistic, Typography } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import millify from "millify";
 import { Link } from "react-router-dom";
-import { Cryptocurrencies, News } from "./index";
+import { Cryptocurrencies, Loader, News } from "./index";
 
 const { Title } = Typography;
 
@@ -12,7 +12,7 @@ const Homepage = () => {
   const globalStats = data?.data?.stats;
 
   if (isFetching) {
-    return "Loading...";
+    return <Loader/>;
   }
 
   return (
