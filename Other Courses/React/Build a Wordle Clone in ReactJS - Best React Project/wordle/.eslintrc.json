@@ -20,7 +20,7 @@
   ],
   "rules": {
     "indent": [
-      "error",
+      "off",
       2
     ],
     "quotes": [
@@ -38,6 +38,7 @@
         "objectsInObjects": false,
         "arraysInObjects": false
       }
-    ]
+    ],
+    "react/prop-types": "off"
   }
 }
