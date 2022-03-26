@@ -65,12 +65,12 @@ const Shop = () => {
         Employee name: {first} {" "}
         <input type="submit" value="Find Employee" onClick={() => callForEmployee()}/>
       </div>
+      <div>{listItems}</div>
+      <div>CART</div>
       <div>
         Customer name: {customerFirst} {" "}
         <input type="submit" value="Find Customer" onClick={() => callForCustomer()}/>
       </div>
-      <div>{listItems}</div>
-      <div>CART</div>
       <div>{cartItems}</div>
       <div>Total: ${cartTotal}</div>
       <div>Alert Message: {alert}</div>

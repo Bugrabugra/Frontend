@@ -19,10 +19,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case REMOVE_FROM_CART:
       return {
         ...state,
-        cart: payload
+        cart: payload.newCart,
+        cartTotal: payload.newTotal
       }
     default:
-      return {...state};
+      return state;
   }
 }
 
