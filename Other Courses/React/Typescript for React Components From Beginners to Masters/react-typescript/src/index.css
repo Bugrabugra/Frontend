@@ -1,0 +1,13 @@
+body {
+  margin: auto;
+  max-width: 800px;
+  font-size: xx-large;
+  font-family: "Fira", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
