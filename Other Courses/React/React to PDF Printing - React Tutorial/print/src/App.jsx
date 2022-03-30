@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
 import './App.css'
 import { useReactToPrint } from 'react-to-print';
-import PropTypes from "prop-types";
-
 
 const ComponentToPrint = React.forwardRef((props, ref) => {
   return (
