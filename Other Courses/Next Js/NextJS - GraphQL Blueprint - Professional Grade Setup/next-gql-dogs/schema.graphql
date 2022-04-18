@@ -1,0 +1,13 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Dog {
+    name: ID!
+}
+
+type Query {
+    dogs: [Dog!]!
+}
