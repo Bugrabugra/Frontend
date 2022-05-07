@@ -1,11 +1,11 @@
 import wordBank from "./word-bank.json";
 
-export const getRandomWord = () => {
+export const LETTER_LENGTH = 5;
+
+export const getRandomWord = (): string => {
   const randomIndex = Math.floor(Math.random() * wordBank.length);
   return wordBank[randomIndex];
 }
-
-const word = getRandomWord();
 
 export enum LetterState {
   Miss,
@@ -13,7 +13,7 @@ export enum LetterState {
   Match
 }
 
-export function computeGuess(guess: string, answerString: string = word): LetterState[] {
+export function computeGuess(guess: string, answerString: string): LetterState[] {
   const result: LetterState[] = [];
 
   if (guess.length !== answerString.length) {
