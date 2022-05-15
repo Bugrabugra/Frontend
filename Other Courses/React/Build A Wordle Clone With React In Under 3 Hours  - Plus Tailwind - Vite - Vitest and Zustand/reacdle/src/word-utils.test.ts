@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeGuess, getRandomWord, LetterState } from "./word-utils";
+import { computeGuess, getRandomWord, isValidWord, LetterState } from "./word-utils";
 
 describe("getRandomWord", () => {
   it('random word', () => {
@@ -61,5 +61,15 @@ describe("computeGuess", () => {
       LetterState.Miss,
       LetterState.Miss
     ]);
+  });
+});
+
+describe("isValidWord", () => {
+  it('works with a valid word', () => {
+    expect(isValidWord("boost")).toBe(true);
+  });
+
+  it('works with an invalid word', () => {
+    expect(isValidWord("thtio")).toBe(false);
   });
 });
