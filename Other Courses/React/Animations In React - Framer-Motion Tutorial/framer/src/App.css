@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App div {
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
+  background-color: aqua;
+}
