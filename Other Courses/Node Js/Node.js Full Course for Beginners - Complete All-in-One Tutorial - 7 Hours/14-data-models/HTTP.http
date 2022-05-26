@@ -1,0 +1,64 @@
+#-----------Employees-------------
+GET http://localhost:3500/employees
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###
+
+POST http://localhost:3500/employees
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{"firstname": "John", "lastname": "Doe"}
+
+###
+
+PUT http://localhost:3500/employees
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{"id": 2, "firstname": "David"}
+
+###
+
+DELETE http://localhost:3500/employees
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{"id": 2, "firstname": "David"}
+
+###
+
+GET http://localhost:3500/employees/1
+Accept: application/json
+
+###
+
+#-----------Users-------------
+POST http://localhost:3500/register
+Content-Type: application/json
+
+{"user": "walt1", "pwd": "Aa$12345"}
+
+###
+
+#-----------Auth-------------
+POST http://localhost:3500/auth
+Content-Type: application/json
+
+{"user": "walt1", "pwd": "Aa$12345"}
+> {% client.global.set("auth_token", response.body.accessToken); %}
+
+###
+
+#-----------Refresh-------------
+GET http://localhost:3500/refresh
+Content-Type: application/json
+
+###
+
+#-----------Logout-------------
+GET http://localhost:3500/logout
+Content-Type: application/json
+
+###
