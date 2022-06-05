@@ -1,4 +1,4 @@
-import './App.css'
+import "./App.css";
 import { useCallback, useEffect, useState } from "react";
 
 function App() {
@@ -7,10 +7,7 @@ function App() {
   const [num1] = useState(4);
   const [num2] = useState(5);
 
-  const sum = useCallback(
-    () => num1 + num2,
-    [num1, num2]
-  );
+  const sum = useCallback(() => num1 + num2, [num1, num2]);
   const buildArray = useCallback(() => [num1, num2], [num1, num2]);
 
   useEffect(() => {
@@ -28,7 +25,7 @@ function App() {
       />
       <h1>Output: {userInput || "--"}</h1>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
