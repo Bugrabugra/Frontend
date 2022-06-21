@@ -1,0 +1,44 @@
+### get all users
+GET http://localhost:3001/
+
+### get user
+GET http://localhost:3001/byId/2
+
+### create user
+POST http://localhost:3001/
+Content-Type: application/json
+
+{"username": "PedroTech", "password": "secretpassword"}
+
+### create many users
+POST http://localhost:3001/createManyUsers
+Content-Type: application/json
+
+{
+  "userList": [
+    {"username": "burcu", "password": "otken"},
+    {"username": "bugra", "password": "otken"},
+    {"username": "michael", "password": "scott"}
+  ]
+}
+
+### create many cars
+POST http://localhost:3001/createManyCars
+Content-Type: application/json
+
+{
+  "carList": [
+    {"model": "tesla", "year": 2022, "userId": 4},
+    {"model": "toyota", "year": 2020, "userId": 4},
+    {"model": "honda", "year": 2018, "userId": 2}
+  ]
+}
+
+### update username
+PUT http://localhost:3001/
+Content-Type: application/json
+
+{"id": 1, "username": "pedro"}
+
+### delete user
+DELETE http://localhost:3001/1
