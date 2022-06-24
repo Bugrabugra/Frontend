@@ -1,0 +1,29 @@
+### GET all workouts
+GET http://localhost:4000/api/workouts
+Content-Type: application/json
+
+### GET a single workout
+GET http://localhost:4000/api/workouts/62b41f41155c378dd9c8792d
+Content-Type: application/json
+
+### CREATE a workout
+POST http://localhost:4000/api/workouts
+Content-Type: application/json
+
+{
+  "title": "Bench press",
+  "load": 25,
+  "reps": 40
+}
+
+### DELETE a workout
+DELETE http://localhost:4000/api/workouts/62b41f41155c378dd9c8792d
+Content-Type: application/json
+
+### UPDATE a workout
+PATCH http://localhost:4000/api/workouts/62b41f41155c378dd9c8792d
+Content-Type: application/json
+
+{
+  "reps": 50
+}
