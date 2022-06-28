@@ -1,7 +1,9 @@
 /* eslint-env node */
 
-import {chrome} from '../../.electron-vendors.cache.json';
-import {join} from 'path';
+import { chrome } from '../../.electron-vendors.cache.json';
+import { join } from 'path';
+import { builtinModules } from "module";
+
 
 const PACKAGE_ROOT = __dirname;
 
@@ -14,14 +16,14 @@ const config = {
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
-    },
+      '/@/': join(PACKAGE_ROOT, 'src') + '/'
+    }
   },
   base: '',
   server: {
     fs: {
-      strict: true,
-    },
+      strict: true
+    }
   },
   build: {
     sourcemap: true,
@@ -30,14 +32,17 @@ const config = {
     assetsDir: '.',
     rollupOptions: {
       input: join(PACKAGE_ROOT, 'index.html'),
+      external: [
+        ...builtinModules.filter(m => m !== "process" && m !== "assert")
+      ]
     },
     emptyOutDir: true,
-    brotliSize: false,
+    brotliSize: false
   },
   test: {
-    environment: 'happy-dom',
+    environment: 'happy-dom'
   },
-  plugins: [],
+  plugins: []
 };
 
 export default config;
