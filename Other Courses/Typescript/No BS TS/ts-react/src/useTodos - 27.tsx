@@ -1,6 +1,8 @@
 import { useCallback, useReducer } from "react";
 
-type ActionType = { type: "ADD", text: string } | { type: "REMOVE", id: number };
+type ActionType =
+  | { type: "ADD"; text: string }
+  | { type: "REMOVE"; id: number };
 
 interface Todo {
   id: number;
@@ -9,9 +11,9 @@ interface Todo {
 }
 
 export function useTodos(initialTodos: Todo[]): {
-  todos: Todo[],
-  addTodo: (text: string) => void,
-  removeTodo: (id: number) => void
+  todos: Todo[];
+  addTodo: (text: string) => void;
+  removeTodo: (id: number) => void;
 } {
   const [todos, dispatch] = useReducer((state: Todo[], action: ActionType) => {
     switch (action.type) {
@@ -21,8 +23,8 @@ export function useTodos(initialTodos: Todo[]): {
           {
             id: state.length,
             text: action.text,
-            done: false
-          }
+            done: false,
+          },
         ];
       case "REMOVE":
         return state.filter(({ id }) => id !== action.id);
@@ -31,25 +33,19 @@ export function useTodos(initialTodos: Todo[]): {
     }
   }, initialTodos);
 
-  const addTodo = useCallback(
-    (text: string) => {
-      dispatch({
-        type: "ADD",
-        text
-      })
-    },
-    [],
-  );
+  const addTodo = useCallback((text: string) => {
+    dispatch({
+      type: "ADD",
+      text,
+    });
+  }, []);
 
-  const removeTodo = useCallback(
-    (id: number) => {
-      dispatch({
-        type: "REMOVE",
-        id
-      })
-    },
-    [],
-  );
+  const removeTodo = useCallback((id: number) => {
+    dispatch({
+      type: "REMOVE",
+      id,
+    });
+  }, []);
 
-  return { todos, addTodo, removeTodo }
+  return { todos, addTodo, removeTodo };
 }

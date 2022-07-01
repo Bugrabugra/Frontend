@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import { TodosProvider, useAddTodo, useRemoveTodo, useTodos } from "./useTodos - 23";
-import { render } from "react-dom";
+import React, { useCallback, useRef } from "react";
+import { useTodos } from "./useTodos - 26";
+
 
 const Heading = (props: { title: string }) => {
   return <h2>{props.title}</h2>
@@ -36,10 +36,10 @@ function UL<T>({ items, render, itemClick }: React.DetailedHTMLProps<React.HTMLA
   )
 }
 
+const initialTodos = [{ id: 0, text: "Hey there", done: false }];
+
 function App() {
-  const todos = useTodos();
-  const addTodo = useAddTodo();
-  const removeTodo = useRemoveTodo();
+  const { todos, addTodo, removeTodo } = useTodos(initialTodos);
 
   const newTodoRef = useRef<HTMLInputElement>(null);
 
@@ -79,11 +79,11 @@ function App() {
 }
 
 const JustShowTodos = () => {
-  const todos = useTodos();
+  const { todos } = useTodos(initialTodos);
 
   return (
     <UL
-      itemClick={(item) => {
+      itemClick={() => {
       }}
       items={todos}
       render={(todo) => <>{todo.text}</>}
@@ -92,13 +92,10 @@ const JustShowTodos = () => {
 };
 
 const AppWrapper = () => (
-  <TodosProvider initialTodos={[{ id: 0, text: "Hey there useContext", done: false }]}>
-    <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
-      <App></App>
-      <JustShowTodos/>
-    </div>
-  </TodosProvider>
-
+  <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+    <App/>
+    <JustShowTodos/>
+  </div>
 );
 
 export default AppWrapper;
