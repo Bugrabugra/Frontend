@@ -69,7 +69,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <Link href="/">
+          <Link href={`/detail/${post._id}`}>
             <video
               src={post.video.asset.url}
               ref={videoRef}
@@ -86,20 +86,20 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             >
               {isPlaying ? (
                 <button onClick={onVideoPress}>
-                  <BsFillPauseFill className="text-white text-2xl lg:text-4xl"/>
+                  <BsFillPauseFill className="text-orange-500 text-2xl lg:text-4xl"/>
                 </button>
               ) : (
                 <button onClick={onVideoPress}>
-                  <BsFillPlayFill className="text-white text-2xl lg:text-4xl"/>
+                  <BsFillPlayFill className="text-orange-500 text-2xl lg:text-4xl"/>
                 </button>
               )}
               {isVideoMuted ? (
                 <button onClick={() => setIsVideoMuted(false)}>
-                  <HiVolumeOff className="text-white text-2xl lg:text-4xl"/>
+                  <HiVolumeOff className="text-orange-500 text-2xl lg:text-4xl"/>
                 </button>
               ) : (
                 <button onClick={() => setIsVideoMuted(true)}>
-                  <HiVolumeUp className="text-white text-2xl lg:text-4xl"/>
+                  <HiVolumeUp className="text-orange-500 text-2xl lg:text-4xl"/>
                 </button>
               )}
             </div>

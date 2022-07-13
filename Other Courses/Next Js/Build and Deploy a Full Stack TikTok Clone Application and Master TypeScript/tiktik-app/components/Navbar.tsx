@@ -2,14 +2,14 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../utils/tiktik-logo.png";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { createOrGetUser } from "../utils";
 import useAuthStore from "../store/authStore";
 import { IoMdAdd } from "react-icons/io";
-import { AiOutlineLogout } from "react-icons/all";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Navbar = () => {
-  const { userProfile, addUser } = useAuthStore();
+  const { userProfile, addUser, removeUser } = useAuthStore();
 
   return (
     <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
@@ -51,7 +51,14 @@ const Navbar = () => {
                 </>
               </Link>
             )}
-            <button type="button" className="px-2">
+            <button
+              type="button"
+              className="px-2"
+              onClick={() => {
+                googleLogout();
+                removeUser();
+              }}
+            >
               <AiOutlineLogout color="red" fontSize={21}/>
             </button>
           </div>
