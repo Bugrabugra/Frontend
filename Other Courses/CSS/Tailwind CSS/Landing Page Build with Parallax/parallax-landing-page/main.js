@@ -88,3 +88,27 @@ async function handleFormSubmit(e) {
 
 // event listener form submit
 contactForm.addEventListener("submit", handleFormSubmit);
+
+// fade up observer
+function fadeUpObserverFunction(elsToWatch) {
+  elsToWatch.forEach((el) => {
+    if (el.isIntersecting) {
+      el.target.classList.add("faded");
+      fadeUpObserver.unobserve(el.target);
+      el.target.addEventListener("transitionend", () => {
+        el.target.classList.remove("fade-up", "faded");
+      }, { once: true })
+    }
+
+  });
+}
+
+const fadeUpObserverOptions = {
+  threshold: 0.6
+};
+
+const fadeUpObserver = new IntersectionObserver(fadeUpObserverFunction, fadeUpObserverOptions);
+
+document.querySelectorAll(".fade-up").forEach((item) => {
+  fadeUpObserver.observe(item)
+})
