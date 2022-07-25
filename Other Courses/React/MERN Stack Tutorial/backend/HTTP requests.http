@@ -46,6 +46,6 @@ POST http://localhost:4000/api/user/signup
 Content-Type: application/json
 
 {
-  "email": "bugra@gmail.com",
-  "password": "abc"
+  "email": "luigi@netninja.dev",
+  "password": "ABCabs123!"
 }

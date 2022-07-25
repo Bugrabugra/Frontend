@@ -8,7 +8,7 @@
   </head>
   <body
       class="bg-slate-50 dark:bg-slate-700 p-4 md:p-6 lg:p-8 min-h-screen grid gap-4 md:gap-6
-      lg:gap-8 text-slate-600 dark:text-slate-100"
+      lg:gap-8 text-slate-600 dark:text-slate-100 grid-rows-auto1"
   >
     <header class="text-center grid p-4 place-items-center content-center">
       <h1
@@ -25,7 +25,9 @@
     </header>
 
     <main class="max-w-6xl w-full mx-auto">
-      <section class="grid gap-4 md:gap-6 lg:gap-8 items-start" id="events-container">
+      <section
+          class="grid gap-4 md:gap-6 lg:gap-8 items-start grid-cols-cards" id="events-container"
+      >
         <article
             class="bg-white dark:bg-slate-800 shadow-xl shadow-slate-200 dark:shadow-slate-800 rounded-lg"
         >
@@ -47,10 +49,242 @@
                     aria-controls="details-1" aria-expanded="false"
                     class="text-slate-400 flex gap-1 items-center cursor-pointer" id="btn-1"
                 >
-                  <p class="text-slate-400 pointer-events-none">See details</p>
+                  <p class="pointer-events-none">See details</p>
+                  <svg
+                      class="h-4 w-4 pointer-events-none transition-transform" fill="none"
+                      stroke="currentColor"
+                      stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </button>
+                <div aria-labelledby="btn-1" class="grid gap-1" id="details-1">
+                  <p class="text-slate-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A laborum nemo
+                    reiciendis maxime. Fugiat, officiis? Officiis necessitatibus nulla veniam fugiat
+                    consectetur, porro cumque dolor, eligendi amet, quidem non inventore hic omnis?
+                    Id obcaecati, quibusdam maxime nulla illum consectetur libero soluta atque
+                    quasi, ad veniam laudantium. Laborum nisi soluta nostrum maiores.
+                  </p>
+                </div>
               </div>
             </div>
+            <a
+                class="bg-indigo-500 rounded-md px-4 py-2 text-indigo-50 shadow-2xl shadow-indigo-200
+                dark:shadow-none text-center font-bold hover:shadow-none ring ring-offset-0 ring-indigo-500
+                focus:outline-none focus:ring-offset-2 transition-all"
+                href="#"
+            >
+              View Event
+            </a>
+          </div>
+        </article>
+
+        <article
+            class="bg-white dark:bg-slate-800 shadow-xl shadow-slate-200 dark:shadow-slate-800 rounded-lg"
+        >
+          <div
+              class="p-3 shadow bg-indigo-500 text-indigo-50 uppercase grid place-items-center rounded-t-lg"
+          >
+            <p class="text-sm">Feb</p>
+            <div class="text-3xl font-bold">3</div>
+          </div>
+
+          <div class="p-4 md:p-6 lg:p-8 grid gap-4 md:gap-6">
+            <div class="grid gap-1">
+              <p class="text-slate-400 text-sm">Feb 13-Feb 16</p>
+              <h2 class="font-bold text-2xl">
+                <a href="#">Really Cool Event</a>
+              </h2>
+              <div class="grid gap-1">
+                <button
+                    aria-controls="details-1" aria-expanded="false"
+                    class="text-slate-400 flex gap-1 items-center cursor-pointer" id="btn-1"
+                >
+                  <p class="pointer-events-none">See details</p>
+                  <svg
+                      class="h-4 w-4 pointer-events-none transition-transform" fill="none"
+                      stroke="currentColor"
+                      stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div aria-labelledby="btn-1" class="grid gap-1" id="details-1">
+                  <p class="text-slate-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A laborum nemo
+                    reiciendis maxime. Fugiat, officiis? Officiis necessitatibus nulla veniam fugiat
+                    consectetur, porro cumque dolor, eligendi amet, quidem non inventore hic omnis?
+                    Id obcaecati, quibusdam maxime nulla illum consectetur libero soluta atque
+                    quasi, ad veniam laudantium. Laborum nisi soluta nostrum maiores.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a
+                class="bg-indigo-500 rounded-md px-4 py-2 text-indigo-50 shadow-2xl shadow-indigo-200
+                dark:shadow-none text-center font-bold hover:shadow-none ring ring-offset-0 ring-indigo-500
+                focus:outline-none focus:ring-offset-2 transition-all"
+                href="#"
+            >
+              View Event
+            </a>
+          </div>
+        </article>
+
+        <article
+            class="bg-white dark:bg-slate-800 shadow-xl shadow-slate-200 dark:shadow-slate-800 rounded-lg"
+        >
+          <div
+              class="p-3 shadow bg-indigo-500 text-indigo-50 uppercase grid place-items-center rounded-t-lg"
+          >
+            <p class="text-sm">Feb</p>
+            <div class="text-3xl font-bold">3</div>
+          </div>
+
+          <div class="p-4 md:p-6 lg:p-8 grid gap-4 md:gap-6">
+            <div class="grid gap-1">
+              <p class="text-slate-400 text-sm">Feb 13-Feb 16</p>
+              <h2 class="font-bold text-2xl">
+                <a href="#">Really Cool Event</a>
+              </h2>
+              <div class="grid gap-1">
+                <button
+                    aria-controls="details-1" aria-expanded="false"
+                    class="text-slate-400 flex gap-1 items-center cursor-pointer" id="btn-1"
+                >
+                  <p class="pointer-events-none">See details</p>
+                  <svg
+                      class="h-4 w-4 pointer-events-none transition-transform" fill="none"
+                      stroke="currentColor"
+                      stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div aria-labelledby="btn-1" class="grid gap-1" id="details-1">
+                  <p class="text-slate-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A laborum nemo
+                    reiciendis maxime. Fugiat, officiis? Officiis necessitatibus nulla veniam fugiat
+                    consectetur, porro cumque dolor, eligendi amet, quidem non inventore hic omnis?
+                    Id obcaecati, quibusdam maxime nulla illum consectetur libero soluta atque
+                    quasi, ad veniam laudantium. Laborum nisi soluta nostrum maiores.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a
+                class="bg-indigo-500 rounded-md px-4 py-2 text-indigo-50 shadow-2xl shadow-indigo-200
+                dark:shadow-none text-center font-bold hover:shadow-none ring ring-offset-0 ring-indigo-500
+                focus:outline-none focus:ring-offset-2 transition-all"
+                href="#"
+            >
+              View Event
+            </a>
+          </div>
+        </article>
+
+        <article
+            class="bg-white dark:bg-slate-800 shadow-xl shadow-slate-200 dark:shadow-slate-800 rounded-lg"
+        >
+          <div
+              class="p-3 shadow bg-indigo-500 text-indigo-50 uppercase grid place-items-center rounded-t-lg"
+          >
+            <p class="text-sm">Feb</p>
+            <div class="text-3xl font-bold">3</div>
+          </div>
+
+          <div class="p-4 md:p-6 lg:p-8 grid gap-4 md:gap-6">
+            <div class="grid gap-1">
+              <p class="text-slate-400 text-sm">Feb 13-Feb 16</p>
+              <h2 class="font-bold text-2xl">
+                <a href="#">Really Cool Event</a>
+              </h2>
+              <div class="grid gap-1">
+                <button
+                    aria-controls="details-1" aria-expanded="false"
+                    class="text-slate-400 flex gap-1 items-center cursor-pointer" id="btn-1"
+                >
+                  <p class="pointer-events-none">See details</p>
+                  <svg
+                      class="h-4 w-4 pointer-events-none transition-transform" fill="none"
+                      stroke="currentColor"
+                      stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div aria-labelledby="btn-1" class="grid gap-1" id="details-1">
+                  <p class="text-slate-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A laborum nemo
+                    reiciendis maxime. Fugiat, officiis? Officiis necessitatibus nulla veniam fugiat
+                    consectetur, porro cumque dolor, eligendi amet, quidem non inventore hic omnis?
+                    Id obcaecati, quibusdam maxime nulla illum consectetur libero soluta atque
+                    quasi, ad veniam laudantium. Laborum nisi soluta nostrum maiores.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a
+                class="bg-indigo-500 rounded-md px-4 py-2 text-indigo-50 shadow-2xl shadow-indigo-200
+                dark:shadow-none text-center font-bold hover:shadow-none ring ring-offset-0 ring-indigo-500
+                focus:outline-none focus:ring-offset-2 transition-all"
+                href="#"
+            >
+              View Event
+            </a>
+          </div>
+        </article>
+
+        <article
+            class="bg-white dark:bg-slate-800 shadow-xl shadow-slate-200 dark:shadow-slate-800 rounded-lg"
+        >
+          <div
+              class="p-3 shadow bg-indigo-500 text-indigo-50 uppercase grid place-items-center rounded-t-lg"
+          >
+            <p class="text-sm">Feb</p>
+            <div class="text-3xl font-bold">3</div>
+          </div>
+
+          <div class="p-4 md:p-6 lg:p-8 grid gap-4 md:gap-6">
+            <div class="grid gap-1">
+              <p class="text-slate-400 text-sm">Feb 13-Feb 16</p>
+              <h2 class="font-bold text-2xl">
+                <a href="#">Really Cool Event</a>
+              </h2>
+              <div class="grid gap-1">
+                <button
+                    aria-controls="details-1" aria-expanded="false"
+                    class="text-slate-400 flex gap-1 items-center cursor-pointer" id="btn-1"
+                >
+                  <p class="pointer-events-none">See details</p>
+                  <svg
+                      class="h-4 w-4 pointer-events-none transition-transform" fill="none"
+                      stroke="currentColor"
+                      stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div aria-labelledby="btn-1" class="grid gap-1" id="details-1">
+                  <p class="text-slate-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A laborum nemo
+                    reiciendis maxime. Fugiat, officiis? Officiis necessitatibus nulla veniam fugiat
+                    consectetur, porro cumque dolor, eligendi amet, quidem non inventore hic omnis?
+                    Id obcaecati, quibusdam maxime nulla illum consectetur libero soluta atque
+                    quasi, ad veniam laudantium. Laborum nisi soluta nostrum maiores.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a
+                class="bg-indigo-500 rounded-md px-4 py-2 text-indigo-50 shadow-2xl shadow-indigo-200
+                dark:shadow-none text-center font-bold hover:shadow-none ring ring-offset-0 ring-indigo-500
+                focus:outline-none focus:ring-offset-2 transition-all"
+                href="#"
+            >
+              View Event
+            </a>
           </div>
         </article>
       </section>
