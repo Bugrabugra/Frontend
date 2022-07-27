@@ -5,6 +5,13 @@ import PersonList from "./components/PersonList";
 import Status from "./components/Status";
 import Heading from "./components/Heading";
 import Oscar from "./components/Oscar";
+import Button from "./components/Button";
+import Input from "./components/Input";
+import Container from "./components/Container";
+import ThemeContextProvider from "./components/context/ThemeContext";
+import Box from "./components/context/Box";
+import UserContextProvider from "./components/context/UserContext";
+import User from "./components/context/User";
 
 function App() {
   const personName = {
@@ -23,12 +30,21 @@ function App() {
       {/*<Greet name="Bugra" messageCount={20} isLoggedIn={false}/>*/}
       {/*<Person name={personName}/>*/}
       {/*<PersonList names={nameList}/>*/}
-      <Status status="loading"/>
-      <Heading>Placeholder Text</Heading>
-      <Oscar>
-        <Heading>Oscar goes to Leonardo Dicaprio!</Heading>
-      </Oscar>
-      <Greet name="Bugra" isLoggedIn={false}/>
+      {/*<Status status="loading"/>*/}
+      {/*<Heading>Placeholder Text</Heading>*/}
+      {/*<Oscar>*/}
+      {/*  <Heading>Oscar goes to Leonardo Dicaprio!</Heading>*/}
+      {/*</Oscar>*/}
+      {/*<Greet name="Bugra" isLoggedIn={false}/>*/}
+      {/*<Button handleClick={(event, id) => {console.log("Button clicked", event, id)}}/>*/}
+      {/*<Input value="" handleChange={(event) => console.log(event)}/>*/}
+      {/*<Container styles={{ border: "1px solid black", padding: "1rem" }}/>*/}
+      {/*<ThemeContextProvider>*/}
+      {/*  <Box/>*/}
+      {/*</ThemeContextProvider>*/}
+      <UserContextProvider>
+        <User/>
+      </UserContextProvider>
     </div>
   )
 }
