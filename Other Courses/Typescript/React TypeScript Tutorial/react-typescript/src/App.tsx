@@ -16,6 +16,10 @@ import { Counter } from "./components/class/Counter";
 import Private from "./components/auth/Private";
 import Profile from "./components/auth/Profile";
 import List from "./components/generics/List";
+import RandomNumber from "./components/restriction/RandomNumber";
+import Toast from "./components/templateLiterals/Toast";
+import CustomButton from "./components/html/Button";
+import Text from "./components/polymorphic/Text";
 
 function App() {
   const personName = {
@@ -53,14 +57,22 @@ function App() {
       {/*<Private isLoggedIn={true} component={Profile}/>*/}
       {/*<List items={["Batman", "Superman", "Wonder Woman"]} onClick={(item) => console.log(item)}/>*/}
       {/*<List items={[1, 2, 3]} onClick={(item) => console.log(item)}/>*/}
-      <List
-        items={[
-          { id: 1, first: "Bruce", last: "Wayne" },
-          { id: 2, first: "Clark", last: "Kent" },
-          { id: 3, first: "Princess", last: "Diana" }
-        ]}
-        onClick={(item) => console.log(item)}
-      />
+      {/*<List*/}
+      {/*  items={[*/}
+      {/*    { id: 1, first: "Bruce", last: "Wayne" },*/}
+      {/*    { id: 2, first: "Clark", last: "Kent" },*/}
+      {/*    { id: 3, first: "Princess", last: "Diana" }*/}
+      {/*  ]}*/}
+      {/*  onClick={(item) => console.log(item)}*/}
+      {/*/>*/}
+      {/*<RandomNumber value={10} isPositive/>*/}
+      {/*<Toast position="center-top"/>*/}
+      {/*<CustomButton variant="primary" onClick={() => console.log("Clicked")}>*/}
+      {/*  Primary Button*/}
+      {/*</CustomButton>*/}
+      <Text as="h1" size="lg">Heading</Text>
+      <Text as="p" size="md">Paragraph</Text>
+      <Text as="label" htmlFor="someId" size="sm" color="secondary">Label</Text>
     </div>
   )
 }
