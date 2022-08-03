@@ -1,0 +1,13 @@
+### List posts
+GET http://localhost:5000/posts
+Accept: application/json
+
+### Create posts
+POST http://localhost:5000/posts
+Content-Type: application/json
+
+{
+  "title": "Post Four",
+  "body": "This is the body",
+  "publishedAt": "10-02-2020"
+}
