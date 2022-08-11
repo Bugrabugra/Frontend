@@ -1,14 +1,17 @@
 ### GET all workouts
 GET http://localhost:4000/api/workouts
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 ### GET a single workout
 GET http://localhost:4000/api/workouts/62b41f41155c378dd9c8792d
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 ### CREATE a workout
 POST http://localhost:4000/api/workouts
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 {
   "title": "Bench press",
@@ -19,18 +22,16 @@ Content-Type: application/json
 ### DELETE a workout
 DELETE http://localhost:4000/api/workouts/62b41f41155c378dd9c8792d
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 ### UPDATE a workout
 PATCH http://localhost:4000/api/workouts/62b41f41155c378dd9c8792d
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 {
   "reps": 50
 }
-
-### GET all workouts
-GET http://localhost:4000/api/workouts
-Content-Type: application/json
 
 ### LOGIN user
 POST http://localhost:4000/api/user/login
@@ -41,6 +42,8 @@ Content-Type: application/json
   "password": "ABCabs123!"
 }
 
+> {% client.global.set("auth_token", response.body.token); %}
+
 ### SIGNUP user
 POST http://localhost:4000/api/user/signup
 Content-Type: application/json
@@ -49,3 +52,4 @@ Content-Type: application/json
   "email": "b@g.com",
   "password": "ABCabs123!"
 }
+
