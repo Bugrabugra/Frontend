@@ -25,7 +25,7 @@ module.exports = {
     ],
     "no-unused-vars": [
       "off"
-    ],
-    "no-console": "error"
+    ]
+    // "no-console": "error"
   }
 }
