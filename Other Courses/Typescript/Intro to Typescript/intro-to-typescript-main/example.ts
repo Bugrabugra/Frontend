@@ -23,10 +23,14 @@ function add(a: number, b: number) {
 let result = add(40, 2);
 console.log(result);
 
-console.log(add(4, 2));
-
+const numbers = [4, 7, 13, 42];
 
 // Union Types
+const numbersAndStrings: (string | number)[] = [4, 7, "CJ", 42];
+console.log(numbersAndStrings);
+
+let theAnswer: string | number = 42;
+theAnswer = "42"
 
 // Objects and Interfaces
 
