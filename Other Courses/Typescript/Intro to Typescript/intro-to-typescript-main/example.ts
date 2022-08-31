@@ -33,8 +33,48 @@ let theAnswer: string | number = 42;
 theAnswer = "42"
 
 // Objects and Interfaces
+// interface Person {
+//   name: string;
+//   favNumber: number;
+// }
+//
+// function greet(person: Person) {
+//   return `Hello ${person.name}`;
+// }
+//
+// console.log(greet({
+//   name: "CJ",
+//   favNumber: 42
+// }));
 
 // Optional Properties
+interface Person {
+  name: string;
+  favNumber: number;
+  dogName?: string;
+}
+
+function greet(person: Person) {
+  return `Hello ${person.name}`;
+}
+
+console.log(greet({
+  name: "CJ",
+  favNumber: 42
+}));
+
+function greetPersonAndDog(person: Person) {
+  if (person.dogName) {
+    return `Hello ${person.name} and their dog ${person.dogName}`;
+  }
+  return greet(person);
+}
+
+console.log(greetPersonAndDog({
+  name: "Chris",
+  favNumber: 13,
+  dogName: "fu"
+}))
 
 // Classes
 
