@@ -2,9 +2,11 @@
   "name": "intro-to-typescript-main",
   "version": "1.0.0",
   "description": "![](./images/TS_LOGO.png)",
-  "main": "index.js",
+  "main": "example.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node ./dist/example.js",
+    "dev": "nodemon example.ts"
   },
   "keywords": [],
   "author": "",
