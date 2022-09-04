@@ -1,16 +1,10 @@
-import { Router, Response, Request } from 'express';
-import Todo from './todos.model';
+import { Router } from 'express';
+import * as TodoHandlers from './todos.handlers';
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response<Todo[]>) => {
-  res.json([
-    {
-      content: 'Learn Typescript',
-      done: false,
-    },
-  ]);
-});
+router.get('/', TodoHandlers.findAll);
+router.post('/', TodoHandlers.createOne);
 
 
 export default router;
