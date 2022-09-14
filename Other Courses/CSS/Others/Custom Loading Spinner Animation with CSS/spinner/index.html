@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    main {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      background: linear-gradient(#eff0f3, #efe0e3);
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      animation: pulse 1500ms cubic-bezier(0.76, 0.09, 0.17, 0.68) infinite;
+    }
+
+    .spinner {
+      color: #ff8e3c;
+      animation: spin 1500ms linear infinite;
+    }
+
+    .circleAnimation {
+      opacity: 0.4;
+    }
+
+    p {
+      color: #d9376e;
+      font-size: 5rem;
+      font-family: Nunito, sans-serif;
+      font-weight: bold;
+      position: relative;
+    }
+
+    p::after {
+      content: "";
+      position: absolute;
+      animation: dots 1500ms ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes dots {
+      0% {
+        content: "";
+      }
+      33% {
+        content: "."
+      }
+      66% {
+        content: ".."
+      }
+      100% {
+        content: "..."
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <div class="container">
+        <svg
+            class="spinner"
+            fill="none"
+            height="155"
+            viewBox="0 0 155 155"
+            width="155"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+              class="circleAnimation"
+              cx="77.5"
+              cy="77.5"
+              r="60"
+              stroke="currentColor"
+              stroke-width="35"
+          />
+          <path
+              d="M120.329 35.48a59.998 59.998 0 0 1 6.712 75.868"
+              stroke="currentColor"
+              stroke-width="35"
+          />
+        </svg>
+        <p>Loading</p>
+      </div>
+    </main>
+  </body>
+</html
