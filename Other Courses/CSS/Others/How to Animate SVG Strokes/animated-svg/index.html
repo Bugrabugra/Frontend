@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      color: dodgerblue;
+    }
+
+    circle {
+      --strokeLength: 1256.12939453125;
+      --strokeIncrement: 4;
+      --strokeCalc: 0;
+      stroke-dasharray: var(--strokeLength);
+      stroke-dashoffset: var(--strokeCalc);
+      transition: stroke-dashoffset 1s ease;
+    }
+  </style>
+
+  <body>
+    <svg class="time-wrapper" width="500" height="500" viewBox="0 0 500 500">
+      <circle cx="250" cy="250" r="200" stroke="currentColor" stroke-width="25" fill="transparent">
+
+      </circle>
+    </svg>
+
+    <script>
+      const circle = document.querySelector("circle");
+      const strokeLength = circle.getTotalLength();
+      circle.style.setProperty("--strokeLength", strokeLength);
+
+      const TIME = 10;
+
+      const strokeIncrement = strokeLength / TIME;
+      circle.style.setProperty("--strokeIncrement", strokeIncrement);
+
+      let totalTimeRemaining = TIME;
+
+      function drawCircle() {
+        if (totalTimeRemaining > 0) {
+          circle.style.setProperty("--strokeCalc", strokeLength - strokeIncrement * totalTimeRemaining)
+          return (totalTimeRemaining -= 1);
+        }
+        circle.style.setProperty("--strokeCalc", strokeLength);
+        clearInterval(interval);
+      }
+
+      drawCircle();
+
+      let interval = setInterval(drawCircle, 1000);
+    </script>
+  </body>
+</html>
