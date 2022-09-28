@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "apple"
-  },
   "api": {
-    "projectId": "3k1uk4ln",
+    "projectId": "mlj4oazr",
     "dataset": "production"
+  },
+  "project": {
+    "name": "applesanity"
   },
   "plugins": [
     "@sanity/base",
