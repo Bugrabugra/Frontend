@@ -1,0 +1,45 @@
+### get all users
+GET http://localhost:3500/users
+Accept: application/json
+
+### create user
+POST http://localhost:3500/users
+Content-Type: application/json
+
+{
+  "username": "DanD",
+  "password": "!Dd12345",
+  "roles": [
+    "Employee"
+  ]
+}
+
+### update user
+PATCH http://localhost:3500/users
+Content-Type: application/json
+
+{
+  "id": "6336ad1993776c31ae2f05e7",
+  "username": "Hank",
+  "roles": [
+    "Employee"
+  ],
+  "active": false
+}
+
+### delete user
+DELETE http://localhost:3500/users
+Content-Type: application/json
+
+{
+  "id": "6336ad1993776c31ae2f05e7"
+}
+
+### auth user
+POST http://localhost:3500/auth
+Content-Type: application/json
+
+{
+  "username": "DanD",
+  "password": "!Dd12345"
+}
