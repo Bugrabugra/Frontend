@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.6"
+    "@reduxjs/toolkit": "^1.8.6",
+    "axios": "^1.1.2",
+    "redux-logger": "^3.0.6"
   }
 }
