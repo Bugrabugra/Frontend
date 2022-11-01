@@ -17,10 +17,13 @@ const featuresData = [
 ];
 ---
 
-<section class="features">
+<section class="features"> 
   <div class="container">
     {featuresData.map((feature) => (
-      <Card body={feature.body} title={feature.title} dark={false}/>
+      <Card>
+        <h3>{feature.title}</h3>
+        <p>{feature.body}</p>
+      </Card>
     ))}
   </div>
 </section>
