@@ -1,0 +1,62 @@
+### GET healthcheck
+GET {{host}}/healthcheck
+Accept: application/json
+
+### POST register new user
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "firstName": "{{firstName}}",
+  "lastName": "{{lastName}}",
+  "email": "{{email}}",
+  "password": "{{password}}",
+  "passwordConfirmation": "{{password}}"
+}
+
+> {%
+ client.log("Response from server: ", JSON.stringify(response.body));
+ client.test("Check the status", function() {
+   client.assert(response.status === 200, "Status should be 200")
+ })
+ %}
+
+### POST verify user
+POST {{host}}/api/users/verify/{{id}}/{{verificationCode}}
+
+### POST forgot password
+POST {{host}}/api/users/forgotpassword
+Content-Type: application/json
+
+{
+  "email": "{{email}}"
+}
+
+### POST reset password
+POST {{host}}/api/users/resetpassword/{{id}}/{{passwordResetCode}}
+Content-Type: application/json
+
+{
+    "email": "{{email}}",
+    "password": "{{newPassword}}",
+    "passwordConfirmation": "{{newPassword}}"
+}
+
+### POST login
+POST {{host}}/api/sessions
+Content-Type: application/json
+
+{
+    "email": "{{email}}",
+    "password": "{{newPassword}}"
+}
+
+> {%
+ client.log(JSON.parse(response.body))
+ %}
+
+### GET me
+GET {{host}}/api/users/me
+Authorization: Bearer {{accessToken}}
+
+###
