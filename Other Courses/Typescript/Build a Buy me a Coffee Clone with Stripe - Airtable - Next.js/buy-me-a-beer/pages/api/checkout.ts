@@ -48,9 +48,10 @@ export default async function handler(
     if (url) {
       return res.status(200).send({ url });
     }
-    res.status(500).json({ message: "Something went wrong" });
+
+    return res.status(500).json({ message: "Something went wrong" });
   } catch (error) {
     console.error("Error creating session " + error);
-    res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: "Something went wrong" });
   }
 }

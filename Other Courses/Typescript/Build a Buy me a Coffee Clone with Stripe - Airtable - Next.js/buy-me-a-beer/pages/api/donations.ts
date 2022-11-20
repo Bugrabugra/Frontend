@@ -22,15 +22,18 @@ export default async function handler(
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_APP_ID}/donations?maxRecords=3&view=Grid%20view`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AIRTABLE_API_KEY}`
+  const response = await fetch(
+    `https://api.airtable.com/v0/${AIRTABLE_APP_ID}/donations?maxRecords=3&view=Grid%20view`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+      }
     }
-  });
+  );
 
-  const data = await response.json() as AirtableRecord;
+  const data = (await response.json()) as AirtableRecord;
 
   return res.status(200).json(data.records);
 }
