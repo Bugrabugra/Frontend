@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
-import { object, string } from "zod";
+import { object, string, TypeOf } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export const createUserSchema = object({
   name: string().nonempty({
@@ -24,21 +27,29 @@ export const createUserSchema = object({
 }).refine((data) => data.password === data.passwordConfirmation, {
   message: "Passwords do not match",
   path: ["passwordConfirmation"],
-})
+});
+
+type CreateUserInput = TypeOf<typeof createUserSchema>;
 
 function RegisterPage() {
-  const { register, formState: { errors }, handleSubmit } = useForm({
+  const [registerError, setRegisterError] = useState(null);
+  const router = useRouter();
+  const { register, formState: { errors }, handleSubmit } = useForm<CreateUserInput>({
     resolver: zodResolver(createUserSchema)
   });
 
-  function onSubmit(values) {
-    console.log({ values });
+  async function onSubmit(values: CreateUserInput) {
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/api/users`, values);
+      router.push("/");
+    } catch (error: any) {
+      setRegisterError(error.message);
+    }
   }
-
-  console.log({ errors })
 
   return (
     <>
+      <p>{registerError}</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-element">
           <label htmlFor="email">Email</label>

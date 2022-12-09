@@ -1,9 +1,10 @@
 export default {
   port: 1337,
+  origin: "http://localhost:3000",
   dbUri: "mongodb://localhost:27017/rest-api-tutorial",
   saltWorkFactor: 10,
-  accessTokenTimeToLive: "15m",
-  refreshTokenTimeToLive: "1y",
+  accessTokenTtl: "15m",
+  refreshTokenTtl: "1y",
   privateKey: `-----BEGIN RSA PRIVATE KEY-----
 MIICXQIBAAKBgQCTTkkYucOg2HxOsSqnUdu6JDFkopEN9OSTU9euz8XBiMljO66g
 3ZtxmdjWSf31+a63hQAT2hQy9hXo7PXBurB8oU/vEhuP/2FbnFRyFXlzvxLydl09
@@ -24,5 +25,8 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCTTkkYucOg2HxOsSqnUdu6JDFk
 opEN9OSTU9euz8XBiMljO66g3ZtxmdjWSf31+a63hQAT2hQy9hXo7PXBurB8oU/v
 EhuP/2FbnFRyFXlzvxLydl09RkIM8sehsyou1iVcqE03l08VSvS8Nt4DT4XyqnBR
 v3WGrcgXKyd4pBSIbQIDAQAB
------END PUBLIC KEY-----`
+-----END PUBLIC KEY-----`,
+  googleClientId: "298211899525-pa718lv40k49v62jqfe9v6tq8b3p9trd.apps.googleusercontent.com",
+  googleClientSecret: "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",
+  googleOauthRedirectUrl: "http://localhost:1337/api/sessions/oauth/google"
 }
