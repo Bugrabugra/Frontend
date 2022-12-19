@@ -1,25 +1,26 @@
+import { createContext, useContext, useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
 import { SOCKET_URL } from "../config/default";
-import { createContext, useContext, useEffect, useState } from "react";
 import EVENTS from "../config/events";
 
 interface Context {
   socket: Socket;
   username?: string;
   setUsername: Function;
-  roomId?: string;
-  rooms: Record<string, { name: string }>,
-  messages?: { message: string, time: string, username: string }[];
+  messages?: { message: string; time: string; username: string }[];
   setMessages: Function;
+  roomId?: string;
+  rooms: object;
 }
 
 const socket = io(SOCKET_URL);
+
 const SocketContext = createContext<Context>({
   socket,
   setUsername: () => false,
+  setMessages: () => false,
   rooms: {},
   messages: [],
-  setMessages: () => false
 });
 
 function SocketsProvider(props: any) {
@@ -31,7 +32,7 @@ function SocketsProvider(props: any) {
   useEffect(() => {
     window.onfocus = function () {
       document.title = "Chat app";
-    }
+    };
   }, []);
 
   socket.on(EVENTS.SERVER.ROOMS, (value) => {
@@ -43,16 +44,15 @@ function SocketsProvider(props: any) {
     setMessages([]);
   });
 
-  socket.on(EVENTS.SERVER.ROOM_MESSAGE, ({ message, username, time }) => {
-    if (!document.hasFocus()) {
-      document.title = "New message...";
-    }
+  useEffect(() => {
+    socket.on(EVENTS.SERVER.ROOM_MESSAGE, ({ message, username, time }) => {
+      if (!document.hasFocus()) {
+        document.title = "New message...";
+      }
 
-    setMessages([
-      ...messages,
-      { message, username, time }
-    ]);
-  });
+      setMessages((messages) => [...messages, { message, username, time }]);
+    });
+  }, [socket]);
 
   return (
     <SocketContext.Provider
@@ -63,8 +63,10 @@ function SocketsProvider(props: any) {
         rooms,
         roomId,
         messages,
-        setMessages
-      }} {...props}/>
+        setMessages,
+      }}
+      {...props}
+    />
   );
 }
 

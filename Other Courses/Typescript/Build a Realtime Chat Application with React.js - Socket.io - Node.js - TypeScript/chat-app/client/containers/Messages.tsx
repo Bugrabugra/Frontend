@@ -1,7 +1,6 @@
-import { useSockets } from "../context/socket.context";
 import { useEffect, useRef } from "react";
 import EVENTS from "../config/events";
-import { inspect } from "util";
+import { useSockets } from "../context/socket.context";
 import styles from "../styles/Messages.module.css";
 
 const MessagesContainer = () => {
