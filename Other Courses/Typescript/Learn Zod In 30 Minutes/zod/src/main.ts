@@ -63,6 +63,12 @@ const brandEmail = z.string().email().refine(val => val.endsWith("gmail.com"), {
 
 const email = "b@gmail.com";
 
+const zBoolean = z.boolean().default(false)
+const bool = undefined
+
+const zFunction = z.function().args(z.string()).returns(z.number())
+const myFunction = (name: string) => name.length;
+
 console.log(UserSchema.safeParse(user).success);
 console.log(UserSchema.partial().parse(user));
 console.log(UserSchema);
@@ -72,3 +78,5 @@ console.log(UserMap2.parse(userMap2));
 console.log(UserSet.parse(userSet));
 console.log(PromiseSchema.parse(p));
 console.log(brandEmail.parse(email));
+console.log(zBoolean.parse(bool))
+console.log(zFunction.safeParse(() => myFunction("ahmet")))
