@@ -15,7 +15,7 @@
     "quasar": "^1.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "^2.4.3"
+    "@quasar/app": "^3.3.3"
   },
   "browserslist": [
     "last 10 Chrome versions",
