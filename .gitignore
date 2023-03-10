@@ -129,3 +129,6 @@ fabric.properties
 
 # Local Netlify folder
 .netlify
+
+# MacOS
+.DS_Store

@@ -1,0 +1,33 @@
+{
+  "name": "Bugra Otken",
+  "avatar": "https://pbs.twimg.com/profile_images/1067795957977206787/d5eJNlWZ_400x400.jpg",
+  "links": [
+    {
+      "title": "My personal site",
+      "href": "https://www.facebook.com/bugra.otken",
+      "image": "https://pbs.twimg.com/profile_images/1067795957977206787/d5eJNlWZ_400x400.jpg"
+    },
+    {
+      "title": "Steam",
+      "href": "https://steamcommunity.com/profiles/76561198002832505/"
+    },
+    {
+      "title": "Vercel",
+      "href": "https://vercel.com"
+    },
+    {
+      "title": "Next.js",
+      "href": "https://nextjs.org"
+    }
+  ],
+  "socials": [
+    {
+      "title": "Twitter",
+      "href": "https://twitter.com/Bugraotken"
+    },
+    {
+      "title": "GitHub",
+      "href": "https://github.com/Bugrabugra/"
+    }
+  ]
+}
