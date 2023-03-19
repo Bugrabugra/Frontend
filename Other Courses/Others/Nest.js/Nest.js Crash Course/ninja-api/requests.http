@@ -1,0 +1,32 @@
+### GET all
+GET localhost:3000/ninjas
+Accept: application/json
+
+### GET one
+GET localhost:3000/ninjas/1
+Accept: application/json
+
+### Create
+POST localhost:3000/ninjas
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "ninjaF",
+  "weapon": "stars"
+}
+
+### Update
+PUT localhost:3000/ninjas/1679261897130
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "ninjaC",
+  "weapon": "stars"
+}
+
+### Delete
+DELETE localhost:3000/ninjas/1679261897130
+Accept: application/json
+Content-Type: application/json
