@@ -1,0 +1,64 @@
+### get all users
+GET http://localhost:3001/user
+Content-Type: application/json
+
+### create user
+POST http://localhost:3001/user
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "burcu",
+  "lastName": "otken",
+  "age": 38
+}
+
+### update user
+PUT http://localhost:3001/user/2
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "selvi burcu"
+}
+
+### delete user
+DELETE http://localhost:3001/user/2
+Content-Type: application/json
+Accept: application/json
+
+## ------------------------------
+
+### get all houses
+GET http://localhost:3001/house
+Content-Type: application/json
+
+### get house
+GET http://localhost:3001/house/9c8a4aeb-cc95-43db-b61f-2b01074f365a
+Content-Type: application/json
+
+### create house
+POST http://localhost:3001/house
+Content-Type: application/json
+Accept: application/json
+
+{
+  "address": "Uskudar",
+  "ownerId": "aabd1c79-e6ef-4721-90eb-fcd78ef4fb9b",
+  "builtById": "3cde9d3c-ed00-4738-90ee-4f739575b51f"
+}
+
+### update house
+PUT http://localhost:3001/house/9c8a4aeb-cc95-43db-b61f-2b01074f365a
+Content-Type: application/json
+Accept: application/json
+
+{
+  "wifiPassword": "123456"
+}
+
+### delete house
+DELETE http://localhost:3001/house/3
+Content-Type: application/json
+Accept: application/json
+
