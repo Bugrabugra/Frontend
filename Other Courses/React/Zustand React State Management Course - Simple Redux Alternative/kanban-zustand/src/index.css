@@ -1,0 +1,16 @@
+:root {
+  --COLOR-GRAY: #333;
+  --COLOR-GRAY-DARK: #222;
+  --COLOR-GRAY-LIGHT: #ccc;
+  --COLOR-ONGOING: #98c1d9;
+  --COLOR-DONE: #ee6c49;
+  font-family: Helvetica;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

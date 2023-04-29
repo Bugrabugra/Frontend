@@ -1,0 +1,3 @@
+### Revalidate
+GET http://localhost:3000/api/revalidate?path=/&secret=2b16ccdb8c615f282e4fc6d726f6415f
+Accept: application/json

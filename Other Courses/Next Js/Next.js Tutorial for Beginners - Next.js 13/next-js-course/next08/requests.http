@@ -1,0 +1,40 @@
+### Get all
+GET http://localhost:3000/api/todos
+Accept: application/json
+
+### Delete
+DELETE http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+  "id": 5
+}
+
+### Create
+POST http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+  "userId": 5,
+  "title": "Make the coffee"
+}
+
+### Update
+PUT http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+  "userId": 5,
+  "title": "Make the coffee",
+  "id": 5,
+  "completed": true
+}
+
+### Get one
+GET http://localhost:3000/api/todos/199
+Accept: application/json
+
+### Get hello
+GET http://localhost:3000/api/hello
+Accept: application/json
+
