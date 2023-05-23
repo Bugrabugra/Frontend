@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,24 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="236a6d74-3fc8-4429-80a2-932802614e26" name="Default Changelist" comment="13052020 - JS'ye başladım.">
-      <change afterPath="$PROJECT_DIR$/Chapter 6 - The Secret Life of Objects/6.1 - Encapsulation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chapter 6 - The Secret Life of Objects/6.2 - Methods.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chapter 6 - The Secret Life of Objects/6.3 - Prototypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/.idea/dictionaries/Bugra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Contact.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../TheNetNinja/Vue Js 3 Animations Tutorial/vue-animations-starter/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/dist.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Map.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SaveAreaDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SaveAreaDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SendReportDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/SendReportDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Tools.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-calculation-app/src/components/Tools.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/admin_dist.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Drawer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Drawer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Map.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/Map.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/TextArea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Upwork/Harita/GoogleCalculateArea/area-view-app/src/components/ParserTextArea.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +40,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="002ba09b-9236-447e-a8ce-99f48979ddb7" />
+        <option name="url" value="https://github.com/Bugrabugra/Frontend.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectId" id="1bqgsTJuMDCgFcKW8EROBnIDrrX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -62,13 +61,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs.cucumber.cucumber_node_package_dir" value="" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/bugraotken/Documents/GitHub/Frontend/Eloquent JavaScript&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager" selected="Node.js.6.3 - Prototypes.js">
     <configuration name="1 - Looping a triangle.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Chapter 2/Exercises/1 - Looping a triangle.js" working-dir="$PROJECT_DIR$/Chapter 2/Exercises">
       <method v="2" />
@@ -109,6 +114,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -126,6 +132,8 @@
       <workItem from="1589377709699" duration="267000" />
       <workItem from="1589389979137" duration="41000" />
       <workItem from="1612857690659" duration="3188000" />
+      <workItem from="1683447625679" duration="699000" />
+      <workItem from="1683527295283" duration="602000" />
     </task>
     <task id="LOCAL-00001" summary="13052020 - JS'ye başladım.">
       <created>1589374485461</created>
@@ -159,7 +167,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
