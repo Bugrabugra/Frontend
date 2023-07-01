@@ -1,0 +1,32 @@
+### POST login user
+POST http://localhost:5000/api/users/auth
+Content-Type: application/json
+
+{
+  "email": "john@gmail.com",
+  "password": "123456"
+}
+
+### POST register user
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@gmail.com",
+  "password": "123456"
+}
+
+### POST logout user
+POST http://localhost:5000/api/users/logout
+
+### GET get user profile
+GET http://localhost:5000/api/users/profile
+
+### PUT update user profile
+PUT http://localhost:5000/api/users/profile
+Content-Type: application/json
+
+{
+  "email": "john@email.com"
+}
