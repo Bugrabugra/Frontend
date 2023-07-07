@@ -15,7 +15,7 @@
     "@mantine/hooks": "^4.1.4",
     "@mantine/next": "^4.1.4",
     "apollo-server-micro": "^3.6.7",
-    "class-validator": "^0.13.2",
+    "class-validator": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
     "graphql": "^15.3.0",
     "graphql-request": "^4.2.0",
