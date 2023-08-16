@@ -1,18 +1,21 @@
 const express = require("express");
 const router = express.Router();
+const postsRoute = require("./post.route");
+const adminRoute = require("./admin.route");
+const { logoutController } = require("../controllers/admin.controller");
 
 // routes
-router.get("", (req, res) => {
-  const locals = {
-    title: "NodeJs Blog",
-    description: "Simple Blog created with NodeJs, Express & MongoDb"
-  }
+// home
+router.use("", postsRoute);
 
-  res.render("index", { locals });
-});
+// admin
+router.use("/admin", adminRoute);
+router.get("/logout", logoutController);
 
+// about
 router.get("/about", (req, res) => {
   res.render("about");
 });
+
 
 module.exports = router;
