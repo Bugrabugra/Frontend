@@ -1,0 +1,25 @@
+### sign up
+POST http://localhost:3333/auth/signup
+Content-Type: application/json
+
+{
+  "email": "bo@gmail.com",
+  "password": "123"
+}
+
+### sign in
+POST http://localhost:3333/auth/signin
+Content-Type: application/json
+
+{
+  "email": "bo@gmail.com",
+  "password": "123"
+}
+
+> {%
+  client.global.set("access_token", response.body.access_token);
+%}
+
+### get me
+GET http://localhost:3333/users/me
+Authorization: Bearer {{access_token}}
