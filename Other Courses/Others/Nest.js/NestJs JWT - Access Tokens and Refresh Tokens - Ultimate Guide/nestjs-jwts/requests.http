@@ -1,0 +1,29 @@
+### signup user
+POST http://localhost:3333/auth/local/signup
+Content-Type: application/json
+
+{
+  "email": "bo@gmail.com",
+  "password": "12345"
+}
+
+### signin user
+POST http://localhost:3333/auth/local/signin
+Content-Type: application/json
+
+{
+  "email": "bo@gmail.com",
+  "password": "12345"
+}
+
+> {% client.global.set("access_token", response.body.access_token); client.global.set("refresh_token", response.body
+    .refresh_token);%}
+
+
+### logout user
+POST http://localhost:3333/auth/logout
+Authorization: Bearer {{access_token}}
+
+### refresh user tokens
+POST http://localhost:3333/auth/refresh
+Authorization: Bearer {{refresh_token}}
