@@ -1,0 +1,11 @@
+### express session
+POST http://localhost:3333/signin
+Content-Type: application/json
+
+{
+  "username": "salem",
+  "password": "supercat123"
+}
+
+### regular
+GET http://localhost:3333
