@@ -1,0 +1,29 @@
+### get all reports
+GET http://localhost:3000/report/income
+
+### get a report
+GET http://localhost:3000/report/income/65093a09-a4f6-492e-b949-93b45c4a7cd9
+
+### create a report
+POST http://localhost:3000/report/income
+Content-Type: application/json
+
+{
+  "source": "Amazon",
+  "amount": 3000
+}
+
+### update a report
+PUT http://localhost:3000/report/income/65093a09-a4f6-492e-b949-93b45c4a7cd9
+Content-Type: application/json
+
+{
+  "source": "Udemy",
+  "amount": 7000
+}
+
+### delete a report
+DELETE http://localhost:3000/report/income/uuid1
+
+### get calculate summary
+GET http://localhost:3000/summary
