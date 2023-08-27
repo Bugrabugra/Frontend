@@ -9,7 +9,7 @@ const MeetupDetails = ({ meetupData }) => {
     <Fragment>
       <Head>
         <title>{meetupData.title}</title>
-        <meta name="description" content={meetupData.description}/>
+        <meta name="description" content={meetupData.description} />
       </Head>
       <MeetupDetail
         image={meetupData.image}
@@ -22,7 +22,7 @@ const MeetupDetails = ({ meetupData }) => {
 };
 
 export const getStaticPaths = async () => {
-  const client = await MongoClient.connect("mongodb+srv://bugra:buura6630@cluster0.sehxn.mongodb.net/meetups-next?retryWrites=true&w=majority")
+  const client = await MongoClient.connect("mongodb+srv://username:password@cluster0.sehxn.mongodb.net/meetups-next?retryWrites=true&w=majority")
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups-next");
@@ -40,7 +40,7 @@ export const getStaticProps = async (context) => {
   // fetch data for a single meetup
   const meetupId = context.params.meetupId;
 
-  const client = await MongoClient.connect("mongodb+srv://bugra:buura6630@cluster0.sehxn.mongodb.net/meetups-next?retryWrites=true&w=majority")
+  const client = await MongoClient.connect("mongodb+srv://username:password@cluster0.sehxn.mongodb.net/meetups-next?retryWrites=true&w=majority")
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups-next");

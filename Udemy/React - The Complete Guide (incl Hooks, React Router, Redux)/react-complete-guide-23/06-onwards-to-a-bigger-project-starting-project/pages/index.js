@@ -9,9 +9,9 @@ const HomePage = ({ meetups }) => {
     <Fragment>
       <Head>
         <title>React Meetups</title>
-        <meta name="description" content="Browse a huge list"/>
+        <meta name="description" content="Browse a huge list" />
       </Head>
-      <MeetupList meetups={meetups}/>
+      <MeetupList meetups={meetups} />
     </Fragment>
   )
 };
@@ -30,7 +30,7 @@ const HomePage = ({ meetups }) => {
 
 export const getStaticProps = async () => {
   // fetch data from an API
-  const client = await MongoClient.connect("mongodb+srv://bugra:buura6630@cluster0.sehxn.mongodb.net/meetups-next?retryWrites=true&w=majority")
+  const client = await MongoClient.connect("mongodb+srv://username:password@cluster0.sehxn.mongodb.net/meetups-next?retryWrites=true&w=majority")
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups-next");
