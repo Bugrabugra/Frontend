@@ -1,13 +1,13 @@
 ### signup
-POST http://localhost:3000/auth/signup/REALTOR
+### "productKey": "$2a$10$YptSjFvZxDHDcJGeOMgboe.6l.K7cSHLyZa1AUNRyfG4ISpoanS8i"
+POST http://localhost:3000/auth/signup/BUYER
 Content-Type: application/json
 
 {
-  "name": "Bugra",
+  "name": "Buyer",
   "phone": "(555) 555 5555",
-  "email": "bo4@gmail.com",
-  "password": "banana",
-  "productKey": "$2a$10$IS0FEkxKqqRwB6/LbdhBieYXR0iva1MoV.34L2wLODn78DD.gGP/e"
+  "email": "buyer@gmail.com",
+  "password": "banana"
 }
 
 ### signin
@@ -15,7 +15,7 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "bo2@gmail.com",
+  "email": "buyer@gmail.com",
   "password": "banana"
 }
 
@@ -24,6 +24,11 @@ POST http://localhost:3000/auth/key
 Content-Type: application/json
 
 {
-  "email": "bo4@gmail.com",
+  "email": "realtor@gmail.com",
   "userType": "REALTOR"
 }
+
+### get me
+GET http://localhost:3000/auth/me
+Content-Type: application/json
+

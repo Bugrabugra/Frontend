@@ -94,7 +94,7 @@ export class AuthService {
         name,
         id
       },
-      process.env.JSON_TOKEN_KEY,
+      process.env.JWT_TOKEN,
       {
         expiresIn: 3600000
       }

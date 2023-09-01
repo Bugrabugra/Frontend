@@ -1,5 +1,5 @@
 ### get homes
-GET http://localhost:3000/home
+GET http://localhost:3000/home?city=Toronto&minPrice=1500000&maxPrice=3000000&propertyType=RESIDENTIAL
 Content-Type: application/json
 
 ### get home by id
@@ -9,16 +9,35 @@ Content-Type: application/json
 ### create home
 POST http://localhost:3000/home
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnV5ZXIiLCJpZCI6MTEsImlhdCI6MTY5MzU3OTQ1NywiZXhwIjoxNjk3MTc5NDU3fQ.3W9M8rxDNFwzzMAgTFawgQIHcxLnDaxbiwerWOzHjl8
 
 {
+  "numberOfBedrooms": 4,
+  "numberOfBathrooms": 5,
+  "address": "1111 Axe Ave",
+  "city": "Dallas",
+  "price": 500000,
+  "landSize": 3500,
+  "propertyType": "CONDO",
+  "images": [
+    {
+      "url": "img10"
+    },
+    {
+      "url": "img11"
+    }
+  ]
 }
 
 ### update home by id
-PUT http://localhost:3000/home/1
+PUT http://localhost:3000/home/11
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnV5ZXIiLCJpZCI6MTEsImlhdCI6MTY5MzU3OTYyNCwiZXhwIjoxNjk3MTc5NjI0fQ.VhN6PXj05jJFrUnYNSF_jmOSpDMp6_q64We8ehXWILM
 
 {
+  "city": "Houston"
 }
 
 ### delete home by id
-DELETE http://localhost:3000/home/1
+DELETE http://localhost:3000/home/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnV5ZXIiLCJpZCI6MTEsImlhdCI6MTY5MzU3OTQ1NywiZXhwIjoxNjk3MTc5NDU3fQ.3W9M8rxDNFwzzMAgTFawgQIHcxLnDaxbiwerWOzHjl8
