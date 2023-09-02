@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { HomeResponseDto } from "./dto/home.dto";
 import { PropertyType } from "@prisma/client";
+import { UserInfo } from "../user/decorators/user.decorator";
 
 type GetHomesParams = {
   city?: string;
@@ -33,6 +34,16 @@ type UpdateHomeParams = {
   propertyType?: PropertyType;
 };
 
+export const homeSelect = {
+  id: true,
+  address: true,
+  city: true,
+  price: true,
+  property_type: true,
+  number_of_bathrooms: true,
+  number_of_bedrooms: true
+};
+
 @Injectable()
 export class HomeService {
   constructor(private readonly prismaService: PrismaService) {}
@@ -40,13 +51,7 @@ export class HomeService {
   async getHomes(filter: GetHomesParams): Promise<HomeResponseDto[]> {
     const homes = await this.prismaService.home.findMany({
       select: {
-        id: true,
-        address: true,
-        city: true,
-        price: true,
-        property_type: true,
-        number_of_bathrooms: true,
-        number_of_bedrooms: true,
+        ...homeSelect,
         images: {
           select: {
             url: true
@@ -189,5 +194,36 @@ export class HomeService {
     }
 
     return home.realtor;
+  }
+
+  async inquire(buyer: UserInfo, homeId: number, message: string) {
+    const realtor = await this.getRealtorByHomeId(homeId);
+
+    return this.prismaService.message.create({
+      data: {
+        realtor_id: realtor.id,
+        buyer_id: buyer.id,
+        home_id: homeId,
+        message
+      }
+    });
+  }
+
+  getMessagesByHome(homeId: number) {
+    return this.prismaService.message.findMany({
+      where: {
+        home_id: homeId
+      },
+      select: {
+        message: true,
+        buyer: {
+          select: {
+            name: true,
+            email: true,
+            phone: true
+          }
+        }
+      }
+    });
   }
 }

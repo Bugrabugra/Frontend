@@ -41,3 +41,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnV5ZXIiL
 ### delete home by id
 DELETE http://localhost:3000/home/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnV5ZXIiLCJpZCI6MTEsImlhdCI6MTY5MzU3OTQ1NywiZXhwIjoxNjk3MTc5NDU3fQ.3W9M8rxDNFwzzMAgTFawgQIHcxLnDaxbiwerWOzHjl8
+
+### inquire
+POST http://localhost:3000/home/11/inquire
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnV5ZXIiLCJpZCI6MTEsImlhdCI6MTY5MzY5MTk1MCwiZXhwIjoxNjk3MjkxOTUwfQ.PkuExIKiWAnwnxR1qkZPPWYnrmfUXhX_QSBzVYzPCK8
+
+{
+  "message": "I really like this house!"
+}
+
+### view all messages
+GET http://localhost:3000/home/11/messages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmVhbHRvciIsImlkIjoxMCwiaWF0IjoxNjkzNjkyMTA4LCJleHAiOjE2OTcyOTIxMDh9.uNFKljTetq_vFIN5okOsV0ZzKSzw9xwNz8GfeF62iK0
