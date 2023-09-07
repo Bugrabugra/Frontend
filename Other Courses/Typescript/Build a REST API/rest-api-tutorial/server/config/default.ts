@@ -6,27 +6,12 @@ export default {
   accessTokenTtl: "15m",
   refreshTokenTtl: "1y",
   privateKey: `-----BEGIN RSA PRIVATE KEY-----
-MIICXQIBAAKBgQCTTkkYucOg2HxOsSqnUdu6JDFkopEN9OSTU9euz8XBiMljO66g
-3ZtxmdjWSf31+a63hQAT2hQy9hXo7PXBurB8oU/vEhuP/2FbnFRyFXlzvxLydl09
-RkIM8sehsyou1iVcqE03l08VSvS8Nt4DT4XyqnBRv3WGrcgXKyd4pBSIbQIDAQAB
-AoGBAIOMH98C1d8oNSqZMLwncA/1Dl8OhnduQUoIT85/Id1JaH9D5xkljhGPEIOd
-pDwr84lULtOLpwozlTFjm7ycGcpswfii+C0NvLsLm6cAJBu6QiVjuVXmEv9Icrcb
-608Yr10lVtqLrxWlYDOoOz1DHotxCHpIXkRRMBeZ664tokxBAkEA+jYUkQ/53929
-TSAGYp2eAVwBjiUg3o9dVeH0IFdWhvISa9BjVbPdHh/8GPA0NkLc2LUQIiQF6ZMc
-G73vJH1btQJBAJa2utKTTEMToywEKaZ5oK5sWKT33Y9rfJ8r9qCb6Qb9g+bTI80/
-W2TAIpOZA7ELhcx3Iv3wvFFyFXHivCLiHNkCQFvVuZq8mGPYSQCjvnQ3kaTCFjgL
-3JKTYBiDhEzSgYmqE6TKqYrtJz1FVAv7Lc60n8ZSPoepXRorymdMQRfNgvkCQAM3
-BqkzRy8vHg30UMciVREjcoiiWPGUQ2ZJ08r9SG1DvyqPWnYoYdS2XIZ1fySpsEL6
-T57HId1C5740Lfs4g5ECQQC2Ccm5emvumomxk/kTivh79v4bzEb93PFlitdgrqnp
-+zXx+s1krkAtMWVOJn8quxJhF3BNWgoAuqlCiDK/wJTA
+
 -----END RSA PRIVATE KEY-----`,
   publicKey: `-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCTTkkYucOg2HxOsSqnUdu6JDFk
-opEN9OSTU9euz8XBiMljO66g3ZtxmdjWSf31+a63hQAT2hQy9hXo7PXBurB8oU/v
-EhuP/2FbnFRyFXlzvxLydl09RkIM8sehsyou1iVcqE03l08VSvS8Nt4DT4XyqnBR
-v3WGrcgXKyd4pBSIbQIDAQAB
+
 -----END PUBLIC KEY-----`,
-  googleClientId: "298211899525-pa718lv40k49v62jqfe9v6tq8b3p9trd.apps.googleusercontent.com",
-  googleClientSecret: "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",
+  googleClientId: "",
+  googleClientSecret: "",
   googleOauthRedirectUrl: "http://localhost:1337/api/sessions/oauth/google"
 }
