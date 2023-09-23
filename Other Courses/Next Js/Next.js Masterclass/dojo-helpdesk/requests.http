@@ -1,0 +1,18 @@
+### get tickets
+GET http://localhost:3000/api/tickets
+Content-Type: application/json
+
+### create tickets
+POST http://localhost:3000/api/tickets
+Content-Type: application/json
+
+{
+  "title": "testing",
+  "body": "blah blah",
+  "user_email": "b@g.com",
+  "priority": "high"
+}
+
+### get ticket
+GET http://localhost:3000/api/tickets/1
+Content-Type: application/json
