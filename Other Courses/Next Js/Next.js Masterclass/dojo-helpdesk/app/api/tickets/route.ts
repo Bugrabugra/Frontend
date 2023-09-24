@@ -1,29 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Ticket } from "@/app/(dashboard)/tickets/types";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { PostgrestError } from "@supabase/supabase-js";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(): Promise<NextResponse<Ticket[]>> {
-  const res = await fetch("http://localhost:4000/tickets");
-
-  const tickets = await res.json();
-
-  return NextResponse.json(tickets, {
-    status: 200
-  });
-}
-
-export async function POST(request: NextRequest): Promise<NextResponse<Ticket>> {
+export async function POST(request: NextRequest): Promise<NextResponse<{
+  data: Ticket,
+  error: PostgrestError | null
+}>> {
   const ticket = await request.json();
 
-  const res = await fetch("http://localhost:4000/tickets", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(ticket)
-  });
+  // get supabase instance
+  const supabase = createRouteHandlerClient({ cookies });
 
-  const newTicket = await res.json();
-  return NextResponse.json(newTicket, {
-    status: 201
-  });
+  // get the current user  session
+  const { data: { session } } = await supabase.auth.getSession();
+
+  // insert the data
+  const { data, error } = await supabase.from("tickets")
+    .insert({
+      ...ticket,
+      user_email: session?.user.email
+    })
+    .select()
+    .single();
+
+  return NextResponse.json({ data, error });
 }
