@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Custom Site Theming</title>
+    <meta charset="UTF-8" />
+    <link href="/favicon.png" rel="icon" type="image/png" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="./style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;700&display=swap"
+        rel="stylesheet"
+    />
+    <script src="./settings.js" type="module"></script>
+  </head>
+  <body>
+    <div class="banner" data-bkg="accent2"></div>
+    <div class="wrapper">
+      <header class="hero">
+        <div data-align="right">
+          <p data-fs="2xl">👋</p>
+          <div>
+            <p>I write about <span data-color="primary">web dev</span></p>
+            <p data-color="accent2">design</p>
+            <p data-color="accent1">tech</p>
+          </div>
+        </div>
+        <div>
+          <img
+              alt="Devin Headshot"
+              class="headshot"
+              src="/headshot.jpg"
+              width="280px"
+          />
+          <h1 data-color="primary">Hi, I’m Devin</h1>
+          <p>Welcome to my blog.</p>
+        </div>
+      </header>
+      <main>
+        <img alt="" class="wave" src="/wave.png" />
+        <section aria-labelledby="recent-posts">
+          <h2 class="sr-only" id="recent-posts">Recent Posts</h2>
+          <div class="card-wrapper">
+            <article class="card">
+              <h3 data-color="primary">My Design Process</h3>
+              <div>
+                <img alt="Design sketches" src="/image-1.jpg" />
+                <p>
+                  Design involves problem identification, research,
+                  brainstorming, prototyping, testing, and refining. Effective
+                  communication and feedback are crucial.
+                </p>
+                <a class="btn" href="#">Read Post</a>
+              </div>
+            </article>
+            <article class="card">
+              <h3 data-color="primary">My Favorite Gear</h3>
+              <div>
+                <img alt="Coding gear" src="/image-2.jpg" />
+                <p>
+                  My overview of preferred tech gear, from laptops to
+                  noise-cancelling headphones. I’ll include top picks and
+                  reasons behind my choices.
+                </p>
+                <a class="btn" href="#">Read Post</a>
+              </div>
+            </article>
+            <article class="card">
+              <h3 data-color="primary">Learning to Code</h3>
+              <div>
+                <img alt="Laptop on desk" src="/image-3.jpg" />
+                <p>
+                  When learning to code, start with the basics and practice
+                  regularly with real-life projects. Don't be afraid to make
+                  mistakes or ask for help. Stay curious and keep learning.
+                </p>
+                <a class="btn" href="#">Read Post</a>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section aria-labelledby="newsletter-signup" class="cta-wrapper">
+          <div class="cta container">
+            <div>
+              <h2 id="newsletter-signup">New Posts to Your Inbox</h2>
+              <p>
+                Stay in the loop with my blog by subscribing to my email
+                newsletter. Never miss a post and get exclusive content and
+                updates. Join now! Cancel at anytime.
+              </p>
+            </div>
+            <form>
+              <div>
+                <label for="email">Email Address</label>
+                <input
+                    autocomplete="email"
+                    id="email"
+                    placeholder="john@email.com"
+                    type="email"
+                />
+              </div>
+              <button class="btn" type="submit">Subscribe</button>
+            </form>
+          </div>
+        </section>
+        <aside aria-label="Settings section" class="container">
+          <div class="settings-wrapper">
+            <h2 class="h3">Custom Site Settings</h2>
+            <div class="settings">
+              <div class="stack">
+                <div class="switch-wrapper">
+                  <input id="sound" name="sound" type="checkbox" />
+                  <label class="switch-label" for="sound">Toggle Sound</label>
+                  <div class="switch">
+                    <span>Sound Off</span>
+                    <div class="thumb"></div>
+                    <span>Sound On</span>
+                  </div>
+                </div>
+                <div class="switch-wrapper">
+                  <input id="motion" name="motion" type="checkbox" />
+                  <label class="switch-label" for="motion">Toggle Motion</label>
+                  <div class="switch">
+                    <span>Motion Off</span>
+                    <div class="thumb"></div>
+                    <span>Motion On</span>
+                  </div>
+                </div>
+                <div class="switch-wrapper">
+                  <input id="round" name="round" type="checkbox" />
+                  <label class="switch-label" for="round">Toggle Round</label>
+                  <div class="switch">
+                    <span>Squared</span>
+                    <div class="thumb"></div>
+                    <span>Rounded</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack">
+                <fieldset class="radio-wrapper">
+                  <legend>Website Theme</legend>
+                  <div class="radio">
+                    <input id="light" name="theme" type="radio" />
+                    <div class="check"></div>
+                    <label for="light">Light</label>
+                  </div>
+                  <div class="radio">
+                    <input id="system" name="theme" type="radio" />
+                    <div class="check"></div>
+                    <label for="system">System</label>
+                  </div>
+                  <div class="radio">
+                    <input id="dark" name="theme" type="radio" />
+                    <div class="check"></div>
+                    <label for="dark">Dark</label>
+                  </div>
+                  <div class="radio">
+                    <input id="wild" name="theme" type="radio" />
+                    <div class="check"></div>
+                    <label for="wild">90s</label>
+                  </div>
+                  <div class="radio">
+                    <input id="dracula" name="theme" type="radio" />
+                    <div class="check"></div>
+                    <label for="dracula">Dracula</label>
+                  </div>
+                  <div class="radio">
+                    <input id="material" name="theme" type="radio" />
+                    <div class="check"></div>
+                    <label for="material">Material</label>
+                  </div>
+                </fieldset>
+                <fieldset class="radio-wrapper">
+                  <legend>Custom Accent</legend>
+                  <div class="radio">
+                    <input id="primary" name="customColor" type="radio" />
+                    <div class="check"></div>
+                    <label for="primary">Option 1</label>
+                  </div>
+                  <div class="radio">
+                    <input id="accent1" name="customColor" type="radio" />
+                    <div class="check"></div>
+                    <label for="accent1">Option 2</label>
+                  </div>
+                  <div class="radio">
+                    <input id="accent2" name="customColor" type="radio" />
+                    <div class="check"></div>
+                    <label for="accent2">Option 3</label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <div class="banner" data-bkg="primary"></div>
+    <audio id="audio-check" preload="none" src="/check.mp3"></audio>
+    <audio id="audio-toggle" preload="none" src="/toggle.mp3"></audio>
+  </body>
+</html>
