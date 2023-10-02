@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo # if there is image use this
+    volumes:
+      - mongodbdata:/data/db
+    env_file:
+      - ./env/mongo.env
+    container_name: mongodb
+  backend:
+    # build:      # if there is no image and you use Dockerfile, use this
+    #  context: ./backend
+    #  dockerfile: Dockerfile # if name is Docker file you can omit this part
+    build: ./backend
+    volumes:
+      - ./backend/src:/app/src
+    ports:
+      - 8000:8000
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongodb
+    container_name: backend
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+volumes:
+  mongodbdata:
