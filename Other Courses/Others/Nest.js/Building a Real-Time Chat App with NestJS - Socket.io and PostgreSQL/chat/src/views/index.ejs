@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+                name="viewport"
+                content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        >
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Nest.js Chat application</title>
+
+        <!--Bootstrap.css files-->
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+                integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+        />
+    </head>
+    <body class="d-flex align-items-center py-4 bg-dark">
+        <div class="container">
+            <main class="w-50 m-auto">
+                <div class="mb-3 mt-3">
+                    <p class="text-light mb-3">
+                        Messages:
+                    </p>
+                    <ul style="list-style: none;" class="text-light ps-0" id="messages-container"></ul>
+                </div>
+
+                <form>
+                    <div class="form-floating mb-3">
+                        <input type="email" id="inputEmail" class="form-control" placeholder="name@example.com">
+                        <label for="inputEmail">Your email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="inputMessage" class="form-control" placeholder="Message...">
+                        <label for="inputMessage">Your message...</label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary w-100 py-2" id="buttonMessage">Send message</button>
+                </form>
+            </main>
+        </div>
+
+        <!--js files-->
+        <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"
+                integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+        ></script>
+        <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"
+                integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+        ></script>
+        <script src="app.js"></script>
+    </body>
+</html>
