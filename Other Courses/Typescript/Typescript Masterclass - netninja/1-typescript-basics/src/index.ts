@@ -14,7 +14,6 @@ planet = "Saturn"
 moons = 145
 isLarge = true
 
-
 let something: null
 let anotherThing: undefined
 
