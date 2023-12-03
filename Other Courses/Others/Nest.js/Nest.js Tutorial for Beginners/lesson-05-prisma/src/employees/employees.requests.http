@@ -1,0 +1,28 @@
+### get empployees
+GET http://localhost:3000/employees
+
+### get empployee
+GET http://localhost:3000/employees/1
+
+### create empployee
+POST http://localhost:3000/employees
+Content-Type: application/json
+
+{
+  "name": "Dave",
+  "email": "d@g.com",
+  "role": "ADMIN"
+}
+
+### update empployee
+PATCH http://localhost:3000/employees/1
+Content-Type: application/json
+
+{
+  "name": "D",
+  "email": "d@g.com",
+  "role": "INTERN"
+}
+
+### delete empployee
+DELETE http://localhost:3000/employees/7
