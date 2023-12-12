@@ -1,0 +1,65 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<link href="styles/index.css" rel="stylesheet" />
+		<title>Create New Menu Item</title>
+	</head>
+	<body>
+		<nav>
+			<h1>Create New Pizza</h1>
+			<a class="btn" href="/">Back to Menu</a>
+		</nav>
+
+		<main class="wrap">
+			<form class="create">
+				<!-- pizza title -->
+				<label for="title">
+					<span>Title:</span>
+					<input name="title" required type="text" />
+				</label>
+
+				<!-- pizza description -->
+				<label for="description">
+					<span>Description:</span>
+					<textarea name="description" required></textarea>
+				</label>
+
+				<!-- pizza toppings -->
+				<fieldset>
+					<legend>Choose toppings:</legend>
+					<label>
+						<input name="toppings" type="checkbox" value="mushrooms" />
+						<span>mushrooms</span>
+					</label>
+					<label>
+						<input name="toppings" type="checkbox" value="peppers" />
+						<span>peppers</span>
+					</label>
+					<label>
+						<input name="toppings" type="checkbox" value="sweetcorn" />
+						<span>sweetcorn</span>
+					</label>
+					<label>
+						<input name="toppings" type="checkbox" value="olives" />
+						<span>olives</span>
+					</label>
+					<label>
+						<input name="toppings" type="checkbox" value="pineapple" />
+						<span>pineapple</span>
+					</label>
+				</fieldset>
+
+				<!-- pizza price -->
+				<label for="price">
+					<span>Price:</span>
+					<input name="price" required type="number" />
+				</label>
+
+				<button>Create!</button>
+			</form>
+		</main>
+
+		<script src="ts/create.ts" type="module"></script>
+	</body>
+</html>
