@@ -1,0 +1,26 @@
+### get customers
+GET http://localhost:5001/api/customers
+
+### create customer
+POST http://localhost:5001/api/customers/create
+Content-Type: application/json
+
+{
+  "id": "4",
+  "email": "b@g.com",
+  "name": "b",
+  "address": {
+    "line1": "t",
+    "zip": "1111",
+    "city": "NY",
+    "state": "NY"
+  }
+}
+
+### search customer
+GET http://localhost:5001/api/customers/search/1
+
+### get customer
+GET http://localhost:5001/api/customers/1
+Authorization: 123
+valid: true

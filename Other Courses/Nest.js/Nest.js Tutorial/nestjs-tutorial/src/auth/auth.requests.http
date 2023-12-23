@@ -1,0 +1,12 @@
+### login
+POST http://localhost:5001/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "testusertest",
+  "email": "anson@gmail.com",
+  "password": "testusertest"
+}
+
+### get session
+GET http://localhost:5001/api/auth

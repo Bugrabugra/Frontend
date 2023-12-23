@@ -1,0 +1,18 @@
+### get users
+GET http://localhost:5001/api/users
+
+### get user
+GET http://localhost:5001/api/users/anson
+
+### get user by id
+GET http://localhost:5001/api/users/id/10
+
+### create user
+POST http://localhost:5001/api/users/create
+Content-Type: application/json
+
+{
+  "username": "testusertest",
+  "password": "testusertest",
+  "email": "anson@gmail.com"
+}
