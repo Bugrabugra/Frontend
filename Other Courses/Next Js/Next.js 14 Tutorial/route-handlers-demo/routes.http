@@ -1,0 +1,32 @@
+### GET comments
+GET http://localhost:3000/comments?query=fir
+Content-Type: application/json
+
+### POST comments
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+  "text": "New Comment"
+}
+
+### GET comment
+GET http://localhost:3000/comments/1
+Content-Type: application/json
+
+### UPDATE comment
+PATCH http://localhost:3000/comments/1
+Content-Type: application/json
+
+{
+  "text": "Updated Comment"
+}
+
+### DELETE comment
+DELETE http://localhost:3000/comments/1
+
+### GET comments
+GET http://localhost:3000/profile/api
+Accept: "/",
+User-Agent: "",
+Authorization: "Bearer 12345"
