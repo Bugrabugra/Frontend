@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "babel.config.js"
+  ],
+  "extends": [
+    "universe/native"
+  ],
+  "rules": {
+    "@typescript-eslint/quotes": [
+      "error",
+      "double"
+    ],
+    "@typescript-eslint/semi": [
+      "error",
+      "always"
+    ]
+  }
+}
+
