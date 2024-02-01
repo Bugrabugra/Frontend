@@ -2,9 +2,12 @@ import { Stack } from "expo-router";
 import { useMemo, useState } from "react";
 import { View } from "react-native";
 
+import listingDataGeo from "@/assets/data/airbnb-listings.geo.json";
 import listingData from "@/assets/data/airbnb-listings.json";
 import ExploreHeader from "@/components/ExploreHeader";
 import Listings from "@/components/Listings";
+import ListingsBottomSheet from "@/components/ListingsBottomSheet";
+import ListingsMap from "@/components/ListingsMap";
 import { Listing } from "@/types/listing";
 
 const Page = () => {
@@ -22,7 +25,9 @@ const Page = () => {
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
         }}
       />
-      <Listings listings={items} category={category} />
+      {/*<Listings listings={items} category={category} />*/}
+      <ListingsMap listings={listingDataGeo} />
+      <ListingsBottomSheet listings={items} category={category} />
     </View>
   );
 };
