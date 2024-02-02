@@ -1,8 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
+import {
+  BottomSheetFlatList,
+  BottomSheetFlatListMethods,
+} from "@gorhom/bottom-sheet";
 import { Link } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
-  FlatList,
   Image,
   ListRenderItem,
   StyleSheet,
@@ -18,11 +21,18 @@ import { Listing } from "@/types/listing";
 interface Props {
   listings: Listing[];
   category: string;
+  refresh: number;
 }
 
-const Listings = ({ listings: items, category }: Props) => {
+const Listings = ({ listings: items, category, refresh }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
-  const listRef = useRef<FlatList>(null);
+  const listRef = useRef<BottomSheetFlatListMethods>(null);
+
+  useEffect(() => {
+    if (refresh) {
+      listRef.current?.scrollToOffset({ offset: 0, animated: true });
+    }
+  }, [refresh]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -74,10 +84,13 @@ const Listings = ({ listings: items, category }: Props) => {
 
   return (
     <View style={defaultStyles.container}>
-      <FlatList
+      <BottomSheetFlatList
         data={isLoading ? [] : items}
         renderItem={renderRow}
         ref={listRef}
+        ListHeaderComponent={
+          <Text style={styles.info}>{items.length} homes</Text>
+        }
       />
     </View>
   );
@@ -93,6 +106,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 300,
     borderRadius: 10,
+  },
+  info: {
+    textAlign: "center",
+    fontFamily: "mon-sb",
+    fontSize: 16,
+    marginTop: 4,
   },
 });
 
