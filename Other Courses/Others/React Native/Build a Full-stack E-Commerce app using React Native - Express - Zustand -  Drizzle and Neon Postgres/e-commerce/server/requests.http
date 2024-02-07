@@ -1,0 +1,25 @@
+### GET all products
+GET http://localhost:3000/products
+Content-Type: application/json
+
+### GET product
+GET http://localhost:3000/products/2
+Content-Type: application/json
+
+### POST orders
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "email": "test@galaxies.dev",
+  "products": [
+    {
+      "product_id": 1,
+      "quantity": 2
+    },
+    {
+      "product_id": 2,
+      "quantity": 1
+    }
+  ]
+}
