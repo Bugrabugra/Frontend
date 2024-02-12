@@ -14,7 +14,6 @@ const Categories = () => {
       horizontal
     >
       {categories.map((category, index) => {
-        console.log(category);
         return (
           <View style={styles.categoryCard} key={index}>
             <Image source={category.img} />
