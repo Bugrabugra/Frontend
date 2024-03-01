@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>HTMX Todo</title>
+    <script
+        crossorigin="anonymous"
+        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+        src="https://unpkg.com/htmx.org@1.9.10"
+    ></script>
+  </head>
+  <body>
+    <form hx-post="http://localhost:3000/todo" hx-target="#todo-list">
+      <label for="newTodo">New Todo:</label>
+      <input id="newTodo" name="newTodo" type="text" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <ol hx-get="http://localhost:3000/todo" hx-trigger="load" id="todo-list"></ol>
+  </body>
+</html>
