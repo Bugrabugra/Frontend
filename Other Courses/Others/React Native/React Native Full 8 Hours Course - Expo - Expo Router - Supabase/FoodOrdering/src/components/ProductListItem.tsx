@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, useSegments } from "expo-router";
 import { Image, Pressable, StyleSheet } from "react-native";
 
 import { Text } from "@/components/Themed";
@@ -13,8 +13,13 @@ type ProductListItemProps = {
 };
 
 const ProductListItem = ({ product }: ProductListItemProps) => {
+  const segments = useSegments();
+
   return (
-    <Link href={`/${product.id}`} asChild>
+    <Link
+      href={`/${segments[0] === "(admin)" ? "(admin)" : "(user)"}/menu/${product.id}`}
+      asChild
+    >
       <Pressable style={styles.container}>
         <Image
           source={{ uri: product.image || DEFAULT_PIZZA_IMAGE }}
