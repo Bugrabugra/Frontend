@@ -1,15 +1,16 @@
 import { Link, useSegments } from "expo-router";
-import { Image, Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 
+import RemoteImage from "@/components/RemoteImage";
 import { Text } from "@/components/Themed";
 import Colors from "@/constants/Colors";
-import { Product } from "@/types";
+import { Tables } from "@/types";
 
 export const DEFAULT_PIZZA_IMAGE =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png";
 
 type ProductListItemProps = {
-  product: Product;
+  product: Tables<"products">;
 };
 
 const ProductListItem = ({ product }: ProductListItemProps) => {
@@ -21,8 +22,9 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
       asChild
     >
       <Pressable style={styles.container}>
-        <Image
-          source={{ uri: product.image || DEFAULT_PIZZA_IMAGE }}
+        <RemoteImage
+          path={product.image}
+          fallback={DEFAULT_PIZZA_IMAGE}
           style={styles.image}
           resizeMode="contain"
         />

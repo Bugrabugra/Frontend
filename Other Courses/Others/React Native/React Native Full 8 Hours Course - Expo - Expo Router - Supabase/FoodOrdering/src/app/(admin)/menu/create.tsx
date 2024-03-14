@@ -1,11 +1,22 @@
+import { decode } from "base64-arraybuffer";
+import { randomUUID } from "expo-crypto";
+import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
-import { Stack, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { Alert, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 
+import {
+  useDeleteProduct,
+  useInsertProduct,
+  useProduct,
+  useUpdateProduct
+} from "@/api/products";
 import Button from "@/components/Button";
 import { DEFAULT_PIZZA_IMAGE } from "@/components/ProductListItem";
+import RemoteImage from "@/components/RemoteImage";
 import Colors from "@/constants/Colors";
+import { supabase } from "@/lib/supabase";
 
 const CreateProductScreen = () => {
   const [name, setName] = useState("");
@@ -13,8 +24,26 @@ const CreateProductScreen = () => {
   const [errors, setErrors] = useState("");
   const [image, setImage] = useState<string | null>(null);
 
-  const { id } = useLocalSearchParams();
+  const { id: idString } = useLocalSearchParams();
+  const id = parseFloat(
+    typeof idString === "string" ? idString : idString?.[0]
+  );
   const isUpdating = !!id;
+
+  const { mutate: insertProduct } = useInsertProduct();
+  const { mutate: updateProduct } = useUpdateProduct();
+  const { data: updatingProduct } = useProduct(id);
+  const { mutate: deleteProduct } = useDeleteProduct();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (updatingProduct) {
+      setName(updatingProduct.name);
+      setPrice(updatingProduct.price.toString());
+      setImage(updatingProduct.image);
+    }
+  }, [updatingProduct]);
 
   const resetFields = () => {
     setName("");
@@ -48,10 +77,11 @@ const CreateProductScreen = () => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 1
+      quality: 0.2
     });
 
     if (!result.canceled) {
+      console.log(result);
       setImage(result.assets[0].uri);
     }
   };
@@ -64,24 +94,51 @@ const CreateProductScreen = () => {
     }
   };
 
-  const onCreate = () => {
+  const onCreate = async () => {
     if (!validateInput()) {
       return;
     }
+
+    const imagePath = await uploadImage();
+
     // save in database
-    resetFields();
+    insertProduct(
+      { name, image: imagePath, price: parseFloat(price) },
+      {
+        onSuccess: () => {
+          resetFields();
+          router.back();
+        }
+      }
+    );
   };
 
-  const onUpdate = () => {
+  const onUpdate = async () => {
     if (!validateInput()) {
       return;
     }
+
+    const imagePath = await uploadImage();
+
     // save in database
-    resetFields();
+    updateProduct(
+      { id, name, price: parseFloat(price), image: imagePath },
+      {
+        onSuccess: () => {
+          resetFields();
+          router.back();
+        }
+      }
+    );
   };
 
   const onDelete = () => {
-    console.warn("DELETE");
+    deleteProduct(id, {
+      onSuccess: () => {
+        resetFields();
+        router.replace("/(admin)");
+      }
+    });
   };
 
   const confirmDelete = () => {
@@ -97,14 +154,35 @@ const CreateProductScreen = () => {
     ]);
   };
 
+  const uploadImage = async () => {
+    if (!image?.startsWith("file://")) {
+      return;
+    }
+
+    const base64 = await FileSystem.readAsStringAsync(image, {
+      encoding: "base64"
+    });
+    const filePath = `${randomUUID()}.png`;
+    const contentType = "image/png";
+
+    const { data, error } = await supabase.storage
+      .from("product-images")
+      .upload(filePath, decode(base64), { contentType });
+
+    if (data) {
+      return data.path;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Stack.Screen
         options={{ title: isUpdating ? "Update Product" : "Create Product" }}
       />
 
-      <Image
-        source={{ uri: image ?? DEFAULT_PIZZA_IMAGE }}
+      <RemoteImage
+        path={image}
+        fallback={DEFAULT_PIZZA_IMAGE}
         style={styles.image}
       />
       <Text onPress={pickImage} style={styles.textButton}>
