@@ -1,7 +1,7 @@
 import { ActivityIndicator, FlatList, Text } from "react-native";
 
 import { useMyOrdersList } from "@/api/orders";
-import OrderItemListItem from "@/components/OrderListItem";
+import OrderListItem from "@/components/OrderListItem";
 
 const OrdersScreen = () => {
   const { data: orders, isLoading, error } = useMyOrdersList();
@@ -17,7 +17,7 @@ const OrdersScreen = () => {
   return (
     <FlatList
       data={orders}
-      renderItem={({ item }) => <OrderItemListItem order={item} />}
+      renderItem={({ item }) => <OrderListItem order={item} />}
       contentContainerStyle={{ gap: 10, padding: 10 }}
     />
   );

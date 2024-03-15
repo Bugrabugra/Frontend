@@ -1,3 +1,4 @@
+import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { FlatList, Platform, Text, View } from "react-native";
 
@@ -10,6 +11,7 @@ const CartScreen = () => {
 
   return (
     <View style={{ padding: 10 }}>
+      <Stack.Screen options={{ title: "Cart" }} />
       <FlatList
         data={items}
         renderItem={({ item }) => <CartListItem cartItem={item} />}
