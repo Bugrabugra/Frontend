@@ -6,6 +6,8 @@ import {
 } from "@mui/material";
 import { RouterProvider } from "react-router-dom";
 import router from "./components/Routes.tsx";
+import { ApolloProvider } from "@apollo/client";
+import client from "./constants/apollo-client.ts";
 
 const darkTheme = createTheme({
   palette: {
@@ -15,12 +17,14 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Container>
-        <RouterProvider router={router} />
-      </Container>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Container>
+          <RouterProvider router={router} />
+        </Container>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
 
