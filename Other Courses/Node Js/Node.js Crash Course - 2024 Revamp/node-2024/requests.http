@@ -1,0 +1,9 @@
+### GET
+POST http://localhost:4000/api/users
+
+{
+  "id": 4,
+  "name": "Brad"
+}
+
+###

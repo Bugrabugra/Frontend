@@ -1,0 +1,20 @@
+### create user
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "123"
+}
+
+### ccreate product
+POST http://localhost:3000/product
+Content-Type: application/json
+
+{
+  "userId": "664490b8ffa802d409aa27f1",
+  "name": "product",
+  "description": "desc"
+}
+
+###
