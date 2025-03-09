@@ -1,0 +1,12 @@
+### Create account
+POST http://localhost:3000/accounts
+Content-Type: application/json
+
+{
+  "name": "Checking",
+  "balance": 250
+}
+
+### GET snapshots
+GET http://localhost:3000/snapshots
+Content-Type: application/json
