@@ -8,3 +8,30 @@ Content-Type: application/json
 }
 
 ###
+
+### get users
+GET http://localhost:3000/users
+
+###
+
+### auth user
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "b@o.com",
+  "password": "Buura123!"
+}
+
+###
+
+### auth user
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+
+{
+  "email": "b@o.com",
+  "password": "Buura123!"
+}
+
+###
