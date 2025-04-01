@@ -1,0 +1,12 @@
+### GET rider coordinates
+GET http://localhost:3002/rider-coordinates/dfkhfgekrfkfef3kfd123
+
+### CREATE rider coordinates
+POST http://localhost:3002/rider-coordinates
+Content-Type: application/json
+
+{
+  "lat": 1233.23,
+  "lng": 123123.23,
+  "rider": "dfkhfgekrfkfef3kfd123"
+}

@@ -1,0 +1,24 @@
+### get all posts
+GET http://localhost:8000/api/posts?limit=2
+
+### get single post
+GET http://localhost:8000/api/posts/200
+
+### create post
+POST http://localhost:8000/api/posts
+Content-Type: application/json
+
+{
+  "title": "My title"
+}
+
+### update post
+PUT http://localhost:8000/api/posts/100
+Content-Type: application/json
+
+{
+  "title": "Test"
+}
+
+### delete post
+DELETE http://localhost:8000/api/posts/100

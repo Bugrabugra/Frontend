@@ -1,0 +1,91 @@
+### Get /
+GET http://localhost:3000
+
+# Products
+### Get products
+GET http://localhost:3000/products
+
+### Get product
+GET http://localhost:3000/products/1
+
+### Create product
+POST http://localhost:3000/products
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQyNDYyNzkzLCJleHAiOjE3NDUwNTQ3OTN9.Y_2R_Suq-564O8relCvDHAoJlRPzbG0rk5krFUXlUmg
+
+{
+  "name": "Atari",
+  "price": 200
+}
+
+### Update product
+PUT http://localhost:3000/products/3
+Content-Type: application/json
+
+{
+  "price": 120,
+  "id": 1111
+}
+
+### Delete product
+DELETE http://localhost:3000/products/1
+
+# Orders
+### Get orders
+GET http://localhost:3000/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NDI0NjY0ODksImV4cCI6MTc0NTA1ODQ4OX0.HcGlSzhmQ9HgKWKdoDkefnOuYeaGqCm7ZcInTKpnmZ8
+
+### Get order
+GET http://localhost:3000/orders/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NDI0NjY0ODksImV4cCI6MTc0NTA1ODQ4OX0.HcGlSzhmQ9HgKWKdoDkefnOuYeaGqCm7ZcInTKpnmZ8
+
+### Create order
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NDI0NjY0ODksImV4cCI6MTc0NTA1ODQ4OX0.HcGlSzhmQ9HgKWKdoDkefnOuYeaGqCm7ZcInTKpnmZ8
+
+{
+  "order": {},
+  "items": [
+    {
+      "productId": 3,
+      "quantity": 2,
+      "price": 1200
+    },
+    {
+      "productId": 4,
+      "quantity": 1,
+      "price": 100
+    }
+  ]
+}
+
+### Update order
+PUT http://localhost:3000/orders/3
+Content-Type: application/json
+
+{
+  "price": 120,
+  "id": 1111
+}
+
+###
+
+# Auth
+### register
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "b@g.com",
+  "password": "123"
+}
+
+### login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "b@g.com",
+  "password": "123"
+}
