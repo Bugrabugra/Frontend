@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+  padding: 10px;
+  width: 350px;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 5px;
+  max-height: 150px;
+  overflow: auto;
+}
+
+.log {
+  margin-bottom: 15px;
+}

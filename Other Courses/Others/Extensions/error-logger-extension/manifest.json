@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Error Request Logger",
+  "version": "1.0",
+  "description": "Logs failed network requests (4xx/5xx) with headers and payloads.",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://dijitaltesis.com/*",
+    "https://test.dijitaltesis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://dijitaltesis.com/*",
+        "https://test.dijitaltesis.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
