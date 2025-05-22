@@ -1,0 +1,40 @@
+{
+  "name": "starter-vite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc && refine build",
+    "dev": "refine dev",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "refine": "refine",
+    "start": "refine start"
+  },
+  "dependencies": {
+    "@refinedev/antd": "^5.46.1",
+    "@refinedev/cli": "^2.16.46",
+    "@refinedev/core": "^4.57.9",
+    "@refinedev/devtools": "^1.2.16",
+    "@refinedev/inferencer": "^5.0.3",
+    "@refinedev/react-router": "^1.0.1",
+    "antd": "^5.24.9",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router": "^7.5.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.48.0",
+    "@typescript-eslint/parser": "5.48.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.4.2",
+    "vite": "^5.4.15"
+  },
+  "refine": {
+    "projectId": "XYDC5v-vGlq0I-cSVjAv"
+  }
+}
