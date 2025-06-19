@@ -1,0 +1,5 @@
+### GET products
+GET http://localhost:3000/products
+x-tenant-id: XYZ
+
+###
