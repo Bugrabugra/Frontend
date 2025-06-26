@@ -1,0 +1,10 @@
+### GET request to example server
+POST http://localhost:3000/api/order
+Content-Type: application/json
+
+{
+  "orderId": 13,
+  "user": "Peter"
+}
+
+###
