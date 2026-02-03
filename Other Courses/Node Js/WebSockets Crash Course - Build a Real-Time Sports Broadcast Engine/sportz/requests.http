@@ -1,0 +1,18 @@
+### create match
+POST http://localhost:8000/matches
+Content-Type: application/json
+
+{
+  "sport": "football",
+  "homeTeam": "BJK",
+  "awayTeam": "GS",
+  "startTime": "2024-07-08T00:00:00Z",
+  "endTime": "2024-07-08T01:00:00Z"
+}
+
+###
+### list matches
+GET http://localhost:8000/matches
+
+### WebSocket Request
+WEBSOCKET ws://localhost:8000/ws
